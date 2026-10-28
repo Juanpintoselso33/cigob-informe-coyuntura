@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [inseguridad, tasa_homicidios, tasa_robos]
 archivos: ['scripts/vida_cotidiana/collectors/snic.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'config.py', 'data/vida/snic_serie.json', 'tests/test_itvc_anclas_snic.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts']
 supersede: ['0324', '0325']
-relacionado: ['0028', '0032', '0108', '0115']
+relacionado: ['0028', '0032', '0108', '0115', '0396']
 ambito: 'ITCIS · dimensión de seguridad · homicidios y robos del SNIC pasan de contraste a indicador propio'
 origen: 'Juan, 16-sep-2026: revierte ADR-0324/0325 — "los dos tienen que ser indicadores que puntúen, con su card y su peso"'
 ---

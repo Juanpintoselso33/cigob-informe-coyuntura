@@ -324,7 +324,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 11.000 | VERDE |
 | 6.000 – 11.000 | AMARILLO |
-| ≤ 6.000 | NARANJA |
+| 3.400 – 6.000 | NARANJA |
+| ≤ 3.400 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -336,7 +337,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 (2026-09).
 
-17606,0 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 6606,0 del límite con Amarillo (11000,0).
+17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 6.606 del límite con Amarillo (11.000).
 
 **Color vigente: VERDE**
 
@@ -362,6 +363,8 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El ministerio revisa su serie hacia atrás. El informe conserva cada publicación y toma siempre la última cifra oficial de cada mes.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La tabla de colores separa el rojo (menos de 3.400 artículos) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.
 
 **2026-05** — Automatizado desde el inicio del cinturón con la misma búsqueda, en escala lineal.
 
@@ -627,10 +630,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Índice 0–100 (FAL: cinco hitos de construcción y adopción)) | Color |
 |---|---|
-| ≥ 55,25 | VERDE |
-| 34,25 – 55,25 | AMARILLO |
-| 16,88 – 34,25 | NARANJA |
-| ≤ 16,88 | ROJO |
+| ≥ 55,2 | VERDE |
+| 34,2 – 55,2 | AMARILLO |
+| 16,9 – 34,2 | NARANJA |
+| ≤ 16,9 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -642,7 +645,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) (2026-10).
 
-90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,25).
+90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,8 del límite con Amarillo (55,2).
 
 **Color vigente: VERDE**
 
@@ -924,8 +927,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 41 | VERDE |
 | 25 – 41 | AMARILLO |
-| 18,33 – 25 | NARANJA |
-| ≤ 18,33 | ROJO |
+| 18,3 – 25 | NARANJA |
+| ≤ 18,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1109,8 +1112,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 41 | VERDE |
 | 25 – 41 | AMARILLO |
-| 18,33 – 25 | NARANJA |
-| ≤ 18,33 | ROJO |
+| 18,3 – 25 | NARANJA |
+| ≤ 18,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1278,7 +1281,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | protocolo_antipiquetes | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) |
-| **SERIE DISPONIBLE** | 2024-01 → 2026-09 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
+| **SERIE DISPONIBLE** | 2025-01 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
 | **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en CABA contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
 | **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
 
@@ -1305,8 +1308,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 32,5 | VERDE |
 | 12,5 – 32,5 | AMARILLO |
-| 4,17 – 12,5 | NARANJA |
-| ≤ 4,17 | ROJO |
+| 4,2 – 12,5 | NARANJA |
+| ≤ 4,2 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1343,6 +1346,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La serie histórica deja de aplicar el total de un año desde enero de ese mismo año: cada mes usa el último año cerrado (el de 2024 entra en enero de 2025, el de 2025 en enero de 2026) y arranca en 2025-01. La tarjeta no cambia.
 
 **2026-10-26** — El rótulo pasa a «Reducción de cortes de calle en la Ciudad», con la unidad «% menos que en 2023»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.
 
@@ -1407,8 +1412,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 61 | VERDE |
 | 45 – 61 | AMARILLO |
-| 38,33 – 45 | NARANJA |
-| ≤ 38,33 | ROJO |
+| 38,3 – 45 | NARANJA |
+| ≤ 38,3 | ROJO |
 
 ## Datos concretos detrás del valor
 

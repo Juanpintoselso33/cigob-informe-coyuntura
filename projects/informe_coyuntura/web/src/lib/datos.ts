@@ -518,7 +518,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   iai: "% vs. un año atrás", icip: "% i.a.", credito_privado: "% real vs. un año atrás", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
-  votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
+  votometro_ventaja_lla: "pp", ratio_dnu: "DNU por ley publicada", movilizacion_cepa: "índice",
   brecha_obra_publica: "pp",
   apoyo_empresario: "saldo",
   apoyo_comercio: "saldo",
@@ -550,7 +550,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // gestion (insumos del ITCG)
   cepo_mulc: "% sobre el dólar oficial", reduccion_estado: "% vs. diciembre de 2023", apertura_comercial: "% del intercambio",
   cobertura_judicial: "% cubierto",
-  produccion_legislativa: "leyes (12m)",
+  produccion_legislativa: "leyes sancionadas (12m)",
   judicializacion: "% de sumarios",
   velocidad_resolucion: "% resuelto",
   paralisis_denuncias: "sesiones (12m)",
@@ -590,7 +590,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   resultado_primario: "% de la recaudación (resultado primario acumulado 12 meses)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
-  votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
+  votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "decretos de necesidad y urgencia publicados por ley publicada",
   brecha_obra_publica: "Puntos porcentuales de brecha",
   apoyo_empresario: "Saldo de apoyos y críticas (−1 a +1)",
   apoyo_comercio: "Saldo de apoyos y críticas (−1 a +1)",

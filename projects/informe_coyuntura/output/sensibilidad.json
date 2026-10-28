@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-28T10:33:22.380384-03:00",
+    "snapshot": "2026-10-28T11:16:40.267192-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -106,48 +106,48 @@
     }
   },
   "itvc": {
-    "valor_publicado": 97.5,
-    "valor_recomputado": 97.5,
+    "valor_publicado": 97.9,
+    "valor_recomputado": 97.9,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 97.5,
-        "p05": 95.8,
-        "p95": 99.1,
-        "desvio": 1.02
+        "media": 97.9,
+        "p05": 96.2,
+        "p95": 99.5,
+        "desvio": 1.04
       },
       "combinado": {
-        "media": 97.5,
-        "p05": 95.8,
-        "p95": 99.1,
-        "desvio": 1.0
+        "media": 97.9,
+        "p05": 96.2,
+        "p95": 99.5,
+        "desvio": 1.02
       }
     },
     "leave_one_out": {
-      "brecha_salario_cbt": 100.2,
-      "mora_familias": 99.3,
-      "peso_tarifas": 95.9,
-      "alquiler_real": 99.0,
+      "brecha_salario_cbt": 101.2,
       "pobreza_nowcast": 96.0,
-      "ocupacion_eph": 96.1,
-      "consumo_supermercados": 98.6,
-      "informalidad": 98.4,
-      "carga_servicio_deuda_hogares": 96.7,
-      "icg_utdt": 96.7,
-      "motorizacion_total": 97.0,
-      "ipc_alimentos": 97.0,
-      "inseguridad": 97.9,
-      "tasa_homicidios": 97.2,
-      "alquiler_udesa_real": 97.3,
-      "ratio_motos_autos": 97.6,
-      "consumo_carnes_total": 97.5,
-      "consumo_carne_vacuna": 97.5,
-      "tasa_robos": 97.5
+      "mora_familias": 99.6,
+      "peso_tarifas": 96.3,
+      "alquiler_real": 99.4,
+      "ocupacion_eph": 96.4,
+      "consumo_supermercados": 99.0,
+      "informalidad": 98.8,
+      "carga_servicio_deuda_hogares": 97.1,
+      "icg_utdt": 97.1,
+      "motorizacion_total": 97.3,
+      "ipc_alimentos": 97.3,
+      "inseguridad": 98.3,
+      "tasa_homicidios": 97.6,
+      "alquiler_udesa_real": 97.7,
+      "consumo_carnes_total": 97.8,
+      "ratio_motos_autos": 97.9,
+      "consumo_carne_vacuna": 97.9,
+      "tasa_robos": 97.9
     },
     "tension": {
-      "base": 5.5,
+      "base": 5.4,
       "rango_combinado": [
-        5.2,
+        5.1,
         5.8
       ]
     }

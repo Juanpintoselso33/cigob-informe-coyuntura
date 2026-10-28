@@ -613,6 +613,19 @@ def _una_sola_vez_por_corrida(fn):
     return _wrapper
 
 
+def _inicio_de_su_semestre(fecha_api: str) -> str:
+    """La API de series de tiempo fecha cada semestre en el 1º del mes SIGUIENTE
+    a su cierre (el 54,0 % del 1S-2003 viene como 2003-07-01; el 2S-2023, como
+    2024-01-01), seis meses tarde (ADR-0394). Se devuelve el inicio del propio
+    semestre: 1º semestre -> AAAA-01-01, 2º semestre -> AAAA-07-01."""
+    anio, mes = int(fecha_api[:4]), int(fecha_api[5:7])
+    if mes == 7:
+        return f"{anio:04d}-01-01"
+    if mes == 1:
+        return f"{anio - 1:04d}-07-01"
+    raise ValueError(f"pobreza INDEC: fecha semestral inesperada {fecha_api!r}")
+
+
 @_una_sola_vez_por_corrida
 def fetch_pobreza_indec_serie() -> list:
     """Tasa OFICIAL de pobreza (INDEC, EPH continua): % de personas bajo la
@@ -623,10 +636,11 @@ def fetch_pobreza_indec_serie() -> list:
     desde 2025—, pero llega dos veces al año y con rezago.
 
     La API entrega la proporción (0,282); se publica en puntos porcentuales
-    para que las dos curvas del gráfico compartan unidad. [[YYYY-MM-01, %]]."""
+    para que las dos curvas del gráfico compartan unidad. [[YYYY-MM-01, %]],
+    fechado al INICIO de su semestre (ADR-0394)."""
     # la API devuelve del más nuevo al más viejo; el resto de las series del
     # proyecto van ascendentes y los gráficos lo asumen
-    return sorted([[f"{f[:7]}-01", round(v * 100.0, 1)]
+    return sorted([[_inicio_de_su_semestre(f), round(v * 100.0, 1)]
                    for f, v in fetch_indec(POBREZA_INDEC_ID, limit=200) if v is not None])
 
 
@@ -643,16 +657,17 @@ def fetch_itvc_pobreza() -> list:
     sale de la serie oficial del INDEC, que sí llega: 2º semestre de 2023, el que
     contiene al 4T. Las dos miden lo mismo pero **no coinciden en nivel, y la
     diferencia no tiene signo constante**: en los tres semestres que se solapan
-    el nowcast está 2,3 puntos por debajo del INDEC (1S-2025), 0,5 por debajo
-    (2S-2025) y 2,0 por ENCIMA (1S-2026). No es un sesgo corregible. Sobre una
-    base de 40,1 puntos eso es hasta un 5,7% de error, que se propaga a todos los
+    el nowcast (semestre móvil que cierra en junio o diciembre) coincide con el
+    INDEC en el 1S-2025 (0,0 puntos), queda 2,4 puntos por ENCIMA en el 2S-2025
+    y 0,7 por debajo en el 1S-2026. No es un sesgo corregible. Sobre una
+    base de 41,7 puntos eso es hasta un 5,8% de error, que se propaga a todos los
     puntos del componente. Se acepta porque la alternativa —usar el semestral
     para todo— tira a la basura la resolución mensual, y la regla del proyecto es
     que teniendo el dato mensual gana el mensual. Pero va en la ficha.
 
     [[YYYY-MM-01, índice]]."""
     indec = dict(fetch_pobreza_indec_serie())
-    base = indec.get("2023-07-01")            # 2º semestre 2023 (contiene el 4T)
+    base = indec.get("2023-07-01")            # 2º semestre 2023 (contiene el 4T); fechado a su inicio, ADR-0394
     if not base:
         raise ValueError("itvc_pobreza: sin base del INDEC para el 2º semestre de 2023")
     return [[f, round(100.0 * base / v, 1)]
@@ -3665,7 +3680,14 @@ def fetch_protocolo_serie() -> list:
     """Serie del IRPC (reducción de cortes CABA vs 2023) por escalones ANUALES
     de los anclajes públicos de Diagnóstico Político (ADR-0025): cada año
     cerrado aporta su IRPC y el valor se arrastra mes a mes hasta el siguiente
-    (regla del último dato disponible). [[YYYY-MM-01, %]]."""
+    (regla del último dato disponible). [[YYYY-MM-01, %]].
+
+    El total de un año recién existe cuando el año cierra (ADR-0395): cada mes
+    usa el último año CERRADO antes de él, no el año en curso. El dato de 2024
+    entra en enero de 2025 y el de 2025 en enero de 2026. Antes de enero de 2025
+    no hay ningún año cerrado posterior a la base (2023) y la serie no tiene
+    punto: el único valor posible sería 0 %, la base contra sí misma, que
+    puntuaría como «sin mejora» en una historia reconstruida que nadie midió."""
     dp = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
                      "dp_piquetes.json").read_text(encoding="utf-8-sig"))
     caba = {int(k): int(v) for k, v in dp["caba"].items()}
@@ -3673,9 +3695,9 @@ def fetch_protocolo_serie() -> list:
     hoy = date.today()
     fin = hoy.replace(day=1) - timedelta(days=1)
     out = []
-    y, m = 2024, 1
+    y, m = min(a for a in caba if a > 2023) + 1, 1
     while (y, m) <= (fin.year, fin.month):
-        anio_dato = y if y in caba else max(a for a in caba if 2023 < a <= y)
+        anio_dato = max(a for a in caba if 2023 < a < y)
         irpc = round((1.0 - caba[anio_dato] / base) * 100.0, 1)
         out.append([f"{y}-{m:02d}-01", irpc])
         m += 1

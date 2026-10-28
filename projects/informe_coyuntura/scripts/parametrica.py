@@ -217,14 +217,22 @@ def umbrales_en_unidad(indicador: str, escala: "Escala") -> list | None:
     # Fuera del rango de anclas el puntaje es plano, así que el color del
     # primer y del último tramo se evalúa en los bordes.
     limites = [None] + quiebres + [None]
+    # Paso para evaluar los tramos abiertos: proporcional al ANCHO de las anclas
+    # y no «1.0» crudo. `puntaje_desde_anclas` redondea a 1 decimal, así que en
+    # una variable de millones, +1 unidad deja el punto pegado al corte, el
+    # puntaje redondea al del corte y el último tramo (rojo) se fusiona con el
+    # vecino (jornadas no trabajadas, ADR-0396). Sin extrapolación el puntaje es
+    # plano más allá de las anclas y no hay más cruces después del último
+    # quiebre, así que cualquier punto más lejos da el color del tramo.
+    paso = max((anclas[-1][0] - anclas[0][0]) * 0.1, 1e-9)
     tramos = []
     for desde, hasta in zip(limites, limites[1:]):
         if desde is None and hasta is None:
             medio = anclas[0][0]
         elif desde is None:
-            medio = hasta - 1.0
+            medio = hasta - paso
         elif hasta is None:
-            medio = desde + 1.0
+            medio = desde + paso
         else:
             medio = (desde + hasta) / 2.0
         color = color_de_puntaje(puntaje_desde_anclas(medio, anclas))

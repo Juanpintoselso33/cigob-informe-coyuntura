@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-28 10:33:22"
+generado: "2026-10-28 11:16:40"
 score_global: 3.6
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.5/10)
+**Score global:** 3.6/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.4/10)
 
 ## Cinturones
 
@@ -85,7 +85,7 @@ schema_version: "1.2.0"
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | octubre de 2026 (ADR-0374) | Mide cuántos expedientes resuelve la Corte Suprema sobre los que le entran: la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. |
 | paralisis_denuncias | 14 | sesiones de las comisiones de control (12m) | 2026-10-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
 
-### 🟡 Vida Cotidiana — score 5.5/10 (en_tension)
+### 🟡 Vida Cotidiana — score 5.4/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,votos_sobre_bancas,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-28 10:33:22 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-28 11:16:40 — schema 1.2.0*

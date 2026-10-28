@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [cepo_mulc, desregulacion_normativa, reduccion_estado, gasto_funcionamiento, fal_modernizacion_laboral, litigiosidad_laboral, rigi_inversiones, concesiones_infraestructura, asistencia_directa, protocolo_antipiquetes, libertad_opcion_salud]
 archivos: ['scripts/archivo.py', 'scripts/gestion.py', '.github/workflows/mensual.yml', 'web/src/components/IndicadorTile.astro', 'web/src/components/NivelTension.astro', 'web/src/components/IndicadorModal.astro', 'web/src/components/Evolucion.astro', 'web/src/pages/[slug].astro', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/public/overrides.css', 'tests/test_archivo.py', 'tests/test_gestion_fal_actos.py']
-relacionado: ['0189', '0228', '0347', '0359', '0362', '0363', '0364', '0365', '0366', '0370', '0371']
+relacionado: ['0189', '0228', '0347', '0359', '0362', '0363', '0364', '0365', '0366', '0370', '0371', '0395']
 ambito: 'Cinturón de gestión · ITCG · edición mensual'
 origen: 'Auditoría del cinturón de Gestión de la edición de septiembre de 2026 enviada por Marcos (CiGob) el 23-oct-2026 (14 observaciones), con sus propuestas de Reforma laboral (rev 2, 24-oct) y de Libertad de opción en salud. Decisiones de Juan del 24-oct-2026.'
 ---

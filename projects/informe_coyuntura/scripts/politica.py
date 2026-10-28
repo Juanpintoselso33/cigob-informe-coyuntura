@@ -4,7 +4,7 @@ Capital político según Carlos Matus: capacidad de gobernar (no popularidad).
 Ejecutar desde projects/informe_coyuntura/: python scripts/politica.py
 
 Indicadores:
-  ratio_dnu                 — DNUs / leyes sancionadas, ventana móvil 365 días (InfoLeg, auto;
+  ratio_dnu                 — DNUs / leyes publicadas, ventana móvil 365 días (InfoLeg, auto;
                                ADR-0058 — antes acumulado del año calendario, resetaba en enero)
   conflictividad_nacional   — % var. eventos de protesta y disturbios en TODO el país vs. base
                                2023 (ACLED, 12m completos; ADR-0052 — reemplaza a

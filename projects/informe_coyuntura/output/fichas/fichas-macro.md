@@ -227,7 +227,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 10.000 | VERDE |
 | 5.000 – 10.000 | AMARILLO |
-| ≤ 5.000 | NARANJA |
+| 1.250 – 5.000 | NARANJA |
+| ≤ 1.250 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -239,7 +240,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 10.725 Millones de USD (2026-09).
 
-10725,0 Millones de USD está en Verde, a 725,0 del límite con Amarillo (10000,0).
+10.725 Millones de USD está en Verde, a 725,0 del límite con Amarillo (10.000).
 
 **Color vigente: VERDE**
 
@@ -260,6 +261,8 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La tabla de colores separa el rojo (menos de 1.250 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.
 
 **2026-10-27** — Pasa de «Capacidad y costo del financiamiento» al «Sector externo», junto con el saldo comercial y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (5,44 %).
 
@@ -697,7 +700,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 7.500 | VERDE |
 | −5.000 – 7.500 | AMARILLO |
-| ≤ −5.000 | NARANJA |
+| −12.500 – −5.000 | NARANJA |
+| ≤ −12.500 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -709,7 +713,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 26.472 Millones de USD (acum. 12 meses) (2026-09).
 
-26472,0 Millones de USD (acum. 12 meses) está en Verde, a 18972,0 del límite con Amarillo (7500,0).
+26.472 Millones de USD (acum. 12 meses) está en Verde, a 18.972 del límite con Amarillo (7.500).
 
 **Color vigente: VERDE**
 
@@ -731,6 +735,8 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La tabla de colores separa el rojo (déficit mayor a 12.500 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.
 
 **2026-10-27** — Pasa de la dimensión «Viabilidad fiscal-comercial» al «Sector externo», junto con las reservas y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (4,8 %).
 
@@ -1032,7 +1038,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 145,14 índice (base 2004 = 100) (2026-04).
 
-145,14 índice (base 2004 = 100) está en Verde, a 4,02 del límite con Amarillo (141,1178).
+145,14 índice (base 2004 = 100) está en Verde, a 4,02 del límite con Amarillo (141,12).
 
 **Color vigente: VERDE**
 
@@ -1105,10 +1111,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% anual esperado) | Color |
 |---|---|
-| ≤ 12,68 | VERDE |
-| 12,68 – 26,82 | AMARILLO |
-| 26,82 – 42,58 | NARANJA |
-| ≥ 42,58 | ROJO |
+| ≤ 12,7 | VERDE |
+| 12,7 – 26,8 | AMARILLO |
+| 26,8 – 42,6 | NARANJA |
+| ≥ 42,6 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1120,7 +1126,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 21,1 % anual esperado (2026-09).
 
-21,1 % anual esperado está en Amarillo, a 5,72 del límite con Naranja (26,8242).
+21,1 % anual esperado está en Amarillo, a 5,7 del límite con Naranja (26,8).
 
 **Color vigente: AMARILLO**
 

@@ -48,7 +48,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Irregular (registro revisado)", tipo: "% estimado de cobertura",
   },
   produccion_legislativa: {
-    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.",
+    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.",
     aporta: "Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.",
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
@@ -195,7 +195,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Saldo (−1 a +1)",
   },
   ratio_dnu: {
-    que: "Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.",
+    que: "Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.",
     aporta: "Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.",
     frecuencia: "Continua (12m)", tipo: "Ratio",
   },

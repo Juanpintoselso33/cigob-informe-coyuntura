@@ -311,6 +311,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre los componentes disponibles del sector externo.",
     revisiones: "La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La tabla de colores separa el rojo (menos de 1.250 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-10-27", cambio: "Pasa de «Capacidad y costo del financiamiento» al «Sector externo», junto con el saldo comercial y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (5,44 %).", adr: "0387" },
       { fecha: "2026-10-27", cambio: "Se contrasta el número con tres estimaciones públicas y la ficha lo declara: coincide con la medición convencional del Banco Central y queda muy por encima de las definiciones más exigentes. No cambia el cálculo." },
       { fecha: "2026-06-26", cambio: "El indicador deja las reservas brutas del documento original y pasa a las netas «a secas», con los tres términos calculados de fuentes oficiales y escala propia." },
@@ -501,6 +502,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Catálogo automático por API; complementos curados con enlace al original y fecha de revisión manual. No se garantiza actualización automática del registro complementario.",
     },
     transformaciones: [
+      "Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.",
       "Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.",
       "Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.",
     ],
@@ -513,7 +515,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 20", puntaje: 10 },
       ],
       puntos: [[20, 10], [27.5, 40], [42.5, 65], [62, 85], [74, 100]],
-      unidadCorta: "leyes (12m)",
+      unidadCorta: "leyes sancionadas (12m)",
     },
     limitaciones: [
       "Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.",
@@ -523,6 +525,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el portal no responde, se mantiene el último valor disponible, señalado como desactualizado.",
     revisiones: "La carga tardía, la eliminación de duplicados y las correcciones de fechas pueden revisar la historia en ambas direcciones. Una descarga exitosa no certifica exhaustividad.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo." },
       { fecha: "2026-09-08", cambio: "Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.", adr: "0308" },
       { fecha: "2026-09-08", cambio: "Doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.", adr: "0306" },
       { fecha: "2026-07-31", cambio: "Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período." },
@@ -799,6 +802,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falla el catálogo o la planilla, se conserva el último cuadro validado con advertencia. Sin una ventana íntegra se conserva la tarjeta anterior mediante el caché general; no se publica una suma parcial ni una serie de saldo mucho más vieja como si estuviera actualizada.",
     revisiones: "La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La tabla de colores separa el rojo (déficit mayor a 12.500 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-10-27", cambio: "Pasa de la dimensión «Viabilidad fiscal-comercial» al «Sector externo», junto con las reservas y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (4,8 %).", adr: "0387" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Saldo comercial (últimos 12 meses)». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El cuadro oficial vigente completa la API histórica rezagada. La tarjeta y las series comparten origen y se exigen ventanas consecutivas; se conserva el último cuadro validado ante fallos del portal." },
@@ -1629,7 +1633,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación.",
     },
     transformaciones: [
-      "Ratio = DNU publicados / leyes publicadas en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.",
+      "Ratio = DNU publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.",
       "Los DNU se identifican por el TIPO JURÍDICO que declara la grilla de InfoLeg («Decreto DNU»), no por el texto. La búsqueda por la frase «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por un DNU, los reglamentarios, los vetos que la citan al fundarse y los decretos ordinarios que modifican una norma dictada en su momento por DNU.",
       "El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.",
       "La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.",
@@ -1648,6 +1652,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "El rótulo aclara que cuenta decretos y leyes publicados en el Boletín Oficial y la ficha explica la diferencia con «Producción legislativa del Congreso», que cuenta leyes sancionadas. No cambia el cálculo." },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Decretos de necesidad y urgencia por ley», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.", adr: "0307" },
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
@@ -1740,6 +1745,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la página o la planilla no responden, el colector mantiene el último valor publicado como desactualizado y la serie conserva sus puntos previos.",
     revisiones: "La planilla oficial se relee completa y las revisiones de meses anteriores se incorporan automáticamente.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La tabla de colores muestra el tramo rojo (desde 8,85 millones), que faltaba por un error del motor en los tramos abiertos; los números del «¿por qué este color?» llevan separador de miles. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-08-21", cambio: "Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%." },
       { fecha: "2026-09-08", cambio: "La suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.", adr: "0295" },
       { fecha: "2026-10-27", cambio: "Escala nueva: los cortes pasan de 5,0 · 6,5 · 8,0 · 10,0 millones a 4,0 · 5,9 · 7,6 · 9,1 millones, los percentiles 5, 25, 50 y 75 de las ventanas de doce meses anteriores al mandato. Con la escala vieja el componente marcaba 100 en la mitad de los meses de la gestión y no se movía; ahora va de 71 a 97. Con el dato de julio de 2026 pasa de 100 a 87, la dimensión de conflicto social de 78,3 a 73,1 y el índice político de 73,6 a 73,1.", adr: "0388" },
@@ -2378,6 +2384,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el informe del mes todavía no salió o el PDF no se puede leer, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.",
     revisiones: "El ministerio revisa su serie hacia atrás. El informe conserva cada publicación y toma siempre la última cifra oficial de cada mes.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La tabla de colores separa el rojo (menos de 3.400 artículos) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-05", cambio: "Automatizado desde el inicio del cinturón con la misma búsqueda, en escala lineal." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -2993,6 +3000,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Cae al valor de respaldo documentado; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La serie histórica deja de aplicar el total de un año desde enero de ese mismo año: cada mes usa el último año cerrado (el de 2024 entra en enero de 2025, el de 2025 en enero de 2026) y arranca en 2025-01. La tarjeta no cambia.", adr: "0395" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Reducción de cortes de calle en la Ciudad», con la unidad «% menos que en 2023»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (55%, la foto 2024)." },
       { fecha: "2026-07-02", cambio: "Se crea el monitoreo propio de alertas de transporte como futura fuente automática." },
@@ -3468,7 +3476,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
-      "La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual queda 2,3 puntos por debajo de la oficial, luego medio punto por debajo, y después 2 puntos por ENCIMA: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 40,1 puntos eso implica hasta un 5,7% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.",
+      "La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual (semestre móvil que cierra en junio o diciembre) coincide con la oficial en el primero, queda 2,4 puntos por ENCIMA en el segundo y 0,7 puntos por debajo en el tercero: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 41,7 puntos eso implica hasta un 5,8% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.",
       "El indicador se lee contra la transición, no contra un óptimo: la pobreza del segundo semestre de 2023 fue muy alta, así que superar 100 no significa una situación buena sino mejor que ese punto de partida.",
       "Es una estimación, no una medición: proyecta la pobreza a partir de ingresos y precios entre encuesta y encuesta. La referencia autorizada sigue siendo la del INDEC.",
       "No distingue intensidad: dos hogares apenas por debajo de la línea y dos muy por debajo cuentan igual.",
@@ -3476,6 +3484,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si un mes no publica informe, el componente mantiene el último valor disponible y el cinturón renormaliza los pesos de su dimensión.",
     revisiones: "La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "La serie oficial del INDEC se fechaba seis meses tarde y la base tomaba el primer semestre de 2023 (40,1%) en vez del segundo (41,7%). Se fecha cada semestre en su inicio; el componente sube de unos 128,1 a unos 133,2 y el contraste con la estimación mensual se recalcula (0,0 · +2,4 · −0,7 puntos).", adr: "0394" },
       { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto al salario. Su peso interno pasa de 25,37% a 35,31%; su peso en el índice no cambia (7,12%).", adr: "0373" },
       { fecha: "2026-07-16", cambio: "Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice." },
       { fecha: "2026-07-30", cambio: "Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una tarjeta visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo." },
@@ -3759,6 +3768,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Con el host de cloud-snic caído, la serie sale del store persistente (`data/vida/snic_serie.json`) con su fecha de último refresco declarada; sin componente, renormalización dentro de la dimensión de seguridad.",
     revisiones: "La planilla oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa (mismo criterio que `inseguridad_snic`).",
     cambios: [
+      { fecha: "2026-10-28", cambio: "El texto del aporte dice que la base es la mediana de la serie 2000-2025, no fines de 2023, como ya era el cálculo. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-09-15", cambio: "Homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.", adr: "0324" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del índice de impacto social).", adr: "0327,0324,0325" },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50)." },
@@ -3796,6 +3806,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Mismo store persistente que `tasa_homicidios`; sin componente, renormalización dentro de la dimensión de seguridad.",
     revisiones: "La planilla oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa.",
     cambios: [
+      { fecha: "2026-10-28", cambio: "El texto del aporte dice que la base es la mediana de la serie 2000-2025, no fines de 2023, como ya era el cálculo. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-09-15", cambio: "Robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.", adr: "0324,0325" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del índice de impacto social).", adr: "0327,0324,0325" },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años." },

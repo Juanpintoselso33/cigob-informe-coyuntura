@@ -35,7 +35,7 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 97,5** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 10 en verde · 2 en amarillo · 3 en naranja · 4 en rojo |
+| **ITCIS: 97,9** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 10 en verde · 2 en amarillo · 3 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 19 de 19 publicados.
 |---|---|---|---|---|
 | Presión de precios | Tres gastos sensibles. | 103,7 | AMARILLO | 25,0 % |
 | Empleo | Cuánta gente trabaja y en qué condiciones. | 100,1 | AMARILLO | 24,2 % |
-| Ingresos | Si el ingreso alcanza. | 114,6 | VERDE | 20,2 % |
+| Ingresos | Si el ingreso alcanza. | 116,4 | VERDE | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,2 % |
 | Consumo | Lo que efectivamente se compra. | 94,6 | NARANJA | 7,9 % |
@@ -1110,6 +1110,8 @@ Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-28** — El texto del aporte dice que la base es la mediana de la serie 2000-2025, no fines de 2023, como ya era el cálculo. No cambia el puntaje.
+
 **2026-09-15** — Homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.
 
 **2026-09-16** — Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del índice de impacto social).
@@ -1201,6 +1203,8 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-28** — El texto del aporte dice que la base es la mediana de la serie 2000-2025, no fines de 2023, como ya era el cálculo. No cambia el puntaje.
+
 **2026-09-15** — Robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.
 
 **2026-09-16** — Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del índice de impacto social).
@@ -1261,7 +1265,7 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **128,1**.
+Este componente está hoy en **133,2**.
 
 ## Datos concretos detrás del valor
 
@@ -1273,7 +1277,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 31,3 % de personas (2026-08).
 
-El componente está en 128,1 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Supera el punto donde la tensión toca 0, así que el semáforo ya no distingue mejoras adicionales: seguiría verde igual.
+El componente está en 133,2 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Supera el punto donde la tensión toca 0, así que el semáforo ya no distingue mejoras adicionales: seguiría verde igual.
 
 **Color vigente: VERDE**
 
@@ -1281,7 +1285,7 @@ Ponderación vigente en el ITCIS: 7,1 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual queda 2,3 puntos por debajo de la oficial, luego medio punto por debajo, y después 2 puntos por ENCIMA: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 40,1 puntos eso implica hasta un 5,7% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.
+- La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual (semestre móvil que cierra en junio o diciembre) coincide con la oficial en el primero, queda 2,4 puntos por ENCIMA en el segundo y 0,7 puntos por debajo en el tercero: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 41,7 puntos eso implica hasta un 5,8% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.
 - El indicador se lee contra la transición, no contra un óptimo: la pobreza del segundo semestre de 2023 fue muy alta, así que superar 100 no significa una situación buena sino mejor que ese punto de partida.
 - Es una estimación, no una medición: proyecta la pobreza a partir de ingresos y precios entre encuesta y encuesta. La referencia autorizada sigue siendo la del INDEC.
 - No distingue intensidad: dos hogares apenas por debajo de la línea y dos muy por debajo cuentan igual.
@@ -1293,6 +1297,8 @@ Ponderación vigente en el ITCIS: 7,1 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La serie oficial del INDEC se fechaba seis meses tarde y la base tomaba el primer semestre de 2023 (40,1%) en vez del segundo (41,7%). Se fecha cada semestre en su inicio; el componente sube de unos 128,1 a unos 133,2 y el contraste con la estimación mensual se recalcula (0,0 · +2,4 · −0,7 puntos).
 
 **2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto al salario. Su peso interno pasa de 25,37% a 35,31%; su peso en el índice no cambia (7,12%).
 

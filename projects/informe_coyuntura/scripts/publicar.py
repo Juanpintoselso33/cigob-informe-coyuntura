@@ -917,6 +917,10 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
         p = ind.get(f"puntaje_{clave}")
         if ind.get("en_indice") and isinstance(p, (int, float)):
             aporte = round((100 - p) / 10, 1)
+            # La lectura en palabras sale de la tensión CRUDA, la misma que
+            # decide el color del semáforo (`_semaforos`): con la redondeada
+            # un 1,094 leía «verde» y el semáforo decía amarillo (ADR-0396).
+            tension_cruda = parametrica.tension_de_puntaje(float(p))
             # El score del cinturón NO es la suma de estos números: el índice
             # agrega puntajes ponderados y la tensión sale del agregado. Este
             # número es la tensión EQUIVALENTE del indicador leído solo — y el
@@ -924,17 +928,17 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             # parecía dato roto y un logro terminado leía como irrelevante).
             if p >= 95:
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
-                           f"{_lectura_tension(aporte)}: puntaje pleno o casi pleno — en la "
+                           f"{_lectura_tension(tension_cruda)}: puntaje pleno o casi pleno — en la "
                            f"escala del índice este frente hoy no agrega tensión.")
                 if p >= 99.95:
                     lectura += _por_que_puntaje_pleno(mod, sigla, ikey, ind.get("valor"))
             elif p <= 15:
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
-                           f"{_lectura_tension(aporte)}: puntaje mínimo — este frente "
+                           f"{_lectura_tension(tension_cruda)}: puntaje mínimo — este frente "
                            f"concentra la tensión del cinturón.")
             else:
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
-                           f"{_lectura_tension(aporte)}.")
+                           f"{_lectura_tension(tension_cruda)}.")
             peso = ind.get("peso_efectivo")
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {nombre}" if peso else ""
             formula = (f"Anclas del {nombre}: {mod.texto_bandas(ikey)} "
@@ -2227,24 +2231,38 @@ def _scoring_vida_itvc(c, series):
             # "no incide" — es tensión negativa cortada por la escala, y hay
             # que decirlo (varios componentes distintos mostraban el mismo 0)
             cruda = round(5 - (info["puntaje_aplicado"] - 100) * 0.2, 1)
+            # el color (`_semaforos`) usa la tensión sin redondear: la lectura también
+            tension_exacta = 5 - (float(info["puntaje_aplicado"]) - 100) * 0.2
             if cruda < 0:
                 lectura = (f"Este componente está en {coma(info['puntaje_aplicado'])} contra una "
                            f"base de 100: mejora tanto que no solo no suma tensión — empuja el "
                            f"índice del cinturón hacia arriba.")
             elif cruda > 10:
-                lectura = (f"Este componente está en {_lectura_tension(aporte)}, más allá del "
+                lectura = (f"Este componente está en {_lectura_tension(tension_exacta)}, más allá del "
                            f"tope de la escala: deterioro profundo contra el arranque del mandato.")
             else:
                 lectura = (f"En la escala del cinturón, este componente está en "
-                           f"{_lectura_tension(aporte)}.")
-            # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
-            base_lbl = {"inseguridad": "ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026)",
-                        # ADR-0383: misma estación de 2023, cada décima de punto = 1
-                        "ocupacion_eph": "el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1"} \
+                           f"{_lectura_tension(tension_exacta)}.")
+            # bases DECLARADAS distintas del 4T-2023. La entrada «inseguridad»
+            # (ene-2024) se sacó con ADR-0393: ahora es el promedio del 4T-2023.
+            base_lbl = {"ocupacion_eph": "el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1"} \
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = igual que antes del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+            # Anclas que NO son el 4T-2023: el rótulo dice contra qué se mide de verdad.
+            if ikey in ("tasa_homicidios", "tasa_robos"):
+                # ADR-0327: base = mediana de toda la serie del SNIC (2000-2025)
+                formula = (f"Índice base-100 vs la mediana de la serie 2000-2025: "
+                           f"{coma(info['puntaje_aplicado'])} (100 = igual que la mediana histórica; "
+                           f"más = mejora); pesa "
+                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+            elif ikey == "pobreza_nowcast":
+                # ADR-0153: base = 2º semestre de 2023 (serie oficial del INDEC)
+                formula = (f"Índice base-100 vs el 2º semestre de 2023: "
+                           f"{coma(info['puntaje_aplicado'])} (100 = igual que en ese semestre, "
+                           f"antes del mandato; más = mejora); pesa "
+                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "alquiler_udesa_real":
                 # ADR-0386: la fuente sólo da interanuales, no hay nivel contra 4T-2023
                 lectura = lectura.replace("contra el arranque del mandato", "contra hace un año")
@@ -2266,7 +2284,7 @@ def _scoring_vida_itvc(c, series):
                                f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
                     lectura = (f"Agua y energía representan {coma(round(carga_ae, 1))}% del salario; "
                                f"transporte, {coma(round(carga_t, 1))}%. La mayor de las dos "
-                               f"señales fija el color: {_lectura_tension(aporte)}.")
+                               f"señales fija el color: {_lectura_tension(tension_exacta)}.")
                 else:
                     formula = (f"Índice de asequibilidad por rubro: "
                                f"{coma(info['puntaje_aplicado'])}; pesa "
@@ -2375,6 +2393,38 @@ def _escala_de(mod, sigla):
     )
 
 
+def _num_pq(x, dec=None) -> str:
+    """Número del «¿por qué este color?». Del millar para arriba lleva
+    separador de miles es-AR y sin ceros sobrantes («2249225,0» →
+    «2.249.225»); debajo del millar, el formato de siempre (`coma`)."""
+    if dec is not None:
+        x = round(x, dec)
+    if abs(x) < 1000:
+        return coma(x)
+    entero, _, frac = f"{abs(float(x)):.6f}".rstrip("0").partition(".")
+    texto = f"{int(entero):,}".replace(",", ".") + ("," + frac if frac else "")
+    return ("−" + texto) if x < 0 else texto
+
+
+def _decimales_de(valor) -> int:
+    t = f"{abs(float(valor)):.6f}".rstrip("0")
+    return len(t.split(".")[1]) if "." in t else 0
+
+
+def _precision_cortes(valor) -> int:
+    """Decimales con que se muestran los cortes de color: los del propio valor
+    del indicador, con un piso según su magnitud (un corte de 1,08 no se puede
+    mostrar como «1» aunque el valor llegue entero) y tope de 3. Los cortes
+    salen de interpolar anclas y traían 4 decimales («141,1178»)."""
+    try:
+        d = _decimales_de(valor)
+        a = abs(float(valor))
+    except (TypeError, ValueError):
+        return 2
+    piso = 2 if a < 10 else (1 if a < 1000 else 0)
+    return min(3, max(d, piso))
+
+
 def _por_que(color, valor, unidad, tramos):
     """Una frase que explica el color con la misma aritmética que lo produjo.
 
@@ -2384,6 +2434,7 @@ def _por_que(color, valor, unidad, tramos):
     """
     if valor is None or not tramos:
         return None
+    valor = float(valor)
     # El color ya lo decidió el motor: en un borde exacto, el tramo es el del
     # color publicado (si no, la frase podía nombrar como vecino al mismo
     # color: «0 está en Verde, a 0,0 del límite con Verde», Codex 26-oct).
@@ -2404,13 +2455,19 @@ def _por_que(color, valor, unidad, tramos):
     # las anclas del puntaje, que no son los cortes de color.
     vecino = next((t for t in tramos if t is not actual
                    and (t["desde"] == borde or t["hasta"] == borde)), None)
-    otro = (f"del límite con {vecino['color'].capitalize()} ({coma(borde)})"
-            if vecino and vecino["color"] != actual["color"] else f"del corte de {coma(borde)}")
-    return (f"{coma(valor)} {unidad} está en {color.capitalize()}, a "
-            f"{coma(round(abs(valor - borde), 2))} {otro}.")
+    otro = (f"del límite con {vecino['color'].capitalize()} ({_num_pq(borde)})"
+            if vecino and vecino["color"] != actual["color"] else f"del corte de {_num_pq(borde)}")
+    return (f"{_num_pq(valor)} {unidad} está en {color.capitalize()}, a "
+            f"{_num_pq(abs(valor - borde), 2)} {otro}.")
 
 
 def _semaforo_de(color, tension, umbrales, unidad, valor):
+    if umbrales and valor is not None:
+        # cortes a la precisión del indicador (no 4 decimales de la interpolación)
+        dec = _precision_cortes(valor)
+        umbrales = [{**t, "desde": None if t["desde"] is None else round(t["desde"], dec),
+                     "hasta": None if t["hasta"] is None else round(t["hasta"], dec)}
+                    for t in umbrales]
     return {"color": color,
             "tension": None if tension is None else round(tension, 1),
             "umbrales": umbrales,

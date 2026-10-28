@@ -8,7 +8,7 @@ indice: 'ITCIS'
 indicadores: [inseguridad]
 archivos: ['scripts/itvc.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts']
 modifica: ['0032']
-relacionado: ['0032', '0273', '0392']
+relacionado: ['0032', '0273', '0392', '0394', '0396']
 ambito: 'ITCIS · dimensión Seguridad · base de la victimización'
 origen: 'Revisión del 28-oct-2026, a pedido de Juan, de que toda serie que dice «fines de 2023» use octubre-diciembre de 2023 y no un solo mes.'
 ---

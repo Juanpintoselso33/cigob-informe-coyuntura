@@ -97,7 +97,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 # Decretos de necesidad y urgencia por ley
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 | | | | |
 |---|---|---|---|
@@ -115,7 +115,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 ## Definición — qué mide y por qué importa
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
@@ -123,7 +123,7 @@ Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, n
 
 ## Método de cómputo
 
-- Ratio = DNU publicados / leyes publicadas en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
+- Ratio = DNU publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
 - Los DNU se identifican por el TIPO JURÍDICO que declara la grilla de InfoLeg («Decreto DNU»), no por el texto. La búsqueda por la frase «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por un DNU, los reglamentarios, los vetos que la citan al fundarse y los decretos ordinarios que modifican una norma dictada en su momento por DNU.
 - El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.
 - La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
@@ -172,6 +172,8 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — El rótulo aclara que cuenta decretos y leyes publicados en el Boletín Oficial y la ficha explica la diferencia con «Producción legislativa del Congreso», que cuenta leyes sancionadas. No cambia el cálculo.
 
 **2026-10-26** — El rótulo pasa a «Decretos de necesidad y urgencia por ley», sin siglas. No cambia el cálculo.
 
@@ -726,7 +728,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≤ 7.070.000 | VERDE |
 | 7.070.000 – 8.350.000 | AMARILLO |
-| ≥ 8.350.000 | NARANJA |
+| 8.350.000 – 8.850.000 | NARANJA |
+| ≥ 8.850.000 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -738,7 +741,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4.820.775 jornadas individuales no trabajadas (12m) (2026-07).
 
-4820775 jornadas individuales no trabajadas (12m) está en Verde, a 2249225,0 del límite con Amarillo (7070000,0).
+4.820.775 jornadas individuales no trabajadas (12m) está en Verde, a 2.249.225 del límite con Amarillo (7.070.000).
 
 **Color vigente: VERDE**
 
@@ -758,6 +761,8 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La planilla oficial se relee completa y las revisiones de meses anteriores se incorporan automáticamente.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La tabla de colores muestra el tramo rojo (desde 8,85 millones), que faltaba por un error del motor en los tramos abiertos; los números del «¿por qué este color?» llevan separador de miles. No cambia el puntaje.
 
 **2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
 
@@ -906,8 +911,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 20 | VERDE |
 | 10 – 20 | AMARILLO |
-| 6,67 – 10 | NARANJA |
-| ≤ 6,67 | ROJO |
+| 6,7 – 10 | NARANJA |
+| ≤ 6,7 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1009,8 +1014,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 46 | VERDE |
 | 30 – 46 | AMARILLO |
-| 23,33 – 30 | NARANJA |
-| ≤ 23,33 | ROJO |
+| 23,3 – 30 | NARANJA |
+| ≤ 23,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1104,8 +1109,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 18 | VERDE |
 | 10 – 18 | AMARILLO |
-| 6,67 – 10 | NARANJA |
-| ≤ 6,67 | ROJO |
+| 6,7 – 10 | NARANJA |
+| ≤ 6,7 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1197,8 +1202,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 97,6 | VERDE |
 | 96 – 97,6 | AMARILLO |
-| 95,33 – 96 | NARANJA |
-| ≤ 95,33 | ROJO |
+| 95,3 – 96 | NARANJA |
+| ≤ 95,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1426,7 +1431,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 # Producción legislativa del Congreso
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.
+Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
 
 | | | | |
 |---|---|---|---|
@@ -1444,7 +1449,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 ## Definición — qué mide y por qué importa
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.
+Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
 
 Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.
 
@@ -1452,6 +1457,7 @@ Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del 
 
 ## Método de cómputo
 
+- Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.
 - Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.
 - Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
 
@@ -1478,7 +1484,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 31 leyes sancionadas (12m) (2026-09).
 
-31 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5).
+31,0 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5).
 
 **Color vigente: AMARILLO**
 
@@ -1497,6 +1503,8 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La carga tardía, la eliminación de duplicados y las correcciones de fechas pueden revisar la historia en ambas direcciones. Una descarga exitosa no certifica exhaustividad.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo.
 
 **2026-09-08** — Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.
 
@@ -1651,8 +1659,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 |---|---|
 | ≥ 53 | VERDE |
 | 45 – 53 | AMARILLO |
-| 41,67 – 45 | NARANJA |
-| ≤ 41,67 | ROJO |
+| 41,7 – 45 | NARANJA |
+| ≤ 41,7 | ROJO |
 
 ## Datos concretos detrás del valor
 

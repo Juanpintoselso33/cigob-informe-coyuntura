@@ -305,6 +305,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0371](0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) | La libre elección en salud se mide por hitos | `libertad_opcion_salud` | vigente |
 | [0379](0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) | Vuelven los juicios por riesgos del trabajo | `litigiosidad_laboral`, `juicios_trabajo_capital` | vigente |
 | [0385](0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) | La siniestralidad reemplaza a los juicios del sistema de riesgos | `siniestralidad_laboral`, `litigiosidad_laboral` | vigente |
+| [0395](0395-los-piquetes-usan-el-ultimo-ano-cerrado.md) | Los piquetes usan el último año cerrado | `protocolo_antipiquetes` | vigente |
 
 ### Vida cotidiana (ITVC)
 
@@ -376,6 +377,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0389](0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) | El padrón de empleadores de ARCA acompaña a la ocupación | `ocupacion_eph` | vigente |
 | [0392](0392-la-carne-puntua-el-consumo-no-la-faena.md) | La carne puntúa el consumo, no la faena | `consumo_carne_vacuna`, `consumo_carnes_total`, `consumo_carnes_otras` | vigente |
 | [0393](0393-la-victimizacion-se-rebasea-al-4t-2023.md) | La victimización se rebasea al 4T-2023 | `inseguridad` | vigente |
+| [0394](0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) | La pobreza del INDEC se fecha al inicio de su semestre | `pobreza_nowcast`, `pobreza_indec` | vigente |
 
 ### Espíritu de época
 
@@ -471,3 +473,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0357](0357-un-rojo-que-sigue-avisa-cada-tres-corridas.md) | Un 🔴 que sigue abierto avisa en el canal cada tres corridas |  | vigente |
 | [0359](0359-el-mensual-se-lee-con-el-metodo-vigente.md) | El informe del mes se lee con la metodología vigente |  | vigente |
 | [0366](0366-rotulos-y-textos-de-la-revision-de-octubre.md) | Rótulos y textos de la revisión de octubre | `ipc_total`, `emae_ia`, `ipi_manufacturero` | vigente |
+| [0396](0396-la-lectura-sale-del-valor-crudo-y-las-tablas-de-color-cierran.md) | La lectura sale del valor crudo y las tablas de color cierran | `ratio_dnu`, `jornadas_individuales_no_trabajadas_12m`, `reservas_bcra` | vigente |

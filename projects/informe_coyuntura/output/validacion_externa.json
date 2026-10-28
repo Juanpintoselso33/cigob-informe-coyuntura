@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-28T10:33:12.953093-03:00",
+    "generated_at": "2026-10-28T11:16:22.208247-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -18,36 +18,36 @@
     "2024-10": 102.9,
     "2024-11": 103.8,
     "2024-12": 103.7,
-    "2025-01": 103.1,
-    "2025-02": 102.9,
-    "2025-03": 100.3,
-    "2025-04": 100.2,
-    "2025-05": 99.7,
-    "2025-06": 100.6,
-    "2025-07": 101.7,
-    "2025-08": 99.4,
-    "2025-09": 98.9,
-    "2025-10": 98.5,
-    "2025-11": 99.2,
-    "2025-12": 102.0,
-    "2026-01": 101.0,
-    "2026-02": 101.3,
-    "2026-03": 100.0,
-    "2026-04": 99.7,
-    "2026-05": 98.5,
-    "2026-06": 99.6,
-    "2026-07": 98.6,
-    "2026-08": 98.4,
-    "2026-09": 97.1,
-    "2026-10": 97.7
+    "2025-01": 103.4,
+    "2025-02": 103.2,
+    "2025-03": 100.6,
+    "2025-04": 100.6,
+    "2025-05": 100.0,
+    "2025-06": 101.0,
+    "2025-07": 102.1,
+    "2025-08": 99.8,
+    "2025-09": 99.3,
+    "2025-10": 98.9,
+    "2025-11": 99.5,
+    "2025-12": 102.4,
+    "2026-01": 101.4,
+    "2026-02": 101.7,
+    "2026-03": 100.1,
+    "2026-04": 99.9,
+    "2026-05": 98.8,
+    "2026-06": 100.0,
+    "2026-07": 99.0,
+    "2026-08": 98.7,
+    "2026-09": 97.5,
+    "2026-10": 98.1
   },
   "correlaciones": {
     "ITCIS vs ICC UTDT (niveles)": {
-      "r": 0.201,
+      "r": 0.261,
       "n": 34
     },
     "ITCIS vs ICC UTDT (diferencias)": {
-      "r": 0.574,
+      "r": 0.576,
       "n": 32
     }
   },
@@ -936,16 +936,16 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 104,
-      "r_abs_medio": 0.103,
+      "n_pares": 102,
+      "r_abs_medio": 0.101,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 15,
-    "n_pares": 104,
-    "r_abs_medio": 0.458,
-    "share_altos": 0.25,
-    "share_bajos": 0.327,
+    "n_pares": 102,
+    "r_abs_medio": 0.466,
+    "share_altos": 0.265,
+    "share_bajos": 0.314,
     "matriz": {
       "apertura_comercial": {
         "asistencia_directa": 0.331,
@@ -958,7 +958,7 @@
         "libertad_opcion_salud": 0.366,
         "masa_salarial": 0.035,
         "privatizaciones": 0.478,
-        "protocolo_antipiquetes": 0.251,
+        "protocolo_antipiquetes": 0.305,
         "reduccion_estado": 0.489,
         "reestructuracion_organismos": 0.284,
         "siniestralidad_laboral": -0.139
@@ -973,7 +973,6 @@
         "libertad_opcion_salud": 0.645,
         "masa_salarial": 0.41,
         "privatizaciones": 0.353,
-        "protocolo_antipiquetes": 0.418,
         "reduccion_estado": 0.762,
         "reestructuracion_organismos": 0.208,
         "siniestralidad_laboral": 0.283
@@ -989,7 +988,7 @@
         "libertad_opcion_salud": 0.902,
         "masa_salarial": 0.474,
         "privatizaciones": 0.825,
-        "protocolo_antipiquetes": 0.872,
+        "protocolo_antipiquetes": 0.328,
         "reduccion_estado": 0.847,
         "reestructuracion_organismos": 0.462,
         "siniestralidad_laboral": 0.414
@@ -1005,7 +1004,7 @@
         "libertad_opcion_salud": 0.281,
         "masa_salarial": 0.15,
         "privatizaciones": 0.584,
-        "protocolo_antipiquetes": 0.294,
+        "protocolo_antipiquetes": 0.589,
         "reduccion_estado": 0.411,
         "reestructuracion_organismos": 0.76,
         "siniestralidad_laboral": 0.013
@@ -1021,7 +1020,7 @@
         "libertad_opcion_salud": 0.858,
         "masa_salarial": 0.465,
         "privatizaciones": 0.949,
-        "protocolo_antipiquetes": 0.873,
+        "protocolo_antipiquetes": 0.782,
         "reduccion_estado": 0.882,
         "reestructuracion_organismos": 0.671,
         "siniestralidad_laboral": 0.199
@@ -1037,7 +1036,7 @@
         "libertad_opcion_salud": 0.303,
         "masa_salarial": 0.17,
         "privatizaciones": 0.549,
-        "protocolo_antipiquetes": 0.317,
+        "protocolo_antipiquetes": 0.639,
         "reduccion_estado": 0.454,
         "reestructuracion_organismos": 0.718,
         "siniestralidad_laboral": 0.01
@@ -1053,7 +1052,7 @@
         "libertad_opcion_salud": 0.149,
         "masa_salarial": 0.444,
         "privatizaciones": 0.445,
-        "protocolo_antipiquetes": 0.205,
+        "protocolo_antipiquetes": 0.242,
         "reduccion_estado": 0.329,
         "reestructuracion_organismos": 0.203,
         "siniestralidad_laboral": -0.133
@@ -1068,7 +1067,7 @@
         "libertad_opcion_salud": -0.24,
         "masa_salarial": -0.3,
         "privatizaciones": -0.856,
-        "protocolo_antipiquetes": -0.24,
+        "protocolo_antipiquetes": -0.873,
         "reduccion_estado": -0.922,
         "reestructuracion_organismos": -0.859,
         "siniestralidad_laboral": 0.688
@@ -1084,7 +1083,6 @@
         "juicios_trabajo_capital": -0.24,
         "masa_salarial": 0.509,
         "privatizaciones": 0.706,
-        "protocolo_antipiquetes": 0.94,
         "reduccion_estado": 0.886,
         "reestructuracion_organismos": 0.4,
         "siniestralidad_laboral": 0.542
@@ -1100,7 +1098,7 @@
         "juicios_trabajo_capital": -0.3,
         "libertad_opcion_salud": 0.509,
         "privatizaciones": 0.407,
-        "protocolo_antipiquetes": 0.412,
+        "protocolo_antipiquetes": 0.235,
         "reduccion_estado": 0.537,
         "reestructuracion_organismos": 0.224,
         "siniestralidad_laboral": 0.193
@@ -1116,26 +1114,24 @@
         "juicios_trabajo_capital": -0.856,
         "libertad_opcion_salud": 0.706,
         "masa_salarial": 0.407,
-        "protocolo_antipiquetes": 0.746,
+        "protocolo_antipiquetes": 0.705,
         "reduccion_estado": 0.792,
         "reestructuracion_organismos": 0.732,
         "siniestralidad_laboral": 0.026
       },
       "protocolo_antipiquetes": {
-        "apertura_comercial": 0.251,
-        "asistencia_directa": 0.418,
-        "cepo_mulc": 0.872,
-        "concesiones_infraestructura": 0.294,
-        "desregulacion_normativa": 0.873,
-        "fal_modernizacion_laboral": 0.317,
-        "gasto_funcionamiento": 0.205,
-        "juicios_trabajo_capital": -0.24,
-        "libertad_opcion_salud": 0.94,
-        "masa_salarial": 0.412,
-        "privatizaciones": 0.746,
-        "reduccion_estado": 0.84,
-        "reestructuracion_organismos": 0.419,
-        "siniestralidad_laboral": 0.47
+        "apertura_comercial": 0.305,
+        "cepo_mulc": 0.328,
+        "concesiones_infraestructura": 0.589,
+        "desregulacion_normativa": 0.782,
+        "fal_modernizacion_laboral": 0.639,
+        "gasto_funcionamiento": 0.242,
+        "juicios_trabajo_capital": -0.873,
+        "masa_salarial": 0.235,
+        "privatizaciones": 0.705,
+        "reduccion_estado": 0.829,
+        "reestructuracion_organismos": 0.884,
+        "siniestralidad_laboral": -0.783
       },
       "reduccion_estado": {
         "apertura_comercial": 0.489,
@@ -1149,7 +1145,7 @@
         "libertad_opcion_salud": 0.886,
         "masa_salarial": 0.537,
         "privatizaciones": 0.792,
-        "protocolo_antipiquetes": 0.84,
+        "protocolo_antipiquetes": 0.829,
         "reestructuracion_organismos": 0.554,
         "siniestralidad_laboral": 0.268
       },
@@ -1165,7 +1161,7 @@
         "libertad_opcion_salud": 0.4,
         "masa_salarial": 0.224,
         "privatizaciones": 0.732,
-        "protocolo_antipiquetes": 0.419,
+        "protocolo_antipiquetes": 0.884,
         "reduccion_estado": 0.554,
         "siniestralidad_laboral": -0.219
       },
@@ -1181,7 +1177,7 @@
         "libertad_opcion_salud": 0.542,
         "masa_salarial": 0.193,
         "privatizaciones": 0.026,
-        "protocolo_antipiquetes": 0.47,
+        "protocolo_antipiquetes": -0.783,
         "reduccion_estado": 0.268,
         "reestructuracion_organismos": -0.219
       }
@@ -1195,16 +1191,6 @@
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
         "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "libertad_opcion_salud",
-        "b": "protocolo_antipiquetes",
-        "r": 0.94,
-        "n": 33,
-        "dimension_a": "social_orden",
-        "dimension_b": "social_orden",
-        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -1258,6 +1244,16 @@
         "por_diseno": null
       },
       {
+        "a": "protocolo_antipiquetes",
+        "b": "reestructuracion_organismos",
+        "r": 0.884,
+        "n": 21,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "desregulacion_normativa",
         "b": "juicios_trabajo_capital",
         "r": -0.883,
@@ -1278,21 +1274,11 @@
         "por_diseno": null
       },
       {
-        "a": "desregulacion_normativa",
+        "a": "juicios_trabajo_capital",
         "b": "protocolo_antipiquetes",
-        "r": 0.873,
-        "n": 33,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "social_orden",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "cepo_mulc",
-        "b": "protocolo_antipiquetes",
-        "r": 0.872,
-        "n": 33,
-        "dimension_a": "reformas_economicas",
+        "r": -0.873,
+        "n": 21,
+        "dimension_a": "reforma_laboral",
         "dimension_b": "social_orden",
         "misma_dimension": false,
         "por_diseno": null
@@ -1340,8 +1326,8 @@
       {
         "a": "protocolo_antipiquetes",
         "b": "reduccion_estado",
-        "r": 0.84,
-        "n": 32,
+        "r": 0.829,
+        "n": 20,
         "dimension_a": "social_orden",
         "dimension_b": "reforma_estado",
         "misma_dimension": false,
@@ -1364,6 +1350,26 @@
         "n": 33,
         "dimension_a": "privatizaciones_inversion",
         "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "protocolo_antipiquetes",
+        "b": "siniestralidad_laboral",
+        "r": -0.783,
+        "n": 21,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_laboral",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "protocolo_antipiquetes",
+        "r": 0.782,
+        "n": 21,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1394,16 +1400,6 @@
         "n": 35,
         "dimension_a": "privatizaciones_inversion",
         "dimension_b": "reforma_estado",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "privatizaciones",
-        "b": "protocolo_antipiquetes",
-        "r": 0.746,
-        "n": 33,
-        "dimension_a": "privatizaciones_inversion",
-        "dimension_b": "social_orden",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1446,10 +1442,20 @@
         "dimension_b": "privatizaciones_inversion",
         "misma_dimension": false,
         "por_diseno": null
+      },
+      {
+        "a": "privatizaciones",
+        "b": "protocolo_antipiquetes",
+        "r": 0.705,
+        "n": 21,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
       }
     ],
-    "pares_cruzados": 23,
-    "pares_no_explicados": 23
+    "pares_cruzados": 25,
+    "pares_no_explicados": 25
   },
   "redundancia_itcp": {
     "diferencias": {
@@ -2025,13 +2031,13 @@
   "redundancia_itvc": {
     "diferencias": {
       "n_pares": 167,
-      "r_abs_medio": 0.198,
+      "r_abs_medio": 0.2,
       "share_altos": 0.012
     },
     "umbral": 0.7,
     "n_indicadores": 19,
     "n_pares": 167,
-    "r_abs_medio": 0.491,
+    "r_abs_medio": 0.492,
     "share_altos": 0.275,
     "share_bajos": 0.305,
     "matriz": {
@@ -2050,7 +2056,7 @@
         "motorizacion_total": -0.798,
         "ocupacion_eph": -0.216,
         "peso_tarifas": 0.587,
-        "pobreza_nowcast": -0.831,
+        "pobreza_nowcast": -0.857,
         "ratio_motos_autos": 0.259,
         "tasa_homicidios": -0.882,
         "tasa_robos": -0.471
@@ -2070,7 +2076,7 @@
         "motorizacion_total": 0.908,
         "ocupacion_eph": 0.84,
         "peso_tarifas": -0.792,
-        "pobreza_nowcast": -0.193,
+        "pobreza_nowcast": -0.263,
         "ratio_motos_autos": -0.991,
         "tasa_robos": 0.688
       },
@@ -2089,7 +2095,7 @@
         "motorizacion_total": 0.672,
         "ocupacion_eph": 0.159,
         "peso_tarifas": 0.377,
-        "pobreza_nowcast": 0.085,
+        "pobreza_nowcast": 0.103,
         "ratio_motos_autos": -0.02,
         "tasa_homicidios": 0.841,
         "tasa_robos": 0.239
@@ -2109,7 +2115,7 @@
         "motorizacion_total": -0.911,
         "ocupacion_eph": -0.25,
         "peso_tarifas": 0.854,
-        "pobreza_nowcast": -0.877,
+        "pobreza_nowcast": -0.896,
         "ratio_motos_autos": 0.246,
         "tasa_homicidios": -0.93,
         "tasa_robos": -0.569
@@ -2129,7 +2135,7 @@
         "motorizacion_total": -0.349,
         "ocupacion_eph": -0.556,
         "peso_tarifas": 0.86,
-        "pobreza_nowcast": -0.255,
+        "pobreza_nowcast": -0.247,
         "ratio_motos_autos": 0.829,
         "tasa_homicidios": -0.159,
         "tasa_robos": -0.61
@@ -2149,7 +2155,7 @@
         "motorizacion_total": 0.522,
         "ocupacion_eph": -0.201,
         "peso_tarifas": 0.852,
-        "pobreza_nowcast": 0.23,
+        "pobreza_nowcast": 0.254,
         "ratio_motos_autos": 0.386,
         "tasa_homicidios": 0.544,
         "tasa_robos": 0.083
@@ -2169,7 +2175,7 @@
         "motorizacion_total": -0.08,
         "ocupacion_eph": -0.306,
         "peso_tarifas": 0.338,
-        "pobreza_nowcast": -0.631,
+        "pobreza_nowcast": -0.648,
         "ratio_motos_autos": 0.338,
         "tasa_homicidios": 0.315,
         "tasa_robos": -0.373
@@ -2189,7 +2195,7 @@
         "motorizacion_total": -0.745,
         "ocupacion_eph": -0.572,
         "peso_tarifas": 0.908,
-        "pobreza_nowcast": -0.49,
+        "pobreza_nowcast": -0.5,
         "ratio_motos_autos": 0.533,
         "tasa_homicidios": -0.483,
         "tasa_robos": -0.575
@@ -2209,7 +2215,7 @@
         "motorizacion_total": -0.763,
         "ocupacion_eph": -0.625,
         "peso_tarifas": 0.462,
-        "pobreza_nowcast": -0.362,
+        "pobreza_nowcast": -0.343,
         "ratio_motos_autos": 0.528,
         "tasa_homicidios": -0.608,
         "tasa_robos": -0.722
@@ -2229,7 +2235,7 @@
         "motorizacion_total": -0.002,
         "ocupacion_eph": -0.126,
         "peso_tarifas": 0.403,
-        "pobreza_nowcast": 0.216,
+        "pobreza_nowcast": 0.277,
         "ratio_motos_autos": 0.369,
         "tasa_homicidios": 0.033,
         "tasa_robos": -0.196
@@ -2249,7 +2255,7 @@
         "motorizacion_total": 0.567,
         "ocupacion_eph": 0.149,
         "peso_tarifas": -0.271,
-        "pobreza_nowcast": -0.04,
+        "pobreza_nowcast": 0.004,
         "ratio_motos_autos": -0.175,
         "tasa_homicidios": 0.766,
         "tasa_robos": 0.235
@@ -2269,7 +2275,7 @@
         "motorizacion_total": -0.976,
         "ocupacion_eph": -0.375,
         "peso_tarifas": 0.826,
-        "pobreza_nowcast": -0.878,
+        "pobreza_nowcast": -0.894,
         "ratio_motos_autos": 0.284,
         "tasa_homicidios": -0.797,
         "tasa_robos": -0.732
@@ -2289,7 +2295,7 @@
         "mora_familias": -0.976,
         "ocupacion_eph": 0.41,
         "peso_tarifas": -0.884,
-        "pobreza_nowcast": 0.778,
+        "pobreza_nowcast": 0.787,
         "ratio_motos_autos": -0.412,
         "tasa_homicidios": 0.822,
         "tasa_robos": 0.763
@@ -2309,7 +2315,7 @@
         "mora_familias": -0.375,
         "motorizacion_total": 0.41,
         "peso_tarifas": -0.83,
-        "pobreza_nowcast": 0.324,
+        "pobreza_nowcast": 0.319,
         "ratio_motos_autos": -0.635,
         "tasa_homicidios": 0.176,
         "tasa_robos": 0.501
@@ -2329,27 +2335,27 @@
         "mora_familias": 0.826,
         "motorizacion_total": -0.884,
         "ocupacion_eph": -0.83,
-        "pobreza_nowcast": 0.121,
+        "pobreza_nowcast": 0.202,
         "ratio_motos_autos": 0.848
       },
       "pobreza_nowcast": {
-        "alquiler_real": -0.831,
-        "alquiler_udesa_real": -0.193,
-        "brecha_salario_cbt": 0.085,
-        "carga_servicio_deuda_hogares": -0.877,
-        "consumo_carne_vacuna": -0.255,
-        "consumo_carnes_total": 0.23,
-        "consumo_supermercados": -0.631,
-        "icg_utdt": -0.49,
-        "informalidad": -0.362,
-        "inseguridad": 0.216,
-        "ipc_alimentos": -0.04,
-        "mora_familias": -0.878,
-        "motorizacion_total": 0.778,
-        "ocupacion_eph": 0.324,
-        "peso_tarifas": 0.121,
-        "ratio_motos_autos": -0.051,
-        "tasa_robos": 0.596
+        "alquiler_real": -0.857,
+        "alquiler_udesa_real": -0.263,
+        "brecha_salario_cbt": 0.103,
+        "carga_servicio_deuda_hogares": -0.896,
+        "consumo_carne_vacuna": -0.247,
+        "consumo_carnes_total": 0.254,
+        "consumo_supermercados": -0.648,
+        "icg_utdt": -0.5,
+        "informalidad": -0.343,
+        "inseguridad": 0.277,
+        "ipc_alimentos": 0.004,
+        "mora_familias": -0.894,
+        "motorizacion_total": 0.787,
+        "ocupacion_eph": 0.319,
+        "peso_tarifas": 0.202,
+        "ratio_motos_autos": -0.044,
+        "tasa_robos": 0.585
       },
       "ratio_motos_autos": {
         "alquiler_real": 0.259,
@@ -2367,7 +2373,7 @@
         "motorizacion_total": -0.412,
         "ocupacion_eph": -0.635,
         "peso_tarifas": 0.848,
-        "pobreza_nowcast": -0.051,
+        "pobreza_nowcast": -0.044,
         "tasa_homicidios": -0.188,
         "tasa_robos": -0.614
       },
@@ -2403,7 +2409,7 @@
         "mora_familias": -0.732,
         "motorizacion_total": 0.763,
         "ocupacion_eph": 0.501,
-        "pobreza_nowcast": 0.596,
+        "pobreza_nowcast": 0.585,
         "ratio_motos_autos": -0.614,
         "tasa_homicidios": 0.44
       }
@@ -2531,12 +2537,32 @@
       },
       {
         "a": "carga_servicio_deuda_hogares",
+        "b": "pobreza_nowcast",
+        "r": -0.896,
+        "n": 22,
+        "dimension_a": "vulnerabilidad",
+        "dimension_b": "ingresos",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "carga_servicio_deuda_hogares",
         "b": "mora_familias",
         "r": 0.895,
         "n": 35,
         "dimension_a": "vulnerabilidad",
         "dimension_b": "vulnerabilidad",
         "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "mora_familias",
+        "b": "pobreza_nowcast",
+        "r": -0.894,
+        "n": 22,
+        "dimension_a": "vulnerabilidad",
+        "dimension_b": "ingresos",
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -2570,32 +2596,22 @@
         "por_diseno": null
       },
       {
-        "a": "mora_familias",
-        "b": "pobreza_nowcast",
-        "r": -0.878,
-        "n": 22,
-        "dimension_a": "vulnerabilidad",
-        "dimension_b": "ingresos",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "carga_servicio_deuda_hogares",
-        "b": "pobreza_nowcast",
-        "r": -0.877,
-        "n": 22,
-        "dimension_a": "vulnerabilidad",
-        "dimension_b": "ingresos",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "consumo_carne_vacuna",
         "b": "peso_tarifas",
         "r": 0.86,
         "n": 11,
         "dimension_a": "consumo",
         "dimension_b": "precios",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "alquiler_real",
+        "b": "pobreza_nowcast",
+        "r": -0.857,
+        "n": 22,
+        "dimension_a": "precios",
+        "dimension_b": "ingresos",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2646,16 +2662,6 @@
         "n": 17,
         "dimension_a": "precios",
         "dimension_b": "empleo",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "alquiler_real",
-        "b": "pobreza_nowcast",
-        "r": -0.831,
-        "n": 22,
-        "dimension_a": "precios",
-        "dimension_b": "ingresos",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2750,22 +2756,22 @@
         "por_diseno": null
       },
       {
+        "a": "motorizacion_total",
+        "b": "pobreza_nowcast",
+        "r": 0.787,
+        "n": 22,
+        "dimension_a": "consumo",
+        "dimension_b": "ingresos",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "alquiler_real",
         "b": "mora_familias",
         "r": 0.78,
         "n": 35,
         "dimension_a": "precios",
         "dimension_b": "vulnerabilidad",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "motorizacion_total",
-        "b": "pobreza_nowcast",
-        "r": 0.778,
-        "n": 22,
-        "dimension_a": "consumo",
-        "dimension_b": "ingresos",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2875,30 +2881,30 @@
   },
   "serie_itcg": {
     "2023-12": 15.3,
-    "2024-01": 27.9,
-    "2024-02": 32.6,
-    "2024-03": 35.3,
-    "2024-04": 42.1,
-    "2024-05": 37.3,
-    "2024-06": 41.3,
-    "2024-07": 40.6,
-    "2024-08": 41.1,
-    "2024-09": 40.7,
-    "2024-10": 44.3,
-    "2024-11": 48.5,
-    "2024-12": 52.8,
-    "2025-01": 53.0,
-    "2025-02": 53.2,
-    "2025-03": 54.6,
-    "2025-04": 55.4,
-    "2025-05": 62.2,
-    "2025-06": 60.2,
-    "2025-07": 64.9,
-    "2025-08": 70.3,
-    "2025-09": 70.0,
-    "2025-10": 69.4,
-    "2025-11": 72.9,
-    "2025-12": 71.3,
+    "2024-01": 25.3,
+    "2024-02": 29.9,
+    "2024-03": 33.0,
+    "2024-04": 42.2,
+    "2024-05": 37.4,
+    "2024-06": 41.4,
+    "2024-07": 40.7,
+    "2024-08": 41.2,
+    "2024-09": 40.8,
+    "2024-10": 44.4,
+    "2024-11": 48.6,
+    "2024-12": 53.6,
+    "2025-01": 52.1,
+    "2025-02": 52.4,
+    "2025-03": 53.8,
+    "2025-04": 54.5,
+    "2025-05": 61.3,
+    "2025-06": 59.4,
+    "2025-07": 64.1,
+    "2025-08": 69.4,
+    "2025-09": 69.1,
+    "2025-10": 68.5,
+    "2025-11": 72.0,
+    "2025-12": 70.5,
     "2026-01": 71.0,
     "2026-02": 71.3,
     "2026-03": 72.0,
@@ -2999,28 +3005,28 @@
           "2024-10": 104.4,
           "2024-11": 105.8,
           "2024-12": 105.5,
-          "2025-01": 109.0,
-          "2025-02": 112.6,
-          "2025-03": 111.2,
-          "2025-04": 113.4,
-          "2025-05": 115.5,
-          "2025-06": 120.4,
-          "2025-07": 121.8,
-          "2025-08": 122.0,
-          "2025-09": 122.6,
-          "2025-10": 122.4,
-          "2025-11": 120.1,
-          "2025-12": 118.8,
-          "2026-01": 117.2,
-          "2026-02": 118.3,
-          "2026-03": 120.6,
-          "2026-04": 121.1,
-          "2026-05": 119.5,
-          "2026-06": 117.6,
-          "2026-07": 117.4,
-          "2026-08": 114.6,
-          "2026-09": 114.6,
-          "2026-10": 114.6
+          "2025-01": 110.5,
+          "2025-02": 114.2,
+          "2025-03": 112.8,
+          "2025-04": 115.0,
+          "2025-05": 117.1,
+          "2025-06": 122.2,
+          "2025-07": 123.7,
+          "2025-08": 123.9,
+          "2025-09": 124.5,
+          "2025-10": 124.3,
+          "2025-11": 122.0,
+          "2025-12": 120.7,
+          "2026-01": 119.1,
+          "2026-02": 120.1,
+          "2026-03": 121.2,
+          "2026-04": 122.0,
+          "2026-05": 121.1,
+          "2026-06": 119.4,
+          "2026-07": 119.2,
+          "2026-08": 116.4,
+          "2026-09": 116.4,
+          "2026-10": 116.4
         }
       },
       "consumo": {
@@ -3632,30 +3638,30 @@
         "peso": 0.1,
         "serie": {
           "2023-12": 10.0,
-          "2024-01": 36.9,
-          "2024-02": 36.9,
-          "2024-03": 42.9,
-          "2024-04": 78.9,
-          "2024-05": 78.9,
-          "2024-06": 78.9,
-          "2024-07": 78.9,
-          "2024-08": 78.9,
-          "2024-09": 78.9,
-          "2024-10": 78.9,
-          "2024-11": 78.9,
-          "2024-12": 87.9,
-          "2025-01": 99.6,
-          "2025-02": 99.6,
-          "2025-03": 99.6,
-          "2025-04": 99.6,
-          "2025-05": 99.6,
-          "2025-06": 99.6,
-          "2025-07": 99.6,
-          "2025-08": 99.6,
-          "2025-09": 99.6,
-          "2025-10": 99.6,
-          "2025-11": 99.6,
-          "2025-12": 99.6,
+          "2024-01": 10.0,
+          "2024-02": 10.0,
+          "2024-03": 20.0,
+          "2024-04": 80.0,
+          "2024-05": 80.0,
+          "2024-06": 80.0,
+          "2024-07": 80.0,
+          "2024-08": 80.0,
+          "2024-09": 80.0,
+          "2024-10": 80.0,
+          "2024-11": 80.0,
+          "2024-12": 95.0,
+          "2025-01": 90.9,
+          "2025-02": 90.9,
+          "2025-03": 90.9,
+          "2025-04": 90.9,
+          "2025-05": 90.9,
+          "2025-06": 90.9,
+          "2025-07": 90.9,
+          "2025-08": 90.9,
+          "2025-09": 90.9,
+          "2025-10": 90.9,
+          "2025-11": 90.9,
+          "2025-12": 90.9,
           "2026-01": 99.6,
           "2026-02": 99.6,
           "2026-03": 99.6,
@@ -4695,9 +4701,9 @@
         "n": 16
       },
       "2025-01": {
-        "itvc": 103.1,
+        "itvc": 103.4,
         "rango": 76.7,
-        "desvio": 19.5,
+        "desvio": 19.7,
         "min": {
           "componente": "alquiler_real",
           "valor": 63.3
@@ -4709,9 +4715,9 @@
         "n": 17
       },
       "2025-02": {
-        "itvc": 102.9,
+        "itvc": 103.2,
         "rango": 79.3,
-        "desvio": 21.3,
+        "desvio": 21.5,
         "min": {
           "componente": "alquiler_real",
           "valor": 60.7
@@ -4723,9 +4729,9 @@
         "n": 17
       },
       "2025-03": {
-        "itvc": 100.3,
+        "itvc": 100.6,
         "rango": 80.8,
-        "desvio": 20.6,
+        "desvio": 20.8,
         "min": {
           "componente": "carga_servicio_deuda_hogares",
           "valor": 59.2
@@ -4737,9 +4743,9 @@
         "n": 17
       },
       "2025-04": {
-        "itvc": 100.2,
+        "itvc": 100.6,
         "rango": 84.3,
-        "desvio": 22.2,
+        "desvio": 22.4,
         "min": {
           "componente": "carga_servicio_deuda_hogares",
           "valor": 55.7
@@ -4751,9 +4757,9 @@
         "n": 17
       },
       "2025-05": {
-        "itvc": 99.7,
+        "itvc": 100.0,
         "rango": 88.5,
-        "desvio": 24.5,
+        "desvio": 24.8,
         "min": {
           "componente": "mora_familias",
           "valor": 51.5
@@ -4765,9 +4771,9 @@
         "n": 17
       },
       "2025-06": {
-        "itvc": 100.6,
+        "itvc": 101.0,
         "rango": 95.8,
-        "desvio": 26.1,
+        "desvio": 26.4,
         "min": {
           "componente": "mora_familias",
           "valor": 44.2
@@ -4779,9 +4785,9 @@
         "n": 18
       },
       "2025-07": {
-        "itvc": 101.7,
+        "itvc": 102.1,
         "rango": 100.0,
-        "desvio": 28.6,
+        "desvio": 28.9,
         "min": {
           "componente": "mora_familias",
           "valor": 40.0
@@ -4793,9 +4799,9 @@
         "n": 18
       },
       "2025-08": {
-        "itvc": 99.4,
+        "itvc": 99.8,
         "rango": 106.4,
-        "desvio": 27.8,
+        "desvio": 28.1,
         "min": {
           "componente": "mora_familias",
           "valor": 33.6
@@ -4807,9 +4813,9 @@
         "n": 18
       },
       "2025-09": {
-        "itvc": 98.9,
+        "itvc": 99.3,
         "rango": 109.7,
-        "desvio": 29.5,
+        "desvio": 29.8,
         "min": {
           "componente": "mora_familias",
           "valor": 30.3
@@ -4821,9 +4827,9 @@
         "n": 18
       },
       "2025-10": {
-        "itvc": 98.5,
+        "itvc": 98.9,
         "rango": 111.5,
-        "desvio": 30.2,
+        "desvio": 30.5,
         "min": {
           "componente": "mora_familias",
           "valor": 28.5
@@ -4835,9 +4841,9 @@
         "n": 18
       },
       "2025-11": {
-        "itvc": 99.2,
+        "itvc": 99.5,
         "rango": 115.2,
-        "desvio": 31.6,
+        "desvio": 31.9,
         "min": {
           "componente": "mora_familias",
           "valor": 24.8
@@ -4849,9 +4855,9 @@
         "n": 18
       },
       "2025-12": {
-        "itvc": 102.0,
+        "itvc": 102.4,
         "rango": 116.4,
-        "desvio": 31.2,
+        "desvio": 31.5,
         "min": {
           "componente": "mora_familias",
           "valor": 23.6
@@ -4863,9 +4869,9 @@
         "n": 19
       },
       "2026-01": {
-        "itvc": 101.0,
+        "itvc": 101.4,
         "rango": 119.3,
-        "desvio": 30.8,
+        "desvio": 31.2,
         "min": {
           "componente": "mora_familias",
           "valor": 20.7
@@ -4877,9 +4883,9 @@
         "n": 19
       },
       "2026-02": {
-        "itvc": 101.3,
+        "itvc": 101.7,
         "rango": 120.4,
-        "desvio": 31.4,
+        "desvio": 31.7,
         "min": {
           "componente": "mora_familias",
           "valor": 19.6
@@ -4891,23 +4897,23 @@
         "n": 19
       },
       "2026-03": {
-        "itvc": 100.0,
+        "itvc": 100.1,
         "rango": 121.0,
-        "desvio": 31.1,
+        "desvio": 31.2,
         "min": {
           "componente": "mora_familias",
           "valor": 19.0
         },
         "max": {
-          "componente": "tasa_homicidios",
+          "componente": "pobreza_nowcast",
           "valor": 140.0
         },
         "n": 19
       },
       "2026-04": {
-        "itvc": 99.7,
+        "itvc": 99.9,
         "rango": 122.1,
-        "desvio": 31.0,
+        "desvio": 31.1,
         "min": {
           "componente": "mora_familias",
           "valor": 18.3
@@ -4919,9 +4925,9 @@
         "n": 19
       },
       "2026-05": {
-        "itvc": 98.5,
+        "itvc": 98.8,
         "rango": 123.5,
-        "desvio": 31.0,
+        "desvio": 31.3,
         "min": {
           "componente": "mora_familias",
           "valor": 17.2
@@ -4933,9 +4939,9 @@
         "n": 19
       },
       "2026-06": {
-        "itvc": 99.6,
+        "itvc": 100.0,
         "rango": 125.2,
-        "desvio": 31.4,
+        "desvio": 31.7,
         "min": {
           "componente": "mora_familias",
           "valor": 17.3
@@ -4947,9 +4953,9 @@
         "n": 19
       },
       "2026-07": {
-        "itvc": 98.6,
+        "itvc": 99.0,
         "rango": 126.0,
-        "desvio": 31.2,
+        "desvio": 31.5,
         "min": {
           "componente": "mora_familias",
           "valor": 16.9
@@ -4961,9 +4967,9 @@
         "n": 19
       },
       "2026-08": {
-        "itvc": 98.4,
+        "itvc": 98.7,
         "rango": 127.4,
-        "desvio": 31.3,
+        "desvio": 31.6,
         "min": {
           "componente": "mora_familias",
           "valor": 17.1
@@ -4975,9 +4981,9 @@
         "n": 19
       },
       "2026-09": {
-        "itvc": 97.1,
+        "itvc": 97.5,
         "rango": 129.6,
-        "desvio": 31.3,
+        "desvio": 31.6,
         "min": {
           "componente": "mora_familias",
           "valor": 17.1
@@ -4989,9 +4995,9 @@
         "n": 19
       },
       "2026-10": {
-        "itvc": 97.7,
+        "itvc": 98.1,
         "rango": 129.6,
-        "desvio": 31.4,
+        "desvio": 31.7,
         "min": {
           "componente": "mora_familias",
           "valor": 17.1
@@ -5020,9 +5026,9 @@
     },
     "ultimo": {
       "mes": "2026-10",
-      "itvc": 97.7,
+      "itvc": 98.1,
       "rango": 129.6,
-      "desvio": 31.4,
+      "desvio": 31.7,
       "min": {
         "componente": "mora_familias",
         "valor": 17.1
@@ -5033,7 +5039,7 @@
       },
       "n": 19
     },
-    "movimiento_neto": 3.6
+    "movimiento_neto": 3.2
   },
   "estacionalidad_panel": {
     "electricidad_residencial": {
@@ -5148,8 +5154,8 @@
           "etiqueta": "Ventas en autoservicios mayoristas",
           "fuente": "INDEC",
           "propia": true,
-          "r_niveles": 0.33,
-          "r_diferencias": -0.206,
+          "r_niveles": 0.26,
+          "r_diferencias": -0.2,
           "n": 32
         },
         {
@@ -5157,8 +5163,8 @@
           "etiqueta": "Ventas en centros de compras",
           "fuente": "INDEC",
           "propia": true,
-          "r_niveles": 0.159,
-          "r_diferencias": -0.026,
+          "r_niveles": 0.197,
+          "r_diferencias": -0.034,
           "n": 32
         },
         {
@@ -5166,8 +5172,8 @@
           "etiqueta": "Demanda eléctrica residencial",
           "fuente": "CAMMESA",
           "propia": true,
-          "r_niveles": 0.062,
-          "r_diferencias": 0.188,
+          "r_niveles": 0.077,
+          "r_diferencias": 0.201,
           "n": 33
         },
         {
@@ -5175,8 +5181,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": false,
-          "r_niveles": -0.43,
-          "r_diferencias": 0.174,
+          "r_niveles": -0.41,
+          "r_diferencias": 0.177,
           "n": 34
         },
         {
@@ -5184,8 +5190,8 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.049,
-          "r_diferencias": 0.057,
+          "r_niveles": 0.094,
+          "r_diferencias": 0.034,
           "n": 33
         },
         {
@@ -5193,8 +5199,8 @@
           "etiqueta": "Consumo residencial de gas",
           "fuente": "Sec. de Energía",
           "propia": true,
-          "r_niveles": -0.016,
-          "r_diferencias": 0.045,
+          "r_niveles": -0.019,
+          "r_diferencias": 0.042,
           "n": 31
         },
         {
@@ -5202,8 +5208,8 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": 0.201,
-          "r_diferencias": 0.574,
+          "r_niveles": 0.261,
+          "r_diferencias": 0.576,
           "n": 34
         },
         {
@@ -5211,7 +5217,7 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.019,
+          "r_niveles": 0.03,
           "r_diferencias": 0.172,
           "n": 34
         },
@@ -5220,8 +5226,8 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.053,
-          "r_diferencias": -0.064,
+          "r_niveles": 0.037,
+          "r_diferencias": -0.061,
           "n": 33
         },
         {
@@ -5229,8 +5235,8 @@
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.338,
-          "r_diferencias": -0.125,
+          "r_niveles": -0.328,
+          "r_diferencias": -0.112,
           "n": 33
         },
         {
@@ -5238,8 +5244,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.118,
-          "r_diferencias": 0.111,
+          "r_niveles": -0.066,
+          "r_diferencias": 0.094,
           "n": 35
         },
         {
@@ -5247,8 +5253,8 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": true,
-          "r_niveles": 0.191,
-          "r_diferencias": 0.219,
+          "r_niveles": 0.161,
+          "r_diferencias": 0.221,
           "n": 32
         },
         {
@@ -5256,22 +5262,22 @@
           "etiqueta": "Ventas de naftas",
           "fuente": "Sec. de Energía",
           "propia": true,
-          "r_niveles": -0.172,
-          "r_diferencias": 0.199,
+          "r_niveles": -0.133,
+          "r_diferencias": 0.195,
           "n": 33
         }
       ],
       "n_propias": 7,
       "n_ajenas": 6,
       "niveles": {
-        "convergente": 0.162,
-        "discriminante": 0.168,
-        "brecha": -0.006
+        "convergente": 0.158,
+        "discriminante": 0.161,
+        "brecha": -0.003
       },
       "diferencias": {
-        "convergente": 0.208,
-        "discriminante": 0.117,
-        "brecha": 0.091
+        "convergente": 0.21,
+        "discriminante": 0.108,
+        "brecha": 0.102
       },
       "factor": {
         "cargas": {
@@ -5363,108 +5369,108 @@
           ],
           [
             "2025-01",
-            103.1,
+            103.4,
             1.678
           ],
           [
             "2025-02",
-            102.9,
+            103.2,
             2.237
           ],
           [
             "2025-03",
-            100.3,
+            100.6,
             1.412
           ],
           [
             "2025-04",
-            100.2,
+            100.6,
             1.02
           ],
           [
             "2025-05",
-            99.7,
+            100.0,
             0.941
           ],
           [
             "2025-06",
-            100.6,
+            101.0,
             2.165
           ],
           [
             "2025-07",
-            101.7,
+            102.1,
             1.467
           ],
           [
             "2025-08",
-            99.4,
+            99.8,
             1.127
           ],
           [
             "2025-09",
-            98.9,
+            99.3,
             1.2
           ],
           [
             "2025-10",
-            98.5,
+            98.9,
             1.088
           ],
           [
             "2025-11",
-            99.2,
+            99.5,
             1.275
           ],
           [
             "2025-12",
-            102.0,
+            102.4,
             2.193
           ],
           [
             "2026-01",
-            101.0,
+            101.4,
             1.4
           ],
           [
             "2026-02",
-            101.3,
+            101.7,
             1.386
           ],
           [
             "2026-03",
-            100.0,
+            100.1,
             1.421
           ],
           [
             "2026-04",
-            99.7,
+            99.9,
             1.575
           ],
           [
             "2026-05",
-            98.5,
+            98.8,
             2.639
           ],
           [
             "2026-06",
-            99.6,
+            100.0,
             1.624
           ]
         ],
-        "r_niveles": -0.011,
-        "r_diferencias": 0.261,
-        "mejor_sola_niveles": 0.191,
-        "mejor_sola_diferencias": 0.219,
+        "r_niveles": 0.014,
+        "r_diferencias": 0.264,
+        "mejor_sola_niveles": 0.161,
+        "mejor_sola_diferencias": 0.221,
         "aporte_sobre_tendencia": {
           "n": 31,
           "suficiente": true,
           "colineal": false,
           "r2_tendencia": 0.039,
-          "r2_con_indice": 0.047,
-          "aporte": 0.008,
+          "r2_con_indice": 0.049,
+          "aporte": 0.01,
           "signo": "positivo",
-          "coef": 0.0404
+          "coef": 0.0452
         },
         "plano": "diferencias",
         "pares_grafico": [
@@ -5530,7 +5536,7 @@
           ],
           [
             "2025-01",
-            -0.6,
+            -0.3,
             0.213
           ],
           [
@@ -5545,17 +5551,17 @@
           ],
           [
             "2025-04",
-            -0.1,
+            0.0,
             1.643
           ],
           [
             "2025-05",
-            -0.5,
+            -0.6,
             -0.256
           ],
           [
             "2025-06",
-            0.9,
+            1.0,
             -0.033
           ],
           [
@@ -5580,12 +5586,12 @@
           ],
           [
             "2025-11",
-            0.7,
+            0.6,
             -0.87
           ],
           [
             "2025-12",
-            2.8,
+            2.9,
             0.091
           ],
           [
@@ -5600,27 +5606,27 @@
           ],
           [
             "2026-03",
-            -1.3,
+            -1.6,
             0.776
           ],
           [
             "2026-04",
-            -0.3,
+            -0.2,
             1.286
           ],
           [
             "2026-05",
-            -1.2,
+            -1.1,
             -0.138
           ],
           [
             "2026-06",
-            1.1,
+            1.2,
             -0.182
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,162 y con las 6 ajenas es 0,168. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,208 con lo propio contra 0,117 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,158 y con las 6 ajenas es 0,161. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,21 con lo propio contra 0,108 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
