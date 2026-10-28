@@ -224,7 +224,10 @@ def umbrales_en_unidad(indicador: str, escala: "Escala") -> list | None:
     # vecino (jornadas no trabajadas, ADR-0396). Sin extrapolación el puntaje es
     # plano más allá de las anclas y no hay más cruces después del último
     # quiebre, así que cualquier punto más lejos da el color del tramo.
-    paso = max((anclas[-1][0] - anclas[0][0]) * 0.1, 1e-9)
+    ancho = anclas[-1][0] - anclas[0][0]
+    if not ancho > 0:
+        raise ValueError(f"anclas sin ancho (todas en {anclas[0][0]}): no hay tramos que mostrar")
+    paso = ancho * 0.1
     tramos = []
     for desde, hasta in zip(limites, limites[1:]):
         if desde is None and hasta is None:

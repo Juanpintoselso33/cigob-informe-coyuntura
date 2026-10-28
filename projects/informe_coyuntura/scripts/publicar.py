@@ -2425,7 +2425,7 @@ def _precision_cortes(valor) -> int:
     return min(3, max(d, piso))
 
 
-def _por_que(color, valor, unidad, tramos):
+def _por_que(color, valor, unidad, tramos, dec_cortes=None):
     """Una frase que explica el color con la misma aritmética que lo produjo.
 
     Se genera y no se escribe: es lo que evita que la prosa de la ficha se
@@ -2455,16 +2455,21 @@ def _por_que(color, valor, unidad, tramos):
     # las anclas del puntaje, que no son los cortes de color.
     vecino = next((t for t in tramos if t is not actual
                    and (t["desde"] == borde or t["hasta"] == borde)), None)
-    otro = (f"del límite con {vecino['color'].capitalize()} ({_num_pq(borde)})"
-            if vecino and vecino["color"] != actual["color"] else f"del corte de {_num_pq(borde)}")
+    otro = (f"del límite con {vecino['color'].capitalize()} ({_num_pq(borde, dec_cortes)})"
+            if vecino and vecino["color"] != actual["color"] else f"del corte de {_num_pq(borde, dec_cortes)}")
     return (f"{_num_pq(valor)} {unidad} está en {color.capitalize()}, a "
             f"{_num_pq(abs(valor - borde), 2)} {otro}.")
 
 
 def _semaforo_de(color, tension, umbrales, unidad, valor):
-    if umbrales and valor is not None:
+    # El «por qué» se calcula con los cortes CRUDOS y sólo se MUESTRAN
+    # redondeados: redondear antes de comparar puede dejar un valor pegado al
+    # corte del otro lado («está en Amarillo, a 0,0 del límite con Amarillo»,
+    # Codex 28-oct sobre ADR-0396).
+    dec = _precision_cortes(valor) if umbrales and valor is not None else None
+    por_que = _por_que(color, valor, unidad, umbrales, dec)
+    if dec is not None:
         # cortes a la precisión del indicador (no 4 decimales de la interpolación)
-        dec = _precision_cortes(valor)
         umbrales = [{**t, "desde": None if t["desde"] is None else round(t["desde"], dec),
                      "hasta": None if t["hasta"] is None else round(t["hasta"], dec)}
                     for t in umbrales]
@@ -2472,7 +2477,7 @@ def _semaforo_de(color, tension, umbrales, unidad, valor):
             "tension": None if tension is None else round(tension, 1),
             "umbrales": umbrales,
             "unidad": unidad,
-            "por_que": _por_que(color, valor, unidad, umbrales)}
+            "por_que": por_que}
 
 
 # Cómo se dice un tramo en los textos publicados. La web no muestra la tensión
