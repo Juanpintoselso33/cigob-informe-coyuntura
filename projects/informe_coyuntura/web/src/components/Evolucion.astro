@@ -82,7 +82,7 @@ const trayectorias = CINTURONES
                   style={`background: ${t.idx.base100 ? ejeSemaforo(RANGO_BASE100, [105, 95, 85]) : ejeSemaforo([0, 100], [60, 40, 20])}`}></span>
             <div class="cg-chart-mini" data-evo-key={`__indice_${t.meta.slug}`}
                  data-evo-rango={t.idx.base100 ? RANGO_BASE100.join(",") : "0,100"}
-                 data-evo-slug={t.meta.slug} data-evo-unidad={t.idx.base100 ? "índice (100 = 4T-2023)" : "puntos (0-100)"}
+                 data-evo-slug={t.meta.slug} data-evo-unidad={t.idx.base100 ? "índice (100 = 4º trimestre de 2023)" : "puntos (0-100)"}
                  data-evo-serie={JSON.stringify(t.serie)}></div>
           </div>
           <div class="cg-chart-mini-foot">

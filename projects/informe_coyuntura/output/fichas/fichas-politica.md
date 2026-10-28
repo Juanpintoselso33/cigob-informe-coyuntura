@@ -68,7 +68,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real vs 2023 | ROJO | 8,2 % |
+| Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real frente a 2023 | ROJO | 8,2 % |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 56,5 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
@@ -82,7 +82,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
 | Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,2 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % vs 2023 | VERDE | 6,5 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % frente a 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
 
 *Datos al 2026-10-28.*
@@ -227,7 +227,7 @@ Qué dicen en público, por escrito y con firma institucional, las cámaras de l
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y la Asociación de Fábricas Argentinas de Componentes, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (la Cámara Argentina de la Construcción). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (la Asociación de Bancos Argentinos, la Asociación de Bancos de la Argentina y la Asociación de Bancos Públicos y Privados de la República Argentina) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -340,7 +340,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 Suma al comercio a la lectura del vínculo entre el Gobierno y el empresariado organizado, que antes miraba sólo a la industria. Conviene saber qué dice y qué no: la CAC apoyó al Gobierno en cada comunicado que le dedicó, y sus críticas van dirigidas a las provincias, los municipios y el Congreso — no al Ejecutivo nacional —, de modo que el saldo está en el máximo en toda la serie y es difícil que se mueva hacia abajo aunque cambie el humor del sector. Con tan pocos pronunciamientos por año, una sola crítica lo movería mucho. No mide la opinión de los comerciantes ni de las pymes: mide lo que una cámara decidió declarar públicamente. La clasificación la hace una persona siguiendo reglas escritas de antemano; esta vez la hicieron por separado dos lectores de distinto tipo para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y la Asociación de Fábricas Argentinas de Componentes, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (la Cámara Argentina de la Construcción). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (la Asociación de Bancos Argentinos, la Asociación de Bancos de la Argentina y la Asociación de Bancos Públicos y Privados de la República Argentina) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -434,7 +434,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 Suma al campo, el sector que más pelea con el Estado por impuestos y retenciones, a la lectura del vínculo entre el Gobierno y el empresariado organizado. Conviene saber qué dice y qué no: las tres cámaras publican en sitios con archivos distintos — el de la SRA arranca en enero de 2025, y por eso la serie empieza en enero de 2026 —, y sus posturas son muy distintas entre sí: la CRA critica mucho más de lo que apoya y la SRA apoya más de lo que critica; el promedio las pone en pie de igualdad aunque la CRA publique varias veces más. No mide la opinión de los productores: mide lo que tres entidades decidieron declarar públicamente.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y la Asociación de Fábricas Argentinas de Componentes, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (la Cámara Argentina de la Construcción). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (la Asociación de Bancos Argentinos, la Asociación de Bancos de la Argentina y la Asociación de Bancos Públicos y Privados de la República Argentina) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -527,7 +527,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 Suma a la construcción, el sector que más depende de la obra pública, a la lectura del vínculo entre el Gobierno y el empresariado organizado. Conviene saber qué dice y qué no: la cámara se pronuncia poco sobre el Ejecutivo —dieciséis veces en casi tres años, cuatro en el último—, así que cada comunicado mueve mucho el saldo. No mide la opinión de las constructoras: mide lo que una cámara decidió declarar públicamente. Las notas las clasificaron por separado dos lectores, y una persona resolvió los desacuerdos que importaban.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y la Asociación de Fábricas Argentinas de Componentes, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (la Cámara Argentina de la Construcción). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (la Asociación de Bancos Argentinos, la Asociación de Bancos de la Argentina y la Asociación de Bancos Públicos y Privados de la República Argentina) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -584,7 +584,7 @@ Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a AFAC, la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.
+**2026-10-27** — Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -600,15 +600,15 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −27,2 % vs 2023** (2026-09) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −27,2 % frente a 2023** (2026-09) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | conflictividad_nacional | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % vs 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
+| **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % frente a 2023 |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de Armed Conflict Location & Event Data (ACLED) se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
 | **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
@@ -632,7 +632,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% vs 2023) | Color |
+| Rango (% frente a 2023) | Color |
 |---|---|
 | ≤ 4,5 | VERDE |
 | 4,5 – 22,5 | AMARILLO |
@@ -643,13 +643,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1896 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-09) vs 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
+- 1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
 
 ## Color vigente y por qué
 
-Dato vigente: −27,2 % vs 2023 (2026-09).
+Dato vigente: −27,2 % frente a 2023 (2026-09).
 
-−27,2 % vs 2023 está en Verde, a 31,7 del límite con Amarillo (4,5).
+−27,2 % frente a 2023 está en Verde, a 31,7 del límite con Amarillo (4,5).
 
 **Color vigente: VERDE**
 
@@ -677,7 +677,7 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 
 **2026-10-28** — En la tarjeta de rezago del índice político pasa de 6 a 7 meses: a la mitad de la ventana se le suma el mes en curso, que queda afuera hasta que cierra. No cambia el valor ni el puntaje.
 
-**2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
+**2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes del Centro de Economía Política Argentina (CEPA), que no permitía una serie mensual comparable.
 
 **2026-09-08** — Week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.
 
@@ -759,7 +759,7 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 - La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.
 - No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.
-- Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la CGT durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.
+- Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la Confederación General del Trabajo (CGT) durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.
 - Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.
 
 ## Si falta el dato / Política de revisiones
@@ -790,25 +790,25 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 # Transferencias no automáticas a provincias
 
-Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
+Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con índice de precios al consumidor publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −82,1 % real vs 2023** (2026-09) | **ROJO** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
+| **Hoy: −82,1 % real frente a 2023** (2026-09) | **ROJO** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | transferencias_no_automaticas | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % real vs 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el IPC del INDEC llega unos 45 días después, que es el que fija el último mes. |
-| **PRODUCTOR DEL DATO** | Ministerio de Economía (Presupuesto Abierto); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC |
+| **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % real frente a 2023 |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC) llega unos 45 días después, que es el que fija el último mes. |
+| **PRODUCTOR DEL DATO** | Ministerio de Economía (Presupuesto Abierto); deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC |
 | **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2023, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
+Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con índice de precios al consumidor publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
 
 Mide cuánto recurso discrecional pone la Nación en juego con las provincias frente al nivel de 2023, en términos reales. Compara contra una base fija y no contra el año anterior: así una recuperación parcial después de una caída no se lee como un aumento. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.
 
@@ -817,7 +817,7 @@ Mide cuánto recurso discrecional pone la Nación en juego con las provincias fr
 ## Método de cómputo
 
 - Universo: lo que la Nación devenga como transferencia a gobiernos provinciales y municipales por decisión —los Aportes del Tesoro Nacional (ATN), las transferencias corrientes por programa (educación, salud, asistencia financiera, energía, entre otros) y las de capital (obra pública, infraestructura, agua)—. La coparticipación y el resto del RON no pasan por el presupuesto como gasto, porque se detraen de la recaudación antes de girarse: por construcción no están en esta consulta.
-- Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, SAMIC). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).
+- Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, Servicio de Atención Médica Integral para la Comunidad). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).
 - Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre la suma de la ventana y la de los doce meses de 2023, las dos a precios comparables, menos uno. El detalle de la tarjeta expresa los dos totales a precios del último mes de la ventana.
 - Ventana y base: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra el total de 2023, una base fija anterior al mandato (la misma lectura que la conflictividad social). Sólo hay punto si la ventana y la base tienen devengado e IPC en todos sus meses; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023, que es la base misma y vale cero.
 - Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.
@@ -828,7 +828,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% real vs 2023) | Color |
+| Rango (% real frente a 2023) | Color |
 |---|---|
 | ≥ −10,8 | VERDE |
 | −54 – −10,8 | AMARILLO |
@@ -839,13 +839,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 12 meses a sep 2026: $1,25 billones devengados (ATN $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de sep 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (oct 2025–sep 2026 vs 2023); cada mes deflactado por su IPC
+- 12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor
 
 ## Color vigente y por qué
 
-Dato vigente: −82,1 % real vs 2023 (2026-09).
+Dato vigente: −82,1 % real frente a 2023 (2026-09).
 
-−82,1 % real vs 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0).
+−82,1 % real frente a 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0).
 
 **Color vigente: ROJO**
 
@@ -857,7 +857,7 @@ Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicion
 - Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual): la ventana de doce meses absorbe esa estacionalidad, pero un diciembre fuerte o flojo mueve el nivel durante todo el año siguiente.
 - La base es fija (todo 2023) y envejece con el tiempo, el mismo criterio declarado que usa la conflictividad social. 2023 no fue un año atípico: su nivel real quedó cerca del de 2018 y del de 2022. La historia con la que se fijan los cortes arranca en noviembre de 2017 porque el IPC nacional del INDEC empieza en diciembre de 2016: el devengado existe desde antes, pero no se puede deflactar con el mismo índice.
 - No distingue a qué provincia fue cada giro ni su color político: mide cuánto, no a quién. Tampoco separa lo que una partida paga por convenio vigente de lo que se decide caso por caso dentro del mismo programa.
-- La lista de partidas excluidas (coparticipación de CABA por fallo, FONID, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.
+- La lista de partidas excluidas (coparticipación de la Ciudad de Buenos Aires por fallo, Fondo Nacional de Incentivo Docente, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.
 - Deja afuera los adelantos financieros del Tesoro, que son un instrumento de negociación importante pero no tienen serie mensual.
 
 ## Si falta el dato / Política de revisiones
@@ -895,7 +895,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 | **IDENTIFICADOR TÉCNICO** | eficacia_legislativa | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La demora de carga no está garantizada. La fecha de consulta no certifica que el catálogo incluya todos los proyectos o sanciones recientes. |
-| **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
+| **PRODUCTOR DEL DATO** | Honorable Cámara de Diputados de la Nación (HCDN) | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
 | **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -1000,8 +1000,8 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 | **IDENTIFICADOR TÉCNICO** | adhesion_reformas_provincial | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
 | **SERIE DISPONIBLE** | 2024-07 → 2026-09 (27 puntos) | **REZAGO DE PUBLICACIÓN** | El catálogo nacional puede omitir adhesiones ya publicadas. Se relee la tabla y se verifican leyes complementarias identificadas por la auditoría; el descubrimiento de nuevas omisiones requiere revisión periódica. |
-| **PRODUCTOR DEL DATO** | MAGyP · Boletines Oficiales de Santa Fe y CABA | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, art. 93, y CABA 6.949, art. 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
+| **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) · Boletines Oficiales de Santa Fe y de la Ciudad de Buenos Aires | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
+| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1013,9 +1013,9 @@ Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el 
 
 ## Método de cómputo
 
-- Cuenta jurisdicciones únicas de la tabla MAGyP más adhesiones documentadas en leyes complementarias. Al 8-sep-2026, las omisiones de Santa Fe y CABA elevan el total de 16 a 18 sobre 24 (23 provincias y CABA).
+- Cuenta jurisdicciones únicas de la tabla MAGyP más adhesiones documentadas en leyes complementarias. Al 8 de septiembre de 2026, las omisiones de Santa Fe y CABA elevan el total de 16 a 18 sobre 24 (23 provincias y CABA).
 - El indicador es ese conteo sobre 24, expresado en porcentaje.
-- La historia utiliza fechas documentadas: Santa Fe desde el 1-ene-2025, vigencia explícita del art. 120 de su ley; CABA desde la publicación del 28-may-2026. Publicación, sanción y vigencia no son fechas equivalentes; el criterio de cada entrada queda declarado.
+- La historia utiliza fechas documentadas: Santa Fe desde el 1 de enero de 2025, vigencia explícita del art. 120 de su ley; CABA desde la publicación del 28 de mayo de 2026. Publicación, sanción y vigencia no son fechas equivalentes; el criterio de cada entrada queda declarado.
 
 ## Semáforo — valores que determinan el color
 
@@ -1078,7 +1078,7 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 # Votos ajenos al aprobar leyes
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de La Libertad Avanza a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
 
 | | | | |
 |---|---|---|---|
@@ -1096,7 +1096,7 @@ Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron
 
 ## Definición — qué mide y por qué importa
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de La Libertad Avanza a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
 
 Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un bloque propio grande hacen falta pocos votos de otros bloques, con uno chico hacen falta muchos. Complementa a la cohesión del bloque: un oficialismo unido puede igual necesitar más votos de los que tiene. Una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos, y cuando el bloque oficialista crece (como en diciembre de 2025) el excedente baja aunque el Gobierno apruebe lo mismo.
 
@@ -1107,7 +1107,7 @@ Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un blo
 - Se toman las votaciones nominales EN GENERAL de proyectos de ley DEL PODER EJECUTIVO que salieron aprobadas y en las que el bloque La Libertad Avanza (LLA) votó mayoritariamente a favor, es decir, con más votos afirmativos que negativos dentro del bloque. Quedan afuera las leyes cuyo proyecto no mandó el Ejecutivo (capitales nacionales, reconocimientos y otras iniciativas de legisladores, aunque se aprueben por unanimidad), los tratados, convenios, protocolos y acuerdos internacionales (aunque los mande el Ejecutivo, se votan casi por unanimidad y no miden cuánto cuesta aprobar la agenda), las votaciones en particular, las mociones, las habilitaciones sobre tablas, los pedidos de informes, las comisiones investigadoras, los decretos, los pliegos y designaciones, las leyes rechazadas y aquellas en las que LLA votó en contra o empató.
 - En el Senado el acta declara la etapa (en general, en particular, en general y en particular) y la clave del expediente, y se acepta el sufijo de proyecto de ley. En Diputados el acta no dice qué tipo de proyecto es: se decide por el título de la votación, y una votación única de un Orden del Día cuenta como votación en general.
 - El origen se resuelve así. En el Senado, el expediente del acta: una clave `PE` o `JGM` es del Ejecutivo; una `CD` (viene de Diputados) se cruza con el catálogo de proyectos parlamentarios, que registra cómo numera cada cámara el mismo proyecto; las claves `S`, `PR`, `PD` o `AC` no cuentan, y un acta sin clave usa la de su Orden del Día. En Diputados el acta no trae expediente: se cruza el número de Orden del Día con el dataset de dictámenes (el más reciente del último año) y los expedientes del dictamen con el catálogo. Una ley del Ejecutivo que pasa por las dos cámaras cuenta en cada una donde se votó en general.
-- Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, FMI, BID, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.
+- Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, Fondo Monetario Internacional, Banco Interamericano de Desarrollo, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.
 - Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes; en el Senado, con el bloque que cada senador tenía el día de la votación (el portal muestra el actual en todas las actas y los pases se corrigen con un registro versionado). El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.
 - Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. Diputados pesa más que el Senado, con el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.
 - La ventana no cruza la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y ninguna en el Senado, y no era el bloque oficialista.
@@ -1197,7 +1197,7 @@ Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en l
 
 Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días de ambas cámaras. Diputados pesa más que el Senado (el reparto está en el detalle de la tarjeta); si una cámara no tiene votaciones divididas en la ventana, el peso pasa a la otra.
 
-Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. Se compara con la cohesión del bloque PRO en el gobierno de Macri, medida igual. La composición por cámara se publica en el detalle.
+Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. Se compara con la cohesión del bloque de Propuesta Republicana (PRO) en el gobierno de Macri, medida igual. La composición por cámara se publica en el detalle.
 
 **Dimensión que integra — Cohesión interna del oficialismo.** Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás: la disciplina de voto del bloque propio de La Libertad Avanza, medida con dos indicadores bicamerales (Diputados 65%, Senado 35%) que pesan lo mismo: qué tan parejo vota el bloque propio de La Libertad Avanza, y cuántos votos de otros bloques hacen falta para aprobar una ley una vez descontadas sus propias bancas.
 
@@ -1239,7 +1239,7 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.
+- Solo cuenta al bloque propio de La Libertad Avanza: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.
 - Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.
 - No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.
 - Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.
@@ -1486,7 +1486,7 @@ Responde si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos
 
 - Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.
 - Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.
-- Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
+- Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8 de septiembre de 2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
 - No cuentan las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido con dos tercios: la pregunta es si el Congreso sanciona leyes que el Gobierno acepta, y una ley vetada entera es un desacuerdo, no producción compartida. Las vetadas en parte sí cuentan, porque se promulgaron. Los vetos salen del mismo registro que usan los vetos insistidos del índice; sin ese registro, el indicador no se actualiza.
 - Más leyes significa menos tensión entre el Congreso y el Gobierno. El desacuerdo abierto lo miden otros dos componentes de la misma dimensión: los vetos insistidos y los decretos derogados.
 
@@ -1541,7 +1541,7 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 
 **2026-10-28** — El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo.
 
-**2026-09-08** — Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.
+**2026-09-08** — Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse al catálogo de datos abiertos (CKAN).
 
 **2026-09-08** — Doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.
 
@@ -1681,7 +1681,7 @@ Es la mejor señal automatizable disponible del respaldo territorial, y conviene
 ## Método de cómputo
 
 - Para cada acta, determina la posición del bloque de La Libertad Avanza (el sentido en el que votó la mayoría de sus senadores). Si el bloque queda empatado, esa acta no aporta señal.
-- Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque LLA coincidió con esa posición. Las provincias donde los 3 senadores son de LLA quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.
+- Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque de La Libertad Avanza coincidió con esa posición. Las provincias donde los 3 senadores son de La Libertad Avanza quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.
 - El indicador es el promedio simple de esa proporción entre todas las provincias con al menos un senador no-LLA, sobre las actas de los últimos 90 días.
 - El bloque de cada senador es el que tenía el día de la votación. El portal del Senado muestra en todas las actas el bloque actual de cada senador, así que los pases se corrigen con un registro versionado (data/politica/pases_senadores.json, con la fuente de cada pase): un senador que se sumó a La Libertad Avanza después cuenta como de otro bloque en las votaciones anteriores a su pase, y uno que estuvo fuera del bloque cuenta como de otro bloque en esos meses.
 
@@ -1740,4 +1740,4 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 **2026-07-08** — Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia.
 
-**2026-07-09** — Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 70/60/50/40.
+**2026-07-09** — Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, febrero de 2024 a junio de 2026): nuevos cortes en 70/60/50/40.

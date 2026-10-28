@@ -63,15 +63,15 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Presión de precios** | | | | |
-| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
-| Alquiler (IPC del Gran Buenos Aires) | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 2,5 % |
-| Alquiler real (UdeSA – Mercado Libre) | Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre… | −9,84 % real interanual | VERDE | 2,5 % |
+| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % mensual | VERDE | 8,8 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,2 % |
+| Alquiler (índice de precios al consumidor del Gran Buenos Aires) | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % mensual alquileres | ROJO | 2,5 % |
+| Alquiler real (Universidad de San Andrés – Mercado Libre) | Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en… | −9,84 % real interanual | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,7 % |
-| Ocupación (EPH) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 pp vs. 2023 | AMARILLO | 14,5 % |
+| Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
 | **DIMENSIÓN: Ingresos** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas (RIPTE/CBT) | VERDE | 13,0 % |
+| Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas básicas totales | VERDE | 13,0 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,1 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,61 % de la cartera en situación irregular | ROJO | 7,0 % |
@@ -79,15 +79,15 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | VERDE | 8,2 % |
 | **DIMENSIÓN: Consumo** | | | | |
-| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg/hab/año | NARANJA | 0,4 % |
-| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg/hab/año | AMARILLO | 0,4 % |
+| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg por habitante por año | NARANJA | 0,4 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg por habitante por año | AMARILLO | 0,4 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
-| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil 12m) | ROJO | 0,7 % |
+| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil de 12 meses) | ROJO | 0,7 % |
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | VERDE | 2,7 % |
-| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,1 % |
-| Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
+| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 habitantes | VERDE | 1,1 % |
+| Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (sin los agravados) cada 100.000 habitantes | VERDE | 0,7 % |
 
 *Datos al 2026-10-28.*
 
@@ -99,22 +99,22 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Salario real vs. canasta
+# Salario real frente a la canasta básica
 
 Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,69 canastas (RIPTE/CBT)** (2026-08) | **VERDE** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,69 canastas básicas totales** (2026-08) | **VERDE** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
-| **SERIE DISPONIBLE** | 2021-09 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
-| **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | canastas básicas totales |
+| **SERIE DISPONIBLE** | 2021-09 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (remuneración imponible promedio de los trabajadores estables, RIPTE) corre un mes detrás de la canasta: el par común queda unos 2 meses atrás del calendario. |
+| **PRODUCTOR DEL DATO** | Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables, RIPTE) + Instituto Nacional de Estadística y Censos (INDEC: Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
 | **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -153,7 +153,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 3,69 canastas (RIPTE/CBT) (2026-08).
+Dato vigente: 3,69 canastas básicas totales (2026-08).
 
 El componente está en 107,3 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
@@ -192,25 +192,25 @@ Ponderación vigente en el ITCIS: 13 % efectivo. El color es una lectura adicion
 
 # Inflación de alimentos
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4º trimestre de 2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,66 % m/m** (2026-08) | **VERDE** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,66 % mensual** (2026-08) | **VERDE** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ipc_alimentos | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
-| **SERIE DISPONIBLE** | 2022-10 → 2026-08 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % mensual |
+| **SERIE DISPONIBLE** | 2022-10 → 2026-08 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor (IPC) se publica a mediados del mes siguiente. |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4º trimestre de 2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
@@ -240,11 +240,11 @@ Este componente está hoy en **107,6**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,66 % m/m) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (1,66 % mensual) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,66 % m/m (2026-08).
+Dato vigente: 1,66 % mensual (2026-08).
 
 El componente está en 107,6 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
@@ -283,16 +283,16 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 13 % del salario RIPTE** (2026-10) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 13 % del salario registrado promedio** (2026-10) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
-| **SERIE DISPONIBLE** | 2025-12 → 2026-10 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
-| **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario registrado promedio |
+| **SERIE DISPONIBLE** | 2025-12 → 2026-10 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El Instituto Interdisciplinario de Economía Política (IIEP) publica durante el mismo mes una estimación de la canasta y de la remuneración imponible promedio de los trabajadores estables (RIPTE) del período. |
+| **PRODUCTOR DEL DATO** | Instituto Interdisciplinario de Economía Política (IIEP) de la Universidad de Buenos Aires y el Consejo Nacional de Investigaciones Científicas y Técnicas, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del Área Metropolitana de Buenos Aires (AMBA) sobre salario RIPTE |
 | **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -328,11 +328,11 @@ Este componente está hoy en **111,3**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (13 % del salario RIPTE) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (13 % del salario registrado promedio) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 13 % del salario RIPTE (2026-10).
+Dato vigente: 13 % del salario registrado promedio (2026-10).
 
 Agua y energía representan 6,6% del salario; transporte, 6,4%. La mayor de las dos señales fija el color: verde (sin tensión relevante). El índice de asequibilidad resultante es 111,3 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
 
@@ -355,9 +355,9 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 ## Historial — cambios metodológicos documentados
 
-**2026-08-21** — IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado.
+**2026-08-21** — IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4º trimestre de 2023 subsidiado.
 
-**2026-07-03** — Entra al índice de impacto social base-100 como nivel de regulados contra el salario (decisión superada el 21-ago-2026).
+**2026-07-03** — Entra al índice de impacto social base-100 como nivel de regulados contra el salario (decisión superada el 21 de agosto de 2026).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -367,27 +367,27 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler (IPC del Gran Buenos Aires)
+# Alquiler (índice de precios al consumidor del Gran Buenos Aires)
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4º trimestre de 2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,88 % m/m alquileres** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,88 % mensual alquileres** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-09 (117 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % mensual alquileres |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-09 (117 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes). |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
 | **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4º trimestre de 2023.
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
@@ -418,11 +418,11 @@ Este componente está hoy en **50**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,88 % m/m alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (1,88 % mensual alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,88 % m/m alquileres (2026-09).
+Dato vigente: 1,88 % mensual alquileres (2026-09).
 
 El componente está en 50 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
@@ -446,7 +446,7 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 **2026-07-20** — Alta del indicador: la dimensión de precios no medía el costo de la vivienda.
 
-**2026-09-08** — La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.
+**2026-09-08** — La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4º trimestre de 2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.
 
 **2026-10-27** — Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.
 
@@ -458,9 +458,9 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler real (UdeSA – Mercado Libre)
+# Alquiler real (Universidad de San Andrés – Mercado Libre)
 
-Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
 
 | | | | |
 |---|---|---|---|
@@ -472,15 +472,15 @@ Cuánto subió en el último año el alquiler que se pide por los departamentos 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_udesa_real | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % real interanual |
-| **SERIE DISPONIBLE** | 2025-06 → 2026-09 (16 puntos) | **REZAGO DE PUBLICACIÓN** | El informe de AMBA sale entre el último día del mes y los primeros del siguiente; el punto necesita además el IPC del mismo mes, que el INDEC publica a mediados del mes siguiente (~1,5 meses). |
+| **SERIE DISPONIBLE** | 2025-06 → 2026-09 (16 puntos) | **REZAGO DE PUBLICACIÓN** | El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses). |
 | **PRODUCTOR DEL DATO** | Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles | **OPERACIÓN ESTADÍSTICA** | Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA |
 | **MODO DE ACCESO** | Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
 
-El IPC mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
+El índice de precios al consumidor mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
 
 **Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
@@ -526,7 +526,7 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Son precios de avisos publicados, no de contratos firmados: el alquiler que se pide no es el que se pacta ni el que paga quien ya alquila.
-- Sólo cubre departamentos de AMBA (CABA y Gran Buenos Aires) y no representa el interior del país.
+- Sólo cubre departamentos del Área Metropolitana de Buenos Aires (la Ciudad de Buenos Aires y el Gran Buenos Aires) y no representa el interior del país.
 - Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.
 - La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.
 - El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.
@@ -556,16 +556,16 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 45,81 kg/hab/año** (2026-09) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 45,81 kg por habitante por año** (2026-09) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carne_vacuna | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg por habitante por año |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
-| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del INDEC. |
+| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC). |
 | **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -601,11 +601,11 @@ Este componente está hoy en **85,6**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (45,81 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (45,81 kg por habitante por año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 45,81 kg/hab/año (2026-09).
+Dato vigente: 45,81 kg por habitante por año (2026-09).
 
 Consumo aparente de carne vacuna: 45,8 kg por habitante y año (−9,8% interanual), el 40,3% del total de las tres carnes, 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,8 kg, el 59,7% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
@@ -617,7 +617,7 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 - El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
 - No descuenta variaciones de stock: un mes con mucha carne en cámaras se lee como consumo. El promedio de 12 meses lo atenúa.
-- El equipo cita un «promedio histórico ~73 kg/hab/año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.
+- El equipo cita un «promedio histórico alrededor de 73 kg por habitante por año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.
 - El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
 ## Si falta el dato / Política de revisiones
@@ -636,9 +636,9 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 **2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
-**2026-09-15** — Vuelve a puntuar por separado, a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.
+**2026-09-15** — Vuelve a puntuar por separado, a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4º trimestre de 2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.
 
-**2026-09-16** — Se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.
+**2026-09-16** — Se retira el «promedio histórico alrededor de 73 kg» sin fuente citable, se declara la divergencia entre la Secretaría de Agricultura, Ganadería y Pesca (SAGYP) y la Cámara de la Industria y Comercio de Carnes y Derivados de la República Argentina (CICCRA) (46,75 contra 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.
 
 **2026-09-24** — Sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar.
 
@@ -658,16 +658,16 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 113,6 kg/hab/año** (2026-09) | **AMARILLO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 113,6 kg por habitante por año** (2026-09) | **AMARILLO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carnes_total | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg por habitante por año |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
-| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del INDEC y su suma reproduce el total del tablero de consumo de carnes. |
+| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC) y su suma reproduce el total del tablero de consumo de carnes. |
 | **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -703,11 +703,11 @@ Este componente está hoy en **97,1**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (113,6 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (113,6 kg por habitante por año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 113,6 kg/hab/año (2026-09).
+Dato vigente: 113,6 kg por habitante por año (2026-09).
 
 Consumo aparente de las tres carnes: 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. La carne vacuna aporta 45,8 kg, el 40,3%, y se sigue además como indicador propio; aviar y porcina suman 67,8 kg, el 59,7% (aviar −0,2% y porcina 10,8% interanual). Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
@@ -769,16 +769,16 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 | **IDENTIFICADOR TÉCNICO** | informalidad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-07 → 2026-04 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
-| **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
 Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).
 
-Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
+Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4º trimestre de 2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del INDEC contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores PyME, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
+**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del Instituto Nacional de Estadística y Censos (INDEC) contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores de pequeñas y medianas empresas, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
 
 ## Método de cómputo
 
@@ -843,37 +843,37 @@ Ponderación vigente en el ITCIS: 9,7 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Ocupación (EPH)
+# Ocupación (Encuesta Permanente de Hogares)
 
-Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
+Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del Instituto Nacional de Estadística y Censos (INDEC) en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,4 pp vs. 2023** (2026-04) | **AMARILLO** | Peso efectivo 14,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 0,4 puntos porcentuales frente a 2023** (2026-04) | **AMARILLO** | Peso efectivo 14,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ocupacion_eph | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | pp vs. 2023 |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El INDEC publica el trimestre unos 80 días después de su cierre (el 2T-2026 estaba en la API antes del 20-sep-2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación. |
-| **PRODUCTOR DEL DATO** | INDEC (EPH continua) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral |
+| **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | puntos porcentuales frente a 2023 |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El Instituto Nacional de Estadística y Censos (INDEC) publica el trimestre unos 80 días después de su cierre (el 2º trimestre de 2026 estaba en la interfaz de programación pública antes del 20 de septiembre de 2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación. |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) continua | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
+Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del Instituto Nacional de Estadística y Censos (INDEC) en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
 
 Es el principal componente de la dimensión de empleo del índice de impacto social: dice si en el último trimestre publicado trabaja más o menos gente que cuando empezó el Gobierno, sea o no en empleo registrado. Se compara el mismo trimestre porque la encuesta no está desestacionalizada. La tasa se mueve poco, así que cada décima de punto cuenta. No distingue la calidad del empleo.
 
-**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del INDEC contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores PyME, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
+**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del Instituto Nacional de Estadística y Censos (INDEC) contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores de pequeñas y medianas empresas, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
 
 ## Método de cómputo
 
 - La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.
 - Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.
-- Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en ARCA, del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta los CUIT con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (ago-2014, mar-2015, jun-2020, abr-2021 y ago-2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde oct-2026), con un ADR propio.
+- Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en la Agencia de Recaudación y Control Aduanero (ARCA), del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta las claves únicas de identificación tributaria (CUIT) con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (agosto de 2014, marzo de 2015, junio de 2020, abril de 2021 y agosto de 2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde octubre de 2026), con un ADR propio.
 
 ## Semáforo — valores que determinan el color
 
@@ -894,11 +894,11 @@ Este componente está hoy en **104**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023. Empleadores inscriptos en ARCA: 511.847 (24-oct-2026): 290.897 empresas y sociedades y 220.950 personas. El 24-ago-2024 eran 553.057 (−7,5 %). No puntúa todavía.
+- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023. Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): 511.847 (24 de octubre de 2026): 290.897 empresas y sociedades y 220.950 personas. El 24 de agosto de 2024 eran 553.057 (−7,5 %). No puntúa todavía.
 
 ## Color vigente y por qué
 
-Dato vigente: 0,4 pp vs. 2023 (2026-04).
+Dato vigente: 0,4 puntos porcentuales frente a 2023 (2026-04).
 
 El componente está en 104 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
 
@@ -911,7 +911,7 @@ Ponderación vigente en el ITCIS: 14,5 % efectivo. El color es una lectura adici
 - Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.
 - Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.
 - La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.
-- El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en oct-2026 y lo previo son tres copias sueltas del Internet Archive (jun-2020, abr-2021, ago-2024). No hay copia de dic-2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en ago-2024 a 48.391 en oct-2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).
+- El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en octubre de 2026 y lo previo son tres copias sueltas del Internet Archive (junio de 2020, abril de 2021, agosto de 2024). No hay copia de diciembre de 2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en agosto de 2024 a 48.391 en octubre de 2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).
 
 ## Si falta el dato / Política de revisiones
 
@@ -923,9 +923,9 @@ Ponderación vigente en el ITCIS: 14,5 % efectivo. El color es una lectura adici
 
 **2026-10-27** — Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.
 
-**2026-10-27** — Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.
+**2026-10-27** — Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26 de octubre de 2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.
 
-**2026-10-27** — Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en oct-2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (jun-2020, abr-2021, ago-2024).
+**2026-10-27** — Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en octubre de 2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (junio de 2020, abril de 2021, agosto de 2024).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -950,7 +950,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 | **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
 | **SERIE DISPONIBLE** | 2014-01 → 2026-07 (150 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
-| **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
+| **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP) (métrica) + Ministerio de Seguridad — Sistema Nacional de Información Criminal (SNIC) (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
 | **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -985,7 +985,7 @@ Este componente está hoy en **115,6**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613
+- Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste del Sistema Nacional de Información Criminal (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613
 
 ## Color vigente y por qué
 
@@ -1000,9 +1000,9 @@ Ponderación vigente en el ITCIS: 2,7 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - La base son tres meses de una encuesta con error muestral de ±3 puntos: octubre y noviembre de 2023 fueron altos (34% y 33%) y diciembre bajo (28%). El promedio atenúa, pero no elimina, ese ruido.
-- Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
+- Error muestral de ±3 puntos por mes (unos 1.000 hogares) y cobertura solo urbana.
 - La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
-- El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16-sep-2026.
+- El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16 de septiembre de 2026.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1040,15 +1040,15 @@ Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nac
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,48 homicidios dolosos cada 100.000 hab.** (2025-12) | **VERDE** | Peso efectivo 1,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,48 homicidios dolosos cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 1,1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | tasa_homicidios | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | homicidios dolosos cada 100.000 hab. |
-| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con ~8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
+| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | homicidios dolosos cada 100.000 habitantes |
+| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con unos 8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16 de septiembre de 2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
 | **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = "Homicidios dolosos"`). No se reconstruye con población propia. |
 | **MODO DE ACCESO** | Automático: planilla pública sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
 
@@ -1056,7 +1056,7 @@ Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nac
 
 Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC) del Ministerio de Seguridad sobre su registro anual de denuncias, serie oficial 2000-2025.
 
-Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al índice de victimización de la Universidad Torcuato Di Tella, que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.
+Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al índice de victimización de la Universidad Torcuato Di Tella, que es mensual pero no distingue tipo de delito. Es anual, con unos 8,5 meses de rezago desde el cierre del año.
 
 **Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
@@ -1084,11 +1084,11 @@ Este componente está hoy en **140**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (3,48 homicidios dolosos cada 100.000 hab.) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (3,48 homicidios dolosos cada 100.000 habitantes) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 3,48 homicidios dolosos cada 100.000 hab. (2025-12).
+Dato vigente: 3,48 homicidios dolosos cada 100.000 habitantes (2025-12).
 
 El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
@@ -1098,7 +1098,7 @@ Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- Anual con ~8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.
+- Anual con unos 8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.
 - Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.
 - La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.
 
@@ -1116,7 +1116,7 @@ Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicio
 
 **2026-09-16** — Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del índice de impacto social).
 
-**2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50).
+**2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no cerca de 50).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1132,15 +1132,15 @@ Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 778,1 robos (excl. agravados) cada 100.000 hab.** (2025-12) | **VERDE** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 778,1 robos (sin los agravados) cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | tasa_robos | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | robos (excl. agravados) cada 100.000 hab. |
-| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, ~8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días. |
+| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | robos (sin los agravados) cada 100.000 habitantes |
+| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, unos 8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días. |
 | **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Robos que excluyen los agravados por el resultado de lesiones o muertes, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos`, filtrada por `codigo_delito_snic_nombre = "Robos (excluye los agravados por el resultado de lesiones y/o muertes)"`). |
 | **MODO DE ACCESO** | Automático: mismo store persistente que `tasa_homicidios`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
 
@@ -1176,11 +1176,11 @@ Este componente está hoy en **118,9**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada.
+- La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal. Se publica el dato oficial vigente con esta limitación declarada.
 
 ## Color vigente y por qué
 
-Dato vigente: 778,1 robos (excl. agravados) cada 100.000 hab. (2025-12).
+Dato vigente: 778,1 robos (sin los agravados) cada 100.000 habitantes (2025-12).
 
 El componente está en 118,9 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
@@ -1192,7 +1192,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 - Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.
 - LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la tarjeta, no sólo el de esta ficha, tiene que poder verla.
-- Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.
+- Anual con unos 8,5 meses de rezago, igual que `tasa_homicidios`.
 - Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).
 
 ## Si falta el dato / Política de revisiones
@@ -1235,7 +1235,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | % de personas |
-| **SERIE DISPONIBLE** | 2025-01 → 2026-08 (20 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
+| **SERIE DISPONIBLE** | 2025-01 → 2026-08 (20 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del Instituto Nacional de Estadística y Censos (INDEC) llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
 | **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
@@ -1329,7 +1329,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | **IDENTIFICADOR TÉCNICO** | motorizacion_total | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-09 (45 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
-| **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
+| **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e Instituto Nacional de Estadística y Censos (INDEC: población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
 | **MODO DE ACCESO** | Automático: planilla abierta sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -1427,14 +1427,14 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,54 motos por cada auto patentado (móvil 12m)** (2026-09) | **ROJO** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,54 motos por cada auto patentado (móvil de 12 meses)** (2026-09) | **ROJO** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_motos_autos | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil 12m) |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil de 12 meses) |
 | **SERIE DISPONIBLE** | 2007-12 → 2026-09 (226 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`. |
 | **MODO DE ACCESO** | Automático: planilla abierta sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
@@ -1475,7 +1475,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 1,54 motos por cada auto patentado (móvil 12m) (2026-09).
+Dato vigente: 1,54 motos por cada auto patentado (móvil de 12 meses) (2026-09).
 
 El componente está en 84,5 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO.
 
@@ -1516,7 +1516,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 # Ventas en supermercados
 
-Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4T-2023.
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4º trimestre de 2023.
 
 | | | | |
 |---|---|---|---|
@@ -1528,13 +1528,13 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-08 (116 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-08 (116 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del Instituto Nacional de Estadística y Censos (INDEC) entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
 | **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4T-2023.
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4º trimestre de 2023.
 
 Mide ventas reales de los supermercados relevados. Complementa ingresos, precios y otros consumos; no cubre toda la compra de alimentos ni el comercio minorista. Los cambios de canal de compra también pueden mover la serie.
 
@@ -1622,8 +1622,8 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | mora_familias | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
-| **SERIE DISPONIBLE** | 2021-07 → 2026-08 (62 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
-| **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-08 (62 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con unos 2 meses de rezago. |
+| **PRODUCTOR DEL DATO** | Banco Central de la República Argentina (BCRA) | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
 | **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -1673,7 +1673,7 @@ Ponderación vigente en el ITCIS: 7 % efectivo. El color es una lectura adiciona
 
 ## Transparencia — limitaciones declaradas
 
-- La mora de las familias se multiplicó por varias veces desde la base 4T-2023: el componente concentra buena parte del arrastre del índice, y así se publica.
+- La mora de las familias se multiplicó por varias veces desde la base 4º trimestre de 2023: el componente concentra buena parte del arrastre del índice, y así se publica.
 - Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.
 - El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.
 
@@ -1713,8 +1713,8 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | carga_servicio_deuda_hogares | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
-| **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral. |
-| **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
+| **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el Banco Central de la República Argentina (BCRA) la publica por lotes con el Informe de Estabilidad Financiera semestral. |
+| **PRODUCTOR DEL DATO** | Banco Central de la República Argentina (BCRA) | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
 | **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
@@ -1750,7 +1750,7 @@ Este componente está hoy en **42,3**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el BCRA promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.
+- Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el Banco Central promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.
 
 ## Color vigente y por qué
 
@@ -1800,7 +1800,7 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | icg_utdt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice 0-5 |
-| **SERIE DISPONIBLE** | 2001-11 → 2026-10 (300 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes). |
+| **SERIE DISPONIBLE** | 2001-11 → 2026-10 (300 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la Universidad Torcuato Di Tella (UTDT) lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes). |
 | **PRODUCTOR DEL DATO** | UTDT | **OPERACIÓN ESTADÍSTICA** | Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual) |
 | **MODO DE ACCESO** | Automático: lectura de la planilla histórica que publica la universidad. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
@@ -1836,7 +1836,7 @@ Este componente está hoy en **106,7**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Encuesta mensual de la UTDT que promedia cinco atributos del Gobierno nacional —imagen general, eficiencia, honestidad, capacidad para resolver los problemas y preocupación por el interés general— en una escala de 0 a 5. Más confianza implica más apoyo disponible para sostener el rumbo.
+- Encuesta mensual de la Universidad Torcuato Di Tella que promedia cinco atributos del Gobierno nacional —imagen general, eficiencia, honestidad, capacidad para resolver los problemas y preocupación por el interés general— en una escala de 0 a 5. Más confianza implica más apoyo disponible para sostener el rumbo.
 
 ## Color vigente y por qué
 

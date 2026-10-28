@@ -155,8 +155,8 @@ def test_el_mes_en_curso_no_entra_y_la_card_declara_su_fecha(monkeypatch):
     assert card is not None
     assert card["fecha_dato"] == "2024-12-31"            # dic-2024, no ene-2025
     assert card["valor"] == pytest.approx(100.0)          # 2400 contra 1200 de 2023, IPC plano
-    assert card["unidad"] == "% real vs 2023"
-    assert "ATN" in card["detalle_txt"] and card["periodo"].endswith("vs 2023")
+    assert card["unidad"] == "% real frente a 2023"
+    assert "Aportes del Tesoro Nacional" in card["detalle_txt"] and card["periodo"].endswith("frente a 2023")
 
 
 def test_si_falla_la_fuente_devuelve_none(monkeypatch):

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-28T18:18:34.955953-03:00",
+  "generated_at": "2026-10-28T19:43:12.378717-03:00",
   "period": "2026-10",
   "score_global": 3.8,
   "ponderacion": {
@@ -22,10 +22,10 @@
         "ipc_total": {
           "valor": 1.93,
           "unidad": "% mensual",
-          "fuente": "INDEC — IPC nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:57:25",
+          "obtenido_en": "2026-10-28T19:24:03",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 41.4,
@@ -68,8 +68,8 @@
         },
         "reservas_bcra": {
           "valor": 10725.0,
-          "unidad": "Millones de USD",
-          "fuente": "BCRA — Planilla de reservas internacionales y Balance Consolidado",
+          "unidad": "Millones de dólares",
+          "fuente": "Banco Central de la República Argentina (BCRA) — Planilla de reservas internacionales y Balance Consolidado",
           "fecha_dato": "2026-09-30",
           "netas_sdds_estricto": 7465.0,
           "depositos_tesoro": 1125.0,
@@ -80,7 +80,7 @@
           "drenaje_repos": -2488.0,
           "metodo": "sdds+tesoro+bopreal",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:57:28",
+          "obtenido_en": "2026-10-28T19:24:06",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 62.9,
@@ -91,7 +91,7 @@
           "aporte_formula": "Anclas del índice macroeconómico: >20.000 → 100 · 15.000–20.000 → 85 · 10.000–15.000 → 70 · 5000–10.000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 62.9; pesa 5,4% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
-          "aporte_input_txt": "netas 10725 = SDDS estricto 7465 + Tesoro 1125 + tramo II.1 >3 meses–1 año 2136 (M USD; fórmula CIGOB)",
+          "aporte_input_txt": "netas 10725 = estándar estricto de divulgación 7465 + Tesoro 1125 + tramo II.1 >3 meses–1 año 2136 (millones de dólares; fórmula CIGOB)",
           "semaforo": {
             "color": "verde",
             "tension": 3.7,
@@ -117,14 +117,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "Millones de USD",
-            "por_que": "10.725 Millones de USD está en Verde, a 725,0 del límite con Amarillo (10.000)."
+            "unidad": "Millones de dólares",
+            "por_que": "10.725 Millones de dólares está en Verde, a 725,0 del límite con Amarillo (10.000)."
           }
         },
         "idc": {
           "valor": -0.35,
-          "unidad": "σ vs. su historia",
-          "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
+          "unidad": "σ frente a su historia",
+          "fuente": "Banco Central de la República Argentina (BCRA) — tasa BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
           "fecha_dato": "2026-09-01",
           "componentes": {
             "precio": 0.45,
@@ -140,7 +140,7 @@
           "badlar_real_mensual": -0.21,
           "banda_idc": "amarillo",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:57:30",
+          "obtenido_en": "2026-10-28T19:24:07",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 48.3,
@@ -151,7 +151,7 @@
           "aporte_formula": "Anclas del índice macroeconómico: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 48.3; pesa 3,4% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "−0,35 σ = precio 0,45 · volumen −0,3 · asignación −1,22 (banda propia de este indicador: amarillo) — niveles: tasa real −0,21 pp · depósitos −4,1% i.a. real · holgura 15,4%",
+          "aporte_input_txt": "−0,35 σ = precio 0,45 · volumen −0,3 · asignación −1,22 (banda propia de este indicador: amarillo) — niveles: tasa real −0,21 puntos porcentuales · depósitos −4,1% interanual real · holgura 15,4%",
           "semaforo": {
             "color": "amarillo",
             "tension": 5.2,
@@ -177,17 +177,17 @@
                 "hasta": null
               }
             ],
-            "unidad": "σ vs. su historia",
-            "por_que": "−0,35 σ vs. su historia está en Amarillo, a 0,25 del límite con Naranja (−0,6)."
+            "unidad": "σ frente a su historia",
+            "por_que": "−0,35 σ frente a su historia está en Amarillo, a 0,25 del límite con Naranja (−0,6)."
           }
         },
         "emae_ia": {
           "valor": -1.44,
-          "unidad": "% i.a.",
-          "fuente": "INDEC — EMAE (vía datos.gob.ar)",
+          "unidad": "% interanual",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) (vía datos.gob.ar)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:57:31",
+          "obtenido_en": "2026-10-28T19:24:07",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 36.5,
@@ -224,14 +224,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "% i.a.",
-            "por_que": "−1,44 % i.a. está en Naranja, a 0,44 del límite con Amarillo (−1,0)."
+            "unidad": "% interanual",
+            "por_que": "−1,44 % interanual está en Naranja, a 0,44 del límite con Amarillo (−1,0)."
           }
         },
         "emae_difusion": {
           "valor": 46.67,
-          "unidad": "% de sectores en crecimiento i.a.",
-          "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+          "unidad": "% de sectores en crecimiento interanual",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE), apertura sectorial (vía datos.gob.ar)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "sectores_totales": 15,
@@ -299,7 +299,7 @@
             }
           ],
           "detalle_txt": "7 de 15 sectores crecen · lidera Pesca (424,51%) · el que más cae es Comercio mayorista, minorista y reparaciones (-5,05%)",
-          "obtenido_en": "2026-10-28T17:57:53",
+          "obtenido_en": "2026-10-28T19:24:17",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 43.3,
@@ -336,17 +336,17 @@
                 "hasta": null
               }
             ],
-            "unidad": "% de sectores en crecimiento i.a.",
-            "por_que": "46,67 % de sectores en crecimiento i.a. está en Amarillo, a 2,67 del límite con Naranja (44,0)."
+            "unidad": "% de sectores en crecimiento interanual",
+            "por_que": "46,67 % de sectores en crecimiento interanual está en Amarillo, a 2,67 del límite con Naranja (44,0)."
           }
         },
         "ipi_manufacturero": {
           "valor": -2.04,
-          "unidad": "% i.a. (promedio 3 meses)",
-          "fuente": "INDEC — IPI manufacturero, nivel general (planilla original vigente)",
+          "unidad": "% interanual (promedio de 3 meses)",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de producción industrial (IPI) manufacturero, nivel general (planilla original vigente)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:57:54",
+          "obtenido_en": "2026-10-28T19:24:18",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 31.7,
@@ -383,20 +383,20 @@
                 "hasta": null
               }
             ],
-            "unidad": "% i.a. (promedio 3 meses)",
-            "por_que": "−2,04 % i.a. (promedio 3 meses) está en Naranja, a 1,04 del límite con Amarillo (−1,0)."
+            "unidad": "% interanual (promedio de 3 meses)",
+            "por_que": "−2,04 % interanual (promedio de 3 meses) está en Naranja, a 1,04 del límite con Amarillo (−1,0)."
           }
         },
         "saldo_comercial_12m": {
           "valor": 15.11,
-          "unidad": "% del comercio (exportaciones + importaciones, acum. 12 meses)",
+          "unidad": "% del comercio (exportaciones + importaciones, acumulado de 12 meses)",
           "saldo_musd": 26472.0,
           "comercio_musd": 175217.0,
-          "detalle_txt": "saldo de US$ 26.472 millones sobre un comercio de US$ 175.217 millones (exportaciones US$ 100.845 M · importaciones US$ 74.373 M), doce meses a 2026-09",
-          "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
+          "detalle_txt": "saldo de US$ 26.472 millones sobre un comercio de US$ 175.217 millones (exportaciones US$ 100.845 millones · importaciones US$ 74.373 millones), doce meses a 2026-09",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Intercambio Comercial Argentino, cuadro original vigente + historia datos.gob.ar",
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_19_10_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-10-28T17:57:58",
+          "obtenido_en": "2026-10-28T19:24:19",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "expo_12m": 100845.0,
@@ -441,17 +441,17 @@
                 "hasta": null
               }
             ],
-            "unidad": "% del comercio (exportaciones + importaciones, acum. 12 meses)",
-            "por_que": "15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) está en Verde, a 4,51 del límite con Amarillo (10,6)."
+            "unidad": "% del comercio (exportaciones + importaciones, acumulado de 12 meses)",
+            "por_que": "15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) está en Verde, a 4,51 del límite con Amarillo (10,6)."
           }
         },
         "recaudacion": {
           "valor": 94.4,
-          "unidad": "índice (100 = 4T-2023)",
-          "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+          "unidad": "índice (100 = 4º trimestre de 2023)",
+          "fuente": "Secretaría de Hacienda — recaudación de la Dirección General Impositiva (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
           "fecha_dato": "2026-09-01",
           "aporte_provincial_pct": 16.1,
-          "detalle_txt": "La base imponible real está en 94,4 sobre una base de 100 en el cuarto trimestre de 2023, es decir 5,6% por debajo. Meses previos: 2026-06: 88,2 · 2026-07: 102,1 · 2026-08: 91,3. Los impuestos provinciales del Convenio Multilateral aportan 16,1% de la base medida. Composición (2026-09, var. i.a. real): IVA-DGI 1,6%, cheque -0,3%, agregado 6,8%. La porción ligada a actividad (IVA + cheque) fue en sentido distinto del agregado: el movimiento del agregado no vino (sólo) de esa porción — puede venir del resto (Ganancias, cambios normativos, anticipos, aduana). IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no una fuente independiente— y tampoco miden actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.",
+          "detalle_txt": "La base imponible real está en 94,4 sobre una base de 100 en el cuarto trimestre de 2023, es decir 5,6% por debajo. Meses previos: 2026-06: 88,2 · 2026-07: 102,1 · 2026-08: 91,3. Los impuestos provinciales del Convenio Multilateral aportan 16,1% de la base medida. Composición (2026-09, variación interanual real): impuesto al valor agregado 1,6%, cheque -0,3%, agregado 6,8%. La porción ligada a actividad (IVA + cheque) fue en sentido distinto del agregado: el movimiento del agregado no vino (sólo) de esa porción — puede venir del resto (Ganancias, cambios normativos, anticipos, aduana). IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no una fuente independiente— y tampoco miden actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.",
           "desactualizado": false,
           "control_tributario": {
             "fecha": "2026-09",
@@ -461,7 +461,7 @@
             "diverge": true,
             "meses_atraso": 0
           },
-          "obtenido_en": "2026-10-28T17:58:01",
+          "obtenido_en": "2026-10-28T19:24:21",
           "en_indice": true,
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 58.5,
@@ -498,17 +498,17 @@
                 "hasta": null
               }
             ],
-            "unidad": "índice (100 = 4T-2023)",
-            "por_que": "94,4 índice (100 = 4T-2023) está en Amarillo, a 0,6 del límite con Verde (95,0)."
+            "unidad": "índice (100 = 4º trimestre de 2023)",
+            "por_que": "94,4 índice (100 = 4º trimestre de 2023) está en Amarillo, a 0,6 del límite con Verde (95,0)."
           }
         },
         "tcrm": {
           "valor": 85.87,
-          "unidad": "Índice (base dic-2015=100)",
-          "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+          "unidad": "Índice (base diciembre de 2015 = 100)",
+          "fuente": "Banco Central de la República Argentina (BCRA) — Índice de Tipo de Cambio Real Multilateral",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:58:03",
+          "obtenido_en": "2026-10-28T19:24:23",
           "en_indice": true,
           "dimension": "sector_externo",
           "puntaje_itcm": 49.7,
@@ -545,19 +545,19 @@
                 "hasta": null
               }
             ],
-            "unidad": "Índice (base dic-2015=100)",
-            "por_que": "85,87 Índice (base dic-2015=100) está en Amarillo, a 3,87 del límite con Naranja (82,0)."
+            "unidad": "Índice (base diciembre de 2015 = 100)",
+            "por_que": "85,87 Índice (base diciembre de 2015 = 100) está en Amarillo, a 3,87 del límite con Naranja (82,0)."
           }
         },
         "terminos_intercambio": {
           "valor": 145.14,
           "unidad": "índice (base 2004 = 100)",
-          "fuente": "INDEC — términos del intercambio (vía datos.gob.ar)",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — términos del intercambio (vía datos.gob.ar)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "trimestre": "2T-2026",
           "posicion": 0.8335,
-          "obtenido_en": "2026-10-28T17:58:10",
+          "obtenido_en": "2026-10-28T19:24:26",
           "en_indice": true,
           "dimension": "sector_externo",
           "puntaje_itcm": 85.0,
@@ -601,23 +601,23 @@
         "rem_ipc_12m": {
           "valor": 21.1,
           "unidad": "% anual esperado",
-          "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
+          "fuente": "Banco Central de la República Argentina (BCRA) — Relevamiento de Expectativas de Mercado (REM), expectativas de inflación (API monetarias)",
           "fecha_dato": "2026-09-30",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:58:16",
+          "obtenido_en": "2026-10-28T19:24:30",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 47.8,
           "puntaje_banda": 47.8,
           "peso_efectivo": 0.052,
           "equivalente_mensual": 1.61,
-          "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el IPC.",
+          "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el índice de precios al consumidor.",
           "metodo_obtencion": "automatico",
           "aporte_score": 5.2,
           "aporte_formula": "Anclas del índice macroeconómico: ≤0,5 (≤6,2 anual) → 100 · 0,5–1,5 (6,2–19,6 anual) → 60 · 1,5–2,5 (19,6–34,5 anual) → 40 · 2,5–3,5 (34,5–51,1 anual) → 20 · >3,5 (>51,1 anual) → 10 — en % por mes, el equivalente mensual de la expectativa anual (puntaje interpolado entre anclas: 47.8; pesa 5,2% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "equiv. mensual 1,61% (raíz-12 del 21,1% anual)",
+          "aporte_input_txt": "equivalente mensual 1,61% (raíz-12 del 21,1% anual)",
           "semaforo": {
             "color": "amarillo",
             "tension": 5.2,
@@ -649,8 +649,8 @@
         },
         "desequilibrio_monetario": {
           "valor": 64.02,
-          "unidad": "pts de tensión (0-100)",
-          "fuente": "BCRA (M2 transaccional privado, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
+          "unidad": "puntos de tensión (0-100)",
+          "fuente": "Banco Central de la República Argentina (BCRA: dinero transaccional privado M2, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "puntaje_itcm": 36.0,
@@ -659,7 +659,7 @@
           "posicion_a": 0.2842,
           "posicion_b": 0.5622,
           "celda": "liquidez_y_presion",
-          "obtenido_en": "2026-10-28T17:58:25",
+          "obtenido_en": "2026-10-28T19:24:40",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_banda": 36.0,
@@ -695,14 +695,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "pts de tensión (0-100)",
-            "por_que": "64,02 pts de tensión (0-100) está en Naranja, a 4,02 del límite con Amarillo (60,0)."
+            "unidad": "puntos de tensión (0-100)",
+            "por_que": "64,02 puntos de tensión (0-100) está en Naranja, a 4,02 del límite con Amarillo (60,0)."
           }
         },
         "iai": {
           "valor": -1.74,
-          "unidad": "% i.a. ponderado",
-          "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+          "unidad": "% interanual ponderado",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — indicador sintético de la actividad de la construcción (ISAC) + Intercambio Comercial Argentino (bienes de capital importados)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "componentes": {
@@ -710,8 +710,8 @@
             "bk_importados": 3.1
           },
           "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
-          "detalle_txt": "-1.7 % i.a. = ISAC -4.4% · BK importados +3.1% (mes común: 2026-08) — BK 2026-09 (provisorio, no puntúa): -10.4%",
-          "obtenido_en": "2026-10-28T17:58:27",
+          "detalle_txt": "-1.7 % interanual = construcción -4.4% · bienes de capital importados +3.1% (mes común: 2026-08) — BK 2026-09 (provisorio, no puntúa): -10.4%",
+          "obtenido_en": "2026-10-28T19:24:45",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 58.3,
@@ -722,7 +722,7 @@
           "aporte_formula": "Anclas del índice macroeconómico: >37,97 → 100 · 19,07–37,97 → 80 · -18,73 a 19,07 → 60 · -37,63 a -18,73 → 35 · ≤-37,63 → 10 (puntaje interpolado entre anclas: 58.3; pesa 6,9% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "−1,74% i.a. = ISAC −4,4% · BK importados 3,1%",
+          "aporte_input_txt": "−1,74% interanual = construcción −4,4% · bienes de capital importados 3,1%",
           "semaforo": {
             "color": "amarillo",
             "tension": 4.2,
@@ -748,14 +748,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "% i.a. ponderado",
-            "por_que": "−1,74 % i.a. ponderado está en Amarillo, a 1,91 del límite con Verde (0,17)."
+            "unidad": "% interanual ponderado",
+            "por_que": "−1,74 % interanual ponderado está en Amarillo, a 1,91 del límite con Verde (0,17)."
           }
         },
         "credito_privado": {
           "valor": -0.6,
-          "unidad": "% i.a. real (crédito en pesos)",
-          "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
+          "unidad": "% interanual real (crédito en pesos)",
+          "fuente": "Banco Central de la República Argentina (BCRA: préstamos al sector privado en pesos, var. 117) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "nominal_ia": 32.6,
@@ -764,8 +764,8 @@
           "usd_saldo_mm": 26164,
           "me_en_pesos_ia_real": 15.4,
           "total_ia_real": 2.9,
-          "detalle_txt": "nominal 32,6% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-09) · aparte, la cartera en moneda extranjera 15,4% real medida en pesos y 38,6% en dólares; los dos universos juntos, 2,9% real — al 2026-10-23 (provisorio, no puntúa): -1,4% real con deflactor de 2026-09",
-          "obtenido_en": "2026-10-28T17:58:36",
+          "detalle_txt": "nominal 32,6% interanual deflactado por el índice de precios al consumidor, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-09) · aparte, la cartera en moneda extranjera 15,4% real medida en pesos y 38,6% en dólares; los dos universos juntos, 2,9% real — al 2026-10-23 (provisorio, no puntúa): -1,4% real con deflactor de 2026-09",
+          "obtenido_en": "2026-10-28T19:24:50",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 54.2,
@@ -802,14 +802,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "% i.a. real (crédito en pesos)",
-            "por_que": "−0,6 % i.a. real (crédito en pesos) está en Amarillo, a 4,22 del límite con Verde (3,62)."
+            "unidad": "% interanual real (crédito en pesos)",
+            "por_que": "−0,6 % interanual real (crédito en pesos) está en Amarillo, a 4,22 del límite con Verde (3,62)."
           }
         },
         "costo_financiamiento_tesoro": {
           "valor": 6.22,
-          "unidad": "% real anual (TIREA vs. inflación esperada REM)",
-          "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+          "unidad": "% real anual (tasa efectiva anual frente a la inflación esperada)",
+          "fuente": "Secretaría de Finanzas — colocaciones de deuda + Banco Central de la República Argentina (BCRA: Relevamiento de Expectativas de Mercado)",
           "fecha_dato": "2026-09-01",
           "tirea_nominal": 28.63,
           "inflacion_esperada": 21.1,
@@ -836,7 +836,7 @@
           ],
           "detalle_txt": "2026-09: TIREA de corte 28.6% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.1% → +6.2% real",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:58:37",
+          "obtenido_en": "2026-10-28T19:24:50",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 86.6,
@@ -883,18 +883,18 @@
                 "hasta": null
               }
             ],
-            "unidad": "% real anual (TIREA vs. inflación esperada REM)",
-            "por_que": "6,22 % real anual (TIREA vs. inflación esperada REM) está en Verde, a 6,28 del límite con Amarillo (12,5)."
+            "unidad": "% real anual (tasa efectiva anual frente a la inflación esperada)",
+            "por_que": "6,22 % real anual (tasa efectiva anual frente a la inflación esperada) está en Verde, a 6,28 del límite con Amarillo (12,5)."
           }
         },
         "resultado_primario": {
           "valor": 6.02,
-          "unidad": "% de la recaudación (acum. 12 meses)",
-          "fuente": "Sec. de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
+          "unidad": "% de la recaudación (acumulado de 12 meses)",
+          "fuente": "Secretaría de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "detalle_txt": "2026-08: superávit primario de 6.0% de la recaudación acumulada de doce meses",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:58:38",
+          "obtenido_en": "2026-10-28T19:24:50",
           "en_indice": true,
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 65.2,
@@ -931,8 +931,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "% de la recaudación (acum. 12 meses)",
-            "por_que": "6,02 % de la recaudación (acum. 12 meses) está en Verde, a 2,05 del límite con Amarillo (3,97)."
+            "unidad": "% de la recaudación (acumulado de 12 meses)",
+            "por_que": "6,02 % de la recaudación (acumulado de 12 meses) está en Verde, a 2,05 del límite con Amarillo (3,97)."
           }
         }
       },
@@ -2474,7 +2474,7 @@
             }
           ],
           "detalle_txt": "37 decretos de necesidad y urgencia y 32 leyes publicados en el Boletín Oficial entre el 29/10/2025 y el 28/10/2026: 1,16 decretos por ley",
-          "obtenido_en": "2026-10-28T17:59:16",
+          "obtenido_en": "2026-10-28T19:25:30",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 57.1,
@@ -2518,7 +2518,7 @@
         "apoyo_empresario": {
           "valor": -0.45,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-          "fuente": "Comunicados de la UIA y AFAC — codificación CIGOB",
+          "fuente": "Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB",
           "fecha_dato": "2026-09-01",
           "desactualizado": true,
           "variacion_12m": null,
@@ -2531,7 +2531,7 @@
             "UIA": -0.4
           },
           "detalle_txt": "En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-          "obtenido_en": "2026-10-28T17:59:16",
+          "obtenido_en": "2026-10-28T19:25:31",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 32.5,
@@ -2575,7 +2575,7 @@
         "apoyo_comercio": {
           "valor": 1.0,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-          "fuente": "Comunicados de la CAC — codificación CIGOB",
+          "fuente": "Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
           "variacion_12m": 0.0,
@@ -2584,7 +2584,7 @@
           "criticas_ventana": 0,
           "pendientes_de_codificar": 0,
           "detalle_txt": "En los últimos doce meses la Cámara Argentina de Comercio y Servicios se pronunció 4 veces sobre medidas del Gobierno nacional: 4 de apoyo y 0 de crítica. Saldo 1,0 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-          "obtenido_en": "2026-10-28T17:59:16",
+          "obtenido_en": "2026-10-28T19:25:31",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 100.0,
@@ -2628,7 +2628,7 @@
         "apoyo_campo": {
           "valor": -0.152,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-          "fuente": "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
+          "fuente": "Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB",
           "fecha_dato": "2026-09-01",
           "desactualizado": true,
           "variacion_12m": null,
@@ -2642,7 +2642,7 @@
             "SRA": 0.5
           },
           "detalle_txt": "En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-          "obtenido_en": "2026-10-28T17:59:16",
+          "obtenido_en": "2026-10-28T19:25:31",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 55.5,
@@ -2686,7 +2686,7 @@
         "apoyo_construccion": {
           "valor": 0.2,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-          "fuente": "Comunicados de CAMARCO — codificación CIGOB",
+          "fuente": "Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB",
           "fecha_dato": "2026-09-01",
           "desactualizado": true,
           "variacion_12m": 0.2,
@@ -2695,7 +2695,7 @@
           "criticas_ventana": 2,
           "pendientes_de_codificar": 1,
           "detalle_txt": "En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-          "obtenido_en": "2026-10-28T17:59:16",
+          "obtenido_en": "2026-10-28T19:25:31",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 75.0,
@@ -2740,14 +2740,14 @@
           "valor": -27.2,
           "acum_12m": 1896,
           "eventos_2023": 2605,
-          "unidad": "% vs 2023",
-          "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+          "unidad": "% frente a 2023",
+          "fuente": "Armed Conflict Location & Event Data (ACLED) — agregado semanal por provincia (acleddata.com)",
           "fecha_dato": "2026-09-01",
           "cobertura_hasta": "2026-10-23",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T17:59:25",
-          "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-09) vs 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
+          "obtenido_en": "2026-10-28T19:25:40",
+          "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 94.4,
@@ -2758,7 +2758,7 @@
           "aporte_formula": "Anclas del índice político: ≤-30 → 100 · -30 a -15 → 85 · -15 a 15 → 65 · 15–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 94.4; pesa 6,5% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
-          "aporte_input_txt": "1896 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-09) vs 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
+          "aporte_input_txt": "1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "semaforo": {
             "color": "verde",
             "tension": 0.6,
@@ -2784,8 +2784,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "% vs 2023",
-            "por_que": "−27,2 % vs 2023 está en Verde, a 31,7 del límite con Amarillo (4,5)."
+            "unidad": "% frente a 2023",
+            "por_que": "−27,2 % frente a 2023 está en Verde, a 31,7 del límite con Amarillo (4,5)."
           }
         },
         "jornadas_individuales_no_trabajadas_12m": {
@@ -2795,7 +2795,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-10-28T17:59:26",
+          "obtenido_en": "2026-10-28T19:25:40",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 87.0,
@@ -2842,13 +2842,13 @@
           "real_ref_billones": 1.43,
           "real_base_billones": 8.0,
           "atn_ref_billones": 0.27,
-          "periodo": "oct 2025–sep 2026 vs 2023",
-          "unidad": "% real vs 2023",
+          "periodo": "octubre 2025–septiembre 2026 frente a 2023",
+          "unidad": "% real frente a 2023",
           "fuente": "Presupuesto Abierto (Ministerio de Economía) — devengado de transferencias a provincias y municipios, sin las automáticas por ley o fallo; IPC INDEC (deflactado mes a mes)",
-          "detalle_txt": "12 meses a sep 2026: $1,25 billones devengados (ATN $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de sep 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (oct 2025–sep 2026 vs 2023); cada mes deflactado por su IPC",
+          "detalle_txt": "12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor",
           "fecha_dato": "2026-09-30",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:00:13",
+          "obtenido_en": "2026-10-28T19:26:18",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 10.0,
@@ -2859,7 +2859,7 @@
           "aporte_formula": "Anclas del índice político: >72 → 100 · 36–72 → 85 · -36 a 36 → 65 · -72 a -36 → 40 · ≤-72 → 10 (puntaje interpolado entre anclas: 10.0; pesa 8,2% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en rojo (tensión crítica): puntaje mínimo — este frente concentra la tensión del cinturón.",
-          "aporte_input_txt": "12 meses a sep 2026: $1,25 billones devengados (ATN $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de sep 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (oct 2025–sep 2026 vs 2023); cada mes deflactado por su IPC",
+          "aporte_input_txt": "12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor",
           "semaforo": {
             "color": "rojo",
             "tension": 9.0,
@@ -2885,8 +2885,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "% real vs 2023",
-            "por_que": "−82,1 % real vs 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0)."
+            "unidad": "% real frente a 2023",
+            "por_que": "−82,1 % real frente a 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0)."
           }
         },
         "eficacia_legislativa": {
@@ -2900,7 +2900,7 @@
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
           "fecha_dato": "2026-10-28",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:00:15",
+          "obtenido_en": "2026-10-28T19:26:19",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 70.5,
@@ -2944,7 +2944,7 @@
         "adhesion_reformas_provincial": {
           "valor": 75.0,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
-          "fuente": "MAGyP — catálogo de adhesiones · leyes provinciales complementarias verificadas",
+          "fuente": "Ministerio de Agricultura, Ganadería y Pesca (MAGyP) — catálogo de adhesiones · leyes provinciales complementarias verificadas",
           "fecha_dato": "2026-10-28",
           "n_provincias": 18,
           "jurisdicciones": [
@@ -2969,7 +2969,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:00:17",
+          "obtenido_en": "2026-10-28T19:26:20",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -3033,7 +3033,7 @@
           "desactualizado": false,
           "detalle_txt": "Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.",
           "sin_origen_resuelto": 3,
-          "obtenido_en": "2026-10-28T18:01:00",
+          "obtenido_en": "2026-10-28T19:27:01",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 69.6,
@@ -3097,7 +3097,7 @@
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-10-28T18:01:41",
+          "obtenido_en": "2026-10-28T19:27:44",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
@@ -3148,7 +3148,7 @@
           "eventos_12m": [],
           "total_mandato": 3,
           "que": "insistencias",
-          "obtenido_en": "2026-10-28T18:01:42",
+          "obtenido_en": "2026-10-28T19:27:45",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -3199,7 +3199,7 @@
           "eventos_12m": [],
           "total_mandato": 6,
           "que": "rechazos",
-          "obtenido_en": "2026-10-28T18:01:42",
+          "obtenido_en": "2026-10-28T19:27:45",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -3250,7 +3250,7 @@
           "ultima_sancion_registrada": "2026-09-24",
           "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
           "detalle_txt": "31 leyes distintas en los 12 meses completos hasta 2026-09, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-10-28T18:01:43",
+          "obtenido_en": "2026-10-28T19:27:46",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 45.8,
@@ -3297,7 +3297,7 @@
           "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:01:49",
+          "obtenido_en": "2026-10-28T19:27:52",
           "estimado": true,
           "limites_metodologicos": [
             "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
@@ -5116,12 +5116,12 @@
       "indicadores": {
         "brecha_salario_cbt": {
           "valor": 3.69,
-          "unidad": "canastas (RIPTE/CBT)",
-          "fuente": "Sec. Trabajo (RIPTE) + INDEC (CBT)",
+          "unidad": "canastas básicas totales",
+          "fuente": "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables) + Instituto Nacional de Estadística y Censos (INDEC: canasta básica total)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "detalle_txt": "RIPTE / CBT del mismo mes (2026-08): canastas cubiertas por el salario imponible promedio",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5129,7 +5129,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.1304,
           "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 107,3 (100 = igual que antes del mandato; más = mejora); pesa 13,0% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 107,3 (100 = igual que antes del mandato; más = mejora); pesa 13,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5142,11 +5142,11 @@
         },
         "ipc_alimentos": {
           "valor": 1.66,
-          "unidad": "% m/m",
-          "fuente": "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)",
+          "unidad": "% mensual",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor de alimentos y bebidas (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5154,7 +5154,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0875,
           "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 107,6 (100 = igual que antes del mandato; más = mejora); pesa 8,8% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 107,6 (100 = igual que antes del mandato; más = mejora); pesa 8,8% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5167,15 +5167,15 @@
         },
         "peso_tarifas": {
           "valor": 13.0,
-          "unidad": "% del salario RIPTE",
-          "fuente": "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
+          "unidad": "% del salario registrado promedio",
+          "fuente": "Instituto Interdisciplinario de Economía Política (IIEP) de la Universidad de Buenos Aires y el Consejo Nacional de Investigaciones Científicas y Técnicas — Canasta de Servicios Públicos del Área Metropolitana de Buenos Aires",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
           "variacion_mensual_pct": -0.7,
           "cobertura_costos_pct": 57.0,
           "transporte_pct_canasta": 49.0,
           "fuente_url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-octubre-2026/",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:06:50.337276",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5196,12 +5196,12 @@
         },
         "alquiler_real": {
           "valor": 1.88,
-          "unidad": "% m/m alquileres",
-          "fuente": "INDEC — IPC-GBA alquiler de la vivienda (planilla original)",
+          "unidad": "% mensual alquileres",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor del Gran Buenos Aires, alquiler de la vivienda (planilla original)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5209,7 +5209,7 @@
           "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.025,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 50,0 (100 = igual que antes del mandato; más = mejora); pesa 2,5% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 50,0 (100 = igual que antes del mandato; más = mejora); pesa 2,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -5223,13 +5223,13 @@
         "alquiler_udesa_real": {
           "valor": -9.84,
           "unidad": "% real interanual",
-          "fuente": "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
+          "fuente": "Universidad de San Andrés - Mercado Libre Inmuebles (carga manual) + Instituto Nacional de Estadística y Censos (INDEC), índice de precios al consumidor del Gran Buenos Aires (elaboración CIGOB)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "fuente_url": "https://drive.google.com/file/d/1_Phhg7TAD16bmVjb9XJiX_Wo4w2TSkiX/view",
           "variacion_nominal_pct": 20.4,
           "ipc_interanual_pct": 33.54,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5250,8 +5250,8 @@
         },
         "consumo_carne_vacuna": {
           "valor": 45.81,
-          "unidad": "kg/hab/año",
-          "fuente": "SAGYP — consumo aparente de carne vacuna por habitante (promedio móvil 12m)",
+          "unidad": "kg por habitante por año",
+          "fuente": "Secretaría de Agricultura, Ganadería y Pesca (SAGYP) — consumo aparente de carne vacuna por habitante (promedio móvil de 12 meses)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "variaciones": {
@@ -5260,7 +5260,7 @@
             "porcina": 10.75,
             "total": -2.66
           },
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5268,7 +5268,7 @@
           "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.0043,
           "aporte_score": 7.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 85,6 (100 = igual que antes del mandato; más = mejora); pesa 0,4% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 85,6 (100 = igual que antes del mandato; más = mejora); pesa 0,4% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5281,8 +5281,8 @@
         },
         "consumo_carnes_total": {
           "valor": 113.6,
-          "unidad": "kg/hab/año",
-          "fuente": "SAGYP — consumo aparente por habitante de carne vacuna, aviar y porcina (promedio móvil 12m)",
+          "unidad": "kg por habitante por año",
+          "fuente": "Secretaría de Agricultura, Ganadería y Pesca (SAGYP) — consumo aparente por habitante de carne vacuna, aviar y porcina (promedio móvil de 12 meses)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "variaciones": {
@@ -5293,7 +5293,7 @@
           },
           "otras_kg": 67.79,
           "ratio_bovina": 40.33,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5301,7 +5301,7 @@
           "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.0043,
           "aporte_score": 5.6,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 97,1 (100 = igual que antes del mandato; más = mejora); pesa 0,4% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 97,1 (100 = igual que antes del mandato; más = mejora); pesa 0,4% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
@@ -5315,10 +5315,10 @@
         "informalidad": {
           "valor": 37.9,
           "unidad": "%",
-          "fuente": "INDEC EPH",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5326,7 +5326,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0968,
           "aporte_score": 6.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 94,2 (100 = igual que antes del mandato; más = mejora); pesa 9,7% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 94,2 (100 = igual que antes del mandato; más = mejora); pesa 9,7% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5339,12 +5339,12 @@
         },
         "ocupacion_eph": {
           "valor": 0.4,
-          "unidad": "pp vs. 2023",
-          "fuente": "INDEC — EPH continua, tasa de empleo, total de 31 aglomerados urbanos",
+          "unidad": "puntos porcentuales frente a 2023",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) continua, tasa de empleo, total de 31 aglomerados urbanos",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "detalle_txt": "Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023. Empleadores inscriptos en ARCA: 511.847 (24-oct-2026): 290.897 empresas y sociedades y 220.950 personas. El 24-ago-2024 eran 553.057 (−7,5 %). No puntúa todavía.",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "detalle_txt": "Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023. Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): 511.847 (24 de octubre de 2026): 290.897 empresas y sociedades y 220.950 personas. El 24 de agosto de 2024 eran 553.057 (−7,5 %). No puntúa todavía.",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5352,7 +5352,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.1451,
           "aporte_score": 4.2,
-          "aporte_formula": "Índice base-100 vs el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1: 104,0 (100 = igual que antes del mandato; más = mejora); pesa 14,5% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1: 104,0 (100 = igual que antes del mandato; más = mejora); pesa 14,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
@@ -5366,11 +5366,11 @@
         "inseguridad": {
           "valor": 27.3,
           "unidad": "% de hogares víctimas (últimos 12 meses)",
-          "fuente": "UTDT — Índice de Victimización (LICIP)",
+          "fuente": "Universidad Torcuato Di Tella (UTDT) — Índice de Victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP)",
           "fecha_dato": "2026-07",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
-          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
+          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste del Sistema Nacional de Información Criminal (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -5378,7 +5378,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0268,
           "aporte_score": 1.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 115,6 (100 = igual que antes del mandato; más = mejora); pesa 2,7% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 115,6 (100 = igual que antes del mandato; más = mejora); pesa 2,7% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5391,11 +5391,11 @@
         },
         "tasa_homicidios": {
           "valor": 3.48,
-          "unidad": "homicidios dolosos cada 100.000 hab.",
-          "fuente": "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+          "unidad": "homicidios dolosos cada 100.000 habitantes",
+          "fuente": "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (tasa oficial, calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -5405,7 +5405,7 @@
           "indice_itvc_crudo": 165.6,
           "recorte_itvc": 25.6,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs la mediana de la serie 2000-2025: 140,0 (100 = igual que la mediana histórica; más = mejora); pesa 1,1% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a la mediana de la serie 2000-2025: 140,0 (100 = igual que la mediana histórica; más = mejora); pesa 1,1% del índice de impacto social.",
           "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 165,6 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
           "aporte_lectura": "Este componente está en 140,0 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5418,12 +5418,12 @@
         },
         "tasa_robos": {
           "valor": 778.1,
-          "unidad": "robos (excl. agravados) cada 100.000 hab.",
-          "fuente": "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+          "unidad": "robos (sin los agravados) cada 100.000 habitantes",
+          "fuente": "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (tasa oficial, calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "detalle_txt": "La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada.",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "detalle_txt": "La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal. Se publica el dato oficial vigente con esta limitación declarada.",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -5431,7 +5431,7 @@
           "fecha_indice_itvc": "2025-12-01",
           "peso_efectivo": 0.0067,
           "aporte_score": 1.2,
-          "aporte_formula": "Índice base-100 vs la mediana de la serie 2000-2025: 118,9 (100 = igual que la mediana histórica; más = mejora); pesa 0,7% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a la mediana de la serie 2000-2025: 118,9 (100 = igual que la mediana histórica; más = mejora); pesa 0,7% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5456,7 +5456,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0712,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs el 2º semestre de 2023: 133,2 (100 = igual que en ese semestre, antes del mandato; más = mejora); pesa 7,1% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente al 2º semestre de 2023: 133,2 (100 = igual que en ese semestre, antes del mandato; más = mejora); pesa 7,1% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en 133,2 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5485,7 +5485,7 @@
             "motos_var": 38.5569847658553,
             "total_var": 15.093724099500982
           },
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5494,7 +5494,7 @@
           "peso_efectivo": 0.0087,
           "winsor_exento": true,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 146,7 (100 = igual que antes del mandato; más = mejora); pesa 0,9% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 146,7 (100 = igual que antes del mandato; más = mejora); pesa 0,9% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en 146,7 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5507,12 +5507,12 @@
         },
         "ratio_motos_autos": {
           "valor": 1.545,
-          "unidad": "motos por cada auto patentado (móvil 12m)",
-          "fuente": "DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego",
+          "unidad": "motos por cada auto patentado (móvil de 12 meses)",
+          "fuente": "Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "detalle_txt": "Más motos por auto se lee como DETERIORO: la motorización total cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto y no una mejora pareja.",
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5520,7 +5520,7 @@
           "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.007,
           "aporte_score": 8.1,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 84,5 (100 = igual que antes del mandato; más = mejora); pesa 0,7% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 84,5 (100 = igual que antes del mandato; más = mejora); pesa 0,7% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en rojo (tensión crítica).",
           "semaforo": {
@@ -5534,10 +5534,10 @@
         "consumo_supermercados": {
           "valor": 80.5,
           "unidad": "índice (2017 = 100, desestacionalizado)",
-          "fuente": "INDEC — Encuesta de supermercados (ventas a precios constantes)",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta de supermercados (ventas a precios constantes)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:03:58.804412",
+          "obtenido_en": "2026-10-28T19:29:32.415850",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5545,7 +5545,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0547,
           "aporte_score": 7.4,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 88,2 (100 = igual que antes del mandato; más = mejora); pesa 5,5% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 88,2 (100 = igual que antes del mandato; más = mejora); pesa 5,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5559,7 +5559,7 @@
         "mora_familias": {
           "valor": 14.61,
           "unidad": "% de la cartera en situación irregular",
-          "fuente": "BCRA — Informe sobre Bancos (personales + tarjetas de familias)",
+          "fuente": "Banco Central de la República Argentina (BCRA) — Informe sobre Bancos (personales + tarjetas de familias)",
           "fecha_dato": "2026-08",
           "desactualizado": false,
           "detalle_txt": "Porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) con atrasos de pago, ponderado por el saldo de cada línea.",
@@ -5570,7 +5570,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.07,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 17,1 (100 = igual que antes del mandato; más = mejora); pesa 7,0% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 17,1 (100 = igual que antes del mandato; más = mejora); pesa 7,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -5584,10 +5584,10 @@
         "carga_servicio_deuda_hogares": {
           "valor": 24.076,
           "unidad": "% de la masa salarial registrada",
-          "fuente": "BCRA — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
+          "fuente": "Banco Central de la República Argentina (BCRA) — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
           "fecha_dato": "2026-04",
           "desactualizado": false,
-          "detalle_txt": "Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el BCRA promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.",
+          "detalle_txt": "Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el Banco Central promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "vulnerabilidad",
@@ -5595,7 +5595,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.03,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 42,3 (100 = igual que antes del mandato; más = mejora); pesa 3,0% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 42,3 (100 = igual que antes del mandato; más = mejora); pesa 3,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -5612,7 +5612,7 @@
           "fuente": "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno",
           "fecha_dato": "2026-10",
           "desactualizado": false,
-          "detalle_txt": "Encuesta mensual de la UTDT que promedia cinco atributos del Gobierno nacional —imagen general, eficiencia, honestidad, capacidad para resolver los problemas y preocupación por el interés general— en una escala de 0 a 5. Más confianza implica más apoyo disponible para sostener el rumbo.",
+          "detalle_txt": "Encuesta mensual de la Universidad Torcuato Di Tella que promedia cinco atributos del Gobierno nacional —imagen general, eficiencia, honestidad, capacidad para resolver los problemas y preocupación por el interés general— en una escala de 0 a 5. Más confianza implica más apoyo disponible para sostener el rumbo.",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "percepcion",
@@ -5620,7 +5620,7 @@
           "fecha_indice_itvc": "2026-10-01",
           "peso_efectivo": 0.0825,
           "aporte_score": 3.7,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 106,7 (100 = igual que antes del mandato; más = mejora); pesa 8,2% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 106,7 (100 = igual que antes del mandato; más = mejora); pesa 8,2% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -7059,13 +7059,13 @@
         "dimensiones_serie": {
           "titulo": "Qué dimensión movió el índice",
           "sub": "La capa del medio: entre el índice y sus indicadores están las dimensiones, y son ellas las que explican el movimiento.",
-          "escala": "base 100 = promedio del 4T-2023",
+          "escala": "base 100 = promedio del 4º trimestre de 2023",
           "base100": true,
           "desde": "2023-12",
           "hasta": "2026-10",
           "n": 35,
           "n_dimensiones": 7,
-          "nota": "El índice es el promedio ponderado de estas dimensiones, y su valor agregado puede quedarse quieto porque nada se mueve o porque dos cosas grandes se mueven en direcciones opuestas. Estas series separan los dos casos: cada una es la misma dimensión que se lee arriba, mes a mes, en la misma escala (base 100 = promedio del 4T-2023). Se calculan con el motor del índice y no con una cuenta aparte: el promedio ponderado de los componentes de la dimensión, renormalizando por el peso que efectivamente tiene dato ese mes, es el mismo paso que el índice ya da para llegar a su propio número. Vienen de la reconstrucción histórica —las series de cada componente pasadas por el motor, sin ajustes del analista—, así que llegan hasta el último mes con cobertura suficiente y ese mes puede ser anterior al de la card. Un mes en el que ninguna componente de la dimensión tiene dato no deja punto: el hueco se muestra como hueco, no se arrastra ni se interpola."
+          "nota": "El índice es el promedio ponderado de estas dimensiones, y su valor agregado puede quedarse quieto porque nada se mueve o porque dos cosas grandes se mueven en direcciones opuestas. Estas series separan los dos casos: cada una es la misma dimensión que se lee arriba, mes a mes, en la misma escala (base 100 = promedio del 4º trimestre de 2023). Se calculan con el motor del índice y no con una cuenta aparte: el promedio ponderado de los componentes de la dimensión, renormalizando por el peso que efectivamente tiene dato ese mes, es el mismo paso que el índice ya da para llegar a su propio número. Vienen de la reconstrucción histórica —las series de cada componente pasadas por el motor, sin ajustes del analista—, así que llegan hasta el último mes con cobertura suficiente y ese mes puede ser anterior al de la card. Un mes en el que ninguna componente de la dimensión tiene dato no deja punto: el hueco se muestra como hueco, no se arrastra ni se interpola."
         },
         "validacion": {
           "r_niveles": 0.014,
@@ -8367,7 +8367,7 @@
           "tension": null
         }
       },
-      "fuente_enriquecida": "vida_cotidiana_20261028_1805.json",
+      "fuente_enriquecida": "vida_cotidiana_20261028_1931.json",
       "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 7 dimensiones: ingresos 20%, consumo 8%, presión de precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
     },
     "gestion": {
@@ -8392,7 +8392,7 @@
           },
           "detalle_txt": "Contado con liquidación venta 1665.40 (2026-10-28T17:55:00-03:00) / mayorista venta 1542.00 (2026-10-28T13:32:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "desactualizado": false,
-          "obtenido_en": "2026-10-28T18:02:40",
+          "obtenido_en": "2026-10-28T19:28:43",
           "en_indice": true,
           "dimension": "reformas_economicas",
           "puntaje_itcg": 83.0,
@@ -8436,12 +8436,12 @@
         "apertura_comercial": {
           "valor": 7.16,
           "unidad": "% del intercambio (alícuota efectiva)",
-          "fuente": "ARCA (derechos de exportación e importación) + INDEC (intercambio comercial) + BCRA (dólar mayorista de referencia)",
+          "fuente": "Agencia de Recaudación y Control Aduanero (ARCA: derechos de exportación e importación) + Instituto Nacional de Estadística y Censos (INDEC: intercambio comercial) + Banco Central de la República Argentina (BCRA: dólar mayorista de referencia)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_19_10_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-10-28T18:02:44",
+          "obtenido_en": "2026-10-28T19:28:44",
           "detalle_txt": "US$ 1.223 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 17.095 M de intercambio (2026-09) · canal aduanero sin fuente pública",
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -8506,7 +8506,7 @@
             "Sector Inmobiliario": 17
           },
           "detalle_txt": "17.606 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+491 en el mes) · los produjeron 807 normas de desregulación, que modificaron o eliminaron 2891 normas anteriores",
-          "obtenido_en": "2026-10-28T18:02:45",
+          "obtenido_en": "2026-10-28T19:28:46",
           "en_indice": true,
           "dimension": "reformas_economicas",
           "puntaje_itcg": 74.4,
@@ -8549,8 +8549,8 @@
         },
         "reduccion_estado": {
           "valor": -21.37,
-          "unidad": "% de variación vs dic-2023 (dotación APN)",
-          "fuente": "INDEC — Dotación de personal de la APN (mensual)",
+          "unidad": "% de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional)",
+          "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Dotación de personal de la Administración Pública Nacional (mensual)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "dotacion_actual": 181880,
@@ -8560,8 +8560,8 @@
           "var_fuerzas_seguridad": -15.24,
           "var_planta_civil": -19.0,
           "fecha_desglose_fuerzas": "2026-02",
-          "detalle_txt": "181.880 agentes (2026-08) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
-          "obtenido_en": "2026-10-28T18:02:46",
+          "detalle_txt": "181.880 agentes (2026-08) frente a 231.305 en diciembre de 2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
+          "obtenido_en": "2026-10-28T19:28:47",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 84.9,
@@ -8572,7 +8572,7 @@
           "aporte_formula": "Anclas del índice de gestión: ≤-25,7 → 100 · -25,7 a -17,1 → 85 · -17,1 a -8,6 → 65 · -8,6 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 84.9; pesa 14,6% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
-          "aporte_input_txt": "181.880 agentes (2026-08) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
+          "aporte_input_txt": "181.880 agentes (2026-08) frente a 231.305 en diciembre de 2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
           "semaforo": {
             "color": "verde",
             "tension": 1.5,
@@ -8598,18 +8598,18 @@
                 "hasta": null
               }
             ],
-            "unidad": "% de variación vs dic-2023 (dotación APN)",
-            "por_que": "−21,37 % de variación vs dic-2023 (dotación APN) está en Verde, a 10,23 del límite con Amarillo (−11,14)."
+            "unidad": "% de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional)",
+            "por_que": "−21,37 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) está en Verde, a 10,23 del límite con Amarillo (−11,14)."
           }
         },
         "gasto_funcionamiento": {
           "valor": -35.92,
-          "unidad": "% de variación real vs 2023-08 (gastos de funcionamiento)",
-          "fuente": "Sec. Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + IPC INDEC",
+          "unidad": "% de variación real frente a 2023-08 (gastos de funcionamiento)",
+          "fuente": "Secretaría de Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "detalle_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
-          "obtenido_en": "2026-10-28T18:02:54",
+          "detalle_txt": "$ 2,05 billones. base caja (2026-08) frente a $ 0,53 billones (2023-08) · inflación del período ×6,0",
+          "obtenido_en": "2026-10-28T19:28:51",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -8620,7 +8620,7 @@
           "aporte_formula": "Anclas del índice de gestión: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 10,4% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión. Da 100 porque el valor (−35,92) llega al punto desde el que la escala da el máximo (−25,0 o menos); más allá de ese punto la escala ya no distingue.",
-          "aporte_input_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
+          "aporte_input_txt": "$ 2,05 billones. base caja (2026-08) frente a $ 0,53 billones (2023-08) · inflación del período ×6,0",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -8646,8 +8646,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "% de variación real vs 2023-08 (gastos de funcionamiento)",
-            "por_que": "−35,92 % de variación real vs 2023-08 (gastos de funcionamiento) está en Verde, a 27,42 del límite con Amarillo (−8,5)."
+            "unidad": "% de variación real frente a 2023-08 (gastos de funcionamiento)",
+            "por_que": "−35,92 % de variación real frente a 2023-08 (gastos de funcionamiento) está en Verde, a 27,42 del límite con Amarillo (−8,5)."
           }
         },
         "fal_modernizacion_laboral": {
@@ -8726,8 +8726,8 @@
           "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
           "fci_cese_registrados": 0,
           "menciones_bo": 9,
-          "detalle_txt": "Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
-          "obtenido_en": "2026-10-28T18:03:03",
+          "detalle_txt": "Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
+          "obtenido_en": "2026-10-28T19:28:59",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 100.0,
@@ -8738,7 +8738,7 @@
           "aporte_formula": "Anclas del índice de gestión: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión. Da 100 porque el valor (90,0) llega al punto desde el que la escala da el máximo (90,0 o más); más allá de ese punto la escala ya no distingue.",
-          "aporte_input_txt": "Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
+          "aporte_input_txt": "Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -8771,12 +8771,12 @@
         "siniestralidad_laboral": {
           "valor": -5.0,
           "unidad": "% variación del índice de incidencia (mismo período, contra el año anterior)",
-          "fuente": "SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP",
+          "fuente": "Superintendencia de Riesgos del Trabajo (SRT) — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de accidentes de trabajo y enfermedades profesionales",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "indice_por_mil": 14.92,
           "detalle_txt": "Enero a junio de 2026: 149.066 casos de AT y EP con baja (14,92 por mil cubiertos) contra 159.671 (15,7 por mil) en el mismo período del año anterior",
-          "obtenido_en": "2026-10-28T18:03:04",
+          "obtenido_en": "2026-10-28T19:29:00",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 75.0,
@@ -8819,13 +8819,13 @@
         },
         "juicios_trabajo_capital": {
           "valor": 12.4,
-          "unidad": "% variación juicios entrados (12m vs 12m previos)",
+          "unidad": "% variación juicios entrados (12 meses frente a los 12 meses previos)",
           "fuente": "Consejo de la Magistratura — Oficina de Estadísticas, Justicia Nacional del Trabajo",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "juicios_12m": 61853,
-          "detalle_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 vs 55.040 en los 12 previos (sólo Capital)",
-          "obtenido_en": "2026-10-28T18:03:05",
+          "detalle_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 frente a 55.040 en los 12 previos (sólo Capital)",
+          "obtenido_en": "2026-10-28T19:29:01",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 40.2,
@@ -8836,7 +8836,7 @@
           "aporte_formula": "Anclas del índice de gestión: ≤-15 → 100 · -15 a -5 → 85 · -5 a 5 → 65 · 5–20 → 40 · >20 → 10 (puntaje interpolado entre anclas: 40.2; pesa 3,8% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 vs 55.040 en los 12 previos (sólo Capital)",
+          "aporte_input_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 frente a 55.040 en los 12 previos (sólo Capital)",
           "semaforo": {
             "color": "amarillo",
             "tension": 6.0,
@@ -8862,8 +8862,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "% variación juicios entrados (12m vs 12m previos)",
-            "por_que": "12,4 % variación juicios entrados (12m vs 12m previos) está en Amarillo, a 0,1 del límite con Naranja (12,5)."
+            "unidad": "% variación juicios entrados (12 meses frente a los 12 meses previos)",
+            "por_que": "12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) está en Amarillo, a 0,1 del límite con Naranja (12,5)."
           }
         },
         "privatizaciones": {
@@ -8960,7 +8960,7 @@
             "relectura_pendiente": []
           },
           "detalle_txt": "8 empresas · etapa promedio 2,12/4 · cerradas: Transener",
-          "obtenido_en": "2026-10-28T18:03:09",
+          "obtenido_en": "2026-10-28T19:29:05",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 73.1,
@@ -9004,7 +9004,7 @@
         "rigi_inversiones": {
           "valor": 36.4,
           "unidad": "% de inversión aprobada sobre el pipeline",
-          "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
+          "fuente": "Ministerio de Economía — Plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI)",
           "fecha_dato": "2026-10-28",
           "desactualizado": false,
           "proyectos_aprobados": 27,
@@ -9013,7 +9013,7 @@
           "inversion_evaluacion_musd": 133221,
           "nota_denominador": null,
           "detalle_txt": "27 proyectos aprobados (US$ 76.173M) / 21 en evaluación (US$ 133.221M) → 36,4% de la inversión total ya aprobada",
-          "obtenido_en": "2026-10-28T18:03:10",
+          "obtenido_en": "2026-10-28T19:29:06",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 54.2,
@@ -9113,7 +9113,7 @@
             "etapa_ii_b": 100.0
           },
           "detalle_txt": "9.091 de 9.091 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)",
-          "obtenido_en": "2026-10-28T18:03:11",
+          "obtenido_en": "2026-10-28T19:29:07",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 100.0,
@@ -9157,7 +9157,7 @@
         "asistencia_directa": {
           "valor": 100.0,
           "unidad": "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
-          "fuente": "Boletín Oficial — Res. 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
+          "fuente": "Boletín Oficial — Resolución 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
           "fecha_dato": "2026-10-28",
           "desactualizado": false,
           "hito": {
@@ -9167,7 +9167,7 @@
             "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/305588/20240410"
           },
           "detalle_txt": "Unidades de gestión y de certificación sin actividad desde el 2024-04-10 (Resolución 84/2024 del Ministerio de Capital Humano, art. 6: «cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación del Potenciar Trabajo») · Contexto: el devengado 2026 de Volver al Trabajo y Acompañamiento Social está 100,0% clasificado como ayudas a personas (Potenciar Trabajo 2023: 98,3%); ese porcentaje no mide la intermediación y no puntúa. · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.",
-          "obtenido_en": "2026-10-28T18:03:32",
+          "obtenido_en": "2026-10-28T19:29:18",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -9210,7 +9210,7 @@
         },
         "protocolo_antipiquetes": {
           "valor": 74.2,
-          "unidad": "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)",
+          "unidad": "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023",
           "fuente": "Diagnóstico Político (consultora privada) — monitoreos públicos de piquetes",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
@@ -9219,8 +9219,8 @@
             "caba_2025": 240
           },
           "advertencia_fuente": "No se pudo verificar si el portal publicó anclajes más recientes.",
-          "detalle_txt": "240 cortes en la Ciudad de Buenos Aires en 2025 vs 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
-          "obtenido_en": "2026-10-28T18:03:34",
+          "detalle_txt": "240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
+          "obtenido_en": "2026-10-28T19:29:22",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 99.0,
@@ -9231,7 +9231,7 @@
           "aporte_formula": "Anclas del índice de gestión: >75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤0 → 10 (puntaje interpolado entre anclas: 99.0; pesa 4,0% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión.",
-          "aporte_input_txt": "240 cortes en la Ciudad de Buenos Aires en 2025 vs 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
+          "aporte_input_txt": "240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
           "semaforo": {
             "color": "verde",
             "tension": 0.1,
@@ -9257,14 +9257,14 @@
                 "hasta": null
               }
             ],
-            "unidad": "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)",
-            "por_que": "74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) está en Verde, a 41,7 del límite con Amarillo (32,5)."
+            "unidad": "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023",
+            "por_que": "74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 está en Verde, a 41,7 del límite con Amarillo (32,5)."
           }
         },
         "libertad_opcion_salud": {
           "valor": 100.0,
           "unidad": "Avance de la libre elección de cobertura de salud (hitos 0–100)",
-          "fuente": "Boletín Oficial (DNU 70/2023, Decreto 170/2024, Resolución SSS 3284/2024) · ARCA y SSS (trámite de opción de cambio) · SSS — RNAS y RNEMP por entidad",
+          "fuente": "Boletín Oficial (decreto de necesidad y urgencia 70/2023, Decreto 170/2024, Resolución 3284/2024 de la Superintendencia de Servicios de Salud) · Agencia de Recaudación y Control Aduanero y Superintendencia de Servicios de Salud (trámite de opción de cambio) · Superintendencia de Servicios de Salud — Registro Nacional de Agentes del Seguro de Salud y Registro Nacional de Entidades de Medicina Prepaga, por entidad",
           "hitos": [
             {
               "clave": "marco_normativo",
@@ -9326,7 +9326,7 @@
             }
           },
           "detalle_txt": "5 de 5 hitos cumplidos. Contexto: 32.2 % de los usuarios de prepagas con aportes derivados directo — 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
-          "obtenido_en": "2026-10-28T18:03:34",
+          "obtenido_en": "2026-10-28T19:29:22",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,

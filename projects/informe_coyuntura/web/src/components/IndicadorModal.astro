@@ -391,7 +391,7 @@ const dimsJson = JSON.stringify(dims);
     }
     const aporte = typeof meta.aporteIndice === "number" && typeof meta.puntajeAplicado === "number"
       ? `<p class="cg-score-map"><strong>Aporte actual:</strong> ` +
-        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
+        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4º trimestre de 2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
         `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.nombre)}</strong>.</p>`
       : "";
     return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.nombre)}</h4>` +
@@ -445,7 +445,7 @@ const dimsJson = JSON.stringify(dims);
       saldo_comercial_12m: {
         series: [["saldo_comercial_12m_usd", "Saldo comercial (bienes)"],
                  ["cuenta_corriente", "Cuenta corriente (total)"]],
-        refY: 0, refLabel: "equilibrio externo", unidad: "US$ M",
+        refY: 0, refLabel: "equilibrio externo", unidad: "millones de dólares",
       },
     };
     const baseKey = key.split(".").pop();

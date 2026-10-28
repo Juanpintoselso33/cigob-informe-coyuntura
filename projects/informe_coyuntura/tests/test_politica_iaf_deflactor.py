@@ -239,7 +239,7 @@ def test_la_card_dice_el_mismo_numero_que_la_serie(sin_red):
     serie = dict(descargar_series.fetch_iaf_serie())
     # El fixture llega a dic-2025 (ADR-0353: la ventana móvil termina ahí).
     assert card["valor"] == serie["2025-12-01"] == 1.6
-    assert card["periodo"] == "ene 2025–dic 2025 vs ene 2024–dic 2024"
+    assert card["periodo"] == "enero 2025–diciembre 2025 frente a enero 2024–diciembre 2024"
     assert card["fecha_dato"] == "2025-12-31"
 
 

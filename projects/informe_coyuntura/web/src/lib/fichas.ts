@@ -43,7 +43,7 @@ export interface FuenteFicha {
 export interface AnclasFicha {
   bandas: { banda: string; puntaje: number }[];   // la tabla del documento
   puntos: [number, number][];                     // anclas [valor, puntaje], x ascendente
-  unidadCorta: string;                            // "% m/m"
+  unidadCorta: string;                            // "% mensual"
   sinEjemplo?: boolean;                           // el valor de la tarjeta NO es el insumo de la
                                                   // escala (ej. REM: puntúa el equivalente
                                                   // mensual, la tarjeta muestra el anual)
@@ -120,9 +120,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "ipc_total",
     cinturon: "macro",
-    rezago: "El INDEC difunde el IPC de cada mes a mediados del mes siguiente, según su calendario oficial. El informe lo incorpora en forma automática el mismo día de la publicación.",
+    rezago: "El Instituto Nacional de Estadística y Censos (INDEC) difunde el índice de precios al consumidor (IPC) de cada mes a mediados del mes siguiente, según su calendario oficial. El informe lo incorpora en forma automática el mismo día de la publicación.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Índice de Precios al Consumidor (IPC) — cobertura nacional, nivel general, variación mensual",
       serie: "148.3_INIVELNAL_DICI_M_26 · API de Series de Tiempo de la República Argentina (datos.gob.ar)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
@@ -141,12 +141,12 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 3,5", puntaje: 10 },
       ],
       puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
-      unidadCorta: "% m/m",
+      unidadCorta: "% mensual",
     },
     dobleUso: "El IPC participa además como deflactor de otros tres indicadores del índice (la recaudación real, el crédito privado real y la tasa real de la capacidad prestable) y de la brecha de crecimiento real entre agregados monetarios, que se sigue calculando fuera del índice. Un error de medición de la fuente se propagaría a esos indicadores.",
     limitaciones: [
       "Mide el promedio nacional del nivel general: no distingue núcleo, regulados y estacionales, ni las diferencias regionales que el propio INDEC publica por separado.",
-      "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.",
+      "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del Relevamiento de Expectativas de Mercado (REM), dentro de la misma dimensión, cubren parcialmente ese hueco.",
       "La variación de un solo mes es sensible a factores puntuales (correcciones tarifarias, estacionalidad de rubros) que no permiten distinguir el dato suelto de la tendencia.",
       "El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y capacidad prestable): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.",
     ],
@@ -181,13 +181,13 @@ export const FICHAS: Record<string, Ficha> = {
       "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial, las reservas y el cruce del tipo de cambio real con los términos del intercambio), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman una parte considerable del índice (su peso se ve en la composición del índice). El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), con dos excepciones: las reservas netas, porque el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024, y el desequilibrio monetario, que arranca en abril de 2025 con la apertura del cepo a personas humanas.",
-      "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La tasa de plazo fijo mayorista entra al índice a través de la capacidad prestable; el crédito entra descontada la inflación.",
+      "Criterio de selección: fuentes públicas oficiales (Instituto Nacional de Estadística y Censos [INDEC], Banco Central de la República Argentina [BCRA], Agencia de Recaudación y Control Aduanero [ARCA]), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), con dos excepciones: las reservas netas, porque el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024, y el desequilibrio monetario, que arranca en abril de 2025 con la apertura del cepo a personas humanas.",
+      "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, tasa de plazos fijos mayoristas [BADLAR]) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La tasa de plazo fijo mayorista entra al índice a través de la capacidad prestable; el crédito entra descontada la inflación.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones. Las ausencias no puntúan ni a favor ni en contra.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador, siempre con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo). Existe además una regla automática para el saldo comercial: si el superávit se explica por contracción de importaciones y no por crecimiento exportador, el puntaje se rebaja con la justificación generada a partir de los números. Todo ajuste activo se publica junto al índice.",
-      "Deflactores: los indicadores reales esperan el IPC cerrado. La recaudación real, por ejemplo, se computa como nivel real desestacionalizado (100 = promedio del cuarto trimestre de 2023) sobre meses con IPC publicado, para filtrar el calendario tributario.",
+      "Deflactores: los indicadores reales esperan el índice de precios al consumidor (IPC) cerrado. La recaudación real, por ejemplo, se computa como nivel real desestacionalizado (100 = promedio del cuarto trimestre de 2023) sobre meses con IPC publicado, para filtrar el calendario tributario.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante sus umbrales —los del documento CIGOB para los indicadores originales, propios para los demás—, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las bandas abiertas en su borde finito; entre anclas el puntaje es lineal y fuera de la primera y la última queda plano.",
@@ -226,7 +226,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Los umbrales y pesos no se estiman: son el juicio del marco CIGOB y, donde el marco no llega, elaboración propia declarada en cada ficha. El Monte Carlo mide cuánto dependen las conclusiones de esa elección, pero no la sustituye.",
-      "El estándar OCDE/JRC prevé un análisis multivariado previo (paso 4: contrastar la estructura teórica con la correlación real entre los indicadores). Ese contraste está pendiente; la validación cruzada lo aproxima por el lado de las anclas externas.",
+      "El estándar de la Organización para la Cooperación y el Desarrollo Económicos y el Centro Común de Investigación de la Comisión Europea prevé un análisis multivariado previo (paso 4: contrastar la estructura teórica con la correlación real entre los indicadores). Ese contraste está pendiente; la validación cruzada lo aproxima por el lado de las anclas externas.",
       "El costo del financiamiento del Tesoro satura: todo lo que pasa de 20 % real puntúa igual, así que el pico de la serie (33,8 % real en agosto de 2025) puntúa igual que uno de 21 %.",
       "La ventana de validación es corta — los meses del mandato en curso —, por lo que las correlaciones se leen como consistencia, no como prueba.",
       "No incluye el riesgo país ni los vencimientos de deuda en dólares: se decidió no sumarlos (reunión de octubre de 2026) para no duplicar la lectura de reservas y del costo del Tesoro. El resultado primario excluye los intereses de la deuda, así que un superávit primario puede convivir con un déficit financiero.",
@@ -258,8 +258,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-11", cambio: "El indicador de agregados monetarios se reemplaza por «Liquidez en pesos y presión compradora de divisas», que cruza cuánta liquidez sigue en pesos con cuántos dólares compra el sector privado.", adr: "0192" },
       { fecha: "2026-08-25", cambio: "Los pagos de servicios digitales salen del índice: sus dos insumos necesitaban signos opuestos y el compuesto los sumaba con el mismo. La inversión queda medida sólo por la inversión física.", adr: "0262" },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
-      { fecha: "2026-09-16", cambio: "Entra la recaudación de IVA y del impuesto al cheque, en términos reales, como señal temprana de la actividad.", adr: "0329" },
-      { fecha: "2026-10-26", cambio: "La recaudación de IVA y cheque sale del índice: repetía la lectura de la actividad (correlación 0,84 con el EMAE) y no la anticipaba. Su peso vuelve a los otros tres indicadores de actividad. El índice baja de 54,2 a 53,9.", adr: "0368" },
+      { fecha: "2026-09-16", cambio: "Entra la recaudación del impuesto al valor agregado (IVA) y del impuesto al cheque, en términos reales, como señal temprana de la actividad.", adr: "0329" },
+      { fecha: "2026-10-26", cambio: "La recaudación de IVA y cheque sale del índice: repetía la lectura de la actividad (correlación 0,84 con el estimador mensual de actividad económica [EMAE]) y no la anticipaba. Su peso vuelve a los otros tres indicadores de actividad. El índice baja de 54,2 a 53,9.", adr: "0368" },
       { fecha: "2026-10-26", cambio: "La inflación del mes y la esperada pasan a la escala de los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 %. El índice baja de 61,5 a 54,2.", adr: "0367" },
       { fecha: "2026-09-30", cambio: "Los cortes de la inversión física se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante.", adr: "0341" },
       { fecha: "2026-10-16", cambio: "La dimensión de inversión (12%, sólo la inversión física) se fusiona con la de actividad (11%) en «Actividad e inversión», con 23%: el índice pasa de seis a cinco dimensiones (26 / 24 / 16 / 23 / 11 %). Dentro, la inversión física pesa 30% y los cuatro de actividad conservan su proporción. Con los datos de octubre, el índice pasa de 62,5 a 61,6." },
@@ -277,10 +277,10 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "reservas_bcra",
     cinturon: "macro",
-    rezago: "La planilla de reservas y liquidez del BCRA se publica unas tres semanas después del cierre de cada mes; el informe la incorpora automáticamente.",
+    rezago: "La planilla de reservas y liquidez del Banco Central de la República Argentina (BCRA) se publica unas tres semanas después del cierre de cada mes; el informe la incorpora automáticamente.",
     fuente: {
-      organismo: "BCRA",
-      operacion: "Planilla SDDS «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares)",
+      organismo: "Banco Central de la República Argentina (BCRA)",
+      operacion: "Planilla del Estándar Especial de Divulgación de Datos (SDDS) «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares)",
       serie: "Planilla mensual temp{MM}{AA}.pdf + balbcrhis.xls (Balance Consolidado)",
       url: "https://www.bcra.gob.ar/reservas-internacionales-y-base-monetaria/",
       acceso: "Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas.",
@@ -300,12 +300,12 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 0", puntaje: 10 },
       ],
       puntos: [[0, 10], [2500, 30], [7500, 50], [12500, 70], [17500, 85], [20000, 100]],
-      unidadCorta: "M USD netos",
+      unidadCorta: "millones de dólares netos",
     },
     limitaciones: [
-      "El tramo de vencimientos no identifica por instrumento al BOPREAL ni cubre todos los vencimientos de los próximos doce meses. La etiqueta anterior «BOPREAL a 12 meses» no estaba demostrada. El resultado tampoco certifica dólares de libre disponibilidad: incluye oro y devuelve al cálculo pasivos que siguen existiendo.",
-      "«Reservas netas» no es un número único: es un espectro según qué pasivos se descuentan. Otras mediciones más exigentes (o la del FMI) pueden diferir en miles de millones por criterio, no por error.",
-      "Contraste con estimaciones públicas (octubre de 2026): para septiembre de 2026 este indicador da US$ 10.725 millones, en línea con la medición convencional que mostró el propio Banco Central (positiva, cerca de US$ 11.700 millones en octubre). Con definiciones más exigentes da negativo: unos −US$ 1.940 millones según el informe monetario de Criteria y unos −US$ 7.000 millones con el criterio del FMI, según Econviews (citado por La Política Online, 22-oct-2026). El verde de la tarjeta corresponde a esta definición, no a las más exigentes.",
+      "El tramo de vencimientos no identifica por instrumento a los Bonos para la Reconstrucción de una Argentina Libre (BOPREAL) ni cubre todos los vencimientos de los próximos doce meses. La etiqueta anterior «BOPREAL a 12 meses» no estaba demostrada. El resultado tampoco certifica dólares de libre disponibilidad: incluye oro y devuelve al cálculo pasivos que siguen existiendo.",
+      "«Reservas netas» no es un número único: es un espectro según qué pasivos se descuentan. Otras mediciones más exigentes (o la del Fondo Monetario Internacional) pueden diferir en miles de millones por criterio, no por error.",
+      "Contraste con estimaciones públicas (octubre de 2026): para septiembre de 2026 este indicador da US$ 10.725 millones, en línea con la medición convencional que mostró el propio Banco Central (positiva, cerca de US$ 11.700 millones en octubre). Con definiciones más exigentes da negativo: unos −US$ 1.940 millones según el informe monetario de Criteria y unos −US$ 7.000 millones con el criterio del FMI, según Econviews (citado por La Política Online, 22 de octubre de 2026). El verde de la tarjeta corresponde a esta definición, no a las más exigentes.",
       "El dato es a cierre de mes; el número diario que circula en el mercado puede diferir en algunos cientos de millones por la fecha de corte.",
       "El BCRA retira las planillas viejas de su sitio: la serie histórica propia solo llega hasta mediados de 2024 hacia atrás.",
     ],
@@ -327,9 +327,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "idc",
     cinturon: "macro",
-    rezago: "La capacidad prestable se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente.",
+    rezago: "La capacidad prestable se publica para el último mes con índice de precios al consumidor (IPC) cerrado: unas dos semanas después de mediados del mes siguiente.",
     fuente: {
-      organismo: "BCRA (tasa BADLAR, depósitos y préstamos privados) + INDEC (IPC como deflactor)",
+      organismo: "Banco Central de la República Argentina (BCRA: tasa de plazos fijos mayoristas [BADLAR], depósitos y préstamos privados) + Instituto Nacional de Estadística y Censos (INDEC: índice de precios al consumidor como deflactor)",
       operacion: "Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia",
       serie: "API de Estadísticas Monetarias del BCRA (variables 7, 100 y 117) + IPC 148.3_INIVELNAL_DICI_M_26 (datos.gob.ar)",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
@@ -372,9 +372,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "emae_ia",
     cinturon: "macro",
-    rezago: "El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente (~2 meses de demora). Entre los indicadores mensuales es de los más rezagados; los términos del intercambio, que son trimestrales, lo superan.",
+    rezago: "El Instituto Nacional de Estadística y Censos (INDEC) publica el estimador mensual de actividad económica (EMAE) de cada mes hacia fines del segundo mes siguiente (unos 2 meses de demora). Entre los indicadores mensuales es de los más rezagados; los términos del intercambio, que son trimestrales, lo superan.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "EMAE — Estimador Mensual de Actividad Económica, variación interanual de la serie original (base 2004)",
       serie: "143.3_ICE_SERVIA_2004_A_25 · API de Series de Tiempo (datos.gob.ar)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
@@ -393,22 +393,22 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ −5", puntaje: 5 },
       ],
       puntos: [[-5, 5], [-3.5, 20], [-1, 40], [1.5, 60], [4, 80], [5, 100]],
-      unidadCorta: "% i.a.",
+      unidadCorta: "% interanual",
     },
     dobleUso: "La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.",
     limitaciones: [
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
-      "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y toda la lectura de actividad del índice colgaba de un solo dato.",
+      "Comparte dimensión con el índice de producción industrial (IPI) manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y toda la lectura de actividad del índice colgaba de un solo dato.",
     ],
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
-      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Actividad económica (vs. un año atrás)» y la unidad a «% vs. un año atrás», sin siglas. No cambia el cálculo.", adr: "0366" },
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Actividad económica (frente a un año atrás)» y la unidad a «% frente a un año atrás», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
       { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
+      { fecha: "2026-10-16", cambio: "Desde el 16 de octubre de 2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%. Esas cifras son las del 16 de octubre de 2026: desde que salió la recaudación del impuesto al valor agregado y del impuesto al cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -439,7 +439,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de subocupacion_demandante y un índice líder." },
-      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: la dimensión pasa a medirse con la ocupación de la EPH, que cuenta a toda la población ocupada y no sólo al trabajo formal asalariado privado. Se sigue relevando y su serie se publica como archivo.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26 de octubre de 2026: la dimensión pasa a medirse con la ocupación de la Encuesta Permanente de Hogares (EPH), que cuenta a toda la población ocupada y no sólo al trabajo formal asalariado privado. Se sigue relevando y su serie se publica como archivo.", adr: "0383" },
     ],
   },
 
@@ -506,7 +506,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.",
       "Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.",
-      "Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.",
+      "Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8 de septiembre de 2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.",
       "No cuentan las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido con dos tercios: la pregunta es si el Congreso sanciona leyes que el Gobierno acepta, y una ley vetada entera es un desacuerdo, no producción compartida. Las vetadas en parte sí cuentan, porque se promulgaron. Los vetos salen del mismo registro que usan los vetos insistidos del índice; sin ese registro, el indicador no se actualiza.",
       "Más leyes significa menos tensión entre el Congreso y el Gobierno. El desacuerdo abierto lo miden otros dos componentes de la misma dimensión: los vetos insistidos y los decretos derogados.",
     ],
@@ -519,7 +519,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 20", puntaje: 10 },
       ],
       puntos: [[20, 10], [27.5, 40], [42.5, 65], [62, 85], [74, 100]],
-      unidadCorta: "leyes sancionadas (12m)",
+      unidadCorta: "leyes sancionadas (12 meses)",
     },
     limitaciones: [
       "Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.",
@@ -534,7 +534,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-28", cambio: "En la tarjeta de rezago del índice político pasa de 6 a 6,5 meses: a la mitad de la ventana se le suma la demora de la carga del catálogo. No cambia el valor ni el puntaje.", adr: "0399" },
       { fecha: "2026-10-28", cambio: "Deja de contar las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso haya insistido, y la pregunta pasa a ser si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión. Las bandas no cambian. En septiembre de 2026 no había leyes vetadas en la ventana y el dato sigue en 31; en la ventana a agosto de 2025 llegó a haber ocho, y la de entonces pasa de 40 a 32 leyes.", adr: "0398" },
       { fecha: "2026-10-28", cambio: "El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo." },
-      { fecha: "2026-09-08", cambio: "Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.", adr: "0308" },
+      { fecha: "2026-09-08", cambio: "Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse al catálogo de datos abiertos (CKAN).", adr: "0308" },
       { fecha: "2026-09-08", cambio: "Doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.", adr: "0306" },
       { fecha: "2026-07-31", cambio: "Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período." },
     ],
@@ -658,7 +658,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 9", puntaje: 10 },
       ],
       puntos: [[2, 100], [3, 85], [5, 65], [7, 40], [9, 10]],
-      unidadCorta: "sesiones (12m)",
+      unidadCorta: "sesiones (12 meses)",
     },
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: el control sobre los jueces lo ejerce el Consejo de la Magistratura, no el Poder Ejecutivo. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para leer la serie histórica, que se sigue calculando.",
@@ -684,9 +684,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "emae_difusion",
     cinturon: "macro",
-    rezago: "Se publica junto con el EMAE agregado, hacia fines del segundo mes siguiente al de referencia (~2 meses). La apertura sectorial sale el mismo día que el nivel general, de modo que este indicador no agrega rezago sobre el que ya tiene la dimensión.",
+    rezago: "Se publica junto con el estimador mensual de actividad económica (EMAE) agregado, hacia fines del segundo mes siguiente al de referencia (unos 2 meses). La apertura sectorial sale el mismo día que el nivel general, de modo que este indicador no agrega rezago sobre el que ya tiene la dimensión.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "EMAE — Estimador Mensual de Actividad Económica, apertura sectorial (índices por sector, base 2004)",
       serie: "15 series del dataset 11.3 · API de Series de Tiempo (datos.gob.ar)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
@@ -718,7 +718,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El INDEC revisa las series sectoriales hacia atrás junto con el EMAE agregado; el informe regenera la serie completa en cada actualización, de modo que una revisión puede cambiar retroactivamente el conteo de un mes ya publicado.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
+      { fecha: "2026-10-16", cambio: "Desde el 16 de octubre de 2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. Esas cifras son las del 16 de octubre de 2026: desde que salió la recaudación del impuesto al valor agregado y del impuesto al cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -726,9 +726,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "ipi_manufacturero",
     cinturon: "macro",
-    rezago: "El INDEC publica el IPI hacia el inicio del segundo mes posterior al de referencia, antes que el EMAE del mismo período. La ganancia de frescura es real pero acotada: como el indicador promedia tres meses, su centro de masa queda un mes atrás del último dato, de modo que incorpora el mes más reciente con un tercio del peso en lugar de reflejarlo por completo.",
+    rezago: "El Instituto Nacional de Estadística y Censos (INDEC) publica el índice de producción industrial (IPI) hacia el inicio del segundo mes posterior al de referencia, antes que el estimador mensual de actividad económica (EMAE) del mismo período. La ganancia de frescura es real pero acotada: como el indicador promedia tres meses, su centro de masa queda un mes atrás del último dato, de modo que incorpora el mes más reciente con un tercio del peso en lugar de reflejarlo por completo.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "IPI manufacturero — Índice de Producción Industrial, nivel general, serie original (base 2004 = 100)",
       serie: "Planilla sh_ipi_manufacturero_<año>.xls, Cuadro 1, serie original; identificador histórico 453.1_SERIE_ORIGNAL_0_0_14_46",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-6-14",
@@ -748,7 +748,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ −5", puntaje: 5 },
       ],
       puntos: [[-5, 5], [-3.5, 20], [-1, 40], [1.5, 60], [4, 80], [5, 100]],
-      unidadCorta: "% i.a.",
+      unidadCorta: "% interanual",
     },
     dobleUso: "Usa las mismas bandas que el EMAE, deliberadamente y con una consecuencia que conviene declarar: sobre la historia disponible, un mes mediano del índice industrial puntúa 39 y uno del estimador de actividad agregada puntúa 71. La brecha no es un defecto de calibración sino desempeño real —la industria argentina creció menos que el conjunto de la economía durante el período—, y ensanchar las bandas para cerrarla borraría esa señal. El arrastre que produce se compensa limitando su peso dentro de la dimensión, no retocando las anclas.",
     limitaciones: [
@@ -762,11 +762,11 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda con el EMAE y su difusión sectorial, y los pesos se renormalizan.",
     revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
-      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Producción industrial (vs. un año atrás)», sin siglas. No cambia el cálculo.", adr: "0366" },
-      { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Producción industrial (frente a un año atrás)», sin siglas. No cambia el cálculo.", adr: "0366" },
+      { fecha: "2026-09-08", cambio: "El índice de producción industrial y el indicador sintético de la actividad de la construcción se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
       { fecha: "2026-07-18", cambio: "Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
+      { fecha: "2026-10-16", cambio: "Desde el 16 de octubre de 2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia. Esas cifras son las del 16 de octubre de 2026: desde que salió la recaudación del impuesto al valor agregado y del impuesto al cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -775,9 +775,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "saldo_comercial_12m",
     cinturon: "macro",
-    rezago: "El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después.",
+    rezago: "El cuadro original del Intercambio Comercial Argentino (ICA) se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares",
       serie: "Cuadro 1 del ICA vigente, series originales; historia de 74.3_IET_0_M_16 (exportaciones) y 74.3_IIT_0_M_25 (importaciones)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-2-40",
@@ -820,7 +820,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Saldo comercial (últimos 12 meses)». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El cuadro oficial vigente completa la API histórica rezagada. La tarjeta y las series comparten origen y se exigen ventanas consecutivas; se conserva el último cuadro validado ante fallos del portal." },
       { fecha: "2026-07-18", cambio: "Se declara la limitación de cobertura y se publica la cuenta corriente junto a este indicador: el saldo de bienes puede marcar superávit mientras el sector externo en conjunto drena dólares." },
-      { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, calculado por las series de exportaciones e importaciones del ICA (frescas a ~2 meses) en lugar de la serie de saldo directa (~14 meses de rezago), con la regla de superávit por contracción automatizada." },
+      { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, calculado por las series de exportaciones e importaciones del ICA (frescas a unos 2 meses) en lugar de la serie de saldo directa (unos 14 meses de rezago), con la regla de superávit por contracción automatizada." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "La serie del gráfico pasó del saldo mensual al acumulado móvil de 12 meses — la métrica del titular." },
       { fecha: "2026-07-15", cambio: "La regla automática de superávit por contracción dejó de rebajar de golpe a 60 puntos: ahora interpola hacia ese mismo piso según cuánto de la mejora del saldo se explica por la caída de importaciones." },
@@ -833,19 +833,19 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     rezago: "Las dos fuentes publican en los primeros días del mes siguiente, y el indicador espera el índice de precios que lleva las cifras a pesos constantes: el último punto es el del último mes con inflación publicada.",
     fuente: {
-      organismo: "Secretaría de Hacienda (dato primario de ARCA) y Comisión Arbitral del Convenio Multilateral; deflactor: INDEC",
+      organismo: "Secretaría de Hacienda (dato primario de la Agencia de Recaudación y Control Aduanero [ARCA]) y Comisión Arbitral del Convenio Multilateral; deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Recaudación mensual de la Dirección General Impositiva (impuestos internos) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, en pesos corrientes, llevadas a pesos constantes con el índice de precios",
-      serie: "172.3_SOTAL_DDGI_M_0_0_12 + IPC 148.3_INIVELNAL_DICI_M_26 (API de datos.gob.ar) + gacetilla mensual de recaudación de la Comisión Arbitral. Descomposición (no puntúa): IVA-DGI 142.3_IVA_D_2001_M_7 y créditos/débitos bancarios 142.3_CREDI_2001_M_24 —dos de los propios componentes del agregado DGI—, mismo IPC como deflactor.",
+      serie: "172.3_SOTAL_DDGI_M_0_0_12 + IPC 148.3_INIVELNAL_DICI_M_26 (API de datos.gob.ar) + gacetilla mensual de recaudación de la Comisión Arbitral. Descomposición (no puntúa): impuesto al valor agregado 142.3_IVA_D_2001_M_7 y créditos/débitos bancarios 142.3_CREDI_2001_M_24 —dos de los propios componentes del agregado DGI—, mismo IPC como deflactor.",
       url: "https://www.afip.gob.ar/institucional/estudios/",
       acceso: "Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado.",
     },
     transformaciones: [
-      "Se mide la recaudación de la Dirección General Impositiva —el IVA doméstico, Ganancias, créditos y débitos, internos— y no la total. Quedan afuera la recaudación aduanera y los aportes a la seguridad social. La apertura oficial es exacta: las tres partes suman el total.",
+      "Se mide la recaudación de la Dirección General Impositiva —el impuesto al valor agregado doméstico, Ganancias, créditos y débitos, internos— y no la total. Quedan afuera la recaudación aduanera y los aportes a la seguridad social. La apertura oficial es exacta: las tres partes suman el total.",
       "Se le suma, en nivel, la recaudación de los seis sistemas de la Comisión Arbitral. Sobre el total medido, la parte provincial aporta alrededor de un sexto.",
       "El resultado se lleva a pesos constantes con el índice de precios y se divide por el promedio del cuarto trimestre de 2023, que vale 100: la lectura es cuánta base imponible real queda respecto del punto de partida.",
       "Se corrige la estacionalidad, que es grande: sin corregir, la diferencia entre el mes calendario más alto y el más bajo llega a treinta puntos del índice. El factor de cada mes es el cociente entre ese mes y la tendencia de doce meses centrada, promediado por mes calendario y normalizado para no alterar el nivel. Mayo y junio concentran recaudación —vencimientos y aguinaldo— y marzo es el piso. Corregida, la estacionalidad remanente baja a tres puntos.",
       "La parte provincial de 2022 no se publica como informe mensual y se reconstruye desde la variación interanual que informa cada gacetilla de 2023. La reconstrucción se controla contra el acumulado anual, deducido por separado: los dos caminos coinciden salvo redondeo.",
-      "Se descompone el agregado en la porción ligada a actividad económica y el resto: IVA-DGI y créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado DGI, no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.",
+      "Se descompone el agregado en la porción ligada a actividad económica y el resto: el impuesto al valor agregado (IVA) y los créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado de la Dirección General Impositiva (DGI), no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.",
     ],
     anclas: {
       bandas: [
@@ -856,9 +856,9 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 80", puntaje: 10 },
       ],
       puntos: [[80, 10], [85, 35], [95, 60], [105, 85], [110, 100]],
-      unidadCorta: "base 100 = 4T-2023",
+      unidadCorta: "base 100 = 4º trimestre de 2023",
     },
-    dobleUso: "IVA-DGI y créditos/débitos bancarios (impuesto al cheque) son dos componentes de este agregado y la tarjeta publica su descomposición. Hasta octubre de 2026 puntuaban además por separado en la dimensión de actividad; salieron del índice por repetir la lectura del EMAE.",
+    dobleUso: "El impuesto al valor agregado y los créditos/débitos bancarios (impuesto al cheque) son dos componentes de este agregado y la tarjeta publica su descomposición. Hasta octubre de 2026 puntuaban además por separado en la dimensión de actividad; salieron del índice por repetir la lectura del estimador mensual de actividad económica (EMAE).",
     limitaciones: [
       "La parte provincial NO es la recaudación provincial total: son los Ingresos Brutos de los contribuyentes que operan en varias provincias, más los regímenes de retención y percepción. Cada provincia recauda además de sus contribuyentes puramente locales, y eso no pasa por este circuito. Es una porción grande y homogénea de la base imponible provincial, no su universo.",
       "Al medir el nivel mes a mes en lugar de la variación contra el año anterior, el indicador es más nervioso: un mes puede moverlo varios puntos. Es el precio de no diluir la señal en una ventana de doce meses, y se acepta a cambio de que un giro se vea cuando ocurre y no a lo largo del año siguiente.",
@@ -869,16 +869,16 @@ export const FICHAS: Record<string, Ficha> = {
       "Los aportes a la seguridad social también son base imponible doméstica y quedan afuera. Siguen su propia dinámica —cayeron en términos reales desde fines de 2025— y mezclarlos habría sumado el mercado laboral a un indicador que quiere medir actividad y formalidad.",
       "Deflactor único (índice de precios nacional), sin deflactor específico de la base imponible ni deflactores provinciales.",
       "Las bandas se fijaron sobre una grilla conceptual —pasos de diez puntos de la base imponible real de la transición— y no sobre la distribución observada. La serie publicada (ver el gráfico de la tarjeta) no recorre toda la grilla, así que la banda más baja describe una situación posible y no una observada.",
-      "IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado DGI —no una fuente independiente que lo confirme o lo contradiga— y tampoco miden actividad de forma directa: la recaudación de un impuesto responde también a la evasión, a cambios de alícuota y a anticipos, y el impuesto al cheque además capta bancarización —más o menos operaciones por transferencia— y no sólo producto. Que coincidan en el sentido con el agregado no prueba causalidad; que diverjan tampoco aísla la causa: un cambio de alícuota del cheque o un vaivén de Ganancias (que no entra en esta descomposición) puede producir la misma divergencia que un problema de actividad real.",
+      "El impuesto al valor agregado y el impuesto al cheque son, ellos mismos, dos de los componentes del agregado DGI —no una fuente independiente que lo confirme o lo contradiga— y tampoco miden actividad de forma directa: la recaudación de un impuesto responde también a la evasión, a cambios de alícuota y a anticipos, y el impuesto al cheque además capta bancarización —más o menos operaciones por transferencia— y no sólo producto. Que coincidan en el sentido con el agregado no prueba causalidad; que diverjan tampoco aísla la causa: un cambio de alícuota del cheque o un vaivén de Ganancias (que no entra en esta descomposición) puede producir la misma divergencia que un problema de actividad real.",
     ],
-    faltantes: "Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el resultado primario explica solo la dimensión de cuentas fiscales. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje (\"dato de tal mes, N meses más viejo que la tarjeta\"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.",
+    faltantes: "Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el resultado primario explica solo la dimensión de cuentas fiscales. Si el impuesto al valor agregado o el impuesto al cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje (\"dato de tal mes, N meses más viejo que la tarjeta\"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.",
     revisiones: "Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.",
     cambios: [
       { fecha: "2026-10-27", cambio: "La dimensión «Viabilidad fiscal-comercial» pasa a llamarse «Cuentas fiscales» y se queda con esta y el resultado primario: el saldo comercial se fue al «Sector externo». Su peso en el índice macroeconómico no cambia (7,2 %).", adr: "0387" },
       { fecha: "2026-09-16", cambio: "Se agrega `dobleUso`: esta tarjeta es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).", adr: "0329" },
-      { fecha: "2026-09-15", cambio: "Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad.", adr: "0321" },
-      { fecha: "2026-09-15", cambio: "Suma un control tributario en el detalle (no en el puntaje): la variación interanual real de IVA-DGI y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo IPC, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional.", adr: "0318,0319" },
-      { fecha: "2026-09-08", cambio: "Tarjeta e historia actualizan las gacetillas COMARB antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC.", adr: "0283" },
+      { fecha: "2026-09-15", cambio: "Corrige el encuadre del punto anterior: el impuesto al valor agregado y el impuesto al cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad.", adr: "0321" },
+      { fecha: "2026-09-15", cambio: "Suma un control tributario en el detalle (no en el puntaje): la variación interanual real del impuesto al valor agregado y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo índice de precios al consumidor, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional.", adr: "0318,0319" },
+      { fecha: "2026-09-08", cambio: "Tarjeta e historia actualizan las gacetillas de la Comisión Arbitral del Convenio Multilateral antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC.", adr: "0283" },
       { fecha: "2026-09-08", cambio: "El cotejo original de ARCA y la reconstrucción independiente confirman julio. Se explicita que vencimientos excepcionales y reasignaciones fiscales pueden mover la recaudación aun después del ajuste estacional; no cambia el puntaje." },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, entonces como variación mensual nominal." },
       { fecha: "2026-06-26", cambio: "Pasa a variación interanual real deflactada por IPC: la variación nominal confundía inflación con recaudación." },
@@ -896,8 +896,8 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     rezago: "Se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente.",
     fuente: {
-      organismo: "BCRA",
-      operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales",
+      organismo: "Banco Central de la República Argentina (BCRA)",
+      operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17 de diciembre de 2015 = 100), promedios mensuales",
       serie: "Planilla oficial ITCRMSerie.xlsx (hoja de promedios mensuales)",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Indices_tipo_cambio_multilateral.asp",
       acceso: "Automático: descarga de la planilla oficial del BCRA.",
@@ -916,7 +916,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 75", puntaje: 10 },
       ],
       puntos: [[75, 10], [80, 35], [90, 60], [102.5, 80], [110, 100]],
-      unidadCorta: "dic-2015 = 100",
+      unidadCorta: "diciembre de 2015 = 100",
     },
     dobleUso: "Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, se publican como series de contexto.",
     limitaciones: [
@@ -929,7 +929,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-28", cambio: "Las reservas netas salen del sector externo hacia la estabilidad monetaria: el sector externo queda con el saldo comercial y este cruce. Su peso en el índice macroeconómico no cambia.", adr: "0409" },
       { fecha: "2026-10-27", cambio: "Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con los términos del intercambio y su peso en el índice (11 % entre los dos) no cambian.", adr: "0387" },
       { fecha: "2026-10-27", cambio: "Vuelve a ser tarjeta y a puntuar por su cuenta, igual que los términos del intercambio. El cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz: el número de la dimensión no cambia. Con los datos de septiembre de 2026 el tipo de cambio real puntúa 49,7, los términos del intercambio 85,0 y la dimensión 49,8, igual que el compuesto que reemplaza; el índice macroeconómico sigue en 53,9.", adr: "0375" },
-      { fecha: "2026-06-27", cambio: "La fuente pasa de la serie del INDEC (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto." },
+      { fecha: "2026-06-27", cambio: "La fuente pasa de la serie del Instituto Nacional de Estadística y Censos (INDEC) (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto." },
       { fecha: "2026-06-28", cambio: "Deja de ser contexto y entra al índice como quinta dimensión (competitividad externa)." },
       { fecha: "2026-06-30", cambio: "Peso de la dimensión recortado de 12% a 11% al entrar la dimensión de inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -944,7 +944,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     rezago: "Trimestral, con unos dos meses y medio de demora: el segundo trimestre (abril a junio) sale a mediados de septiembre. La tarjeta muestra el último trimestre publicado y lo nombra.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Índice de términos del intercambio (precios de exportación sobre precios de importación), de los índices de precios y cantidades del comercio exterior, base 2004 = 100, trimestral",
       serie: "Serie 82.2_ITI_2004_T_27 de la API de series de datos.gob.ar",
       url: "https://datos.gob.ar/series/api/series/?ids=82.2_ITI_2004_T_27",
@@ -985,9 +985,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "rem_ipc_12m",
     cinturon: "macro",
-    rezago: "El BCRA releva el REM los últimos días de cada mes y publica los resultados en los primeros días hábiles del mes siguiente.",
+    rezago: "El Banco Central de la República Argentina (BCRA) releva el Relevamiento de Expectativas de Mercado (REM) los últimos días de cada mes y publica los resultados en los primeros días hábiles del mes siguiente.",
     fuente: {
-      organismo: "BCRA",
+      organismo: "Banco Central de la República Argentina (BCRA)",
       operacion: "REM — Relevamiento de Expectativas de Mercado: mediana de la inflación esperada para los próximos 12 meses",
       serie: "API de Estadísticas Monetarias del BCRA (variable 29)",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Relevamiento_Expectativas_de_Mercado.asp",
@@ -995,7 +995,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El valor publicado en la tarjeta es el nivel anual esperado, tal cual lo releva el BCRA.",
-      "Para puntuar se convierte a su equivalente mensual (raíz doceava) y se lee con la misma escala mensual que el IPC: expectativas y dato realizado quedan en la misma vara.",
+      "Para puntuar se convierte a su equivalente mensual (raíz doceava) y se lee con la misma escala mensual que el índice de precios al consumidor (IPC): expectativas y dato realizado quedan en la misma vara.",
     ],
     anclas: {
       bandas: [
@@ -1033,9 +1033,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "desequilibrio_monetario",
     cinturon: "macro",
-    rezago: "Se publica para el último mes con los cinco insumos completos. El cierre lo marca la planilla mensual del mercado de cambios, que sale con hasta dos meses de rezago; los agregados monetarios del BCRA son diarios.",
+    rezago: "Se publica para el último mes con los cinco insumos completos. El cierre lo marca la planilla mensual del mercado de cambios, que sale con hasta dos meses de rezago; los agregados monetarios del Banco Central de la República Argentina (BCRA) son diarios.",
     fuente: {
-      organismo: "BCRA",
+      organismo: "Banco Central de la República Argentina (BCRA)",
       operacion: "M2 transaccional del sector privado (var. 197), billetes y monedas en poder del público (17), depósitos del sector privado no financiero en pesos (100) y en moneda extranjera expresados en pesos (104), y el concepto 03 del Mercado de Cambios",
       url: "https://www.bcra.gob.ar/estadisticas-estandarizadas-sobre-la-evolucion-del-mercado-de-cambios/",
       acceso: "Automático: API monetaria del BCRA y planilla acumulativa del anexo estadístico del mercado de cambios y balance cambiario.",
@@ -1058,7 +1058,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 80", puntaje: 10 },
       ],
       puntos: [[0, 100], [58.75, 41.25], [90, 10], [100, 0]],
-      unidadCorta: "pts de tensión (0–100)",
+      unidadCorta: "puntos de tensión (0–100)",
     },
     dobleUso: "Comparte insumos monetarios con la brecha de crecimiento real entre agregados monetarios y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: esa brecha compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.",
     limitaciones: [
@@ -1086,10 +1086,10 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "iai",
     cinturon: "macro",
-    rezago: "El titular se calcula al último mes común de la construcción (ISAC) y los bienes de capital importados (~2 meses y medio); el componente más fresco se muestra como provisorio sin puntuar.",
+    rezago: "El titular se calcula al último mes común de la construcción (ISAC) y los bienes de capital importados (unos 2 meses y medio); el componente más fresco se muestra como provisorio sin puntuar.",
     fuente: {
-      organismo: "INDEC (construcción y bienes de capital) + DNRPA (patentamientos comerciales, en acumulación)",
-      operacion: "ISAC nivel general (serie original) + importaciones de bienes de capital del ICA + inscripciones iniciales de vehículos comerciales",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC: construcción y bienes de capital) + Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA: patentamientos comerciales, en acumulación)",
+      operacion: "ISAC nivel general (serie original) + importaciones de bienes de capital del Intercambio Comercial Argentino + inscripciones iniciales de vehículos comerciales",
       serie: "ISAC: planilla original vigente, Cuadro 1; BK: planilla impo_uso_economico_<años>.xls, completada hacia atrás con 74.3_IIBCA_0_M_32 · dataset de inscripciones iniciales de la DNRPA (datos.jus.gob.ar)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-3-42",
       acceso: "Automático: descubre las planillas originales vigentes del ISAC y del ICA; para BK, el original reemplaza íntegramente su ventana y la API conserva sólo la historia anterior; los patentamientos comerciales se acumulan mes a mes desde el portal de datos de justicia (la fuente solo publica el mes corriente).",
@@ -1107,7 +1107,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ −37,63", puntaje: 10 },
       ],
       puntos: [[-37.63, 10], [-28.18, 35], [0.17, 60], [28.52, 80], [37.97, 100]],
-      unidadCorta: "% i.a.",
+      unidadCorta: "% interanual",
     },
     dobleUso: "Los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
     limitaciones: [
@@ -1123,7 +1123,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-10-28", cambio: "La escala deja las bandas de ±2 y ±10 % puestas sobre 2024-2026, con las que 23 de 33 meses del mandato tocaban un extremo, y corta en uno y dos desvíos robustos (18,9 y 37,8 puntos) de la variación interanual de 2004-2023, centrados en el crecimiento de la población. Con agosto de 2026 (−1,74 %) el puntaje pasa de 52,0 a 58,3.", adr: "0404" },
       { fecha: "2026-09-08", cambio: "La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; la inversión física de julio da −5,66%.", adr: "0300" },
-      { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
+      { fecha: "2026-09-08", cambio: "El índice de producción industrial y el indicador sintético de la actividad de la construcción se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-06-30", cambio: "Nace y entra al índice como parte de la sexta dimensión (inversión, 12%), sin el componente de patentamientos por falta de historia." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio." },
@@ -1138,9 +1138,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "credito_privado",
     cinturon: "macro",
-    rezago: "El stock del BCRA es diario, pero el titular espera el IPC que lo deflacta: el dato fresco se muestra como provisorio sin puntuar.",
+    rezago: "El stock del Banco Central de la República Argentina (BCRA) es diario, pero el titular espera el índice de precios al consumidor (IPC) que lo deflacta: el dato fresco se muestra como provisorio sin puntuar.",
     fuente: {
-      organismo: "BCRA (stock de préstamos) + INDEC (IPC como deflactor)",
+      organismo: "Banco Central de la República Argentina (BCRA: stock de préstamos) + Instituto Nacional de Estadística y Censos (INDEC: índice de precios al consumidor como deflactor)",
       operacion: "Préstamos al sector privado (saldos a fin de mes), variación interanual real",
       serie: "API de Estadísticas Monetarias del BCRA (variable 117, préstamos al sector privado en pesos) + IPC 148.3_INIVELNAL_DICI_M_26",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
@@ -1160,7 +1160,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ −28,9", puntaje: 10 },
       ],
       puntos: [[-28.9, 10], [-21.7, 25], [-7.25, 45], [7.25, 65], [21.7, 85], [28.9, 100]],
-      unidadCorta: "% i.a. real",
+      unidadCorta: "% interanual real",
     },
     dobleUso: "La misma serie se sigue extrayendo como contexto no publicado. El cinturón de impacto social usó las líneas a familias (tarjetas y personales) para un componente de endeudamiento que dejó de integrar el índice de impacto social en julio de 2026: leía el crecimiento de la deuda real como mayor acceso al crédito. Esa dimensión la mide la mora desde entonces.",
     limitaciones: [
@@ -1230,7 +1230,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     rezago: "La planilla anual se completa con gacetillas de meses cerrados cuya cobertura fue revisada. Un mes sin cierre documentado espera a la planilla; no se publica una muestra de licitaciones como mes completo.",
     fuente: {
-      organismo: "Secretaría de Finanzas (colocaciones de deuda) + BCRA (expectativas de inflación)",
+      organismo: "Secretaría de Finanzas (colocaciones de deuda) + Banco Central de la República Argentina (BCRA: expectativas de inflación)",
       operacion: "Colocaciones de letras y bonos del Tesoro en el mercado local, y expectativa de inflación a doce meses",
       serie: "Planillas anuales de colocaciones (hojas de letras y bonos) + relevamiento de expectativas de mercado",
       url: "https://www.argentina.gob.ar/economia/finanzas/deudapublica/colocacionesdedeuda",
@@ -1238,7 +1238,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "De cada colocación se obtiene la tasa efectiva anual implícita a partir del precio de corte, la fecha de vencimiento y la forma de pago del instrumento.",
-      "Para meses cerrados posteriores a la planilla se usa la TIREA publicada en las gacetillas oficiales. La liquidación se verifica en el llamado. Cuando la planilla incorpora el mes, tiene prioridad y puede revisar sus cifras: no se suman ambas fuentes.",
+      "Para meses cerrados posteriores a la planilla se usa la tasa interna de retorno efectiva anual (TIREA) publicada en las gacetillas oficiales. La liquidación se verifica en el llamado. Cuando la planilla incorpora el mes, tiene prioridad y puede revisar sus cifras: no se suman ambas fuentes.",
       "Las colocaciones del mes se promedian ponderando por el monto adjudicado: una licitación chica no mueve el promedio como una grande.",
       "Solo entran los instrumentos a tasa fija en pesos. Los ajustados por inflación, los atados al dólar y los de tasa variable quedan afuera porque su rendimiento no es comparable con el de una tasa fija.",
       "Al promedio se le descuenta la inflación esperada a doce meses, para leer la tasa en términos reales.",
@@ -1269,7 +1269,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-28", cambio: "La ficha declara que la escala satura por encima de 20 % real y que la serie la superó en agosto y septiembre de 2025. No cambia el cálculo." },
       { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (4 %).", adr: "0387" },
       { fecha: "2026-07-18", cambio: "Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía." },
-      { fecha: "2026-08-25", cambio: "La TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1+TEM)^12−1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la LECAP S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.", adr: "0238" },
+      { fecha: "2026-08-25", cambio: "La TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1 + tasa efectiva mensual)^12 − 1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la letra capitalizable del Tesoro (LECAP) S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.", adr: "0238" },
       { fecha: "2026-08-25", cambio: "La tasa de cada colocación pasa a ser la TIREA de corte —el rendimiento que fija el precio al que se colocó— y no la tasa contractual del instrumento. Leer el cupón sólo es correcto en una emisión nueva a la par; en una reapertura el cupón fija el flujo y el precio fija el rendimiento. En la reapertura de la LECAP S30N6 del 15 de julio de 2026, colocada a $1.194, el indicador informaba 31,37% donde la Secretaría publicó 25,59%, y julio salía 5,80% real en vez de 4,13%. La convención de días se calibró contra catorce tasas de corte publicadas entre julio de 2025 y agosto de 2026. Toda la serie desde diciembre de 2023 se recalculó: cambian 22 de los 40 meses con colocaciones, así que un valor anterior a esta fecha no se compara con uno posterior.", adr: "0258" },
       { fecha: "2026-09-08", cambio: "Agosto se completa con cuatro colocaciones de las gacetillas oficiales. Un complemento incompleto falla entero; se separa la caché por ventana histórica para que la consulta corta no recorte el backfill.", adr: "0288" },
     ],
@@ -1293,10 +1293,10 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Solo cuentan las encuestas de los últimos 60 días desde el sondeo más reciente.",
       "Cada encuesta pondera por recencia (el peso decae con los días) y por la calificación de calidad de la consultora (A pesa 3, B pesa 2, C pesa 1).",
-      "El indicador es la diferencia LLA − PJ de esas intenciones ponderadas, en puntos porcentuales.",
+      "El indicador es la diferencia entre La Libertad Avanza y el Partido Justicialista en esas intenciones ponderadas, en puntos porcentuales.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas (traduce el semáforo de Luis) — los cortes de banda del motor son 14, 8, 2 y −2 pp, elegidos para que los cruces de COLOR caigan en los umbrales que pidió Luis: más de +8 puntos → verde, el más alto; entre +8 y +5 → amarillo; entre +5 y 0 → naranja; 0 o menos → rojo, el más bajo.",
+      "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas (traduce el semáforo de Luis) — los cortes de banda del motor son 14, 8, 2 y −2 puntos porcentuales, elegidos para que los cruces de COLOR caigan en los umbrales que pidió Luis: más de +8 puntos → verde, el más alto; entre +8 y +5 → amarillo; entre +5 y 0 → naranja; 0 o menos → rojo, el más bajo.",
       "Es el único indicador de la dimensión de imagen y voto del índice del cinturón — la dimensión que pesa deliberadamente menos que las otras seis, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del antiguo cinturón espíritu de época. Ese cinturón salió del monitor el 14 de agosto de 2026, eliminando el segundo aporte de este indicador al índice global.",
@@ -1307,13 +1307,13 @@ export const FICHAS: Record<string, Ficha> = {
       "Si pasan más de 60 días sin sondeos, el indicador se marca como desactualizado.",
     ],
     faltantes: "Si la lectura falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. No es un archivo de lo conocido en cada fecha. La serie evalúa el mismo esquema al cierre de cada mes; consultar otro día no cambia por sí solo el promedio. Titular e historia pueden diferir en una décima por el orden de redondeo de LLA y PJ.",
+    revisiones: "La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. No es un archivo de lo conocido en cada fecha. La serie evalúa el mismo esquema al cierre de cada mes; consultar otro día no cambia por sí solo el promedio. Titular e historia pueden diferir en una décima por el orden de redondeo de La Libertad Avanza y el Partido Justicialista.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.", adr: "0311" },
-      { fecha: "2026-09-15", cambio: "Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).", adr: "0312,0121" },
+      { fecha: "2026-09-15", cambio: "Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 puntos porcentuales anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 puntos porcentuales evita bajar el techo a 60, como hacía la primera versión de este ADR).", adr: "0312,0121" },
       { fecha: "2026-10-07", cambio: "Sale del Monitor. El Votómetro pasa a ser un producto aparte de CiGob y deja de puntuar en el índice político, donde era el único indicador de la dimensión de imagen y voto (7%). Su último dato publicado fue una ventaja de 4,3 puntos, de la edición del 22 de julio de 2026. Esta ficha queda como registro de cómo se construyó el indicador mientras estuvo.", adr: "0344" },
       { fecha: "2026-09-22", cambio: "Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo." },
     ],
@@ -1423,8 +1423,8 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera. Lo reemplazan dos conteos de lo consumado en las dos cámaras: los vetos insistidos y los decretos derogados. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
-      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
-      "Un cero en esta tarjeta no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la tarjeta lo dice así en vez de leerlo como «no pasó nada».",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto a la eficacia parlamentaria, la razón de decretos de necesidad y urgencia por ley, las sesiones caídas por quórum y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Un cero en esta tarjeta no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16 de septiembre de 2026 la tarjeta lo dice así en vez de leerlo como «no pasó nada».",
     ],
     limitaciones: [
       "La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.",
@@ -1445,9 +1445,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "brecha_obra_publica",
     cinturon: "politica",
-    rezago: "El INDEC publica la encuesta junto con el informe mensual de la construcción. Su fecha de publicación es distinta del horizonte trimestral de expectativas: la serie identifica el inicio de ese horizonte y no acredita disponibilidad pública en ese mes.",
+    rezago: "El Instituto Nacional de Estadística y Censos (INDEC) publica la encuesta junto con el informe mensual de la construcción. Su fecha de publicación es distinta del horizonte trimestral de expectativas: la serie identifica el inicio de ese horizonte y no acredita disponibilidad pública en ese mes.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1)",
       url: "https://www.indec.gob.ar/Nivel4/Tema/3/3/42",
       acceso: "Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas.",
@@ -1644,7 +1644,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el sitio de la cámara no responde, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de notas nuevas.",
     revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
     cambios: [
-      { fecha: "2026-10-27", cambio: "Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a AFAC, la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.", adr: "0391" },
+      { fecha: "2026-10-27", cambio: "Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.", adr: "0391" },
     ],
   },
 
@@ -1697,7 +1697,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "conflictividad_nacional",
     cinturon: "politica",
-    rezago: "El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra.",
+    rezago: "El agregado de Armed Conflict Location & Event Data (ACLED) se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra.",
     fuente: {
       organismo: "ACLED — Armed Conflict Location & Event Data",
       operacion: "Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina",
@@ -1727,7 +1727,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-10-28", cambio: "La ficha declara que 2022 y 2023 ya venían por debajo de 2020 y 2021, así que parte de la caída del mandato podría ser tendencia previa. No cambia el cálculo." },
       { fecha: "2026-10-28", cambio: "En la tarjeta de rezago del índice político pasa de 6 a 7 meses: a la mitad de la ventana se le suma el mes en curso, que queda afuera hasta que cierra. No cambia el valor ni el puntaje.", adr: "0399" },
-      { fecha: "2026-07-11", cambio: "Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable." },
+      { fecha: "2026-07-11", cambio: "Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes del Centro de Economía Política Argentina (CEPA), que no permitía una serie mensual comparable." },
       { fecha: "2026-09-08", cambio: "Week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.", adr: "0303" },
       { fecha: "2026-08-21", cambio: "Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral.", adr: "0232" },
       { fecha: "2026-10-27", cambio: "Escala nueva: los cortes pasan de −32 · −29 · −26 · −15%, que salían del rango del propio mandato (con ellos, cualquier año de 2020 a 2023 habría puntuado 10), a −30 · −15 · +15 · +30%, uno y dos desvíos de la variación previa al mandato. Con el dato de septiembre de 2026 el componente pasa de 63,9 a 94,4.", adr: "0390" },
@@ -1761,16 +1761,16 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 9.100.000", puntaje: 10 },
       ],
       puntos: [[4000000, 100], [4950000, 85], [6750000, 65], [8350000, 40], [9100000, 10]],
-      unidadCorta: "jornadas 12m",
+      unidadCorta: "jornadas en 12 meses",
     },
     incidenciaTexto: [
-      "Integra la dimensión de conflicto social; ACLED conserva el mayor peso por cubrir también protestas y disturbios no laborales.",
+      "Integra la dimensión de conflicto social; el registro de protestas de ACLED (Armed Conflict Location & Event Data) conserva el mayor peso por cubrir también protestas y disturbios no laborales.",
       "Con 4,82 millones de jornadas a julio de 2026 puntúa 87: por debajo de la mediana de 2006-2023, pero no en el piso de la historia. No reemplaza a ACLED: mide intensidad laboral, no toda la conflictividad callejera.",
     ],
     limitaciones: [
       "La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.",
       "No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.",
-      "Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la CGT durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.",
+      "Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la Confederación General del Trabajo (CGT) durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.",
       "Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.",
     ],
     faltantes: "Si la página o la planilla no responden, el colector mantiene el último valor publicado como desactualizado y la serie conserva sus puntos previos.",
@@ -1788,9 +1788,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "iaf_transferencias",
     cinturon: "politica",
-    rezago: "Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene IPC publicado: unos 45 días de rezago del INDEC, más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes).",
+    rezago: "Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene índice de precios al consumidor (IPC) publicado: unos 45 días de rezago del Instituto Nacional de Estadística y Censos (INDEC), más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes).",
     fuente: {
-      organismo: "Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC",
+      organismo: "Ministerio de Economía (Secretaría de Hacienda); deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC",
       serie: "informacion_consolidada_<año>.xlsx (mensual) · serie_ron_2003_2025.csv (ancla anual) · IPC nivel general 148.3_INIVELNAL_DICI_M_26 vía API de Series de Tiempo (datos.gob.ar)",
       url: "https://www.argentina.gob.ar/economia/sechacienda/asuntosprovinciales/ron",
@@ -1806,7 +1806,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice: su valor no se convierte en puntaje ni pesa en la dimensión de alianzas territoriales. La escala con que puntuaba hasta entonces se conserva para leer la serie histórica con la misma regla con que se construyó: El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas, hasta septiembre de 2026: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Hasta septiembre de 2026 integró la dimensión, junto al alineamiento de senadores por provincia y la adhesión provincial al RIGI. Su lugar pasó íntegro a la medida de transferencias no automáticas, que reemplaza a ésta: la reunión del 26 de octubre decidió medir lo que la Nación gira por decisión y no lo que a las provincias les corresponde por ley.",
+      "Hasta septiembre de 2026 integró la dimensión, junto al alineamiento de senadores por provincia y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Su lugar pasó íntegro a la medida de transferencias no automáticas, que reemplaza a ésta: la reunión del 26 de octubre decidió medir lo que la Nación gira por decisión y no lo que a las provincias les corresponde por ley.",
     ],
     limitaciones: [
       "Una ventana de 12 meses promedia lo ocurrido: un giro de pocas semanas se diluye y la medida describe, en promedio, lo de hace unos seis meses. Mira la tendencia, no el último mes.",
@@ -1821,13 +1821,13 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la armonía fiscal entre la Nación y las provincias." },
       { fecha: "2026-06-30", cambio: "El deflactor pasó de una proyección fija al índice IPC oficial del INDEC: la variación real publicada se corrigió de +1,8% a +7,0%." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de alianzas territoriales — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
-      { fecha: "2026-07-15", cambio: "El deflactor pasó de la variación diciembre contra diciembre a la inflación promedio anual, el criterio correcto para sumas anuales de flujos y el que usan los análisis fiscales de referencia — con inflación en baja, la punta de diciembre subdeflactaba: la variación real de 2025 se corrigió de +7,0% a un valor en línea con los informes externos (~0/+2% real)." },
-      { fecha: "2026-07-15", cambio: "Se excluyeron del cálculo las porciones del archivo oficial que no son transferencias a provincias (Tesoro Nacional, Seguridad Social, Fondo ATN): el nivel anual pasó a coincidir con los informes fiscales de referencia (~$60 billones en 2025) y la variación quedó medida solo sobre lo que efectivamente reciben las jurisdicciones." },
-      { fecha: "2026-08-25", cambio: "Cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con la planilla anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan IARAF y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.", adr: "0239" },
+      { fecha: "2026-07-15", cambio: "El deflactor pasó de la variación diciembre contra diciembre a la inflación promedio anual, el criterio correcto para sumas anuales de flujos y el que usan los análisis fiscales de referencia — con inflación en baja, la punta de diciembre subdeflactaba: la variación real de 2025 se corrigió de +7,0% a un valor en línea con los informes externos (alrededor de 0 a +2% real)." },
+      { fecha: "2026-07-15", cambio: "Se excluyeron del cálculo las porciones del archivo oficial que no son transferencias a provincias (Tesoro Nacional, Seguridad Social, Fondo de Aportes del Tesoro Nacional): el nivel anual pasó a coincidir con los informes fiscales de referencia (alrededor de $60 billones en 2025) y la variación quedó medida solo sobre lo que efectivamente reciben las jurisdicciones." },
+      { fecha: "2026-08-25", cambio: "Cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con la planilla anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan el Instituto Argentino de Análisis Fiscal (IARAF) y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.", adr: "0239" },
       { fecha: "2026-08-25", cambio: "La fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.", adr: "0263" },
-      { fecha: "2026-09-08", cambio: "El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta." },
+      { fecha: "2026-09-08", cambio: "El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la Oficina de Presupuesto del Congreso (OPC). Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta." },
       { fecha: "2026-10-10", cambio: "Pasa de comparar el último año calendario cerrado contra el anterior (el dato se quedaba en diciembre de 2025, con diez meses de rezago) a los últimos 12 meses móviles contra los 12 previos, con fecha en el último mes con IPC publicado (agosto de 2026: −1,8% real). La planilla de Hacienda ya traía enero a septiembre de 2026. Es la misma escala y las mismas bandas: el valor de diciembre coincide con el anual de antes. La serie pasa de un punto por año a uno por mes.", adr: "0353" },
-      { fecha: "2026-10-27", cambio: "Sale del índice político: mide transferencias automáticas (coparticipación y fondos de ley del RON), que son lo que a las provincias les corresponde y no una decisión de la Nación. Lo reemplaza, con el mismo peso, la medida de transferencias no automáticas (ATN y transferencias por programa, de Presupuesto Abierto). La serie y las bandas se conservan.", adr: "0378" },
+      { fecha: "2026-10-27", cambio: "Sale del índice político: mide transferencias automáticas (coparticipación y fondos de ley del RON), que son lo que a las provincias les corresponde y no una decisión de la Nación. Lo reemplaza, con el mismo peso, la medida de transferencias no automáticas (Aportes del Tesoro Nacional y transferencias por programa, de Presupuesto Abierto). La serie y las bandas se conservan.", adr: "0378" },
     ],
   },
 
@@ -1835,9 +1835,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "transferencias_no_automaticas",
     cinturon: "politica",
-    rezago: "Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el IPC del INDEC llega unos 45 días después, que es el que fija el último mes.",
+    rezago: "Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC) llega unos 45 días después, que es el que fija el último mes.",
     fuente: {
-      organismo: "Ministerio de Economía (Presupuesto Abierto); deflactor: INDEC",
+      organismo: "Ministerio de Economía (Presupuesto Abierto); deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC",
       serie: "API de Presupuesto Abierto, endpoint /api/v1/credito (consulta por ejercicio, filtro inciso_id = 5, columnas mes de impacto, jurisdicción, programa, actividad, partida principal y crédito devengado) · IPC nivel general 148.3_INIVELNAL_DICI_M_26 vía API de Series de Tiempo (datos.gob.ar)",
       url: "https://www.presupuestoabierto.gob.ar/",
@@ -1845,7 +1845,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Universo: lo que la Nación devenga como transferencia a gobiernos provinciales y municipales por decisión —los Aportes del Tesoro Nacional (ATN), las transferencias corrientes por programa (educación, salud, asistencia financiera, energía, entre otros) y las de capital (obra pública, infraestructura, agua)—. La coparticipación y el resto del RON no pasan por el presupuesto como gasto, porque se detraen de la recaudación antes de girarse: por construcción no están en esta consulta.",
-      "Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, SAMIC). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).",
+      "Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, Servicio de Atención Médica Integral para la Comunidad). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).",
       "Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre la suma de la ventana y la de los doce meses de 2023, las dos a precios comparables, menos uno. El detalle de la tarjeta expresa los dos totales a precios del último mes de la ventana.",
       "Ventana y base: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra el total de 2023, una base fija anterior al mandato (la misma lectura que la conflictividad social). Sólo hay punto si la ventana y la base tienen devengado e IPC en todos sus meses; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023, que es la base misma y vale cero.",
       "Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.",
@@ -1853,14 +1853,14 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real contra 2023, interpolado entre anclas: más de +72% → el más alto; entre +36% y +72% → alto; entre −36% y +36% → moderado (un año normal); entre −72% y −36% → bajo; −72% o menos → el más bajo. Más giro discrecional se lee como más recurso de negociación puesto en juego.",
       "Los cortes salen de la historia previa al mandato: la variación interanual real de las 61 ventanas de doce meses de noviembre de 2018 a noviembre de 2023 tiene un desvío de 35,9 puntos, así que ±36% es un desvío y ±72% son dos. No se miró el período de la gestión para elegirlos.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto al alineamiento de senadores por provincia y la adhesión provincial al RIGI. Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto al alineamiento de senadores por provincia y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
     ],
     limitaciones: [
       "Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.",
       "Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual): la ventana de doce meses absorbe esa estacionalidad, pero un diciembre fuerte o flojo mueve el nivel durante todo el año siguiente.",
       "La base es fija (todo 2023) y envejece con el tiempo, el mismo criterio declarado que usa la conflictividad social. 2023 no fue un año atípico: su nivel real quedó cerca del de 2018 y del de 2022. La historia con la que se fijan los cortes arranca en noviembre de 2017 porque el IPC nacional del INDEC empieza en diciembre de 2016: el devengado existe desde antes, pero no se puede deflactar con el mismo índice.",
       "No distingue a qué provincia fue cada giro ni su color político: mide cuánto, no a quién. Tampoco separa lo que una partida paga por convenio vigente de lo que se decide caso por caso dentro del mismo programa.",
-      "La lista de partidas excluidas (coparticipación de CABA por fallo, FONID, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.",
+      "La lista de partidas excluidas (coparticipación de la Ciudad de Buenos Aires por fallo, Fondo Nacional de Incentivo Docente, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.",
       "Deja afuera los adelantos financieros del Tesoro, que son un instrumento de negociación importante pero no tienen serie mensual.",
     ],
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
@@ -1877,7 +1877,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "politica",
     rezago: "La demora de carga no está garantizada. La fecha de consulta no certifica que el catálogo incluya todos los proyectos o sanciones recientes.",
     fuente: {
-      organismo: "HCDN — Cámara de Diputados de la Nación",
+      organismo: "Honorable Cámara de Diputados de la Nación (HCDN)",
       operacion: "Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos",
       serie: "API portal de datos abiertos de datos.hcdn.gob.ar",
       url: "https://datos.hcdn.gob.ar",
@@ -1892,7 +1892,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre los puntos medios de cada banda: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Las anclas de la interpolación no son los bordes sino los puntos medios: 50% o más → 100; 40% → 85; 22,5% → 65; 10% → 40; 5% o menos → 10 (un 27,3% da 70,5). Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
-      "Integra la dimensión de poder legislativo del índice del cinturón, junto al ratio DNU, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón, junto a la razón de decretos de necesidad y urgencia por ley, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1946,12 +1946,12 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
-      "Se compara contra la historia: las anclas salen de la cohesión del bloque PRO en el gobierno de Macri (diciembre de 2015 a diciembre de 2018), medida igual —las mismas dos cámaras con el mismo reparto, ventana de 90 días, sólo votaciones divididas—. La media de esa historia da el puntaje intermedio, un desvío por debajo da bajo, dos desvíos por debajo da el más bajo y un desvío por encima (con tope en casi la unanimidad) da el más alto.",
+      "Se compara contra la historia: las anclas salen de la cohesión del bloque de Propuesta Republicana (PRO) en el gobierno de Macri (diciembre de 2015 a diciembre de 2018), medida igual —las mismas dos cámaras con el mismo reparto, ventana de 90 días, sólo votaciones divididas—. La media de esa historia da el puntaje intermedio, un desvío por debajo da bajo, dos desvíos por debajo da el más bajo y un desvío por encima (con tope en casi la unanimidad) da el más alto.",
       "Anclas del puntaje, interpoladas en línea recta: 99,9% o más → 100; 97% (la media del PRO 2016-2018) → 65; 93,4% → 40; 89,8% o menos → 10.",
       "Comparte la dimensión de cohesión interna del oficialismo del índice del cinturón a partes iguales con los votos ajenos al aprobar leyes: pesa la mitad de la dimensión. Si falta ese otro indicador, la cohesión lleva la dimensión entera.",
     ],
     limitaciones: [
-      "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
+      "Solo cuenta al bloque propio de La Libertad Avanza: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
       "Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.",
       "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.",
       "Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.",
@@ -1992,7 +1992,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se toman las votaciones nominales EN GENERAL de proyectos de ley DEL PODER EJECUTIVO que salieron aprobadas y en las que el bloque La Libertad Avanza (LLA) votó mayoritariamente a favor, es decir, con más votos afirmativos que negativos dentro del bloque. Quedan afuera las leyes cuyo proyecto no mandó el Ejecutivo (capitales nacionales, reconocimientos y otras iniciativas de legisladores, aunque se aprueben por unanimidad), los tratados, convenios, protocolos y acuerdos internacionales (aunque los mande el Ejecutivo, se votan casi por unanimidad y no miden cuánto cuesta aprobar la agenda), las votaciones en particular, las mociones, las habilitaciones sobre tablas, los pedidos de informes, las comisiones investigadoras, los decretos, los pliegos y designaciones, las leyes rechazadas y aquellas en las que LLA votó en contra o empató.",
       "En el Senado el acta declara la etapa (en general, en particular, en general y en particular) y la clave del expediente, y se acepta el sufijo de proyecto de ley. En Diputados el acta no dice qué tipo de proyecto es: se decide por el título de la votación, y una votación única de un Orden del Día cuenta como votación en general.",
       "El origen se resuelve así. En el Senado, el expediente del acta: una clave `PE` o `JGM` es del Ejecutivo; una `CD` (viene de Diputados) se cruza con el catálogo de proyectos parlamentarios, que registra cómo numera cada cámara el mismo proyecto; las claves `S`, `PR`, `PD` o `AC` no cuentan, y un acta sin clave usa la de su Orden del Día. En Diputados el acta no trae expediente: se cruza el número de Orden del Día con el dataset de dictámenes (el más reciente del último año) y los expedientes del dictamen con el catálogo. Una ley del Ejecutivo que pasa por las dos cámaras cuenta en cada una donde se votó en general.",
-      "Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, FMI, BID, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.",
+      "Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, Fondo Monetario Internacional, Banco Interamericano de Desarrollo, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.",
       "Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes; en el Senado, con el bloque que cada senador tenía el día de la votación (el portal muestra el actual en todas las actas y los pases se corrigen con un registro versionado). El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.",
       "Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. Diputados pesa más que el Senado, con el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.",
       "La ventana no cruza la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y ninguna en el Senado, y no era el bloque oficialista.",
@@ -2045,7 +2045,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Para cada acta, determina la posición del bloque de La Libertad Avanza (el sentido en el que votó la mayoría de sus senadores). Si el bloque queda empatado, esa acta no aporta señal.",
-      "Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque LLA coincidió con esa posición. Las provincias donde los 3 senadores son de LLA quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.",
+      "Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque de La Libertad Avanza coincidió con esa posición. Las provincias donde los 3 senadores son de La Libertad Avanza quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.",
       "El indicador es el promedio simple de esa proporción entre todas las provincias con al menos un senador no-LLA, sobre las actas de los últimos 90 días.",
       "El bloque de cada senador es el que tenía el día de la votación. El portal del Senado muestra en todas las actas el bloque actual de cada senador, así que los pases se corrigen con un registro versionado (data/politica/pases_senadores.json, con la fuente de cada pase): un senador que se sumó a La Libertad Avanza después cuenta como de otro bloque en las votaciones anteriores a su pase, y uno que estuvo fuera del bloque cuenta como de otro bloque en esos meses.",
     ],
@@ -2064,7 +2064,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
       "Se compara contra la historia y contra dos umbrales con significado propio. El ancla superior es la mediana de los tres gobiernos anteriores medidos igual —con los senadores de otros bloques frente al oficialismo de cada uno: Fernández de Kirchner desde 2012, Macri y Alberto Fernández—: llegar a lo que solía acompañar el resto del Senado da el puntaje más alto. Las otras dos son conceptuales: que coincida la mitad de los votos ajenos da un puntaje intermedio, y que coincida un cuarto o menos, el más bajo. El gobierno actual está, en promedio, unos dos desvíos por debajo de esa historia.",
       "Anclas del puntaje, interpoladas en línea recta: 77% o más → 100; 50% → 65; 25% o menos → 10.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto a las transferencias federales y la adhesión al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto a las transferencias federales y la adhesión al Régimen de Incentivo para Grandes Inversiones (RIGI).",
     ],
     limitaciones: [
       "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
@@ -2081,7 +2081,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Una descarga fallida o una página sin votos invalida la lectura completa, también en la reconstrucción anual. La tarjeta excluye actas futuras; ante lectura incompleta se aplica la conservación del dato anterior, sin marcar como exitoso un promedio parcial." },
       { fecha: "2026-09-08", cambio: "Se aclara que el recálculo requiere actas y que ante fallos o receso puede conservarse el promedio anterior; se elimina la afirmación incompatible con esa regla.", adr: "0284" },
       { fecha: "2026-07-08", cambio: "Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 70/60/50/40." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, febrero de 2024 a junio de 2026): nuevos cortes en 70/60/50/40." },
     ],
   },
 
@@ -2091,15 +2091,15 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "politica",
     rezago: "El catálogo nacional puede omitir adhesiones ya publicadas. Se relee la tabla y se verifican leyes complementarias identificadas por la auditoría; el descubrimiento de nuevas omisiones requiere revisión periódica.",
     fuente: {
-      organismo: "MAGyP · Boletines Oficiales de Santa Fe y CABA",
+      organismo: "Ministerio de Agricultura, Ganadería y Pesca (MAGyP) · Boletines Oficiales de Santa Fe y de la Ciudad de Buenos Aires",
       operacion: "Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742)",
       url: "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php",
-      acceso: "Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, art. 93, y CABA 6.949, art. 1. El registro de complementos es curado y trazable.",
+      acceso: "Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable.",
     },
     transformaciones: [
-      "Cuenta jurisdicciones únicas de la tabla MAGyP más adhesiones documentadas en leyes complementarias. Al 8-sep-2026, las omisiones de Santa Fe y CABA elevan el total de 16 a 18 sobre 24 (23 provincias y CABA).",
+      "Cuenta jurisdicciones únicas de la tabla MAGyP más adhesiones documentadas en leyes complementarias. Al 8 de septiembre de 2026, las omisiones de Santa Fe y CABA elevan el total de 16 a 18 sobre 24 (23 provincias y CABA).",
       "El indicador es ese conteo sobre 24, expresado en porcentaje.",
-      "La historia utiliza fechas documentadas: Santa Fe desde el 1-ene-2025, vigencia explícita del art. 120 de su ley; CABA desde la publicación del 28-may-2026. Publicación, sanción y vigencia no son fechas equivalentes; el criterio de cada entrada queda declarado.",
+      "La historia utiliza fechas documentadas: Santa Fe desde el 1 de enero de 2025, vigencia explícita del art. 120 de su ley; CABA desde la publicación del 28 de mayo de 2026. Publicación, sanción y vigencia no son fechas equivalentes; el criterio de cada entrada queda declarado.",
     ],
     anclas: {
       bandas: [
@@ -2180,7 +2180,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "politica",
     rezago: "Se consulta el índice oficial de sesiones, que puede incluir convocatorias futuras: se excluyen por fecha. El rezago de publicación no está garantizado; se informa la última reunión registrada.",
     fuente: {
-      organismo: "HCDN — Cámara de Diputados de la Nación",
+      organismo: "Honorable Cámara de Diputados de la Nación (HCDN)",
       operacion: "Índice oficial de sesiones plenarias y versiones taquigráficas",
       serie: "Reuniones identificadas por su enlace individual y fecha",
       url: "https://www.hcdn.gob.ar/sesiones/",
@@ -2195,7 +2195,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: mide si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto a la razón de decretos de necesidad y urgencia por ley, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
@@ -2211,8 +2211,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-20", cambio: "Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual." },
-      { fecha: "2026-09-24", cambio: "La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido el 16-sep-2026).", adr: "0313,0330" },
-      { fecha: "2026-10-15", cambio: "Las sesiones caídas que pidió la oposición dejan de contar: no juntar quórum para una sesión opositora es una victoria del oficialismo, no un Congreso trabado. El convocante se carga a mano con su fuente. Disparó el cambio la sesión del 15-oct-2026 para derogar el DNU 70/2023, que cayó con 121 de los 129 diputados necesarios.", adr: "0358" },
+      { fecha: "2026-09-24", cambio: "La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido el 16 de septiembre de 2026).", adr: "0313,0330" },
+      { fecha: "2026-10-15", cambio: "Las sesiones caídas que pidió la oposición dejan de contar: no juntar quórum para una sesión opositora es una victoria del oficialismo, no un Congreso trabado. El convocante se carga a mano con su fuente. Disparó el cambio la sesión del 15 de octubre de 2026 para derogar el decreto de necesidad y urgencia 70/2023, que cayó con 121 de los 129 diputados necesarios.", adr: "0358" },
     ],
   },
 
@@ -2242,7 +2242,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 14", puntaje: 10 },
       ],
       puntos: [[1, 100], [2, 85], [5.5, 65], [11, 40], [14, 10]],
-      unidadCorta: "derrotas 12m",
+      unidadCorta: "derrotas en 12 meses",
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie mensual del indicador desde diciembre de 2023: el período va de meses sin ninguna derrota hasta el pico de ocho en doce meses, tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
@@ -2275,7 +2275,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
-      "Sigue EN PIE mientras la insistencia no se complete en ambas cámaras (el veto se sostiene con un tercio de una sola) y mientras el decreto no sea rechazado por las dos (el rechazo de una sola cámara no lo deroga, como al DNU 70/2023).",
+      "Sigue EN PIE mientras la insistencia no se complete en ambas cámaras (el veto se sostiene con un tercio de una sola) y mientras el decreto no sea rechazado por las dos (el rechazo de una sola cámara no lo deroga, como al decreto de necesidad y urgencia 70/2023).",
       "El indicador es el porcentaje de normas desafiadas en los últimos 12 meses calendario que seguían en pie al cierre del mes: cada punto histórico evalúa el estado a esa fecha, así que una caída posterior no reescribe los meses ya publicados.",
       "Los vetos sin insistencia votada y los decretos que ninguna cámara trató no entran al denominador: sin desafío no hay prueba del bloqueo.",
     ],
@@ -2292,13 +2292,13 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los cortes 90/75/50/25 son decisiones editoriales sobre una tasa de supervivencia: 100% significa que todas las normas desafiadas siguen en pie. No son umbrales calibrados por una fuente externa ni equivalen a la proporción de bancas necesaria para sostener un veto. El universo combina vetos y decretos, con reglas distintas. La afirmación anterior de que no hubo insistencias entre 2003 y 2025 era incorrecta: el Senado documenta la insistencia completada sobre emergencia en discapacidad el 4 de septiembre de 2025. Ese antecedente no permite inferir una tasa histórica para este universo mixto.",
-      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8-sep-2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una tarjeta. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
+      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8 de septiembre de 2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una tarjeta. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
     ],
     limitaciones: [
       "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",
       "Un período sin desafíos votados no genera dato (sin denominador no hay tasa): el indicador queda fuera ese mes y los pesos de su dimensión se renormalizan — ausencia de desafíos puede ser dominio de agenda o simple falta de confrontación, y el indicador no distingue entre ambas.",
       "Con pocos desafíos en ventana la tasa se mueve a saltos grandes (un desafío sobre cuatro son 25 puntos): es un indicador de eventos raros, como las derrotas legislativas.",
-      "La moción estándar de la comisión bicameral sobre un decreto es su rechazo; el caso raro de un dictamen de aprobación (una vez en el período: el acuerdo con el FMI) se detecta por el texto del motivo y queda para clasificación manual — la dirección de una moción ambigua nunca se adivina.",
+      "La moción estándar de la comisión bicameral sobre un decreto es su rechazo; el caso raro de un dictamen de aprobación (una vez en el período: el acuerdo con el Fondo Monetario Internacional) se detecta por el texto del motivo y queda para clasificación manual — la dirección de una moción ambigua nunca se adivina.",
       "Las actas de Diputados se incorporan con la actualización nocturna: un acta publicada hoy se clasifica al día siguiente.",
     ],
     faltantes: "Si las actas o InfoLeg fallan, se mantiene el último resultado disponible, señalado como desactualizado. Si la consulta termina y no hay normas desafiadas en la ventana, se publica «Sin universo»: valor nulo, sin puntaje y con redistribución del peso entre los componentes observados de la dimensión. El conteo de desafíos sí vale cero; no se arrastra una tasa de otra ventana.",
@@ -2372,9 +2372,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "apertura_comercial",
     cinturon: "gestion",
-    rezago: "El titular usa el último mes común entre cinco series oficiales con rezagos distintos: ~2 meses.",
+    rezago: "El titular usa el último mes común entre cinco series oficiales con rezagos distintos: unos 2 meses.",
     fuente: {
-      organismo: "ARCA (recaudación de derechos) + INDEC (intercambio comercial) + BCRA (tipo de cambio)",
+      organismo: "Agencia de Recaudación y Control Aduanero (ARCA: recaudación de derechos) + Instituto Nacional de Estadística y Censos (INDEC: intercambio comercial) + Banco Central de la República Argentina (BCRA: tipo de cambio)",
       operacion: "Alícuota efectiva del comercio exterior: derechos de exportación, importación y tasa de estadística recaudados sobre el intercambio total",
       serie: "142.3_DEREC_2001_M_20 y _26 (derechos) · 74.3_IET_0_M_16 y 74.3_IIT_0_M_25 (ICA) · API BCRA (A3500 promedio)",
       url: "https://www.afip.gob.ar/institucional/estudios/",
@@ -2415,7 +2415,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "desregulacion_normativa",
     cinturon: "gestion",
-    rezago: "El ministerio publica el informe de cada mes durante las primeras semanas del siguiente (~1 mes).",
+    rezago: "El ministerio publica el informe de cada mes durante las primeras semanas del siguiente (alrededor de 1 mes).",
     fuente: {
       organismo: "Ministerio de Desregulación y Transformación del Estado — Unidad de Evaluación de Impacto",
       operacion: "Análisis de la desregulación implementada, informe mensual — artículos de normas modificados o eliminados, acumulados desde el 10 de diciembre de 2023",
@@ -2444,10 +2444,10 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Es el Gobierno midiendo su propio programa. El organismo que publica el recuento —el Ministerio de Desregulación y Transformación del Estado— es el mismo que conduce el programa que el recuento mide: es el ejecutor informando su propia ejecución. Eso no lo invalida, porque es el registro primario y el único con detalle mes a mes, pero fija el criterio de qué norma cuenta como «de desregulación» y por lo tanto qué artículos se computan. Ningún tercero audita ese recuento. Es la contrapartida de usar la cifra oficial en lugar de una reconstrucción propia.",
       "Cuenta actos, no efectos. El indicador registra que un artículo fue modificado o eliminado por una norma; no registra si esa norma llegó a regir. Un artículo derogado que después la Justicia suspende suma exactamente igual que uno que se aplica, y una derogación que otra norma posterior revierte queda contada las dos veces que se la dictó. La distancia entre firmar la desregulación y que la desregulación ocurra no está medida acá.",
-      "Existe una medición independiente de esa distancia, y es la razón por la que la limitación anterior no es hipotética. Chequeado y elDiarioAR clasificaron 161 medidas dictadas entre el 10 de diciembre de 2023 y el 31 de mayo de 2025 según su impacto real, con criterio publicado —cuatro niveles según grado de implementación y magnitud del cambio—, consulta a unos treinta especialistas y más de veinte pedidos de acceso a la información. El resultado, difundido el 19 de diciembre de 2025 en el marco del Data Journalism Visualization Bootcamp de FOPEA y navegable en impactosdesregularizacion.fopea.org: 38,5% de impacto moderado, 26,7% alto, 22,4% bajo y 12,4% nulo, donde nulo significa que la Justicia suspendió sus efectos o que otra norma posterior la derogó. Alrededor de una de cada ocho medidas relevadas no llegó a regir.",
-      "En esa misma base, el instrumento con que se desregula predice la supervivencia de la medida mucho más que su contenido: las 45 medidas atribuidas al DNU 70/2023 tienen 35,6% de impacto nulo y las 116 dictadas después, 3,4% — dieciséis de los veinte casos nulos provienen del decreto fundacional. La brecha conviene leerla con cuidado y no como dieciséis frenos independientes: doce de esos dieciséis son el capítulo laboral de ese mismo decreto, un único bloqueo judicial que la base registra como doce medidas distintas.",
+      "Existe una medición independiente de esa distancia, y es la razón por la que la limitación anterior no es hipotética. Chequeado y elDiarioAR clasificaron 161 medidas dictadas entre el 10 de diciembre de 2023 y el 31 de mayo de 2025 según su impacto real, con criterio publicado —cuatro niveles según grado de implementación y magnitud del cambio—, consulta a unos treinta especialistas y más de veinte pedidos de acceso a la información. El resultado, difundido el 19 de diciembre de 2025 en el marco del Data Journalism Visualization Bootcamp del Foro de Periodismo Argentino (FOPEA) y navegable en impactosdesregularizacion.fopea.org: 38,5% de impacto moderado, 26,7% alto, 22,4% bajo y 12,4% nulo, donde nulo significa que la Justicia suspendió sus efectos o que otra norma posterior la derogó. Alrededor de una de cada ocho medidas relevadas no llegó a regir.",
+      "En esa misma base, el instrumento con que se desregula predice la supervivencia de la medida mucho más que su contenido: las 45 medidas atribuidas al decreto de necesidad y urgencia 70/2023 tienen 35,6% de impacto nulo y las 116 dictadas después, 3,4% — dieciséis de los veinte casos nulos provienen del decreto fundacional. La brecha conviene leerla con cuidado y no como dieciséis frenos independientes: doce de esos dieciséis son el capítulo laboral de ese mismo decreto, un único bloqueo judicial que la base registra como doce medidas distintas.",
       "Esa base es un corte único y no un seguimiento vivo: se publicó una sola vez, cubre hasta mayo de 2025 y no se actualiza. Por eso el proyecto la cita como anotación de lectura y no la usa como componente del índice ni como validación externa recurrente. Su clasificación de impacto es cualitativa y la fijaron sus autores; tampoco audita el recuento oficial de artículos, porque mide otra cosa: una cuenta medidas y su efecto, la otra cuenta articulado alcanzado.",
-      "Las cifras citadas de esa base se recalcularon sobre su planilla original y no sobre el resumen periodístico, y dos detalles justifican la advertencia. El 28% de impacto alto que difundieron las notas es el residuo de redondear los otros tres niveles hacia abajo: sobre las 161 filas la proporción es 26,7%. Y la planilla arrastra once filas del DNU 70/2023 fechadas en diciembre de 2024 en vez de diciembre de 2023, de modo que su distribución mensual no se puede leer sin corregirla — hecha la corrección, diciembre de 2023 pasa de 36 a 47 medidas y diciembre de 2024 de 27 a 17. El total de 161 y el reparto por impacto no dependen de esa corrección.",
+      "Las cifras citadas de esa base se recalcularon sobre su planilla original y no sobre el resumen periodístico, y dos detalles justifican la advertencia. El 28% de impacto alto que difundieron las notas es el residuo de redondear los otros tres niveles hacia abajo: sobre las 161 filas la proporción es 26,7%. Y la planilla arrastra once filas del decreto de necesidad y urgencia 70/2023 fechadas en diciembre de 2024 en vez de diciembre de 2023, de modo que su distribución mensual no se puede leer sin corregirla — hecha la corrección, diciembre de 2023 pasa de 36 a 47 medidas y diciembre de 2024 de 27 a 17. El total de 161 y el reparto por impacto no dependen de esa corrección.",
       "La escala de referencia es una convención del proyecto. El ministerio publica el recuento pero no declara ninguna meta, así que el punto en que la desregulación se considera completa lo fijamos nosotros. Conviene leer el indicador por su evolución más que por su nivel absoluto. Se evaluó reemplazar esa convención por una división contra el stock de normas vigentes, y se descartó: el recuento del ministerio incluye resoluciones, mientras que el stock disponible de normas nacionales vigentes de alcance general está compuesto sólo por leyes y decretos, de modo que los dos universos no son comparables.",
       "Contar artículos corrige la equivalencia entre normas de peso muy distinto, pero no la resuelve del todo: un artículo que libera un mercado entero sigue contando igual que uno que ajusta una definición.",
       "El ministerio revisa su serie hacia atrás, y lo ha hecho de forma sustantiva. El informe publica la versión corregida y es la que se usa, del mismo modo que se usa la última revisión de una serie estadística.",
@@ -2463,7 +2463,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-20", cambio: "Cambio de unidad, a partir de una revisión externa del cinturón. El indicador contaba las normas cuyo texto mencionaba una derogación en cualquier parte del documento, y cerca de la mitad de lo contado no derogaba nada: eran normas que en sus considerandos referían la derogación hecha por otra. Ahora se lee la parte dispositiva y se cuentan las normas efectivamente derogadas. Se corrigió además una afirmación equivocada de esta misma ficha, que sostenía que el decreto de necesidad y urgencia de diciembre de 2023 no figuraba en la fuente: sí figura, y siempre estuvo contado, aunque pesaba como una sola norma pese a derogar treinta y ocho." },
       { fecha: "2026-07-25", cambio: "Cambio de fuente, a propuesta de la revisión externa del cinturón. El indicador dejó de construirse con un conteo propio sobre la base de legislación y pasó a publicar la cifra oficial del Ministerio de Desregulación y Transformación del Estado, que es el organismo que conduce el programa. La serie histórica se reconstruyó completa desde diciembre de 2023. El puntaje se movió de setenta y dos a setenta y tres: cambió de dónde sale el número, no el resultado." },
       { fecha: "2026-08-21", cambio: "Se amplió lo que la ficha declara sobre sí misma, sin tocar el indicador, su peso ni su cálculo. Quedó dicho que el recuento mide actos y no efectos —un artículo derogado que la Justicia suspende suma igual que uno que rige— y que quien lo publica es el ministerio que ejecuta el programa que el recuento mide. Se sumó como contraste la investigación de Chequeado y elDiarioAR difundida en diciembre de 2025, que clasificó por impacto real las medidas dictadas hasta mayo de 2025; sus cifras se recalcularon sobre la planilla original de la investigación y no sobre su resumen periodístico. Esa base se cita como anotación de lectura: es un corte único y no un seguimiento vivo, así que no puede ser componente del índice ni validación externa recurrente." },
-      { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior al cambio del 26-jul-2026, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0143" },
+      { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior al cambio del 26 de julio de 2026, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0143" },
       { fecha: "2026-09-08", cambio: "Se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.", adr: "0292" },
       { fecha: "2026-10-24", cambio: "El rótulo aclara que mide volumen de intervención normativa, no la importancia ni la efectividad de cada cambio. No cambia el cálculo.", adr: "0361" },
       { fecha: "2026-10-26", cambio: "Se agrega, como complemento que no puntúa, la cantidad de normas de desregulación por sector que publica el informe del ministerio (agosto de 2026: 770 normas en once sectores, encabezados por Agroindustria con 125). Responde a la auditoría externa, que pedía distinguir el alcance de cada cambio. No cambia el valor.", adr: "0363" },
@@ -2474,9 +2474,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "reduccion_estado",
     cinturon: "gestion",
-    rezago: "La serie de dotación se publica con ~2 meses de rezago; los últimos meses aparecen imputados y se revisan.",
+    rezago: "La serie de dotación se publica con unos 2 meses de rezago; los últimos meses aparecen imputados y se revisan.",
     fuente: {
-      organismo: "INDEC + Secretaría de Transformación del Estado",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC) + Secretaría de Transformación del Estado",
       operacion: "Dotación de personal del Estado nacional (serie mensual). La planilla abre el total en dos universos: la Administración Pública Nacional y las empresas y sociedades del Estado; este indicador usa el primero",
       serie: "Planilla oficial serie_dotacion_apn.xlsx, cuadro 1, fila «Administración pública nacional» — que agrupa la administración centralizada, la descentralizada, la desconcentrada y otros entes, y NO incluye las empresas del Estado",
       url: "https://www.indec.gob.ar/indec/web/Institucional-Indec-empleoAPN",
@@ -2497,22 +2497,22 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 0", puntaje: 10 },
       ],
       puntos: [[-25.7, 100], [-21.4, 85], [-12.85, 65], [-4.3, 40], [0, 10]],
-      unidadCorta: "% vs dic-2023",
+      unidadCorta: "% frente a diciembre de 2023",
     },
     dobleUso: "Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del índice de gestión.",
     limitaciones: [
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
-      "El 100 corresponde a recortar otro 10% de la planta durante 2026 sobre el nivel de diciembre de 2025: −25,7% contra diciembre de 2023. Esa meta la informó la prensa citando fuentes oficiales (Clarín, vía Cadena 3); el Gobierno no publicó un número y evitó confirmarlo. Es la única referencia externa encontrada: ni el Presupuesto 2026 ni el acuerdo con el FMI fijan una meta de planta. Los cortes intermedios conservan la forma de la escala anterior.",
+      "El 100 corresponde a recortar otro 10% de la planta durante 2026 sobre el nivel de diciembre de 2025: −25,7% contra diciembre de 2023. Esa meta la informó la prensa citando fuentes oficiales (Clarín, vía Cadena 3); el Gobierno no publicó un número y evitó confirmarlo. Es la única referencia externa encontrada: ni el Presupuesto 2026 ni el acuerdo con el Fondo Monetario Internacional fijan una meta de planta. Los cortes intermedios conservan la forma de la escala anterior.",
       "Mide personas, no costo. La reducción de la planta puede convivir con un gasto salarial que no baje en la misma proporción, y por eso el cinturón sigue ambas cosas por separado.",
-      "La baja no sale de cambios en lo que cuenta la serie. Revisadas las aclaraciones de la planilla del INDEC (octubre de 2026): los organismos que dejan de informar por separado se fusionan o se traspasan dentro de la administración nacional, y su personal se sigue contando; los que se disolvieron (INADI, INJUVE, ENOHSA) son recorte real. La única entidad que salió del conteo sin fusión fue una empresa en liquidación con un empleado, fuera de este universo. Los organismos que no informan un mes llevan su último dato (imputación del INDEC).",
+      "La baja no sale de cambios en lo que cuenta la serie. Revisadas las aclaraciones de la planilla del INDEC (octubre de 2026): los organismos que dejan de informar por separado se fusionan o se traspasan dentro de la administración nacional, y su personal se sigue contando; los que se disolvieron (Instituto Nacional contra la Discriminación, la Xenofobia y el Racismo; Instituto Nacional de la Juventud; Ente Nacional de Obras Hídricas de Saneamiento) son recorte real. La única entidad que salió del conteo sin fusión fue una empresa en liquidación con un empleado, fuera de este universo. Los organismos que no informan un mes llevan su último dato (imputación del INDEC).",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada actualización.",
     cambios: [
       { fecha: "2026-10-27", cambio: "Se verifica que la baja no sea un efecto de cambios en el universo de la serie (fusiones, traspasos, disoluciones): no lo es, y la ficha lo explica. No cambia el cálculo." },
-      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Empleados de la administración nacional» y la unidad dice la base: «% vs. diciembre de 2023». No cambia el cálculo.", adr: "0366" },
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Empleados de la administración nacional» y la unidad dice la base: «% frente a diciembre de 2023». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial sobre la serie previsional trimestral, con meta de largo plazo." },
-      { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión." },
+      { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación de la Administración Pública Nacional contra diciembre de 2023, con umbrales del índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-10-24", cambio: "La dimensión Reforma del Estado aclara que su puntaje máximo refleja las referencias de dotación y gasto de funcionamiento, no una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
       { fecha: "2026-10-26", cambio: "La escala deja de calibrarse con el recorte observado. El 100 pasa de −12% a −25,7%: la meta de recortar otro 10% de la planta en 2026 que informó la prensa citando fuentes oficiales. Con −21,4% el puntaje baja de 100 a 85 y la dimensión, de 100 a cerca de 91. Responde a la auditoría externa, que objetaba que el 100 se leyera como reforma completa.", adr: "0364" },
@@ -2523,16 +2523,16 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "gasto_funcionamiento",
     cinturon: "gestion",
-    rezago: "Las series de gasto se publican con ~2 meses de rezago.",
+    rezago: "Las series de gasto se publican con unos 2 meses de rezago.",
     fuente: {
-      organismo: "Secretaría de Hacienda; deflactor: INDEC",
+      organismo: "Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real contra el mismo mes de 2023",
-      serie: "452.2_SALARIOSIOS_0_T_8_22 + 452.2_OTROS_GASTNTO_0_T_27_55 + IPC 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
+      serie: "452.2_SALARIOSIOS_0_T_8_22 + 452.2_OTROS_GASTNTO_0_T_27_55 + índice de precios al consumidor (IPC) 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.argentina.gob.ar/economia/sechacienda/infoestadistica",
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "Total = salarios + otros gastos de funcionamiento, base caja del IMIG.",
+      "Total = salarios + otros gastos de funcionamiento, base caja de la serie mensual de gastos de funcionamiento.",
       "Variación real del último mes contra el mismo mes de 2023, deflactada por IPC: comparar el mismo mes aísla a la vez la inflación y la estacionalidad de los aguinaldos.",
     ],
     anclas: {
@@ -2544,7 +2544,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 0", puntaje: 10 },
       ],
       puntos: [[-25, 100], [-20, 85], [-10, 65], [-2.5, 40], [0, 10]],
-      unidadCorta: "% real vs 2023",
+      unidadCorta: "% real frente a 2023",
     },
     dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del índice de gestión, en agosto de 2026. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.",
     limitaciones: [
@@ -2567,11 +2567,11 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "masa_salarial",
     cinturon: "gestion",
-    rezago: "Las series de gasto se publican con ~2 meses de rezago.",
+    rezago: "Las series de gasto se publican con unos 2 meses de rezago.",
     fuente: {
-      organismo: "Secretaría de Hacienda (base caja); deflactor: INDEC",
+      organismo: "Secretaría de Hacienda (base caja); deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Remuneraciones del Sector Público Nacional, variación real contra el mismo mes de 2023",
-      serie: "379.9_GTOS_CORR_017__49_26 + IPC 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
+      serie: "379.9_GTOS_CORR_017__49_26 + índice de precios al consumidor (IPC) 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.presupuestoabierto.gob.ar/",
       acceso: "Automático: API pública de series de tiempo.",
     },
@@ -2588,7 +2588,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 0", puntaje: 10 },
       ],
       puntos: [[-20, 100], [-16, 85], [-8.5, 65], [-2.5, 40], [0, 10]],
-      unidadCorta: "% real vs 2023",
+      unidadCorta: "% real frente a 2023",
       sinEjemplo: true,
     },
     incidenciaTexto: [
@@ -2623,7 +2623,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Semiautomático: InfoLeg descubre las normas y una persona clasifica cada hallazgo en el registro curado: cuenta, no cuenta por ser ajeno a un organismo público, o no cuenta por haber sido revertido.",
     },
     transformaciones: [
-      "Avance = actos de disolución o cierre VIGENTES de organismos públicos, sobre un plan de 45 (calibración declarada). No cuenta fusiones, transformaciones ni centralizaciones —difíciles de verificar caso por caso, CIGOB pidió (ago-2026) hablar solo de disolución o cierre— y desde agosto de 2026 tampoco cuenta un hallazgo de texto que no sea, caso por caso, el cierre vigente de un organismo público: de los 18 documentos que la búsqueda encontraba, 11 pasan el filtro (24,4% de avance); los otros 7 quedan excluidos con su motivo documentado.",
+      "Avance = actos de disolución o cierre VIGENTES de organismos públicos, sobre un plan de 45 (calibración declarada). No cuenta fusiones, transformaciones ni centralizaciones —difíciles de verificar caso por caso, CIGOB pidió (agosto de 2026) hablar solo de disolución o cierre— y desde agosto de 2026 tampoco cuenta un hallazgo de texto que no sea, caso por caso, el cierre vigente de un organismo público: de los 18 documentos que la búsqueda encontraba, 11 pasan el filtro (24,4% de avance); los otros 7 quedan excluidos con su motivo documentado.",
     ],
     anclas: {
       bandas: [
@@ -2657,7 +2657,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-09", cambio: "Etiqueta y descripción precisadas a pedido de CIGOB: se habla solo de disolución o cierre, no de fusión/transformación/centralización. El cálculo no cambió — la búsqueda en InfoLeg siempre fue solo «disolución».", adr: "0185" },
       { fecha: "2026-08-09", cambio: "Se buscó una cifra mejor que 45 para el denominador (Ley Bases, Ministerio de Desregulación, prensa) y ninguna resultó viable; el 45 se mantiene, ahora documentado en detalle.", adr: "0185" },
       { fecha: "2026-08-09", cambio: "El conteo pasa de 18 a 11 (avance de 40,0% a 24,4%; índice de gestión de 78,7 a 76,8): la lectura caso por caso que pidió CIGOB encontró que 3 de los 18 documentos no hablaban de un organismo público y 4 eran actos de un paquete de decretos que el Congreso rechazó y quedaron sin efecto. InfoLeg sigue siendo la fuente de descubrimiento, pero cada hallazgo se contrasta ahora contra un registro curado con motivo y norma; lo que todavía nadie clasificó no cuenta y la corrida lo avisa.", adr: "0188" },
-      { fecha: "2026-08-25", cambio: "Sale del índice de gestión. El 24,4% era 11 sobre 45, y ninguno de los dos números servía: el 11 cuenta NORMAS —que afectan unas 18 entidades— y el 45 es una convención documental, no una meta oficial; además el buscador se salteaba cierres conocidos como el del ENOHSA. Libera su 25% de la dimensión de Reforma del Estado, que se reparte entre dotación y gasto de funcionamiento conservando la proporción 7:5. Se conserva el inventario de entidades y actos como insumo del rediseño. Vuelve cuando numerador y denominador compartan unidad y el universo esté cerrado.", adr: "0247" },
+      { fecha: "2026-08-25", cambio: "Sale del índice de gestión. El 24,4% era 11 sobre 45, y ninguno de los dos números servía: el 11 cuenta NORMAS —que afectan unas 18 entidades— y el 45 es una convención documental, no una meta oficial; además el buscador se salteaba cierres conocidos como el del Ente Nacional de Obras Hídricas de Saneamiento. Libera su 25% de la dimensión de Reforma del Estado, que se reparte entre dotación y gasto de funcionamiento conservando la proporción 7:5. Se conserva el inventario de entidades y actos como insumo del rediseño. Vuelve cuando numerador y denominador compartan unidad y el universo esté cerrado.", adr: "0247" },
     ],
   },
 
@@ -2665,9 +2665,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "fal_modernizacion_laboral",
     cinturon: "gestion",
-    rezago: "La CNV se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día.",
+    rezago: "La Comisión Nacional de Valores (CNV) se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día.",
     fuente: {
-      organismo: "InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, RG CNV 1167/2026 y RG ARCA 5907/2026 · estado judicial de la Ley 27.802 · bancos · CNV (registro de fondos comunes de inversión)",
+      organismo: "InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, Resolución General 1167/2026 de la CNV y Resolución General 5907/2026 de la Agencia de Recaudación y Control Aduanero (ARCA) · estado judicial de la Ley 27.802 · bancos · CNV (registro de fondos comunes de inversión)",
       operacion: "Avance del Fondo de Asistencia Laboral: cinco hitos de construcción del régimen (18% cada uno, 90% en total) + adopción efectiva (10%)",
       url: "https://www.infoleg.gob.ar/",
       acceso: "Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje.",
@@ -2701,7 +2701,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "Las fechas de revisión normativa y judicial sólo cambian cuando se actualiza el registro curado con evidencia; se conservan al consultar CNV. La reconstrucción de la serie utiliza ese registro, por lo que no garantiza que contenga toda resolución posterior.",
     cambios: [
       { fecha: "2026-10-26", cambio: "A propuesta de la auditoría de CiGob, la construcción pasa a cinco hitos de 18 % cada uno: a la ley y el decreto se suman la RG CNV 1167/2026, la RG ARCA 5907/2026 y la oferta de los bancos. La adopción (primer fondo inscripto en la CNV) vale el 10 % restante y la entrada en vigencia deja de pesar por sí misma. El avance pasa de 50 a 90 y el puntaje, de 55 a 100. Cambia la regla de agosto, que contaba sólo lo que rige.", adr: "0370" },
-      { fecha: "2026-09-08", cambio: "Se muestran fechas separadas de revisión normativa, judicial y consulta CNV; se retiran las garantías de ausencia de rezago y de integridad del archivo local. Se corrige la presentación de litigiosidad SRT como resultado directo del FAL.", adr: "0305" },
+      { fecha: "2026-09-08", cambio: "Se muestran fechas separadas de revisión normativa, judicial y consulta CNV; se retiran las garantías de ausencia de rezago y de integridad del archivo local. Se corrige la presentación de la litigiosidad del sistema de riesgos del trabajo como resultado directo del Fondo de Asistencia Laboral.", adr: "0305" },
       { fecha: "2026-08-21", cambio: "Vuelve a medir si la reforma rige y no sólo si se dictó, en tres etapas: construcción normativa vigente, entrada en vigencia y adopción. Un acto suspendido judicialmente deja de contar mientras dure la suspensión. El cambio revierte la decisión editorial de julio, que había dado el máximo puntaje por haber dictado la ley y su reglamentación: aquella decisión se tomó sin la evidencia que apareció después. La base de desregulaciones de Chequeado y elDiarioAR califica de impacto nulo a las doce medidas del sector Trabajo y Seguridad Social —el capítulo laboral del decreto 70/2023, frenado en tribunales—, el subíndice de libertad laboral de Heritage no registra variación neta en tres ediciones, y la propia Ley 27.802 estuvo suspendida con alcance general entre el 30 de marzo y el 23 de abril de 2026, con la acción de inconstitucionalidad todavía en trámite. El indicador pasa de cien a cincuenta, su puntaje de cien a cincuenta y cinco, la dimensión de 80,4 a 57,9 y el índice de gestión baja 3,4 puntos: el cambio empeora el número y se registra con la misma vara con la que se registró la subida.", adr: "0228" },
       { fecha: "2026-07-26", cambio: "Pasa a contar los dos actos fundamentales del Fondo —la ley y su reglamentación—, cincuenta puntos cada uno, por decisión editorial y a propuesta de una revisión externa del cinturón, que sostenía que sancionar y reglamentar agotaba lo que el Gobierno podía cumplir hasta la vigencia. El valor saltó de 40,2 a cien y el puntaje de 30,8 a cien. Quedó declarado que el indicador dejaba de discriminar, porque los dos actos ya habían ocurrido y no podían deshacerse.", adr: "0142" },
       { fecha: "2026-07-20", cambio: "Pasa a medirse en tres etapas —construcción normativa, vigencia y adopción— a partir de una revisión externa del cinturón, que observó que el indicador informaba un valor cercano a cero por una razón de cronograma legal y no de gestión: medía la adopción de un instrumento que todavía no podía adoptarse. Con la escala anterior el valor era 0,4 sobre 100; con la nueva es 40,2, que corresponde a un instrumento íntegramente construido y en espera de entrar en vigencia. Las bandas se recalibraron porque cambió lo que la escala mide, no para mover el puntaje: sobre la escala nueva, las anclas viejas habrían dado 75 a un instrumento que nadie usa." },
@@ -2710,7 +2710,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "La litigiosidad se separa como indicador propio de la dimensión. Después, la cobertura se automatizó vía menciones del Boletín Oficial con calibración anclada." },
       { fecha: "2026-07-15", cambio: "La cobertura pasa a contar las menciones del Fondo de Asistencia Laboral (Ley 27.802) desde marzo de 2026, distinguiéndolo del régimen homónimo de la construcción. La serie histórica arranca en cero con la creación del régimen." },
       { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja del setenta al cincuenta por ciento, a propuesta de una revisión externa: la dimensión mide un instrumento y su resultado, y no había razón para que el instrumento pesara más del doble que el resultado. El cambio mejora el puntaje de la dimensión, porque la litigiosidad venía puntuando más alto que el fondo; se deja dicho para que la decisión pueda discutirse por su argumento y no por su efecto." },
-      { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración del 21-ago-2026. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0228" },
+      { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración del 21 de agosto de 2026. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0228" },
       { fecha: "2026-10-20", cambio: "La entrada en vigencia del régimen pasa del 1 de noviembre al 1 de diciembre de 2026: el Decreto 1228/2026, publicado ese día, la prorrogó un mes y además duplicó el período de carencia, de seis a doce meses, que no incide en el indicador. El puntaje no cambia —la etapa de vigencia seguía sin cumplirse—, pero se cumple un mes más tarde. Se revisó también el estado judicial: no hay sentencia de fondo ni suspensión general de los artículos del fondo." },
       { fecha: "2026-10-24", cambio: "La tarjeta muestra por separado el avance (50) y el puntaje del índice (55). Una revisión externa propuso llevar el avance a 90 por las normas de la CNV y de ARCA y las ofertas de los bancos; no se adopta: esas normas operativizan un régimen ya construido, y los bancos ofrecen adherirse a fondos que no funcionan hasta el 1 de diciembre (cartas de intención y anuncios, ninguno inscripto). Contarlas como adopción antes de que el régimen rija contradiría la regla del indicador, que cuenta lo que rige y no lo anunciado. Queda en revisión. El detector de fondos inscriptos pasa a reconocer también los nombres con la sigla FAL, como los anunciados, y no sólo los que dicen «Asistencia Laboral».", adr: "0361" },
     ],
@@ -2740,7 +2740,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 20", puntaje: 10 },
       ],
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
-      unidadCorta: "% (12m vs 12m)",
+      unidadCorta: "% (12 meses frente a los 12 meses previos)",
     },
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice de gestión: la dirección de CiGob pidió medir los accidentes y enfermedades que registra el sistema de riesgos del trabajo y no los juicios que genera. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para leer la serie histórica, que se sigue calculando.",
@@ -2758,7 +2758,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-27", cambio: "Vuelve a salir del índice y de la tarjeta: la dirección de CiGob (Marcos) pidió medir la siniestralidad registrada en el sistema de riesgos del trabajo y no los juicios del sistema. Su 25% de la reforma laboral pasa a la siniestralidad laboral, con la misma escala. El dato se sigue calculando.", adr: "0385" },
       { fecha: "2026-10-27", cambio: "Vuelve al índice y a la tarjeta, con 25% de la reforma laboral: la reunión con la dirección de CiGob acordó medir el resultado con las dos series de juicios, y ésta es la única nacional y mensual. La ficha aclara que cuenta accidentes y enfermedades, no despidos.", adr: "0379" },
       { fecha: "2026-10-26", cambio: "Sale del índice y deja de publicarse como tarjeta: son juicios por accidentes y enfermedades del trabajo y la reforma apunta a los despidos. El dato se sigue relevando. Reforma laboral queda 50 % Fondo de Asistencia Laboral y 50 % juicios de la Justicia Nacional del Trabajo.", adr: "0369" },
-      { fecha: "2026-09-08", cambio: "Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos.", adr: "0285" },
+      { fecha: "2026-09-08", cambio: "Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios del sistema de riesgos del trabajo no identifican resultados del Fondo de Asistencia Laboral ni el mérito de los reclamos.", adr: "0285" },
       { fecha: "2026-07-02", cambio: "Alta como indicador de contexto, fuera del índice." },
       { fecha: "2026-07-03", cambio: "Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento." },
       { fecha: "2026-10-24", cambio: "El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.", adr: "0361" },
@@ -2793,7 +2793,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 20", puntaje: 10 },
       ],
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
-      unidadCorta: "% vs. año anterior",
+      unidadCorta: "% frente al año anterior",
     },
     dobleUso: "Es un cuarto de la dimensión de reforma laboral, con el Fondo de Asistencia Laboral (la mitad) y los juicios de la Justicia Nacional del Trabajo (otro cuarto). Reemplaza a los juicios del sistema de riesgos del trabajo, que dejaron de integrar el índice.",
     limitaciones: [
@@ -2836,9 +2836,9 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 20", puntaje: 10 },
       ],
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
-      unidadCorta: "% (12m vs 12m)",
+      unidadCorta: "% (12 meses frente a los 12 meses previos)",
     },
-    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral (la mitad) y con la siniestralidad laboral registrada por la SRT (un cuarto). La siniestralidad cubre todo el país pero cuenta accidentes y enfermedades; ésta cuenta todos los juicios laborales, despidos incluidos, pero sólo los de la Capital.",
+    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral (la mitad) y con la siniestralidad laboral registrada por la Superintendencia de Riesgos del Trabajo (SRT) (un cuarto). La siniestralidad cubre todo el país pero cuenta accidentes y enfermedades; ésta cuenta todos los juicios laborales, despidos incluidos, pero sólo los de la Capital.",
     limitaciones: [
       "Sólo la Capital: la Justicia Nacional del Trabajo no incluye los juzgados laborales de las provincias.",
       "Cuenta juicios iniciados, no su resultado ni su mérito, y no permite atribuir a la reforma las subas o bajas: pesan también el empleo, los despidos y los tiempos de los abogados.",
@@ -2861,7 +2861,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "gestion",
     rezago: "Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas.",
     fuente: {
-      organismo: "Boletín Oficial y CNV (hechos) + Fundación CIGOB (curaduría del registro)",
+      organismo: "Boletín Oficial y Comisión Nacional de Valores (CNV) (hechos) + Fundación CIGOB (curaduría del registro)",
       operacion: "Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), ocho empresas. Corredores Viales queda fuera: su privatización es la concesión de la red vial, que mide el indicador de concesiones de infraestructura",
       url: "https://www.boletinoficial.gob.ar/",
       acceso: "Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos.",
@@ -2905,7 +2905,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "gestion",
     rezago: "Sin rezago: foto de la plataforma oficial al día de la actualización.",
     fuente: {
-      organismo: "Ministerio de Economía — plataforma oficial del RIGI",
+      organismo: "Ministerio de Economía — plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI)",
       operacion: "Cartera del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total de la cartera (aprobada + en evaluación)",
       serie: "Planilla pública que alimenta el mapa oficial del RIGI (pestañas de proyectos aprobados y en evaluación)",
       url: "https://www.argentina.gob.ar/economia/rigi",
@@ -3067,7 +3067,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0, 10], [12.5, 40], [37.5, 65], [62.5, 85], [75, 100]],
       unidadCorta: "% de reducción",
     },
-    dobleUso: "El seguimiento interno de eventos de protesta en la Ciudad de Buenos Aires (base internacional de conflictos ACLED) complementa el de cortes. Sus universos difieren: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.",
+    dobleUso: "El seguimiento interno de eventos de protesta en la Ciudad de Buenos Aires (base internacional de conflictos Armed Conflict Location & Event Data) complementa el de cortes. Sus universos difieren: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.",
     limitaciones: [
       "Fuente privada: Diagnóstico Político es una consultora, no un organismo público, y no publica microdatos abiertos; sus informes mensuales detallados son por suscripción. Los anclajes se reconstruyen de las cifras anuales que la consultora difunde y que replica la prensa.",
       "Al 28 de octubre de 2026 la página de monitoreos de la consultora no responde (antes, el 8 de septiembre, redirigía a una página de cuenta suspendida). Los anclajes 2023–2025 se corroboran en La Nación y Chequeado, que citan el mismo relevamiento; no son dos mediciones independientes. La tarjeta advierte cuando el detector no puede verificar nuevas publicaciones.",
@@ -3090,7 +3090,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Se crea el monitoreo propio de alertas de transporte como futura fuente automática." },
       { fecha: "2026-07-03", cambio: "Automatizado con los anclajes anuales públicos de Diagnóstico Político; la corrección del año cerrado 2025 llevó el valor de 55% a 74,2%." },
       { fecha: "2026-09-08", cambio: "Se explicita que la base 2023 es estimada y se muestra una advertencia cuando el detector no logra comprobar nuevas publicaciones; se retira la inferencia de que los mismos eventos se reconvirtieron en marchas sin corte.", adr: "0294" },
-      { fecha: "2026-10-24", cambio: "La unidad de la tarjeta aclara que son cortes en CABA y que no mide la aplicación del protocolo. La edición mensual rehecha fechaba el dato en el mes publicado; vuelve a fecharlo en el año del anclaje (2025).", adr: "0361" },
+      { fecha: "2026-10-24", cambio: "La unidad de la tarjeta aclara que son cortes en la Ciudad de Buenos Aires y que no mide la aplicación del protocolo. La edición mensual rehecha fechaba el dato en el mes publicado; vuelve a fecharlo en el año del anclaje (2025).", adr: "0361" },
     ],
   },
 
@@ -3098,16 +3098,16 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "libertad_opcion_salud",
     cinturon: "gestion",
-    rezago: "Las fechas de numerador y denominador se publican por separado. Se usa el último RNEMP disponible que no sea posterior al mes del RNAS; si se arrastra un denominador, la razón combina fechas distintas.",
+    rezago: "Las fechas de numerador y denominador se publican por separado. Se usa el último Registro Nacional de Entidades de Medicina Prepaga (RNEMP) disponible que no sea posterior al mes del Registro Nacional de Agentes del Seguro de Salud (RNAS); si se arrastra un denominador, la razón combina fechas distintas.",
     fuente: {
-      organismo: "Boletín Oficial · Superintendencia de Servicios de Salud · ARCA",
+      organismo: "Boletín Oficial · Superintendencia de Servicios de Salud · Agencia de Recaudación y Control Aduanero (ARCA)",
       operacion: "Avance de la libre elección de cobertura por cinco hitos fechados: cuatro normativos y operativos (Boletín Oficial, ARCA) y el funcionamiento verificado en los padrones de la Superintendencia (beneficiarios por Agente del Seguro de Salud y usuarios de entidades de medicina prepaga)",
       serie: "Planillas anuales oficiales de evolución de beneficiarios y usuarios (columnas mensuales)",
       url: "https://www.argentina.gob.ar/sssalud/estadisticas",
-      acceso: "Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023).",
+      acceso: "Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el decreto de necesidad y urgencia 70/2023).",
     },
     transformaciones: [
-      "Avance = suma de los hitos cumplidos: marco normativo que habilita elegir entre obras sociales y prepagas (DNU 70/2023, rige desde el 29 de diciembre de 2023, 25 %) · fin de la permanencia obligatoria inicial (Decreto 170/2024, desde el 1 de marzo de 2024, 20 %) · derivación directa de aportes a las prepagas inscriptas como agentes del seguro (Resolución 3284/2024 de la Superintendencia, desde el 1 de diciembre de 2024, 20 %) · trámite de opción de cambio en línea (4 de diciembre de 2024, 20 %) · funcionamiento efectivo y verificable (15 %).",
+      "Avance = suma de los hitos cumplidos: marco normativo que habilita elegir entre obras sociales y prepagas (decreto de necesidad y urgencia 70/2023, rige desde el 29 de diciembre de 2023, 25 %) · fin de la permanencia obligatoria inicial (Decreto 170/2024, desde el 1 de marzo de 2024, 20 %) · derivación directa de aportes a las prepagas inscriptas como agentes del seguro (Resolución 3284/2024 de la Superintendencia, desde el 1 de diciembre de 2024, 20 %) · trámite de opción de cambio en línea (4 de diciembre de 2024, 20 %) · funcionamiento efectivo y verificable (15 %).",
       "Regla del último hito, fijada antes de puntuar: se cumple desde el primer mes, no anterior a la derivación directa, en que el padrón de la Superintendencia muestra al menos 10 % de los usuarios de prepagas con aportes derivados directo. Se cumplió en enero de 2025 (24,5 %).",
       "Contexto, no puntúa: el porcentaje de usuarios de prepagas con aportes derivados directo (beneficiarios derivados a prepagas inscriptas / usuarios totales de prepagas), que la tarjeta sigue mostrando con su total y su mes.",
       "La serie mensual se evalúa al cierre de cada mes con la misma regla que la tarjeta.",
@@ -3128,7 +3128,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide la implementación de la libre elección, no cuántas personas la ejercen ni la calidad de la cobertura. Con los cinco hitos cumplidos el puntaje queda en 100 y no se mueve: es una promesa cumplida.",
       "Los pesos de los hitos son una propuesta metodológica (de la auditoría de CiGob), no valores normativos.",
       "El contador histórico de traspasos del sitio oficial sigue fuera de servicio; este indicador lo reemplaza con otra semántica.",
-      "No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto. Es una cota anual que mezcla cambios de agente con altas y bajas por empleo y jubilación, y en mensual el ruido del padrón es del tamaño de la señal.",
+      "No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin el Instituto Nacional de Servicios Sociales para Jubilados y Pensionados, PAMI) terminó en un agente distinto. Es una cota anual que mezcla cambios de agente con altas y bajas por empleo y jubilación, y en mensual el ruido del padrón es del tamaño de la señal.",
     ],
     faltantes: "Si falla el archivo referenciado, se conserva el último resultado con su fecha y marcado como desactualizado. No se vuelve silenciosamente al nombre viejo. Sin resultado previo, el componente queda fuera y los pesos de la dimensión se renormalizan.",
     revisiones: "Las planillas anuales se releen completas en cada actualización (la fuente puede revisar meses hacia atrás).",
@@ -3147,15 +3147,15 @@ export const FICHAS: Record<string, Ficha> = {
   // seguimiento interno, igual que los ocultos de macro/política/espíritu.)
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Impacto social — componentes base-100 del ITCIS (100 = promedio 4T-2023)
+  // Impacto social — componentes base-100 del ITCIS (100 = promedio 4º trimestre de 2023)
   // ═══════════════════════════════════════════════════════════════════════
   brecha_salario_cbt: {
     tipo: "indicador",
     id: "brecha_salario_cbt",
     cinturon: "vida_cotidiana",
-    rezago: "El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario.",
+    rezago: "El salario formal (remuneración imponible promedio de los trabajadores estables, RIPTE) corre un mes detrás de la canasta: el par común queda unos 2 meses atrás del calendario.",
     fuente: {
-      organismo: "Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total)",
+      organismo: "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables, RIPTE) + Instituto Nacional de Estadística y Censos (INDEC: Canasta Básica Total)",
       operacion: "RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente",
       serie: "RIPTE (planilla oficial mensual) + CBT 150.1_CSTA_BATAL_0_D_20 (datos.gob.ar)",
       url: "https://www.argentina.gob.ar/trabajo/seguridadsocial/ripte",
@@ -3188,9 +3188,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "ipc_alimentos",
     cinturon: "vida_cotidiana",
-    rezago: "El IPC se publica a mediados del mes siguiente.",
+    rezago: "El índice de precios al consumidor (IPC) se publica a mediados del mes siguiente.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general",
       serie: "146.3_IALIMENNAL_DICI_M_45 + IPC general 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
@@ -3220,9 +3220,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "mora_familias",
     cinturon: "vida_cotidiana",
-    rezago: "El anexo del Informe sobre Bancos se publica con ~2 meses de rezago.",
+    rezago: "El anexo del Informe sobre Bancos se publica con unos 2 meses de rezago.",
     fuente: {
-      organismo: "BCRA",
+      organismo: "Banco Central de la República Argentina (BCRA)",
       operacion: "Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas",
       serie: "informe-bancos-anexo.xlsx, hoja de calidad de cartera por líneas",
       url: "https://www.bcra.gob.ar/publicaciones-e-investigaciones/informe-sobre-bancos/",
@@ -3238,7 +3238,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
-      "La mora de las familias se multiplicó por varias veces desde la base 4T-2023: el componente concentra buena parte del arrastre del índice, y así se publica.",
+      "La mora de las familias se multiplicó por varias veces desde la base 4º trimestre de 2023: el componente concentra buena parte del arrastre del índice, y así se publica.",
       "Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.",
       "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
     ],
@@ -3255,11 +3255,11 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "icg_utdt",
     cinturon: "vida_cotidiana",
-    rezago: "El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes).",
+    rezago: "El dato se fecha el 1 de cada mes y la Universidad Torcuato Di Tella (UTDT) lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes).",
     fuente: {
       organismo: "UTDT",
       operacion: "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual)",
-      serie: "ICG: promedio de cinco atributos del Gobierno nacional, escala 0 a 5, desde noviembre de 2001",
+      serie: "Índice de Confianza en el Gobierno (ICG): promedio de cinco atributos del Gobierno nacional, escala 0 a 5, desde noviembre de 2001",
       url: "https://www.utdt.edu/ver_contenido.php?id_contenido=1439&id_item_menu=2964",
       acceso: "Automático: lectura de la planilla histórica que publica la universidad.",
     },
@@ -3287,11 +3287,11 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "carga_servicio_deuda_hogares",
     cinturon: "vida_cotidiana",
-    rezago: "La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral.",
+    rezago: "La serie es mensual, pero el Banco Central de la República Argentina (BCRA) la publica por lotes con el Informe de Estabilidad Financiera semestral.",
     fuente: {
-      organismo: "BCRA",
+      organismo: "Banco Central de la República Argentina (BCRA)",
       operacion: "Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias",
-      serie: "CDF/MS: carga del servicio de deuda sobre masa salarial registrada",
+      serie: "Carga del servicio de deuda sobre masa salarial registrada",
       url: "https://www.bcra.gob.ar/publicaciones/informe-de-estabilidad-financiera-primer-semestre-2026/",
       acceso: "Automático: lectura de la planilla oficial de series del informe.",
     },
@@ -3320,11 +3320,11 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "alquiler_real",
     cinturon: "vida_cotidiana",
-    rezago: "El IPC-GBA se publica a mediados del mes siguiente (~1 mes).",
+    rezago: "El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes).",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda",
-      serie: "Planilla sh_ipc_aperturas.xls · hoja Índices aperturas · región GBA · Alquiler de la vivienda y Nivel general",
+      serie: "Planilla sh_ipc_aperturas.xls · hoja Índices aperturas · región Gran Buenos Aires · Alquiler de la vivienda y Nivel general",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
       acceso: "Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual.",
     },
@@ -3347,7 +3347,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "Re-descarga completa por actualización; base fija en el 4º trimestre de 2023.",
     cambios: [
       { fecha: "2026-07-20", cambio: "Alta del indicador: la dimensión de precios no medía el costo de la vivienda." },
-      { fecha: "2026-09-08", cambio: "La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.", adr: "0291" },
+      { fecha: "2026-09-08", cambio: "La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4º trimestre de 2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.", adr: "0291" },
       { fecha: "2026-10-27", cambio: "Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.", adr: "0386" },
     ],
   },
@@ -3355,7 +3355,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "alquiler_udesa_real",
     cinturon: "vida_cotidiana",
-    rezago: "El informe de AMBA sale entre el último día del mes y los primeros del siguiente; el punto necesita además el IPC del mismo mes, que el INDEC publica a mediados del mes siguiente (~1,5 meses).",
+    rezago: "El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses).",
     fuente: {
       organismo: "Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles",
       operacion: "Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA",
@@ -3375,7 +3375,7 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.",
     limitaciones: [
       "Son precios de avisos publicados, no de contratos firmados: el alquiler que se pide no es el que se pacta ni el que paga quien ya alquila.",
-      "Sólo cubre departamentos de AMBA (CABA y Gran Buenos Aires) y no representa el interior del país.",
+      "Sólo cubre departamentos del Área Metropolitana de Buenos Aires (la Ciudad de Buenos Aires y el Gran Buenos Aires) y no representa el interior del país.",
       "Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.",
       "La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.",
       "El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.",
@@ -3391,10 +3391,10 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "peso_tarifas",
     cinturon: "vida_cotidiana",
-    rezago: "El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período.",
+    rezago: "El Instituto Interdisciplinario de Economía Política (IIEP) publica durante el mismo mes una estimación de la canasta y de la remuneración imponible promedio de los trabajadores estables (RIPTE) del período.",
     fuente: {
-      organismo: "IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios",
-      operacion: "Canasta de Servicios Públicos del AMBA sobre salario RIPTE",
+      organismo: "Instituto Interdisciplinario de Economía Política (IIEP) de la Universidad de Buenos Aires y el Consejo Nacional de Investigaciones Científicas y Técnicas, Observatorio de Tarifas y Subsidios",
+      operacion: "Canasta de Servicios Públicos del Área Metropolitana de Buenos Aires (AMBA) sobre salario RIPTE",
       serie: "Electricidad, gas, agua y transporte de un hogar representativo · porcentaje del RIPTE",
       url: "https://economicas.uba.ar/iiep/category/tarifassubsidios/",
       acceso: "Automático: páginas mensuales del reporte de Tarifas y Subsidios.",
@@ -3406,8 +3406,8 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Integra la dimensión de presión de precios.",
-      "Las anclas son externas y comparables por variable: el Banco Mundial ubica agua+energía en un rango indicativo de 10–15% del ingreso y ONU-Hábitat recomienda que el transporte público no supere 5%. Se aplican por separado: un exceso en transporte no se compensa con energía barata, ni al revés.",
-      "Reemplaza como dato visible al IPC Regulados/RIPTE, que no medía una canasta de tarifas ni una participación del ingreso.",
+      "Las anclas son externas y comparables por variable: el Banco Mundial ubica agua+energía en un rango indicativo de 10–15% del ingreso y el Programa de las Naciones Unidas para los Asentamientos Humanos (ONU-Hábitat) recomienda que el transporte público no supere 5%. Se aplican por separado: un exceso en transporte no se compensa con energía barata, ni al revés.",
+      "Reemplaza como dato visible al índice de precios al consumidor de regulados sobre la remuneración imponible promedio de los trabajadores estables (RIPTE), que no medía una canasta de tarifas ni una participación del ingreso.",
     ],
     limitaciones: [
       "Representa un hogar tipo del AMBA y no al país entero; consumo, segmentación y cuadros tarifarios varían por hogar y jurisdicción.",
@@ -3418,8 +3418,8 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos, alquiler (IPC) y alquiler pedido (UdeSA).",
     revisiones: "Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.",
     cambios: [
-      { fecha: "2026-08-21", cambio: "IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado." },
-      { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 como nivel de regulados contra el salario (decisión superada el 21-ago-2026).", adr: "0232" },
+      { fecha: "2026-08-21", cambio: "IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4º trimestre de 2023 subsidiado." },
+      { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 como nivel de regulados contra el salario (decisión superada el 21 de agosto de 2026).", adr: "0232" },
     ],
   },
 
@@ -3430,7 +3430,7 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato.",
     fuente: {
       organismo: "Secretaría de Agricultura, Ganadería y Pesca (SAGYP)",
-      operacion: "Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del INDEC.",
+      operacion: "Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC).",
       url: "https://www.magyp.gob.ar/sitio/areas/bovinos/informacion_sectorial",
       acceso: "Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva.",
     },
@@ -3443,12 +3443,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de consumo. Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso: la vacuna cuenta dentro del total y además sola, a propósito.",
       "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino y la carne que más cayó en el mandato.",
       "Se publica junto al total de las tres carnes, para que el lector vea si la caída de la vacuna se compensa con aviar y porcina (sustitución) o no (menos carne en total).",
-      "CICCRA publica un número parecido pero distinto para el mismo mes: son dos relevamientos con metodología propia. Se usa SAGYP porque es la fuente que tiene la serie de las tres carnes con el mismo método; CICCRA queda de respaldo del titular si SAGYP no trae el mes.",
+      "La Cámara de la Industria y Comercio de Carnes y Derivados de la República Argentina (CICCRA) publica un número parecido pero distinto para el mismo mes: son dos relevamientos con metodología propia. Se usa SAGYP porque es la fuente que tiene la serie de las tres carnes con el mismo método; CICCRA queda de respaldo del titular si SAGYP no trae el mes.",
     ],
     limitaciones: [
       "El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.",
       "No descuenta variaciones de stock: un mes con mucha carne en cámaras se lee como consumo. El promedio de 12 meses lo atenúa.",
-      "El equipo cita un «promedio histórico ~73 kg/hab/año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.",
+      "El equipo cita un «promedio histórico alrededor de 73 kg por habitante por año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.",
       "El pasaje a per cápita usa una proyección de población, no un censo del mes.",
     ],
     faltantes: "Si la fuente no publica o cambia de formato, el titular y el índice quedan en el último mes leído y se marcan desactualizados; el titular tiene respaldo en CICCRA.",
@@ -3458,8 +3458,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
       { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.", adr: "0217" },
-      { fecha: "2026-09-15", cambio: "Vuelve a puntuar por separado, a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.", adr: "0322" },
-      { fecha: "2026-09-16", cambio: "Se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.", adr: "0325" },
+      { fecha: "2026-09-15", cambio: "Vuelve a puntuar por separado, a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4º trimestre de 2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.", adr: "0322" },
+      { fecha: "2026-09-16", cambio: "Se retira el «promedio histórico alrededor de 73 kg» sin fuente citable, se declara la divergencia entre la Secretaría de Agricultura, Ganadería y Pesca (SAGYP) y la Cámara de la Industria y Comercio de Carnes y Derivados de la República Argentina (CICCRA) (46,75 contra 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.", adr: "0325" },
       { fecha: "2026-09-24", cambio: "Sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar.", adr: "0339" },
       { fecha: "2026-10-28", cambio: "Puntúa el consumo, no la faena. El titular y el puntaje salen del mismo dato: el consumo aparente por habitante de la Secretaría de Agricultura, mes a mes. Hasta acá el titular mostraba el consumo y el puntaje seguía la faena del INDEC, que es producción y no descuenta exportaciones. Con el dato de agosto el componente pasa de 88,5 a 86,4: la faena caía menos que el consumo porque se exporta más.", adr: "0392" },
     ],
@@ -3471,7 +3471,7 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato.",
     fuente: {
       organismo: "Secretaría de Agricultura, Ganadería y Pesca (SAGYP)",
-      operacion: "Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del INDEC y su suma reproduce el total del tablero de consumo de carnes.",
+      operacion: "Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC) y su suma reproduce el total del tablero de consumo de carnes.",
       url: "https://www.magyp.gob.ar/sitio/areas/bovinos/informacion_sectorial",
       acceso: "Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva.",
     },
@@ -3521,7 +3521,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Entra al índice de impacto social junto con `consumo_carne_vacuna`, en reemplazo del compuesto único `consumo_carnes_total`: separadas, evitan que la caída de la vacuna quede diluida por el sostén de pollo y cerdo, y viceversa.",
-      "Al 4T-2023, aviar+porcina pesaban 47,7% de la faena total de las tres carnes (vacuna 52,3%); el peso nominal del antiguo componente se repartió en esa proporción.",
+      "Al 4º trimestre de 2023, aviar+porcina pesaban 47,7% de la faena total de las tres carnes (vacuna 52,3%); el peso nominal del antiguo componente se repartió en esa proporción.",
       "Se publica junto a la vacuna y al total, para que el lector vea si la sustitución compensa la caída de la vacuna (esta serie sube o se sostiene mientras la vacuna cae) o no (las dos caen juntas).",
     ],
     limitaciones: [
@@ -3536,14 +3536,14 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-15", cambio: "Nace del reemplazo de `consumo_carnes_total`: antes el aviar y la porcina sólo entraban sumados a la vacuna en un único compuesto; ahora tienen componente propio con el peso proporcional que tenían dentro de ese total.", adr: "0322" },
       { fecha: "2026-09-16", cambio: "Se corrige el 48,0%/52,0% de la entrada anterior por el 47,7%/52,3% real, y el texto que explica el color deja de repetir el párrafo de `consumo_carne_vacuna` — ahora nombra su propio nivel (aviar+porcina) y sus componentes.", adr: "0325" },
       { fecha: "2026-09-24", cambio: "Deja de puntuar. Lo reemplaza el total de las tres carnes, que vuelve a puntuar junto con la carne vacuna; el nivel de aviar + porcina se lee dentro de la tarjeta del total.", adr: "0339" },
-      { fecha: "2026-10-28", cambio: "La serie pasa de la faena del INDEC al consumo aparente por habitante de la Secretaría de Agricultura, igual que la vacuna y el total. No puntúa.", adr: "0392" },
+      { fecha: "2026-10-28", cambio: "La serie pasa de la faena del Instituto Nacional de Estadística y Censos (INDEC) al consumo aparente por habitante de la Secretaría de Agricultura, igual que la vacuna y el total. No puntúa.", adr: "0392" },
     ],
   },
   pobreza_nowcast: {
     tipo: "indicador",
     id: "pobreza_nowcast",
     cinturon: "vida_cotidiana",
-    rezago: "El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora.",
+    rezago: "El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del Instituto Nacional de Estadística y Censos (INDEC) llega dos veces al año y con más demora.",
     fuente: {
       organismo: "Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial)",
       operacion: "Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste",
@@ -3579,9 +3579,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "ocupacion_eph",
     cinturon: "vida_cotidiana",
-    rezago: "Trimestral. El INDEC publica el trimestre unos 80 días después de su cierre (el 2T-2026 estaba en la API antes del 20-sep-2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación.",
+    rezago: "Trimestral. El Instituto Nacional de Estadística y Censos (INDEC) publica el trimestre unos 80 días después de su cierre (el 2º trimestre de 2026 estaba en la interfaz de programación pública antes del 20 de septiembre de 2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación.",
     fuente: {
-      organismo: "INDEC (EPH continua)",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) continua",
       operacion: "EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral",
       serie: "42.3_EPH_PUNTUATAL_0_M_24 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
@@ -3590,7 +3590,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.",
       "Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.",
-      "Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en ARCA, del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta los CUIT con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (ago-2014, mar-2015, jun-2020, abr-2021 y ago-2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde oct-2026), con un ADR propio.",
+      "Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en la Agencia de Recaudación y Control Aduanero (ARCA), del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta las claves únicas de identificación tributaria (CUIT) con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (agosto de 2014, marzo de 2015, junio de 2020, abril de 2021 y agosto de 2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde octubre de 2026), con un ADR propio.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de empleo: es su componente principal.",
@@ -3599,14 +3599,14 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
       "Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.",
       "La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.",
-      "El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en oct-2026 y lo previo son tres copias sueltas del Internet Archive (jun-2020, abr-2021, ago-2024). No hay copia de dic-2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en ago-2024 a 48.391 en oct-2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).",
+      "El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en octubre de 2026 y lo previo son tres copias sueltas del Internet Archive (junio de 2020, abril de 2021, agosto de 2024). No hay copia de diciembre de 2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en agosto de 2024 a 48.391 en octubre de 2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).",
     ],
     faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.",
     revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones. El padrón de ARCA se actualiza cada semana y el valor del mes se reemplaza por el del archivo más nuevo de ese mes.",
     cambios: [
       { fecha: "2026-10-27", cambio: "Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.", adr: "0383" },
-      { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
-      { fecha: "2026-10-27", cambio: "Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en oct-2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (jun-2020, abr-2021, ago-2024).", adr: "0389" },
+      { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26 de octubre de 2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en octubre de 2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (junio de 2020, abril de 2021, agosto de 2024).", adr: "0389" },
     ],
   },
 
@@ -3616,7 +3616,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     rezago: "Encuesta trimestral publicada con uno a dos trimestres de rezago.",
     fuente: {
-      organismo: "INDEC (EPH)",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)",
       operacion: "EPH — asalariados sin descuento jubilatorio, tasa trimestral",
       serie: "52.2_ASDJ_0_0_37 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
@@ -3646,7 +3646,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "mortalidad_pymes",
     cinturon: "vida_cotidiana",
-    rezago: "~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones.",
+    rezago: "Unos 3 meses. La Superintendencia de Riesgos del Trabajo (SRT) publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones.",
     fuente: {
       organismo: "SRT — Superintendencia de Riesgos del Trabajo",
       operacion: "Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996.",
@@ -3654,7 +3654,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: lectura mensual del XLSX publicado por la SRT.",
     },
     transformaciones: [
-      "Recorte PyME: se SUMAN los tramos de 1 · 2 · 3 a 5 · 6 a 10 · 11 a 25 · 26 a 40 · 41 a 50 trabajadores. No se toma el total del sistema aunque el tramo PyME sea la enorme mayoría de los empleadores: el total incluye a las grandes, y el indicador dejaría de decir PyME apenas cambie esa proporción.",
+      "Recorte de pequeñas y medianas empresas (PyME): se SUMAN los tramos de 1 · 2 · 3 a 5 · 6 a 10 · 11 a 25 · 26 a 40 · 41 a 50 trabajadores. No se toma el total del sistema aunque el tramo PyME sea la enorme mayoría de los empleadores: el total incluye a las grandes, y el indicador dejaría de decir PyME apenas cambie esa proporción.",
       "Componente del índice: el NIVEL de empleadores activos rebaseado a 100 = promedio del 4º trimestre de 2023. No la variación neta del mes: el nivel acumulado dice cuántas empresas quedan respecto del arranque, que es la pregunta del informe, y no depende de la estacionalidad de un mes suelto.",
       "Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.",
     ],
@@ -3667,15 +3667,15 @@ export const FICHAS: Record<string, Ficha> = {
       "Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.",
       "Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.",
       "Mide el stock de empleadores en los tramos de 1 a 50 trabajadores, no cierres o quiebras. Una empresa que supera 50 sale del universo y una que reduce su nómina a ese tramo entra; la serie no distingue esos cruces de altas o bajas de cobertura.",
-      "El equivalente por el lado de AFIP —la base de empleadores de OEDE— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.",
+      "El equivalente por el lado de la ex Administración Federal de Ingresos Públicos (AFIP, actual ARCA) —la base de empleadores del Observatorio de Empleo y Dinámica Empresarial— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si el cuadro 4.2 deja de traer alguno de los siete tramos, el colector falla en voz alta en vez de publicar una suma incompleta.",
     revisiones: "La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.",
     cambios: [
       { fecha: "2026-09-08", cambio: "Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.", adr: "0279" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad)." },
-      { fecha: "2026-08-21", cambio: "Pasa a medir lo que su nombre promete: empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.", adr: "0218" },
-      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026. Los empleadores con cobertura de ART no incluyen a los inscriptos sin personal a cargo, que es lo que se quería observar, y no hay una serie pública del padrón de ARCA que lo reemplace. Se sigue relevando como archivo.", adr: "0383" },
+      { fecha: "2026-08-21", cambio: "Pasa a medir lo que su nombre promete: empleadores activos de pequeñas y medianas empresas (PyME) de la Superintendencia de Riesgos del Trabajo (SRT), en lugar del índice de producción industrial (IPI) manufacturero del Instituto Nacional de Estadística y Censos (INDEC), que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.", adr: "0218" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26 de octubre de 2026. Los empleadores con cobertura de ART no incluyen a los inscriptos sin personal a cargo, que es lo que se quería observar, y no hay una serie pública del padrón de la Agencia de Recaudación y Control Aduanero (ARCA) que lo reemplace. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3683,7 +3683,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "trabajo_independiente",
     cinturon: "vida_cotidiana",
-    rezago: "~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado.",
+    rezago: "Unos 3 meses, el mismo del cierre administrativo con que el Sistema Integrado Previsional Argentino (SIPA) publica sus series de trabajo registrado.",
     fuente: {
       organismo: "SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo)",
       operacion: "Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro.",
@@ -3713,7 +3713,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.", adr: "0279" },
       { fecha: "2026-08-21", cambio: "Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.", adr: "0219" },
       { fecha: "2026-08-25", cambio: "La tarjeta declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la tarjeta enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.", adr: "0250" },
-      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: mide la composición del empleo registrado, no cuánta gente trabaja. Se sigue relevando como archivo.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26 de octubre de 2026: mide la composición del empleo registrado, no cuánta gente trabaja. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3721,9 +3721,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "despacho_cemento",
     cinturon: "vida_cotidiana",
-    rezago: "~2 meses (calendario de difusión de la construcción del INDEC).",
+    rezago: "Unos 2 meses (calendario de difusión de la construcción del Instituto Nacional de Estadística y Censos [INDEC]).",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC)",
       serie: "Planilla sh_isac_<año>.xls, Cuadro 1, serie desestacionalizada; identificador histórico 33.2_ISAC_SIN_EDAD_0_M_23_56",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-3-42",
@@ -3742,10 +3742,10 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Serie desestacionalizada revisable por la fuente; re-descarga completa por actualización.",
     cambios: [
-      { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
+      { fecha: "2026-09-08", cambio: "El índice de producción industrial y el indicador sintético de la actividad de la construcción se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
-      { fecha: "2026-10-27", cambio: "Sale del índice por decisión de la reunión del 26-oct-2026: la construcción no es empleo y la dimensión pasa a medir la ocupación EPH. Se sigue relevando como archivo.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Sale del índice por decisión de la reunión del 26 de octubre de 2026: la construcción no es empleo y la dimensión pasa a medir la ocupación de la Encuesta Permanente de Hogares. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3755,14 +3755,14 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     rezago: "Encuesta trimestral publicada con uno a dos trimestres de rezago.",
     fuente: {
-      organismo: "INDEC (EPH)",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)",
       operacion: "EPH — tasa de subocupación demandante, valores trimestrales para el total de aglomerados urbanos relevados",
       serie: "47.2_ECTSDT_0_T_47 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "La tasa se toma tal como la publica el INDEC: el porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA que trabaja menos horas de las que quisiera y además busca otro empleo. El denominador es la PEA, el mismo de la tasa de desocupación, y no el total de ocupados.",
+      "La tasa se toma tal como la publica el Instituto Nacional de Estadística y Censos (INDEC): el porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA (PEA) que trabaja menos horas de las que quisiera y además busca otro empleo. El denominador es la PEA, el mismo de la tasa de desocupación, y no el total de ocupados.",
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
@@ -3779,7 +3779,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social con rebase invertido base-100." },
       { fecha: "2026-08-25", cambio: "El indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.", adr: "0249" },
       { fecha: "2026-08-25", cambio: "La descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.", adr: "0263" },
-      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja (ocupación EPH). Se sigue relevando como archivo.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26 de octubre de 2026: la dimensión pasa a medir cuánta gente trabaja (ocupación EPH). Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3789,7 +3789,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     rezago: "La encuesta de victimización se publica con uno a dos meses de rezago.",
     fuente: {
-      organismo: "Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste)",
+      organismo: "Universidad Torcuato Di Tella — Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP) (métrica) + Ministerio de Seguridad — Sistema Nacional de Información Criminal (SNIC) (contraste)",
       operacion: "IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no",
       serie: "Informes mensuales del IVI (LICIP-UTDT) + serie anual del SNIC como contraste",
       url: "https://www.utdt.edu/ver_contenido.php?id_contenido=968&id_item_menu=2156",
@@ -3800,14 +3800,14 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de seguridad. Hasta el 16-sep-2026 era el único componente y se llevaba el peso entero; desde el 16-sep-2026 comparte la dimensión con `tasa_homicidios` y `tasa_robos` (SNIC), y conserva la mayoría del peso por ser mensual y más fresco.",
+      "Pertenece a la dimensión de seguridad. Hasta el 16 de septiembre de 2026 era el único componente y se llevaba el peso entero; desde el 16 de septiembre de 2026 comparte la dimensión con `tasa_homicidios` y `tasa_robos` (SNIC), y conserva la mayoría del peso por ser mensual y más fresco.",
       "Es complementario y no redundante con los dos componentes del SNIC: capta delito denunciado y no denunciado (cifra negra) pero no distingue TIPO de delito, que es justo lo que homicidios y robos aportan por separado.",
     ],
     limitaciones: [
       "La base son tres meses de una encuesta con error muestral de ±3 puntos: octubre y noviembre de 2023 fueron altos (34% y 33%) y diciembre bajo (28%). El promedio atenúa, pero no elimina, ese ruido.",
-      "Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.",
+      "Error muestral de ±3 puntos por mes (unos 1.000 hogares) y cobertura solo urbana.",
       "La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.",
-      "El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16-sep-2026.",
+      "El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16 de septiembre de 2026.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Los informes procesados no se releen; el registro oficial de contraste se revisa hacia atrás y su serie se refresca completa.",
@@ -3826,7 +3826,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "tasa_homicidios",
     cinturon: "vida_cotidiana",
-    rezago: "ANUAL, con ~8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre.",
+    rezago: "ANUAL, con unos 8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16 de septiembre de 2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre.",
     fuente: {
       organismo: "SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad",
       operacion: "Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = \"Homicidios dolosos\"`). No se reconstruye con población propia.",
@@ -3842,10 +3842,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de seguridad.",
       "Entra junto con `tasa_robos`, revirtiendo la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» es falso — cinco indicadores del snapshot vigente puntúan con 243-244 días de rezago del dato (`velocidad_resolucion`, `iaf_transferencias`, `protocolo_antipiquetes`, `informalidad`, `subocupacion_demandante`).",
       "Es complementario a `inseguridad` (IVI), no redundante: el IVI es mensual y capta delito denunciado y no denunciado pero no distingue TIPO; el homicidio es el tipo de delito con MENOS subregistro de todo el desglose —hay un cuerpo, así que casi no depende de que alguien denuncie—, lo que compensa su rezago y justifica que pese más que `tasa_robos` dentro de la dimensión.",
-      "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (4,32 cada 100.000) afirmando que caía «cerca de la mediana» de los 26 años (~5,7). Medido, 4,32 está en el PERCENTIL 11 de la serie —25% por debajo de la mediana—, no cerca de ella, y anclar contra un año puntual elegido es la convención circular que `procedencia_anclas.py` existe para contar. Se ancla ahora contra la MEDIANA de los 26 años (5,76) en vez de un año, sin cambiar el resto del mecanismo.",
+      "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (4,32 cada 100.000) afirmando que caía «cerca de la mediana» de los 26 años (alrededor de 5,7). Medido, 4,32 está en el PERCENTIL 11 de la serie —25% por debajo de la mediana—, no cerca de ella, y anclar contra un año puntual elegido es la convención circular que `procedencia_anclas.py` existe para contar. Se ancla ahora contra la MEDIANA de los 26 años (5,76) en vez de un año, sin cambiar el resto del mecanismo.",
     ],
     limitaciones: [
-      "Anual con ~8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
+      "Anual con unos 8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
       "Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.",
       "La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.",
     ],
@@ -3855,7 +3855,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-28", cambio: "El texto del aporte dice que la base es la mediana de la serie 2000-2025, no fines de 2023, como ya era el cálculo. No cambia el puntaje.", adr: "0396" },
       { fecha: "2026-09-15", cambio: "Homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.", adr: "0324" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del índice de impacto social).", adr: "0327,0324,0325" },
-      { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50)." },
+      { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no cerca de 50)." },
     ],
   },
 
@@ -3863,7 +3863,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "tasa_robos",
     cinturon: "vida_cotidiana",
-    rezago: "ANUAL, ~8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días.",
+    rezago: "ANUAL, unos 8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días.",
     fuente: {
       organismo: "SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad",
       operacion: "Robos que excluyen los agravados por el resultado de lesiones o muertes, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos`, filtrada por `codigo_delito_snic_nombre = \"Robos (excluye los agravados por el resultado de lesiones y/o muertes)\"`).",
@@ -3884,7 +3884,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.",
       "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la tarjeta, no sólo el de esta ficha, tiene que poder verla.",
-      "Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.",
+      "Anual con unos 8,5 meses de rezago, igual que `tasa_homicidios`.",
       "Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).",
     ],
     faltantes: "Mismo store persistente que `tasa_homicidios`; sin componente, renormalización dentro de la dimensión de seguridad.",
@@ -3910,10 +3910,10 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa.",
     },
     transformaciones: [
-      "YA NO puntúa: hasta el 15-sep-2026 era componente del índice de impacto social (ICC rebaseado a 100 = promedio del 4º trimestre de 2023). Salió del cálculo y `validacion_externa.py` lee su serie cruda, sin rebasear acá.",
+      "YA NO puntúa: hasta el 15 de septiembre de 2026 era componente del índice de impacto social (ICC rebaseado a 100 = promedio del 4º trimestre de 2023). Salió del cálculo y `validacion_externa.py` lee su serie cruda, sin rebasear acá.",
     ],
     incidenciaTexto: [
-      "No integra el índice de impacto social. Pertenecía a la dimensión de confianza y percepción hasta el 15-sep-2026; con `sentimiento_digital` suspendido desde el 25-ago-2026, esa dimensión se quedó sin ningún componente activo y su peso nominal se redistribuye entre las cinco dimensiones restantes, según la tabla de pesos vigente del índice.",
+      "No integra el índice de impacto social. Pertenecía a la dimensión de confianza y percepción hasta el 15 de septiembre de 2026; con `sentimiento_digital` suspendido desde el 25 de agosto de 2026, esa dimensión se quedó sin ningún componente activo y su peso nominal se redistribuye entre las cinco dimensiones restantes, según la tabla de pesos vigente del índice.",
     ],
     dobleUso: "Un indicador no puede ser componente y juez del mismo índice (la misma regla que sacó al Índice Líder del índice macroeconómico en julio de 2026). Por eso el ICC dejó de componer el índice de impacto social y pasó a ser su ANCLA de validación externa: se contrasta el índice de impacto social completo contra el ICC en niveles y diferencias. El antiguo cinturón espíritu de época quedó fuera del tablero.",
     limitaciones: [
@@ -3925,7 +3925,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 con 50% interno de su dimensión." },
       { fecha: "2026-07-04", cambio: "Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda." },
-      { fecha: "2026-08-25", cambio: "Se publica la columna del total NACIONAL del cuadro de la UTDT, ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001.", adr: "0242" },
+      { fecha: "2026-08-25", cambio: "Se publica la columna del total NACIONAL del cuadro de la Universidad Torcuato Di Tella (UTDT), ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001.", adr: "0242" },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Confianza del consumidor (ICC)» a «Confianza del consumidor». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-15", cambio: "Sale de la tabla de dimensiones del índice de impacto social y pasa a ancla de validación externa del índice. La dimensión de confianza y percepción queda sin componente activo; su peso se redistribuye entre las otras cinco.", adr: "0314" },
     ],
@@ -3966,7 +3966,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Declarado indicador de contexto: la ventana de tres meses no permitía línea de base 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación." },
       { fecha: "2026-08-21", cambio: "La canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La tarjeta deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico.", adr: "0222" },
-      { fecha: "2026-08-25", cambio: "Sale del índice de impacto social. El volumen de búsquedas mide atención y la atención no tiene signo: buscar «inflación» no dice si a uno le preocupa o le conviene. La validación externa lo contradice en cuatro cortes —r = −0,788 contra Ipsos post-base, −0,126 en niveles y +0,082 en cambios contra el ICC de la UTDT en 59 meses, y 34 de 42 ventanas móviles de 18 meses con el signo opuesto—. Libera su 18,18% de la dimensión de percepción, que queda con el ICC como único componente. Se sigue relevando. El reingreso exige términos predeclarados y validación fuera de muestra.", adr: "0248" },
+      { fecha: "2026-08-25", cambio: "Sale del índice de impacto social. El volumen de búsquedas mide atención y la atención no tiene signo: buscar «inflación» no dice si a uno le preocupa o le conviene. La validación externa lo contradice en cuatro cortes —r = −0,788 contra Ipsos post-base, −0,126 en niveles y +0,082 en cambios contra el Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella (UTDT) en 59 meses, y 34 de 42 ventanas móviles de 18 meses con el signo opuesto—. Libera su 18,18% de la dimensión de percepción, que queda con el ICC como único componente. Se sigue relevando. El reingreso exige términos predeclarados y validación fuera de muestra.", adr: "0248" },
       { fecha: "2026-09-15", cambio: "El ICC —el otro componente de la dimensión de percepción— sale también del índice de impacto social y pasa a ancla de validación externa. La dimensión queda sin ningún componente activo: `sentimiento_digital` sigue suspendido y no hay nadie más declarado ahí. Su peso nominal se redistribuye entre las otras cinco dimensiones.", adr: "0314" },
     ],
   },
@@ -3977,7 +3977,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     rezago: "Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo.",
     fuente: {
-      organismo: "DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población)",
+      organismo: "DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e Instituto Nacional de Estadística y Censos (INDEC: población)",
       operacion: "Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC.",
       serie: "Estadística de trámites de automotores (desde enero de 2000) y de motovehículos (desde enero de 2007)",
       url: "https://datos.jus.gob.ar/dataset/estadistica-de-tramites-de-automotores",
@@ -4038,9 +4038,9 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Pertenece a la dimensión de consumo.",
       "La polaridad es la decisión de fondo (sacar `invertido=True` en `itvc.indices_desde_series` invierte la lectura completa): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
-      "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que se corrigió para `recaudacion`/IVA-DGI en el índice macroeconómico. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. Su peso queda por debajo del que le toca a `motorizacion_total` en la misma dimensión.",
+      "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que se corrigió para `recaudacion`/impuesto al valor agregado en el índice macroeconómico. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. Su peso queda por debajo del que le toca a `motorizacion_total` en la misma dimensión.",
       "AUTO-CANCELACIÓN MEDIDA, no doble conteo: en niveles correlaciona +0,40 con `motorizacion_total`, pero en la matriz de redundancia publicada (que mide movimientos) da −0,251. El mismo boom de motos empuja a `motorizacion_total` hacia el verde y a este ratio hacia el rojo al mismo tiempo, en la misma dimensión.",
-      "Ancla y amortiguación: rebaseado contra 4T-2023 (fecha fija, como el resto del cinturón). Sin ajustar, un crecimiento del orden del 39% sobre esa base alcanza para que el índice nazca saturado en el extremo de la escala de tensión (10,58 recortado a 10,0) y deje de poder mostrar que el deterioro sigue. Se amortigua la distancia a 100 a la mitad (factor 0,5, reversible en una constante): con ese ajuste, ese mismo crecimiento da índice 86,0 (tensión 7,8, no saturada), y el componente sólo vuelve a saturar si el ratio LLEGA A DUPLICAR su base.",
+      "Ancla y amortiguación: rebaseado contra 4º trimestre de 2023 (fecha fija, como el resto del cinturón). Sin ajustar, un crecimiento del orden del 39% sobre esa base alcanza para que el índice nazca saturado en el extremo de la escala de tensión (10,58 recortado a 10,0) y deje de poder mostrar que el deterioro sigue. Se amortigua la distancia a 100 a la mitad (factor 0,5, reversible en una constante): con ese ajuste, ese mismo crecimiento da índice 86,0 (tensión 7,8, no saturada), y el componente sólo vuelve a saturar si el ratio LLEGA A DUPLICAR su base.",
     ],
     limitaciones: [
       "Hereda las limitaciones de `motorizacion_total`: es un flujo de altas (no el parque circulante), no pondera por precio ni gama, y la inscripción es del registro seccional, no necesariamente de donde vive el comprador.",
@@ -4062,9 +4062,9 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "consumo_supermercados",
     cinturon: "vida_cotidiana",
-    rezago: "Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC.",
+    rezago: "Medido sobre las 14 publicaciones del calendario del Instituto Nacional de Estadística y Censos (INDEC) entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC.",
     fuente: {
-      organismo: "INDEC",
+      organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada",
       serie: "Serie histórica de la Encuesta de supermercados (serie_supermercados.xlsx), Cuadro 1, columna «Serie desestacionalizada», enero de 2017 en adelante",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-1-34",
@@ -4155,7 +4155,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide ejecución de la agenda declarada, no la calidad ni el resultado de las reformas: un índice alto significa «se está haciendo lo prometido», no «lo prometido funciona».",
       "Varios indicadores usan calibraciones propias declaradas (planes completos, umbrales de avance) donde no existe una vara oficial.",
-      "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre indicadores) está pendiente, y no hay validación externa que lo supla: un índice de ejecución no tiene contraste externo posible.",
+      "El análisis multivariado previo del estándar de la Organización para la Cooperación y el Desarrollo Económicos y el Centro Común de Investigación de la Comisión Europea (contrastar la estructura teórica con la correlación real entre indicadores) está pendiente, y no hay validación externa que lo supla: un índice de ejecución no tiene contraste externo posible.",
       "La historia es corta (los meses del mandato): la redundancia entre componentes y la sensibilidad a los pesos se leen como consistencia, no como prueba.",
     ],
     cambios: [
@@ -4227,7 +4227,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     validacion: [
       "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un PANEL de estadísticas externas, no contra una sola. No es una preferencia de método: no hay una serie única en condiciones de hacer de referencia, y el motivo forma parte del resultado.",
-      "El ancla era el consumo medido —las ventas en supermercados a precios constantes del INDEC— y dejó de serlo porque pasó a ser COMPONENTE del índice. Mide condiciones materiales del hogar, así que le corresponde integrar el índice de impacto social y no juzgarlo: es la misma regla que antes había desplazado a la confianza del consumidor, que también componía el índice.",
+      "El ancla era el consumo medido —las ventas en supermercados a precios constantes del Instituto Nacional de Estadística y Censos (INDEC)— y dejó de serlo porque pasó a ser COMPONENTE del índice. Mide condiciones materiales del hogar, así que le corresponde integrar el índice de impacto social y no juzgarlo: es la misma regla que antes había desplazado a la confianza del consumidor, que también componía el índice.",
       "El reemplazo conceptualmente correcto está identificado y declarado: el consumo privado que el INDEC publica en las Cuentas Nacionales a precios constantes. No es un canal del consumo del hogar sino su agregado, que es exactamente lo que el cinturón dice medir. Todavía no puede usarse: es trimestral y arranca junto con la base del índice, así que la muestra son nueve trimestres y la correlación en primeras diferencias se mueve entre 0,17 y 0,73 según qué trimestre se quite. Un número que depende de cuál dato se saque no es un número publicable.",
       "El umbral de promoción queda fijado por adelantado, antes de volver a mirar la correlación: pasa a ser la serie de referencia del cinturón cuando acumule 20 trimestres, hacia fines de 2028. Fijarlo ahora es lo que impide que la decisión termine dependiendo del número que dé ese día.",
       "Su solapamiento con el índice también queda declarado y medido, porque el consumo privado contiene a las ventas en supermercados, que ahora son componente: la encuesta de supermercados representa el 4,49% del consumo privado en promedio del período (5,68% al inicio, 3,68% en el último trimestre disponible). El acoplamiento existe, es de segundo orden y se publica en vez de omitirse.",
@@ -4241,7 +4241,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Cada componente publica su ficha con la transformación exacta, su nivel actual y su peso.",
     ],
     interpretacion: [
-      { rango: "> 110", lectura: "Mejora sustancial vs. 4T-2023" },
+      { rango: "> 110", lectura: "Mejora sustancial frente al 4º trimestre de 2023" },
       { rango: "105 – 110", lectura: "Mejora moderada" },
       { rango: "95 – 105", lectura: "Sin cambios apreciables" },
       { rango: "85 – 95", lectura: "Deterioro moderado" },
@@ -4251,7 +4251,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide evolución contra un punto de partida, no niveles absolutos: un país que arranca mal y mejora poco puntúa mejor que uno que arranca bien y empeora poco.",
       "El punto de partida (4º trimestre de 2023) contiene la devaluación de diciembre: parte de las mejoras medidas es rebote del pozo — auditado y declarado, con la base mantenida por diseño del documento institucional.",
       "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial en el índice y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
-      "El análisis multivariado previo del estándar OCDE/JRC está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
+      "El análisis multivariado previo del estándar de la Organización para la Cooperación y el Desarrollo Económicos y el Centro Común de Investigación de la Comisión Europea está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
     ],
     cambios: [
       { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos, a pedido de Luis: «Ingresos» (salario contra canasta y pobreza, 20,16% del índice) y «Consumo» (supermercados, motorización, motos por auto y carnes, 7,9%). Cada componente conserva su peso en el índice, así que el índice no se mueve (93,6); con los datos del 26 de octubre de 2026 la dimensión que era 109,0 se lee como Ingresos 114,6 y Consumo 94,6.", adr: "0373" },
@@ -4262,7 +4262,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-19", cambio: "El cinturón pasa a llamarse Impacto Social y el índice, índice de impacto social. Cambia la etiqueta, no la composición: ninguna clave de datos, ninguna serie y ningún peso se tocan.", adr: "0212" },
       { fecha: "2026-08-20", cambio: "La informalidad se muda de la dimensión de ingresos y consumo a la de prospectivas de empleo (hoy Empleo), que es donde mide. Los pesos de las dos dimensiones se ajustan para que el peso efectivo de cada componente quede intacto: se mueve de casa, no de importancia. Ingresos pasa de 37% a 28,06% y empleo de 15% a 24,19%.", adr: "0214" },
       { fecha: "2026-08-20", cambio: "El componente de proteína animal pasa a puntuar el consumo TOTAL de carnes y no la carne vacuna sola: buena parte de la caída de la vacuna es sustitución hacia pollo y cerdo, y leerla como pérdida de poder adquisitivo era un falso positivo. La vacuna sigue relevándose como diagnóstico, sin tarjeta propia.", adr: "0217" },
-      { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial. Y entra el peso del trabajo independiente como su contracara. El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente.", adr: "0218,0219" },
+      { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de pequeñas y medianas empresas pasa a medirse con los empleadores activos de la Superintendencia de Riesgos del Trabajo (SRT) en lugar del índice de producción industrial (IPI) manufacturero, que era una aproximación por producción industrial. Y entra el peso del trabajo independiente como su contracara. El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente.", adr: "0218,0219" },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos. El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría.", adr: "0223" },
       { fecha: "2026-08-21", cambio: "Las ventas en supermercados a precios constantes dejan de ser el ancla de validación externa y entran como componente de la dimensión de ingresos y consumo, con 20% interno. El índice queda con dieciocho componentes y es la primera vez que uno mide volumen efectivamente comprado. En el mismo movimiento el cinturón deja de tener ancla única y su contraste pasa a ser el panel: el reemplazo natural —el consumo privado de las Cuentas Nacionales— existe pero todavía tiene nueve trimestres, y queda declarado como referencia en formación con su umbral de promoción fijado de antemano.", adr: "0225" },
       { fecha: "2026-08-21", cambio: "La carga del servicio de deuda de las familias entra como segunda pata de vulnerabilidad financiera, con 30% interno; la mora conserva 70%. El índice queda con diecinueve componentes." },
@@ -4313,7 +4313,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez, para identificar cuál domina la lectura del mes.",
     ],
     validacion: [
-      "El índice político se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice reconstruido mes a mes se correlaciona contra el EPU, con correlación esperada negativa (más capital político, menos incertidumbre de política en la prensa). El resultado se publica en la sección de validación del cinturón.",
+      "El índice político se contrasta contra el índice de incertidumbre de política económica de Argentina (Economic Policy Uncertainty, EPU: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice reconstruido mes a mes se correlaciona contra el EPU, con correlación esperada negativa (más capital político, menos incertidumbre de política en la prensa). El resultado se publica en la sección de validación del cinturón.",
       "Participa además de la matriz de validación cruzada que compara a la vez los tres índices del informe que tienen contraste externo —índice macroeconómico, índice de impacto social e índice político— contra sus tres anclas, publicada en la página del cinturón. El índice de gestión no participa: un índice de ejecución no tiene contraste externo.",
     ],
     comunicacion: [
@@ -4332,7 +4332,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Varios de los indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
       "Su validación externa es la más reciente del sistema: varios componentes tienen historia corta y la reconstrucción de los meses más antiguos se apoya en los indicadores de serie más larga (con un piso de cobertura declarado) — las correlaciones se leen como consistencia, no como prueba.",
       "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
-      "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
+      "El análisis multivariado previo del estándar de la Organización para la Cooperación y el Desarrollo Económicos y el Centro Común de Investigación de la Comisión Europea (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
     ],
     cambios: [
       { fecha: "2026-07-07", cambio: "Nace el índice político: reemplaza al promedio simple de nueve indicadores por la paramétrica de cinco dimensiones ponderadas, con flag de dimensión crítica y ajustes de analista con vencimiento. Se incorporan tres indicadores —cohesión de bloque en el Senado, adhesión provincial a un régimen de inversión y variación de protestas en la Ciudad de Buenos Aires— y se redefine la cohesión de bloque en Diputados, de una estimación manual a un cálculo automático sobre las votaciones nominales." },

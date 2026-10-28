@@ -38,7 +38,7 @@ def test_la_fecha_es_el_cierre_del_mes_que_informa():
         pytest.skip("la fuente RON no respondió; el test estático ya cubre la regresión")
     f = date.fromisoformat(card["fecha_dato"])
     assert (f + timedelta(days=1)).day == 1, "la fecha del dato no es fin de mes"
-    fin_txt = card["periodo"].split(" vs ")[0].split("–")[1]       # «ago 2026»
+    fin_txt = card["periodo"].split(" frente a ")[0].split("–")[1]       # «ago 2026»
     assert fin_txt == politica._etiqueta_mes(card["fecha_dato"][:7])
     assert f < date.today(), "el último mes no puede ser el corriente"
 

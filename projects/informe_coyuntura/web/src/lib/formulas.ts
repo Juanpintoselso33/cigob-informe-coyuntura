@@ -12,7 +12,7 @@ export interface Formula {
 export const FORMULAS: Record<string, Formula> = {
   // ── Macro (ITCM) ─────────────────────────────────────────────────────────
   ipc_total: {
-    latex: String.raw`\left(\frac{\text{IPC}_{\text{este mes}}}{\text{IPC}_{\text{mes anterior}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{índice de precios}_{\text{este mes}}}{\text{índice de precios}_{\text{mes anterior}}}-1\right)\times 100`,
     leyenda: "Variación mensual del nivel general de precios, según el Instituto Nacional de Estadística y Censos (INDEC).",
   },
   rem_ipc_12m: {
@@ -20,23 +20,23 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "La inflación esperada a 12 meses —la mediana del Relevamiento de Expectativas de Mercado (REM) que hace el Banco Central de la República Argentina (BCRA)— convertida a su equivalente mensual, para compararla con el índice de precios al consumidor (IPC) en la misma escala.",
   },
   desequilibrio_monetario: {
-    latex: String.raw`A_t=100\,\frac{M2^{transaccional}_{privado}}{\text{circulante}+\text{dep}^{\$}_{priv}+\text{dep}^{U\!S\!D}_{priv}}\qquad B_t=\text{compra neta de divisas del SPNF (U\!S\!D M)}\\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,58{,}75+a(1-b)\,0+(1-a)b\,90+ab\,58{,}75\\[6pt]\text{puntaje en el \'indice macroecon\'omico}=100-T_t`,
+    latex: String.raw`A_t=100\,\frac{\text{dinero transaccional privado en pesos}}{\text{circulante}+\text{dep\'ositos privados en pesos}+\text{dep\'ositos privados en d\'olares}}\qquad B_t=\text{compra neta de divisas del sector privado no financiero (millones de d\'olares)}\\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,58{,}75+a(1-b)\,0+(1-a)b\,90+ab\,58{,}75\\[6pt]\text{puntaje en el \'indice macroecon\'omico}=100-T_t`,
     leyenda: "El indicador cruza dos componentes en vez de promediarlos. A mide, sobre el total de la liquidez privada (pesos más los dólares depositados, valuados en pesos), qué proporción sigue en pesos de uso transaccional: es la composición de la liquidez que queda depositada. B mide la compra neta de divisas del sector privado no financiero en el mercado de cambios: es presión compradora, y no dice adónde fue ese dinero — el Banco Central de la República Argentina (BCRA) estimó que cerca del 80% quedó depositado localmente. Aparece aunque no toque ningún depósito. Cada uno se lleva a una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración (los dos desde abril de 2025, la apertura del cepo a personas humanas, para no mezclar regímenes cambiarios: bajo cepo ni la compra de divisas ni la composición de la liquidez miden confianza, miden falta de acceso). La tensión sale de cruzar las dos posiciones entre las cuatro esquinas de la matriz: nada degradado 0, se degradó la liquidez sola 58,75, se degradó la presión compradora sola 58,75, las dos 90. Las dos esquinas cruzadas valen lo mismo y quedan por encima de 45, que es lo que daría promediarlas: un componente en su mejor valor no compensa al otro en el peor. Valían 40 y 77,5, apoyadas en una inferencia no observable sobre el destino del dinero; como B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo. El puntaje en el índice macroeconómico es el complemento de la tensión.",
   },
   recaudacion: {
-    latex: String.raw`\frac{\left(\text{DGI}_{m}+\text{IIBB}_{m}\right)/\text{IPC}_{m}}{\text{factor estacional}_{\text{mes}}}\div\overline{\left(\text{4T-2023}\right)}\times 100`,
+    latex: String.raw`\frac{\left(\text{impuestos de la Dirección General Impositiva}_{m}+\text{Ingresos Brutos}_{m}\right)/\text{índice de precios}_{m}}{\text{factor estacional}_{\text{mes}}}\div\overline{\left(\text{4º trimestre de 2023}\right)}\times 100`,
     leyenda: "Recaudación de impuestos internos de la Nación, que cobra la Dirección General Impositiva (DGI), más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, sumadas en nivel, llevadas a pesos constantes con el índice de precios al consumidor y divididas por el promedio del cuarto trimestre de 2023, que vale 100. Se mide la DGI y no el total porque el indicador sigue la base imponible y la actividad, y el total incluye la aduana, cuya caída en estos años responde a la decisión de bajar retenciones y no a un deterioro de la economía. El factor estacional corrige el calendario tributario, que concentra la recaudación en mayo y junio y la deprime en marzo: se calcula como el cociente entre cada mes y la tendencia de doce meses centrada, promediado por mes calendario. Antes se publicaba la variación contra el mismo mes del año anterior; se cambió porque teniendo el dato mensual esa comparación arrastra la base de hace un año y puede informar crecimiento mientras el nivel sigue por debajo del punto de partida.",
   },
   pobreza_nowcast: {
-    latex: String.raw`\frac{\text{pobreza}_{\text{2do sem. 2023}}}{\text{pobreza}_{\text{este mes}}}\times 100`,
+    latex: String.raw`\frac{\text{pobreza}_{\text{segundo semestre 2023}}}{\text{pobreza}_{\text{este mes}}}\times 100`,
     leyenda: "Pobreza rebaseada al segundo semestre de 2023, que vale 100, e invertida: la base va arriba porque más pobreza es peor, así que por encima de 100 hay menos pobreza que en la transición. El nivel de cada mes es la estimación mensual de la Universidad Torcuato Di Tella; la base es la medición oficial del Instituto Nacional de Estadística y Censos (INDEC), porque la estimación mensual empieza en enero de 2025 y no alcanza el período base. Las dos fuentes no coinciden exactamente y el desvío está declarado en las limitaciones de la ficha.",
   },
   saldo_comercial_12m: {
-    latex: String.raw`\frac{\sum_{12m}\text{exportaciones}-\sum_{12m}\text{importaciones}}{\sum_{12m}\text{exportaciones}+\sum_{12m}\text{importaciones}}\times 100`,
+    latex: String.raw`\frac{\sum_{\text{12 meses}}\text{exportaciones}-\sum_{\text{12 meses}}\text{importaciones}}{\sum_{\text{12 meses}}\text{exportaciones}+\sum_{\text{12 meses}}\text{importaciones}}\times 100`,
     leyenda: "Saldo del intercambio de bienes acumulado en 12 meses, como porcentaje del comercio total de esos mismos meses, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos. El saldo en millones de dólares se muestra en el detalle. La escala se centra en el equilibrio y corta en desvíos de la historia de 2004 a 2023.",
   },
   reservas_bcra: {
-    latex: String.raw`\text{estimación CIGOB}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}+\text{Tesoro}+|\text{II.1}_{>3m,\leq1a}|`,
+    latex: String.raw`\text{estimación CIGOB}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}+\text{Tesoro}+|\text{II.1}_{>3\ \text{meses},\leq1\ \text{año}}|`,
     leyenda: "Flujos de la planilla de reservas internacionales que publica el Banco Central, con sus signos, más depósitos del Tesoro y el valor absoluto del tramo de más de tres meses y hasta un año de los vencimientos en moneda extranjera (el rubro II.1 de la fórmula). Este tramo no identifica por sí solo a los bonos del Banco Central para importadores (BOPREAL). Las exclusiones responden al diseño de CiGob y no certifican libre disponibilidad.",
   },
   idc: {
@@ -44,11 +44,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cada componente se compara con su propia historia (2018 a hoy) y se expresa en desvíos estándar: la tasa real que reciben los depositantes, el crecimiento interanual real de los depósitos privados (la comparación interanual absorbe la estacionalidad) y la holgura que queda para prestar (1 − préstamos/depósitos). Cero es el mes histórico típico; por encima, la capacidad de fondeo es mayor a la habitual, y por debajo, menor. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo.",
   },
   credito_privado: {
-    latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{1+\text{crecimiento nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
     leyenda: "Préstamos al sector privado, según el Banco Central de la República Argentina (BCRA), en variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad.",
   },
   resultado_primario: {
-    latex: String.raw`\frac{\sum_{12m}\text{resultado primario}}{\sum_{12m}\text{recaudaci\'on}}\times 100`,
+    latex: String.raw`\frac{\sum_{\text{12 meses}}\text{resultado primario}}{\sum_{\text{12 meses}}\text{recaudaci\'on}}\times 100`,
     leyenda: "Resultado primario del Estado nacional acumulado en doce meses, dividido por la recaudación del mismo período: de cada peso recaudado, cuánto sobra antes de pagar intereses. La recaudación es la total de la Nación, con la seguridad social y la parte que se coparticipa a las provincias.",
   },
   costo_financiamiento_tesoro: {
@@ -56,11 +56,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Tasa efectiva anual promedio de las licitaciones del mes, ponderada por el monto colocado, descontada la inflación esperada a doce meses.",
   },
   emae_ia: {
-    latex: String.raw`\left(\frac{\text{actividad}_{\text{hoy}}}{\text{actividad}_{\text{hace 12 m}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{actividad}_{\text{hoy}}}{\text{actividad}_{\text{hace 12 meses}}}-1\right)\times 100`,
     leyenda: "Estimador mensual de actividad económica (EMAE) del Instituto Nacional de Estadística y Censos (INDEC): el producto interno bruto mensual, comparado contra el mismo mes del año pasado.",
   },
   empleo_registrado: {
-    latex: String.raw`\frac{\text{asalariados privados registrados}_{\text{hoy}}}{\text{promedio 4T-2023}}\times 100`,
+    latex: String.raw`\frac{\text{asalariados privados registrados}_{\text{hoy}}}{\text{promedio 4º trimestre de 2023}}\times 100`,
     leyenda: "Asalariados del sector privado declarados al Sistema Integrado Previsional Argentino, en miles de personas. La tarjeta muestra el nivel; el índice del cinturón lo expresa contra el promedio del último trimestre de 2023, como el resto de los componentes. Por encima de 100 hay más empleo registrado que en la línea de base; por debajo, menos. Se usa la serie con estacionalidad porque la comparación es contra una base fija de tres meses y no contra el mes anterior.",
   },
   cobertura_judicial: {
@@ -84,15 +84,15 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Archivo de notas del Consejo de la Magistratura: se cuenta cada sesión documentada de las comisiones de Acusación y de Disciplina en la ventana de doce meses, tenga o no un número en la dirección web. Incluye sesiones ordinarias, extraordinarias y las publicadas junto o en forma conjunta con otras comisiones; se deduplican por fecha y comisión. Las audiencias y las noticias del Jurado de Enjuiciamiento no cuentan porque no son sesiones de comisión.",
   },
   emae_difusion: {
-    latex: String.raw`\frac{\text{sectores que crecen i.a.}}{15\ \text{sectores}}\times 100`,
+    latex: String.raw`\frac{\text{sectores que crecen en términos interanuales}}{15\ \text{sectores}}\times 100`,
     leyenda: "Estimador mensual de actividad económica (EMAE) por sector, del Instituto Nacional de Estadística y Censos (INDEC): se compara cada uno de los quince sectores contra el mismo mes del año anterior y se cuenta cuántos crecen. 15 de 15 = todos los sectores en alza; 8 de 15 = poco más de la mitad. Se compara contra el año anterior y no contra el mes previo porque las series son originales, sin desestacionalizar. Limitación declarada: todos los sectores cuentan igual, sin ponderar por su tamaño en la economía — un mes en que crece la pesca cuenta lo mismo que uno en que crece la industria.",
   },
   ipi_manufacturero: {
-    latex: String.raw`\frac{1}{3}\sum_{m=0}^{2}\left(\frac{\text{IPI manufacturero}_{t-m}}{\text{IPI manufacturero}_{t-m-12}}-1\right)\times 100`,
+    latex: String.raw`\frac{1}{3}\sum_{m=0}^{2}\left(\frac{\text{producción industrial manufacturera}_{t-m}}{\text{producción industrial manufacturera}_{t-m-12}}-1\right)\times 100`,
     leyenda: "Promedio simple de las tres variaciones interanuales más recientes del Índice de Producción Industrial (IPI) manufacturero del Instituto Nacional de Estadística y Censos (INDEC). El promedio móvil reduce el ruido mensual sin mezclar meses de distinta estacionalidad.",
   },
   tcrm: {
-    latex: String.raw`\text{puntaje}=p(\text{ITCRM}_t)\qquad 75\to10\;\cdot\;80\to35\;\cdot\;90\to60\;\cdot\;102{,}5\to80\;\cdot\;110\to100\\[6pt]\text{cruce}=(1-a)(1-b)\,10+a(1-b)\,50+(1-a)b\,30+ab\,85,\quad a=\tfrac{\text{puntaje}_{\text{TCR}}-10}{90},\;b=\tfrac{\text{puntaje}_{\text{TI}}-10}{90}`,
+    latex: String.raw`\text{puntaje}=p(\text{tipo de cambio real multilateral}_t)\qquad 75\to10\;\cdot\;80\to35\;\cdot\;90\to60\;\cdot\;102{,}5\to80\;\cdot\;110\to100\\[6pt]\text{cruce}=(1-a)(1-b)\,10+a(1-b)\,50+(1-a)b\,30+ab\,85,\quad a=\tfrac{\text{puntaje}_{\text{tipo de cambio real}}-10}{90},\;b=\tfrac{\text{puntaje}_{\text{términos del intercambio}}-10}{90}`,
     leyenda: "El tipo de cambio real multilateral del Banco Central de la República Argentina (BCRA) dice cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Su puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026. Dentro del sector externo no se promedia con los términos del intercambio: el cruce de los dos ocupa el peso que suman junto al saldo comercial y las reservas. Lleva los dos puntajes a una posición de 0 a 1 y los cruza entre las cuatro esquinas de la matriz (peso competitivo con términos altos 85, competitivo con términos bajos 50, apreciado con términos altos 30, apreciado con términos bajos 10). La matriz es asimétrica a propósito: un peso competitivo ya hizo el ajuste; uno apreciado que se sostiene por los precios depende de una variable externa.",
   },
   terminos_intercambio: {
@@ -114,24 +114,24 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Recaudación por derechos de exportación + importación, en dólares, según la Agencia de Recaudación y Control Aduanero (ARCA), sobre el total exportado e importado que registra el Intercambio Comercial Argentino del Instituto Nacional de Estadística y Censos: cuántos centavos de impuesto paga cada dólar comerciado. 0% = libre comercio.",
   },
   desregulacion_normativa: {
-    latex: String.raw`\text{art\'iculos modificados o eliminados, acumulados desde el 10-dic-2023}`,
+    latex: String.raw`\text{art\'iculos modificados o eliminados, acumulados desde el 10 de diciembre de 2023}`,
     leyenda: "Es una de las tres cifras que publica el Ministerio de Desregulación y Transformación del Estado en su informe mensual: cuántos artículos de normas anteriores quedaron modificados o eliminados por el programa desde el 10 de diciembre de 2023. Se eligió el recuento de artículos y no el de normas porque las normas no son equivalentes entre sí: un decreto que reescribe quinientos artículos y una resolución que toca uno cuentan igual si se cuentan normas, y muy distinto si se cuentan artículos. La cifra es oficial y verificable en el informe; la escala de referencia, en cambio, es una convención propia, porque el ministerio publica el recuento pero no declara ninguna meta. Dos cosas que el número no dice y la ficha desarrolla: el recuento cuenta actos y no efectos —un artículo derogado que después queda suspendido suma igual que uno que rige— y lo publica el mismo ministerio que conduce el programa que se está midiendo.",
   },
   reduccion_estado: {
-    latex: String.raw`\left(\frac{\text{empleados del Estado}_{\text{hoy}}}{\text{empleados del Estado}_{\text{dic-23}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{empleados del Estado}_{\text{hoy}}}{\text{empleados del Estado}_{\text{diciembre 2023}}}-1\right)\times 100`,
     leyenda: "Dotación de personal de la Administración Pública Nacional (base de empleo público).",
   },
   gasto_funcionamiento: {
-    latex: String.raw`\left(\frac{\text{gasto}_{\text{hoy}}}{\text{gasto}_{2023}}\cdot\frac{\text{IPC}_{2023}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{gasto}_{\text{hoy}}}{\text{gasto}_{2023}}\cdot\frac{\text{índice de precios}_{2023}}{\text{índice de precios}_{\text{hoy}}}-1\right)\times 100`,
     leyenda: "Gasto de funcionamiento del Estado nacional (salarios + otros gastos, base caja) de la Secretaría de Hacienda, publicado en datos.gob.ar, contra el mismo mes de 2023, descontada la inflación del Instituto Nacional de Estadística y Censos (INDEC).",
   },
   masa_salarial: {
-    latex: String.raw`\left(\frac{\text{masa salarial}_{\text{hoy}}}{\text{masa salarial}_{2023}}\cdot\frac{\text{IPC}_{2023}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{masa salarial}_{\text{hoy}}}{\text{masa salarial}_{2023}}\cdot\frac{\text{índice de precios}_{2023}}{\text{índice de precios}_{\text{hoy}}}-1\right)\times 100`,
     leyenda: "Masa salarial devengada del personal público (Presupuesto Abierto) contra 2023, descontada la inflación — filtra tanto despidos como licuación.",
   },
   reestructuracion_organismos: {
     latex: String.raw`\frac{\text{actos de disoluci\'on o cierre}}{45\;(\text{plan completo})}\times 100`,
-    leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg), filtradas caso por caso contra un registro curado: no cuentan ni fusiones/transformaciones ni hallazgos de texto que no sean, revisados uno por uno, el cierre vigente de un organismo público (por ejemplo, un acto rechazado después por el Congreso). Calibración validada a mano: 45 = plan completo.",
+    leyenda: "Normas con disolución de organismos desde diciembre de 2023 (InfoLeg), filtradas caso por caso contra un registro curado: no cuentan ni fusiones/transformaciones ni hallazgos de texto que no sean, revisados uno por uno, el cierre vigente de un organismo público (por ejemplo, un acto rechazado después por el Congreso). Calibración validada a mano: 45 = plan completo.",
   },
   fal_modernizacion_laboral: {
     latex: String.raw`100\times\left(0{,}90\cdot\frac{\text{hitos cumplidos}}{5}+0{,}10\cdot\text{adopci\'on}\right)`,
@@ -162,7 +162,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Red Federal de Concesiones, por etapas con fecha del Boletín Oficial (sistema de contrataciones del Estado, CONTRAT.AR).",
   },
   asistencia_directa: {
-    latex: String.raw`\begin{cases}100 & \text{desde el cese de las unidades de gesti\'on (Res. 84/2024)}\\ 0 & \text{antes}\end{cases}`,
+    latex: String.raw`\begin{cases}100 & \text{desde el cese de las unidades de gesti\'on (Resoluci\'on 84/2024)}\\ 0 & \text{antes}\end{cases}`,
     leyenda: "La intermediación del Potenciar Trabajo estaba en las unidades de gestión —municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista—. La Resolución 84/2024 del Ministerio de Capital Humano (Boletín Oficial, 10 de abril de 2024) dispuso su cese. El indicador vale 100 desde entonces y 0 antes.",
   },
   protocolo_antipiquetes: {
@@ -171,16 +171,16 @@ export const FORMULAS: Record<string, Formula> = {
   },
   libertad_opcion_salud: {
     latex: String.raw`100\times\left(0{,}25\cdot\text{marco}+0{,}20\cdot\text{sin permanencia}+0{,}20\cdot\text{derivaci\'on directa}+0{,}20\cdot\text{tr\'amite}+0{,}15\cdot\text{funcionamiento}\right)`,
-    leyenda: "Cada hito vale 1 si está cumplido a la fecha y 0 si no: el marco normativo que habilita la elección (DNU 70/2023), el fin de la permanencia obligatoria inicial (Decreto 170/2024), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud), el trámite de cambio en línea y el funcionamiento verificado en el padrón (al menos 10 % de los usuarios de prepagas con aportes derivados directo).",
+    leyenda: "Cada hito vale 1 si está cumplido a la fecha y 0 si no: el marco normativo que habilita la elección (decreto de necesidad y urgencia 70/2023), el fin de la permanencia obligatoria inicial (Decreto 170/2024), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud), el trámite de cambio en línea y el funcionamiento verificado en el padrón (al menos 10 % de los usuarios de prepagas con aportes derivados directo).",
   },
 
   // ── Impacto social (ITCIS: 17 bases temporales + tarifas por asequibilidad) ─
   brecha_salario_cbt: {
-    latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta b\'asica total por adulto equivalente}}`,
-    leyenda: "Cuántas canastas de pobreza compra un sueldo. Al índice de impacto social entra rebaseado: 100 = arranque del mandato (4T-2023).",
+    latex: String.raw`\frac{\text{remuneraci\'on imponible promedio de los trabajadores estables}}{\text{canasta b\'asica total por adulto equivalente}}`,
+    leyenda: "Cuántas canastas de pobreza compra un sueldo. Al índice de impacto social entra rebaseado: 100 = arranque del mandato (4º trimestre de 2023).",
   },
   ipc_alimentos: {
-    latex: String.raw`100\cdot\frac{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{4º trimestre 2023}}}`,
     leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La tarjeta muestra la variación mensual del rubro.)",
   },
   peso_tarifas: {
@@ -188,87 +188,87 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "E es agua+energía y P es transporte, cada uno como % del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE). Agua+energía: 10% = tensión 0, 12,5% = 5 y 15% = 10. Transporte: 5% = tensión 0, 7,5% = 5 y 10% = 10. Se usa el peor de los dos grupos para impedir compensaciones; la tarjeta muestra además el total.",
   },
   indice_lider: {
-    latex: String.raw`100\cdot\frac{\text{Índice Líder}_{\text{hoy}}}{\text{Índice Líder}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{Índice Líder}_{\text{hoy}}}{\text{Índice Líder}_{\text{4º trimestre 2023}}}`,
     leyenda: "Nivel del Índice Líder de la Universidad Torcuato Di Tella contra el arranque del mandato. Por encima de 100, las señales tempranas de la economía están mejor que en 2023.",
   },
   alquiler_real: {
-    latex: String.raw`100\cdot\frac{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{hoy}}}{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\left(\text{índice general de precios}\,/\,\text{alquiler}\right)_{\text{hoy}}}{\left(\text{índice general de precios}\,/\,\text{alquiler}\right)_{\text{4º trimestre 2023}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
   alquiler_udesa_real: {
-    latex: String.raw`100-\left[\frac{1+\text{alquiler pedido}_{\text{i.a.}}}{1+\text{IPC}_{\text{i.a.}}}-1\right]\cdot 100`,
-    leyenda: "Variación interanual del alquiler pedido por los departamentos de AMBA en Mercado Libre (pesos corrientes), descontada la inflación interanual del mismo mes. El índice es 100 menos esa variación real, en puntos: 100 = el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales.",
+    latex: String.raw`100-\left[\frac{1+\text{alquiler pedido}_{\text{interanual}}}{1+\text{índice de precios}_{\text{interanual}}}-1\right]\cdot 100`,
+    leyenda: "Variación interanual del alquiler pedido por los departamentos del Área Metropolitana de Buenos Aires en Mercado Libre (pesos corrientes), descontada la inflación interanual del mismo mes. El índice es 100 menos esa variación real, en puntos: 100 = el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales.",
   },
   trabajo_independiente: {
-    latex: String.raw`100\cdot\frac{\text{participaci\'on}_{\text{4T-23}}}{\text{participaci\'on}_{\text{hoy}}}\quad\text{con}\quad\text{participaci\'on}=\frac{\text{aut\'onomos}+\text{monotributo}}{\text{empleo registrado total}}`,
-    leyenda: "Peso de autónomos y monotributistas en el empleo registrado, invertido: más participación independiente es peor, 100 = 4T-2023.",
+    latex: String.raw`100\cdot\frac{\text{participaci\'on}_{\text{4º trimestre 2023}}}{\text{participaci\'on}_{\text{hoy}}}\quad\text{con}\quad\text{participaci\'on}=\frac{\text{aut\'onomos}+\text{monotributo}}{\text{empleo registrado total}}`,
+    leyenda: "Peso de autónomos y monotributistas en el empleo registrado, invertido: más participación independiente es peor, 100 = 4º trimestre de 2023.",
   },
   mortalidad_pymes: {
-    latex: String.raw`100\cdot\frac{\text{empleadores hasta 50}_{\text{hoy}}}{\text{empleadores hasta 50}_{\text{4T-23}}}`,
-    leyenda: "Cantidad de empleadores de hasta 50 trabajadores con cobertura de una aseguradora de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT), 100 = 4T-2023. Menos empleadores es peor.",
+    latex: String.raw`100\cdot\frac{\text{empleadores hasta 50}_{\text{hoy}}}{\text{empleadores hasta 50}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Cantidad de empleadores de hasta 50 trabajadores con cobertura de una aseguradora de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT), 100 = 4º trimestre de 2023. Menos empleadores es peor.",
   },
   despacho_cemento: {
-    latex: String.raw`100\cdot\frac{\text{actividad de la construcci\'on}_{\text{hoy}}}{\text{actividad de la construcci\'on}_{\text{4T-23}}}`,
-    leyenda: "Nivel del indicador sintético de la actividad de la construcción (ISAC) desestacionalizado — la construcción es el sector más intensivo en mano de obra, 100 = 4T-2023.",
+    latex: String.raw`100\cdot\frac{\text{actividad de la construcci\'on}_{\text{hoy}}}{\text{actividad de la construcci\'on}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Nivel del indicador sintético de la actividad de la construcción (ISAC) desestacionalizado — la construcción es el sector más intensivo en mano de obra, 100 = 4º trimestre de 2023.",
   },
   endeudamiento_familiar: {
-    latex: String.raw`100\cdot\frac{\text{deuda real de las familias}_{\text{hoy}}}{\text{deuda real}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{deuda real de las familias}_{\text{hoy}}}{\text{deuda real}_{\text{4º trimestre 2023}}}`,
     leyenda: "Crédito de consumo (tarjetas + personales, según el Banco Central) descontado la inflación, como stock puro: mide el acceso de los hogares al financiamiento. El estrés de pago lo mide por separado la mora de las familias, en la misma dimensión.",
   },
   mora_familias: {
     latex: String.raw`\frac{\text{mora}_{\text{pers}}\cdot\text{saldo}_{\text{pers}}+\text{mora}_{\text{tarj}}\cdot\text{saldo}_{\text{tarj}}}{\text{saldo}_{\text{pers}}+\text{saldo}_{\text{tarj}}}`,
-    leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos del Banco Central de la República Argentina), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el índice de impacto social puntúa por el nivel relativo al 4T-2023. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
+    leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos del Banco Central de la República Argentina), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el índice de impacto social puntúa por el nivel relativo al 4º trimestre de 2023. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
   icg_utdt: {
-    latex: String.raw`100\cdot\frac{\text{ICG}_{\text{hoy}}}{\overline{\text{ICG}}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{Confianza en el Gobierno}_{\text{hoy}}}{\overline{\text{Confianza en el Gobierno}}_{\text{4º trimestre 2023}}}`,
     leyenda: "Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella (escala 0 a 5), rebaseado a 100 con el promedio de octubre a diciembre de 2023, como el resto de los componentes del índice. No se invierte: más confianza da mejor puntaje.",
   },
   carga_servicio_deuda_hogares: {
-    latex: String.raw`100\cdot\frac{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{4T-23}}}{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{hoy}}}`,
+    latex: String.raw`100\cdot\frac{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{4º trimestre 2023}}}{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{hoy}}}`,
     leyenda: "Carga mensual de capital e intereses de las familias sobre la masa salarial registrada, tal como la publica el Banco Central de la República Argentina (BCRA), con promedio móvil de tres meses en numerador y denominador. Se invierte al rebasear: más ingreso comprometido en deuda significa menor capacidad de pago y peor puntaje.",
   },
   subocupacion_demandante: {
-    latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
+    latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4º trimestre 2023}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante, según la Encuesta Permanente de Hogares (EPH): gente que necesita trabajar más horas. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
   ocupacion_eph: {
     latex: String.raw`100+10\cdot\left(\text{tasa de empleo}_{\text{trimestre}}-\text{tasa de empleo}_{\text{mismo trimestre de 2023}}\right)`,
-    leyenda: "Tasa de empleo de la Encuesta Permanente de Hogares (INDEC, 31 aglomerados) contra la del mismo trimestre de 2023, antes del mandato, en puntos porcentuales. Cada décima de punto vale 1 punto del índice: igual que en 2023 da 100; un punto más de tasa de empleo, 110; un punto menos, 90.",
+    leyenda: "Tasa de empleo de la Encuesta Permanente de Hogares (Instituto Nacional de Estadística y Censos, 31 aglomerados) contra la del mismo trimestre de 2023, antes del mandato, en puntos porcentuales. Cada décima de punto vale 1 punto del índice: igual que en 2023 da 100; un punto más de tasa de empleo, 110; un punto menos, 90.",
   },
   informalidad: {
-    latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
+    latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4º trimestre 2023}}}{\text{informalidad}_{\text{hoy}}}`,
     leyenda: "Asalariados sin descuento jubilatorio (Encuesta Permanente de Hogares, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La tarjeta muestra la tasa del trimestre.",
   },
   consumo_carne_vacuna: {
-    latex: String.raw`100\cdot\frac{\text{vacuna por habitante}_{\text{hoy}}}{\text{vacuna por habitante}_{\text{4T-23}}}`,
-    leyenda: "Consumo aparente de carne vacuna por habitante de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4T-2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida. Puntúa por separado porque es el corte aspiracional del consumo argentino, distinto del resto de las carnes.",
+    latex: String.raw`100\cdot\frac{\text{vacuna por habitante}_{\text{hoy}}}{\text{vacuna por habitante}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Consumo aparente de carne vacuna por habitante de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4º trimestre de 2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida. Puntúa por separado porque es el corte aspiracional del consumo argentino, distinto del resto de las carnes.",
   },
   consumo_carnes_total: {
-    latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
-    leyenda: "Suma del consumo aparente por habitante de carne vacuna, aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida.",
+    latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Suma del consumo aparente por habitante de carne vacuna, aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseada a 100 = 4º trimestre de 2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida.",
   },
   consumo_carnes_otras: {
-    latex: String.raw`100\cdot\frac{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
-    leyenda: "Consumo aparente por habitante de aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4T-2023. Reemplazó al total fusionado con la vacuna: separadas, permiten leer si el consumo total sube o baja por sustitución (esta serie compensa) o por caída conjunta (las dos bajan). No mide proteína ingerida.",
+    latex: String.raw`100\cdot\frac{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Consumo aparente por habitante de aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4º trimestre de 2023. Reemplazó al total fusionado con la vacuna: separadas, permiten leer si el consumo total sube o baja por sustitución (esta serie compensa) o por caída conjunta (las dos bajan). No mide proteína ingerida.",
   },
   motorizacion_total: {
-    latex: String.raw`100\cdot\frac{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{hoy}}}{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\left[\left(\sum_{\text{12 meses}}\text{autos}+\sum_{\text{12 meses}}\text{motos}\right)\,/\,\text{población}\right]_{\text{hoy}}}{\left[\left(\sum_{\text{12 meses}}\text{autos}+\sum_{\text{12 meses}}\text{motos}\right)\,/\,\text{población}\right]_{\text{4º trimestre 2023}}}`,
     leyenda: "Inscripciones iniciales de autos y motos sumadas en una ventana móvil de doce meses, por habitante y rebaseadas a 100 = promedio del 4º trimestre de 2023. Tierra del Fuego se excluye de ambas patas por el movimiento registral documentado en la ficha.",
   },
   patentamiento_motos: {
-    latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4º trimestre 2023}}}`,
     leyenda: "Motos patentadas, según la Cámara de Fabricantes de Motovehículos (CAFAM), en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio. La tarjeta muestra el mes crudo.",
   },
   patentamiento_autos: {
-    latex: String.raw`100\cdot\frac{\text{inscripciones iniciales, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{inscripciones iniciales, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4º trimestre 2023}}}`,
     leyenda: "Autos 0km inscriptos en los registros de la Dirección Nacional de los Registros de la Propiedad Automotor (DNRPA) en promedio móvil anual — misma transformación que motos, y por el mismo motivo medido: enero pesa 1,36 veces el mes promedio y diciembre 0,57. La tarjeta muestra el mes crudo.",
   },
   consumo_supermercados: {
-    latex: String.raw`100\cdot\frac{\text{ventas a precios constantes}_{\text{hoy}}}{\text{ventas a precios constantes}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{ventas a precios constantes}_{\text{hoy}}}{\text{ventas a precios constantes}_{\text{4º trimestre 2023}}}`,
     leyenda: "Índice de ventas en supermercados a precios constantes del Instituto Nacional de Estadística y Censos (INDEC), en la serie desestacionalizada que publica el propio organismo. No se le aplica promedio móvil, a diferencia de motos y autos: la fuente ya le sacó el calendario, y volver a suavizarla con una media móvil de 12 meses la atrasaría medio año — probado, y ese atraso llega a invertir el signo de la correlación. Mide comercio registrado de cadenas: no ve el almacén de barrio ni el comercio informal.",
   },
   inseguridad: {
-    latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{4T-23}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
+    latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{4º trimestre 2023}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
     leyenda: "Índice de Victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP) de la Universidad Torcuato Di Tella: porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, denunciado o no. Base: promedio del 4º trimestre de 2023, como el resto del índice. La fórmula invierte la comparación: valor de la base dividido por el valor actual, por 100. Más de 100 significa menor victimización que a fines de 2023. El registro del Sistema Nacional de Información Criminal (SNIC) es un contraste con universo y frecuencia diferentes; su divergencia no prueba por sí sola cambios de subdenuncia.",
   },
   tasa_homicidios: {
@@ -280,15 +280,15 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Tasa de robos (excluye los agravados por lesiones o muertes) cada 100.000 habitantes, ya calculada por el Sistema Nacional de Información Criminal (SNIC). Mismo mecanismo corregido que la tasa de homicidios: rebase contra la mediana de los 26 años (925,1), no contra 2023 (percentil 69, que sesgaba el semáforo hacia el verde). Limitación declarada: la tasa 2025 cae 22,4% contra 2024 de forma inconsistente con el resto del desglose de delitos contra la propiedad, sin confirmación metodológica pública del SNIC.",
   },
   ratio_motos_autos: {
-    latex: String.raw`100+0{,}5\cdot\left(100\cdot\frac{\left(\text{motos}/\text{autos}\right)_{\text{4T-23}}}{\left(\text{motos}/\text{autos}\right)_{\text{hoy}}}-100\right)`,
+    latex: String.raw`100+0{,}5\cdot\left(100\cdot\frac{\left(\text{motos}/\text{autos}\right)_{\text{4º trimestre 2023}}}{\left(\text{motos}/\text{autos}\right)_{\text{hoy}}}-100\right)`,
     leyenda: "Motos patentadas dividido autos patentados, acumulado móvil de 12 meses (mismo colector y mismas ventanas que la motorización total). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que un resultado por encima de 100 signifique mejora: más motos por auto que en 2023 da un cociente por debajo de 100, que es la lectura de deterioro confirmada por el usuario. La distancia a 100 se amortigua a la mitad antes de leerse en la escala de tensión: sin amortiguar, el componente nace saturado en el extremo de la escala con apenas un 39% de crecimiento sobre la base y deja de poder mostrar que el deterioro sigue (corrección posterior a la primera versión).",
   },
   icc_utdt: {
-    latex: String.raw`\text{ICC de UTDT (serie cruda, columna Nacional), sin rebasear}`,
-    leyenda: "Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella. Hasta el 15-sep-2026 puntuaba en el índice de impacto social rebaseado a 100 = 4T-2023; desde entonces ya no compone el índice ni se rebasea: es su ancla de validación externa, y se correlaciona la serie cruda (niveles y diferencias) contra el índice de impacto social reconstruido.",
+    latex: String.raw`\text{Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella (serie cruda, columna Nacional), sin rebasear}`,
+    leyenda: "Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella. Hasta el 15 de septiembre de 2026 puntuaba en el índice de impacto social rebaseado a 100 = 4º trimestre de 2023; desde entonces ya no compone el índice ni se rebasea: es su ancla de validación externa, y se correlaciona la serie cruda (niveles y diferencias) contra el índice de impacto social reconstruido.",
   },
   sentimiento_digital: {
-    latex: String.raw`100\cdot\frac{100}{\dfrac{1}{6}\sum_{i=1}^{6}100\cdot\dfrac{\text{b\'usquedas del t\'ermino }i_{\text{ mes}}}{\text{b\'usquedas del t\'ermino }i_{\text{ 4T-23}}}}`,
+    latex: String.raw`100\cdot\frac{100}{\dfrac{1}{6}\sum_{i=1}^{6}100\cdot\dfrac{\text{b\'usquedas del t\'ermino }i_{\text{ mes}}}{\text{b\'usquedas del t\'ermino }i_{\text{ 4º trimestre 2023}}}}`,
     leyenda: "Canasta de seis búsquedas en Google —inflación, precios, dólar, empleo, inseguridad y corrupción— sobre una ventana fija desde 2021. Cada término se consulta por separado y se compara contra su propio 4º trimestre de 2023: la escala de Google Trends es relativa a cada consulta, pero ese factor se cancela en el cociente, y por eso seis consultas distintas se pueden promediar sin necesidad de un término de anclaje. Los seis pesan lo mismo, un sexto cada uno; el promedio de valores crudos que se usaba antes repartía el peso por volumen de búsqueda, y ahí un solo término se llevaba la mitad del índice. Más búsquedas de urgencia = peor. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el del mes abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora. Validación: correlación +0,61 con la inflación mensual.",
   },
 
@@ -314,19 +314,19 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Encuesta Cualitativa de la Construcción del Instituto Nacional de Estadística y Censos (INDEC) (Cuadro 7.1): cada mes se consulta a las grandes empresas constructoras si esperan que su actividad aumente, no varíe o disminuya en los próximos tres meses, con respuestas separadas para obra pública y obra privada. El saldo de cada grupo es el porcentaje que espera subas menos el que espera bajas. La brecha es la diferencia entre ambos saldos, promediada en doce meses para quitarle ruido. Cero significa que ambos grupos esperan lo mismo; negativo, que las empresas que dependen del Estado esperan peor que sus pares privadas.",
   },
   apoyo_empresario: {
-    latex: String.raw`\frac{1}{n}\sum_{c=1}^{n}\frac{\text{apoyos}_{c,\text{12 m}}-\text{cr\'iticas}_{c,\text{12 m}}}{\text{apoyos}_{c,\text{12 m}}+\text{cr\'iticas}_{c,\text{12 m}}}`,
+    latex: String.raw`\frac{1}{n}\sum_{c=1}^{n}\frac{\text{apoyos}_{c,\text{12 meses}}-\text{cr\'iticas}_{c,\text{12 meses}}}{\text{apoyos}_{c,\text{12 meses}}+\text{cr\'iticas}_{c,\text{12 meses}}}`,
     leyenda: "Comunicados institucionales fechados de la Unión Industrial Argentina (UIA) y de la Asociación de Fábricas Argentinas de Componentes (AFAC, autopartistas). La Asociación Empresaria Argentina (AEA) salió del cálculo porque dejó de publicar; sus comunicados siguen registrados. Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia, y los informes estadísticos periódicos de AFAC. Cada cámara tiene su saldo de doce meses, de −1 (todo crítica) a +1 (todo apoyo), y el indicador es el promedio simple de los saldos de las n cámaras que tienen al menos tres pronunciamientos en la ventana. Si ninguna llega a tres, el mes queda sin valor.",
   },
   apoyo_campo: {
-    latex: String.raw`\frac{1}{n}\sum_{c=1}^{n}\frac{\text{apoyos}_{c,\text{12 m}}-\text{cr\'iticas}_{c,\text{12 m}}}{\text{apoyos}_{c,\text{12 m}}+\text{cr\'iticas}_{c,\text{12 m}}}`,
+    latex: String.raw`\frac{1}{n}\sum_{c=1}^{n}\frac{\text{apoyos}_{c,\text{12 meses}}-\text{cr\'iticas}_{c,\text{12 meses}}}{\text{apoyos}_{c,\text{12 meses}}+\text{cr\'iticas}_{c,\text{12 meses}}}`,
     leyenda: "Notas fechadas de las secciones de prensa de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA). Cada nota se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo las que se pronuncian sobre una medida del Gobierno nacional: las que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que las dirigidas al Congreso, a una provincia o a la Justicia. Los informes estadísticos periódicos de Coninagro tampoco cuentan. Cada cámara tiene su saldo de doce meses, de −1 (todo crítica) a +1 (todo apoyo), y el indicador es el promedio simple de los saldos de las n cámaras que tienen al menos tres pronunciamientos en la ventana: cada entidad pesa lo mismo, publique mucho o poco. Si ninguna llega a tres, el mes queda sin valor.",
   },
   apoyo_construccion: {
-    latex: String.raw`\frac{\text{apoyos}_{\text{12 m}}-\text{cr\'iticas}_{\text{12 m}}}{\text{apoyos}_{\text{12 m}}+\text{cr\'iticas}_{\text{12 m}}}`,
+    latex: String.raw`\frac{\text{apoyos}_{\text{12 meses}}-\text{cr\'iticas}_{\text{12 meses}}}{\text{apoyos}_{\text{12 meses}}+\text{cr\'iticas}_{\text{12 meses}}}`,
     leyenda: "Notas fechadas de la Cámara Argentina de la Construcción (CAMARCO). Cada nota se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo las que se pronuncian sobre una medida del Gobierno nacional: las que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que las dirigidas al Congreso, a una provincia o a la Justicia. Tampoco cuentan su indicador mensual, los acuerdos salariales, los cursos y la agenda, ni la crónica de un acto cuya declaración ya se contó (se cuenta una vez, la declaración). El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo. Si la cámara emite menos de tres pronunciamientos en la ventana, el mes queda sin valor.",
   },
   apoyo_comercio: {
-    latex: String.raw`\frac{\text{apoyos}_{\text{12 m}}-\text{cr\'iticas}_{\text{12 m}}}{\text{apoyos}_{\text{12 m}}+\text{cr\'iticas}_{\text{12 m}}}`,
+    latex: String.raw`\frac{\text{apoyos}_{\text{12 meses}}-\text{cr\'iticas}_{\text{12 meses}}}{\text{apoyos}_{\text{12 meses}}+\text{cr\'iticas}_{\text{12 meses}}}`,
     leyenda: "Comunicados de prensa fechados de la Cámara Argentina de Comercio y Servicios (CAC). Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. Los informes estadísticos periódicos de la cámara tampoco cuentan. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que la CAC apoyó tanto como criticó. Si la cámara emite menos de tres pronunciamientos en la ventana, el mes queda sin valor.",
   },
   ratio_dnu: {
@@ -334,11 +334,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario), con la misma convención de fecha en los dos lados: la publicación en el Boletín Oficial. Un decreto cuenta como de necesidad y urgencia por el tipo con el que se firmó, que figura en el encabezado de su texto original; no por la frase «necesidad y urgencia», que dicen también decretos que prorrogan una intervención dispuesta por uno de ellos, reglamentarios y vetos que la citan al fundarse. La búsqueda por esa frase queda sólo como filtro previo para acotar el listado. Más de 1 = se publican más decretos de necesidad y urgencia que leyes.",
   },
   veto_quorum: {
-    latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 m}}}{\text{sesiones convocadas}_{\text{12 m}}}\times 100`,
+    latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 meses}}}{\text{sesiones convocadas}_{\text{12 meses}}}\times 100`,
     leyenda: "Sesiones plenarias de Diputados de los últimos doce meses (datos abiertos de la Cámara de Diputados). Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó y nunca llegó a constituirse, de modo que no recibió número de sesión. El denominador son las sesiones convocadas para tratar temas —las especiales y las que quedaron en minoría—; quedan afuera las informativas, la preparatoria y la presentación del presupuesto, donde el oficialismo no necesita juntar quórum para avanzar su agenda. Tampoco cuentan las sesiones que pidió la oposición y quedaron en minoría: ahí el que gana es el oficialismo.",
   },
   comisiones_caidas: {
-    latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 m}}}{\text{proyectos con dictamen}_{\text{12 m}}}\times 100`,
+    latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 meses}}}{\text{proyectos con dictamen}_{\text{12 meses}}}\times 100`,
     leyenda: "Dictámenes de comisión con Orden del Día de los últimos 12 meses que nunca llegaron a sancionarse en el recinto (datos abiertos de la Cámara de Diputados).",
   },
   derrotas_legislativas: {
@@ -346,7 +346,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Conteo de derrotas consumadas del Ejecutivo: una ley vetada cuenta cuando la segunda cámara completa la insistencia con dos tercios (la ley se promulga pese al veto); un decreto cuenta cuando una cámara lo rechaza bajo el procedimiento de la ley 26.122. Cada norma cuenta una sola vez, en el mes de la derrota. Fuentes: base InfoLeg de legislación nacional y actas de votación del Senado. Menos es mejor para el Ejecutivo.",
   },
   bloqueo_sostenido: {
-    latex: String.raw`\frac{\text{normas desafiadas que siguen en pie}_{\text{12 m}}}{\text{normas desafiadas en el recinto}_{\text{12 m}}}\times 100`,
+    latex: String.raw`\frac{\text{normas desafiadas que siguen en pie}_{\text{12 meses}}}{\text{normas desafiadas en el recinto}_{\text{12 meses}}}\times 100`,
     leyenda: "Una norma queda desafiada desde su primera votación en el recinto: la insistencia de una ley vetada (gane o pierda) o el control de un decreto bajo la ley 26.122. Sigue en pie mientras la insistencia no se complete en ambas cámaras o el decreto no sea rechazado por las dos. Fuentes: actas de votación nominales de Diputados y del Senado, y base InfoLeg para vetos e insistencias. Más es mejor para el Ejecutivo: es la contracara del conteo de derrotas, la capacidad de sostener la norma propia con un tercio de una cámara.",
   },
   movilizacion_cepa: {
@@ -362,19 +362,19 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Jornadas individuales no trabajadas por paros, acumuladas en doce meses. La metodología oficial permite sumar esta magnitud entre meses porque ya combina el tamaño y la duración del paro; no se suman conflictos ni huelguistas, que podrían repetirse.",
   },
   iaf_transferencias: {
-    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias}_{m}/\text{IPC}_{m}}{\sum_{m\,\in\,\text{12 meses previos}}\text{transferencias}_{m}/\text{IPC}_{m}}-1\right)\times 100`,
-    leyenda: "Recursos de origen nacional efectivamente girados a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador, incluida la compensación del Consenso Fiscal; afuera Tesoro Nacional, Seguridad Social y Fondo A.T.N.—, mes a mes, según la planilla mensual consolidada de la Secretaría de Hacienda. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y las transferencias no se reparten parejo por el calendario. Los dos términos son ventanas de doce meses: los últimos doce, que terminan en el último mes con IPC publicado, contra los doce anteriores. No se compara nunca un tramo incompleto contra uno entero.",
+    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias}_{m}/\text{índice de precios}_{m}}{\sum_{m\,\in\,\text{12 meses previos}}\text{transferencias}_{m}/\text{índice de precios}_{m}}-1\right)\times 100`,
+    leyenda: "Recursos de origen nacional efectivamente girados a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador, incluida la compensación del Consenso Fiscal; afuera Tesoro Nacional, Seguridad Social y Fondo de Aportes del Tesoro Nacional—, mes a mes, según la planilla mensual consolidada de la Secretaría de Hacienda. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y las transferencias no se reparten parejo por el calendario. Los dos términos son ventanas de doce meses: los últimos doce, que terminan en el último mes con IPC publicado, contra los doce anteriores. No se compara nunca un tramo incompleto contra uno entero.",
   },
   transferencias_no_automaticas: {
-    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}{\sum_{m\,\in\,2023}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias no autom\'aticas}_{m}/\text{índice de precios}_{m}}{\sum_{m\,\in\,2023}\text{transferencias no autom\'aticas}_{m}/\text{índice de precios}_{m}}-1\right)\times 100`,
     leyenda: "Crédito devengado por la Nación como transferencia a gobiernos provinciales y municipales —Aportes del Tesoro Nacional y transferencias corrientes y de capital por programa—, mes a mes, según Presupuesto Abierto, sin la coparticipación de la Ciudad de Buenos Aires por fallo, el Fondo de Incentivo Docente, las cajas previsionales provinciales ni los hospitales nacionales. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y estos giros se concentran en pocos meses. Los últimos doce, que terminan en el último mes cerrado con IPC publicado, contra los doce meses de 2023, una base fija anterior al mandato; no se compara nunca un tramo incompleto contra uno entero. Negativo = la Nación gira menos que en 2023.",
   },
   adhesion_reformas_provincial: {
-    latex: String.raw`\frac{\text{jurisdicciones adheridas al RIGI}}{24}\times 100`,
-    leyenda: "Conteo sobre la tabla oficial de adhesiones (MAGyP): 24 jurisdicciones = 23 provincias más la Ciudad de Buenos Aires.",
+    latex: String.raw`\frac{\text{jurisdicciones adheridas al Régimen de Incentivo para Grandes Inversiones}}{24}\times 100`,
+    leyenda: "Conteo sobre la tabla oficial de adhesiones del Ministerio de Agricultura, Ganadería y Pesca: 24 jurisdicciones = 23 provincias más la Ciudad de Buenos Aires.",
   },
   protestas_caba: {
-    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\text{eventos de protesta en CABA}`,
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\text{eventos de protesta en la Ciudad de Buenos Aires}`,
     leyenda: "Conteo de Armed Conflict Location & Event Data (ACLED): marchas, concentraciones y disturbios con cobertura de prensa. El índice político no puntúa el conteo sino su variación contra el total de 2023, la línea de base del mandato.",
   },
   rotacion_gabinete: {
@@ -383,22 +383,22 @@ export const FORMULAS: Record<string, Formula> = {
   },
   cohesion_bloque: {
     latex: String.raw`0{,}65\times\text{cohesi\'on Diputados}+0{,}35\times\text{cohesi\'on Senado}`,
-    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. En el Senado, el bloque de cada senador es el que tenía el día de la votación. Si una cámara no tiene votaciones divididas en la ventana, el peso se reparte sobre la otra.",
+    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de La Libertad Avanza en cada acta (índice de Rice); abstenciones y ausencias no entran. En el Senado, el bloque de cada senador es el que tenía el día de la votación. Si una cámara no tiene votaciones divididas en la ventana, el peso se reparte sobre la otra.",
   },
   votos_sobre_bancas: {
-    latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de LLA}}{\text{bancas de la c\'amara}}\times 100`,
-    leyenda: "Por cada votación nominal en general de un proyecto de ley del Poder Ejecutivo (sin tratados ni convenios internacionales) que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; Diputados pesa más que el Senado (si una cámara no tuvo votaciones, queda la otra).",
+    latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de La Libertad Avanza}}{\text{bancas de la c\'amara}}\times 100`,
+    leyenda: "Por cada votación nominal en general de un proyecto de ley del Poder Ejecutivo (sin tratados ni convenios internacionales) que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque de La Libertad Avanza (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; Diputados pesa más que el Senado (si una cámara no tuvo votaciones, queda la otra).",
   },
   alineamiento_senadores_prov: {
-    latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,
-    leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque LLA coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista. El bloque de cada senador es el que tenía el día de la votación, no el que muestra hoy el portal.",
+    latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos ajenos a La Libertad Avanza que coinciden con su posici\'on}}{\text{votos ajenos a La Libertad Avanza}}\times 100`,
+    leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque de La Libertad Avanza coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista. El bloque de cada senador es el que tenía el día de la votación, no el que muestra hoy el portal.",
   },
   votometro_ventaja_lla: {
-    latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
+    latex: String.raw`\text{intenci\'on de voto de La Libertad Avanza}-\text{intenci\'on de voto del Partido Justicialista}`,
     leyenda: "Gap en puntos porcentuales del agregador Votómetro (encuestas ponderadas por calidad y recencia).",
   },
   clima_electoral: {
-    latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
+    latex: String.raw`\text{intenci\'on de voto de La Libertad Avanza}-\text{intenci\'on de voto del Partido Justicialista}`,
     leyenda: "Gap en puntos porcentuales del agregador de encuestas de CiGob.",
   },
   indice_intencion_migratoria: {

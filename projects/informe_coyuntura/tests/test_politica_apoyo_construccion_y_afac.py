@@ -270,7 +270,7 @@ def test_la_card_de_la_construccion_es_el_ultimo_punto_de_la_serie():
     card = politica.fetch_apoyo_construccion()
     assert [card["fecha_dato"], card["valor"]] == serie[-1]
     assert serie[0][0] >= "2023-12-01" and all(-1.0 <= v <= 1.0 for _, v in serie)
-    assert card["fuente"] == "Comunicados de CAMARCO — codificación CIGOB"
+    assert card["fuente"] == "Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB"
 
 
 def test_las_bandas_de_la_construccion_son_las_de_los_otros_sectores():
@@ -297,7 +297,8 @@ def test_la_industria_promedia_la_uia_y_afac():
     assert set(saldos) == {"UIA", "AFAC"}
     assert round(sum(saldos.values()) / 2, 3) == valor
     assert card["saldos_por_camara"] == {k: round(v, 3) for k, v in saldos.items()}
-    assert card["fuente"] == "Comunicados de la UIA y AFAC — codificación CIGOB"
+    assert card["fuente"] == ("Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas "
+                              "Argentinas de Componentes (AFAC) — codificación CIGOB")
 
 
 def test_si_una_camara_de_la_industria_no_llega_al_minimo_cuenta_la_otra(tmp_path, monkeypatch):
@@ -521,7 +522,8 @@ def test_ningun_texto_dice_tercios_ni_nombra_a_la_uia_sola_como_industria():
             assert "un tercio" not in vigente and "en tercios" not in vigente, (nombre, ind)
     desc = (WEB / "descripciones.ts").read_text(encoding="utf-8")
     sp = re.search(r'^\s*sector_privado:\s*"([^"]+)"', desc, re.M).group(1)
-    assert "AFAC" in sp and "construcción (CAMARCO)" in sp and "tercio" not in sp
+    assert ("Asociación de Fábricas Argentinas de Componentes" in sp
+            and "la construcción (la Cámara Argentina de la Construcción)" in sp and "tercio" not in sp)
 
 
 def test_un_400_en_la_primera_pagina_es_una_falla():

@@ -46,7 +46,7 @@ JURIDICAS = ("30", "33", "34")
 PROPORCION_MIN, PROPORCION_MAX = 0.02, 0.30
 MIN_REGISTROS = 1_000_000
 MESES_PARA_PUNTUAR = 12
-MESES_ES = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
+MESES_ES = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
 RE_MES = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
 RE_FECHA_NOMBRE = re.compile(r"\.(\d{8})\.tmp$")
 CAMPOS = ("empleadores", "juridicas", "humanas", "monotributistas", "blanco", "cuit_total")
@@ -216,7 +216,7 @@ def _n(x: int) -> str:
 
 def _fecha(iso: str) -> str:
     d = date.fromisoformat(iso)
-    return f"{d.day}-{MESES_ES[d.month - 1]}-{d.year}"
+    return f"{d.day} de {MESES_ES[d.month - 1]} de {d.year}"
 
 
 def texto_card(meses: dict) -> str:
@@ -225,7 +225,7 @@ def texto_card(meses: dict) -> str:
         raise ValueError("registro vacío")
     ult_mes = max(meses)
     u = meses[ult_mes]
-    t = (f"Empleadores inscriptos en ARCA: {_n(u['empleadores'])} ({_fecha(u['fecha_archivo'])}): "
+    t = (f"Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): {_n(u['empleadores'])} ({_fecha(u['fecha_archivo'])}): "
          f"{_n(u['juridicas'])} empresas y sociedades y {_n(u['humanas'])} personas")
     previos = [m for m in meses if m < ult_mes]
     if previos:

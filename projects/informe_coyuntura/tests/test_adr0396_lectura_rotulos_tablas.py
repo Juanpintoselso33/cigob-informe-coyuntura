@@ -43,11 +43,11 @@ def test_rotulos_de_base_de_vida_cotidiana():
     publicar._scoring_vida_itvc(c, series)
     f = {k: (v.get("aporte_formula") or "") for k, v in c["indicadores"].items()}
     for k in ("tasa_homicidios", "tasa_robos"):
-        assert "vs la mediana de la serie 2000-2025" in f[k], f[k]
-        assert "igual que la mediana histórica" in f[k] and "4T-2023" not in f[k], f[k]
-    assert "vs el 2º semestre de 2023" in f["pobreza_nowcast"], f["pobreza_nowcast"]
-    # ADR-0393: la victimización usa el default (promedio del 4T-2023)
-    assert "vs 4T-2023" in f["inseguridad"] and "ene-2024" not in f["inseguridad"]
+        assert "frente a la mediana de la serie 2000-2025" in f[k], f[k]
+        assert "igual que la mediana histórica" in f[k] and "4º trimestre de 2023" not in f[k], f[k]
+    assert "frente al 2º semestre de 2023" in f["pobreza_nowcast"], f["pobreza_nowcast"]
+    # ADR-0393: la victimización usa el default (promedio del 4º trimestre de 2023)
+    assert "frente a 4º trimestre de 2023" in f["inseguridad"] and "ene-2024" not in f["inseguridad"]
 
 
 def test_tabla_de_colores_con_tramo_abierto_en_millones_incluye_el_rojo():

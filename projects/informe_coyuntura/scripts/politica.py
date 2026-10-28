@@ -954,15 +954,15 @@ def fetch_brecha_obra_publica() -> dict | None:
         anterior = _valor_un_anio_antes(serie, fecha)
         return {
             "valor":          valor,
-            "unidad":         "pp de brecha (obra pública − privada, 12m)",
-            "fuente":         "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+            "unidad":         "puntos porcentuales de brecha (obra pública − privada, 12 meses)",
+            "fuente":         "Instituto Nacional de Estadística y Censos (INDEC) · Encuesta Cualitativa de la Construcción (Cuadro 7.1)",
             "fecha_dato":     fecha,
             "referencia_temporal": "inicio del horizonte de expectativas",
             "periodo_expectativas": f"{fecha[:7]} a {fin}",
             "desactualizado": False,
             "variacion_12m":  None if anterior is None else round(valor - anterior, 1),
             "detalle_txt": (
-                f"Brecha de {str(valor).replace('.', ',')} pp entre lo que esperan las "
+                f"Brecha de {str(valor).replace('.', ',')} puntos porcentuales entre lo que esperan las "
                 f"constructoras de obra pública y las de obra privada (promedio de 12 meses). "
                 f"Último horizonte consultado: {fecha[:7]} a {fin}; la fecha identifica su inicio, "
                 f"no una realización observada ni la fecha de publicación. "
@@ -1244,16 +1244,16 @@ def fetch_conflictividad_nacional() -> dict | None:
             "valor":          var,
             "acum_12m":       ult12,
             "eventos_2023":   base_2023,
-            "unidad":         "% vs 2023",
-            "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
+            "unidad":         "% frente a 2023",
+            "fuente":         "Armed Conflict Location & Event Data (ACLED) — agregado semanal por provincia (acleddata.com)",
             "fecha_dato":     ultimo["fecha"],
             "cobertura_hasta": hasta,
             "referencia_temporal": "mes de inicio de las semanas ACLED",
             "desactualizado": (not descarga_exitosa or
                                _days_old(str(hasta)) > STALE_CONFLICTIVIDAD_DAYS),
             "obtenido_en": store["_meta"]["actualizado"],
-            "detalle_txt": (f"{ult12} eventos de protesta y disturbios en el país en 12m "
-                            f"(grupos hasta {ultimo['fecha'][:7]}) vs {base_2023} en la base 2023 "
+            "detalle_txt": (f"{ult12} eventos de protesta y disturbios en el país en 12 meses "
+                            f"(grupos hasta {ultimo['fecha'][:7]}) frente a {base_2023} en la base 2023 "
                             + f"({var:+.1f}%)".replace(".", ",")
                             + " — cuenta marchas, concentraciones y disturbios de ACLED en "
                               "las 24 jurisdicciones. Agrupa semanas sábado–viernes por "
@@ -1387,8 +1387,8 @@ def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
 
 # ── IAF — Índice de Armonía Federal (transferencias) ─────────────────────────
 
-_MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun",
-             "jul", "ago", "sep", "oct", "nov", "dic"]
+_MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio",
+             "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 
 def _etiqueta_mes(ym: str) -> str:
@@ -1397,7 +1397,7 @@ def _etiqueta_mes(ym: str) -> str:
 
 def _periodo_12m(fin: str) -> str:
     """«sep 2025–ago 2026 vs sep 2024–ago 2025» para la ventana que termina en `fin`."""
-    return (f"{_etiqueta_mes(_mes_siguiente(fin, -11))}–{_etiqueta_mes(fin)} vs "
+    return (f"{_etiqueta_mes(_mes_siguiente(fin, -11))}–{_etiqueta_mes(fin)} frente a "
             f"{_etiqueta_mes(_mes_siguiente(fin, -23))}–{_etiqueta_mes(_mes_siguiente(fin, -12))}")
 
 
@@ -1435,8 +1435,8 @@ def fetch_iaf_transferencias() -> dict | None:
             "periodo": _periodo_12m(fin),
             "ipc_aplicado_pct": round(deflactor * 100.0, 1),
             "unidad": "% interanual real",
-            "fuente": ("Sec. Hacienda — transferencias de recursos de origen nacional, planilla mensual consolidada + IPC "
-                       "INDEC (deflactado mes a mes)"),
+            "fuente": ("Secretaría de Hacienda — transferencias de recursos de origen nacional, planilla mensual consolidada + índice de precios al consumidor del "
+                       "Instituto Nacional de Estadística y Censos (deflactado mes a mes)"),
             "detalle_txt": (
                 f"12 meses a {_etiqueta_mes(fin)}: {var_nominal * 100:+.1f}% nominal contra un deflactor "
                 f"de {deflactor * 100:.1f}% ponderado por el flujo de cada mes "
@@ -1621,7 +1621,7 @@ def fetch_transferencias_no_automaticas() -> dict | None:
         ultimo_dia = (date(int(fin[:4]) + (int(fin[5:7]) == 12), int(fin[5:7]) % 12 + 1, 1)
                       - timedelta(days=1))
         periodo = (f"{_etiqueta_mes(_mes_siguiente(fin, -11))}–{_etiqueta_mes(fin)} "
-                   f"vs {TRANSF_NA_ANIO_BASE}")
+                   f"frente a {TRANSF_NA_ANIO_BASE}")
         return {
             "valor": round(var_real * 100.0, 1),
             "total_ref_billones": round(nom_ref / 1e6, 2),
@@ -1629,17 +1629,17 @@ def fetch_transferencias_no_automaticas() -> dict | None:
             "real_base_billones": round(real_base / 1e6, 2),
             "atn_ref_billones": round(comp["atn"] / 1e6, 2),
             "periodo": periodo,
-            "unidad": f"% real vs {TRANSF_NA_ANIO_BASE}",
+            "unidad": f"% real frente a {TRANSF_NA_ANIO_BASE}",
             "fuente": ("Presupuesto Abierto (Ministerio de Economía) — devengado de transferencias a "
                        "provincias y municipios, sin las automáticas por ley o fallo; IPC INDEC "
                        "(deflactado mes a mes)"),
             "detalle_txt": (
                 f"12 meses a {_etiqueta_mes(fin)}: ${_billones(nom_ref)} billones devengados "
-                f"(ATN ${_billones(comp['atn'])} · transferencias corrientes "
+                f"(Aportes del Tesoro Nacional ${_billones(comp['atn'])} · transferencias corrientes "
                 f"${_billones(comp['corrientes'])} · de capital ${_billones(comp['capital'])}). "
                 f"A precios de {_etiqueta_mes(fin)}, ${_billones(real_ref)} billones contra "
                 f"${_billones(real_base)} de todo {TRANSF_NA_ANIO_BASE} → "
-                f"{var_real * 100:+.1f}% real ({periodo}); cada mes deflactado por su IPC"
+                f"{var_real * 100:+.1f}% real ({periodo}); cada mes deflactado por su índice de precios al consumidor"
             ),
             "fecha_dato": ultimo_dia.isoformat(),
             "desactualizado": False,
@@ -2595,7 +2595,7 @@ def fetch_apoyo_empresario() -> dict | None:
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de la UIA y AFAC — codificación CIGOB",
+            "fuente":         "Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB",
             "fecha_dato":     fecha,
             # Cortada por el inventario (ADR-0310), la card es un dato congelado
             # y se declara así; al día llega al mes en curso.
@@ -2906,7 +2906,7 @@ def fetch_apoyo_comercio() -> dict | None:
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de la CAC — codificación CIGOB",
+            "fuente":         "Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB",
             "fecha_dato":     fecha,
             "desactualizado": fecha[:7] < date.today().isoformat()[:7],
             "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
@@ -3256,7 +3256,7 @@ def fetch_apoyo_campo() -> dict | None:
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
+            "fuente":         "Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB",
             "fecha_dato":     fecha,
             "desactualizado": fecha[:7] < date.today().isoformat()[:7],
             "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
@@ -3930,7 +3930,7 @@ def fetch_apoyo_construccion() -> dict | None:
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de CAMARCO — codificación CIGOB",
+            "fuente":         "Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB",
             "fecha_dato":     fecha,
             "desactualizado": fecha[:7] < date.today().isoformat()[:7],
             "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
@@ -4596,7 +4596,7 @@ def fetch_judicializacion() -> dict | None:
         return {
             "valor": puntos[anio],
             "unidad": "% de sumarios con medida cautelar",
-            "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
+            "fuente": "Sistema Argentino de Información Jurídica (SAIJ) — buscador de jurisprudencia (Federal + Nacional)",
             "fecha_dato": f"{anio}-01-01",
             "desactualizado": False,
             "detalle_txt": (
@@ -4624,7 +4624,7 @@ def fetch_velocidad_resolucion() -> dict | None:
         return {
             "valor": tasas[anio],
             "unidad": "% de expedientes resueltos sobre ingresados",
-            "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+            "fuente": "Corte Suprema de Justicia de la Nación (CSJN) — anuario estadístico (sistema de gestión judicial)",
             # Cierre del año de referencia, como iaf_transferencias: el dato
             # describe el año completo, no su primer día.
             "fecha_dato": f"{anio}-12-31",
@@ -6224,7 +6224,7 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
     return {
         "valor": round(len(provincias) / 24.0 * 100.0, 1),
         "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
-        "fuente": "MAGyP — catálogo de adhesiones · leyes provinciales complementarias verificadas",
+        "fuente": "Ministerio de Agricultura, Ganadería y Pesca (MAGyP) — catálogo de adhesiones · leyes provinciales complementarias verificadas",
         "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
         "n_provincias": len(provincias),
         "jurisdicciones": sorted(provincias),
@@ -7977,7 +7977,7 @@ def fetch_rotacion_gabinete() -> dict | None:
 
     resultado = {
         "valor": len(en_ventana),
-        "unidad": "salidas de rango ministerial (acum. 12 meses)",
+        "unidad": "salidas de rango ministerial (acumulado de 12 meses)",
         "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
         "fecha_dato": str(date.today()),
         "desactualizado": False,

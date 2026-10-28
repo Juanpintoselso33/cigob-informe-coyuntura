@@ -365,7 +365,7 @@ def fetch_ipc() -> dict | None:
         return {
             "valor": round(var, 2) if var is not None else None,
             "unidad": "% mensual",
-            "fuente": "INDEC — IPC nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -505,8 +505,8 @@ def fetch_reservas_netas() -> dict | None:
             raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
         return {
             "valor": round(netas, 0),
-            "unidad": "Millones de USD",
-            "fuente": "BCRA — Planilla de reservas internacionales y Balance Consolidado",
+            "unidad": "Millones de dólares",
+            "fuente": "Banco Central de la República Argentina (BCRA) — Planilla de reservas internacionales y Balance Consolidado",
             "fecha_dato": fecha_sdds.date().isoformat(),
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
@@ -529,7 +529,7 @@ def fetch_badlar() -> dict | None:
         return {
             "valor": round(float(ultimo["valor"]), 2),
             "unidad": "% anual",
-            "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — tasa BADLAR de bancos privados (API monetarias)",
             "fecha_dato": ultimo["fecha"],
             "desactualizado": False,
         }
@@ -627,9 +627,9 @@ def fetch_idc() -> dict | None:
         banda_idc = "verde" if z > 0.5 else "amarillo" if z >= -0.5 else "rojo"
         return {
             "valor": z,
-            "unidad": "σ vs. su historia",
-            "fuente": ("BCRA — BADLAR (var. 7), depósitos privados (var. 100) y "
-                       "préstamos privados (var. 117) + IPC INDEC"),
+            "unidad": "σ frente a su historia",
+            "fuente": ("Banco Central de la República Argentina (BCRA) — tasa BADLAR (var. 7), depósitos privados (var. 100) y "
+                       "préstamos privados (var. 117) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos"),
             "fecha_dato": f"{ym}-01",
             "componentes": {"precio": zp, "volumen": zv, "asignacion": za},
             "niveles": {"tasa_real_pp": round(tasa_real, 2),
@@ -651,8 +651,8 @@ def fetch_emae_ia() -> dict | None:
         val  = data[0][1]  # ya es variación i.a. en decimal (0.0187 = 1.87%)
         return {
             "valor": round(float(val) * 100, 2),
-            "unidad": "% i.a.",
-            "fuente": "INDEC — EMAE (vía datos.gob.ar)",
+            "unidad": "% interanual",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -741,8 +741,8 @@ def fetch_emae_difusion() -> dict | None:
         caen = sorted((v, n) for n, v in variaciones.items() if v <= 0)
         return {
             "valor": difusion[ym],
-            "unidad": "% de sectores en crecimiento i.a.",
-            "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+            "unidad": "% de sectores en crecimiento interanual",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE), apertura sectorial (vía datos.gob.ar)",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "sectores_totales": len(variaciones),
@@ -809,8 +809,8 @@ def fetch_ipi_manufacturero() -> dict | None:
         ym = max(serie)
         return {
             "valor": serie[ym],
-            "unidad": "% i.a. (promedio 3 meses)",
-            "fuente": "INDEC — IPI manufacturero, nivel general (planilla original vigente)",
+            "unidad": "% interanual (promedio de 3 meses)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de producción industrial (IPI) manufacturero, nivel general (planilla original vigente)",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
         }
@@ -848,14 +848,14 @@ def fetch_saldo_comercial_12m() -> dict | None:
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
             "valor": valor,
-            "unidad": "% del comercio (exportaciones + importaciones, acum. 12 meses)",
+            "unidad": "% del comercio (exportaciones + importaciones, acumulado de 12 meses)",
             "saldo_musd": round(saldo_musd, 0),
             "comercio_musd": round(comercio_musd, 0),
             "detalle_txt": (
                 f"saldo de US$ {miles(saldo_musd)} millones sobre un comercio de "
-                f"US$ {miles(comercio_musd)} millones (exportaciones US$ {miles(expo_12)} M "
-                f"· importaciones US$ {miles(impo_12)} M), doce meses a {comunes[0][0][:7]}"),
-            "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
+                f"US$ {miles(comercio_musd)} millones (exportaciones US$ {miles(expo_12)} millones "
+                f"· importaciones US$ {miles(impo_12)} millones), doce meses a {comunes[0][0][:7]}"),
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Intercambio Comercial Argentino, cuadro original vigente + historia datos.gob.ar",
             "fuente_url": datos['url'],
             "advertencia_fuente": datos['advertencia'],
             "obtenido_en": datos.get('obtenido_en'),
@@ -1040,7 +1040,7 @@ def fetch_recaudacion() -> dict | None:
                          f"mes{'es' if control['meses_atraso'] != 1 else ''} más viejo que la card)"
                          if control["meses_atraso"] > 0 else "")
             detalle += (
-                f" Composición ({control['fecha']}, var. i.a. real){desfasaje}: IVA-DGI "
+                f" Composición ({control['fecha']}, variación interanual real){desfasaje}: impuesto al valor agregado "
                 f"{cm(control['iva_var_ia_real'])}%, cheque {cm(control['cheque_var_ia_real'])}%, "
                 f"agregado {cm(control['agregado_var_ia_real'])}%"
                 + (". La porción ligada a actividad (IVA + cheque) fue en sentido distinto del "
@@ -1056,8 +1056,8 @@ def fetch_recaudacion() -> dict | None:
 
         resultado = {
             "valor": valor,
-            "unidad": "índice (100 = 4T-2023)",
-            "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + "
+            "unidad": "índice (100 = 4º trimestre de 2023)",
+            "fuente": "Secretaría de Hacienda — recaudación de la Dirección General Impositiva (vía datos.gob.ar) + "
                       "Comisión Arbitral del Convenio Multilateral",
             "fecha_dato": f"{ultimo}-01",
             "aporte_provincial_pct": None if aporte_prov is None else round(aporte_prov, 1),
@@ -1186,8 +1186,8 @@ def fetch_actividad_tributaria() -> dict | None:
         cm = lambda x: f"{x:.1f}".replace(".", ",")
         return {
             "valor": round(serie[ym], 2),
-            "unidad": "% i.a. real (compuesto IVA-DGI/cheque)",
-            "fuente": "Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)",
+            "unidad": "% interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)",
+            "fuente": "Secretaría de Hacienda — impuesto al valor agregado y créditos/débitos bancarios (vía datos.gob.ar) + Instituto Nacional de Estadística y Censos (INDEC: índice de precios al consumidor, deflactor)",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "iva_var_ia_real": round(iva_ia, 1),
@@ -1257,8 +1257,8 @@ def fetch_resultado_primario() -> dict | None:
         signo = "superávit" if valor >= 0 else "déficit"
         return {
             "valor": round(valor, 2),
-            "unidad": "% de la recaudación (acum. 12 meses)",
-            "fuente": "Sec. de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
+            "unidad": "% de la recaudación (acumulado de 12 meses)",
+            "fuente": "Secretaría de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
             "fecha_dato": f"{ym}-01",
             "detalle_txt": (
                 f"{ym}: {signo} primario de {abs(valor):.1f}% de la recaudación "
@@ -1538,8 +1538,8 @@ def fetch_costo_financiamiento_tesoro() -> dict | None:
         real = ((1.0 + t) / (1.0 + esperada / 100.0) - 1.0) * 100.0
         return {
             "valor": round(real, 2),
-            "unidad": "% real anual (TIREA vs. inflación esperada REM)",
-            "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+            "unidad": "% real anual (tasa efectiva anual frente a la inflación esperada)",
+            "fuente": "Secretaría de Finanzas — colocaciones de deuda + Banco Central de la República Argentina (BCRA: Relevamiento de Expectativas de Mercado)",
             "fecha_dato": f"{ym}-01",
             "tirea_nominal": round(t * 100.0, 2),
             "inflacion_esperada": round(esperada, 1),
@@ -1605,8 +1605,8 @@ def fetch_tcrm() -> dict | None:
         ym, val = fetch_itcrm_serie()[-1]
         return {
             "valor": val,
-            "unidad": "Índice (base dic-2015=100)",
-            "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+            "unidad": "Índice (base diciembre de 2015 = 100)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — Índice de Tipo de Cambio Real Multilateral",
             "fecha_dato": ym,
             "desactualizado": False,
         }
@@ -1617,7 +1617,7 @@ def fetch_tcrm() -> dict | None:
         return {
             "valor": round(float(data[0][1]), 2),
             "unidad": "Índice (base 2010=100)",
-            "fuente": "INDEC — TCRM, serie discontinuada (vía datos.gob.ar)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — tipo de cambio real multilateral, serie discontinuada (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": True,
         }
@@ -1653,8 +1653,8 @@ def fetch_tcr_terminos_intercambio() -> dict | None:
         return {
             "valor": fila["puntaje"],
             "unidad": "puntaje (0-100)",
-            "fuente": ("BCRA (Índice de Tipo de Cambio Real Multilateral) + INDEC "
-                       "(términos del intercambio, vía datos.gob.ar)"),
+            "fuente": ("Banco Central de la República Argentina (BCRA: Índice de Tipo de Cambio Real Multilateral) + Instituto Nacional de Estadística y Censos (INDEC: "
+                       "términos del intercambio, vía datos.gob.ar)"),
             "fecha_dato": f'{fila["mes"]}-01',
             "desactualizado": False,
             # Los dos componentes y su posición en la matriz: los consume el
@@ -1685,7 +1685,7 @@ def fetch_terminos_intercambio() -> dict | None:
         return {
             "valor": round(float(serie[q]), 2),
             "unidad": "índice (base 2004 = 100)",
-            "fuente": "INDEC — términos del intercambio (vía datos.gob.ar)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — términos del intercambio (vía datos.gob.ar)",
             "fecha_dato": f"{q}-01",
             "desactualizado": False,
             "trimestre": terminos_intercambio.etiqueta_trimestre(q),
@@ -1702,7 +1702,7 @@ def fetch_rem_ipc_12m() -> dict | None:
         return {
             "valor": round(float(ultimo["valor"]), 1),
             "unidad": "% anual esperado",
-            "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — Relevamiento de Expectativas de Mercado (REM), expectativas de inflación (API monetarias)",
             "fecha_dato": ultimo["fecha"],
             "desactualizado": False,
         }
@@ -1735,9 +1735,9 @@ def fetch_idm() -> dict | None:
         ym, gap, m3_real_ia, m2_real_ia = serie[-1]
         return {
             "valor": gap,
-            "unidad": "pp (brecha i.a. real)",
-            "fuente": ("BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; "
-                       "M2 privado transaccional var. 197) + IPC INDEC"),
+            "unidad": "puntos porcentuales (brecha interanual real)",
+            "fuente": ("Banco Central de la República Argentina (BCRA: dinero total privado M3 = circulante var. 17 + depósitos privados var. 100; "
+                       "dinero transaccional privado M2 var. 197) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos"),
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "m3_real_ia": m3_real_ia,
@@ -1770,9 +1770,9 @@ def fetch_desequilibrio_monetario() -> dict | None:
             )
         return {
             "valor": fila["tension"],
-            "unidad": "pts de tensión (0-100)",
+            "unidad": "puntos de tensión (0-100)",
             "fuente": (
-                "BCRA (M2 transaccional privado, circulante, depósitos privados "
+                "Banco Central de la República Argentina (BCRA: dinero transaccional privado M2, circulante, depósitos privados "
                 "en pesos y en dólares, y Mercado de Cambios)"
             ),
             "fecha_dato": f'{fila["mes"]}-01',
@@ -1904,15 +1904,15 @@ def fetch_iai() -> dict | None:
             fresco = f" — BK {ult_bk} (provisorio, no puntúa): {bk_prov:+.1f}%"
         return {
             "valor": round(valor, 2),
-            "unidad": "% i.a. ponderado",
-            "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)"
-                      + (" + DNRPA (patentamientos comerciales)" if pat else ""),
+            "unidad": "% interanual ponderado",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — indicador sintético de la actividad de la construcción (ISAC) + Intercambio Comercial Argentino (bienes de capital importados)"
+                      + (" + Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor (DNRPA: patentamientos comerciales)" if pat else ""),
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "componentes": componentes,
             "pesos_nota": nota,
-            "detalle_txt": (f"{round(valor, 1):+} % i.a. = ISAC {componentes['isac']:+}% · "
-                            f"BK importados {componentes['bk_importados']:+}% "
+            "detalle_txt": (f"{round(valor, 1):+} % interanual = construcción {componentes['isac']:+}% · "
+                            f"bienes de capital importados {componentes['bk_importados']:+}% "
                             + (f"· patentamientos {componentes['patentamientos_comerciales']:+}% " if pat else "")
                             + f"(mes común: {ym}){fresco}"),
         }
@@ -1959,8 +1959,8 @@ def fetch_icip() -> dict | None:
             fresco = f" — servicios tech {ult_svc} (provisorio, no puntúa): {svc_prov:+.1f}%"
         return {
             "valor": round(valor, 2),
-            "unidad": "% i.a. ponderado",
-            "fuente": "INDEC — servicios de informática (balanza) + IPI/empleo (productividad)",
+            "unidad": "% interanual ponderado",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — servicios de informática (balanza) + producción industrial y empleo (productividad)",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "componentes": {
@@ -1968,7 +1968,7 @@ def fetch_icip() -> dict | None:
                 "productividad": round(prod_ia, 1),
             },
             "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
-            "detalle_txt": (f"{round(valor, 1):+} % i.a. = servicios tech {round(svc_ia, 1):+}% · "
+            "detalle_txt": (f"{round(valor, 1):+} % interanual = servicios tecnológicos {round(svc_ia, 1):+}% · "
                             f"productividad {round(prod_ia, 1):+}% (mes común: {ym}){fresco}"),
         }
     except Exception as e:
@@ -2016,7 +2016,7 @@ def fetch_prestamos_privados() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual nominal",
-            "fuente": "BCRA — préstamos al sector privado (API monetarias)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — préstamos al sector privado (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
@@ -2105,8 +2105,8 @@ def fetch_credito_privado() -> dict | None:
                            if desglose.get("total_ia_real") is not None else ""))
         return {
             "valor": round(real, 1),
-            "unidad": "% i.a. real (crédito en pesos)",
-            "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
+            "unidad": "% interanual real (crédito en pesos)",
+            "fuente": "Banco Central de la República Argentina (BCRA: préstamos al sector privado en pesos, var. 117) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "nominal_ia": round(nominal * 100.0, 1),
@@ -2115,7 +2115,7 @@ def fetch_credito_privado() -> dict | None:
             # Sin "(IdC)": ADR-0311 retiró esa sigla de los rótulos públicos y
             # acá quedaba huérfana — el lector la veía sin tener dónde
             # resolverla. El texto ya dice "capacidad prestable" en castellano.
-            "detalle_txt": (f"nominal {coma(nominal * 100.0)}% i.a. deflactado por IPC, "
+            "detalle_txt": (f"nominal {coma(nominal * 100.0)}% interanual deflactado por el índice de precios al consumidor, "
                             f"sólo crédito EN PESOS — crédito realizado, no capacidad "
                             f"prestable (mes común: {ym}){contexto}{fresco}"),
         }
@@ -2130,7 +2130,7 @@ def fetch_base_monetaria() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual nominal",
-            "fuente": "BCRA — base monetaria (API monetarias)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — base monetaria (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
@@ -2145,7 +2145,7 @@ def fetch_tc_mayorista() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual",
-            "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
+            "fuente": "Banco Central de la República Argentina (BCRA) — tipo de cambio mayorista, Comunicación A 3500 (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
@@ -2223,7 +2223,7 @@ def anotar_rem_mensual(indicadores: dict) -> None:
     rem["equivalente_mensual"] = round(mensual, 2)
     rem["nota_scoring"] = (
         f"Puntuado por su equivalente mensual (raíz 12): {round(mensual, 2)}% "
-        f"mensual, en la misma escala que el IPC."
+        f"mensual, en la misma escala que el índice de precios al consumidor."
     )
 
 

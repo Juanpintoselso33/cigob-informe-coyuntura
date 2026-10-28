@@ -63,10 +63,10 @@ const slugDe = Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
 const cinturon = (informe.cinturones as any)[f.cinturon];
 const slug = slugDe[f.cinturon];
 
-const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 const mesLeg = (iso: string) => {
   const [y, m] = iso.split("-");
-  return `${MESES[+m - 1]}-${y}`;
+  return `${MESES[+m - 1]} de ${y}`;
 };
 const coma = (n: number, dec = 1) =>
   n.toLocaleString("es-AR", { maximumFractionDigits: dec });
@@ -191,10 +191,10 @@ const seleccionIndice = !esIndicador && it
 
 // secciones OCDE/JRC del índice (título, chip de paso, párrafos)
 const pasosIndice = !esIndicador ? [
-  { paso: "Paso 1 · OCDE/JRC", titulo: "Marco conceptual", parrafos: fx.marcoConceptual },
-  { paso: "Paso 2 · OCDE/JRC", titulo: "Selección de indicadores", parrafos: seleccionIndice },
-  { paso: "Paso 3 · OCDE/JRC", titulo: "Tratamiento de los datos", parrafos: fx.tratamiento },
-  { paso: "Paso 5 · OCDE/JRC", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
+  { paso: "Paso 1 · manual internacional", titulo: "Marco conceptual", parrafos: fx.marcoConceptual },
+  { paso: "Paso 2 · manual internacional", titulo: "Selección de indicadores", parrafos: seleccionIndice },
+  { paso: "Paso 3 · manual internacional", titulo: "Tratamiento de los datos", parrafos: fx.tratamiento },
+  { paso: "Paso 5 · manual internacional", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
 ] : [];
 
 const titulo = esIndicador ? label(f.id) : fx.nombreLargo;
@@ -277,7 +277,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
           <div class="cg-section-head">
             <p class="cg-eyebrow">Identificación</p>
             <h2 class="cg-h2">La ficha del indicador</h2>
-            <p class="cg-h2-sub">Estructura según el estándar internacional de metadatos de indicadores (template ODS de Naciones Unidas, adaptado).</p>
+            <p class="cg-h2-sub">Estructura según el estándar internacional de metadatos de indicadores (plantilla de los Objetivos de Desarrollo Sostenible de Naciones Unidas, adaptada).</p>
           </div>
           <dl class="cg-ficha-dl">
             <div><dt>Identificador técnico</dt><dd><code>{f.id}</code></dd></div>
@@ -297,7 +297,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
             <div><dt>Unidad de medida</dt><dd>{UNIDADES_LARGAS[f.id] ?? ind?.unidad ?? "—"}</dd></div>
             <div><dt>Frecuencia</dt><dd>{desc!.frecuencia}</dd></div>
             <div><dt>Tipo de dato</dt><dd>{desc!.tipo}</dd></div>
-            {cobertura && <div><dt>Serie disponible</dt><dd>{cobertura}; el informe grafica desde dic-2023 (inicio del mandato)</dd></div>}
+            {cobertura && <div><dt>Serie disponible</dt><dd>{cobertura}; el informe grafica desde diciembre de 2023 (inicio del mandato)</dd></div>}
             <div><dt>Rezago de publicación</dt><dd>{fi.rezago}</dd></div>
             <div><dt>Productor del dato</dt><dd>{fi.fuente.organismo}</dd></div>
             <div>
@@ -358,7 +358,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
                     : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.corto}; los pesos nominales se ajustan cuando faltan datos.`}
                   {aporteIndice !== null && puntajeHoy !== null && (
                     <Fragment>{" "}{indice.base100
-                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.corto}.`
+                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4º trimestre de 2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.corto}.`
                       : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.corto}.`}</Fragment>
                   )}
                 </div>
@@ -524,7 +524,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
               <div class="cg-ficha-card" style="margin-top:14px;">
                 <div class="cg-ficha-tablewrap">
                   <table class="cg-ficha-tabla">
-                    <thead><tr><th>Dimensión</th><th>Peso</th><th>Indicador</th><th>Peso interno</th><th>{fx.base100 ? "Nivel hoy (100 = 4T-23)" : "Puntaje hoy"}</th></tr></thead>
+                    <thead><tr><th>Dimensión</th><th>Peso</th><th>Indicador</th><th>Peso interno</th><th>{fx.base100 ? "Nivel hoy (100 = 4º trimestre de 2023)" : "Puntaje hoy"}</th></tr></thead>
                     <tbody>
                       {composicion.map(dim =>
                         dim.inds.map((i, k) => (
@@ -555,7 +555,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
         <!-- ── Paso 6: agregación (fórmula) ── -->
         <section class="cg-section">
           <div class="cg-section-head">
-            <span class="cg-paso-chip">Paso 6 · OCDE/JRC</span>
+            <span class="cg-paso-chip">Paso 6 · manual internacional</span>
             <h2 class="cg-h2">Ponderación y agregación</h2>
           </div>
           <div class="cg-ficha-card">
@@ -578,7 +578,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
         {rob && (
           <section class="cg-section">
             <div class="cg-section-head">
-              <span class="cg-paso-chip">Paso 7 · OCDE/JRC</span>
+              <span class="cg-paso-chip">Paso 7 · manual internacional</span>
               <h2 class="cg-h2">Robustez y sensibilidad</h2>
             </div>
             {fx.robustez.map(p => <p class="cg-ficha-p">{p}</p>)}
@@ -594,7 +594,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
         <!-- ── Paso 9: validación externa (números runtime) ── -->
         <section class="cg-section">
           <div class="cg-section-head">
-            <span class="cg-paso-chip">Paso 9 · OCDE/JRC</span>
+            <span class="cg-paso-chip">Paso 9 · manual internacional</span>
             <h2 class="cg-h2">Validación contra anclas externas</h2>
           </div>
           {fx.validacion.map(p => <p class="cg-ficha-p">{p}</p>)}
@@ -659,7 +659,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
               <strong>Edición vigente.</strong> {val.panel?.factor
                 ? `Correlación en niveles contra el factor común de las ${val.panel.factor.n_series} estadísticas de su terreno: r = ${coma(val.panel.factor.r_niveles, 2)} (${val.panel.factor.n} meses).`
                 : `Correlación en niveles con el ancla externa: r = ${coma(val.r_niveles, 2)} (${val.n} meses).`}
-              El detalle — niveles vs. cambios mes a mes, y la matriz cruzada de los tres índices con contraste externo — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
+              El detalle — niveles frente a cambios mes a mes, y la matriz cruzada de los tres índices con contraste externo — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
             </div>
           )}
         </section>
@@ -667,7 +667,7 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
         <!-- ── Paso 10: comunicación + interpretación ── -->
         <section class="cg-section">
           <div class="cg-section-head">
-            <span class="cg-paso-chip">Paso 10 · OCDE/JRC</span>
+            <span class="cg-paso-chip">Paso 10 · manual internacional</span>
             <h2 class="cg-h2">Comunicación y lectura</h2>
           </div>
           {fx.comunicacion.map(p => <p class="cg-ficha-p">{p}</p>)}

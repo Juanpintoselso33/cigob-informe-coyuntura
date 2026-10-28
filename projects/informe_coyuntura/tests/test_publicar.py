@@ -806,7 +806,7 @@ def test_vida_itvc_reconcilia():
     # verifica que card y serie digan lo mismo, no un mes congelado (el 14,5 de
     # agosto rompió la suite el 23-sep-2026, cuando salió septiembre).
     servicios = c["indicadores"]["peso_tarifas"]
-    assert servicios["unidad"] == "% del salario RIPTE"
+    assert servicios["unidad"] == "% del salario registrado promedio"
     assert servicios["en_indice"] is True
     assert isinstance(servicios["indice_itvc"], (int, float))
     # 0,1125 → 0,1226 con ADR-0314 (`precios` absorbía el hueco de
@@ -816,7 +816,7 @@ def test_vida_itvc_reconcilia():
     assert isinstance(servicios["transporte_pct_canasta"], (int, float))
     assert "agua+energía" in servicios["aporte_formula"] and "transporte" in servicios["aporte_formula"]
     assert "4T-2023" not in servicios["aporte_formula"]
-    assert "IIEP UBA-CONICET" in servicios["fuente"]
+    assert "Instituto Interdisciplinario de Economía Política (IIEP)" in servicios["fuente"]
     serie_servicios = json.loads((DATA / "series.json").read_text(encoding="utf-8"))["peso_tarifas"]
     assert len(serie_servicios) >= 9
     assert serie_servicios[0] == {"fecha": "2025-12-01", "valor": 11.1}

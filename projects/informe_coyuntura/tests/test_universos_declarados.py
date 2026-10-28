@@ -202,7 +202,7 @@ def test_la_serie_declara_la_base_correcta():
 
 def test_la_web_no_dice_que_es_sobre_los_ocupados():
     datos = (RAIZ / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
-    assert f'{CLAVE}: "% de la PEA"' in datos
+    assert f'{CLAVE}: "% de la población económicamente activa"' in datos
     assert f'{CLAVE}: "% de ocupados"' not in datos
     assert f"{CLAVE_VIEJA}:" not in datos
 

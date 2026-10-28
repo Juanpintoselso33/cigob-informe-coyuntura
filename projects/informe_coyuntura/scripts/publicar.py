@@ -84,10 +84,10 @@ def agregar_carga_servicio_deuda(enriquecido, series):
     ultimo = serie[-1]
     _add(enriquecido, "carga_servicio_deuda_hogares",
          ultimo["valor"], "% de la masa salarial registrada",
-         "BCRA — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
+         "Banco Central de la República Argentina (BCRA) — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
          ultimo["fecha"][:7],
          detalle_txt=("Cuotas de capital e intereses de las familias como "
-                      "porcentaje de la masa salarial registrada; el BCRA "
+                      "porcentaje de la masa salarial registrada; el Banco Central "
                       "promedia tres meses tanto en el numerador como en el "
                       "denominador. Más carga implica menor capacidad de pago."))
 
@@ -104,7 +104,7 @@ def agregar_icg(enriquecido, series):
          round(ultimo["valor"], 3), "índice 0-5",
          "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno",
          ultimo["fecha"][:7],
-         detalle_txt=("Encuesta mensual de la UTDT que promedia cinco "
+         detalle_txt=("Encuesta mensual de la Universidad Torcuato Di Tella que promedia cinco "
                       "atributos del Gobierno nacional —imagen general, "
                       "eficiencia, honestidad, capacidad para resolver los "
                       "problemas y preocupación por el interés general— en una "
@@ -122,11 +122,11 @@ def build_vida(raw):
 
     bs = indec.get("brecha_salario_cbt", {})
     _add(out, "brecha_salario_cbt", _red(bs.get("valor"), 2),
-         "canastas (RIPTE/CBT)", "Sec. Trabajo (RIPTE) + INDEC (CBT)", bs.get("fecha"),
+         "canastas básicas totales", "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables) + Instituto Nacional de Estadística y Censos (INDEC: canasta básica total)", bs.get("fecha"),
          detalle_txt=bs.get("nota"))
     al = indec.get("ipc_alimentos", {})
     _add(out, "ipc_alimentos", _red(al.get("variacion_mensual_pct"), 2),
-         "% m/m", "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)", al.get("fecha"))
+         "% mensual", "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor de alimentos y bebidas (vía datos.gob.ar)", al.get("fecha"))
     cc = bcra.get("credito_consumo_total", {})
     # El crédito de consumo viene en millones de pesos; pasar a billones para
     # que el número no sea gigante (43.560.544 millones = 43,56 billones).
@@ -134,7 +134,7 @@ def build_vida(raw):
     _add(out, "endeudamiento_familiar",
          round(cc_val / 1e6, 2) if isinstance(cc_val, (int, float)) else cc_val,
          "billones de pesos (consumo)",
-         "BCRA — crédito de consumo (API) + Informe sobre Bancos", cc.get("fecha"))
+         "Banco Central de la República Argentina (BCRA) — crédito de consumo (API) + Informe sobre Bancos", cc.get("fecha"))
     servicios = raw.get("iiep_tarifas") or {}
     valor_servicios = servicios.get("valor")
     # La clave debe existir aun durante un outage: _carry_forward sólo puede
@@ -143,8 +143,8 @@ def build_vida(raw):
     _add(
         out, "peso_tarifas",
         round(valor_servicios, 1) if isinstance(valor_servicios, (int, float)) else None,
-        "% del salario RIPTE",
-        "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
+        "% del salario registrado promedio",
+        "Instituto Interdisciplinario de Economía Política (IIEP) de la Universidad de Buenos Aires y el Consejo Nacional de Investigaciones Científicas y Técnicas — Canasta de Servicios Públicos del Área Metropolitana de Buenos Aires",
         servicios.get("fecha"),
         variacion_mensual_pct=servicios.get("variacion_mensual_pct"),
         cobertura_costos_pct=servicios.get("cobertura_costos_pct"),
@@ -153,7 +153,7 @@ def build_vida(raw):
     )
     alq = indec.get("ipc_alquiler_gba", {})
     _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
-         "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (planilla original)",
+         "% mensual alquileres", "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor del Gran Buenos Aires, alquiler de la vivienda (planilla original)",
          alq.get("fecha"), fuente_url=alq.get('fuente_url'))
     # ADR-0386: alquiler de los avisos de UdeSA - Mercado Libre, deflactado por
     # el IPC GBA. La clave se llama SIEMPRE, con valor None si el colector no
@@ -161,7 +161,7 @@ def build_vida(raw):
     au = (raw.get("alquiler_udesa") or {}).get("alquiler_udesa_real") or {}
     _add(out, "alquiler_udesa_real", _red(au.get("valor"), 2),
          "% real interanual",
-         "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
+         "Universidad de San Andrés - Mercado Libre Inmuebles (carga manual) + Instituto Nacional de Estadística y Censos (INDEC), índice de precios al consumidor del Gran Buenos Aires (elaboración CIGOB)",
          au.get("fecha"), fuente_url=au.get("fuente_url"),
          variacion_nominal_pct=au.get("nominal_pct"), ipc_interanual_pct=au.get("ipc_pct"))
     # ADR-0392: las dos cards salen de las series mensuales de SAGYP por carne,
@@ -181,17 +181,17 @@ def build_vida(raw):
     carne = ciccra.get("consumo_carne_per_capita", {})
     if carnes.get("vacuna") is not None:
         _add(out, "consumo_carne_vacuna", carnes["vacuna"],
-             "kg/hab/año", "SAGYP — consumo aparente de carne vacuna por habitante (promedio móvil 12m)",
+             "kg por habitante por año", "Secretaría de Agricultura, Ganadería y Pesca (SAGYP) — consumo aparente de carne vacuna por habitante (promedio móvil de 12 meses)",
              f"{carnes['mes']}-01")
     else:
         _add(out, "consumo_carne_vacuna", carne.get("valor"),
-             "kg/hab/año", "CICCRA", carne.get("fecha"))
+             "kg por habitante por año", "Cámara de la Industria y Comercio de Carnes y Derivados de la República Argentina (CICCRA)", carne.get("fecha"))
     # ADR-0339: puntúan el TOTAL de las tres carnes y la vacuna sola
     # (aspiracional). Aviar + porcina deja de ser card: su nivel viaja colgado
     # del total, que es donde se lee la composición.
     _add(out, "consumo_carnes_total", carnes.get("total"),
-         "kg/hab/año",
-         "SAGYP — consumo aparente por habitante de carne vacuna, aviar y porcina (promedio móvil 12m)",
+         "kg por habitante por año",
+         "Secretaría de Agricultura, Ganadería y Pesca (SAGYP) — consumo aparente por habitante de carne vacuna, aviar y porcina (promedio móvil de 12 meses)",
          f"{carnes['mes']}-01" if carnes.get("mes") else None)
     otras = None
     if carnes.get("aviar") is not None and carnes.get("porcina") is not None:
@@ -207,14 +207,14 @@ def build_vida(raw):
     out["consumo_carnes_total"]["ratio_bovina"] = carnes.get("ratio_bovina")
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
-         "%", "INDEC EPH", inf.get("fecha"))
+         "%", "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)", inf.get("fecha"))
     # ADR-0383: ocupación según la EPH continua. La card muestra la variación
     # interanual de la tasa de empleo en pp; el dato de nivel viaja en el
     # detalle. SIEMPRE se agrega (None si el INDEC no contestó): una clave
     # ausente es invisible para `_carry_forward`.
     ocu = indec.get("ocupacion_eph") or {}
     _add(out, "ocupacion_eph", ocu.get("valor"),
-         "pp vs. 2023", "INDEC — EPH continua, tasa de empleo, total de 31 aglomerados urbanos",
+         "puntos porcentuales frente a 2023", "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) continua, tasa de empleo, total de 31 aglomerados urbanos",
          ocu.get("fecha"))
     if ocu.get("valor") is not None and ocu.get("tasa_2023") is not None:
         out["ocupacion_eph"]["detalle_txt"] = (
@@ -243,8 +243,8 @@ def build_vida(raw):
     # de la web en vez de quedar marcado como desactualizado. El detalle sí va
     # adentro del `if`, porque se arma con cinco campos del propio dato.
     _add(out, "trabajo_independiente", ind_.get("participacion"),
-         "% del empleo registrado SIPA, sin monotributo social",
-         "SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
+         "% del empleo registrado, sin monotributo social",
+         "Sistema Integrado Previsional Argentino (SIPA) — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
          f"{ind_['mes']}-01" if ind_.get("mes") else None)
     if ind_.get("participacion") is not None:
         card = out["trabajo_independiente"]
@@ -271,24 +271,24 @@ def build_vida(raw):
     emp = raw.get("empleadores_pyme") or {}
     # Igual que arriba: SIEMPRE, con None si la SRT no contestó.
     _add(out, "mortalidad_pymes", emp.get("pyme"),
-         "empleadores", "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
+         "empleadores", "Superintendencia de Riesgos del Trabajo (SRT) — partes empleadoras con cobertura de aseguradoras de riesgos del trabajo, hasta 50 trabajadores",
          f"{emp['mes']}-01" if emp.get("mes") else None)
     isac = indec.get("isac", {})
     _add(out, "despacho_cemento", _red(isac.get("valor"), 1),
-         "índice ISAC", "INDEC — ISAC desestacionalizado (planilla original vigente)", isac.get("fecha"),
+         "índice de actividad de la construcción", "Instituto Nacional de Estadística y Censos (INDEC) — indicador sintético de la actividad de la construcción (ISAC) desestacionalizado (planilla original vigente)", isac.get("fecha"),
          obtenido_en=isac.get("obtenido_en"))
     sub = indec.get("subocupacion_demandante", {})
     # ADR-0249: la tasa la calcula INDEC sobre la PEA, no sobre los ocupados.
     _add(out, "subocupacion_demandante", _red(sub.get("valor"), 1, 100),
-         "% de la PEA", "INDEC — EPH, tasa de subocupación demandante",
+         "% de la población económicamente activa", "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH), tasa de subocupación demandante",
          sub.get("fecha"))
     emp = indec.get("empleo_registrado", {})
     _add(out, "empleo_registrado", emp.get("valor"),
-         "miles de puestos", "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
+         "miles de puestos", "Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) (vía datos.gob.ar)",
          emp.get("fecha"))
     seg = snic.get("inseguridad_snic", {})
     _add(out, "inseguridad", seg.get("total_hechos"),
-         "hechos/año", "SNIC — Ministerio de Seguridad (calidad UNODC grado A)",
+         "hechos por año", "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
          str(seg.get("anio")))
     # ADR-0327: los dos tipos del SNIC que PUNTÚAN como indicador propio.
     # `tasa_hechos` la calcula la fuente; acá sólo se toma el último año.
@@ -300,16 +300,16 @@ def build_vida(raw):
     anio_hom = max(homicidios_tasas) if homicidios_tasas else None
     _add(out, "tasa_homicidios",
          round(homicidios_tasas[anio_hom], 2) if anio_hom else None,
-         "homicidios dolosos cada 100.000 hab.",
-         "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+         "homicidios dolosos cada 100.000 habitantes",
+         "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (tasa oficial, calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
          f"{anio_hom}-12-31" if anio_hom else None)
     robos_tasas = tasas_snic.get(
         "Robos (excluye los agravados por el resultado de lesiones y/o muertes)") or {}
     anio_rob = max(robos_tasas) if robos_tasas else None
     _add(out, "tasa_robos",
          round(robos_tasas[anio_rob], 1) if anio_rob else None,
-         "robos (excl. agravados) cada 100.000 hab.",
-         "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+         "robos (sin los agravados) cada 100.000 habitantes",
+         "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (tasa oficial, calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
          f"{anio_rob}-12-31" if anio_rob else None,
          detalle_txt=("La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un "
                        "año sin evento conocido que lo explique; Hurtos cae en "
@@ -318,17 +318,17 @@ def build_vida(raw):
                        "El patrón es compatible con reporte incompleto de alguna "
                        "jurisdicción al cierre de 2025 y no se pudo confirmar ni "
                        "descartar contra un informe metodológico público del "
-                       "SNIC. Se publica el dato oficial vigente con esta "
+                       "Sistema Nacional de Información Criminal. Se publica el dato oficial vigente con esta "
                        "limitación declarada.") if anio_rob == "2025" else None)
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", _red(icc.get("valor"), 1),
-         "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
+         "índice", "Universidad Torcuato Di Tella (UTDT) — Índice de Confianza del Consumidor (Centro de Investigación en Finanzas)", icc.get("fecha"))
     pn = (raw.get("pobreza") or {}).get("pobreza_nowcast", {})
     _add(out, "pobreza_nowcast", pn.get("valor"),
-         "% de personas", "UTDT — Nowcast de Pobreza (González-Rozada)", pn.get("fecha"))
+         "% de personas", "Universidad Torcuato Di Tella (UTDT) — estimación mensual de pobreza (González-Rozada)", pn.get("fecha"))
     il = utdt.get("indice_lider", {})
     _add(out, "indice_lider", _red(il.get("valor"), 1),
-         "índice", "UTDT — Índice Líder (CIF)", il.get("fecha"))
+         "índice", "Universidad Torcuato Di Tella (UTDT) — Índice Líder (Centro de Investigación en Finanzas)", il.get("fecha"))
     # sd puede venir {} (nunca corrió) o {"...": null} (Trends 429/timeout,
     # ver "nota" del dump crudo) -- en ambos casos _add() se llama SIEMPRE
     # (con valor=None si no hay dato) para que _carry_forward pueda
@@ -354,7 +354,7 @@ def build_vida(raw):
     sd = sd_raw.get("interes_relativo") or {}
     sd_mes = f"{sd_raw['mes']}-01" if sd and sd_raw.get("mes") else None
     _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1) if sd else None,
-         "índice (100 = 4T-2023)", "Google Trends", sd_mes,
+         "índice (100 = 4º trimestre de 2023)", "Google Trends", sd_mes,
          detalle_txt=("Promedio simple de seis términos de búsqueda —inflación, precios, "
                       "dólar, empleo, inseguridad y corrupción—, cada uno comparado contra "
                       "su propio 4º trimestre de 2023 en una ventana fija desde 2021. "
@@ -372,8 +372,8 @@ def build_vida(raw):
     mt = moto.get("motorizacion_total", {})
     _add(out, "motorizacion_total", mt.get("valor"),
          mt.get("unidad") or "vehículos 0km por cada 1.000 habitantes (12 meses)",
-         mt.get("fuente") or ("DNRPA — inscripciones iniciales de automotores y "
-                              "motovehículos, per cápita (INDEC)"),
+         mt.get("fuente") or ("Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de automotores y "
+                              "motovehículos, per cápita (población del Instituto Nacional de Estadística y Censos)"),
          f"{mt['fecha']}-01" if mt.get("fecha") else None)
     # La composición viaja COLGADA del indicador, como las `variaciones` de la
     # carne: meterla como clave suelta del dict la convertiría en un indicador
@@ -386,8 +386,8 @@ def build_vida(raw):
     # rebaseada (misma separación card/índice que `motorizacion_total`).
     comp = mt.get("composicion") or {}
     _add(out, "ratio_motos_autos", comp.get("ratio_motos_autos"),
-         "motos por cada auto patentado (móvil 12m)",
-         "DNRPA — inscripciones iniciales de automotores y motovehículos, "
+         "motos por cada auto patentado (móvil de 12 meses)",
+         "Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de automotores y motovehículos, "
          "sin Tierra del Fuego",
          f"{mt['fecha']}-01" if mt.get("fecha") else None,
          detalle_txt=("Más motos por auto se lee como DETERIORO: la "
@@ -398,11 +398,11 @@ def build_vida(raw):
                        "pareja."))
     autos = moto.get("patentamiento_autos", {})
     _add(out, "patentamiento_autos", autos.get("valor"),
-         "unidades", "DNRPA — inscripciones iniciales de automotores",
+         "unidades", "Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de automotores",
          f"{autos['fecha']}-01" if autos.get("fecha") else None)
     motos = moto.get("patentamiento_motos", {})
     _add(out, "patentamiento_motos", motos.get("valor"),
-         "unidades", "DNRPA — inscripciones iniciales de motovehículos",
+         "unidades", "Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de motovehículos",
          f"{motos['fecha']}-01" if motos.get("fecha") else None)
     # ADR-0225: el único componente del cinturón que mide volumen efectivamente
     # comprado. Se llama SIEMPRE, aunque el colector haya fallado, por el mismo
@@ -414,7 +414,7 @@ def build_vida(raw):
          # literal que había acá decía «2004 = 100» y la serie ni siquiera
          # empieza antes de 2017
          super_.get("unidad") or "índice (desestacionalizado)",
-         "INDEC — Encuesta de supermercados (ventas a precios constantes)",
+         "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta de supermercados (ventas a precios constantes)",
          f"{super_['fecha']}-01" if super_.get("fecha") else None)
     return out
 
@@ -798,7 +798,7 @@ def _series_dimensiones(bloque, sigla, base100=False):
     if not publicadas:
         return
 
-    escala = ("base 100 = promedio del 4T-2023" if base100
+    escala = ("base 100 = promedio del 4º trimestre de 2023" if base100
               else "puntaje 0-100 de las bandas del índice")
     faltan = [d["nombre"] for k, d in dims.items() if "serie" not in d]
     partes = [
@@ -976,12 +976,12 @@ def _macro_input_txt(ikey, ind):
     """'Valor usado' que muestra el modal: la descomposición del número que
     realmente se puntúa (no siempre coincide con el valor mostrado)."""
     if ikey == "rem_ipc_12m" and ind.get("equivalente_mensual") is not None:
-        return (f"equiv. mensual {coma(ind['equivalente_mensual'])}% "
+        return (f"equivalente mensual {coma(ind['equivalente_mensual'])}% "
                 f"(raíz-12 del {coma(ind.get('valor'))}% anual)")
     if ikey == "reservas_bcra" and ind.get("netas_sdds_estricto") is not None:
-        return (f"netas {int(ind.get('valor', 0))} = SDDS estricto {int(ind['netas_sdds_estricto'])} "
+        return (f"netas {int(ind.get('valor', 0))} = estándar estricto de divulgación {int(ind['netas_sdds_estricto'])} "
                 f"+ Tesoro {int(ind.get('depositos_tesoro', 0))} "
-                f"+ tramo II.1 >3 meses–1 año {int(ind.get('bopreal_12m', 0))} (M USD; fórmula CIGOB)")
+                f"+ tramo II.1 >3 meses–1 año {int(ind.get('bopreal_12m', 0))} (millones de dólares; fórmula CIGOB)")
     if ikey == "idc" and ind.get("componentes"):
         c, n = ind["componentes"], ind.get("niveles") or {}
         # `banda_idc` es el semáforo de 3 colores propio del IdC (por
@@ -1002,13 +1002,13 @@ def _macro_input_txt(ikey, ind):
                f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))}"
                f"{banda_idc_txt}")
         if n:
-            txt += (f" — niveles: tasa real {coma(n.get('tasa_real_pp'))} pp · "
-                    f"depósitos {coma(n.get('dep_real_ia_pct'))}% i.a. real · "
+            txt += (f" — niveles: tasa real {coma(n.get('tasa_real_pp'))} puntos porcentuales · "
+                    f"depósitos {coma(n.get('dep_real_ia_pct'))}% interanual real · "
                     f"holgura {coma(n.get('holgura_pct'))}%")
         return txt
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
-        return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
-                f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
+        return (f"brecha {coma(ind.get('valor'))} puntos porcentuales = dinero total privado (M3) real interanual "
+                f"{coma(ind['m3_real_ia'])}% − dinero transaccional privado (M2) real interanual {coma(ind['m2_real_ia'])}%")
     if ikey == "desequilibrio_monetario" and ind.get("componente_a") is not None:
         # ADR-0252: las etiquetas describen la COMBINACIÓN observada, no dónde
         # terminó el dinero. La compra neta de divisas no identifica salida del
@@ -1040,13 +1040,13 @@ def _macro_input_txt(ikey, ind):
                 f"{ind['trimestre']}, el último trimestre publicado")
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
-        partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]
+        partes = [f"construcción {coma(c.get('isac'))}%", f"bienes de capital importados {coma(c.get('bk_importados'))}%"]
         if c.get("patentamientos_comerciales") is not None:
             partes.append(f"patentamientos {coma(c['patentamientos_comerciales'])}%")
-        return f"{coma(ind.get('valor'))}% i.a. = " + " · ".join(partes)
+        return f"{coma(ind.get('valor'))}% interanual = " + " · ".join(partes)
     if ikey == "icip" and ind.get("componentes"):
         c = ind["componentes"]
-        return (f"{coma(ind.get('valor'))}% i.a. = servicios tech {coma(c.get('servicios_tech'))}% · "
+        return (f"{coma(ind.get('valor'))}% interanual = servicios tecnológicos {coma(c.get('servicios_tech'))}% · "
                 f"productividad {coma(c.get('productividad'))}%")
     return None
 
@@ -1076,7 +1076,7 @@ def _politica_input_txt(ikey, ind):
     if ikey == "adhesion_reformas_provincial" and ind.get("n_provincias") is not None:
         # "jurisdicciones", NO "provincias": de las 24, una es CABA, que no
         # es una provincia -- llamarlas "24 provincias" sería impreciso.
-        return f"{ind['n_provincias']} de 24 jurisdicciones adheridas al RIGI"
+        return f"{ind['n_provincias']} de 24 jurisdicciones adheridas al Régimen de Incentivo para Grandes Inversiones"
     if ikey == "cohesion_bloque" and ind.get("componentes"):
         # Compuesto bicameral (ADR-0048): la descomposición por cámara,
         # mismo patrón que el Fondo de Cese en gestión. El peso nominal
@@ -2261,20 +2261,20 @@ def _scoring_vida_itvc(c, series):
             # bases DECLARADAS distintas del 4T-2023. La entrada «inseguridad»
             # (ene-2024) se sacó con ADR-0393: ahora es el promedio del 4T-2023.
             base_lbl = {"ocupacion_eph": "el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1"} \
-                .get(ikey, "4T-2023")
-            formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
+                .get(ikey, "4º trimestre de 2023")
+            formula = (f"Índice base-100 frente a {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = igual que antes del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             # Anclas que NO son el 4T-2023: el rótulo dice contra qué se mide de verdad.
             if ikey in ("tasa_homicidios", "tasa_robos"):
                 # ADR-0327: base = mediana de toda la serie del SNIC (2000-2025)
-                formula = (f"Índice base-100 vs la mediana de la serie 2000-2025: "
+                formula = (f"Índice base-100 frente a la mediana de la serie 2000-2025: "
                            f"{coma(info['puntaje_aplicado'])} (100 = igual que la mediana histórica; "
                            f"más = mejora); pesa "
                            f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             elif ikey == "pobreza_nowcast":
                 # ADR-0153: base = 2º semestre de 2023 (serie oficial del INDEC)
-                formula = (f"Índice base-100 vs el 2º semestre de 2023: "
+                formula = (f"Índice base-100 frente al 2º semestre de 2023: "
                            f"{coma(info['puntaje_aplicado'])} (100 = igual que en ese semestre, "
                            f"antes del mandato; más = mejora); pesa "
                            f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
@@ -3093,7 +3093,7 @@ def main():
                 ult_mora = serie_mora[-1]
                 _add(enriquecido, "mora_familias", ult_mora["valor"],
                      "% de la cartera en situación irregular",
-                     "BCRA — Informe sobre Bancos (personales + tarjetas de familias)",
+                     "Banco Central de la República Argentina (BCRA) — Informe sobre Bancos (personales + tarjetas de familias)",
                      ult_mora["fecha"][:7],
                      detalle_txt=("Porcentaje del crédito de consumo de las familias "
                                   "(préstamos personales y tarjetas) con atrasos de pago, "
@@ -3115,7 +3115,7 @@ def main():
                 snic_txt = ""
                 v_snic = ins.get("valor")
                 if isinstance(v_snic, (int, float)) and v_snic > 10000:
-                    snic_txt = (f" — contraste SNIC (denuncias registradas, año "
+                    snic_txt = (f" — contraste del Sistema Nacional de Información Criminal (denuncias registradas, año "
                                 f"{ins.get('fecha_dato')}): "
                                 f"{format(int(v_snic), ',').replace(',', '.')} hechos")
                     # ADR-0325/0324: el desglose por tipo del SNIC (homicidios,
@@ -3133,7 +3133,7 @@ def main():
                 ins.update({
                     "valor": ult["valor"],
                     "unidad": "% de hogares víctimas (últimos 12 meses)",
-                    "fuente": "UTDT — Índice de Victimización (LICIP)",
+                    "fuente": "Universidad Torcuato Di Tella (UTDT) — Índice de Victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP)",
                     "fecha_dato": ult["fecha"][:7],
                     "detalle_txt": ("Encuesta mensual de victimización en 40 centros urbanos: "
                                     "incluye los delitos NO denunciados (la cifra negra)"

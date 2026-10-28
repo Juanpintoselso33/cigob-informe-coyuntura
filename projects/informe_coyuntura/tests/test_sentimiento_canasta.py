@@ -369,7 +369,7 @@ def test_la_card_se_fecha_con_el_mes_del_dato_y_no_con_la_corrida():
         "la card se está fechando con el día de la corrida: una fuente muerta "
         "se vería fresca todas las noches")
     assert card["valor"] == 65.0
-    assert card["unidad"] == "índice (100 = 4T-2023)"
+    assert card["unidad"] == "índice (100 = 4º trimestre de 2023)"
 
     sin_datos = publicar.build_vida({"metadata": {"timestamp": "2026-08-21T09:00:00"},
                                      "trends": {"sentimiento_digital": {"interes_relativo": None}}})

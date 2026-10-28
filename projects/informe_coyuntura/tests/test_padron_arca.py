@@ -135,8 +135,8 @@ def test_fetch_guarda_el_mes_y_si_la_red_falla_sigue_con_lo_guardado(tmp_path):
 
 def test_el_texto_de_la_card_con_los_datos_versionados():
     t = pa.texto_card(pa.leer_registro())
-    assert t == ("Empleadores inscriptos en ARCA: 511.847 (24-oct-2026): 290.897 empresas y "
-                 "sociedades y 220.950 personas. El 24-ago-2024 eran 553.057 (−7,5 %). "
+    assert t == ("Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): 511.847 (24 de octubre de 2026): 290.897 empresas y "
+                 "sociedades y 220.950 personas. El 24 de agosto de 2024 eran 553.057 (−7,5 %). "
                  "No puntúa todavía.")
 
 

@@ -103,8 +103,8 @@ def test_la_card_publica_la_ventana_y_fecha_del_dato_es_fin_de_mes(sin_red):
     card = politica.fetch_iaf_transferencias()
     assert card["valor"] == -10.0
     assert card["fecha_dato"] == "2026-08-31"
-    assert card["periodo"] == "sep 2025–ago 2026 vs sep 2024–ago 2025"
-    assert "ago 2026" in card["detalle_txt"]
+    assert card["periodo"] == "septiembre 2025–agosto 2026 frente a septiembre 2024–agosto 2025"
+    assert "agosto 2026" in card["detalle_txt"]
 
 
 def test_card_y_serie_dicen_lo_mismo_en_el_ultimo_mes(sin_red):

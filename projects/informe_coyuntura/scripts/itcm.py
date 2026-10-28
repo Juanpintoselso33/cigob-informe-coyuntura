@@ -754,9 +754,9 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
         "puntaje": puntaje,
         "justificacion": (
             f"Regla automática: {share_impo:.0%} de la mejora del saldo se explica por "
-            f"contracción de importaciones ({impo_var:+.1f}% i.a.) más que por "
-            f"exportaciones ({expo_var:+.1f}% i.a.) — ajuste interpolado hacia el piso "
-            f"de 60 puntos (Paramétrica CIGOB, may-2026; suavizado ADR-0056)."
+            f"contracción de importaciones ({impo_var:+.1f}% interanual) más que por "
+            f"exportaciones ({expo_var:+.1f}% interanual) — ajuste interpolado hacia el piso "
+            f"de 60 puntos (Paramétrica CIGOB, mayo de 2026; suavizado ADR-0056)."
         ),
         "origen": "automatico",
     }

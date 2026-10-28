@@ -131,7 +131,7 @@ def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
     sys.path.insert(0, str(ROOT / "scripts" / "fichas"))
     from comun import coma
     hoy = coma(card["valor"])
-    assert f"**Hoy: {hoy} % del salario RIPTE** ({card['fecha_dato'][:7]})" in bloque
+    assert f"**Hoy: {hoy} % del salario registrado promedio** ({card['fecha_dato'][:7]})" in bloque
     assert "**Color vigente: VERDE**" in bloque
     assert "100 equivale a tensión 5" in bloque
     assert "no al nivel tarifario del 4º trimestre de 2023" in bloque
@@ -180,8 +180,8 @@ def test_transparencia_de_pesos_respeta_contexto_e_itvc_base_100():
     assert "ind?.en_indice !== false" in METODOLOGIA_ASTRO
     assert "nivel aplicado" in INDICADOR_MODAL_ASTRO.lower()
     assert "nivel aplicado" in METODOLOGIA_ASTRO.lower()
-    assert "100 = 4T-2023" in INDICADOR_MODAL_ASTRO
-    assert "100 = 4T-2023" in METODOLOGIA_ASTRO
+    assert "100 = 4º trimestre de 2023" in INDICADOR_MODAL_ASTRO
+    assert "100 = 4º trimestre de 2023" in METODOLOGIA_ASTRO
 
 
 def test_idm_explica_la_composicion_oficial_del_m2_transaccional():
@@ -247,7 +247,7 @@ def test_desequilibrio_monetario_tiene_capa_publica_completa_y_sin_jerga_interna
     # Se pide «matriz» y las cuatro esquinas, no la palabra «bilineal»: es
     # jerga del método y lo que el lector necesita saber es que se cruzan y que
     # una esquina sana no compensa a la otra (ADR-0257).
-    assert "M2" in formula_txt and "divisas" in formula_txt
+    assert "dinero transaccional" in formula_txt and "divisas" in formula_txt
     assert "matriz" in formula_txt and "esquinas" in formula_txt
     assert "0" in formula_txt and "100" in formula_txt
 
@@ -341,7 +341,7 @@ FAMILIAS_DE_UNIDAD = (
     ("índice",      r"\bindice\b|base 100|100 ="),
     ("pp",          r"\bpp\b|puntos porcentuales"),
     ("porcentaje",  r"%|\bporcentaje\b"),
-    ("moneda",      r"us\$|\bm usd\b|millones de usd|\$"),
+    ("moneda",      r"us\$|\bm usd\b|millones de usd|d[oó]lares|\$"),
     ("escala 0100", r"0[\-–]100"),
     ("días",        r"\bdias\b"),
 )

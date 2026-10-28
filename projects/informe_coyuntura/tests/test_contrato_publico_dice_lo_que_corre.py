@@ -185,7 +185,7 @@ def test_el_colector_deflacta_mes_a_mes_y_no_por_promedio_anual():
 def test_la_formula_del_iaf_deflacta_dentro_de_la_suma():
     latex = _bloque(LIB["formulas.ts"], "iaf_transferencias")
     assert r"\sum" in latex, "la fórmula del IAF volvió a comparar dos sumas ya hechas"
-    assert "IPC}_{m}" in latex, (
+    assert "índice de precios}_{m}" in latex, (
         "la fórmula del IAF no muestra el IPC del MES dentro de la suma: así "
         "escrita describe el deflactor promedio que ADR-0239 reemplazó")
 
@@ -212,7 +212,7 @@ def test_el_contrato_del_iaf_declara_sus_cinco_terminos():
     for texto, nombre in ((ficha, "ficha"), (formula, "fórmula")):
         assert "Fondo Compensador" in texto, f"{nombre}: falta una jurisdicción del universo"
         assert "Consenso Fiscal" in texto, f"{nombre}: falta la compensación del Consenso Fiscal"
-        assert "A.T.N." in texto, f"{nombre}: no dice qué queda afuera"
+        assert "Fondo de Aportes del Tesoro Nacional" in texto, f"{nombre}: no dice qué queda afuera"
         assert "propio mes" in texto, f"{nombre}: no dice que el deflactor es el del mes"
     assert "2016" in ficha and "2016" in formula, "no se declara la base común del IPC"
     assert "automáticas" in desc, "la descripción no dice qué clase de transferencia mide"

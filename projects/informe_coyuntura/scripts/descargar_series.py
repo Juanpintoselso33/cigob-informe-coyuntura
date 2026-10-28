@@ -961,7 +961,7 @@ MACRO_DERIVADAS = [
     ("saldo_comercial_12m_usd", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_usd_serie),
     # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
-    ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
+    ("reservas_bcra", "millones de dólares netos", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     ("tcr_terminos_intercambio", "puntaje (0-100)",
      "BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)",
@@ -1809,19 +1809,19 @@ POLITICA_DERIVADAS = [
     # Mismo patrón: la card es el último punto de esta lista (ADR-0150). Desde
     # ADR-0391 promedia por cámara la UIA y AFAC.
     ("apoyo_empresario", "saldo de postura (−1 a +1, 12m móviles)",
-     "Comunicados de la UIA y AFAC — codificación CIGOB",
+     "Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB",
      politica.apoyo_empresario_serie),
     # Mismo patrón, mismo cálculo, otro sector (ADR-0380).
     ("apoyo_comercio", "saldo de postura (−1 a +1, 12m móviles)",
-     "Comunicados de la CAC — codificación CIGOB",
+     "Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB",
      politica.apoyo_comercio_serie),
     # Mismo patrón, tercer sector (ADR-0384), promediando el saldo de cada cámara.
     ("apoyo_campo", "saldo de postura (−1 a +1, 12m móviles)",
-     "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
+     "Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB",
      politica.apoyo_campo_serie),
     # Cuarto sector (ADR-0391): la construcción, con el mismo saldo.
     ("apoyo_construccion", "saldo de postura (−1 a +1, 12m móviles)",
-     "Comunicados de CAMARCO — codificación CIGOB",
+     "Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB",
      politica.apoyo_construccion_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados — índice oficial de sesiones", fetch_veto_quorum_serie),
@@ -1906,7 +1906,7 @@ def fetch_peso_tarifas_iiep_historia() -> list[dict]:
 
 
 VIDA_DERIVADAS.append(
-    ("peso_tarifas", "% del salario RIPTE",
+    ("peso_tarifas", "% del salario registrado promedio",
      "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
      fetch_peso_tarifas_iiep_serie)
 )

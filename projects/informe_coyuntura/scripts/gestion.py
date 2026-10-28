@@ -469,7 +469,7 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
         return {
             "valor":          fila['valor'],
             "unidad":         "% del intercambio (alícuota efectiva)",
-            "fuente":         "ARCA (derechos de exportación e importación) + INDEC (intercambio comercial) + BCRA (dólar mayorista de referencia)",
+            "fuente":         "Agencia de Recaudación y Control Aduanero (ARCA: derechos de exportación e importación) + Instituto Nacional de Estadística y Censos (INDEC: intercambio comercial) + Banco Central de la República Argentina (BCRA: dólar mayorista de referencia)",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": not datos['ica']['consulta_oficial_exitosa'],
             "fuente_url": datos['ica']['url'],
@@ -1108,8 +1108,8 @@ def fetch_reduccion_estado() -> dict | None:
 
         return {
             "valor":          var_pct,
-            "unidad":         "% de variación vs dic-2023 (dotación APN)",
-            "fuente":         "INDEC — Dotación de personal de la APN (mensual)",
+            "unidad":         "% de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional)",
+            "fuente":         "Instituto Nacional de Estadística y Censos (INDEC) — Dotación de personal de la Administración Pública Nacional (mensual)",
             "fecha_dato":     f"{ult}-01",
             "desactualizado": False,
             "dotacion_actual": round(serie[ult]),
@@ -1141,7 +1141,7 @@ def fetch_reduccion_estado() -> dict | None:
             # la decisión de fondo (no descontar fuerzas del denominador); esto
             # solo cambia el orden en que se lee, no el cálculo.
             "detalle_txt": (
-                f"{miles(serie[ult])} agentes ({ult}) vs {miles(base)} en dic-2023"
+                f"{miles(serie[ult])} agentes ({ult}) frente a {miles(base)} en diciembre de 2023"
                 + ("" if var_civil is None and var_empresas is None else
                    " · universo: Administración Pública Nacional"
                    + ("" if var_civil is None else
@@ -1193,12 +1193,12 @@ def fetch_masa_salarial() -> dict | None:
         infl = ipc[ym] / ipc[base_ym]
         return {
             "valor":          var_pct,
-            "unidad":         f"% de variación real vs {base_ym} (SPN remuneraciones)",
-            "fuente":         "Sec. Hacienda AIF (datos.gob.ar) + IPC INDEC",
+            "unidad":         f"% de variación real frente a {base_ym} (remuneraciones del sector público nacional)",
+            "fuente":         "Secretaría de Hacienda, Administración de la Información Financiera (datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "detalle_txt":    (f"$ {nominal[ym]/1e6:,.2f} bn, base caja ({ym}) vs "
-                               f"$ {nominal[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
+            "detalle_txt":    (f"$ {nominal[ym]/1e6:,.2f} billones, base caja ({ym}) frente a "
+                               f"$ {nominal[base_ym]/1e6:,.2f} billones ({base_ym}) · inflación del "
                                f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
     except Exception as e:
@@ -1245,12 +1245,12 @@ def fetch_gasto_funcionamiento() -> dict | None:
         infl = ipc[ym] / ipc[base_ym]
         return {
             "valor":          var_pct,
-            "unidad":         f"% de variación real vs {base_ym} (gastos de funcionamiento)",
-            "fuente":         "Sec. Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + IPC INDEC",
+            "unidad":         f"% de variación real frente a {base_ym} (gastos de funcionamiento)",
+            "fuente":         "Secretaría de Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} bn, base caja ({ym}) vs "
-                               f"$ {total[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
+            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} billones, base caja ({ym}) frente a "
+                               f"$ {total[base_ym]/1e6:,.2f} billones ({base_ym}) · inflación del "
                                f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
     except Exception as e:
@@ -1376,7 +1376,7 @@ def fetch_reestructuracion_organismos() -> dict | None:
             "excluidas":      excluidas,
             "sin_clasificar": sin_clasificar,
             "detalle_txt": (
-                f"{count} actos de disolución o cierre de organismos desde dic-2023 "
+                f"{count} actos de disolución o cierre de organismos desde diciembre de 2023 "
                 f"({ORGANISMOS_PLAN_TOTAL} = plan completo)"
                 + (f" · {len(excluidas)} excluidos por falso positivo o por revertidos "
                    "por el Congreso" if excluidas else "")
@@ -1695,7 +1695,7 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
         cobertura_txt = ""
         try:
             menciones = _bo_conteo(FAL_BO_TEXTO, desde=FAL_BO_DESDE)
-            cobertura_txt = f"{menciones} menciones del FAL en el BO desde mar-2026"
+            cobertura_txt = f"{menciones} menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026"
         except Exception as e:
             _warn("fal cobertura BO (contexto, no puntúa)", e)
 
@@ -1811,12 +1811,12 @@ def fetch_litigiosidad_laboral() -> dict | None:
         var, ult12, prev12 = _juicios_variacion_24m(serie, yms[-1])
         return {
             "valor":          var,
-            "unidad":         "% variación juicios SRT (12m vs 12m previos)",
-            "fuente":         "SRT — Serie histórica de litigiosidad",
+            "unidad":         "% variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos)",
+            "fuente":         "Superintendencia de Riesgos del Trabajo (SRT) — Serie histórica de litigiosidad",
             "fecha_dato":     f"{yms[-1]}-01",
             "desactualizado": False,
             "juicios_12m":    round(ult12),
-            "detalle_txt":    f"{round(ult12):,} juicios en 12m (hasta {yms[-1]}) vs {round(prev12):,} previos".replace(",", "."),
+            "detalle_txt":    f"{round(ult12):,} juicios en 12 meses (hasta {yms[-1]}) frente a {round(prev12):,} previos".replace(",", "."),
         }
     except Exception as e:
         _warn("litigiosidad_laboral", e)
@@ -2108,7 +2108,7 @@ def fetch_siniestralidad_laboral() -> dict | None:
         return {
             "valor":          p["valor"],
             "unidad":         "% variación del índice de incidencia (mismo período, contra el año anterior)",
-            "fuente":         "SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP",
+            "fuente":         "Superintendencia de Riesgos del Trabajo (SRT) — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de accidentes de trabajo y enfermedades profesionales",
             "fecha_dato":     p["fecha"],
             "desactualizado": False,
             "indice_por_mil": p["indice_actual"],
@@ -2225,13 +2225,13 @@ def fetch_juicios_trabajo_capital() -> dict | None:
         var, actual, anterior = _juicios_trabajo_variacion(semestres, ultimo)
         return {
             "valor":          var,
-            "unidad":         "% variación juicios entrados (12m vs 12m previos)",
+            "unidad":         "% variación juicios entrados (12 meses frente a los 12 meses previos)",
             "fuente":         "Consejo de la Magistratura — Oficina de Estadísticas, Justicia Nacional del Trabajo",
             "fecha_dato":     _fecha_semestre(ultimo),
             "desactualizado": False,
             "juicios_12m":    actual,
             "detalle_txt":    (f"{actual:,} juicios entrados en 1ª instancia en los 12 meses "
-                               f"hasta el {ultimo[1]}º semestre de {ultimo[0]} vs {anterior:,} "
+                               f"hasta el {ultimo[1]}º semestre de {ultimo[0]} frente a {anterior:,} "
                                "en los 12 previos (sólo Capital)").replace(",", "."),
         }
     except Exception as e:
@@ -2706,7 +2706,7 @@ def fetch_rigi_inversiones() -> dict | None:
         return {
             "valor":          avance,
             "unidad":         "% de inversión aprobada sobre el pipeline",
-            "fuente":         "Ministerio de Economía — Plataforma oficial RIGI",
+            "fuente":         "Ministerio de Economía — Plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI)",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
             "proyectos_aprobados":        n_ap,
@@ -2859,7 +2859,7 @@ def fetch_alertas_manifestacion() -> dict | None:
         return {
             "valor":          total_mes,
             "unidad":         "alertas de manifestación (mes corriente, GTFS-RT)",
-            "fuente":         "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
+            "fuente":         "API Transporte del Gobierno de la Ciudad de Buenos Aires — serviceAlerts (colectivos + subtes)",
             "fecha_dato":     max(dias),
             "desactualizado": False,
             "dias_muestreados_mes": len(dias_mes),
@@ -3028,7 +3028,7 @@ def fetch_asistencia_directa() -> dict | None:
     return {
         "valor":          valor,
         "unidad":         "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
-        "fuente":         "Boletín Oficial — Res. 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
+        "fuente":         "Boletín Oficial — Resolución 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
         "fecha_dato":     hoy,
         "desactualizado": False,
         "hito":           dict(c),
@@ -3599,7 +3599,7 @@ def fetch_libertad_opcion_salud() -> dict | None:
         return {
             "valor":          avance,
             "unidad":         "Avance de la libre elección de cobertura de salud (hitos 0–100)",
-            "fuente":         "Boletín Oficial (DNU 70/2023, Decreto 170/2024, Resolución SSS 3284/2024) · ARCA y SSS (trámite de opción de cambio) · SSS — RNAS y RNEMP por entidad",
+            "fuente":         "Boletín Oficial (decreto de necesidad y urgencia 70/2023, Decreto 170/2024, Resolución 3284/2024 de la Superintendencia de Servicios de Salud) · Agencia de Recaudación y Control Aduanero y Superintendencia de Servicios de Salud (trámite de opción de cambio) · Superintendencia de Servicios de Salud — Registro Nacional de Agentes del Seguro de Salud y Registro Nacional de Entidades de Medicina Prepaga, por entidad",
             "hitos":          estado,
             "pct_derivados":  pct,
             "fecha_dato":     fecha,
@@ -3672,13 +3672,13 @@ def fetch_protocolo_antipiquetes() -> dict | None:
 
         return {
             "valor":          irpc,
-            "unidad":         "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)",
+            "unidad":         "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023",
             "fuente":         "Diagnóstico Político (consultora privada) — monitoreos públicos de piquetes",
             "fecha_dato":     f"{ult}-12-31",
             "desactualizado": False,
             "componentes":    {"caba_2023": base, f"caba_{ult}": caba[ult]},
             "advertencia_fuente": advertencia,
-            "detalle_txt":    (f"{caba[ult]} cortes en la Ciudad de Buenos Aires en {ult} vs {base} en 2023"
+            "detalle_txt":    (f"{caba[ult]} cortes en la Ciudad de Buenos Aires en {ult} frente a {base} en 2023"
                                " (Diagnóstico Político, consultora privada; base 2023 estimada"
                                " desde una participación redondeada)"
                                + (f" · {advertencia}" if advertencia else "")),
@@ -3816,7 +3816,7 @@ def actualizar_acled_cortes() -> None:
             dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig")).get("caba", {})
         store = {
             "_meta": {
-                "fuente": "ACLED (acleddata.com) — API de eventos, cuenta académica UBA",
+                "fuente": "Armed Conflict Location & Event Data (ACLED, acleddata.com) — API de eventos, cuenta académica de la Universidad de Buenos Aires",
                 "descargado": datetime.now().strftime("%Y-%m-%d"),
                 "criterio": f"cortes = notas con {ACLED_CORTES_KEYWORDS}",
                 "nota": ("Serie de VALIDACIÓN de los anclajes DP (no puntúa). "
@@ -3945,7 +3945,7 @@ def fetch_protestas_caba() -> dict | None:
         return {
             "valor":          ult12,
             "unidad":         "eventos de protesta en 12 meses (CABA, ACLED)",
-            "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
+            "fuente":         "Armed Conflict Location & Event Data (ACLED) — agregado semanal por provincia (acleddata.com)",
             "fecha_dato":     ultimo["fecha"],
             "cobertura_hasta": calculo["cobertura_hasta"],
             "referencia_temporal": "mes de inicio de las semanas ACLED",
@@ -3953,7 +3953,7 @@ def fetch_protestas_caba() -> dict | None:
             "obtenido_en": store["_meta"]["actualizado"],
             "eventos_2023":   base_2023,
             "var_vs_2023":    var,
-            "detalle_txt": (f"{ult12} eventos en 12m (grupos hasta {ultimo['fecha'][:7]}) vs {base_2023} en la base 2023"
+            "detalle_txt": (f"{ult12} eventos en 12 meses (grupos hasta {ultimo['fecha'][:7]}) frente a {base_2023} en la base 2023"
                             + (f" ({var:+.1f}%)".replace(".", ",") if var is not None else "")
                             + " — semanas sábado–viernes agrupadas por su mes de inicio. "
                               "Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"),

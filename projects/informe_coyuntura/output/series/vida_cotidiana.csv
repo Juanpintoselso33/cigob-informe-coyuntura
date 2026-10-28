@@ -525,17 +525,17 @@ fecha,indicador,valor,unidad,fuente
 2004-01-01,pobreza_indec,44.3,% de personas,INDEC — EPH continua (vía datos.gob.ar)
 2003-07-01,pobreza_indec,47.8,% de personas,INDEC — EPH continua (vía datos.gob.ar)
 2003-01-01,pobreza_indec,54.0,% de personas,INDEC — EPH continua (vía datos.gob.ar)
-2026-10-01,peso_tarifas,13.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-09-01,peso_tarifas,14.6,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-08-01,peso_tarifas,14.5,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-07-01,peso_tarifas,15.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-06-01,peso_tarifas,15.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-05-01,peso_tarifas,14.1,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-04-01,peso_tarifas,12.2,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-03-01,peso_tarifas,12.3,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-02-01,peso_tarifas,11.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-01-01,peso_tarifas,11.3,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2025-12-01,peso_tarifas,11.1,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-10-01,peso_tarifas,13.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-09-01,peso_tarifas,14.6,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-08-01,peso_tarifas,14.5,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-07-01,peso_tarifas,15.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-06-01,peso_tarifas,15.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-05-01,peso_tarifas,14.1,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-04-01,peso_tarifas,12.2,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-03-01,peso_tarifas,12.3,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-02-01,peso_tarifas,11.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-01-01,peso_tarifas,11.3,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2025-12-01,peso_tarifas,11.1,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-09-01,patentamiento_motos,81613,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-08-01,patentamiento_motos,75424,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-07-01,patentamiento_motos,72730,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
