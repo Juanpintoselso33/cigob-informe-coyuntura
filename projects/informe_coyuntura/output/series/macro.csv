@@ -174,6 +174,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2024-01-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2023-12-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
+2026-10-27,tc_mayorista,1538.741,ARS/USD,BCRA
 2026-10-26,tc_mayorista,1540.4751,ARS/USD,BCRA
 2026-10-23,tc_mayorista,1528.263,ARS/USD,BCRA
 2026-10-22,tc_mayorista,1527.8511,ARS/USD,BCRA
@@ -1127,24 +1128,25 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,100.3,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.1,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,100.2,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-10-22,prestamos_privados,149207285.0,M ARS,BCRA
-2026-10-21,prestamos_privados,148956273.0,M ARS,BCRA
-2026-10-20,prestamos_privados,148331407.0,M ARS,BCRA
-2026-10-19,prestamos_privados,147570663.0,M ARS,BCRA
-2026-10-16,prestamos_privados,147386861.0,M ARS,BCRA
-2026-10-15,prestamos_privados,146882276.0,M ARS,BCRA
-2026-10-14,prestamos_privados,147543340.0,M ARS,BCRA
-2026-10-13,prestamos_privados,147197524.0,M ARS,BCRA
-2026-10-09,prestamos_privados,146572147.0,M ARS,BCRA
-2026-10-08,prestamos_privados,147687735.0,M ARS,BCRA
-2026-10-07,prestamos_privados,147707885.0,M ARS,BCRA
-2026-10-06,prestamos_privados,148568854.0,M ARS,BCRA
-2026-10-05,prestamos_privados,148318394.0,M ARS,BCRA
-2026-10-02,prestamos_privados,148951484.0,M ARS,BCRA
-2026-10-01,prestamos_privados,148979575.0,M ARS,BCRA
-2026-09-30,prestamos_privados,148380166.0,M ARS,BCRA
-2026-09-29,prestamos_privados,148772839.0,M ARS,BCRA
-2026-09-28,prestamos_privados,147903039.0,M ARS,BCRA
+2026-10-23,prestamos_privados,149547693.0,M ARS,BCRA
+2026-10-22,prestamos_privados,149224406.0,M ARS,BCRA
+2026-10-21,prestamos_privados,148943727.0,M ARS,BCRA
+2026-10-20,prestamos_privados,148335845.0,M ARS,BCRA
+2026-10-19,prestamos_privados,147815534.0,M ARS,BCRA
+2026-10-16,prestamos_privados,147387668.0,M ARS,BCRA
+2026-10-15,prestamos_privados,146883796.0,M ARS,BCRA
+2026-10-14,prestamos_privados,147542787.0,M ARS,BCRA
+2026-10-13,prestamos_privados,147197578.0,M ARS,BCRA
+2026-10-09,prestamos_privados,146572061.0,M ARS,BCRA
+2026-10-08,prestamos_privados,147687213.0,M ARS,BCRA
+2026-10-07,prestamos_privados,147707199.0,M ARS,BCRA
+2026-10-06,prestamos_privados,148568018.0,M ARS,BCRA
+2026-10-05,prestamos_privados,148317303.0,M ARS,BCRA
+2026-10-02,prestamos_privados,148950109.0,M ARS,BCRA
+2026-10-01,prestamos_privados,148978351.0,M ARS,BCRA
+2026-09-30,prestamos_privados,148399343.0,M ARS,BCRA
+2026-09-29,prestamos_privados,148773040.0,M ARS,BCRA
+2026-09-28,prestamos_privados,147903161.0,M ARS,BCRA
 2026-09-25,prestamos_privados,147162565.0,M ARS,BCRA
 2026-09-24,prestamos_privados,147476019.0,M ARS,BCRA
 2026-09-23,prestamos_privados,146518646.0,M ARS,BCRA
@@ -2184,7 +2186,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
 2024-01-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
 2023-12-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-08-01,desequilibrio_monetario,64.01,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-08-01,desequilibrio_monetario,64.02,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-07-01,desequilibrio_monetario,58.19,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-06-01,desequilibrio_monetario,37.97,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-05-01,desequilibrio_monetario,52.64,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
@@ -2277,6 +2279,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-10-23,base_monetaria,46812899.0,M ARS,BCRA
 2026-10-22,base_monetaria,47084498.0,M ARS,BCRA
 2026-10-21,base_monetaria,47197874.0,M ARS,BCRA
 2026-10-20,base_monetaria,46996299.0,M ARS,BCRA
@@ -2977,6 +2980,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-05,base_monetaria,8913664.0,M ARS,BCRA
 2023-12-04,base_monetaria,8457920.0,M ARS,BCRA
 2023-12-01,base_monetaria,8510332.0,M ARS,BCRA
+2026-10-26,badlar,22.1875,% anual,BCRA
 2026-10-23,badlar,23.0625,% anual,BCRA
 2026-10-22,badlar,22.9375,% anual,BCRA
 2026-10-21,badlar,22.375,% anual,BCRA

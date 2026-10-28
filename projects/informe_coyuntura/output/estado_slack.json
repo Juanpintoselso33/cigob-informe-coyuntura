@@ -1,7 +1,7 @@
 {
   "ts_fijo": "1787686620.854169",
   "estado": {
-    "score_global": 4.0,
+    "score_global": 3.6,
     "cinturon_dominante": "vida_cotidiana",
     "riesgo": "político",
     "multicinturon": false,
@@ -11,15 +11,15 @@
         "estado": "en_tension"
       },
       "politica": {
-        "score": 2.8,
+        "score": 2.4,
         "estado": "estable"
       },
       "vida_cotidiana": {
-        "score": 6.3,
-        "estado": "tensionado"
+        "score": 5.6,
+        "estado": "en_tension"
       },
       "gestion": {
-        "score": 2.2,
+        "score": 1.9,
         "estado": "estable"
       }
     }
