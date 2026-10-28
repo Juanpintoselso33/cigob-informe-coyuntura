@@ -159,6 +159,12 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Piquetes: volver a la Ciudad de Buenos Aires** (Juan, 28-oct). Estaba decidido mantener
+  CABA y el ADR-0405 (28-oct) lo pasó al total del país (99 → 77) contra esa decisión.
+  Revertir a CABA (otro ADR) y revisar lo que dicen la tarjeta y la ficha de la fuente
+  (consultora Diagnóstico Político) y del protocolo (vigencia: anulado en primera
+  instancia y apelado; verificar el estado actual).
+
 - **Revisar vetos, decretos y DNU** (Juan, 28-oct): «DNU por ley» (ratio_dnu), «Vetos que el
   Congreso dio vuelta» (insistencias_vetos) y «Decretos derogados por el Congreso»
   (rechazos_decretos, ADR-0377). Hoy 1,09 / 0 / 0.
