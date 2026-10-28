@@ -342,14 +342,14 @@ const robChartData = rob?.hist && indice ? {
         ))}
         {RESUMEN_CINTURON[meta.key] && (
           <div class="cg-nivel-resumen">
-            <p class="cg-nivel-pie"><strong>Resumen</strong></p>
+            <h2 class="cg-h2 cg-titulo-n2">Resumen</h2>
             <p class="cg-nivel-pie">{RESUMEN_CINTURON[meta.key]}</p>
           </div>
         )}
         {indice && QUE_EXPRESA[meta.key] && (
           <>
             <div class="cg-nivel-resumen">
-              <p class="cg-nivel-pie"><strong>Qué expresa</strong></p>
+              <h2 class="cg-h2 cg-titulo-n2">Qué expresa</h2>
               <p class="cg-nivel-pie">
                 {QUE_EXPRESA[meta.key]}{" "}
                 0 es la peor situación y 100 la mejor. Hoy marca{" "}
@@ -357,7 +357,7 @@ const robChartData = rob?.hist && indice ? {
               </p>
             </div>
             <div class="cg-nivel-resumen">
-              <p class="cg-nivel-pie"><strong>Cómo se calcula</strong></p>
+              <h2 class="cg-h2 cg-titulo-n2">Cómo se calcula</h2>
               <p class="cg-nivel-pie">
                 Cada indicador recibe un puntaje: su valor se compara con una tabla fija de referencias
                 y se traduce a un puntaje de 0 a 100. Los indicadores se agrupan en las{" "}
@@ -385,7 +385,7 @@ const robChartData = rob?.hist && indice ? {
         {/* Cómo se calcula, en llano (ADR-0352), y ANTES de las dimensiones (ADR-0354):
             el valor del índice y su color ya se dijeron en la cabecera. */}
         <div class="cg-como-se-calcula">
-          <h2 class="cg-como-se-calcula-h">Cómo se calcula este número</h2>
+          <h2 class="cg-como-se-calcula-h cg-titulo-n2">Cómo se calcula este número</h2>
           <p>
             Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
               ? "casi todos se ponen en la misma escala, donde 100 es su valor de fines de 2023 (las excepciones se explican abajo)."
@@ -405,7 +405,7 @@ const robChartData = rob?.hist && indice ? {
         </div>
         <div class="cg-section-head">
           <p class="cg-eyebrow">Dimensiones</p>
-          <h2 class="cg-h2">Estado de tensión de cada dimensión del cinturón</h2>
+          <h2 class="cg-h2 cg-titulo-n2">Estado de tensión de cada dimensión del cinturón</h2>
           <p class="cg-h2-sub"><strong>{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (100 = fines de 2023)" : "/100"}.</strong> {indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -439,7 +439,7 @@ const robChartData = rob?.hist && indice ? {
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Indicadores</p>
-        <h2 class="cg-h2">El detalle, hoy</h2>
+        <h2 class="cg-h2 cg-titulo-n3">El detalle, hoy</h2>
         <p class="cg-h2-sub">
           {indice
             ? "Los que construyen el índice. Tocá uno para ver qué mide y cómo viene."
@@ -531,7 +531,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Robustez</p>
-          <h2 class="cg-h2">¿Qué tan firme es este número?</h2>
+          <h2 class="cg-h2 cg-titulo-n3">¿Qué tan firme es este número?</h2>
           <p class="cg-h2-sub">
             Es un análisis de sensibilidad como el que recomienda el manual de indicadores
             compuestos de la OCDE y el Centro Común de Investigación de la Comisión Europea.
@@ -863,4 +863,10 @@ const robChartData = rob?.hist && indice ? {
   .cg-detalle-nivel .cg-nivel-pie { font-size: 15px; line-height: 1.55; margin-top: 8px; }
   .cg-detalle-nivel .cg-nivel-resumen { margin-top: 18px; }
   .cg-detalle-nivel .cg-nivel-resumen .cg-nivel-pie:first-child { margin-top: 0; }
+  /* Jerarquía de títulos de la página de cinturón (28-oct-2026): nivel 1 es el
+     título del cinturón; nivel 2, los bloques de lectura y el estado de las
+     dimensiones; nivel 3, el detalle de indicadores y la robustez. */
+  .cg-titulo-n2 { font-size: clamp(22px, 2.4vw, 28px) !important; line-height: 1.2 !important; }
+  .cg-titulo-n3 { font-size: clamp(18px, 1.8vw, 21px) !important; line-height: 1.25 !important; }
+  .cg-detalle-nivel .cg-titulo-n2 { color: inherit; margin: 0 0 6px; }
 </style>
