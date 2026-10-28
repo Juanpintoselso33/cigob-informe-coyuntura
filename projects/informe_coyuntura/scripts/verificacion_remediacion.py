@@ -61,7 +61,7 @@ VALORES_ESPERADOS = {           # indicador: (valor, tolerancia, ADR)
 IDS_MUERTOS = ("pluriempleo",)
 UNIDADES_ESPERADAS = {
     "consumo_supermercados": "2017",
-    "subocupacion_demandante": "PEA",
+    "subocupacion_demandante": "población económicamente activa",
     "trabajo_independiente": "sin monotributo social",
     "credito_privado": "pesos",
     "ratio_dnu": "publicados",
