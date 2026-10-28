@@ -909,7 +909,7 @@ def inicio_ventana_365(hasta: date) -> date:
 
 def fetch_ratio_dnu() -> dict | None:
     """
-    Ratio DNU = count(DNUs) / count(leyes sancionadas) en los últimos 365 días
+    Ratio DNU = count(DNUs) / count(leyes publicadas) en los últimos 365 días
     (ventana móvil, ADR-0058 — antes era acumulado del año calendario en
     curso, resetado cada 1° de enero, igual que el defecto que hizo sacar a
     movilizacion_cepa del tablero por ADR-0052; el criterio no se le había
@@ -5406,7 +5406,7 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
 
 def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
     """Cohesión del bloque LLA en Diputados: índice de Rice promedio sobre
-    las actas nominales divididas de los últimos `dias_ventana` días.
+    las actas nominales (toda acta con votos de LLA, no sólo las divididas) de los últimos `dias_ventana` días.
 
     Desde 2026-07-09 (ADR-0040) usa el endpoint PDF directo
     (votaciones.hcdn.gob.ar/pdf/acta/{id}), NO la SPA bloqueada por
@@ -5477,7 +5477,7 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     fecha_max = max((f for f, _ in detalle), default=None)
     return {
         "valor": round(sum(r for _, r in detalle) / len(detalle), 1) if detalle else None,
-        "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+        "unidad": "% cohesión (índice de Rice), promedio de las votaciones nominales de los últimos 90 días",
         "fuente": "Votaciones nominales de la Cámara de Diputados — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(detalle),
@@ -5582,7 +5582,7 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
 
     return {
         "valor": round(sum(indices) / len(indices), 1) if indices else None,
-        "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
+        "unidad": "% cohesión (índice de Rice, Senado), promedio de las votaciones nominales de los últimos 90 días",
         "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
@@ -8508,7 +8508,7 @@ def componer_cohesion_bloque(dip: dict | None, sen: dict | None) -> dict | None:
     return {
         "valor": valor,
         "unidad": ("% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, "
-                   "promedio actas divididas últimos 90 días)"),
+                   "promedio de las votaciones nominales de los últimos 90 días)"),
         "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
         "fecha_dato": max(fechas) if fechas else None,
         "n_actas": sum(e.get("n_actas") or 0 for e in con_dato.values()),
@@ -8842,7 +8842,7 @@ def main() -> None:
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):
     # dict con "valor": None (no None a secas) cuando la corrida llegó al
-    # sitio pero no hubo actas divididas en la ventana de recencia (receso
+    # sitio pero no hubo actas nominales en la ventana de recencia (receso
     # legislativo normal). Mismo bloque dedicado que cohesion_bloque_senado
     # en vez de la lista plana de colectores, para no marcar "desactualizado"
     # solo por ausencia de votos nuevos (reutiliza _cohesion_desactualizada,

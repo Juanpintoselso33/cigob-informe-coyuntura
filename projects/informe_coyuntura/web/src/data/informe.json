@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-28T11:16:40.267192-03:00",
+  "generated_at": "2026-10-28T11:47:37.672353-03:00",
   "period": "2026-10",
   "score_global": 3.6,
   "ponderacion": {
@@ -641,7 +641,7 @@
               }
             ],
             "unidad": "% anual esperado",
-            "por_que": "21,1 % anual esperado está en Amarillo, a 5,7 del límite con Naranja (26,8)."
+            "por_que": "21,1 % anual esperado está en Amarillo, a 5,72 del límite con Naranja (26,8)."
           }
         },
         "desequilibrio_monetario": {
@@ -4944,8 +4944,8 @@
           "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,191 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 28 pares que superan el umbral en niveles, 26 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "rezago": {
-          "promedio_meses": 4.5,
-          "share_pulso": 0.471,
+          "promedio_meses": 5.1,
+          "share_pulso": 0.364,
           "share_estructural": 0.068,
           "umbral_pulso": 2.0,
           "umbral_estructural": 12.0,
@@ -4957,8 +4957,8 @@
           ],
           "titulo": "¿De cuándo es la foto que describe el índice?",
           "sub": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, aunque su último dato sea de ayer. Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa.",
-          "conclusion": "El índice describe, en promedio ponderado, la situación de hace 4,5 meses. Un 47% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
-          "resumen": "El índice describe, en promedio ponderado, la situación de hace 4,5 meses. Un 47% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior.",
+          "conclusion": "El índice describe, en promedio ponderado, la situación de hace 5,1 meses. Un 36% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
+          "resumen": "El índice describe, en promedio ponderado, la situación de hace 5,1 meses. Un 36% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior.",
           "detalle_texto": "La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
           "sub_resumen": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, aunque su último dato sea de ayer.",
           "sub_detalle": "Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa."
@@ -8754,7 +8754,7 @@
               }
             ],
             "unidad": "Índice 0–100 (FAL: cinco hitos de construcción y adopción)",
-            "por_que": "90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,8 del límite con Amarillo (55,2)."
+            "por_que": "90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,2)."
           }
         },
         "siniestralidad_laboral": {

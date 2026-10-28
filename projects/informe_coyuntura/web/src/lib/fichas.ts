@@ -143,7 +143,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
       unidadCorta: "% m/m",
     },
-    dobleUso: "El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, la brecha de crecimiento real entre agregados monetarios y la tasa real de la capacidad prestable. Un error de medición de la fuente se propagaría a esos indicadores.",
+    dobleUso: "El IPC participa además como deflactor de otros tres indicadores del índice (la recaudación real, el crédito privado real y la tasa real de la capacidad prestable) y de la brecha de crecimiento real entre agregados monetarios, que se sigue calculando fuera del índice. Un error de medición de la fuente se propagaría a esos indicadores.",
     limitaciones: [
       "Mide el promedio nacional del nivel general: no distingue núcleo, regulados y estacionales, ni las diferencias regionales que el propio INDEC publica por separado.",
       "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.",
@@ -181,13 +181,13 @@ export const FICHAS: Record<string, Ficha> = {
       "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial, las reservas y el cruce del tipo de cambio real con los términos del intercambio), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman cerca del 33 % del índice. El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), salvo reservas netas: el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024.",
+      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), con dos excepciones: las reservas netas, porque el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024, y el desequilibrio monetario, que arranca en abril de 2025 con la apertura del cepo a personas humanas.",
       "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La tasa de plazo fijo mayorista entra al índice a través de la capacidad prestable; el crédito entra descontada la inflación.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones. Las ausencias no puntúan ni a favor ni en contra.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador, siempre con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo). Existe además una regla automática para el saldo comercial: si el superávit se explica por contracción de importaciones y no por crecimiento exportador, el puntaje se rebaja con la justificación generada a partir de los números. Todo ajuste activo se publica junto al índice.",
-      "Deflactores: los indicadores reales esperan el IPC cerrado. La recaudación real, por ejemplo, se computa como promedio móvil de tres meses sobre meses con IPC publicado, para filtrar el calendario tributario.",
+      "Deflactores: los indicadores reales esperan el IPC cerrado. La recaudación real, por ejemplo, se computa como nivel real desestacionalizado (100 = promedio del cuarto trimestre de 2023) sobre meses con IPC publicado, para filtrar el calendario tributario.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante sus umbrales —los del documento CIGOB para los indicadores originales, propios para los demás—, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las bandas abiertas en su borde finito; entre anclas el puntaje es lineal y fuera de la primera y la última queda plano.",
@@ -358,7 +358,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la historia disponible baja de 60 meses o falla algún insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión de financiamiento se renormalizan.",
     revisiones: "Al redefinirse la métrica, el histórico de la versión anterior se purgó: la serie publicada es homogénea. Se regenera completa en cada actualización.",
     cambios: [
-      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,36 %).", adr: "0387" },
+      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (3,36 %).", adr: "0387" },
       { fecha: "2026-06-26", cambio: "Nace la capacidad prestable en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
@@ -370,7 +370,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "emae_ia",
     cinturon: "macro",
-    rezago: "El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente: es el indicador simple más rezagado del índice (~2 meses).",
+    rezago: "El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente (~2 meses de demora). Entre los indicadores mensuales es de los más rezagados; los términos del intercambio, que son trimestrales, lo superan.",
     fuente: {
       organismo: "INDEC",
       operacion: "EMAE — Estimador Mensual de Actividad Económica, variación interanual de la serie original (base 2004)",
@@ -406,7 +406,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
       { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -710,7 +710,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El INDEC revisa las series sectoriales hacia atrás junto con el EMAE agregado; el informe regenera la serie completa en cada actualización, de modo que una revisión puede cambiar retroactivamente el conteo de un mes ya publicado.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -746,7 +746,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.",
       "El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.",
-      "Los tres indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.",
+      "Tres de los cuatro indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.",
       "El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.",
       "La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.",
       "El INDEC revisa el índice hacia atrás con cada publicación.",
@@ -758,7 +758,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
       { fecha: "2026-07-18", cambio: "Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector." },
-      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta." },
     ],
   },
 
@@ -794,7 +794,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     dobleUso: "Las mismas series del ICA son insumo de la alícuota de apertura comercial (cinturón gestión), y la subserie de bienes de capital importados alimenta la inversión física.",
     limitaciones: [
-      "Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que en el período reciente drenan alrededor de diecisiete mil millones de dólares por año: mientras el saldo comercial marcaba un superávit de trece mil millones, la cuenta corriente —que sí los incluye— estaba en déficit de cuatro mil millones. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente se publica junto a este indicador en el gráfico, como contexto.",
+      "Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que pueden drenar dólares por una suma grande: un saldo comercial con superávit puede convivir con una cuenta corriente —que sí los incluye— en déficit. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente (acumulado de cuatro trimestres) se publica junto a este indicador en el gráfico, como contexto: la diferencia entre las dos series es la lectura que importa.",
       "El acumulado de 12 meses suaviza a costa de reactividad: un vuelco del frente comercial tarda meses en reflejarse por completo.",
       "El máximo alcanzable de la escala es 85, no 100: diseño del documento institucional.",
       "Los datos del ICA son provisorios y se revisan; la serie regenerada por actualización los absorbe.",
@@ -1032,7 +1032,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.",
       "Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.",
       "La tensión se traduce al índice macroeconómico con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.",
-      "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.",
+      "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.",
     ],
     anclas: {
       bandas: [
@@ -1051,7 +1051,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana con la que se lo CALIBRA, en cambio, es la misma que la del componente B: desde abril de 2025, la apertura del cepo a personas humanas. Es una distinción que importa. Bajo cepo, un ratio alto de pesos transaccionales no mide confianza en el peso: mide que no había otro lugar donde ponerlos, igual que la compra de divisas daba casi cero por falta de acceso y no por tranquilidad. Calibrar contra 2021-2026 mezclaba los dos regímenes, y las distribuciones casi no se tocan: bajo cepo el ratio corría entre 33,1% y 50,0% con una mediana de 40,3%, y en régimen abierto corre entre 30,6% y 37,7% con una mediana de 32,8% — el máximo del régimen abierto queda por debajo de la mediana del cepo. El efecto era que el componente A quedaba pegado a su piso casi todos los meses y el indicador funcionaba, en los hechos, con uno solo de sus dos componentes.",
       "El componente B tiene sólo quince meses de historia bajo el régimen abierto. Los cortes por percentiles deberán revisarse cuando haya más evidencia posterior a la apertura del cepo.",
       "Los cortes por percentiles hacen que verde signifique el mejor cuarto de la ventana de calibración, que es un período de dolarización alta, y no un nivel deseable en abstracto. Cuando un componente se mueve cerca del extremo de su ventana, su posición se satura y el indicador deja de distinguir entre meses: la tabla de anclas y la serie muestran dónde está cayendo.",
-      "El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en la competitividad externa, a través del tipo de cambio real.",
+      "El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en el sector externo, a través del tipo de cambio real.",
       "El componente A tiene estacionalidad de aguinaldo: junio promedia 1,7 puntos porcentuales por encima de la media y diciembre 1,2. Es chico frente al rango del indicador y no se corrige.",
       "La ficha original nombra el componente B como formación de activos externos del sector privado no financiero. El BCRA ya no publica ese rubro con ese nombre —reserva esa etiqueta para el sector financiero y el público— y lo del privado no financiero sale bajo el concepto 03, que es el que se usa.",
       "El componente B no distingue los dólares que quedan depositados en el sistema local de los que van al colchón. La ficha original describía esa distinción, pero ninguna serie publicada del balance cambiario la hace.",
@@ -1093,7 +1093,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-9.83, 10], [-5.83, 35], [0.17, 60], [6.17, 80], [10.17, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La operación ISAC también alimenta (en su variante desestacionalizada) un componente del índice de impacto social; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
+    dobleUso: "Los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
     limitaciones: [
       "No mide depreciación ni inversión neta de reposición. Una variación interanual negativa de sus componentes no demuestra una disminución del stock de capital.",
       "Los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales: el índice de cantidades oficial es solo trimestral.",
@@ -1152,7 +1152,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, capacidad prestable y costo del Tesoro renormalizan dentro de la dimensión de financiamiento.",
     revisiones: "Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.",
     cambios: [
-      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,2 %).", adr: "0387" },
+      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (3,2 %).", adr: "0387" },
       { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% capacidad prestable + 15% crédito." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás)." },
       { fecha: "2026-08-25", cambio: "El titular pasa a medir sólo el crédito EN PESOS (BCRA var. 117). Usaba la var. 26, que el propio catálogo del BCRA declara `MEyML`: pesos más la cartera en dólares valuada en pesos. Con esa serie una devaluación revaluaba la cartera sin que se prestara un peso más y entraba como crecimiento real: en julio de 2026 publicaba +2,5% mientras el crédito en pesos caía 1,5%. La cartera en moneda extranjera no se descarta —se publica en el desglose, en dólares y en pesos, junto con el total— pero deja de decidir el titular. La serie se rehace entera: las dos variables no son empalmables porque no comparten universo.", adr: "0251" },
@@ -1163,7 +1163,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "resultado_primario",
     cinturon: "macro",
-    rezago: "Un mes: el informe de ingresos y gastos se publica en la segunda quincena del mes siguiente.",
+    rezago: "Unos dos meses: a fines de octubre de 2026 el último dato publicado es el de agosto.",
     fuente: {
       organismo: "Secretaría de Hacienda (resultado primario) + recaudación nacional",
       operacion: "Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total",
@@ -1174,7 +1174,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Ambas series se acumulan en ventanas de doce meses. El resultado primario mensual es fuertemente estacional —diciembre da déficit todos los años por el aguinaldo y el cierre del ejercicio, enero da superávit alto—, así que puntuar el mes suelto marcaría un colapso fiscal cada diciembre.",
       "El resultado primario acumulado se divide por la recaudación tributaria acumulada del mismo período. La recaudación se usa como escala: no representa todos los ingresos del mismo universo contable del resultado primario.",
-      "Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros cuatro indicadores del índice.",
+      "Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros tres indicadores del índice.",
     ],
     anclas: {
       bandas: [
@@ -1242,7 +1242,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Sin colocaciones a tasa fija en el mes se conserva el último valor disponible, señalado como desactualizado; capacidad prestable y crédito renormalizan dentro de la dimensión de financiamiento.",
     revisiones: "Las planillas del año en curso se actualizan a lo largo del año; la serie se regenera completa desde diciembre de 2023 en cada actualización.",
     cambios: [
-      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (4 %).", adr: "0387" },
+      { fecha: "2026-10-27", cambio: "Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (4 %).", adr: "0387" },
       { fecha: "2026-07-18", cambio: "Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía." },
       { fecha: "2026-08-25", cambio: "La TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1+TEM)^12−1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la LECAP S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.", adr: "0238" },
       { fecha: "2026-08-25", cambio: "La tasa de cada colocación pasa a ser la TIREA de corte —el rendimiento que fija el precio al que se colocó— y no la tasa contractual del instrumento. Leer el cupón sólo es correcto en una emisión nueva a la par; en una reapertura el cupón fija el flujo y el precio fija el rendimiento. En la reapertura de la LECAP S30N6 del 15 de julio de 2026, colocada a $1.194, el indicador informaba 31,37% donde la Secretaría publicó 25,59%, y julio salía 5,80% real en vez de 4,13%. La convención de días se calibró contra catorce tasas de corte publicadas entre julio de 2025 y agosto de 2026. Toda la serie desde diciembre de 2023 se recalculó: cambian 22 de los 40 meses con colocaciones, así que un valor anterior a esta fecha no se compara con uno posterior.", adr: "0258" },
@@ -1312,16 +1312,16 @@ export const FICHAS: Record<string, Ficha> = {
     anclas: {
       bandas: [
         { banda: "0", puntaje: 100 },
-        { banda: "1 – 2", puntaje: 60 },
-        { banda: "3 – 4", puntaje: 35 },
-        { banda: "más de 4", puntaje: 10 },
+        { banda: "1 (punto medio de 0 – 2)", puntaje: 60 },
+        { banda: "3 (punto medio de 2 – 4)", puntaje: 35 },
+        { banda: "4 o más", puntaje: 10 },
       ],
       puntos: [[0, 100], [1, 60], [3, 35], [4, 10]],
       unidadCorta: "vetos (12 meses)",
     },
     incidenciaTexto: [
       "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
-      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Un cero no es ausencia de dato: es la lectura más favorable.",
+      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
       "Una insistencia aprobada por una sola cámara (el caso del fondo de aportes del Tesoro a provincias, septiembre de 2025) no cuenta, aunque sea una señal política: queda a la vista en el registro.",
@@ -1353,16 +1353,16 @@ export const FICHAS: Record<string, Ficha> = {
     anclas: {
       bandas: [
         { banda: "0", puntaje: 100 },
-        { banda: "1 – 2", puntaje: 60 },
-        { banda: "3 – 4", puntaje: 35 },
-        { banda: "más de 4", puntaje: 10 },
+        { banda: "1 (punto medio de 0 – 2)", puntaje: 60 },
+        { banda: "3 (punto medio de 2 – 4)", puntaje: 35 },
+        { banda: "4 o más", puntaje: 10 },
       ],
       puntos: [[0, 100], [1, 60], [3, 35], [4, 10]],
       unidadCorta: "decretos (12 meses)",
     },
     incidenciaTexto: [
       "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
-      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Un cero no es ausencia de dato: es la lectura más favorable.",
+      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
       "El rechazo de una sola cámara, como el del Senado al decreto 70/2023 en marzo de 2024, es una derrota política pero no deroga la norma, y no cuenta.",
@@ -1473,7 +1473,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Desde el 27 de octubre de 2026 la industria suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas. Se toma cada nota de su sección de comunicados de prensa desde el 10 de diciembre de 2023 (41), con el texto de la página y del PDF adjunto. Sus informes estadísticos periódicos —«Informe de Actividad», «Comercio Exterior Autopartista» e «Informe de Comercio Exterior»— son la salida de un tablero y no una toma de posición: se archivan sin clasificar por una regla de título (20 de 41).",
       "Cada cámara tiene su saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. El indicador es el promedio simple de los saldos de las cámaras con al menos tres pronunciamientos en la ventana —no el saldo de todos los comunicados juntos—: la UIA y AFAC pesan lo mismo, publique cada una mucho o poco, y si una no llega ese mes cuenta la otra.",
       "La serie llega sólo hasta el último mes con todos los comunicados clasificados, de las dos cámaras. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.",
-      "Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.",
+      "Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. Ocurre: la serie publicada tiene huecos (septiembre a noviembre de 2025), meses en que ninguna cámara llegó al mínimo de tres pronunciamientos en la ventana.",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, interpolado entre anclas: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos del empresariado organizado.",
@@ -1481,12 +1481,11 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
-      "Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el mínimo para entrar (cuatro pronunciamientos sobre el Gobierno nacional en doce meses). El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.",
+      "Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el criterio para entrar al perímetro (al menos cuatro pronunciamientos sobre el Gobierno nacional en doce meses calendario). No hay que confundirlo con el otro umbral, que es de cálculo y no de perímetro: para que una cámara aporte su saldo en un mes dado hacen falta al menos tres pronunciamientos en la ventana. El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.",
       "Varios informes estadísticos de AFAC traen frases críticas sobre la política comercial: como la regla que los archiva mira el título, esas frases no entran. Quedan listados, con las dos lecturas, para poder revisarlos. AFAC se pronuncia poco —cuatro veces en el último año, una de apoyo y tres de crítica—, así que un comunicado más mueve mucho su saldo.",
       "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado. La cantidad de pendientes se muestra en la ficha del indicador.",
       "Para verificar que las reglas de clasificación no dejan lugar a la interpretación, cada tanda de comunicados la clasifican por separado dos codificadores independientes que no ven el trabajo del otro. En la pasada completa sobre ciento tres comunicados coincidieron en el 95% de las posturas y en el 94% de los destinatarios; en la tanda de veintidós de septiembre de 2026, en el 91% y el 95%. Los pocos desacuerdos se resuelven con tres criterios generales escritos, no caso por caso. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.",
       "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.",
-      "Los comunicados de AEA se leen de archivos PDF cuyo texto se extrae con un corte en los primeros párrafos. En los comunicados que abren con un rodeo y recién después fijan posición, esa extracción puede dejar afuera el pasaje decisivo.",
     ],
     faltantes: "Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de comunicados nuevos.",
     revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
@@ -1856,13 +1855,13 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es aprobados sobre el total de esa cohorte — ya no exige que envío y sanción caigan en la misma ventana.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
+      "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre los puntos medios de cada banda: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Las anclas de la interpolación no son los bordes sino los puntos medios: 50% o más → 100; 40% → 85; 22,5% → 65; 10% → 40; 5% o menos → 10 (un 27,3% da 70,5). Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
       "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 30% junto al ratio DNU, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
       "Un trámite que supera los 24 meses nunca llega a contarse dentro de su cohorte: la ventana captura la mediana y el tramo alto de las duraciones observadas, pero los trámites excepcionalmente largos quedan fuera por construcción.",
-      "Denominador chico: con unos quince a veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.",
+      "Denominador chico: con pocos proyectos por cohorte (la tarjeta muestra el conteo vigente), uno solo mueve varios puntos porcentuales.",
       "Cuenta proyectos por igual, sin ponderar su peso político. Las iniciativas recientes quedan fuera aunque sean centrales para la agenda actual.",
       "La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (el indicador vigente puede reflejarlo mientras el proyecto siga dentro de su cohorte).",
     ],
@@ -1888,14 +1887,14 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización.",
     fuente: {
       organismo: "Cámara de Diputados y Senado de la Nación",
-      operacion: "Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
+      operacion: "Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones nominales de los últimos 90 días en que votó el bloque",
       url: "https://votaciones.hcdn.gob.ar",
       acceso: "Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista.",
     },
     transformaciones: [
       "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
-      "Por cámara, el cálculo es el promedio de esa cuenta en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
-      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.",
+      "Por cámara, el cálculo es el promedio de esa cuenta en todas las votaciones nominales de los últimos 90 días en que votó el bloque (no se filtran las votaciones divididas). Abstenciones y ausencias no entran.",
+      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin votaciones nominales), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.",
     ],
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
@@ -1907,7 +1906,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.",
       "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.",
       "Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.",
-      "Con pocas actas divididas en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.",
+      "Entran todas las votaciones nominales en que votó el bloque, incluidas las casi unánimes y las votaciones artículo por artículo de una misma ley: eso empuja el índice hacia 100 y hace que la cohesión medida sea más alta que la de las votaciones realmente disputadas. Filtrar solo las divididas es una decisión metodológica pendiente.",
+      "Con pocas votaciones en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.",
     ],
     faltantes: "Si la lectura de uno de los portales falla, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una actualización que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
     revisiones: "Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.",
@@ -1946,18 +1946,18 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     anclas: {
       bandas: [
-        { banda: "> 45", puntaje: 100 },
-        { banda: "35 – 45", puntaje: 100 },
-        { banda: "25 – 35", puntaje: 85 },
-        { banda: "15 – 25", puntaje: 65 },
-        { banda: "5 – 15", puntaje: 40 },
-        { banda: "≤ 5", puntaje: 10 },
+        { banda: "45 o más", puntaje: 100 },
+        { banda: "40 (punto medio de 35 – 45)", puntaje: 100 },
+        { banda: "30 (punto medio de 25 – 35)", puntaje: 85 },
+        { banda: "20 (punto medio de 15 – 25)", puntaje: 65 },
+        { banda: "10 (punto medio de 5 – 15)", puntaje: 40 },
+        { banda: "5 o menos", puntaje: 10 },
       ],
       puntos: [[5, 10], [10, 40], [20, 65], [30, 85], [40, 100], [45, 100]],
       unidadCorta: "% de la cámara",
     },
     incidenciaTexto: [
-      "El puntaje del índice se interpola entre anclas declaradas por convención, más alto = mejor: 40% de la cámara o más → el más alto; 30% → alto; 20% → moderado; 10% → bajo; 5% o menos → el más bajo. Son anclas de convención, no una calibración contra el rango observado: ningún antecedente externo dice cuántos votos ajenos hacen falta para gobernar bien. La tabla de bandas pone cada ancla en el punto medio de su tramo.",
+      "El puntaje del índice se interpola entre anclas declaradas por convención, más alto = mejor: 40% de la cámara o más → el más alto; 30% → alto; 20% → moderado; 10% → bajo; 5% o menos → el más bajo. Son anclas de convención, no una calibración contra el rango observado: ningún antecedente externo dice cuántos votos ajenos hacen falta para gobernar bien. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (un 15% da 52,5; un 25%, 75).",
       "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total), a partes iguales con la cohesión del bloque: es lo que baja el peso de la cohesión a la mitad de la dimensión. Cuando falta una cámara, el peso pasa a la otra; cuando falta el indicador entero, la dimensión queda en la cohesión.",
     ],
     limitaciones: [
@@ -2413,7 +2413,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).",
       "A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.",
-      "También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.",
+      "También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: la caída de la Administración Pública Nacional, la de las empresas del Estado y la del universo completo son parecidas; las cifras vigentes de cada una están en el dato publicado.",
       "Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la tarjeta para que cada lector pueda hacer la cuenta que prefiera.",
     ],
     anclas: {
@@ -2609,10 +2609,10 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     anclas: {
       bandas: [
-        { banda: "> 90", puntaje: 100 },
-        { banda: "62,5 – 90", puntaje: 80 },
-        { banda: "37,5 – 62,5", puntaje: 55 },
-        { banda: "10 – 37,5", puntaje: 30 },
+        { banda: "≥ 90", puntaje: 100 },
+        { banda: "62,5 – 90 (ancla 80 en 76,25)", puntaje: 80 },
+        { banda: "37,5 – 62,5 (ancla 55 en 50)", puntaje: 55 },
+        { banda: "10 – 37,5 (ancla 30 en 23,75)", puntaje: 30 },
         { banda: "≤ 10", puntaje: 10 },
       ],
       puntos: [[10, 10], [23.75, 30], [50, 55], [76.25, 80], [90, 100]],
@@ -2708,7 +2708,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Índice de incidencia = casos de accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes (sin in itinere) por cada mil personas trabajadoras cubiertas, total del sistema (unidades productivas más casas particulares).",
-      "El valor es la variación porcentual del índice del período acumulado del año contra el mismo período del año anterior. Con el informe de enero a junio de 2026: (149.066 / 9.991.247) contra (159.671 / 10.167.202), o sea 14,92 contra 15,70 por mil, una baja del 5,0 %.",
+      "El valor es la variación porcentual del índice del período acumulado del año contra el mismo período del año anterior. Ejemplo con el informe de enero a junio de 2026, el vigente al redactar la ficha: (149.066 / 9.991.247) contra (159.671 / 10.167.202), o sea 14,92 contra 15,70 por mil, una baja del 5,0 %.",
       "La serie combina un punto por año (año completo contra el anterior, de la Serie histórica, fechado en diciembre) con un punto por cada informe provisorio leído (período acumulado, fechado el primer día de su último mes). Es escalonada: cada mes muestra el último punto, hasta que sale el siguiente.",
       "El colector verifica que unidades productivas más casas particulares den el total y que las variaciones que el propio informe imprime en su Cuadro 2 coincidan con las que salen de sus cifras. Si algo no cierra, no publica un valor dudoso: conserva el último.",
     ],
@@ -2809,6 +2809,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[15, 10], [25, 40], [45, 65], [65, 85], [75, 100]],
       unidadCorta: "% de avance",
     },
+    dobleUso: "Comparte un hecho con las concesiones de infraestructura: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una etapa de privatización aquí y como adjudicación de concesión allá; el peso combinado es chico, porque dentro de la cartera es un tramo y el indicador no se calcula distinto por ello.",
     limitaciones: [
       "La asignación de etapas requiere curaduría del analista con documentos primarios citados en el registro; no es una medición automática de ventas cerradas.",
       "La escala 0-4 discretiza procesos continuos.",
@@ -2895,6 +2896,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[15, 10], [25, 40], [45, 65], [65, 85], [75, 100]],
       unidadCorta: "% de km",
     },
+    dobleUso: "Comparte un hecho con las privatizaciones: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una adjudicación de concesión aquí y como etapa de privatización (Corredores Viales) allá; el peso combinado es chico, porque dentro de el plan de km es un tramo y el indicador no se calcula distinto por ello.",
     limitaciones: [
       "El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.843 de los 9.091 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.",
       "Las etapas que adjudican por renglones cuentan hoy solo al cierre total: refinamiento pendiente declarado.",
@@ -3171,7 +3173,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "icg_utdt",
     cinturon: "vida_cotidiana",
-    rezago: "El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con 55 a 60 días.",
+    rezago: "El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes).",
     fuente: {
       organismo: "UTDT",
       operacion: "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual)",
@@ -3331,7 +3333,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Las referencias internacionales usan ingreso o presupuesto del hogar; el RIPTE es un salario formal individual. La comparación es una escala de asequibilidad del ingreso formal representativo, no una estimación de pobreza energética de todos los hogares.",
       "La serie exacta reconstruida comienza en diciembre de 2025, cuando los informes PDF pasan a expresar en texto tanto la carga sobre el salario como la participación del transporte. Los meses anteriores no se estiman leyendo puntos de un gráfico.",
     ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos y alquiler.",
+    faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos, alquiler (IPC) y alquiler pedido (UdeSA).",
     revisiones: "Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.",
     cambios: [
       { fecha: "2026-08-21", cambio: "IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado." },
@@ -3910,7 +3912,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de consumo (10,98% interno · 0,87% del índice de impacto social).",
       "Mide el flujo total de patentamientos de vehículos 0 kilómetro por habitante. El total y su composición no identifican hogares: primeras compras, reposición, compras de empresas y sustitución entre autos y motos pueden coexistir. Una suba del total no demuestra por sí sola mayor acceso de hogares ni descarta sustitución descendente.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
-      "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. Es una magnitud derivada dentro de esta misma tarjeta, no un indicador propio: no puntúa.",
+      "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. El ratio puntúa como indicador propio (`ratio_motos_autos`), con tarjeta y ficha aparte; esta ficha sólo explica por qué se agregó.",
     ],
     limitaciones: [
       "Es un FLUJO de altas, no el parque circulante: cuenta los vehículos que se incorporan, no los que hay. Un hogar que conserva el auto que ya tenía no aparece.",
@@ -4033,7 +4035,7 @@ export const FICHAS: Record<string, Ficha> = {
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y luego entre dimensiones si una queda vacía.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo); todo ajuste activo se publica junto al índice.",
-      "Varios indicadores llevan calibraciones declaradas (por ejemplo, «100 normas derogatorias = plan completo»): cada ficha las documenta.",
+      "Varios indicadores llevan calibraciones declaradas (por ejemplo, los cortes en artículos modificados o eliminados de la desregulación: 2.500 / 7.000 / 15.000 / 30.000): cada ficha las documenta.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante sus umbrales —del documento institucional cuando los hay, propios y declarados en la ficha cuando no— leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
@@ -4090,6 +4092,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-24", cambio: "Planes sin intermediarios pasa a medir el hito del cese de las unidades de gestión del Potenciar Trabajo (abril de 2024): 0 antes, 100 desde entonces.", adr: "0362" },
       { fecha: "2026-10-26", cambio: "La dotación del Estado se mide contra la meta de recortar otro 10 % de la planta en 2026 y deja de estar en 100.", adr: "0364" },
       { fecha: "2026-10-26", cambio: "Entran los juicios de la Justicia Nacional del Trabajo a la reforma laboral, a pedido de la auditoría de CiGob.", adr: "0365" },
+      { fecha: "2026-10-26", cambio: "El Fondo de Asistencia Laboral pasa a medirse por cinco hitos de construcción más la adopción: el puntaje sube de 55 a 100.", adr: "0370" },
+      { fecha: "2026-10-26", cambio: "La libre elección de cobertura de salud pasa a medirse por hitos de implementación y no por el porcentaje de derivación directa: el puntaje sube de 55,2 a 100.", adr: "0371" },
       { fecha: "2026-10-27", cambio: "En la reforma laboral, la siniestralidad registrada en el sistema de riesgos del trabajo reemplaza a los juicios de ese sistema, con el mismo cuarto del peso: la dimensión sigue en 50 % Fondo de Asistencia Laboral, 25 % siniestralidad y 25 % juicios de la Justicia del Trabajo.", adr: "0385" },
       { fecha: "2026-09-22", cambio: "Sale la validación externa. El índice mide lo que el gobierno hace, así que no tiene contraste externo por definición; la sección deja de comparar contra el factor común del capital privado y el índice sale de la matriz de validación cruzada.", adr: "0336" },
     ],

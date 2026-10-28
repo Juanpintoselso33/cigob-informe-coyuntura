@@ -25,8 +25,9 @@ Revisiones sobre el doc original (observaciones del analista, docs
     (raíz 12: (1+REM/100)^(1/12)−1), bandeado con la misma escala mensual del
     IPC. Pone las expectativas y la inflación realizada en la misma vara.
     El equivalente mensual se deriva en macro.py y alimenta la banda "rem_ipc_12m".
-  * Recaudación: variación INTERANUAL REAL (deflactada por el IPC del mismo
-    período), no la variación mensual nominal.
+  * Recaudación: NIVEL real desestacionalizado de la base imponible (100 =
+    promedio del 4T-2023, deflactado por el IPC; ADR-0152), no la variación
+    mensual nominal ni la interanual que se usó hasta julio de 2026.
   * Reservas: NETAS "a secas" (el número del mercado), 100% datos oficiales y sin
     constantes: netas = SDDS estricto (Activos de reserva − drenajes Sección II de la
     Planilla SDDS) + depósitos del Tesoro en USD (balance BCRA) + Bopreal 12m (bucket

@@ -49,7 +49,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   resultado_primario: {
     latex: String.raw`\frac{\sum_{12m}\text{resultado primario}}{\sum_{12m}\text{recaudaci\'on}}\times 100`,
-    leyenda: "Resultado primario del Estado nacional acumulado en doce meses, dividido por la recaudación del mismo período: de cada peso recaudado, cuánto sobra antes de pagar intereses.",
+    leyenda: "Resultado primario del Estado nacional acumulado en doce meses, dividido por la recaudación del mismo período: de cada peso recaudado, cuánto sobra antes de pagar intereses. La recaudación es la total de la Nación, con la seguridad social y la parte que se coparticipa a las provincias.",
   },
   costo_financiamiento_tesoro: {
     latex: String.raw`\left(\frac{1+\text{tasa efectiva de colocaci\'on}}{1+\text{inflaci\'on esperada}}-1\right)\times 100`,
@@ -176,7 +176,7 @@ export const FORMULAS: Record<string, Formula> = {
 
   // ── Impacto social (ITCIS: 17 bases temporales + tarifas por asequibilidad) ─
   brecha_salario_cbt: {
-    latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta b\'asica total del hogar}}`,
+    latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta b\'asica total por adulto equivalente}}`,
     leyenda: "Cuántas canastas de pobreza compra un sueldo. Al índice de impacto social entra rebaseado: 100 = arranque del mandato (4T-2023).",
   },
   ipc_alimentos: {
@@ -383,7 +383,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   cohesion_bloque: {
     latex: String.raw`0{,}65\times\text{cohesi\'on Diputados}+0{,}35\times\text{cohesi\'on Senado}`,
-    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las actas divididas de los últimos 90 días, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. Si una cámara no tiene actas divididas en la ventana, el peso se reparte sobre la otra.",
+    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las votaciones nominales de los últimos 90 días en que votó el bloque, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. Si una cámara no tiene votaciones nominales en la ventana, el peso se reparte sobre la otra.",
   },
   votos_sobre_bancas: {
     latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de LLA}}{\text{bancas de la c\'amara}}\times 100`,

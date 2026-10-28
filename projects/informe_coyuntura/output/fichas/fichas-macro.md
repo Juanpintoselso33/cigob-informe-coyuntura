@@ -75,7 +75,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
 | Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
-| Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
+| Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
@@ -152,7 +152,7 @@ Dato vigente: 1,93 % mensual (2026-09).
 
 Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, la brecha de crecimiento real entre agregados monetarios y la tasa real de la capacidad prestable. Un error de medición de la fuente se propagaría a esos indicadores.
+- **Participación en otros indicadores.** El IPC participa además como deflactor de otros tres indicadores del índice (la recaudación real, el crédito privado real y la tasa real de la capacidad prestable) y de la brecha de crecimiento real entre agregados monetarios, que se sigue calculando fuera del índice. Un error de medición de la fuente se propagaría a esos indicadores.
 
 ## Transparencia — limitaciones declaradas
 
@@ -361,7 +361,7 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,36 %).
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (3,36 %).
 
 **2026-06-26** — Nace la capacidad prestable en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales.
 
@@ -393,7 +393,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | emae_ia | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. |
-| **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente: es el indicador simple más rezagado del índice (~2 meses). |
+| **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente (~2 meses de demora). Entre los indicadores mensuales es de los más rezagados; los términos del intercambio, que son trimestrales, lo superan. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | EMAE — Estimador Mensual de Actividad Económica, variación interanual de la serie original (base 2004) |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-28 |
 
@@ -463,7 +463,7 @@ Ponderación vigente en el ITCM: 9,7 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores.
 
-**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%.
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -551,7 +551,7 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005.
 
-**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%.
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -627,7 +627,7 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 - Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.
 - El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.
-- Los tres indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.
+- Tres de los cuatro indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.
 - El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.
 - La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.
 - El INDEC revisa el índice hacia atrás con cada publicación.
@@ -648,7 +648,7 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 **2026-07-18** — Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector.
 
-**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia.
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia. Esas cifras son las del 16-oct-2026: desde que salió la recaudación de IVA y cheque el peso vigente es el que publica la tarjeta.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -723,7 +723,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que en el período reciente drenan alrededor de diecisiete mil millones de dólares por año: mientras el saldo comercial marcaba un superávit de trece mil millones, la cuenta corriente —que sí los incluye— estaba en déficit de cuatro mil millones. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente se publica junto a este indicador en el gráfico, como contexto.
+- Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que pueden drenar dólares por una suma grande: un saldo comercial con superávit puede convivir con una cuenta corriente —que sí los incluye— en déficit. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente (acumulado de cuatro trimestres) se publica junto a este indicador en el gráfico, como contexto: la diferencia entre las dos series es la lectura que importa.
 - El acumulado de 12 meses suaviza a costa de reactividad: un vuelco del frente comercial tarda meses en reflejarse por completo.
 - El máximo alcanzable de la escala es 85, no 100: diseño del documento institucional.
 - Los datos del ICA son provisorios y se revisan; la serie regenerada por actualización los absorbe.
@@ -762,7 +762,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Base imponible real (nación + provincias)
+# Base imponible real (nación + Ingresos Brutos interjurisdiccionales)
 
 Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de la Comisión Arbitral del Convenio Multilateral; excluye los tributos aduaneros.
 
@@ -786,7 +786,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 Aproxima la evolución de la base imponible mediante ingresos cobrados. También responde a cambios de alícuotas, vencimientos, pagos atrasados y reasignaciones tributarias. Un nivel menor que 100 indica menor recaudación real ajustada respecto de la base; no prueba por sí solo que haya menos actividad formal.
 
-**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
+**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados por la Nación (total, incluida la seguridad social y lo coparticipado), cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
 
 ## Método de cómputo
 
@@ -1126,7 +1126,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 21,1 % anual esperado (2026-09).
 
-21,1 % anual esperado está en Amarillo, a 5,7 del límite con Naranja (26,8).
+21,1 % anual esperado está en Amarillo, a 5,72 del límite con Naranja (26,8).
 
 **Color vigente: AMARILLO**
 
@@ -1205,7 +1205,7 @@ Los dos componentes se leen juntos porque uno solo alcanza para engañar: la com
 - Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.
 - Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.
 - La tensión se traduce al índice macroeconómico con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.
-- Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.
+- Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.
 
 ## Semáforo — valores que determinan el color
 
@@ -1245,7 +1245,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 - La ventana con la que se lo CALIBRA, en cambio, es la misma que la del componente B: desde abril de 2025, la apertura del cepo a personas humanas. Es una distinción que importa. Bajo cepo, un ratio alto de pesos transaccionales no mide confianza en el peso: mide que no había otro lugar donde ponerlos, igual que la compra de divisas daba casi cero por falta de acceso y no por tranquilidad. Calibrar contra 2021-2026 mezclaba los dos regímenes, y las distribuciones casi no se tocan: bajo cepo el ratio corría entre 33,1% y 50,0% con una mediana de 40,3%, y en régimen abierto corre entre 30,6% y 37,7% con una mediana de 32,8% — el máximo del régimen abierto queda por debajo de la mediana del cepo. El efecto era que el componente A quedaba pegado a su piso casi todos los meses y el indicador funcionaba, en los hechos, con uno solo de sus dos componentes.
 - El componente B tiene sólo quince meses de historia bajo el régimen abierto. Los cortes por percentiles deberán revisarse cuando haya más evidencia posterior a la apertura del cepo.
 - Los cortes por percentiles hacen que verde signifique el mejor cuarto de la ventana de calibración, que es un período de dolarización alta, y no un nivel deseable en abstracto. Cuando un componente se mueve cerca del extremo de su ventana, su posición se satura y el indicador deja de distinguir entre meses: la tabla de anclas y la serie muestran dónde está cayendo.
-- El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en la competitividad externa, a través del tipo de cambio real.
+- El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en el sector externo, a través del tipo de cambio real.
 - El componente A tiene estacionalidad de aguinaldo: junio promedia 1,7 puntos porcentuales por encima de la media y diciembre 1,2. Es chico frente al rango del indicador y no se corrige.
 - La ficha original nombra el componente B como formación de activos externos del sector privado no financiero. El BCRA ya no publica ese rubro con ese nombre —reserva esa etiqueta para el sector financiero y el público— y lo del privado no financiero sale bajo el concepto 03, que es el que se usa.
 - El componente B no distingue los dólares que quedan depositados en el sistema local de los que van al colchón. La ficha original describía esa distinción, pero ninguna serie publicada del balance cambiario la hace.
@@ -1334,7 +1334,7 @@ Dato vigente: −1,74 % i.a. ponderado (2026-08).
 
 Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La operación ISAC también alimenta (en su variante desestacionalizada) un componente del índice de impacto social; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
+- **Participación en otros indicadores.** Los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1453,7 +1453,7 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,2 %).
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (3,2 %).
 
 **2026-07-03** — Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% capacidad prestable + 15% crédito.
 
@@ -1491,7 +1491,7 @@ Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tas
 
 Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tasa efectiva anual de las licitaciones del mes, descontada la inflación esperada.
 
-Es el precio del financiamiento del Estado. Reservas, capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.
+Es el precio del financiamiento del Estado. Capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.
 
 **Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las dos primeras miden cuánta financiación hay —lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla. Hasta octubre de 2026 incluía también las reservas netas, que ahora están en el sector externo.
 
@@ -1550,7 +1550,7 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (4 %).
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (4 %).
 
 **2026-07-18** — Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía.
 
@@ -1582,7 +1582,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | resultado_primario | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Cuentas fiscales | **UNIDAD DE MEDIDA** | % de la recaudación (acum. 12 meses) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Un mes: el informe de ingresos y gastos se publica en la segunda quincena del mes siguiente. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Unos dos meses: a fines de octubre de 2026 el último dato publicado es el de agosto. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (resultado primario) + recaudación nacional | **OPERACIÓN ESTADÍSTICA** | Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total |
 | **MODO DE ACCESO** | Automático: API de series de tiempo del Estado nacional. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-28 |
 
@@ -1590,15 +1590,15 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda, acumulado en doce meses y medido como porcentaje de lo que recauda.
 
-Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan. Se mide sobre la recaudación y no sobre el producto porque es un dato mensual que no espera al PBI; como referencia, un 6 % de la recaudación equivale aproximadamente a 1,5 % del PBI. No incluye los intereses: el resultado con intereses (financiero) puede ser menor.
+Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan (la recaudación es la total de la Nación: incluye los aportes a la seguridad social y la parte que se coparticipa a las provincias). Se mide sobre la recaudación y no sobre el producto porque es un dato mensual que no espera al PBI; como referencia, un 6 % de la recaudación equivale aproximadamente a 1,5 % del PBI. No incluye los intereses: el resultado con intereses (financiero) puede ser menor.
 
-**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
+**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados por la Nación (total, incluida la seguridad social y lo coparticipado), cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
 
 ## Método de cómputo
 
 - Ambas series se acumulan en ventanas de doce meses. El resultado primario mensual es fuertemente estacional —diciembre da déficit todos los años por el aguinaldo y el cierre del ejercicio, enero da superávit alto—, así que puntuar el mes suelto marcaría un colapso fiscal cada diciembre.
 - El resultado primario acumulado se divide por la recaudación tributaria acumulada del mismo período. La recaudación se usa como escala: no representa todos los ingresos del mismo universo contable del resultado primario.
-- Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros cuatro indicadores del índice.
+- Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros tres indicadores del índice.
 
 ## Semáforo — valores que determinan el color
 

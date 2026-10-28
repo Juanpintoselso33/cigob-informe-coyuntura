@@ -119,7 +119,9 @@ def test_main_actualiza_el_par_solo_con_cobertura(monkeypatch, registro_vacio, r
     for nombre in dir(politica):
         if nombre.startswith("fetch_"):
             monkeypatch.setattr(politica, nombre, lambda *a, **kw: None)
-    for nombre in ("detectar_novedades_judiciales", "detectar_novedades_empresarias", "detectar_novedades_comercio", "detectar_novedades_industria", "detectar_novedades_construccion"):
+    # Todos los detectores, no una lista a mano: la lista se había quedado sin
+    # `detectar_novedades_campo`, que salía a la red y escribía su store.
+    for nombre in [n for n in dir(politica) if n.startswith("detectar_novedades")]:
         monkeypatch.setattr(politica, nombre, lambda: {})
     monkeypatch.setattr(politica, "fetch_derrotas_legislativas",
                         lambda: {"valor": 0} if registro_ok else None)

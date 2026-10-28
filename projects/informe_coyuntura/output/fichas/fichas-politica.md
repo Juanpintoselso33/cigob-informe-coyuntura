@@ -73,7 +73,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 56,5 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
 | Votos ajenos al aprobar leyes | Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó… | 22,1 % de las bancas de la cámara | VERDE | 8,1 % |
-| Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 8,1 % |
+| Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 8,1 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 16,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
@@ -234,7 +234,7 @@ Es la única medida directa de la relación entre el Gobierno y el empresariado 
 - Desde el 27 de octubre de 2026 la industria suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas. Se toma cada nota de su sección de comunicados de prensa desde el 10 de diciembre de 2023 (41), con el texto de la página y del PDF adjunto. Sus informes estadísticos periódicos —«Informe de Actividad», «Comercio Exterior Autopartista» e «Informe de Comercio Exterior»— son la salida de un tablero y no una toma de posición: se archivan sin clasificar por una regla de título (20 de 41).
 - Cada cámara tiene su saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. El indicador es el promedio simple de los saldos de las cámaras con al menos tres pronunciamientos en la ventana —no el saldo de todos los comunicados juntos—: la UIA y AFAC pesan lo mismo, publique cada una mucho o poco, y si una no llega ese mes cuenta la otra.
 - La serie llega sólo hasta el último mes con todos los comunicados clasificados, de las dos cámaras. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.
-- Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.
+- Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. Ocurre: la serie publicada tiene huecos (septiembre a noviembre de 2025), meses en que ninguna cámara llegó al mínimo de tres pronunciamientos en la ventana.
 
 ## Semáforo — valores que determinan el color
 
@@ -268,12 +268,11 @@ Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.
-- Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el mínimo para entrar (cuatro pronunciamientos sobre el Gobierno nacional en doce meses). El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.
+- Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el criterio para entrar al perímetro (al menos cuatro pronunciamientos sobre el Gobierno nacional en doce meses calendario). No hay que confundirlo con el otro umbral, que es de cálculo y no de perímetro: para que una cámara aporte su saldo en un mes dado hacen falta al menos tres pronunciamientos en la ventana. El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.
 - Varios informes estadísticos de AFAC traen frases críticas sobre la política comercial: como la regla que los archiva mira el título, esas frases no entran. Quedan listados, con las dos lecturas, para poder revisarlos. AFAC se pronuncia poco —cuatro veces en el último año, una de apoyo y tres de crítica—, así que un comunicado más mueve mucho su saldo.
 - La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado. La cantidad de pendientes se muestra en la ficha del indicador.
 - Para verificar que las reglas de clasificación no dejan lugar a la interpretación, cada tanda de comunicados la clasifican por separado dos codificadores independientes que no ven el trabajo del otro. En la pasada completa sobre ciento tres comunicados coincidieron en el 95% de las posturas y en el 94% de los destinatarios; en la tanda de veintidós de septiembre de 2026, en el 91% y el 95%. Los pocos desacuerdos se resuelven con tres criterios generales escritos, no caso por caso. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.
 - La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.
-- Los comunicados de AEA se leen de archivos PDF cuyo texto se extrae con un corte en los primeros párrafos. En los comunicados que abren con un rodeo y recién después fijan posición, esa extracción puede dejar afuera el pasaje decisivo.
 
 ## Si falta el dato / Política de revisiones
 
@@ -934,7 +933,7 @@ Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicion
 
 - Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.
 - Un trámite que supera los 24 meses nunca llega a contarse dentro de su cohorte: la ventana captura la mediana y el tramo alto de las duraciones observadas, pero los trámites excepcionalmente largos quedan fuera por construcción.
-- Denominador chico: con unos quince a veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.
+- Denominador chico: con pocos proyectos por cohorte (la tarjeta muestra el conteo vigente), uno solo mueve varios puntos porcentuales.
 - Cuenta proyectos por igual, sin ponderar su peso político. Las iniciativas recientes quedan fuera aunque sean centrales para la agenda actual.
 - La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (el indicador vigente puede reflejarlo mientras el proyecto siga dentro de su cohorte).
 
@@ -1162,7 +1161,7 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 # Cohesión del bloque oficialista (ambas cámaras)
 
-Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene votaciones nominales en la ventana, el peso pasa a la otra.
 
 | | | | |
 |---|---|---|---|
@@ -1175,12 +1174,12 @@ Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en l
 | **IDENTIFICADOR TÉCNICO** | cohesion_bloque | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
-| **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días |
+| **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones nominales de los últimos 90 días en que votó el bloque |
 | **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene votaciones nominales en la ventana, el peso pasa a la otra.
 
 Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.
 
@@ -1189,8 +1188,8 @@ Mide la cohesión interna del oficialismo en el Congreso, clave para sostener ve
 ## Método de cómputo
 
 - Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.
-- Por cámara, el cálculo es el promedio de esa cuenta en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.
-- El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.
+- Por cámara, el cálculo es el promedio de esa cuenta en todas las votaciones nominales de los últimos 90 días en que votó el bloque (no se filtran las votaciones divididas). Abstenciones y ausencias no entran.
+- El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin votaciones nominales), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.
 
 ## Semáforo — valores que determinan el color
 
@@ -1227,7 +1226,8 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 - Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.
 - No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.
 - Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.
-- Con pocas actas divididas en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.
+- Entran todas las votaciones nominales en que votó el bloque, incluidas las casi unánimes y las votaciones artículo por artículo de una misma ley: eso empuja el índice hacia 100 y hace que la cohesión medida sea más alta que la de las votaciones realmente disputadas. Filtrar solo las divididas es una decisión metodológica pendiente.
+- Con pocas votaciones en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.
 
 ## Si falta el dato / Política de revisiones
 

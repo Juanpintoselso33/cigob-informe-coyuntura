@@ -177,7 +177,7 @@ PROCEDENCIA = {
     "ipc_total": ("conceptual", "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual"),
     "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
     "desequilibrio_monetario": ("convencion", "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"),
-    "recaudacion": ("conceptual", "bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
+    "recaudacion": ("conceptual", "anclas sobre el nivel real desestacionalizado de la base imponible (100 = 4T-2023, ADR-0152); los cortes históricos de variación real en torno al cero caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
     "saldo_comercial_12m": ("conceptual", "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"),
     "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),
     "idc": ("conceptual", "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"),
@@ -209,7 +209,7 @@ PROCEDENCIA = {
     # ── ITCG ────────────────────────────────────────────────────────────────
     "cepo_mulc": ("documento", "«brecha sostenida <10-15% = condiciones óptimas de unificación» (doc 260702)"),
     "apertura_comercial": ("documento", "anclas sobre la lineal del documento: 0% → 100 · 15% → 0 (ADR-0021)"),
-    "desregulacion_normativa": ("convencion", "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"),
+    "desregulacion_normativa": ("convencion", "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes en artículos (2.500 / 7.000 / 15.000 / 30.000) los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"),
     "reduccion_estado": ("externa", "meta del Gobierno de recortar otro 10% de la planta en 2026, informada por la prensa citando fuentes oficiales (sin número publicado): −25,7% vs dic-2023 = 100 (ADR-0364). Antes, convención calibrada con el recorte observado"),
     "gasto_funcionamiento": ("convencion", "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"),
     # masa_salarial salió del índice por ADR-0186 (a pedido de CIGOB, dudas

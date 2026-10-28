@@ -203,8 +203,9 @@ BANDAS_ITCP = {
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
     "apoyo_empresario": [
-        # Saldo de postura de AEA y UIA hacia el Ejecutivo nacional, 12m
-        # móviles: (apoyos − críticas) / (apoyos + críticas). Mayor = mejor.
+        # Saldo de postura de la industria (UIA y AFAC; AEA salió del perímetro,
+        # ADR-0334) hacia el Ejecutivo nacional, 12m
+        # móviles, promedio por cámara: (apoyos − críticas) / (apoyos + críticas). Mayor = mejor.
         # ADR-0150.
         #
         # Las anclas parten el rango TEÓRICO del indicador (−1 a +1) en cinco
@@ -217,13 +218,15 @@ BANDAS_ITCP = {
         # cuando el extremo es matemáticamente inalcanzable, y acá no lo es:
         # ±1 es «los pronunciamientos de doce meses todos en el mismo sentido»,
         # que con n≈6 por ventana ocurre sin nada extraordinario. Que la serie
-        # de 32 meses se mueva entre −0,667 y +0,333 sin tocar los extremos es
-        # desempeño real, no un techo de construcción.
+        # publicada (23 meses con valor desde ago-2024; huecos en
+        # sep-nov 2025) llegue a −1,0 y no pase de +0,333 es desempeño real, no
+        # un techo de construcción (verificado contra series.json, 28-oct-2026).
         (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
     ],
     "apoyo_comercio": [
-        # Saldo de postura de la CAC y de CAME hacia el Ejecutivo nacional, 12m
-        # móviles. Mismas anclas que `apoyo_empresario` (ADR-0150), fijadas ANTES
+        # Saldo de postura de la CAC hacia el Ejecutivo nacional, 12m móviles
+        # (CAME quedó codificada pero fuera del perímetro, ADR-0380; ver
+        # APOYO_COMERCIO_CAMARAS en politica.py). Mismas anclas que `apoyo_empresario` (ADR-0150), fijadas ANTES
         # de ver la serie del comercio (ADR-0045, ADR-0380): el rango teórico
         # (−1 a +1) en cinco tramos iguales de 0,4 centrados en el cero. Un sector
         # no tiene bandas más indulgentes que otro por el solo hecho de que su
@@ -265,19 +268,21 @@ BANDAS_ITCP = {
         # sobreestimó sin verificarlo contra ningún caso externo) a "cohorte
         # MADURA (publicada hace 365-730 días) sancionada alguna vez" — saca
         # el sesgo de raíz en vez de compensarlo con anclas más generosas.
-        # Con la métrica nueva, el rango real observado (32 meses,
-        # dic-2023→jul-2026) es 0-14,8% (mediana 6,5%) — YA SIN el sesgo de
-        # ventana compartida, y sigue muy por debajo de cualquier antecedente
-        # histórico: Directorio Legislativo mide 40-50% para Macri (gobierno
+        # Con la métrica nueva, el rango real observado (35 meses,
+        # dic-2023→oct-2026; verificado contra series.json el 28-oct-2026) es
+        # 7,7-38,1% (mediana 25,0%; hoy 27,3%) — YA SIN el sesgo de ventana
+        # compartida, y por debajo de casi todo antecedente histórico: Directorio Legislativo mide 40-50% para Macri (gobierno
         # en minoría, sin mayoría propia), 63-67% para Alberto Fernández y
         # 75-82% para los mandatos de CFK con mayoría. Las anclas usan esos
         # tramos históricos como referencia externa (no el rango de esta
         # gestión): >50 (rango CFK/AF) → 100; 30-50 (rango Macri, gobierno
         # funcional en minoría) → 85; 15-30 → 65; 5-15 (la mitad de los 32
-        # puntos reales cae acá) → 40; ≤5 (la otra mitad) → 10. Que el 100%
-        # de la serie real quede en las dos bandas del piso es intencional:
-        # refleja que esta gestión está muy por debajo de cualquier gobierno
-        # argentino post-1983 medido con esta vara, no un error de escala.
+        # puntos reales caen entre 5 y 15) → 40; ≤5 → 10 (ningún punto real).
+        # De los 35 puntos observados, 9 caen en 5-15, 18 en 15-30 y 8 en 30-50:
+        # la serie recorre las bandas del medio, no sólo el piso. Esta gestión
+        # queda por debajo de los gobiernos con mayoría medidos con esta vara.
+        # Ojo: el puntaje se INTERPOLA entre los puntos medios de las bandas
+        # (anclas 5→10 · 10→40 · 22,5→65 · 40→85 · 50→100), no por tramo.
         # mayor = mejor, tramos extremos abiertos (ADR-0021).
         (50.0, INF, 100), (30.0, 50.0, 85), (15.0, 30.0, 65), (5.0, 15.0, 40), (-INF, 5.0, 10),
     ],
@@ -1014,9 +1019,9 @@ REZAGO_MESES_ITCP = {
     # Ventana móvil de 12 meses sobre sesiones ya publicadas en el archivo del
     # Consejo: el rezago es el de la publicación de la nota, no el de la ventana.
     "paralisis_denuncias": 2.0,
-    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN,
-    # que se actualiza con la sanción: el rezago es el de la carga en el CKAN.
-    "produccion_legislativa": 1.5,
+    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN:
+    # la regla de la ventana (N/2 = 6), sin sumar el rezago de la carga en el CKAN.
+    "produccion_legislativa": 6.0,
     # Cohorte MADURA: sólo entran los proyectos publicados hace 12-24 meses,
     # porque antes no hubo tiempo material de sancionarlos (ADR-0061). Es el
     # más rezagado del índice por construcción, y no hay forma de acelerarlo
@@ -1039,8 +1044,11 @@ REZAGO_MESES_ITCP = {
     "cobertura_judicial": 1.0,
     # Ventanas móviles de 12 meses / 365 días.
     "ratio_dnu": 6.0,
-    "insistencias_vetos": 0.0,           # eventos fechados; se leen al día (ADR-0377)
-    "rechazos_decretos": 0.0,
+    # Conteos de 12 meses móviles sobre eventos fechados (ADR-0377): la regla de
+    # la ventana (N/2 = 6); los eventos se leen al día, así que no hay rezago de
+    # publicación que sumar.
+    "insistencias_vetos": 6.0,
+    "rechazos_decretos": 6.0,
     "conflictividad_nacional": 6.0,
     "jornadas_individuales_no_trabajadas_12m": 6.0,
     # Ventanas de 90 días.

@@ -65,7 +65,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
-| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 2,5 % |
+| Alquiler (IPC del Gran Buenos Aires) | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 2,5 % |
 | Alquiler real (UdeSA – Mercado Libre) | Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre… | −9,84 % real interanual | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,7 % |
@@ -349,7 +349,7 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos y alquiler.
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos, alquiler (IPC) y alquiler pedido (UdeSA).
 
 - **Política de revisiones:** Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.
 
@@ -367,7 +367,7 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Costo real del alquiler
+# Alquiler (IPC del Gran Buenos Aires)
 
 Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
 
@@ -1800,7 +1800,7 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | icg_utdt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice 0-5 |
-| **SERIE DISPONIBLE** | 2001-11 → 2026-10 (300 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con 55 a 60 días. |
+| **SERIE DISPONIBLE** | 2001-11 → 2026-10 (300 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes). |
 | **PRODUCTOR DEL DATO** | UTDT | **OPERACIÓN ESTADÍSTICA** | Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual) |
 | **MODO DE ACCESO** | Automático: lectura de la planilla histórica que publica la universidad. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 

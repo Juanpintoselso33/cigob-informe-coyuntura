@@ -11,7 +11,9 @@ def test_main_no_renueva_ni_cuenta_como_fresca_una_revision_vencida(monkeypatch,
     for nombre in dir(politica):
         if nombre.startswith("fetch_"):
             monkeypatch.setattr(politica, nombre, lambda *a, **kw: None)
-    for nombre in ("detectar_novedades_judiciales", "detectar_novedades_empresarias", "detectar_novedades_comercio", "detectar_novedades_industria", "detectar_novedades_construccion"):
+    # Todos los detectores, no una lista a mano: la lista se había quedado sin
+    # `detectar_novedades_campo`, que salía a la red y escribía su store.
+    for nombre in [n for n in dir(politica) if n.startswith("detectar_novedades")]:
         monkeypatch.setattr(politica, nombre, lambda: {})
     resultado = {"valor": 73.82, "fecha_corte": "2026-09-08",
                  "obtenido_en": "2026-09-08", "desactualizado": vencida}

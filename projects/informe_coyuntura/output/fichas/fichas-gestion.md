@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 78,0 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 99,6 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre… | 99,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -424,7 +424,7 @@ La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Adm
 
 - Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).
 - A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.
-- También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.
+- También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: la caída de la Administración Pública Nacional, la de las empresas del Estado y la del universo completo son parecidas; las cifras vigentes de cada una están en el dato publicado.
 - Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la tarjeta para que cada lector pueda hacer la cuenta que prefiera.
 
 ## Semáforo — valores que determinan el color
@@ -645,7 +645,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) (2026-10).
 
-90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,8 del límite con Amarillo (55,2).
+90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,2).
 
 **Color vigente: VERDE**
 
@@ -724,14 +724,14 @@ Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo
 
 Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo: los accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, por cada mil personas trabajadoras cubiertas, en todo el país. Compara lo que va del año con el mismo período del año anterior, según los informes de la Superintendencia de Riesgos del Trabajo (SRT).
 
-Es el resultado de la reforma en materia de seguridad laboral: si bajan los siniestros por trabajador cubierto, el sistema registra menos accidentes y enfermedades. Dice cuánto cambió, no por qué: no atribuye a la reforma sus subas o bajas, que dependen también del empleo, de la actividad y de cuánto se denuncia. Los informes provisorios pueden revisarse al consolidarse.
+Es la lectura de cuántos accidentes y enfermedades registra el sistema de riesgos del trabajo: si bajan los siniestros por trabajador cubierto, el sistema registra menos. Dice cuánto cambió, no por qué: no se atribuye a ninguna reforma sus subas o bajas, que dependen también del empleo, de la actividad y de cuánto se denuncia. Los informes provisorios pueden revisarse al consolidarse.
 
 **Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un cuarto: accidentes y enfermedades con días de baja, en todo el país) y con los juicios que se inician en la Justicia Nacional del Trabajo de la Capital (otro cuarto, despidos incluidos). Ni la siniestralidad ni los juicios permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
 - Índice de incidencia = casos de accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes (sin in itinere) por cada mil personas trabajadoras cubiertas, total del sistema (unidades productivas más casas particulares).
-- El valor es la variación porcentual del índice del período acumulado del año contra el mismo período del año anterior. Con el informe de enero a junio de 2026: (149.066 / 9.991.247) contra (159.671 / 10.167.202), o sea 14,92 contra 15,70 por mil, una baja del 5,0 %.
+- El valor es la variación porcentual del índice del período acumulado del año contra el mismo período del año anterior. Ejemplo con el informe de enero a junio de 2026, el vigente al redactar la ficha: (149.066 / 9.991.247) contra (159.671 / 10.167.202), o sea 14,92 contra 15,70 por mil, una baja del 5,0 %.
 - La serie combina un punto por año (año completo contra el anterior, de la Serie histórica, fechado en diciembre) con un punto por cada informe provisorio leído (período acumulado, fechado el primer día de su último mes). Es escalonada: cada mes muestra el último punto, hasta que sale el siguiente.
 - El colector verifica que unidades productivas más casas particulares den el total y que las variaciones que el propio informe imprime en su Cuadro 2 coincidan con las que salen de sus cifras. Si algo no cierra, no publica un valor dudoso: conserva el último.
 
@@ -946,6 +946,8 @@ Dato vigente: 55,6 % de avance (etapas 0-4, cartera Ley Bases) (2026-09).
 
 Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
+- **Participación en otros indicadores.** Comparte un hecho con las concesiones de infraestructura: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una etapa de privatización aquí y como adjudicación de concesión allá; el peso combinado es chico, porque dentro de la cartera es un tramo y el indicador no se calcula distinto por ello.
+
 ## Transparencia — limitaciones declaradas
 
 - La asignación de etapas requiere curaduría del analista con documentos primarios citados en el registro; no es una medición automática de ventas cerradas.
@@ -1131,6 +1133,8 @@ Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)
 
 Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
+- **Participación en otros indicadores.** Comparte un hecho con las privatizaciones: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una adjudicación de concesión aquí y como etapa de privatización (Corredores Viales) allá; el peso combinado es chico, porque dentro de el plan de km es un tramo y el indicador no se calcula distinto por ello.
+
 ## Transparencia — limitaciones declaradas
 
 - El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.843 de los 9.091 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.
@@ -1195,7 +1199,7 @@ Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la 
 
 Mide lo que el compromiso prometía cambiar. La intermediación no estaba en la clasificación del gasto —en 2023 el 98,3% del devengado ya figuraba como ayudas a personas—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1291,7 +1295,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 
 Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1393,7 +1397,7 @@ Cuánto avanzó la implementación de la libre elección de cobertura de salud: 
 
 Evalúa lo que depende del Gobierno: que la elección esté habilitada y funcione. No cuenta cuántas personas se cambian, porque quedarse en la cobertura actual también es elegir. Como dato de contexto, la tarjeta muestra qué parte de los usuarios de prepagas tiene sus aportes derivados directo. Con los hitos cumplidos el puntaje queda alto y estable: es una promesa cumplida, no un indicador de variación.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
