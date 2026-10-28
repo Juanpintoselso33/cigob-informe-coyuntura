@@ -32,13 +32,19 @@ const esMacro = meta.key === "macro";
 // Resumen editorial del cinturón, debajo del texto del índice en la cabecera
 // (pedido del 28-oct-2026; por ahora sólo política). Mismo tipo de letra que
 // el pie de la barra.
-const RESUMEN_CINTURON: Record<string, string> = {
-  politica: "El gobierno tiene hoy un frente político tranquilo. El Congreso no le pone freno: en el último año no revirtió vetos ni decretos, el bloque oficialista vota unido y logra alianzas para sacar sus proyectos, y más de la mitad de los senadores de otros partidos lo acompaña. La calle está más calma, con menos protestas que en 2023, y 18 de las 24 provincias adhirieron al régimen de grandes inversiones. Parte de ese respaldo se sostiene con más fondos discrecionales a las provincias. El punto débil: la industria se muestra crítica. La calma es real, pero descansa en acuerdos que hay que renovar.",
+const RESUMEN_CINTURON: Record<string, string[]> = {
+  macro: ["La economía está ordenada, pero no crece. El Estado gasta menos de lo que recauda, se financia a tasas razonables y el comercio exterior deja un superávit de 26.500 millones de dólares, gracias a buenos precios de exportación. En contra, la actividad cae 1,4 % en un año, la industria retrocede y el crédito no arranca. La inflación, en 1,9 % mensual, si bien es notablemente más baja que al inicio, no termina de bajar. Además, el peso está caro para producir, y hoy eso se compensa con buenos precios internacionales. La casa está en orden, pero la estabilidad depende de que el mundo siga acompañando y de que la producción y el crédito se reactiven antes de que la inflación vuelva a apretar."],
+  gestion: ["Es el cinturón donde el gobierno muestra más resultados. La gran mayoría de sus reformas está en marcha o pronta a finalizar.", "El gobierno avanza con casi todo lo que prometió. El Estado nacional va disminuyendo su peso, con menos empleados y menos gasto. La distancia entre el dólar oficial y el financiero es de apenas 8 %, señal de que el cepo está quedando atrás. Se modificaron o eliminaron más de 17.600 artículos de normas, avanzan las privatizaciones, las rutas ya están concesionadas y la reforma laboral está casi implementada. Quedan dos pendientes: exportar e importar todavía paga impuestos altos, y los juicios laborales siguen subiendo. La gestión cumple su agenda, pero falta ver si esos cambios se traducen en más inversión y crecimiento."],
+  vida_cotidiana: ["El índice de impacto social compara cómo viven hoy las familias frente a fines de 2023. Hay avances claros, pero también señales de desgaste que ponen al cinturón en tensión.", "La vida cotidiana muestra dos caras. Frente al inicio del mandato, el salario registrado compra un 7 % más de canasta básica, la pobreza, si bien en niveles todavía altos, bajó a 31 % y los delitos graves retrocedieron. Se registran tensiones en el empleo, no tanto por su cantidad sino por su calidad. Por otro lado, las ventas en supermercados bajan, compensadas sólo en parte por el comercio electrónico, y se come menos carne vacuna. Lo más crítico son las deudas: el 14,6 % de los préstamos y tarjetas de las familias está en mora, y las cuotas se llevan casi la cuarta parte de los salarios registrados. Sin crecimiento, la mejora es frágil.", "En el mes 34 de la administración del presidente Milei, el índice de confianza en el gobierno se mantiene, superando los registros de gestiones anteriores en el mismo tramo del mandato."],
+  politica: ["El gobierno tiene hoy un frente político tranquilo. El Congreso no le pone freno: en el último año no revirtió vetos ni decretos, el bloque oficialista vota unido y logra alianzas para sacar sus proyectos, y más de la mitad de los senadores de otros partidos lo acompaña. La calle está más calma, con menos protestas que en 2023, y 18 de las 24 provincias adhirieron al régimen de grandes inversiones. Parte de ese respaldo se sostiene con más fondos discrecionales a las provincias. El punto débil: la industria se muestra crítica. La calma es real, pero descansa en acuerdos que hay que renovar."],
 };
 // Pedido del 28-oct-2026, sólo política: el texto bajo la barra se reemplaza
 // por «Qué expresa» y «Cómo se calcula», debajo del resumen; el valor, los
 // pesos y los cortes de color salen de los datos.
 const QUE_EXPRESA: Record<string, string> = {
+  macro: "El índice del cinturón macroeconómico resume en un número de 0 a 100 qué tan firme está la economía: la inflación, las cuentas públicas, el sector externo, el financiamiento, la actividad y la inversión.",
+  gestion: "El índice del cinturón de gestión resume en un número de 0 a 100 cuánto de la agenda de reformas prometida se está ejecutando de verdad.",
+  vida_cotidiana: "El índice de impacto social compara cómo están hoy los hogares con cómo estaban al empezar el mandato. 100 es el promedio del último trimestre de 2023: más de 100 quiere decir que la situación mejoró desde entonces, y menos de 100, que empeoró. No tiene techo.",
   politica: "El índice del cinturón político resume en un número de 0 a 100 cuánto poder real tiene el Gobierno para sostener y lograr el marco normativo que le permita llevar adelante su proyecto, mide en este sentido capacidad de gobernar, no popularidad ni intención de voto.",
 };
 // Título de la página del cinturón cuando difiere del nombre del menú y la portada.
@@ -343,7 +349,7 @@ const robChartData = rob?.hist && indice ? {
         {RESUMEN_CINTURON[meta.key] && (
           <div class="cg-nivel-resumen">
             <h2 class="cg-h2 cg-titulo-n2">Resumen</h2>
-            <p class="cg-nivel-pie">{RESUMEN_CINTURON[meta.key]}</p>
+            {RESUMEN_CINTURON[meta.key].map(parrafo => <p class="cg-nivel-pie">{parrafo}</p>)}
           </div>
         )}
         {indice && QUE_EXPRESA[meta.key] && (
@@ -352,21 +358,24 @@ const robChartData = rob?.hist && indice ? {
               <h2 class="cg-h2 cg-titulo-n2">Qué expresa</h2>
               <p class="cg-nivel-pie">
                 {QUE_EXPRESA[meta.key]}{" "}
-                0 es la peor situación y 100 la mejor. Hoy marca{" "}
-                <strong>{num(indice.data.valor as number)}/100</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
+                {indice.base100 ? "" : "0 es la peor situación y 100 la mejor. "}Hoy marca{" "}
+                <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
               </p>
             </div>
             <div class="cg-nivel-resumen">
               <h2 class="cg-h2 cg-titulo-n2">Cómo se calcula</h2>
               <p class="cg-nivel-pie">
-                Cada indicador recibe un puntaje: su valor se compara con una tabla fija de referencias
-                y se traduce a un puntaje de 0 a 100. Los indicadores se agrupan en las{" "}
+                Cada indicador recibe un puntaje: {indice.base100
+                  ? "casi todos se ponen en la misma escala, donde 100 es su valor de fines de 2023 (las excepciones se explican a continuación)."
+                  : "su valor se compara con una tabla fija de referencias y se traduce a un puntaje de 0 a 100."}{" "}
+                Los indicadores se agrupan en las{" "}
                 {Object.keys(indice.data.dimensiones).length} dimensiones que se detallan abajo, y cada
                 una promedia los puntajes de sus indicadores. Por último, el índice promedia las
                 dimensiones según su peso:{" "}
                 {Object.values(indice.data.dimensiones).map((d, i, a) =>
                   `${d.nombre.charAt(0).toLowerCase()}${d.nombre.slice(1)} (${Math.round(d.peso * 100)}%)${i < a.length - 2 ? ", " : i === a.length - 2 ? " y " : "."}`).join("")}
               </p>
+              {PARTICULAR_INDICE[meta.key] && <p class="cg-nivel-pie">{PARTICULAR_INDICE[meta.key]}</p>}
               <p class="cg-nivel-pie">
                 El color del cinturón sale de este número: {coloresEnIndice(!!indice.base100)}. Los
                 cuatro cinturones usan los mismos cortes de color, y por eso se pueden comparar entre sí.
@@ -862,7 +871,7 @@ const robChartData = rob?.hist && indice ? {
 
 <style is:global>
   /* Cinturón macro: el pie de la barra es un párrafo de lectura, no una nota. */
-  .cg-detalle-nivel .cg-nivel-pie { font-size: 15px; line-height: 1.55; margin-top: 8px; }
+  .cg-detalle-nivel .cg-nivel-pie { font-size: 17px; line-height: 1.6; margin-top: 8px; }
   .cg-detalle-nivel .cg-nivel-resumen { margin-top: 18px; }
   .cg-detalle-nivel .cg-nivel-resumen .cg-nivel-pie:first-child { margin-top: 0; }
   /* Jerarquía de títulos de la página de cinturón (28-oct-2026): nivel 1 es el
