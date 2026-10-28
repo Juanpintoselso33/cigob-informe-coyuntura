@@ -159,6 +159,39 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Resultados de la investigación del 28-oct (para decidir):**
+  - **Dotación: cerrado.** Según el INDEC la serie no cambió de universo (las fusiones de
+    ministerios suman en otro renglón). Sólo salieron dos organismos disueltos: INADI (408
+    personas) y ENOHSA (356): a lo sumo 0,3 de los 21,4 puntos. No hubo pases a provincias
+    ni a empresas. Falta sumarlo a la ficha. Fuente: serie_dotacion_apn.xlsx del INDEC,
+    hoja «Aclaraciones», y nota metodológica de feb-2025.
+  - **Alquiler de UdeSA contra fines de 2023: se puede armar, aproximado.** Encadenando las
+    variaciones mensuales del AMBA de cada informe desde oct-2023 (abr-2024 = 3,2 %; nov-2024
+    se empalma con la interanual). La cadena da 2,5 a 4,7 puntos menos que las interanuales
+    que publica el propio informe: la fuente no es consistente consigo misma. Resultado: el
+    alquiler nuevo bajó 33 % (contra dic-2023) a 43 % (contra oct-dic 2023) en términos
+    reales; octubre de 2023 tuvo +21 % en un mes e infla la base. Opciones: usar la cadena
+    declarada como aproximada (recomendada), sacarlo, o dejarlo interanual.
+  - **Alquiler del IPC contra el de UdeSA:** el del IPC (contratos vigentes) se duplicó en
+    términos reales contra fines de 2023 (201,9; en canastas 214,6); el de UdeSA (alquileres
+    nuevos) bajó. No se contradicen: miden cosas distintas. Si se muestran los dos, rotular
+    «contratos vigentes» y «alquileres nuevos».
+  - **Monotributo:** de lo que puntúa, sólo «Informalidad laboral» lo castiga: cuenta como
+    informal al asalariado que factura con monotributo (533 mil a fines de 2023, 563 mil hoy,
+    15 % de los «informales»). Al cuentapropista con monotributo ningún indicador que puntúe
+    lo castiga; «Trabajo independiente», que sí, ya no puntúa. Opciones:
+    A) informalidad sin contar a quien se paga sus aportes (EPH, microdatos, desde el
+    4T-2023): 30,4 % → 32,1 % (+1,7 en vez de +2,2); E) empleo registrado total del SIPA con
+    monotributo general (sin el social): −1,5 % contra −3,8 % de asalariados privados.
+    Recomendado: A en lugar de la informalidad actual y E en lugar del empleo registrado de
+    asalariados. Ninguna da vuelta el signo. Archivos y cálculos: scratchpad/empleo/.
+  - **Empleadores de ARCA:** no hay serie pública con historia de inscriptos sin personal.
+    Lo más cercano: Boletín anual de Seguridad Social de ARCA, cuadro 3.1 (empleadores con al
+    menos un empleado): 537.678 en dic-2023, 519.531 en dic-2025 (−3,4 %), hasta un año de
+    rezago. OEDE anual: 573.008 (2023) → 558.317 (2024). Recomendado: el padrón sigue como
+    dato sin puntuar y su explicación suma la serie de ARCA como contexto. Ojo: la ficha de
+    mortalidad_pymes dice que el OEDE está congelado en oct-2023 y es falso (llega a 2025).
+
 - **Monotributistas contados como empleo de mala calidad** (Juan, 28-oct; preocupación
   central de empleo). Los indicadores actuales (informalidad, calidad del empleo y afines)
   tratan al monotributo y al trabajo independiente como empleo precario o informal, y eso
