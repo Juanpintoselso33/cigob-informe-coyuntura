@@ -178,7 +178,7 @@ export const FICHAS: Record<string, Ficha> = {
     resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Parte de sus pesos y escalas vienen del documento institucional de CiGob y el resto es elaboración propia, documentada en cada ficha.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales, sector externo, financiamiento, y actividad e inversión.",
-      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial, las reservas y el cruce del tipo de cambio real con los términos del intercambio), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman cerca del 33 % del índice. El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
+      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial, las reservas y el cruce del tipo de cambio real con los términos del intercambio), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman una parte considerable del índice (su peso se ve en la composición del índice). El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
       "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), con dos excepciones: las reservas netas, porque el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024, y el desequilibrio monetario, que arranca en abril de 2025 con la apertura del cepo a personas humanas.",
@@ -231,7 +231,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de validación es corta — los meses del mandato en curso —, por lo que las correlaciones se leen como consistencia, no como prueba.",
       "No incluye el riesgo país ni los vencimientos de deuda en dólares: se decidió no sumarlos (reunión de octubre de 2026) para no duplicar la lectura de reservas y del costo del Tesoro. El resultado primario excluye los intereses de la deuda, así que un superávit primario puede convivir con un déficit financiero.",
       "Los indicadores no llegan todos con la misma demora: el índice de un mes combina datos de meses de referencia distintos (la actividad suele ir dos meses atrás; la inflación y las expectativas, uno). Cada tarjeta dice de qué mes es su dato; antes de atribuir un cambio del índice a la coyuntura del mes, conviene mirar qué indicador se actualizó.",
-      "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales la base imponible, el crédito privado, y la capacidad prestable. Con los pesos de octubre de 2026, el 29,4 % del índice depende de que la inflación esté bien medida (inflación 15,6 + base imponible 7,2 + capacidad prestable 3,4 + crédito 3,2), y las expectativas alimentan además el costo del Tesoro (4 %). Un error del INDEC no movería una fuente sino varias a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
+      "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales la base imponible, el crédito privado, y la capacidad prestable. Una parte grande del índice depende de que la inflación esté bien medida (la inflación misma, la base imponible, la capacidad prestable y el crédito; sus pesos se ven en la composición del índice), y las expectativas alimentan además el costo del Tesoro. Un error del INDEC no movería una fuente sino varias a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
     ],
     cambios: [
       {
@@ -396,7 +396,7 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.",
     limitaciones: [
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
-      "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.",
+      "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y toda la lectura de actividad del índice colgaba de un solo dato.",
     ],
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
@@ -832,7 +832,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El resultado se lleva a pesos constantes con el índice de precios y se divide por el promedio del cuarto trimestre de 2023, que vale 100: la lectura es cuánta base imponible real queda respecto del punto de partida.",
       "Se corrige la estacionalidad, que es grande: sin corregir, la diferencia entre el mes calendario más alto y el más bajo llega a treinta puntos del índice. El factor de cada mes es el cociente entre ese mes y la tendencia de doce meses centrada, promediado por mes calendario y normalizado para no alterar el nivel. Mayo y junio concentran recaudación —vencimientos y aguinaldo— y marzo es el piso. Corregida, la estacionalidad remanente baja a tres puntos.",
       "La parte provincial de 2022 no se publica como informe mensual y se reconstruye desde la variación interanual que informa cada gacetilla de 2023. La reconstrucción se controla contra el acumulado anual, deducido por separado: los dos caminos coinciden salvo redondeo.",
-      "Se descompone el agregado en la porción ligada a actividad económica y el resto: IVA-DGI y créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado DGI —entre 30% y 62% del total según el mes—, no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.",
+      "Se descompone el agregado en la porción ligada a actividad económica y el resto: IVA-DGI y créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado DGI, no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.",
     ],
     anclas: {
       bandas: [
@@ -891,7 +891,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».",
-      "El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
       "La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.",
     ],
     anclas: {
@@ -907,7 +907,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     dobleUso: "Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, se publican como series de contexto.",
     limitaciones: [
-      "Los umbrales y el peso del cruce (11% del índice) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.",
+      "Los umbrales y el peso del cruce son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.",
       "Dice si el peso está caro o barato, no si ese nivel se sostiene: para eso está el cruce con los términos del intercambio.",
     ],
     faltantes: "Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, el cruce no se calcula y el sector externo se arma con el saldo comercial y las reservas, que renormalizan entre sí.",
@@ -938,7 +938,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.",
-      "El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
       "Para la serie histórica del cruce, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.",
     ],
     anclas: {
@@ -1032,7 +1032,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.",
       "Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.",
       "La tensión se traduce al índice macroeconómico con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.",
-      "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.",
+      "Su peso dentro de estabilidad monetaria y el de la dimensión en el índice macroeconómico se ven en la composición del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: el de este indicador queda al lado del de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.",
     ],
     anclas: {
       bandas: [
@@ -1272,7 +1272,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas (traduce el semáforo de Luis) — los cortes de banda del motor son 14, 8, 2 y −2 pp, elegidos para que los cruces de COLOR caigan en los umbrales que pidió Luis: más de +8 puntos → verde, el más alto; entre +8 y +5 → amarillo; entre +5 y 0 → naranja; 0 o menos → rojo, el más bajo.",
-      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (7% del total) — la dimensión que pesa deliberadamente menos que las otras seis, porque el proyecto distingue capital político de popularidad electoral.",
+      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón — la dimensión que pesa deliberadamente menos que las otras seis, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del antiguo cinturón espíritu de época. Ese cinturón salió del monitor el 14 de agosto de 2026, eliminando el segundo aporte de este indicador al índice global.",
     limitaciones: [
@@ -1320,7 +1320,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "vetos (12 meses)",
     },
     incidenciaTexto: [
-      "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
       "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
@@ -1361,7 +1361,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "decretos (12 meses)",
     },
     incidenciaTexto: [
-      "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
       "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
@@ -1396,7 +1396,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera. Lo reemplazan dos conteos de lo consumado en las dos cámaras: los vetos insistidos y los decretos derogados. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
-      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
       "Un cero en esta tarjeta no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la tarjeta lo dice así en vez de leerlo como «no pasó nada».",
     ],
     limitaciones: [
@@ -1434,7 +1434,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula significa igualdad de los saldos de expectativas de los dos grupos; no ausencia de incertidumbre ni de efectos de la política pública.",
       "Desde octubre de 2026 no integra el índice y las bandas de arriba ya no se aplican: se conservan para leer la serie histórica. Mide las expectativas de un solo sector, el de la construcción, y no la relación del empresariado con el Gobierno; la dimensión de sector privado queda con la postura pública de la Unión Industrial.",
-      "Hasta septiembre de 2026 pesó el 50% de la dimensión de sector privado, incorporada en julio de 2026: 7% efectivo del índice político (6,5% hasta que salió el Votómetro en octubre de 2026). De agosto a septiembre, mientras la postura de la Unión Industrial estuvo suspendida, absorbió la dimensión entera.",
+      "Hasta septiembre de 2026 integró la dimensión de sector privado, incorporada en julio de 2026. De agosto a septiembre, mientras la postura de la Unión Industrial estuvo suspendida, absorbió la dimensión entera.",
     ],
     limitaciones: [
       "Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.",
@@ -1477,7 +1477,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, interpolado entre anclas: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos del empresariado organizado.",
-      "Pesa un cuarto de la dimensión de sector privado, con el comercio, el campo y la construcción, sumados el 27 de octubre de 2026. Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. Desde el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político (14,0% mientras fue el único).",
+      "Integra la dimensión de sector privado, con el comercio, el campo y la construcción, sumados el 27 de octubre de 2026. Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. El peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
@@ -1525,7 +1525,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y del comercio y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
-      "Pesa un cuarto de la dimensión de sector privado, junto a la industria, el comercio y la construcción. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político.",
+      "Integra la dimensión de sector privado, junto a la industria, el comercio y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que tres asociaciones decidieron declarar en público, no el humor de los productores ni la opinión de sus asociados.",
@@ -1564,12 +1564,12 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos de la cámara.",
-      "Pesa un cuarto de la dimensión de sector privado, con la industria, el campo y la construcción. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
+      "Integra la dimensión de sector privado, con la industria, el campo y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor de los comerciantes ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
       "Es una sola cámara. La CAC entra porque cumple el mínimo que se fijó para entrar: cuatro pronunciamientos sobre el Gobierno nacional en doce meses. La Confederación Argentina de la Mediana Empresa (CAME) está clasificada y no entra, porque en el último año sólo dos de sus comunicados se pronunciaron sobre el Gobierno nacional, después de veinticuatro en 2024 y 2025; si vuelve a pronunciarse, vuelve a entrar. Quedan sin medir las pymes del interior, que son la base de CAME.",
-      "La CAC nunca criticó al Ejecutivo nacional en un comunicado: los veintiún pronunciamientos que le dedicó desde diciembre de 2023 son todos de apoyo. Sus críticas —doce— van dirigidas a las provincias, los municipios, el Congreso, la Justicia o un organismo internacional. Por eso el saldo estuvo en el máximo en los treinta y dos meses de la serie y casi no puede moverse hacia abajo; y con cuatro pronunciamientos en la ventana, una sola crítica lo bajaría de +1,0 a +0,6.",
+      "La CAC nunca criticó al Ejecutivo nacional en un comunicado: los veintiún pronunciamientos que le dedicó desde diciembre de 2023 son todos de apoyo. Sus críticas —doce— van dirigidas a las provincias, los municipios, el Congreso, la Justicia o un organismo internacional. Por eso el saldo estuvo en el máximo en los treinta y dos meses de la serie y casi no puede moverse hacia abajo; y con tan pocos pronunciamientos en la ventana, una sola crítica lo bajaría de golpe.",
       "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado.",
       "Para verificar que las reglas no dejan lugar a la interpretación, los comunicados los clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 95% de las posturas y en el 93% de los destinatarios de los 74 de la CAC. Ambos son sistemas de inteligencia artificial —de dos modelos distintos, a diferencia de la tanda de la industria—; comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. Los pocos desacuerdos los resolvió otro sistema con tres criterios generales escritos, y quedan pendientes de revisión por una persona.",
       "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás.",
@@ -1603,11 +1603,11 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria, el comercio y el campo, fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
-      "Pesa un cuarto de la dimensión de sector privado, junto a la industria, el comercio y el campo. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político.",
+      "Integra la dimensión de sector privado, junto a la industria, el comercio y el campo. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que una cámara decidió declarar en público, no el humor de las constructoras ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
-      "Se pronuncia poco sobre el Gobierno nacional: dieciséis veces desde diciembre de 2023 y cuatro en los últimos doce meses, el mínimo para entrar. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo: la serie fue de −0,43 a +1,0.",
+      "Se pronuncia poco sobre el Gobierno nacional: dieciséis veces desde diciembre de 2023 y cuatro en los últimos doce meses, el mínimo para entrar. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo.",
       "En 42 de las 600 notas los dos lectores no coincidieron. Dos los resolvió una persona (Juan, el 27 de octubre de 2026); los otros 40 no decidían el puntaje de la ventana en la que se clasificaron, siguen sin resolver y no cuentan hasta que alguien los resuelva. Casi todos son discursos de sus delegaciones en actos provinciales.",
       "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta las notas nuevas y avisa cada una como pendiente; mientras haya una sin clasificar la serie no avanza.",
       "Para verificar que las reglas no dejan lugar a la interpretación, las notas las clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 99% de las posturas y en el 94% de los destinatarios (kappa de 0,90 y 0,85). Ambos son sistemas de inteligencia artificial, de dos modelos distintos, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta.",
@@ -1639,7 +1639,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, hubo un DNU por cada tres leyes — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 23% junto a la eficacia legislativa, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón, junto a la eficacia legislativa, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
@@ -1682,7 +1682,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −30% o menos → el más alto; entre −30% y −15% → alto; entre −15% y +15% → moderado (un año normal); entre +15% y +30% → bajo; más de +30% → el más bajo. Los cortes salen de la historia previa al mandato: la variación interanual de las ventanas de doce meses de 2020 a 2023 tiene un desvío de 14,7 puntos, así que ±15% es un desvío y ±30% son dos. Con −27,2% en septiembre de 2026 puntúa 94,4.",
-      "Aporta el 60% de la dimensión de conflicto social (6% del índice político). La intensidad laboral oficial aporta el 40% restante.",
+      "Integra la dimensión de conflicto social, junto con la intensidad laboral oficial.",
     ],
     limitaciones: [
       "Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.",
@@ -1732,7 +1732,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "jornadas 12m",
     },
     incidenciaTexto: [
-      "Aporta el 40% de la dimensión de conflicto social (4% del índice político); ACLED conserva el 60% por cubrir también protestas y disturbios no laborales.",
+      "Integra la dimensión de conflicto social; ACLED conserva el mayor peso por cubrir también protestas y disturbios no laborales.",
       "Con 4,82 millones de jornadas a julio de 2026 puntúa 87: por debajo de la mediana de 2006-2023, pero no en el piso de la historia. No reemplaza a ACLED: mide intensidad laboral, no toda la conflictividad callejera.",
     ],
     limitaciones: [
@@ -1773,7 +1773,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice: su valor no se convierte en puntaje ni pesa en la dimensión de alianzas territoriales. La escala con que puntuaba hasta entonces se conserva para leer la serie histórica con la misma regla con que se construyó: El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas, hasta septiembre de 2026: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Hasta septiembre de 2026 pesó 40% de la dimensión, junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI. Ese 40% pasó íntegro a la medida de transferencias no automáticas, que reemplaza a ésta: la reunión del 26 de octubre decidió medir lo que la Nación gira por decisión y no lo que a las provincias les corresponde por ley.",
+      "Hasta septiembre de 2026 integró la dimensión, junto al alineamiento de senadores por provincia y la adhesión provincial al RIGI. Su lugar pasó íntegro a la medida de transferencias no automáticas, que reemplaza a ésta: la reunión del 26 de octubre decidió medir lo que la Nación gira por decisión y no lo que a las provincias les corresponde por ley.",
     ],
     limitaciones: [
       "Una ventana de 12 meses promedia lo ocurrido: un giro de pocas semanas se diluye y la medida describe, en promedio, lo de hace unos seis meses. Mira la tendencia, no el último mes.",
@@ -1819,7 +1819,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +30% → el más alto; entre +5% y +30% → alto; entre −20% y +5% → moderado; entre −50% y −20% → bajo; −50% o menos → el más bajo. Más giro discrecional se lee como más recurso de negociación puesto en juego. Los cortes son una convención de CIGOB fijada mirando el rango observado de las 22 ventanas de la gestión (de −85% a +38%): lo discrecional se concentra en pocos meses y las bandas de ±10 puntos que valían para el flujo automático lo dejarían casi siempre saturado.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI. Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto al alineamiento de senadores por provincia y la adhesión provincial al RIGI. Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
     ],
     limitaciones: [
       "Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.",
@@ -1856,7 +1856,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre los puntos medios de cada banda: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Las anclas de la interpolación no son los bordes sino los puntos medios: 50% o más → 100; 40% → 85; 22,5% → 65; 10% → 40; 5% o menos → 10 (un 27,3% da 70,5). Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 30% junto al ratio DNU, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón, junto al ratio DNU, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1894,12 +1894,12 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
       "Por cámara, el cálculo es el promedio de esa cuenta en todas las votaciones nominales de los últimos 90 días en que votó el bloque (no se filtran las votaciones divididas). Abstenciones y ausencias no entran.",
-      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin votaciones nominales), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.",
+      "El indicador publicado es el compuesto bicameral: Diputados pesa más que el Senado, con el mismo reparto que las dos cámaras tenían cuando eran indicadores separados (el reparto exacto está en el detalle de la tarjeta). Si una cámara no tiene dato (por ejemplo, receso sin votaciones nominales), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.",
     ],
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
       "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
-      "Comparte la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total) a partes iguales con los votos ajenos al aprobar leyes: pesa la mitad de la dimensión. Si falta ese otro indicador, la cohesión lleva la dimensión entera.",
+      "Comparte la dimensión de cohesión interna del oficialismo del índice del cinturón a partes iguales con los votos ajenos al aprobar leyes: pesa la mitad de la dimensión. Si falta ese otro indicador, la cohesión lleva la dimensión entera.",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
@@ -1958,7 +1958,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "El puntaje del índice se interpola entre anclas declaradas por convención, más alto = mejor: 40% de la cámara o más → el más alto; 30% → alto; 20% → moderado; 10% → bajo; 5% o menos → el más bajo. Son anclas de convención, no una calibración contra el rango observado: ningún antecedente externo dice cuántos votos ajenos hacen falta para gobernar bien. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (un 15% da 52,5; un 25%, 75).",
-      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total), a partes iguales con la cohesión del bloque: es lo que baja el peso de la cohesión a la mitad de la dimensión. Cuando falta una cámara, el peso pasa a la otra; cuando falta el indicador entero, la dimensión queda en la cohesión.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón, a partes iguales con la cohesión del bloque: es lo que baja el peso de la cohesión a la mitad de la dimensión. Cuando falta una cámara, el peso pasa a la otra; cuando falta el indicador entero, la dimensión queda en la cohesión.",
     ],
     limitaciones: [
       "Mide cuántos votos ajenos hicieron falta, no quién los puso: una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos. Tampoco distingue a un aliado estable de uno que vota caso por caso.",
@@ -1998,7 +1998,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
       "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto a las transferencias federales y la adhesión al RIGI.",
     ],
     limitaciones: [
       "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
@@ -2047,7 +2047,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
       "No se superpone con el indicador del RIGI del cinturón de gestión: aquél mide la inversión aprobada sobre la presentada, con datos del Ministerio de Economía; éste, cuántas provincias adhirieron por ley. Mismo régimen, otro dato y otra fuente.",
       "El puntaje se interpola entre las anclas del porcentaje de adhesiones. Se conservan las bandas del diseño; corregir el catálogo no modifica sus pesos ni umbrales. La historia reconstruida de un proceso de adhesión todavía abierto no constituye por sí sola una muestra representativa para calibrar anclas permanentes.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto a las transferencias federales y el alineamiento de senadores por provincia.",
     ],
     limitaciones: [
       "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
@@ -2126,7 +2126,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: mide si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón, junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
@@ -2177,7 +2177,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie mensual del indicador desde diciembre de 2023: el período va de meses sin ninguna derrota hasta el pico de ocho en doce meses, tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
-      "YA NO PUNTÚA. Salió del índice político en julio de 2026, reemplazado en la dimensión de poder legislativo por los desafíos legislativos: el par derrotas/bloqueo correlacionaba −0,984 y se llevaba el 40% de la dimensión para medir una sola cosa. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba —el 20% de una dimensión que entonces pesaba el 25% del índice— y se conserva para poder leer la serie histórica.",
+      "YA NO PUNTÚA. Salió del índice político en julio de 2026, reemplazado en la dimensión de poder legislativo por los desafíos legislativos: el par derrotas/bloqueo correlacionaba −0,984 y se llevaba buena parte de la dimensión para medir una sola cosa. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba y se conserva para poder leer la serie histórica.",
     ],
     limitaciones: [
       "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la tarjeta publica la composición del conteo para leerlo con contexto.",
@@ -2223,7 +2223,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los cortes 90/75/50/25 son decisiones editoriales sobre una tasa de supervivencia: 100% significa que todas las normas desafiadas siguen en pie. No son umbrales calibrados por una fuente externa ni equivalen a la proporción de bancas necesaria para sostener un veto. El universo combina vetos y decretos, con reglas distintas. La afirmación anterior de que no hubo insistencias entre 2003 y 2025 era incorrecta: el Senado documenta la insistencia completada sobre emergencia en discapacidad el 4 de septiembre de 2025. Ese antecedente no permite inferir una tasa histórica para este universo mixto.",
-      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8-sep-2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una tarjeta. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba —el 12% de una dimensión que pesa el 21% del índice— y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
+      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8-sep-2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una tarjeta. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
     ],
     limitaciones: [
       "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",
@@ -2672,7 +2672,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice de gestión: la dirección de CiGob pidió medir los accidentes y enfermedades que registra el sistema de riesgos del trabajo y no los juicios que genera. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para leer la serie histórica, que se sigue calculando.",
-      "Hasta octubre de 2026 pesó el 25% de la dimensión de reforma laboral. Ese cuarto lo ocupa ahora la siniestralidad laboral, con la misma escala.",
+      "Hasta octubre de 2026 integró la dimensión de reforma laboral. Su lugar lo ocupa ahora la siniestralidad laboral, con la misma escala.",
     ],
     dobleUso: "Ya no integra la dimensión de reforma laboral: su cuarto lo tomó la siniestralidad registrada en el mismo sistema. El dato se sigue calculando y la serie se conserva.",
     limitaciones: [
@@ -2976,7 +2976,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Reducción = (1 − cortes del último año cerrado / cortes de 2023) × 100.",
-      "La base 2023 se estima como 8.239 cortes nacionales × 11,3% de participación porteña, redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto. El descenso aproximado es 74,2%; la incertidumbre de ese redondeo da un rango cercano a 74,1–74,3%.",
+      "La base 2023 se estima como 8.239 cortes nacionales × 11,3% de participación porteña, redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto. En 2025 el descenso aproximado fue 74,2%; la incertidumbre de ese redondeo da un rango cercano a 74,1–74,3%.",
     ],
     anclas: {
       bandas: [
@@ -3084,13 +3084,13 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos (64,69% interno · 13,04% del índice de impacto social) y sigue siendo el componente más pesado del índice.",
+      "Pertenece a la dimensión de ingresos y sigue siendo el componente más pesado del índice (su peso vigente está en la composición del índice, arriba).",
       "El índice de impacto social promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
       "El RIPTE mide remuneración imponible, con tope y sin conceptos no remunerativos: no es ingreso de bolsillo. La CBT corresponde al Gran Buenos Aires. El cociente expresa canastas por adulto equivalente, no canastas familiares ni capacidad de compra observada de todos los hogares.",
-      "El peso del componente (13,04% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente en el índice es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
@@ -3119,7 +3119,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente del índice mide el encarecimiento RELATIVO de la comida: el nivel de alimentos contra el nivel general de precios, rebaseado a 100 = 4º trimestre de 2023. Por encima de 100, la comida sube menos que el resto de los precios.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (35% interno · 8,75% del índice de impacto social).",
+      "Pertenece a la dimensión de presión de precios.",
       "La comparación contra el IPC general evita contar dos veces el ratio salario/comida, que ya mide la brecha con la canasta.",
     ],
     limitaciones: [
@@ -3152,7 +3152,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [
-      "Aporta el 70% de la dimensión de vulnerabilidad financiera (7% del índice de impacto social). La carga del servicio de deuda aporta el 30% restante.",
+      "Es el componente principal de la dimensión de vulnerabilidad financiera, que comparte con la carga del servicio de deuda.",
       "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
@@ -3186,7 +3186,7 @@ export const FICHAS: Record<string, Ficha> = {
       "En el índice de impacto social se rebasa al promedio del 4º trimestre de 2023, como el resto de los componentes, y no se invierte: más confianza da mejor puntaje.",
     ],
     incidenciaTexto: [
-      "Es el único componente activo de la dimensión de confianza y percepción, que pesa 8,25% del índice de impacto social; comparte la dimensión con el sentimiento digital, suspendido desde agosto de 2026, y mientras siga suspendido se lleva la dimensión entera.",
+      "Es el único componente activo de la dimensión de confianza y percepción; comparte la dimensión con el sentimiento digital, suspendido desde agosto de 2026, y mientras siga suspendido se lleva la dimensión entera.",
       "El promedio de la base mezcla dos gobiernos: octubre y noviembre de 2023 rondaban 1,2 a 1,4 y diciembre, ya con el nuevo Gobierno, 2,86. Pasa lo mismo con todos los componentes rebaseados al 4º trimestre de 2023.",
     ],
     limitaciones: [
@@ -3219,7 +3219,7 @@ export const FICHAS: Record<string, Ficha> = {
       "En el índice de impacto social se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.",
     ],
     incidenciaTexto: [
-      "Aporta el 30% de vulnerabilidad financiera (3% del índice de impacto social); la mora conserva 70% porque es directa, mensual y más fresca.",
+      "Es el componente secundario de vulnerabilidad financiera; la mora conserva el mayor peso porque es directa, mensual y más fresca.",
       "La correlación alta en niveles con la mora (+0,883) refleja la crisis compartida, pero en cambios mensuales baja a +0,182: la carga anticipa presión y la mora confirma incumplimiento.",
     ],
     limitaciones: [
@@ -3252,7 +3252,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (10% interno · 2,5% del índice de impacto social; hasta octubre de 2026 pesaba 20% y 5%).",
+      "Pertenece a la dimensión de presión de precios; hasta octubre de 2026 pesaba el doble.",
       "Entra por debajo de tarifas y alimentos porque el alquiler golpea a los hogares inquilinos —alrededor de un tercio de los urbanos— mientras los otros dos pesan sobre todos.",
       "Es el único componente del cinturón que mide el costo de la vivienda, un gasto fijo que ningún otro captura.",
     ],
@@ -3287,7 +3287,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente que puntúa es 100 menos la variación real, en puntos: 100 significa que el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales. No se rebasea al 4º trimestre de 2023 porque la fuente sólo da variaciones interanuales y no se encadenan.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios con 10% interno, equivalente a 2,5% del índice de impacto social.",
+      "Pertenece a la dimensión de presión de precios.",
       "El peso sale de la mitad del que tenía el alquiler del IPC (20% → 10%): son dos miradas al mismo gasto, la de los contratos vigentes y la de los avisos nuevos. Alimentos (35%) y servicios públicos (45%) quedan como estaban.",
     ],
     dobleUso: "Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.",
@@ -3323,7 +3323,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al índice de impacto social es 125 − 5 × tensión.",
     ],
     incidenciaTexto: [
-      "Integra la dimensión de presión de precios con 45% interno, equivalente a 11,25% del índice de impacto social.",
+      "Integra la dimensión de presión de precios.",
       "Las anclas son externas y comparables por variable: el Banco Mundial ubica agua+energía en un rango indicativo de 10–15% del ingreso y ONU-Hábitat recomienda que el transporte público no supere 5%. Se aplican por separado: un exceso en transporte no se compensa con energía barata, ni al revés.",
       "Reemplaza como dato visible al IPC Regulados/RIPTE, que no medía una canasta de tarifas ni una participación del ingreso.",
     ],
@@ -3358,7 +3358,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La edición vigente de la fuente trae desde enero de 2024. Diciembre de 2023 es el anual oficial de 2023; octubre y noviembre se despejan del propio promedio móvil con los meses de 2024 y los de fines de 2022 de una edición anterior. Con cualquier supuesto razonable sobre esa edición, la base se mueve ±0,04 kg.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de consumo (5,44% interno · 0,43% del índice de impacto social). Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso: la vacuna cuenta dentro del total y además sola, a propósito.",
+      "Pertenece a la dimensión de consumo. Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso: la vacuna cuenta dentro del total y además sola, a propósito.",
       "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino y la carne que más cayó en el mandato.",
       "Se publica junto al total de las tres carnes, para que el lector vea si la caída de la vacuna se compensa con aviar y porcina (sustitución) o no (menos carne en total).",
       "CICCRA publica un número parecido pero distinto para el mismo mes: son dos relevamientos con metodología propia. Se usa SAGYP porque es la fuente que tiene la serie de las tres carnes con el mismo método; CICCRA queda de respaldo del titular si SAGYP no trae el mes.",
@@ -3399,7 +3399,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El 4º trimestre de 2023 de la vacuna se reconstruye como se explica en su ficha; aviar y porcina lo publican directamente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de consumo (5,44% interno · 0,43% del índice de impacto social), mitad y mitad con la carne vacuna, que se sigue aparte como indicador aspiracional.",
+      "Pertenece a la dimensión de consumo, mitad y mitad con la carne vacuna, que se sigue aparte como indicador aspiracional.",
       "Reúne tres carnes para evitar interpretar la vacuna de forma aislada. El total y su composición son agregados: no identifican sustitución dentro de los mismos hogares ni distribución del acceso. Los kilos de carne tampoco equivalen a una medición de proteína ingerida.",
       "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
     ],
@@ -3474,7 +3474,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos (35,31% interno · 7,12% del índice de impacto social).",
+      "Pertenece a la dimensión de ingresos.",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -3511,7 +3511,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en ARCA, del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta los CUIT con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (ago-2014, mar-2015, jun-2020, abr-2021 y ago-2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde oct-2026), con un ADR propio.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de empleo (60% interno · 14,51% del índice de impacto social): es su componente principal.",
+      "Pertenece a la dimensión de empleo: es su componente principal.",
     ],
     limitaciones: [
       "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
@@ -3544,7 +3544,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de empleo (40% interno · 9,68% del índice de impacto social): es el complemento de la ocupación EPH, que es el principal. Su suerte está en análisis.",
+      "Pertenece a la dimensión de empleo: es el complemento de la ocupación EPH, que es el principal. Su suerte está en análisis.",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -3577,7 +3577,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.",
     ],
     incidenciaTexto: [
-      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (14,76% interno · 3,57% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo.",
       "Mide el cierre neto de empresas de forma directa: 491.484 empleadores PyME en el 4º trimestre de 2023 contra 460.777 en mayo de 2026, o sea 30.707 menos, un 6,2% de caída.",
       "Contraste que la misma fuente permite: las empresas de más de 500 trabajadores cayeron 3,8% en el mismo período. El fenómeno es del tramo chico, no de toda la economía.",
     ],
@@ -3615,7 +3615,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).",
     ],
     incidenciaTexto: [
-      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (10% interno · 2,42% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo.",
       "Complementa el número de empleadores con la composición del trabajo registrado; no identifica si las mismas personas pasan del empleo asalariado al independiente. Entre el 4º trimestre de 2023 y mayo de 2026 los independientes registrados crecen 6,2% mientras los asalariados caen 3,3%.",
       "Lo que costaba no excluir el monotributo social: con ese régimen adentro la participación BAJA de 22,91% a 22,05% y el indicador habría leído una reforma administrativa como una mejora del empleo. Sin él, SUBE de 19,12% a 20,60%. Las dos lecturas corresponden a universos distintos; excluir el régimen reduce el efecto del quiebre administrativo, pero no identifica trayectorias laborales individuales.",
     ],
@@ -3652,7 +3652,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (13,47% interno · 3,26% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo.",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -3684,7 +3684,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (5,12% interno · 1,24% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo.",
     ],
     limitaciones: [
       "Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno.",
@@ -3718,7 +3718,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de seguridad (59,5% interno · 2,68% del índice de impacto social). Hasta el 16-sep-2026 era el único componente y se llevaba el peso entero (4,5%); desde el 16-sep-2026 comparte la dimensión con `tasa_homicidios` y `tasa_robos` (SNIC), y conserva la mayoría del peso por ser mensual y más fresco.",
+      "Pertenece a la dimensión de seguridad. Hasta el 16-sep-2026 era el único componente y se llevaba el peso entero; desde el 16-sep-2026 comparte la dimensión con `tasa_homicidios` y `tasa_robos` (SNIC), y conserva la mayoría del peso por ser mensual y más fresco.",
       "Es complementario y no redundante con los dos componentes del SNIC: capta delito denunciado y no denunciado (cifra negra) pero no distingue TIPO de delito, que es justo lo que homicidios y robos aportan por separado.",
     ],
     limitaciones: [
@@ -3757,7 +3757,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos homicidios = mejora) contra la MEDIANA de los 26 años de la serie (5,76), no contra un año puntual — corregido tras revisión adversarial (ver «Ancla» abajo).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de seguridad (25,5% interno · 1,15% del índice de impacto social).",
+      "Pertenece a la dimensión de seguridad.",
       "Entra junto con `tasa_robos`, revirtiendo la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» es falso — cinco indicadores del snapshot vigente puntúan con 243-244 días de rezago del dato (`velocidad_resolucion`, `iaf_transferencias`, `protocolo_antipiquetes`, `informalidad`, `subocupacion_demandante`).",
       "Es complementario a `inseguridad` (IVI), no redundante: el IVI es mensual y capta delito denunciado y no denunciado pero no distingue TIPO; el homicidio es el tipo de delito con MENOS subregistro de todo el desglose —hay un cuerpo, así que casi no depende de que alguien denuncie—, lo que compensa su rezago y justifica que pese más que `tasa_robos` dentro de la dimensión.",
       "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (4,32 cada 100.000) afirmando que caía «cerca de la mediana» de los 26 años (~5,7). Medido, 4,32 está en el PERCENTIL 11 de la serie —25% por debajo de la mediana—, no cerca de ella, y anclar contra un año puntual elegido es la convención circular que `procedencia_anclas.py` existe para contar. Se ancla ahora contra la MEDIANA de los 26 años (5,76) en vez de un año, sin cambiar el resto del mecanismo.",
@@ -3794,7 +3794,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida contra la MEDIANA de los 26 años de la serie (925,1), no contra un año puntual — mismo mecanismo corregido que `tasa_homicidios`.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de seguridad (15% interno · 0,68% del índice de impacto social).",
+      "Pertenece a la dimensión de seguridad.",
       "«Robo» es el término del SNIC más cercano a lo que Juan pidió como «rapiña»: se distingue del hurto justamente por la violencia o intimidación sobre la víctima.",
       "Pesa menos que `tasa_homicidios` dentro de la dimensión (15% contra 25,5%) porque depende de que la víctima denuncie —a diferencia del homicidio— y porque tiene una limitación de calidad propia declarada abajo.",
       "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (985,1), que cae en el PERCENTIL 69 de los 26 años —por encima de la mediana—, sesgando el semáforo hacia el verde. Se ancla ahora contra la MEDIANA de la serie (925,1), igual criterio que `tasa_homicidios`.",
@@ -3831,7 +3831,7 @@ export const FICHAS: Record<string, Ficha> = {
       "YA NO puntúa: hasta el 15-sep-2026 era componente del índice de impacto social (ICC rebaseado a 100 = promedio del 4º trimestre de 2023). Salió del cálculo y `validacion_externa.py` lee su serie cruda, sin rebasear acá.",
     ],
     incidenciaTexto: [
-      "No integra el índice de impacto social. Pertenecía a la dimensión de confianza y percepción (100% interno · 8,25% del índice de impacto social) hasta el 15-sep-2026; con `sentimiento_digital` suspendido desde el 25-ago-2026, esa dimensión se quedó sin ningún componente activo y su peso nominal se redistribuye entre las cinco dimensiones restantes, según la tabla de pesos vigente del índice.",
+      "No integra el índice de impacto social. Pertenecía a la dimensión de confianza y percepción hasta el 15-sep-2026; con `sentimiento_digital` suspendido desde el 25-ago-2026, esa dimensión se quedó sin ningún componente activo y su peso nominal se redistribuye entre las cinco dimensiones restantes, según la tabla de pesos vigente del índice.",
     ],
     dobleUso: "Un indicador no puede ser componente y juez del mismo índice (la misma regla que sacó al Índice Líder del índice macroeconómico en julio de 2026). Por eso el ICC dejó de componer el índice de impacto social y pasó a ser su ANCLA de validación externa: se contrasta el índice de impacto social completo contra el ICC en niveles y diferencias. El antiguo cinturón espíritu de época quedó fuera del tablero.",
     limitaciones: [
@@ -3867,7 +3867,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Sólo se publican los meses en los que están los seis términos: una canasta que cambia de composición mes a mes mueve el número por composición y no por búsquedas.",
     ],
     incidenciaTexto: [
-      "NO PESA: está suspendido desde agosto de 2026 y no aporta al índice de impacto social. Su peso de diseño era chico —18,2% interno · 1,5% del índice, acorde a un constructo blando— y lo absorbió el Índice de Confianza del Consumidor, que pasó a ser el único componente de la dimensión de confianza y percepción.",
+      "NO PESA: está suspendido desde agosto de 2026 y no aporta al índice de impacto social. Su peso de diseño era chico, acorde a un constructo blando, y lo absorbió el Índice de Confianza del Consumidor, que pasó a ser el único componente de la dimensión de confianza y percepción.",
       "La tarjeta y el gráfico publican el mismo número: el último mes cerrado de la canasta.",
     ],
     dobleUso: "Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
@@ -3909,7 +3909,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso efectivo de 0,89%, si llegara a 170 aportaría 0,27 puntos del índice por encima de ese techo: la compensación ya queda acotada por el peso. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de consumo (10,98% interno · 0,87% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo.",
       "Mide el flujo total de patentamientos de vehículos 0 kilómetro por habitante. El total y su composición no identifican hogares: primeras compras, reposición, compras de empresas y sustitución entre autos y motos pueden coexistir. Una suba del total no demuestra por sí sola mayor acceso de hogares ni descarta sustitución descendente.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
       "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. El ratio puntúa como indicador propio (`ratio_motos_autos`), con tarjeta y ficha aparte; esta ficha sólo explica por qué se agregó.",
@@ -3954,9 +3954,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO. La distancia a 100 se amortigua a la mitad antes de leerse en la escala de tensión (ver «Ancla y amortiguación» abajo).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de consumo (8,88% interno · 0,7% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo.",
       "La polaridad es la decisión de fondo (sacar `invertido=True` en `itvc.indices_desde_series` invierte la lectura completa): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
-      "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que se corrigió para `recaudacion`/IVA-DGI en el índice macroeconómico. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. El peso (8,88% de la dimensión de consumo) queda por debajo del que le toca a `motorizacion_total` en la misma dimensión (10,98%).",
+      "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que se corrigió para `recaudacion`/IVA-DGI en el índice macroeconómico. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. Su peso queda por debajo del que le toca a `motorizacion_total` en la misma dimensión.",
       "AUTO-CANCELACIÓN MEDIDA, no doble conteo: en niveles correlaciona +0,40 con `motorizacion_total`, pero en la matriz de redundancia publicada (que mide movimientos) da −0,251. El mismo boom de motos empuja a `motorizacion_total` hacia el verde y a este ratio hacia el rojo al mismo tiempo, en la misma dimensión.",
       "Ancla y amortiguación: rebaseado contra 4T-2023 (fecha fija, como el resto del cinturón). Sin ajustar, un crecimiento del orden del 39% sobre esa base alcanza para que el índice nazca saturado en el extremo de la escala de tensión (10,58 recortado a 10,0) y deje de poder mostrar que el deterioro sigue. Se amortigua la distancia a 100 a la mitad (factor 0,5, reversible en una constante): con ese ajuste, ese mismo crecimiento da índice 86,0 (tensión 7,8, no saturada), y el componente sólo vuelve a saturar si el ratio LLEGA A DUPLICAR su base.",
     ],
@@ -3994,7 +3994,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Tampoco lleva promedio móvil de 12 meses, a diferencia de los patentamientos: esa transformación existe para sacarle el calendario a un flujo crudo, y acá el calendario ya está sacado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de consumo (69,26% interno · 5,47% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo.",
       "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros dieciocho miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
       "El peso surge de esa jerarquía, fijada cuando entró a la entonces dimensión de ingresos y consumo: por encima de los dos proxies de compra realizada que ya había —una proteína y la motorización, que juntos no llegaban al 8% de esa dimensión— y por debajo de las dos medidas estructurales, la brecha entre salario y canasta y el conteo de pobreza. Desde octubre de 2026 es el componente principal de la dimensión de consumo.",
     ],
@@ -4168,7 +4168,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide evolución contra un punto de partida, no niveles absolutos: un país que arranca mal y mejora poco puntúa mejor que uno que arranca bien y empeora poco.",
       "El punto de partida (4º trimestre de 2023) contiene la devaluación de diciembre: parte de las mejoras medidas es rebote del pozo — auditado y declarado, con la base mantenida por diseño del documento institucional.",
-      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial (13,38% del índice) y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
+      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial en el índice y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
       "El análisis multivariado previo del estándar OCDE/JRC está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
     ],
     cambios: [

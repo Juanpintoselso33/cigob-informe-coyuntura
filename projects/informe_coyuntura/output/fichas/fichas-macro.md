@@ -403,7 +403,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -443,7 +443,7 @@ Ponderación vigente en el ITCM: 9,7 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.
-- Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.
+- Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y toda la lectura de actividad del índice colgaba de un solo dato.
 
 ## Si falta el dato / Política de revisiones
 
@@ -497,7 +497,7 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -585,7 +585,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -795,7 +795,7 @@ Aproxima la evolución de la base imponible mediante ingresos cobrados. También
 - El resultado se lleva a pesos constantes con el índice de precios y se divide por el promedio del cuarto trimestre de 2023, que vale 100: la lectura es cuánta base imponible real queda respecto del punto de partida.
 - Se corrige la estacionalidad, que es grande: sin corregir, la diferencia entre el mes calendario más alto y el más bajo llega a treinta puntos del índice. El factor de cada mes es el cociente entre ese mes y la tendencia de doce meses centrada, promediado por mes calendario y normalizado para no alterar el nivel. Mayo y junio concentran recaudación —vencimientos y aguinaldo— y marzo es el piso. Corregida, la estacionalidad remanente baja a tres puntos.
 - La parte provincial de 2022 no se publica como informe mensual y se reconstruye desde la variación interanual que informa cada gacetilla de 2023. La reconstrucción se controla contra el acumulado anual, deducido por separado: los dos caminos coinciden salvo redondeo.
-- Se descompone el agregado en la porción ligada a actividad económica y el resto: IVA-DGI y créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado DGI —entre 30% y 62% del total según el mes—, no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.
+- Se descompone el agregado en la porción ligada a actividad económica y el resto: IVA-DGI y créditos y débitos bancarios (impuesto al cheque) son, por definición, dos de los propios componentes del agregado DGI, no una fuente distinta. Se comparan en variación interanual real, con el mismo índice de precios como deflactor. No cambian el puntaje: sirven para leer si un movimiento del agregado vino de esa porción o del resto —Ganancias, cambios normativos, anticipos, aduana—, y para no sobreponderar el efecto estacional.
 
 ## Semáforo — valores que determinan el color
 
@@ -912,7 +912,7 @@ Una apreciación real (peso caro) frena exportaciones y la acumulación de reser
 ## Método de cómputo
 
 - El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».
-- El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
 - La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.
 
 ## Semáforo — valores que determinan el color
@@ -948,7 +948,7 @@ Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Los umbrales y el peso del cruce (11% del índice) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
+- Los umbrales y el peso del cruce son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
 - Dice si el peso está caro o barato, no si ese nivel se sostiene: para eso está el cruce con los términos del intercambio.
 
 ## Si falta el dato / Política de revisiones
@@ -1012,7 +1012,7 @@ Dice si el nivel del tipo de cambio real se sostiene: con buenos precios de expo
 ## Método de cómputo
 
 - El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.
-- El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
 - Para la serie histórica del cruce, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.
 
 ## Semáforo — valores que determinan el color
@@ -1205,7 +1205,7 @@ Los dos componentes se leen juntos porque uno solo alcanza para engañar: la com
 - Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.
 - Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.
 - La tensión se traduce al índice macroeconómico con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.
-- Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.
+- Su peso dentro de estabilidad monetaria y el de la dimensión en el índice macroeconómico se ven en la composición del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: el de este indicador queda al lado del de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su peso viene de repartir la dimensión de sector externo con otros tres indicadores y no de un juicio sobre su importancia relativa.
 
 ## Semáforo — valores que determinan el color
 
@@ -1298,7 +1298,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. Los cortes de su escala se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 

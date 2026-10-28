@@ -150,7 +150,11 @@ def _pertenencias(texto: str):
 
 
 def test_hay_pertenencias_que_verificar():
-    assert len(_pertenencias(FICHAS)) >= 8
+    """Desde el 28-oct-2026 la prosa no escribe pesos (los lee la página de la
+    ficha del snapshot; test_prosa_sin_cifras_que_envejecen.py). Las
+    pertenencias con peso tienen que ser cero; si reaparece una, los cruces de
+    abajo la verifican igual."""
+    assert len(_pertenencias(FICHAS)) == 0
 
 
 def test_la_ficha_ubica_y_pesa_cada_indicador_como_la_parametrica():
@@ -190,7 +194,9 @@ def test_las_fichas_declaran_el_peso_que_calcula_la_parametrica():
 
 def test_hay_pesos_que_verificar():
     """Si el patrón de la prosa cambia y el parser deja de encontrar nada, el
-    test de arriba pasaría vacío."""
+    test de arriba pasaría vacío. Desde el 28-oct-2026 los pesos que encuentra
+    son los del changelog (`cambios`), que dicen el peso de ESE día; la prosa
+    vigente no los escribe (test_prosa_sin_cifras_que_envejecen.py)."""
     assert len(_declarados(FICHAS)) >= 6
 
 

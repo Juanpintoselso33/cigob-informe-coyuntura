@@ -165,7 +165,7 @@ Ponderación vigente en el ITCIS: 13 % efectivo. El color es una lectura adicion
 
 - El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.
 - El RIPTE mide remuneración imponible, con tope y sin conceptos no remunerativos: no es ingreso de bolsillo. La CBT corresponde al Gran Buenos Aires. El cociente expresa canastas por adulto equivalente, no canastas familiares ni capacidad de compra observada de todos los hogares.
-- El peso del componente (13,04% del índice) es una discusión abierta declarada del diseño.
+- El peso del componente en el índice es una discusión abierta declarada del diseño.
 - Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.
 
 ## Si falta el dato / Política de revisiones
@@ -299,7 +299,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).
 
-Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
+Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
 
 **Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 

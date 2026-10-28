@@ -258,7 +258,8 @@ def test_desequilibrio_monetario_tiene_capa_publica_completa_y_sin_jerga_interna
     assert ficha
     texto = ficha.group(1)
     assert 'id: "desequilibrio_monetario"' in texto
-    assert "20%" in texto and "5,2%" in texto
+    # Desde el 28-oct-2026 la ficha no escribe pesos: los muestra la página
+    # desde el snapshot (test_prosa_sin_cifras_que_envejecen.py).
     assert "abril de 2025" in texto and "enero de 2021" in texto
     assert "BCRA" in texto
     assert "ADR-" not in texto

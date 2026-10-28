@@ -1300,7 +1300,7 @@ Describe la evolución de los cortes registrados por Diagnóstico Político; el 
 ## Método de cómputo
 
 - Reducción = (1 − cortes del último año cerrado / cortes de 2023) × 100.
-- La base 2023 se estima como 8.239 cortes nacionales × 11,3% de participación porteña, redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto. El descenso aproximado es 74,2%; la incertidumbre de ese redondeo da un rango cercano a 74,1–74,3%.
+- La base 2023 se estima como 8.239 cortes nacionales × 11,3% de participación porteña, redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto. En 2025 el descenso aproximado fue 74,2%; la incertidumbre de ese redondeo da un rango cercano a 74,1–74,3%.
 
 ## Semáforo — valores que determinan el color
 

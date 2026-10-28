@@ -177,4 +177,7 @@ def test_el_test_mira_algo():
     # para no romper cada vez que se suma una ficha, pero lo bastante alto como
     # para que un parseo roto no pase inadvertido.
     assert len(inc) >= 28, f"sólo se parsearon {len(inc)} fichas: ¿cambió el formato?"
-    assert len(con_peso) >= 10, f"sólo {len(con_peso)} fichas declaran peso interno"
+    # Desde el 28-oct-2026 la prosa no escribe pesos (la página de la ficha los
+    # lee del snapshot; lo exige test_prosa_sin_cifras_que_envejecen.py). Este
+    # cruce queda como red por si uno vuelve a aparecer: tiene que dar cero.
+    assert not con_peso, f"fichas que volvieron a escribir el peso interno: {con_peso}"
