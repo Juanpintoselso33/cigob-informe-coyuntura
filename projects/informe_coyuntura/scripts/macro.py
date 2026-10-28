@@ -842,6 +842,8 @@ def fetch_saldo_comercial_12m() -> dict | None:
         comercio_musd = expo_12 + impo_12
         # ADR-0404: el titular es el saldo como % del comercio de los mismos
         # 12 meses; el monto en dólares queda en el detalle.
+        if comercio_musd <= 0:
+            return None
         valor = round(saldo_musd / comercio_musd * 100, 2)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
@@ -2273,7 +2275,13 @@ def main() -> None:
                 frescos[nombre] = _sellar(resultado)
                 frescos_count += 1
         elif nombre in indicadores_anteriores:
-            frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
+            anterior = indicadores_anteriores[nombre]
+            # ADR-0404: el saldo pasó de dólares a % del comercio. Un valor
+            # cacheado con la unidad vieja (26.472 millones) puntuaría como
+            # 26.472 %: mejor sin dato que un número de otra unidad.
+            if nombre == "saldo_comercial_12m" and "%" not in (anterior.get("unidad") or ""):
+                continue
+            frescos[nombre] = {**anterior, "desactualizado": True}
 
     _purgar_indicadores_obsoletos(frescos)
     resultado = calcular_itcm_cinturon(frescos)

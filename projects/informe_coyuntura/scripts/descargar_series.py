@@ -303,7 +303,8 @@ def fetch_saldo_12m_serie(limit: int = 60) -> list:
     titular desde ADR-0404. La mensual en dólares sigue publicándose como
     saldo_comercial, y el acumulado en dólares como saldo_comercial_12m_usd
     (el gráfico lo compara con la cuenta corriente). [[YYYY-MM-01, %]]."""
-    return [[f, round((ex - im) / (ex + im) * 100, 2)] for f, ex, im in _ica_12m(limit)]
+    return [[f, round((ex - im) / (ex + im) * 100, 2)]
+            for f, ex, im in _ica_12m(limit) if ex + im > 0]
 
 
 def fetch_saldo_12m_usd_serie(limit: int = 60) -> list:
@@ -1412,6 +1413,13 @@ def _actas_alineamiento_cacheadas(anio_inicio: int) -> dict:
             detalle = politica.fetch_alineamiento_senadores_actas_anio(anio)
         except Exception as e:
             print(f"  [WARN] alineamiento_senadores_actas {anio}: {e}")
+            detalle = None
+        if detalle is None and clave in cache and not _detalle_vigente(cache[clave]):
+            # ADR-0400: un año cacheado con el bloque viejo (de todo el mandato)
+            # no se mezcla con los corregidos por fecha: queda afuera hasta
+            # que se pueda volver a pedir.
+            print(f"  [WARN] alineamiento_senadores_actas {anio}: caché de una versión vieja y sin refresco -- se omite")
+            cache.pop(clave)
             continue
         if detalle is not None:
             cache[clave] = detalle

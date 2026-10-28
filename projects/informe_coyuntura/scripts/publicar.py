@@ -456,6 +456,13 @@ def acumular_historico(informe):
         store = json.loads(HISTORICO_PATH.read_text(encoding="utf-8"))
     for sustituido in ("dolarizacion_depositos", "presion_dolarizacion"):
         store.pop(sustituido, None)
+    # Cambios de unidad o de alcance: los meses anteriores están en otra unidad
+    # (saldo en dólares, ADR-0404), otro alcance (piquetes de CABA, ADR-0405) u
+    # otra comparación (transferencias interanuales, ADR-0397), y no se pueden
+    # encadenar con los nuevos.
+    for clave, desde in METODO_NUEVO_DESDE.items():
+        if clave in store:
+            store[clave] = {ym: v for ym, v in store[clave].items() if ym >= desde}
     ym = datetime.now().strftime("%Y-%m")
     for c in informe["cinturones"].values():
         for ik, ind in c["indicadores"].items():
@@ -466,6 +473,11 @@ def acumular_historico(informe):
     HISTORICO_PATH.write_text(
         json.dumps(store, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
     return store
+
+
+METODO_NUEVO_DESDE = {"saldo_comercial_12m": "2026-10",
+                      "protocolo_antipiquetes": "2026-10",
+                      "transferencias_no_automaticas": "2026-10"}
 
 
 def fusionar_historico(series, store):
