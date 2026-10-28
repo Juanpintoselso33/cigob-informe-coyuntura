@@ -29,6 +29,12 @@ const esMacro = meta.key === "macro";
 // La introducción es propia de cada cinturón (la de macro viene de la
 // propuesta; las otras tres se escribieron siguiéndola); el que no la tenga
 // escrita sigue con su subtítulo.
+// Resumen editorial del cinturón, debajo del texto del índice en la cabecera
+// (pedido del 28-oct-2026; por ahora sólo política). Mismo tipo de letra que
+// el pie de la barra.
+const RESUMEN_CINTURON: Record<string, string> = {
+  politica: "El gobierno tiene hoy un frente político tranquilo. El Congreso no le pone freno: en el último año no revirtió vetos ni decretos, el bloque oficialista vota unido y logra alianzas para sacar sus proyectos, y más de la mitad de los senadores de otros partidos lo acompaña. La calle está más calma, con menos protestas que en 2023, y 18 de las 24 provincias adhirieron al régimen de grandes inversiones. Parte de ese respaldo se sostiene con más fondos discrecionales a las provincias. El punto débil: la industria se muestra crítica. La calma es real, pero descansa en acuerdos que hay que renovar.",
+};
 const INTRO_CINTURON: Record<string, string> = {
   macro: "En este apartado se pone foco en la consistencia y sustentabilidad del proyecto de gobierno en sus aspectos económicos y financieros.",
   politica: "En este apartado se pone foco en la capacidad política del Gobierno para sostener su proyecto: su fuerza en el Congreso, sus alianzas con las provincias, la cohesión de su propia fuerza y su relación con el conflicto social, la Justicia y el sector privado.",
@@ -325,6 +331,12 @@ const robChartData = rob?.hist && indice ? {
             <strong>{num(indice.data.valor as number)}/100</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
           </p>
         ))}
+        {RESUMEN_CINTURON[meta.key] && (
+          <div class="cg-nivel-resumen">
+            <p class="cg-nivel-pie"><strong>Resumen</strong></p>
+            <p class="cg-nivel-pie">{RESUMEN_CINTURON[meta.key]}</p>
+          </div>
+        )}
       </div>
       </div>
     </div>
@@ -811,4 +823,6 @@ const robChartData = rob?.hist && indice ? {
 <style is:global>
   /* Cinturón macro: el pie de la barra es un párrafo de lectura, no una nota. */
   .cg-detalle-nivel .cg-nivel-pie { font-size: 15px; line-height: 1.55; margin-top: 8px; }
+  .cg-detalle-nivel .cg-nivel-resumen { margin-top: 18px; }
+  .cg-detalle-nivel .cg-nivel-resumen .cg-nivel-pie:first-child { margin-top: 0; }
 </style>
