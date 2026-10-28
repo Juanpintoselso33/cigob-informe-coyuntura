@@ -164,13 +164,11 @@ def build_vida(raw):
          "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
          au.get("fecha"), fuente_url=au.get("fuente_url"),
          variacion_nominal_pct=au.get("nominal_pct"), ipc_interanual_pct=au.get("ipc_pct"))
-    # ADR-0322: la vacuna y el resto (aviar+porcina) puntúan cada uno por su
-    # cuenta — antes (ADR-0217) sólo el total puntuaba y la vacuna era
-    # diagnóstico puro. Los DOS salen del MISMO PDF de SAGYP: misma
-    # metodología de promedio móvil 12m, mismo corte temporal y mismo
-    # perímetro. CICCRA queda como respaldo de la vacuna si el tablero no
-    # trae el mes — el resto no tiene respaldo alternativo, así que si SAGYP
-    # no trajo el mes esa card queda en None (la repara `_carry_forward`).
+    # ADR-0392: las dos cards salen de las series mensuales de SAGYP por carne,
+    # las MISMAS que puntúan (antes, tablero para la card y faena del INDEC
+    # para el puntaje). CICCRA queda como respaldo de la vacuna si SAGYP no
+    # trae el mes; el total no tiene respaldo, así que si SAGYP no trajo el
+    # mes esa card queda en None (la repara `_carry_forward`).
     #
     # Se llaman SIEMPRE, aunque SAGYP no haya traído el mes, por el mismo
     # motivo que la motorización, sentimiento_digital y el supermercado: una
@@ -183,7 +181,7 @@ def build_vida(raw):
     carne = ciccra.get("consumo_carne_per_capita", {})
     if carnes.get("vacuna") is not None:
         _add(out, "consumo_carne_vacuna", carnes["vacuna"],
-             "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
+             "kg/hab/año", "SAGYP — consumo aparente de carne vacuna por habitante (promedio móvil 12m)",
              f"{carnes['mes']}-01")
     else:
         _add(out, "consumo_carne_vacuna", carne.get("valor"),
@@ -193,7 +191,7 @@ def build_vida(raw):
     # del total, que es donde se lee la composición.
     _add(out, "consumo_carnes_total", carnes.get("total"),
          "kg/hab/año",
-         "SAGYP — tablero consumo per cápita de carnes (vacuna + aviar + porcina, promedio móvil 12m)",
+         "SAGYP — consumo aparente por habitante de carne vacuna, aviar y porcina (promedio móvil 12m)",
          f"{carnes['mes']}-01" if carnes.get("mes") else None)
     otras = None
     if carnes.get("aviar") is not None and carnes.get("porcina") is not None:
@@ -2478,8 +2476,8 @@ def _snic_desglose_txt(tipos_principales: dict) -> str:
 def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     """Nivel, variación y composición agregados; no identifica trayectorias.
 
-    El color usa la evolución de faena per cápita contra 4T-2023. El consumo
-    aparente oficial y su referencia histórica se explican como contexto.
+    El color usa el mismo consumo aparente por habitante contra 4T-2023
+    (ADR-0392); la referencia histórica se explica como contexto.
 
     Las dos cards que puntúan (`consumo_carnes_total` y `consumo_carne_vacuna`,
     ADR-0339) comparten los mismos números, pero el párrafo de cada una habla
@@ -2510,9 +2508,8 @@ def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     contexto_total = f"total de las tres carnes, {nivel_total}. {referencia}"
     cierre = (" Estos agregados no identifican sustitución dentro de los "
               "mismos hogares ni proteína ingerida. El color y el aporte al "
-              "índice usan la evolución de faena por habitante frente a "
-              "4T-2023, no esta comparación de consumo aparente con el "
-              "promedio histórico.")
+              "índice comparan este mismo consumo con el de fines de 2023, "
+              "no con el promedio histórico.")
 
     if ikey == "consumo_carne_vacuna":
         cuerpo = (
@@ -2640,7 +2637,7 @@ def _semaforos(informe):
             ind["semaforo"] = _semaforo_de(color, tension, umbrales, unidad,
                                            ind.get("valor"))
             # El consumo aparente y su composición dan contexto agregado.
-            # El texto distingue ese contexto del color basado en faena.
+            # El texto distingue ese contexto del color, que compara contra 4T-2023.
             # ADR-0339: las dos cards que puntúan (el total y la vacuna) leen
             # los mismos números; cada una cuenta su parte.
             if ikey in ("consumo_carne_vacuna", "consumo_carnes_total"):

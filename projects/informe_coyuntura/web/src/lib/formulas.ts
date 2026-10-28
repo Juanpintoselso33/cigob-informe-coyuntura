@@ -241,15 +241,15 @@ export const FORMULAS: Record<string, Formula> = {
   },
   consumo_carne_vacuna: {
     latex: String.raw`100\cdot\frac{\text{vacuna por habitante}_{\text{hoy}}}{\text{vacuna por habitante}_{\text{4T-23}}}`,
-    leyenda: "Faena de vacunos por habitante, promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Es el proxy que puntúa; el titular muestra consumo aparente de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP). No mide proteína ingerida ni descuenta exportaciones, y el rebase no elimina divergencias de evolución. Puntúa por separado porque es el corte aspiracional del consumo argentino, distinto del resto de las carnes.",
+    leyenda: "Consumo aparente de carne vacuna por habitante de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4T-2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida. Puntúa por separado porque es el corte aspiracional del consumo argentino, distinto del resto de las carnes.",
   },
   consumo_carnes_total: {
     latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
-    leyenda: "Faena de vacunos, aves y porcinos por habitante, promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Es el proxy que puntúa; el titular muestra consumo aparente de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP). No mide proteína ingerida ni descuenta exportaciones, y el rebase no elimina divergencias de evolución.",
+    leyenda: "Suma del consumo aparente por habitante de carne vacuna, aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Es el mismo dato del titular. Son kilos de carne en el mercado interno, no proteína ingerida.",
   },
   consumo_carnes_otras: {
     latex: String.raw`100\cdot\frac{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
-    leyenda: "Faena de aves y porcinos por habitante, promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Reemplaza al total fusionado con la vacuna: separadas, permiten leer si el consumo total sube o baja por sustitución (esta serie compensa) o por caída conjunta (las dos bajan). No mide proteína ingerida ni descuenta exportaciones.",
+    leyenda: "Consumo aparente por habitante de aviar y porcina de la Secretaría de Agricultura, Ganadería y Pesca (SAGYP), promedio móvil de 12 meses, rebaseado a 100 = 4T-2023. Reemplazó al total fusionado con la vacuna: separadas, permiten leer si el consumo total sube o baja por sustitución (esta serie compensa) o por caída conjunta (las dos bajan). No mide proteína ingerida.",
   },
   motorizacion_total: {
     latex: String.raw`100\cdot\frac{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{hoy}}}{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{4T-23}}}`,

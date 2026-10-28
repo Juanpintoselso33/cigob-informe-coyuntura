@@ -662,9 +662,9 @@ export const UNIDADES_LARGAS: Record<string, string> = {
 export const UNIDADES_SERIE: Record<string, string> = {
   protestas_caba: "eventos/mes",       // card = acumulado 12m; serie = eventos por mes
   rigi_inversiones: "US$ M aprobados", // card = % del pipeline; serie = inversión aprobada acumulada
-  // ADR-0217/ADR-0322: la card publica el nivel per cápita oficial de SAGYP
-  // (kg/hab) y la serie es el índice base-100 reconstruido desde la faena del
-  // INDEC, que es lo único con historia para rebasear al 4T-2023. Sin esta
+  // ADR-0217/ADR-0322/ADR-0392: la card publica el nivel per cápita de SAGYP
+  // (kg/hab) y la serie es ese mismo consumo en índice base-100 = 4T-2023,
+  // que es lo que puntúa. Sin esta
   // línea el gráfico rotulaba el índice como kilos: mostraba "95 kg/hab" al
   // lado de una card que decía 114,45 kg/hab, para el MISMO mes. ADR-0322
   // separó el compuesto en vacuna y el resto (aviar+porcina); las dos heredan

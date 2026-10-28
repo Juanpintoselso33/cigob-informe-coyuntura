@@ -227,8 +227,8 @@ def _sin_la_excluida(total: dict, por_provincia: dict) -> dict:
 
 def _poblacion_mensual(puntos: list):
     """Interpola la serie trimestral del INDEC a meses y la extiende con su
-    propia pendiente. Copia deliberada de `descargar_series._poblacion_mensual`:
-    este módulo se carga por ruta y no puede importar del script de series."""
+    propia pendiente. Era copia de la que usaba la carne en `descargar_series`,
+    que se borró cuando la carne pasó a las series de SAGYP (ADR-0392)."""
     puntos = sorted((f[:7], v) for f, v in puntos)
     if len(puntos) < 2:
         raise ValueError("la serie de población del INDEC vino con menos de dos puntos")

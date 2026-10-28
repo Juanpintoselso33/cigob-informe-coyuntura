@@ -22,10 +22,12 @@ SERIES = json.loads(
 DESCARGAR = (ROOT / "scripts" / "descargar_series.py").read_text(encoding="utf-8")
 IND = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"]
 
-# La faena es PRODUCCIÓN y no netea exportaciones, así que la reconstrucción no
-# tiene por qué dar igual que el per cápita de SAGYP. Lo que no puede es
-# separarse: al 2026-08-20 la brecha era 1,17 pp.
-BRECHA_MAX_PP = 3.0
+sys.path.insert(0, str(ROOT / "scripts" / "vida_cotidiana" / "collectors"))
+import consumo_carnes  # noqa: E402
+
+# ADR-0392: base del índice (promedio del 4T-2023, kg/hab/año) de cada serie.
+BASE_VACUNA = 53.49
+BASE_TOTAL = 116.95
 
 
 def test_puntuan_el_total_y_la_vacuna():
@@ -83,88 +85,120 @@ def test_la_matriz_explica_el_color_de_las_dos_con_texto_propio():
     assert por_que_total.startswith("Consumo aparente de las tres carnes")
 
 
-def test_las_series_se_reconstruyen_desde_la_faena_del_indec():
-    """El tablero de SAGYP es una foto del mes: no tiene historia para
-    rebasear al 4T-2023. La faena sí, y desde 2009."""
-    for sid in ("40.3_VT_0_M_17", "40.3_PT_0_M_18", "40.3_AT_0_M_14"):
-        assert sid in DESCARGAR, f"falta la serie de faena {sid}"
-    for clave in ("consumo_carne_vacuna", "consumo_carnes_otras"):
+def test_las_series_llegan_al_4t_2023():
+    for clave in ("consumo_carne_vacuna", "consumo_carnes_total"):
         serie = SERIES.get(clave) or []
         assert len(serie) >= 30, f"{clave}: la serie tiene {len(serie)} puntos"
         assert serie[0]["fecha"][:7] <= "2023-10", (
             f"{clave}: la serie no llega al 4T-2023, que es la base del índice")
 
 
-def test_la_reconstruccion_no_se_separa_de_la_fuente_oficial():
-    """La prueba de que la reconstrucción mide lo que dice: reconstruyendo el
-    total como vacuna_abs + otras_abs (en NIVEL, no índice, usando el ratio
-    publicado por SAGYP), su variación interanual tiene que parecerse a la que
-    publica SAGYP para el total. Si se separan, la faena dejó de aproximar el
-    consumo."""
-    variaciones = (IND.get("consumo_carne_vacuna") or {}).get("variaciones") or {}
-    ia_sagyp = variaciones.get("total")
-    if ia_sagyp is None:
-        return  # el PDF no trajo variaciones esta corrida
-
-    def variacion_ia(clave):
-        d = {p["fecha"][:7]: p["valor"] for p in (SERIES.get(clave) or [])}
-        meses = sorted(d)
-        if not meses:
-            return None
-        ult = meses[-1]
-        hace_un_anio = f"{int(ult[:4]) - 1}-{ult[5:7]}"
-        if hace_un_anio not in d:
-            return None
-        return (d[ult] / d[hace_un_anio] - 1) * 100
-
-    ia_v, ia_o = variacion_ia("consumo_carne_vacuna"), variacion_ia("consumo_carnes_otras")
-    if ia_v is None or ia_o is None:
-        return  # serie corta: nada que comparar todavía
-    # Ponderado por el peso relativo que cada una tenía dentro del total al
-    # 4T-2023 (52,3%/47,7%, ver ADR-0322): aproxima la variación del total sin
-    # tener que reconstruirlo como serie propia.
-    ia_propia = ia_v * 0.523 + ia_o * 0.477
-    brecha = abs(ia_propia - ia_sagyp)
-    assert brecha <= BRECHA_MAX_PP, (
-        f"la reconstrucción desde faena da {ia_propia:+.2f}% i.a. y SAGYP "
-        f"publica {ia_sagyp:+.2f}%: {brecha:.2f} pp de brecha. No es un bug de "
-        f"código — es que la faena dejó de aproximar el consumo. Ver ADR-0217/0322."
-    )
+def test_el_titular_y_el_puntaje_son_el_mismo_dato():
+    """ADR-0392: la tarjeta muestra kilos y la serie que puntúa es el MISMO
+    consumo en índice 4T-2023 = 100. Mismo mes, y el cociente entre los dos
+    tiene que dar la base. Con la faena (ADR-0217) esto no se cumplía: eran
+    dos fuentes y dos meses distintos."""
+    for clave, base in (("consumo_carne_vacuna", BASE_VACUNA),
+                        ("consumo_carnes_total", BASE_TOTAL)):
+        card = IND[clave]
+        if card.get("desactualizado") or card.get("valor") is None:
+            continue
+        ultimo = (SERIES.get(clave) or [])[-1]
+        assert card["fecha_dato"][:7] == ultimo["fecha"][:7], (
+            f"{clave}: la tarjeta es de {card['fecha_dato'][:7]} y la serie llega a "
+            f"{ultimo['fecha'][:7]}")
+        implicita = card["valor"] / ultimo["valor"] * 100
+        assert abs(implicita - base) <= 0.15, (
+            f"{clave}: {card['valor']} kg contra índice {ultimo['valor']} implica una "
+            f"base de {implicita:.2f} kg, no {base}: la tarjeta y el puntaje salen "
+            "de datos distintos")
 
 
-def test_otras_no_se_reconstruye_con_las_categorias_del_total():
-    """El riesgo exacto que ADR-0322 dice evitar: que `consumo_carnes_otras`
-    termine reconstruida con la faena de las TRES carnes (contando la vacuna
-    dos veces, una en `consumo_carne_vacuna` y otra acá).
+def test_la_base_de_la_vacuna_es_el_4t_2023_reconstruido():
+    serie = consumo_carnes.series_por_carne({"vacuna": {}, "aviar": {}, "porcina": {}})
+    base = sum(serie["vacuna"][m] for m in ("2023-10", "2023-11", "2023-12")) / 3
+    assert round(base, 2) == BASE_VACUNA
+    # Un dato real de la fuente gana sobre el ancla.
+    serie = consumo_carnes.series_por_carne(
+        {"vacuna": {"2023-12": 50.0}, "aviar": {}, "porcina": {}})
+    assert serie["vacuna"]["2023-12"] == 50.0
 
-    Antes de este test, sustituir en memoria las categorías de la serie de
-    `consumo_carnes_otras` por las del total (`vacuna+aviar+porcina`) dejaba
-    pasar `test_la_reconstruccion_no_se_separa_de_la_fuente_oficial` y
-    `test_las_series_se_reconstruyen_desde_la_faena_del_indec` igual —
-    ninguna de las dos mira QUÉ categorías entran a la reconstrucción, sólo
-    el resultado agregado. Éste sí las mira, directo en la función que arma
-    la serie.
-    """
+
+LINEAS_BOVINOS = """COMERCIALIZACION
+CARNE BOVINA [Miles de PER CAPITA PER CAPITA - Toneladas eq. US$/ton eq.
+2025 2 .315 49,92 853.958 4.347
+Noviembre 170 44,63 50,28 7 8.495 4.626
+Diciembre 197 50,04 49,93 6 7.001 4.828
+2026 1 .560 44,95 675.192 5.416
+Enero 179 45,49 49,28 6 4.715 5.032
+Octubre
+""".splitlines()
+
+LINEAS_PORCINOS = """2025
+Dic 831.491 76.921 3.341 10.638 1.167 1.875 80.647 20,47 18,90
+Total 2025 8.517.433 812.272 53.475 171.771 11.115 16.150 876.075 18,89
+2026
+Ene 718.124 67.339 3.072 9.496 1.661 1.893 70.433 17,88 18,97
+""".splitlines()
+
+
+def test_los_lectores_toman_el_promedio_movil():
+    """Bovinos trae (consumo, per cápita del mes, móvil, exportaciones): el
+    móvil es el segundo decimal. Porcinos trae el móvil al final. Un mes sin
+    dato (renglón «Octubre» vacío) no entra, y el renglón de año tampoco."""
+    v = consumo_carnes._filas_por_mes(LINEAS_BOVINOS, consumo_carnes.MESES_LARGOS, 1)
+    assert v == {"2025-11": 50.28, "2025-12": 49.93, "2026-01": 49.28}
+    p = consumo_carnes._filas_por_mes(LINEAS_PORCINOS, consumo_carnes.MESES_CORTOS, -1)
+    assert p == {"2025-12": 18.90, "2026-01": 18.97}
+
+
+def test_el_lector_aviar_usa_la_columna_del_movil(tmp_path):
+    import io
+    import openpyxl
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.append(["AÑO", "Faena", "Producción", "Consumo Aparente per capita",
+               "Consumo Aparente per capita promedio móvil"])
+    filas = []
+    for anio in ("2024", 2025):     # el año viene como texto o como número
+        filas += [[anio, 1, 1, 47.0, 46.0]] + [[m.capitalize(), 1, 1, 45.0, 46.0 + i / 100]
+                                               for i, m in enumerate(consumo_carnes.MESES_LARGOS)]
+    filas += [[2026, 1, 1, 47.0, 47.7], ["Enero", 1, 1, 49.9, 46.16], ["Febrero", None, None, None, None]]
+    for f in filas:
+        ws.append(f)
+    buf = io.BytesIO()
+    wb.save(buf)
+    a = consumo_carnes.parsear_aviar(buf.getvalue())
+    assert a["2024-01"] == 46.0 and a["2025-12"] == 46.11 and a["2026-01"] == 46.16
+    assert "2026-02" not in a
+
+
+def test_el_registro_de_la_tarjeta_es_el_ultimo_mes_con_las_tres():
+    serie = {"vacuna": {"2025-09": 50.0, "2026-09": 45.0},
+             "aviar": {"2025-09": 47.0, "2026-09": 47.0, "2026-10": 48.0},
+             "porcina": {"2025-09": 18.0, "2026-09": 20.0}}
+    r = consumo_carnes.registro_del_mes(serie)
+    assert r["mes"] == "2026-09" and r["total"] == 112.0
+    assert r["variaciones"]["vacuna"] == -10.0
+    assert r["variaciones"]["total"] == round((112 / 115 - 1) * 100, 2)
+
+
+def test_cada_serie_suma_sus_propias_carnes():
+    """El riesgo que ADR-0322 dice evitar: que `consumo_carnes_otras` sume
+    también la vacuna (que entraría dos veces al ITCIS). Se mira directo qué
+    carnes recibe la función que arma cada serie."""
     categorias_por_llamada = []
 
-    def _fake_fetch_faena_indice(categorias):
+    def _fake(categorias):
         categorias_por_llamada.append(tuple(categorias))
         return [["2023-10-01", 100.0]]
 
     import unittest.mock as mock
-    with mock.patch.object(descargar_series, "_fetch_faena_indice",
-                            side_effect=_fake_fetch_faena_indice):
+    with mock.patch.object(descargar_series, "_fetch_consumo_indice", side_effect=_fake):
         descargar_series.fetch_carne_vacuna_indice_serie()
         descargar_series.fetch_carnes_otras_indice_serie()
+        descargar_series.fetch_carnes_total_serie()
 
-    assert categorias_por_llamada[0] == ("vacuna",), (
-        f"consumo_carne_vacuna se reconstruye con {categorias_por_llamada[0]}, "
-        "no sólo con la faena vacuna")
-    assert categorias_por_llamada[1] == ("aviar", "porcina"), (
-        f"consumo_carnes_otras se reconstruye con {categorias_por_llamada[1]}: "
-        "si esto alguna vez incluye 'vacuna', la faena vacuna entra dos veces "
-        "al ITCIS — exactamente lo que ADR-0322 dice evitar")
-    assert "vacuna" not in categorias_por_llamada[1], (
-        "control positivo del control negativo: esta línea tiene que fallar "
-        "si alguien sustituye la tupla de consumo_carnes_otras por la del "
-        "total (probado a mano rompiéndolo antes de este commit)")
+    assert categorias_por_llamada == [
+        ("vacuna",), ("aviar", "porcina"), ("vacuna", "aviar", "porcina")]
+    assert "INDEC — faena" not in DESCARGAR, "la carne volvió a la faena del INDEC"

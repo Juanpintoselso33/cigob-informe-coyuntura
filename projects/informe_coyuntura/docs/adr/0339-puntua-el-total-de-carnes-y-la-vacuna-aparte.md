@@ -8,7 +8,7 @@ indice: 'ITCIS'
 indicadores: [consumo_carnes_total, consumo_carne_vacuna, consumo_carnes_otras]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/gate_calidad.py', 'scripts/procedencia_anclas.py', 'scripts/descargar_series.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
 supersede: ['0322']
-relacionado: ['0216', '0217', '0373']
+relacionado: ['0216', '0217', '0373', '0392']
 ambito: 'Cinturón vida cotidiana · ITCIS · qué carnes puntúan'
 origen: 'Revisión de Luis del 23-sep-2026: «la idea era tener un indicador con las tres carnes sumadas y aparte el indicador de la carne como aspiracional; quedó por un lado aviar y porcina y por otro vacuna». Juan eligió el total más la vacuna aparte, mitad y mitad del peso.'
 ---

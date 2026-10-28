@@ -2833,115 +2833,69 @@ def fetch_tasa_robos_serie() -> list:
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
 
 
-# Faena mensual en toneladas de las tres carnes (INDEC, vía la API de series de
-# datos.gob.ar). Verificadas el 2026-08-20: las tres llegan a 2026-06 y arrancan
-# mucho antes del 4T-2023, que es la base del ITCIS.
-FAENA_TONELADAS = {
-    "vacuna":  "40.3_VT_0_M_17",
-    "porcina": "40.3_PT_0_M_18",
-    "aviar":   "40.3_AT_0_M_14",
-}
-# Población urbana total (INDEC, EPH). Trimestral y proyectada en línea recta
-# —crece exactamente 100 mil por trimestre—, así que interpolar y extender con
-# su propia pendiente no inventa nada que la fuente no diga.
-POBLACION_ID = "461.3_POBLACION_ANO_AEA_T_28_3"
+@_con_config_de_vida
+def _fetch_consumo_indice(categorias) -> list:
+    """Índice base 100 = 4T-2023 del consumo aparente por habitante (promedio
+    móvil de 12 meses) de las carnes indicadas, sumadas.
 
+    ADR-0392: sale de las series mensuales de la Secretaría de Agricultura por
+    carne, las mismas que publica la card (`collectors/consumo_carnes.py`), así
+    que el número que se ve y el que puntúa son el mismo dato. Hasta ADR-0392
+    se reconstruía desde la faena del INDEC (ADR-0217), que es producción y no
+    netea exportaciones: con la exportación vacuna en alza, la faena por
+    habitante caía menos que el consumo.
 
-def _poblacion_mensual(pob: list):
-    """Interpola la serie trimestral a meses y la extiende con su pendiente."""
-    puntos = sorted((f[:7], v) for f, v in pob)
-    ym = lambda x: int(x[:4]) * 12 + int(x[5:7])
-
-    def en(mes: str) -> float:
-        t = ym(mes)
-        if t <= ym(puntos[0][0]):
-            return puntos[0][1]
-        for (f0, v0), (f1, v1) in zip(puntos, puntos[1:]):
-            if ym(f0) <= t <= ym(f1):
-                return v0 + (v1 - v0) * (t - ym(f0)) / (ym(f1) - ym(f0))
-        (f0, v0), (f1, v1) = puntos[-2], puntos[-1]
-        return v1 + (v1 - v0) / (ym(f1) - ym(f0)) * (t - ym(f1))
-
-    return en
-
-
-def _fetch_faena_indice(categorias) -> list:
-    """Índice base 100 = 4T-2023 de la faena per cápita (móvil 12m) de las
-    categorías de carne indicadas (subconjunto de `FAENA_TONELADAS`).
-
-    Compartida por `consumo_carne_vacuna` y `consumo_carnes_otras` (ADR-0322):
-    antes de esto una sola función sumaba las tres y sólo el compuesto
-    puntuaba (ADR-0217); ahora vacuna y el resto (aviar+porcina) puntúan cada
-    uno por su cuenta, con la MISMA lógica de reconstrucción.
-
-    Se reconstruye desde la FAENA en toneladas del INDEC y no desde el tablero
-    de SAGYP: el tablero publica el nivel per cápita ya calculado, pero es una
-    foto del mes que se pisa en cada edición, así que no tiene historia contra
-    la cual rebasear. La faena sí, y desde 2009.
-
-    Dos supuestos, declarados:
-
-    - La faena es PRODUCCIÓN. Sin netear exportaciones el nivel no es consumo
-      aparente. No importa acá: el índice se lee contra su propia base, así que
-      lo que pesa es la evolución, no el nivel — y el nivel per cápita oficial
-      se sigue publicando en la card, que sale de SAGYP.
-    - El pasaje a per cápita usa la población urbana total del INDEC,
-      interpolada a meses. Es una proyección en línea recta de la propia
-      fuente, no una estimación nuestra.
-    """
-    crudas = {}
-    for carne in categorias:
-        sid = FAENA_TONELADAS[carne]
-        crudas[carne] = {f[:7]: v for f, v in fetch_indec(sid, limit=240)}
-    meses = sorted(set.intersection(*[set(d) for d in crudas.values()]))
-    if len(meses) < 24:
-        raise RuntimeError(
-            f"faena {'+'.join(categorias)}: sólo {len(meses)} meses en común")
-    total = {m: sum(crudas[c][m] for c in crudas) for m in meses}
-
-    # Promedio móvil de 12 meses: la misma ventana con la que SAGYP publica su
-    # per cápita, y la que saca la estacionalidad fuerte de la faena.
-    movil = {meses[i]: sum(total[m] for m in meses[i - 11:i + 1])
-             for i in range(11, len(meses))}
-
-    pob = _poblacion_mensual(fetch_indec(POBLACION_ID, limit=80))
-    per_capita = {m: movil[m] / pob(m) for m in movil}
+    Lee lo acumulado en `data/vida/consumo_carnes_sagyp.json`, que el colector
+    de vida actualiza en la misma corrida; si está vacío, lo baja."""
+    _entrar_a_vida_cotidiana()
+    import consumo_carnes
+    store = consumo_carnes.cargar_store()
+    if not all(store.get(c) for c in categorias):
+        store = consumo_carnes.actualizar_store()
+    series = consumo_carnes.series_por_carne(store)
+    # Hasta el último mes con las TRES carnes, que es el mes de la tarjeta
+    # (`registro_del_mes`): si bovinos publica antes que aves y porcinos, el
+    # puntaje de la vacuna no se adelanta a lo que muestra la tarjeta.
+    tope = max(set.intersection(*(set(series[c]) for c in consumo_carnes.CARNES)))
+    meses = sorted(m for m in set.intersection(*(set(series[c]) for c in categorias))
+                   if m <= tope)
+    per_capita = {m: sum(series[c][m] for c in categorias) for m in meses}
 
     base_meses = [m for m in ("2023-10", "2023-11", "2023-12") if m in per_capita]
     if len(base_meses) < 3:
         raise RuntimeError(
-            f"faena {'+'.join(categorias)}: la serie no llega al 4T-2023, "
+            f"consumo {'+'.join(categorias)}: la serie no llega al 4T-2023, "
             f"que es la base del índice")
     base = sum(per_capita[m] for m in base_meses) / len(base_meses)
 
     return [[f"{m}-01", round(per_capita[m] / base * 100, 1)]
-            for m in sorted(per_capita) if m >= "2023-01"]
+            for m in sorted(per_capita) if m >= "2023-10"]
 
 
 def fetch_carne_vacuna_indice_serie() -> list:
-    """Índice base 100 = 4T-2023 de la faena de VACUNOS per cápita.
+    """Índice base 100 = 4T-2023 del consumo de carne VACUNA por habitante.
 
     Puntúa (ADR-0322): la carne vacuna, pedida por separado del compuesto
     porque es el corte aspiracional del consumo argentino, no un sustituto
     perfecto de "proteína cárnica en general" — cae 2 dígitos mientras el
     resto se sostiene, y esa caída específica es la que ADR-0217 dejó de
     puntuar al fusionarla en el total."""
-    return _fetch_faena_indice(("vacuna",))
+    return _fetch_consumo_indice(("vacuna",))
 
 
 def fetch_carnes_otras_indice_serie() -> list:
-    """Índice base 100 = 4T-2023 de la faena de AVIAR + PORCINA per cápita.
+    """Índice base 100 = 4T-2023 del consumo de AVIAR + PORCINA por habitante.
 
     Puntuó de ADR-0322 a ADR-0339; hoy no puntúa (lo reemplaza el total de las
     tres carnes) y se conserva como serie de contexto de la composición."""
-    return _fetch_faena_indice(("aviar", "porcina"))
+    return _fetch_consumo_indice(("aviar", "porcina"))
 
 
 def fetch_carnes_total_serie() -> list:
-    """Índice base 100 = 4T-2023 de la faena TOTAL (vacuna+aviar+porcina)
-    per cápita. Puntúa (ADR-0339) junto con `consumo_carne_vacuna`, que se
+    """Índice base 100 = 4T-2023 del consumo TOTAL (vacuna+aviar+porcina) por
+    habitante. Puntúa (ADR-0339) junto con `consumo_carne_vacuna`, que se
     sigue aparte como indicador aspiracional."""
-    return _fetch_faena_indice(tuple(FAENA_TONELADAS))
+    return _fetch_consumo_indice(("vacuna", "aviar", "porcina"))
 
 
 @_con_config_de_vida
@@ -3092,13 +3046,13 @@ VIDA_DERIVADAS += [
     # separan porque fusionadas la caída de la vacuna quedaba diluida por el
     # sostén de pollo+cerdo (ADR-0217) y Juan pidió la vacuna "por separado".
     ("consumo_carne_vacuna", "índice base 100 = 4T-2023",
-     "INDEC — faena de vacunos (toneladas), per cápita", fetch_carne_vacuna_indice_serie),
+     "SAGYP — consumo aparente de carne vacuna por habitante (promedio móvil 12m)", fetch_carne_vacuna_indice_serie),
     ("consumo_carnes_otras", "índice base 100 = 4T-2023",
-     "INDEC — faena de porcinos y aves (toneladas), per cápita",
+     "SAGYP — consumo aparente de carne aviar y porcina por habitante (promedio móvil 12m)",
      fetch_carnes_otras_indice_serie),
-    # Ya NO puntúa (ADR-0322); se conserva sólo como contexto de la matriz.
+    # Puntúa junto con la vacuna (ADR-0339).
     ("consumo_carnes_total", "índice base 100 = 4T-2023",
-     "INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita",
+     "SAGYP — consumo aparente de las tres carnes por habitante (promedio móvil 12m)",
      fetch_carnes_total_serie),
     # La MISMA métrica que muestra la card del indicador (ISAC general nivel
     # s.e., serie 33.2 desestacionalizada): card y modal comparten fuente.

@@ -128,8 +128,8 @@ COMPONENTES = {
     # mejor. Entra a la reconstrucción como los demás componentes de rebase.
     "empleo_registrado":      ("empleo_registrado", False, False, False),
     # ADR-0339: puntúan el total de las tres carnes y la vacuna sola
-    # (aspiracional). Las dos series se reconstruyen desde la faena del INDEC y
-    # YA llegan en base 100.
+    # (aspiracional). Las dos series salen del consumo aparente por habitante de
+    # SAGYP (ADR-0392) y YA llegan en base 100.
     "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
     "consumo_carne_vacuna":   ("consumo_carne_vacuna", False, False, True),
     # ADR-0224: el que puntúa es la motorización TOTAL —autos + motos per

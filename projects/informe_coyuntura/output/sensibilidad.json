@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-28T03:38:01.417572+00:00",
+    "snapshot": "2026-10-28T10:19:47.230971-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -140,8 +140,8 @@
       "tasa_homicidios": 96.8,
       "alquiler_udesa_real": 97.0,
       "ratio_motos_autos": 97.3,
+      "consumo_carne_vacuna": 97.3,
       "consumo_carnes_total": 97.2,
-      "consumo_carne_vacuna": 97.2,
       "tasa_robos": 97.2
     },
     "tension": {

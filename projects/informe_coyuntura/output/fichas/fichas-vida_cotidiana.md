@@ -35,7 +35,7 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 97,2** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 9 en verde · 2 en amarillo · 4 en naranja · 4 en rojo |
+| **ITCIS: 97,2** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 9 en verde · 3 en amarillo · 3 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
@@ -79,8 +79,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | VERDE | 8,2 % |
 | **DIMENSIÓN: Consumo** | | | | |
-| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la… | 46,75 kg/hab/año | NARANJA | 0,4 % |
-| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,4 % |
+| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg/hab/año | NARANJA | 0,4 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg/hab/año | AMARILLO | 0,4 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
 | Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil 12m) | ROJO | 0,7 % |
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
@@ -552,11 +552,11 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 # Consumo de carne vacuna per cápita
 
-Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
+Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 46,75 kg/hab/año** (2026-07) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 45,81 kg/hab/año** (2026-09) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -564,23 +564,23 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carne_vacuna | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
-| **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
-| **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses (vacuna). Evolución: faena mensual en toneladas de vacunos (INDEC, serie 40.3_VT_0_M_17), per cápita con la población proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-28 |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
+| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del INDEC. |
+| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
+Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
 
-Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de vacunos por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
+Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular, el gráfico y el puntaje usan el mismo dato: el titular en kilos y el gráfico y el puntaje comparados con fines de 2023.
 
 **Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
-- Faena de vacunos en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.
-- Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.
-- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).
+- El titular es el consumo por habitante del último mes publicado, en kilos por año.
+- Componente del índice: ese mismo consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos consumo por habitante = deterioro).
+- La edición vigente de la fuente trae desde enero de 2024. Diciembre de 2023 es el anual oficial de 2023; octubre y noviembre se despejan del propio promedio móvil con los meses de 2024 y los de fines de 2022 de una edición anterior. Con cualquier supuesto razonable sobre esa edición, la base se mueve ±0,04 kg.
 
 ## Semáforo — valores que determinan el color
 
@@ -595,19 +595,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **88,5**.
+Este componente está hoy en **85,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (46,75 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (45,81 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 46,75 kg/hab/año (2026-07).
+Dato vigente: 45,81 kg/hab/año (2026-09).
 
-Consumo aparente de carne vacuna: 46,8 kg por habitante y año (−8,4% interanual), el 41,0% del total de las tres carnes, 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,2 kg, el 59,0% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
+Consumo aparente de carne vacuna: 45,8 kg por habitante y año (−9,8% interanual), el 40,3% del total de las tres carnes, 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,8 kg, el 59,7% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
 **Color vigente: NARANJA**
 
@@ -616,15 +616,15 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
-- La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.
+- No descuenta variaciones de stock: un mes con mucha carne en cámaras se lee como consumo. El promedio de 12 meses lo atenúa.
 - El equipo cita un «promedio histórico ~73 kg/hab/año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.
 - El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes sin tablero legible deja el titular en el último valor publicado (con respaldo en CICCRA); la serie del índice sigue avanzando con la faena, que es independiente.
+- **Si falta el dato:** Si la fuente no publica o cambia de formato, el titular y el índice quedan en el último mes leído y se marcan desactualizados; el titular tiene respaldo en CICCRA.
 
-- **Política de revisiones:** La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.
+- **Política de revisiones:** Los datos son provisorios. Cada lectura pisa los meses que la fuente revisó; los que ya no publica se conservan como estaban.
 
 ## Historial — cambios metodológicos documentados
 
@@ -642,6 +642,8 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 **2026-09-24** — Sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar.
 
+**2026-10-28** — Puntúa el consumo, no la faena. El titular y el puntaje salen del mismo dato: el consumo aparente por habitante de la Secretaría de Agricultura, mes a mes. Hasta acá el titular mostraba el consumo y el puntaje seguía la faena del INDEC, que es producción y no descuenta exportaciones. Con el dato de agosto el componente pasa de 88,5 a 86,4: la faena caía menos que el consumo porque se exporta más.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -652,11 +654,11 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 # Consumo total de carnes per cápita
 
-Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero oficial. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
+Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 113,94 kg/hab/año** (2026-07) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 113,6 kg/hab/año** (2026-09) | **AMARILLO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -664,23 +666,23 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carnes_total | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
-| **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
-| **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-28 |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
+| **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del INDEC y su suma reproduce el total del tablero de consumo de carnes. |
+| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero oficial. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
+Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
 
-La suma y el desglose muestran la evolución agregada de las tres carnes, sin identificar sustituciones dentro de los mismos hogares. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
+La suma y el desglose muestran la evolución agregada de las tres carnes, sin identificar sustituciones dentro de los mismos hogares. El titular, el gráfico y el puntaje usan el mismo dato: el titular en kilos y el gráfico y el puntaje comparados con fines de 2023.
 
 **Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
-- Suma de las tres carnes —vacuna, aviar y porcina— en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.
-- Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.
-- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).
+- El titular es la suma del consumo por habitante de las tres carnes en el último mes que las tres publicaron, en kilos por año.
+- Componente del índice: esa misma suma rebaseada a 100 = promedio del 4º trimestre de 2023 (menos consumo por habitante = deterioro).
+- El 4º trimestre de 2023 de la vacuna se reconstruye como se explica en su ficha; aviar y porcina lo publican directamente.
 
 ## Semáforo — valores que determinan el color
 
@@ -695,36 +697,36 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **94**.
+Este componente está hoy en **97,1**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (113,94 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (113,6 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 113,94 kg/hab/año (2026-07).
+Dato vigente: 113,6 kg/hab/año (2026-09).
 
-Consumo aparente de las tres carnes: 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. La carne vacuna aporta 46,8 kg, el 41,0%, y se sigue además como indicador propio; aviar y porcina suman 67,2 kg, el 59,0% (aviar 0,2% y porcina 10,1% interanual). Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
+Consumo aparente de las tres carnes: 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. La carne vacuna aporta 45,8 kg, el 40,3%, y se sigue además como indicador propio; aviar y porcina suman 67,8 kg, el 59,7% (aviar −0,2% y porcina 10,8% interanual). Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
-**Color vigente: NARANJA**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
-- La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.
+- No descuenta variaciones de stock: un mes con mucha carne en cámaras se lee como consumo. El promedio de 12 meses lo atenúa.
 - Sólo cubre las tres carnes. Huevo, lácteos, pescado y legumbres también son proteína y también muestran sustitución; sus fuentes no tienen la frecuencia necesaria para un seguimiento mensual.
 - El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes sin tablero legible deja el titular en el último valor publicado; la serie del índice sigue avanzando con la faena, que es independiente.
+- **Si falta el dato:** Si una de las tres fuentes no publica, el total queda en el último mes con las tres y se marca desactualizado.
 
-- **Política de revisiones:** La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.
+- **Política de revisiones:** Los datos son provisorios. Cada lectura pisa los meses que la fuente revisó; los que ya no publica se conservan como estaban.
 
 ## Historial — cambios metodológicos documentados
 
@@ -741,6 +743,8 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 **2026-09-15** — Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado.
 
 **2026-09-24** — Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta tarjeta.
+
+**2026-10-28** — Puntúa el consumo, no la faena. El titular y el puntaje salen del mismo dato: la suma del consumo aparente por habitante de las tres carnes de la Secretaría de Agricultura, mes a mes. Hasta acá el titular mostraba el consumo y el puntaje seguía la faena del INDEC, que es producción y no descuenta exportaciones.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

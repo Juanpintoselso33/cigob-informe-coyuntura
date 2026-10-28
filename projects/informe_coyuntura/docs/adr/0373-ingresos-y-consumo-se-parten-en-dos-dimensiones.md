@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [brecha_salario_cbt, pobreza_nowcast, consumo_supermercados, motorizacion_total, ratio_motos_autos, consumo_carnes_total, consumo_carne_vacuna]
 archivos: ['scripts/itvc.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
-relacionado: ['0115', '0225', '0339', '0383', '0386']
+relacionado: ['0115', '0225', '0339', '0383', '0386', '0392']
 ambito: 'Cinturón de impacto social · ITCIS · dimensiones Ingresos y Consumo'
 origen: 'Documento de Luis Babino «Cambios del cinturón impacto social v1» (22-oct-2026, punto 1) y decisión de Juan del 26-oct-2026.'
 ---

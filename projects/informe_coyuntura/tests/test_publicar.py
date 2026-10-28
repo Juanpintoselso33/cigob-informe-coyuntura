@@ -1061,7 +1061,7 @@ def test_carne_separa_nivel_variacion_y_fuente_del_color(total, var_total, posic
     assert posicion in texto
     assert f"{publicar.coma(var_total)}% interanual" in texto
     assert "no identifican sustitución" in texto
-    assert "evolución de faena por habitante frente a 4T-2023" in texto
+    assert "comparan este mismo consumo con el de fines de 2023" in texto
     assert "Combinación inesperada" not in texto
     assert "Sustitución, no menos proteína" not in texto
 

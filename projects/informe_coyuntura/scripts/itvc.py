@@ -732,8 +732,8 @@ SERIES_REBASEADAS = {
     "itvc_alquiler_udesa": "alquiler_udesa_real",
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",
-    # Reconstruidas desde la faena INDEC por categoría: ya llegan en base 100
-    # = 4T-2023, así que no se re-rebasean (ADR-0322). Puntúan el total de las
+    # Consumo aparente por habitante de SAGYP (ADR-0392; antes, faena del
+    # INDEC): ya llegan en base 100 = 4T-2023, así que no se re-rebasean (ADR-0322). Puntúan el total de las
     # tres carnes y la vacuna sola (ADR-0339).
     "consumo_carnes_total": "consumo_carnes_total",
     "consumo_carne_vacuna": "consumo_carne_vacuna",
