@@ -159,8 +159,13 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Sin abreviaturas en el sitio** (Juan, 28-oct): nada de siglas ni abreviaturas en
+  rótulos, unidades, tarjetas, fichas y textos (CABA → Ciudad de Buenos Aires, ATN, RIGI,
+  DNU, EPH, REM, FAL, etc.: el nombre completo o una forma llana). Barrer todo el sitio.
+  Amplía el punto 3 (siglas).
+
 - **Piquetes: volver a la Ciudad de Buenos Aires** (Juan, 28-oct). Estaba decidido mantener
-  CABA y el ADR-0405 (28-oct) lo pasó al total del país (99 → 77) contra esa decisión.
+  la Ciudad y el ADR-0405 (28-oct) lo pasó al total del país (99 → 77) contra esa decisión.
   Revertir a CABA (otro ADR) y revisar lo que dicen la tarjeta y la ficha de la fuente
   (consultora Diagnóstico Político) y del protocolo (vigencia: anulado en primera
   instancia y apelado; verificar el estado actual).
