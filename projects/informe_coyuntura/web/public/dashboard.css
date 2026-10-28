@@ -47,7 +47,10 @@
        gráfico de evolución. Sólo pinta rellenos, no texto. */
     --amarillo:    #E8C547;
     --amarillo-soft: #FEF3C7;
-    --naranja:      #EA580C;
+    /* #EA580C (naranja quemado) se leía casi rojo al lado de #DC2626 en la
+       aguja (Juan, 28-oct-2026): naranja franco, a mitad de camino entre el
+       amarillo y el rojo. */
+    --naranja:      #FB8C00;
     --naranja-soft: #FFEDD5;
     --rojo:        #DC2626;
     --rojo-soft:   #FEE2E2;
