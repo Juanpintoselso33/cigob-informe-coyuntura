@@ -159,6 +159,14 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Seguir buscando la serie de empleadores de ARCA** (Juan, 28-oct). Hoy el padrón entra
+  como dato sin puntuar porque no tiene historia (ADR-0389; se reconstruyó parte con el
+  archivo de Internet). Buscar una serie de empleadores inscriptos que llegue a fines de
+  2023 (anuarios de estadísticas tributarias, informes de ARCA, otras fuentes).
+- **Corrección:** el «resto de la EPH espera el documento de Ever» no es un pedido. Los
+  acuerdos del 26-oct dicen sólo «Luis le pasa el documento de Ever»; lo acordado en empleo
+  (ocupación de la EPH como principal y padrón de ARCA como complemento) está hecho.
+
 - **Alquiler del IPC: que sea alquiler real** (Juan, 28-oct). Hoy la tarjeta «Alquiler (IPC
   del Gran Buenos Aires)» muestra la variación mensual nominal (1,88 %) y el puntaje usa el
   alquiler relativo al IPC general. Que la tarjeta y el puntaje sean el alquiler real
