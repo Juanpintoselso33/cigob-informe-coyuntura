@@ -179,6 +179,14 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
   reconstrucción y que la cadena da en promedio 3 puntos menos por año que las interanuales
   publicadas. Nada de este dato va en descripciones de otras tarjetas.
 
+- **Conflictividad: sin cambios, ni en el cálculo ni en la ficha** (Juan, 29-oct).
+- **Victimización: sin cambios** (Juan, 29-oct). La UTDT no publicó desde el informe de julio (subido el 5-ago); el colector anda. Si a fines de noviembre sigue sin salir, se revisa (el sitio lo marca desactualizado solo a los 150 días).
+- **Postura del comercio: se deja como está** (Juan, 29-oct). Da 100 siempre porque la cámara apoyó al Gobierno en cada comunicado; no es un error.
+- **Gasto de funcionamiento, base: DECIDIDO (Juan, 29-oct), en implementación.** Promedio de
+  los últimos 12 meses contra el promedio de todo 2023 (−28,0 % a ago-2026): el aguinaldo se
+  cancela de verdad (dos medios en cada lado). Se descartó 12 meses contra oct–dic 2023
+  (−31,9 %) porque oct–dic trae medio aguinaldo en 3 meses y exagera la caída 4 a 7 puntos. La unidad
+  y la ficha lo dicen en castellano llano. Sigue para la reunión sólo lo de los sueldos.
 - **Para la reunión: gasto de funcionamiento** (Luis, revisión de gestión 26-oct, 1.5 y 2.4).
   Base, con dato a ago-2026: mismo mes de 2023 (hoy) −35,9 %; dic-2023 −50,3 % (pico de
   aguinaldo, infla la caída); oct–dic 2023 −39,4 %; promedio 2023 −36,0 %; últimos 12 meses

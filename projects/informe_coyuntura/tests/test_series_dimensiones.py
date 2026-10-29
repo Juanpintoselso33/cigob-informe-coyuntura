@@ -58,20 +58,10 @@ SIGLAS = sorted(CINTURON_DE_INDICE)
 # NINGUNA se arregla desde este ADR: ADR-0233 expone lo que ya se calcula, no
 # cambia qué se calcula. Arreglar una mueve la serie publicada del índice y sus
 # correlaciones, y eso necesita su propio ADR.
-DIVERGENCIAS_DECLARADAS = {
-    ("itvc", "empleo"): (
-        "`informalidad` se rebasea distinto en los dos caminos. El índice vivo "
-        "(itvc.indices_desde_series) la trata como la serie TRIMESTRAL que es y "
-        "toma como base el 4T-2023 exacto, o sea el punto 2023-10 (35,7 → índice "
-        "94,2). La reconstrucción (validacion_externa.COMPONENTES) la sigue "
-        "declarando `anual=True`, así que su base es el PRIMER valor de 2023, el "
-        "punto 2023-01 (36,7 → índice 96,8). El propio comentario de itvc.py dice "
-        "que la serie trimestral «reemplaza la excepción anual»; la reconstrucción "
-        "nunca se actualizó. Diferencia en la dimensión: 0,9 puntos. Hallado al "
-        "escribir ADR-0233 y NO tocado ahí — cambiar el flag mueve la serie "
-        "histórica del ITCIS y las correlaciones que se publican con ella."
-    ),
-}
+# ("itvc", "empleo") salió el 29-oct-2026 (ADR-0413): la serie nueva de
+# informalidad arranca en el 4T-2023, así que su primer valor y la base del
+# índice vivo son el mismo punto y los dos caminos coinciden.
+DIVERGENCIAS_DECLARADAS = {}
 
 
 def _serie_indice(sigla):

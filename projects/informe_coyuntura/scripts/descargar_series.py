@@ -3265,6 +3265,30 @@ def _serie_var_real_vs_2023(nominal_ids: list) -> list:
     return out
 
 
+def _serie_var_real_12m_vs_2023(nominal_ids: list) -> list:
+    """ADR-0414: para cada mes, la variación % real del promedio de los 12
+    meses que terminan ahí contra el promedio de los 12 meses de 2023, con la
+    misma función que la tarjeta. Arranca en ene-2024, la primera ventana que
+    termina después de la base (todas incluyen meses de 2023; la base es el
+    año anterior al mandato). [[YYYY-MM-01, var%]]."""
+    # Sólo los meses en que están TODOS los componentes (la intersección, como
+    # la tarjeta): sumar sobre la unión publicaría un total parcial.
+    partes = [gestion._indec_nivel_mensual(sid, limit=gestion.GASTO_LIMITE_OBS)
+              for sid in nominal_ids]
+    comunes = set.intersection(*(set(p) for p in partes))
+    nominal = {ym: sum(p[ym] for p in partes) for ym in comunes}
+    ipc = gestion._indec_nivel_mensual(gestion.IPC_ID, limit=gestion.GASTO_LIMITE_OBS)
+    out = []
+    for ym in sorted(set(nominal) & set(ipc)):
+        if ym < "2024-01":
+            continue
+        # un mes faltante en la ventana o en la base hace fallar la serie entera
+        # (y el pipeline conserva la anterior) en vez de truncarla en silencio
+        var, _, _ = gestion._var_real_12m_vs_2023(nominal, ipc, ym)
+        out.append([f"{ym}-01", var])
+    return out
+
+
 def fetch_opcion_salud_serie() -> list:
     """ADR-0371: avance por hitos al cierre de cada mes, con el % de usuarios
     (`opcion_salud_pct_serie`) como insumo del hito de funcionamiento."""
@@ -3794,8 +3818,10 @@ GESTION_DERIVADAS = [
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
     # ADR-0362: el hito del cese de las unidades de gestión, no la TDPS.
     ("asistencia_directa", "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)", "Boletín Oficial (Res. 84/2024)", gestion.serie_asistencia_directa),
-    ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",
-     lambda: _serie_var_real_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
+    # ADR-0414: promedio de los últimos 12 meses contra el promedio de 2023, la misma
+    # cuenta que la tarjeta (gestion._var_real_12m_vs_2023).
+    ("gasto_funcionamiento", "% real: promedio de los últimos 12 meses frente al promedio de 2023", "Secretaría de Hacienda + índice de precios al consumidor del INDEC",
+     lambda: _serie_var_real_12m_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
     ("masa_salarial", "% real vs mismo mes 2023", "Sec. Hacienda AIF + IPC INDEC",
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
     ("libertad_opcion_salud", "Avance de la libre elección de cobertura de salud (hitos 0–100)", "Boletín Oficial · ARCA · SSS — RNAS/RNEMP", fetch_opcion_salud_serie),

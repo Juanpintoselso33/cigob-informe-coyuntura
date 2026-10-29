@@ -1179,6 +1179,50 @@ def _var_real_vs_mismo_mes_2023(nominal: dict, ipc: dict) -> tuple:
     return round((real_t / real_b - 1.0) * 100.0, 2), ym, base_ym
 
 
+BASE_2023 = tuple(f"2023-{m:02d}" for m in range(1, 13))
+_MES_NOMBRE = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+               "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+
+
+def _mes_largo(ym: str) -> str:
+    return f"{_MES_NOMBRE[int(ym[5:7]) - 1]} de {ym[:4]}"
+
+
+def _meses_previos(ym: str, n: int) -> list:
+    """Los `n` meses que terminan en `ym`, ascendentes."""
+    a, m = int(ym[:4]), int(ym[5:7])
+    out = []
+    for _ in range(n):
+        out.append(f"{a:04d}-{m:02d}")
+        a, m = (a - 1, 12) if m == 1 else (a, m - 1)
+    return out[::-1]
+
+
+GASTO_LIMITE_OBS = 500   # ~40 años mensuales: la base de 2023 siempre entra
+
+
+def _var_real_12m_vs_2023(nominal: dict, ipc: dict, ym: str = None) -> tuple:
+    """ADR-0414: variación % REAL del promedio de los 12 meses que terminan en
+    `ym` (por defecto, el último común) contra el promedio de los 12 meses de
+    2023 (enero a diciembre). Los dos lados traen los dos medios aguinaldos
+    (junio y diciembre) en doce meses: la proporción es la misma y el
+    aguinaldo se cancela. Exige los 24 meses (ventana y base) completos, sin
+    rellenar nada.
+    Devuelve (var_pct, ym_ultimo, ym_primero)."""
+    comunes = sorted(set(nominal) & set(ipc))
+    if not comunes:
+        raise ValueError("sin meses comunes entre la serie nominal y el IPC")
+    ym = ym or comunes[-1]
+    ventana = _meses_previos(ym, 12)
+    faltan = [m for m in ventana + list(BASE_2023) if m not in nominal or m not in ipc]
+    if faltan:
+        raise ValueError(f"faltan meses para la comparación: {faltan}")
+    real = lambda m: nominal[m] / ipc[m]
+    hoy = sum(real(m) for m in ventana) / 12
+    base = sum(real(m) for m in BASE_2023) / 12
+    return round((hoy / base - 1.0) * 100.0, 2), ym, ventana[0]
+
+
 def fetch_masa_salarial() -> dict | None:
     """
     Masa salarial del Sector Público Nacional (AIF base caja: remuneraciones),
@@ -1209,7 +1253,9 @@ def fetch_masa_salarial() -> dict | None:
 def fetch_gasto_funcionamiento() -> dict | None:
     """
     Gasto de funcionamiento del Estado nacional (IMIG: salarios + otros gastos
-    de funcionamiento), variación REAL vs el mismo mes de 2023. Mide la
+    de funcionamiento), variación REAL del promedio de los últimos 12 meses
+    contra el promedio de los 12 meses de 2023 (ADR-0414; antes, el último mes
+    contra el mismo mes de 2023). Mide la
     magnitud fiscal del aparato administrativo aislada de la inflación —
     distingue achicamiento real de licuación nominal.
 
@@ -1236,22 +1282,22 @@ def fetch_gasto_funcionamiento() -> dict | None:
     condiciones bajo las que esto se puede reabrir.
     """
     try:
-        salarios = _indec_nivel_mensual(FUNC_SALARIOS_ID, limit=48)
-        otros    = _indec_nivel_mensual(FUNC_OTROS_ID, limit=48)
-        ipc      = _indec_nivel_mensual(IPC_ID, limit=48)
+        # la base es fija (2023): se pide la serie larga para que el límite de
+        # observaciones recientes nunca la deje afuera (hallazgo de Codex)
+        salarios = _indec_nivel_mensual(FUNC_SALARIOS_ID, limit=GASTO_LIMITE_OBS)
+        otros    = _indec_nivel_mensual(FUNC_OTROS_ID, limit=GASTO_LIMITE_OBS)
+        ipc      = _indec_nivel_mensual(IPC_ID, limit=GASTO_LIMITE_OBS)
         comunes  = set(salarios) & set(otros)
         total    = {ym: salarios[ym] + otros[ym] for ym in comunes}
-        var_pct, ym, base_ym = _var_real_vs_mismo_mes_2023(total, ipc)
-        infl = ipc[ym] / ipc[base_ym]
+        var_pct, ym, desde = _var_real_12m_vs_2023(total, ipc)
         return {
             "valor":          var_pct,
-            "unidad":         f"% de variación real frente a {base_ym} (gastos de funcionamiento)",
+            "unidad":         "% de variación real: promedio de los últimos 12 meses frente al promedio de 2023",
             "fuente":         "Secretaría de Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} billones, base caja ({ym}) frente a "
-                               f"$ {total[base_ym]/1e6:,.2f} billones ({base_ym}) · inflación del "
-                               f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
+            "detalle_txt":    (f"Promedio mensual de {_mes_largo(desde)} a {_mes_largo(ym)} contra el "
+                               "de enero a diciembre de 2023, descontada la inflación"),
         }
     except Exception as e:
         _warn("gasto_funcionamiento", e)

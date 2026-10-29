@@ -66,7 +66,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
 | Empleados de la administración nacional | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −21,37 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | VERDE | 14,6 % |
-| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −35,92 % de variación real frente a 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
+| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −28 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización… | 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) | VERDE | 7,5 % |
 | Siniestralidad laboral (Superintendencia de Riesgos del Trabajo) | Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo. | −5 % variación del índice de incidencia (mismo período, contra el año anterior) | VERDE | 3,8 % |
@@ -501,25 +501,25 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 
 # Gasto de funcionamiento
 
-Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.
+Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento—: el promedio de los últimos doce meses contra el promedio mensual de 2023, el año anterior al mandato.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −35,92 % de variación real frente a 2023-08 (gastos de funcionamiento)** (2026-08) | **VERDE** | Peso efectivo 10,4 % del ITCG | Cinturón Gestión |
+| **Hoy: −28 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023** (2026-08) | **VERDE** | Peso efectivo 10,4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | gasto_funcionamiento | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real frente a 2023-08 (gastos de funcionamiento) |
+| **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 |
 | **SERIE DISPONIBLE** | 2024-01 → 2026-08 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Las series de gasto se publican con unos 2 meses de rezago. |
-| **PRODUCTOR DEL DATO** | Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real contra el mismo mes de 2023 |
+| **PRODUCTOR DEL DATO** | Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real del promedio de los últimos 12 meses contra el promedio de los 12 meses de 2023 |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-29 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.
+Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento—: el promedio de los últimos doce meses contra el promedio mensual de 2023, el año anterior al mandato.
 
 La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal. Incluye las remuneraciones. Un puntaje de 100 quiere decir que alcanzó la referencia fijada, no que la reforma del Estado esté terminada.
 
@@ -528,7 +528,7 @@ La magnitud fiscal del aparato administrativo, aislada de la inflación: disting
 ## Método de cómputo
 
 - Total = salarios + otros gastos de funcionamiento, base caja de la serie mensual de gastos de funcionamiento.
-- Variación real del último mes contra el mismo mes de 2023, deflactada por IPC: comparar el mismo mes aísla a la vez la inflación y la estacionalidad de los aguinaldos.
+- Cada mes se deflacta con el índice de precios al consumidor (IPC) y se promedian los últimos 12 meses y los doce de 2023 (enero a diciembre); la variación real es el cociente de los dos promedios. Los dos lados traen los dos medios aguinaldos (junio y diciembre), así que el efecto del aguinaldo se cancela.
 
 ## Semáforo — valores que determinan el color
 
@@ -536,24 +536,24 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de variación real frente a 2023-08 (gastos de funcionamiento)) | Color |
+| Rango (% de variación real: promedio de los últimos 12 meses frente al promedio de 2023) | Color |
 |---|---|
 | ≤ −8,5 | VERDE |
 | −8,5 – −2,5 | AMARILLO |
-| −2,5 – −0,83 | NARANJA |
-| ≥ −0,83 | ROJO |
+| −2,5 – −0,8 | NARANJA |
+| ≥ −0,8 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- $ 2,05 billones. base caja (2026-08) frente a $ 0,53 billones (2023-08) · inflación del período ×6,0
+- Promedio mensual de septiembre de 2025 a agosto de 2026 contra el de enero a diciembre de 2023, descontada la inflación
 
 ## Color vigente y por qué
 
-Dato vigente: −35,92 % de variación real frente a 2023-08 (gastos de funcionamiento) (2026-08).
+Dato vigente: −28 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 (2026-08).
 
-−35,92 % de variación real frente a 2023-08 (gastos de funcionamiento) está en Verde, a 27,42 del límite con Amarillo (−8,5).
+−28,0 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 está en Verde, a 19,5 del límite con Amarillo (−8,5).
 
 **Color vigente: VERDE**
 
@@ -565,7 +565,7 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 
 - Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.
 - Incluye los sueldos: es la suma de salarios y otros gastos de funcionamiento. La masa salarial salió del índice en agosto de 2026, así que el costo de la nómina se lee sólo acá; la cantidad de personas, en la dotación.
-- Compara contra el mismo mes de 2023 y no contra diciembre de 2023, como la dotación, porque es un flujo con aguinaldos: comparar diciembre contra diciembre o junio contra junio evita leer un medio aguinaldo como recorte o como aumento. La dotación es un stock y no tiene ese problema. Las dos bases son anteriores al mandato.
+- Compara el promedio de los últimos doce meses con el promedio de los doce meses de 2023, todo el año anterior al mandato, y no con el último trimestre de 2023 como el resto del Monitor. La razón es el aguinaldo: el gasto es un flujo con medio aguinaldo en junio y otro en diciembre, así que un mes suelto o tres meses salteados saltan según caiga o no uno, y doce meses contra octubre–diciembre exageran la caída porque la base trae uno solo en tres meses. Con doce meses de cada lado los dos traen los dos medios aguinaldos y el efecto se cancela. Como promedia un año entero, reacciona más lento que un mes suelto a un cambio reciente. La base es anterior al mandato.
 - La fuente es base caja y revisable. No corresponde al devengado de Presupuesto Abierto: cambian el momento de registro y el universo institucional.
 
 ## Si falta el dato / Política de revisiones
@@ -581,6 +581,8 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 **2026-07-03** — Puntaje interpolado entre anclas.
 
 **2026-10-27** — La ficha aclara que el gasto incluye los sueldos y por qué compara contra el mismo mes de 2023 y no contra diciembre, como la dotación. No cambia el cálculo.
+
+**2026-10-29** — Deja de comparar el último mes contra el mismo mes de 2023 y pasa a comparar el promedio de los últimos doce meses con el promedio de los doce meses de 2023. Así los dos lados traen los dos medios aguinaldos y el efecto se cancela. Bandas y peso no cambian.
 
 **2026-10-24** — La explicación de la tarjeta nombraba Presupuesto Abierto como fuente; el dato sale de la serie de la Secretaría de Hacienda en datos.gob.ar, base caja. La dimensión aclara que su puntaje máximo no implica una reforma del Estado completada. No cambia el cálculo.
 

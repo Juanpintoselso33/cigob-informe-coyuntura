@@ -498,7 +498,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (licitaciones)", tipo: "Tasa real",
   },
   gasto_funcionamiento: {
-    que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.",
+    que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento—: el promedio de los últimos doce meses contra el promedio mensual de 2023, el año anterior al mandato.",
     aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal. Incluye las remuneraciones. Un puntaje de 100 quiere decir que alcanzó la referencia fijada, no que la reforma del Estado esté terminada.",
     frecuencia: "Mensual", tipo: "Variación real",
   },

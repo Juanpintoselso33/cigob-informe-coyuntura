@@ -526,38 +526,38 @@ fecha,indicador,valor,unidad,fuente
 2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-08-01,indice_salarios_publico,724.84,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-08-01,gasto_funcionamiento,-35.92,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-07-01,gasto_funcionamiento,-28.69,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-06-01,gasto_funcionamiento,-31.37,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-04-01,gasto_funcionamiento,-14.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-03-01,gasto_funcionamiento,-33.77,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-02-01,gasto_funcionamiento,-25.89,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2026-01-01,gasto_funcionamiento,-32.22,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-12-01,gasto_funcionamiento,-27.54,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-11-01,gasto_funcionamiento,-34.42,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-10-01,gasto_funcionamiento,-20.45,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-09-01,gasto_funcionamiento,-24.74,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-08-01,gasto_funcionamiento,-26.94,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-07-01,gasto_funcionamiento,-27.19,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-06-01,gasto_funcionamiento,-27.27,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-05-01,gasto_funcionamiento,-18.67,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-04-01,gasto_funcionamiento,-12.31,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-03-01,gasto_funcionamiento,-26.99,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-02-01,gasto_funcionamiento,-15.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2025-01-01,gasto_funcionamiento,-19.52,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-12-01,gasto_funcionamiento,-16.64,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-11-01,gasto_funcionamiento,-22.75,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-10-01,gasto_funcionamiento,-22.66,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-09-01,gasto_funcionamiento,-21.91,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-08-01,gasto_funcionamiento,-22.76,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-07-01,gasto_funcionamiento,-23.38,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-06-01,gasto_funcionamiento,-25.96,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-05-01,gasto_funcionamiento,-19.92,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-04-01,gasto_funcionamiento,-17.81,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-03-01,gasto_funcionamiento,-20.89,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-02-01,gasto_funcionamiento,-15.63,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
-2024-01-01,gasto_funcionamiento,-28.31,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-08-01,gasto_funcionamiento,-28.0,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-07-01,gasto_funcionamiento,-27.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-06-01,gasto_funcionamiento,-27.1,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-05-01,gasto_funcionamiento,-26.76,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-04-01,gasto_funcionamiento,-26.33,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-03-01,gasto_funcionamiento,-26.17,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-02-01,gasto_funcionamiento,-25.66,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2026-01-01,gasto_funcionamiento,-24.9,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-12-01,gasto_funcionamiento,-23.76,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-11-01,gasto_funcionamiento,-22.59,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-10-01,gasto_funcionamiento,-21.69,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-09-01,gasto_funcionamiento,-21.87,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-08-01,gasto_funcionamiento,-21.64,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-07-01,gasto_funcionamiento,-21.3,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-06-01,gasto_funcionamiento,-20.9,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-05-01,gasto_funcionamiento,-20.79,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-04-01,gasto_funcionamiento,-20.88,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-03-01,gasto_funcionamiento,-21.28,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-02-01,gasto_funcionamiento,-20.82,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2025-01-01,gasto_funcionamiento,-20.83,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-12-01,gasto_funcionamiento,-21.63,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-11-01,gasto_funcionamiento,-19.84,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-10-01,gasto_funcionamiento,-18.08,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-09-01,gasto_funcionamiento,-16.28,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-08-01,gasto_funcionamiento,-14.56,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-07-01,gasto_funcionamiento,-12.67,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-06-01,gasto_funcionamiento,-10.22,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-05-01,gasto_funcionamiento,-8.06,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-04-01,gasto_funcionamiento,-6.55,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-03-01,gasto_funcionamiento,-5.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-02-01,gasto_funcionamiento,-3.67,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
+2024-01-01,gasto_funcionamiento,-2.55,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-10-01,fal_modernizacion_laboral,90.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-09-01,fal_modernizacion_laboral,54.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-08-01,fal_modernizacion_laboral,36.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)

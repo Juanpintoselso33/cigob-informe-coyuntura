@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-29 12:03:11"
+generado: "2026-10-29 12:50:50"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -34,7 +34,7 @@ schema_version: "1.2.0"
 | tcr_terminos_intercambio | 49.8 | puntaje (0-100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.1 | % anual esperado | 2026-09-30 | fresco |
 | idm | 1.87 | puntos porcentuales (brecha interanual real) | 2026-09-01 | fresco |
-| desequilibrio_monetario | 64.02 | puntos de tensión (0-100) | 2026-08-01 | ⚠ cache |
+| desequilibrio_monetario | 64.02 | puntos de tensión (0-100) | 2026-08-01 | fresco |
 | iai | -1.74 | % interanual ponderado | 2026-08-01 | fresco |
 | icip | 13.67 | % interanual ponderado | 2026-07-01 | fresco |
 | credito_privado | -0.6 | % interanual real (crédito en pesos) | 2026-09-01 | fresco |
@@ -108,7 +108,7 @@ schema_version: "1.2.0"
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-08-01 | fresco |
-| gasto_funcionamiento | -35.92 | % de variación real frente a 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
+| gasto_funcionamiento | -28.0 | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | 2026-08-01 | fresco |
 | fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-10-29 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
@@ -131,8 +131,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:macro:desequilibrio_monetario`
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-10-29 12:03:11 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-29 12:50:50 — schema 1.2.0*

@@ -2526,14 +2526,14 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Las series de gasto se publican con unos 2 meses de rezago.",
     fuente: {
       organismo: "Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
-      operacion: "Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real contra el mismo mes de 2023",
+      operacion: "Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real del promedio de los últimos 12 meses contra el promedio de los 12 meses de 2023",
       serie: "452.2_SALARIOSIOS_0_T_8_22 + 452.2_OTROS_GASTNTO_0_T_27_55 + índice de precios al consumidor (IPC) 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.argentina.gob.ar/economia/sechacienda/infoestadistica",
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
       "Total = salarios + otros gastos de funcionamiento, base caja de la serie mensual de gastos de funcionamiento.",
-      "Variación real del último mes contra el mismo mes de 2023, deflactada por IPC: comparar el mismo mes aísla a la vez la inflación y la estacionalidad de los aguinaldos.",
+      "Cada mes se deflacta con el índice de precios al consumidor (IPC) y se promedian los últimos 12 meses y los doce de 2023 (enero a diciembre); la variación real es el cociente de los dos promedios. Los dos lados traen los dos medios aguinaldos (junio y diciembre), así que el efecto del aguinaldo se cancela.",
     ],
     anclas: {
       bandas: [
@@ -2544,13 +2544,13 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "> 0", puntaje: 10 },
       ],
       puntos: [[-25, 100], [-20, 85], [-10, 65], [-2.5, 40], [0, 10]],
-      unidadCorta: "% real frente a 2023",
+      unidadCorta: "% real frente al promedio de 2023",
     },
     dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del índice de gestión, en agosto de 2026. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.",
     limitaciones: [
       "Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.",
       "Incluye los sueldos: es la suma de salarios y otros gastos de funcionamiento. La masa salarial salió del índice en agosto de 2026, así que el costo de la nómina se lee sólo acá; la cantidad de personas, en la dotación.",
-      "Compara contra el mismo mes de 2023 y no contra diciembre de 2023, como la dotación, porque es un flujo con aguinaldos: comparar diciembre contra diciembre o junio contra junio evita leer un medio aguinaldo como recorte o como aumento. La dotación es un stock y no tiene ese problema. Las dos bases son anteriores al mandato.",
+      "Compara el promedio de los últimos doce meses con el promedio de los doce meses de 2023, todo el año anterior al mandato, y no con el último trimestre de 2023 como el resto del Monitor. La razón es el aguinaldo: el gasto es un flujo con medio aguinaldo en junio y otro en diciembre, así que un mes suelto o tres meses salteados saltan según caiga o no uno, y doce meses contra octubre–diciembre exageran la caída porque la base trae uno solo en tres meses. Con doce meses de cada lado los dos traen los dos medios aguinaldos y el efecto se cancela. Como promedia un año entero, reacciona más lento que un mes suelto a un cambio reciente. La base es anterior al mandato.",
       "La fuente es base caja y revisable. No corresponde al devengado de Presupuesto Abierto: cambian el momento de registro y el universo institucional.",
     ],
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
@@ -2559,6 +2559,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-10-27", cambio: "La ficha aclara que el gasto incluye los sueldos y por qué compara contra el mismo mes de 2023 y no contra diciembre, como la dotación. No cambia el cálculo." },
+      { fecha: "2026-10-29", cambio: "Deja de comparar el último mes contra el mismo mes de 2023 y pasa a comparar el promedio de los últimos doce meses con el promedio de los doce meses de 2023. Así los dos lados traen los dos medios aguinaldos y el efecto se cancela. Bandas y peso no cambian.", adr: "0414" },
       { fecha: "2026-10-24", cambio: "La explicación de la tarjeta nombraba Presupuesto Abierto como fuente; el dato sale de la serie de la Secretaría de Hacienda en datos.gob.ar, base caja. La dimensión aclara que su puntaje máximo no implica una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
     ],
   },
@@ -2576,7 +2577,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "Variación real contra el mismo mes de 2023, deflactada por IPC — la misma mecánica que el gasto de funcionamiento.",
+      "Variación real contra el mismo mes de 2023, deflactada por el índice de precios al consumidor. Desde octubre de 2026 el gasto de funcionamiento ya no usa esta cuenta: compara el promedio de los últimos 12 meses contra el de 2023.",
       "Complementa a la dotación con el costo real: distingue el achicamiento genuino de la licuación nominal por inflación.",
     ],
     anclas: {

@@ -122,8 +122,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Dotación de personal de la Administración Pública Nacional (base de empleo público).",
   },
   gasto_funcionamiento: {
-    latex: String.raw`\left(\frac{\text{gasto}_{\text{hoy}}}{\text{gasto}_{2023}}\cdot\frac{\text{índice de precios}_{2023}}{\text{índice de precios}_{\text{hoy}}}-1\right)\times 100`,
-    leyenda: "Gasto de funcionamiento del Estado nacional (salarios + otros gastos, base caja) de la Secretaría de Hacienda, publicado en datos.gob.ar, contra el mismo mes de 2023, descontada la inflación del Instituto Nacional de Estadística y Censos (INDEC).",
+    latex: String.raw`\left(\frac{\text{promedio de }\frac{\text{gasto}}{\text{índice de precios}}\text{ de los últimos 12 meses}}{\text{promedio de }\frac{\text{gasto}}{\text{índice de precios}}\text{ de los 12 meses de 2023}}-1\right)\times 100`,
+    leyenda: "Gasto de funcionamiento del Estado nacional (salarios + otros gastos, base caja) de la Secretaría de Hacienda, publicado en datos.gob.ar. Cada mes se divide por el índice de precios al consumidor del Instituto Nacional de Estadística y Censos (INDEC) para descontar la inflación; después se compara el promedio de los últimos doce meses con el promedio de los doce meses de 2023.",
   },
   masa_salarial: {
     latex: String.raw`\left(\frac{\text{masa salarial}_{\text{hoy}}}{\text{masa salarial}_{2023}}\cdot\frac{\text{índice de precios}_{2023}}{\text{índice de precios}_{\text{hoy}}}-1\right)\times 100`,

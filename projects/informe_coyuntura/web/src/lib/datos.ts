@@ -648,7 +648,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   paralisis_denuncias: "sesiones documentadas de las comisiones de Acusación y Disciplina en 12 meses",
   empleo_registrado: "Miles de asalariados registrados del sector privado",
   desregulacion_normativa: "Artículos modificados o eliminados desde diciembre de 2023 (volumen, no importancia)", apertura_comercial: "% del intercambio (alícuota efectiva)",
-  gasto_funcionamiento: "% de variación real frente a 2023", masa_salarial: "% de variación real frente a 2023",
+  gasto_funcionamiento: "% de variación real: promedio de los últimos 12 meses frente al promedio de 2023", masa_salarial: "% de variación real frente a 2023",
   asistencia_directa: "Unidades de gestión dadas de baja (Resolución 84/2024) — 0 o 100", fal_modernizacion_laboral: "Avance de la puesta en marcha del Fondo (0–100)",
   libertad_opcion_salud: "Avance de la libre elección por hitos (0–100)", protocolo_antipiquetes: "% de reducción de cortes en la Ciudad de Buenos Aires frente a 2023, dato del año 2025 (no mide la aplicación del protocolo)",
   litigiosidad_laboral: "% variación (12 meses frente a los 12 meses previos)",

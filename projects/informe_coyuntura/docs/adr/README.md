@@ -320,6 +320,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0406](0406-el-rigi-usa-la-escala-de-las-concesiones.md) | El RIGI usa la escala de las concesiones | `rigi_inversiones` | vigente |
 | [0407](0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) | Corredores Viales sale de la cartera de privatizaciones | `privatizaciones`, `concesiones_infraestructura` | vigente |
 | [0408](0408-los-piquetes-vuelven-a-la-ciudad.md) | Los piquetes vuelven a la Ciudad de Buenos Aires | `protocolo_antipiquetes` | vigente |
+| [0414](0414-el-gasto-de-funcionamiento-se-compara-con-todo-2023.md) | El gasto de funcionamiento se compara con todo 2023 | `gasto_funcionamiento` | vigente |
 
 ### Vida cotidiana (ITVC)
 
