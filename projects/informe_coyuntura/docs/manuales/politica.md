@@ -41,7 +41,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.3 → 100 · 0.3–0.7 → 85 · 0.7–1.2 → 65 · 1.2–2 → 40 · > 2 → 10
 
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
 
 #### Eficacia legislativa de proyectos maduros
 
@@ -68,12 +68,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 15% |
 | Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 0 meses |
+| Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
-**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
 
 #### Decretos derogados por el Congreso
 
@@ -84,12 +84,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 15% |
 | Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 0 meses |
+| Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
-**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
 
 #### Producción legislativa del Congreso
 
@@ -100,12 +100,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 17% |
 | Peso efectivo en el índice | **3.8%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 1.5 meses |
+| Rezago declarado | 6.5 meses |
 | Procedencia del ancla | `externa` — umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306) |
 
 **Bandas**: > 74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0306](../adr/0306-produccion-legislativa-meses-completos.md) Producción legislativa: doce meses completos y leyes distintas · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0306](../adr/0306-produccion-legislativa-meses-completos.md) Producción legislativa: doce meses completos y leyes distintas · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo · [ADR-0398](../adr/0398-la-produccion-legislativa-no-cuenta-leyes-vetadas.md) La producción legislativa no cuenta las leyes vetadas · [ADR-0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) El rezago suma la demora de publicación
 
 ### Dimensión `alianzas_territoriales` (20%)
 
@@ -121,9 +121,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 7.5 meses |
 | Procedencia del ancla | `convencion` — cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378) |
 
-**Bandas**: > 30 → 100 · 5–30 → 85 · -20–5 → 65 · -50–-20 → 40 · ≤ -50 → 10
+**Bandas**: > 72 → 100 · 36–72 → 85 · -36–36 → 65 · -72–-36 → 40 · ≤ -72 → 10
 
-**Lo gobiernan**: [ADR-0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) Las transferencias no automáticas reemplazan a las automáticas
+**Lo gobiernan**: [ADR-0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) Las transferencias no automáticas reemplazan a las automáticas · [ADR-0397](../adr/0397-las-transferencias-no-automaticas-se-miden-contra-2023.md) Las transferencias no automáticas se miden contra 2023
 
 #### Alineamiento de senadores por provincia
 
@@ -137,9 +137,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038) |
 
-**Bandas**: > 70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤ 40 → 10
+**Bandas**: > 77 → 100 · 50–77 → 65 · 25–50 → 10 · ≤ 25 → 10
 
-**Lo gobiernan**: [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
+**Lo gobiernan**: [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0402](../adr/0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) El alineamiento de senadores se compara con la historia
 
 #### Provincias adheridas al régimen de grandes inversiones
 
@@ -171,9 +171,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048) |
 
-**Bandas**: > 99.9 → 100 · 99–99.9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤ 95 → 10
+**Bandas**: > 99.9 → 100 · 97–99.9 → 65 · 93.4–97 → 40 · 89.8–93.4 → 10 · ≤ 89.8 → 10
 
-**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna
+**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) La cohesión mide las votaciones divididas, contra la historia
 
 #### Votos ajenos al aprobar leyes
 
@@ -189,7 +189,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 45 → 100 · 35–45 → 100 · 25–35 → 85 · 15–25 → 65 · 5–15 → 40 · ≤ 5 → 10
 
-**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna
+**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación
 
 ### Dimensión `conflicto_social` (11%)
 
@@ -202,12 +202,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 60% |
 | Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 6 meses |
+| Rezago declarado | 7 meses |
 | Procedencia del ancla | `historia_larga` — uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390) |
 
 **Bandas**: ≤ -30 → 100 · -30–-15 → 85 · -15–15 → 65 · 15–30 → 40 · > 30 → 10
 
-**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0303](../adr/0303-acled-semana-inicia-el-sabado.md) La semana ACLED empieza el sábado · [ADR-0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) Conflictividad con cortes de la historia previa
+**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0303](../adr/0303-acled-semana-inicia-el-sabado.md) La semana ACLED empieza el sábado · [ADR-0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) Conflictividad con cortes de la historia previa · [ADR-0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) El rezago suma la demora de publicación
 
 #### Intensidad de los paros
 
@@ -218,12 +218,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **4.3%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 6 meses |
+| Rezago declarado | 9 meses |
 | Procedencia del ancla | `historia_larga` — cortes en los percentiles 5/25/50/75 (4,0 · 5,9 · 7,6 · 9,1 millones) de las 204 ventanas de 12 meses de la serie oficial anteriores al mandato, dic-2006 a nov-2023; no se miró 2024-2026 (ADR-0232, ADR-0388) |
 
 **Bandas**: ≤ 4e+06 → 100 · 4e+06–5.9e+06 → 85 · 5.9e+06–7.6e+06 → 65 · 7.6e+06–9.1e+06 → 40 · > 9.1e+06 → 10
 
-**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario · [ADR-0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) Jornadas no trabajadas con una escala que se mueve
+**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario · [ADR-0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) Jornadas no trabajadas con una escala que se mueve · [ADR-0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) El rezago suma la demora de publicación
 
 ### Dimensión `poder_judicial` (16%)
 
@@ -316,17 +316,17 @@ del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
 - `bloqueo_sostenido` — Bloqueo legislativo sostenido (declarado como contexto)
-- `brecha_obra_publica` — Brecha de expectativas: obra pública vs. privada
-- `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
+- `brecha_obra_publica` — Brecha de expectativas: obra pública frente a privada
+- `cohesion_bloque_senado` — Cohesión del bloque de La Libertad Avanza (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
 - `desafios_legislativos` — Normas desafiadas en el recinto
 - `gobernadores_alineamiento` — Alineamiento de gobernadores (retirado)
 - `iaf_transferencias` — Armonía federal (transferencias)
-- `judicializacion` — Densidad de menciones cautelares en sumarios SAIJ
-- `movilizacion_cepa` — Tensión social (CEPA) (declarado como contexto)
+- `judicializacion` — Densidad de menciones cautelares en sumarios del Sistema Argentino de Información Jurídica
+- `movilizacion_cepa` — Tensión social (Centro de Economía Política Argentina) (declarado como contexto)
 - `paralisis_denuncias` — Actividad de las comisiones de control
-- `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
+- `protestas_caba` — Protestas en la Ciudad de Buenos Aires (Proyecto de Datos de Ubicación y Eventos de Conflictos Armados) (declarado como contexto)
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
 - `velocidad_resolucion` — Tasa de resolución de la Corte
 - `veto_quorum` — Sesiones caídas por falta de quórum
@@ -370,7 +370,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-101 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+108 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -473,3 +473,10 @@ histórica.
 - [0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) — Jornadas no trabajadas con una escala que se mueve
 - [0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) — Conflictividad con cortes de la historia previa
 - [0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) — La construcción y las autopartistas entran a la postura empresaria
+- [0397](../adr/0397-las-transferencias-no-automaticas-se-miden-contra-2023.md) — Las transferencias no automáticas se miden contra 2023
+- [0398](../adr/0398-la-produccion-legislativa-no-cuenta-leyes-vetadas.md) — La producción legislativa no cuenta las leyes vetadas
+- [0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) — El rezago suma la demora de publicación
+- [0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) — El bloque del senador es el del día de la votación
+- [0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) — La cohesión mide las votaciones divididas, contra la historia
+- [0402](../adr/0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) — El alineamiento de senadores se compara con la historia
+- [0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) — El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara

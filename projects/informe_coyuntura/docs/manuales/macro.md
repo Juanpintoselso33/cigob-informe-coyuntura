@@ -202,7 +202,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `actividad` (23%)
 
-#### Actividad económica (vs. un año atrás)
+#### Actividad económica (frente a un año atrás)
 
 `emae_ia`
 
@@ -230,7 +230,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0124](../adr/0124-la-actividad-se-mide-tambien-en-amplitud.md) La actividad se mide también en amplitud: entra la difusión sectorial del EMAE
 
-#### Producción industrial (vs. un año atrás)
+#### Producción industrial (frente a un año atrás)
 
 `ipi_manufacturero`
 
@@ -264,11 +264,11 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
-- `actividad_tributaria` — Actividad tributaria (IVA-DGI + cheque) (declarado como contexto)
-- `badlar` — Tasa BADLAR (declarado como contexto)
+- `actividad_tributaria` — Actividad tributaria (impuesto al valor agregado + impuesto al cheque) (declarado como contexto)
+- `badlar` — Tasa de plazo fijo de bancos privados grandes (declarado como contexto)
 - `base_monetaria` — Base monetaria (declarado como contexto)
 - `icip` — Pagos de servicios digitales y productividad (declarado como contexto)
-- `idm` — Brecha de crecimiento real M3–M2 (declarado como contexto)
+- `idm` — Brecha de crecimiento real entre el dinero total (M3) y el dinero de uso diario (M2) (declarado como contexto)
 - `prestamos_privados` — Préstamos al sector privado (declarado como contexto)
 - `tc_mayorista` — Tipo de cambio mayorista (declarado como contexto)
 - `tcr_terminos_intercambio` — Tipo de cambio real y términos del intercambio (declarado como contexto)

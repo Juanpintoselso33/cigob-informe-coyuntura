@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-28T19:43:02.352083-03:00",
+    "generated_at": "2026-10-29T03:46:05.319127+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -992,23 +992,23 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.528,
-        "concesiones_infraestructura": 0.335,
+        "concesiones_infraestructura": 0.334,
         "desregulacion_normativa": 0.918,
-        "fal_modernizacion_laboral": 0.308,
+        "fal_modernizacion_laboral": 0.306,
         "gasto_funcionamiento": 0.274,
-        "juicios_trabajo_capital": -0.489,
+        "juicios_trabajo_capital": -0.487,
         "libertad_opcion_salud": 0.902,
         "masa_salarial": 0.474,
         "privatizaciones": 0.808,
         "protocolo_antipiquetes": 0.328,
         "reduccion_estado": 0.847,
-        "reestructuracion_organismos": 0.463,
+        "reestructuracion_organismos": 0.462,
         "siniestralidad_laboral": 0.414
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.152,
-        "cepo_mulc": 0.335,
+        "cepo_mulc": 0.334,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.902,
         "gasto_funcionamiento": 0.281,
@@ -1040,7 +1040,7 @@
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.091,
         "asistencia_directa": 0.143,
-        "cepo_mulc": 0.308,
+        "cepo_mulc": 0.306,
         "concesiones_infraestructura": 0.902,
         "desregulacion_normativa": 0.533,
         "gasto_funcionamiento": 0.218,
@@ -1071,7 +1071,7 @@
       },
       "juicios_trabajo_capital": {
         "apertura_comercial": -0.299,
-        "cepo_mulc": -0.489,
+        "cepo_mulc": -0.487,
         "concesiones_infraestructura": -0.776,
         "desregulacion_normativa": -0.883,
         "fal_modernizacion_laboral": -0.727,
@@ -1164,7 +1164,7 @@
       "reestructuracion_organismos": {
         "apertura_comercial": 0.284,
         "asistencia_directa": 0.208,
-        "cepo_mulc": 0.463,
+        "cepo_mulc": 0.462,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
         "fal_modernizacion_laboral": 0.718,
@@ -2831,7 +2831,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1752.3
+    "2026-10": 1750.8
   },
   "serie_itcp": {
     "2024-03": 79.9,

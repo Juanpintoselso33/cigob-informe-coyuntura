@@ -39,7 +39,7 @@ donde colar una calibración (ADR-0123).
 
 ### Dimensión `ingresos` (20%)
 
-#### Salario real vs. canasta
+#### Salario real frente a la canasta básica
 
 `brecha_salario_cbt`
 
@@ -65,7 +65,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones · [ADR-0394](../adr/0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) La pobreza del INDEC se fecha al inicio de su semestre
 
 ### Dimensión `consumo` (8%)
 
@@ -123,7 +123,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer · [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer · [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones · [ADR-0392](../adr/0392-la-carne-puntua-el-consumo-no-la-faena.md) La carne puntúa el consumo, no la faena
 
 #### Consumo de carne vacuna per cápita
 
@@ -137,7 +137,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+**Lo gobiernan**: [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones · [ADR-0392](../adr/0392-la-carne-puntua-el-consumo-no-la-faena.md) La carne puntúa el consumo, no la faena
 
 ### Dimensión `precios` (25%)
 
@@ -169,7 +169,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0235](../adr/0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) La canasta de servicios puntúa contra asequibilidad, no contra 2023
 
-#### Costo real del alquiler
+#### Alquiler (índice de precios al consumidor del Gran Buenos Aires)
 
 `alquiler_real`
 
@@ -183,7 +183,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original · [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios
 
-#### Alquiler real (UdeSA – Mercado Libre)
+#### Alquiler real (Universidad de San Andrés – Mercado Libre)
 
 `alquiler_udesa_real`
 
@@ -229,7 +229,7 @@ donde colar una calibración (ADR-0123).
 
 ### Dimensión `empleo` (24%)
 
-#### Ocupación (EPH)
+#### Ocupación (Encuesta Permanente de Hogares)
 
 `ocupacion_eph`
 
@@ -287,7 +287,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos · [ADR-0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
+**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos · [ADR-0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad · [ADR-0393](../adr/0393-la-victimizacion-se-rebasea-al-4t-2023.md) La victimización se rebasea al 4T-2023
 
 #### Tasa de homicidios dolosos
 
@@ -328,7 +328,7 @@ histórica.
 - `endeudamiento_familiar` — Endeudamiento de consumo
 - `icc_utdt` — Confianza del consumidor
 - `indice_lider` — Índice líder (anticipa el ciclo)
-- `mortalidad_pymes` — Empleadores PyME activos
+- `mortalidad_pymes` — Empleadores activos de pequeñas y medianas empresas
 - `sentimiento_digital` — Sentimiento digital (Trends)
 - `subocupacion_demandante` — Subocupación demandante
 - `trabajo_independiente` — Peso del trabajo independiente
@@ -358,7 +358,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+61 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -418,3 +418,6 @@ histórica.
 - [0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) — La prospectiva de empleo pasa a «Empleo»
 - [0386](../adr/0386-el-alquiler-real-entra-a-precios.md) — El alquiler de UdeSA – Mercado Libre entra a precios
 - [0389](../adr/0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) — El padrón de empleadores de ARCA acompaña a la ocupación
+- [0392](../adr/0392-la-carne-puntua-el-consumo-no-la-faena.md) — La carne puntúa el consumo, no la faena
+- [0393](../adr/0393-la-victimizacion-se-rebasea-al-4t-2023.md) — La victimización se rebasea al 4T-2023
+- [0394](../adr/0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) — La pobreza del INDEC se fecha al inicio de su semestre
