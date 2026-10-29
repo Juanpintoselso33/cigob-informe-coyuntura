@@ -2104,7 +2104,9 @@ VIDA_DERIVADAS.append(
 )
 
 VIDA_DERIVADAS += [
-    ("informalidad", "%", "INDEC EPH (52.2, trimestral)", lambda: fetch_indec_x100("52.2_ASDJ_0_0_37")),
+    # ADR-0413: asalariados informales SIN aportes propios (planillas del INDEC).
+    ("informalidad", "%", "INDEC EPH (planillas de informalidad y de mercado de trabajo)",
+     lambda: __import__("informalidad_eph").serie()),
     # ADR-0383: variación interanual de la tasa de empleo, en pp. La serie que
     # puntúa es ESTA (no la tasa): la EPH no está desestacionalizada y el
     # interanual compara siempre el mismo trimestre.
@@ -2205,31 +2207,22 @@ def fetch_itvc_alimentos() -> list:
 
 @_con_config_de_vida
 def fetch_alquiler_real_serie() -> list:
-    """% m/m del IPC-GBA «alquiler de la vivienda» — la misma cuenta que la card.
+    """Alquiler real del IPC-GBA contra el 4T-2023 — la misma cuenta que la card.
 
-    La card era la ÚNICA de las 25 de la home sin sparkline, y no era un problema
-    de UI: `alquiler_real` nunca se registró acá, así que su serie tenía un solo
-    punto —el valor del día— cuando la regla del proyecto pide backfill desde
-    dic-2023 (auditoría de UI 29-jul-2026). El componente del ITVC
-    (`itvc_alquiler`) sí tenía historia, pero **mide otra cosa**: encarecimiento
-    relativo al nivel general de GBA, no la variación mensual del alquiler. No
-    son intercambiables.
+    Antes la card y esta serie mostraban la variación mensual nominal del
+    alquiler; desde ADR-0411 muestran el alquiler real: 100 x (alquiler_t /
+    alquiler_base) / (nivel general_t / nivel general_base), base = promedio
+    oct-dic 2023, ambos del Gran Buenos Aires. Por encima de 100 = más caro en
+    términos reales. El puntaje NO sale de acá sino de `itvc_alquiler`, que es
+    la misma cuenta invertida (100 x base / real, >100 = alivio).
 
-    Se deriva del NIVEL con `_var_mensual`, que exige meses CONSECUTIVOS, en vez
-    de dividir posiciones adyacentes de la lista descargada: si INDEC saltea un
-    mes, el cociente entre dos observaciones separadas por dos meses se
-    publicaría como variación mensual sin que nada avise (el mismo error que
-    corrigió la auditoría del 18-jul-2026).
-
-    Misma fórmula y mismo redondeo que la card, para que G3 cierre:
-    `(idx_t / idx_{t-1} − 1) × 100` a dos decimales.
-    [[YYYY-MM-01, % m/m]]."""
+    La card y la serie comparten `ipc_alquiler.indice_real` y el mismo redondeo
+    (dos decimales), para que G3 cierre. [[YYYY-MM-01, índice]]."""
     _entrar_a_vida_cotidiana()
-    from config import INDEC_SERIES
     sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
-    from ipc_alquiler import niveles as niveles_originales
-    niveles = niveles_originales()['alquiler']
-    return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())]
+    from ipc_alquiler import niveles as niveles_originales, indice_real
+    original = niveles_originales()
+    return [[f"{ym}-01", v] for ym, v in indice_real(original['alquiler'], original['general']).items()]
 
 
 @_con_config_de_vida
@@ -2266,13 +2259,14 @@ def fetch_itvc_alquiler() -> list:
 @_con_config_de_vida
 @_una_sola_vez_por_corrida
 def _alquiler_udesa_puntos() -> list:
-    """[[YYYY-MM-01, real interanual %, índice del componente]] (ADR-0386).
+    """[[YYYY-MM-01, alquiler real (4T-2023 = 100), índice del componente]] (ADR-0411).
 
     UdeSA - Mercado Libre se carga A MANO una vez por mes en
-    `data/vida/alquiler_udesa.json`; el IPC GBA sale de la planilla original del
-    INDEC, la misma de `alquiler_real`. Memoizada: la card y el componente
-    leen lo mismo y la planilla se baja una vez. Un mes sin carga o sin IPC no
-    tiene punto: no se interpola."""
+    `data/vida/alquiler_udesa.json`; los niveles se reconstruyen con las
+    variaciones publicadas y el IPC GBA sale de la planilla original del INDEC,
+    la misma de `alquiler_real`. Memoizada: la card y el componente leen lo
+    mismo y la planilla se baja una vez. Un mes sin nivel o sin IPC no tiene
+    punto: no se interpola."""
     _entrar_a_vida_cotidiana()
     import alquiler_udesa
     from ipc_alquiler import niveles as niveles_originales
@@ -2281,16 +2275,15 @@ def _alquiler_udesa_puntos() -> list:
 
 
 def fetch_alquiler_udesa_real_serie() -> list:
-    """% real interanual del alquiler de departamentos de AMBA (UdeSA - Mercado
-    Libre) — la misma cuenta que la card. [[YYYY-MM-01, %]]."""
+    """Alquiler real de los avisos de UdeSA - Mercado Libre contra el 4T-2023
+    (= 100) — la misma cuenta que la card. [[YYYY-MM-01, índice]]."""
     return [[f, real] for f, real, _ in _alquiler_udesa_puntos()]
 
 
 def fetch_itvc_alquiler_udesa() -> list:
-    """I_AU (ADR-0386): 100 menos el alquiler real interanual, en puntos. >100 =
-    el alquiler publicado subió menos que los precios en el año. Sólo desde
-    jun-2025: antes el informe no da la interanual nominal de AMBA.
-    [[YYYY-MM-01, índice]]."""
+    """I_AU (ADR-0411): 100 x base / alquiler real, la misma construcción que
+    `itvc_alquiler`: >100 = el alquiler pedido bajó en términos reales contra
+    el 4T-2023. Sólo en los meses con nivel reconstruido. [[YYYY-MM-01, índice]]."""
     return [[f, indice] for f, _, indice in _alquiler_udesa_puntos()]
 
 
@@ -3027,12 +3020,12 @@ VIDA_DERIVADAS += [
     # VIDA_DERIVADAS de más arriba porque ese se evalúa antes de que existan
     # estas funciones. Unidad y fuente COPIADAS de la card (publicar.py): si
     # divergen, la ficha pública dice una cosa y el CSV de la serie otra.
-    ("alquiler_real", "% m/m alquileres",
-     "INDEC — IPC-GBA alquiler de la vivienda (planilla original)", fetch_alquiler_real_serie),
-    # ADR-0386: alquiler real de UdeSA - Mercado Libre. Carga manual mensual.
-    ("itvc_alquiler_udesa", "índice (100 = el alquiler sube igual que los precios)",
+    ("alquiler_real", "índice (fines de 2023 = 100)",
+     "INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)", fetch_alquiler_real_serie),
+    # ADR-0386 y ADR-0411: alquiler real de UdeSA - Mercado Libre. Carga manual mensual.
+    ("itvc_alquiler_udesa", "índice (100 = 4T-2023)",
      "UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)", fetch_itvc_alquiler_udesa),
-    ("alquiler_udesa_real", "% real interanual",
+    ("alquiler_udesa_real", "índice (fines de 2023 = 100)",
      "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
      fetch_alquiler_udesa_real_serie),
     # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir

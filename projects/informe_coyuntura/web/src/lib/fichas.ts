@@ -3329,8 +3329,8 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual.",
     },
     transformaciones: [
-      "La tarjeta muestra la variación mensual del alquiler.",
-      "El componente mide el encarecimiento RELATIVO del alquiler: nivel del alquiler contra el nivel general de precios del mismo aglomerado, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, el alquiler subió más que el resto de los precios desde el arranque.",
+      "La tarjeta muestra el alquiler real: el nivel del alquiler de la vivienda dividido por el nivel general de precios del mismo aglomerado, ambos contra su promedio del 4º trimestre de 2023 (= 100). Por encima de 100, el alquiler subió más que el resto de los precios desde fines de 2023; por debajo, menos.",
+      "El componente que puntúa es la misma cuenta invertida: el promedio del 4º trimestre de 2023 sobre el nivel del mes, de modo que, como en los demás componentes, por encima de 100 signifique mejora. La tarjeta y la serie del gráfico muestran el mismo valor; el puntaje se calcula aparte, con la cuenta invertida.",
       "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
     ],
     incidenciaTexto: [
@@ -3349,6 +3349,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-20", cambio: "Alta del indicador: la dimensión de precios no medía el costo de la vivienda." },
       { fecha: "2026-09-08", cambio: "La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4º trimestre de 2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.", adr: "0291" },
       { fecha: "2026-10-27", cambio: "Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.", adr: "0386" },
+      { fecha: "2026-10-29", cambio: "La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler de contratos vigentes». El puntaje no cambia.", adr: "0411" },
     ],
   },
   alquiler_udesa_real: {
@@ -3359,32 +3360,35 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles",
       operacion: "Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA",
-      serie: "Variación interanual del precio de alquiler en pesos corrientes de los departamentos de AMBA, apartado «Alquiler» del informe mensual (PDF); deflactada con el nivel general del IPC del Gran Buenos Aires (INDEC)",
+      serie: "Variaciones del precio de alquiler en pesos corrientes de los departamentos de AMBA (interanual e intermensual), apartado «Alquiler» del informe mensual (PDF); reconstruidas como nivel y deflactadas con el nivel general del IPC del Gran Buenos Aires (INDEC)",
       url: "https://www.udesa.edu.ar/indices-mercado-libre",
       acceso: "Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa.",
     },
     transformaciones: [
-      "La tarjeta muestra la variación real interanual: (1 + alquiler nominal interanual) / (1 + inflación interanual del mismo mes) − 1.",
-      "El alquiler nominal es el que publica UdeSA – Mercado Libre para departamentos de AMBA en pesos corrientes, tal como figura en la prosa del informe. La inflación es el nivel general del IPC del Gran Buenos Aires del INDEC, la misma planilla que usa el costo del alquiler del IPC.",
-      "El componente que puntúa es 100 menos la variación real, en puntos: 100 significa que el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales. No se rebasea al 4º trimestre de 2023 porque la fuente sólo da variaciones interanuales y no se encadenan.",
+      "La fuente no publica niveles, sólo variaciones. El nivel nominal es una reconstrucción de CIGOB, mes a mes en orden cronológico: septiembre de 2023 vale 100; desde octubre de 2023, si la variación interanual del mes está publicada y se conoce el nivel de doce meses antes, el nivel es ése multiplicado por (1 + la interanual); si no, y se conoce el nivel del mes anterior, se usa la variación intermensual publicada; si tampoco, el mes queda sin nivel. Los meses sin dato no se rellenan ni se interpolan.",
+      "Se prefiere la interanual publicada porque encadenar las intermensuales da sistemáticamente menos que las interanuales que el propio informe publica; por eso la intermensual se usa sólo donde no hay interanual.",
+      "La tarjeta muestra el alquiler real: el nivel nominal reconstruido dividido por el nivel general del IPC del Gran Buenos Aires, ambos contra su promedio de octubre a diciembre de 2023 (= 100). Por debajo de 100, el alquiler pedido es más barato en términos reales que a fines de 2023.",
+      "El componente que puntúa es la misma construcción que la del alquiler del IPC: 100 por el promedio del 4º trimestre de 2023 sobre el nivel del mes, de modo que por encima de 100 signifique alivio. Como los demás componentes, se topea en 140.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de presión de precios.",
       "El peso sale de la mitad del que tenía el alquiler del IPC (20% → 10%): son dos miradas al mismo gasto, la de los contratos vigentes y la de los avisos nuevos. Alimentos (35%) y servicios públicos (45%) quedan como estaban.",
     ],
-    dobleUso: "Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.",
+    dobleUso: "Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el peso que la dimensión le asigna a la vivienda.",
     limitaciones: [
       "Son precios de avisos publicados, no de contratos firmados: el alquiler que se pide no es el que se pacta ni el que paga quien ya alquila.",
       "Sólo cubre departamentos del Área Metropolitana de Buenos Aires (la Ciudad de Buenos Aires y el Gran Buenos Aires) y no representa el interior del país.",
       "Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.",
       "La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.",
-      "El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.",
+      "El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual. Hasta entonces el nivel sale de encadenar variaciones mensuales, que acumulan error y dan menos que las interanuales publicadas, así que el tramo previo a esa fecha es el menos firme.",
+      "El informe de abril de 2024 no separa departamentos de casas: da una sola cifra para ambos y es la que se usa. Los meses en que el informe no trae la variación necesaria (noviembre de 2024 y los primeros meses de 2025) no tienen nivel; la serie tiene huecos y la cadena se reanuda donde hay interanual publicada.",
       "La mediana de avisos puede cambiar por composición: más avisos de un barrio o tipo de departamento mueven la cifra sin que cambie el precio de un departamento dado.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre los otros tres componentes de precios.",
     revisiones: "Cada mes se carga una vez; si UdeSA corrige un informe se reemplaza la entrada con su frase y su fecha de carga. El IPC se recalcula en cada corrida.",
     cambios: [
       { fecha: "2026-10-27", cambio: "Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.", adr: "0386" },
+      { fecha: "2026-10-29", cambio: "Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler de avisos nuevos». El peso no cambia.", adr: "0411" },
     ],
   },
   peso_tarifas: {
@@ -3590,7 +3594,6 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.",
       "Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.",
-      "Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en la Agencia de Recaudación y Control Aduanero (ARCA), del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta las claves únicas de identificación tributaria (CUIT) con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (agosto de 2014, marzo de 2015, junio de 2020, abril de 2021 y agosto de 2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde octubre de 2026), con un ADR propio.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de empleo: es su componente principal.",
@@ -3599,11 +3602,11 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
       "Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.",
       "La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.",
-      "El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en octubre de 2026 y lo previo son tres copias sueltas del Internet Archive (junio de 2020, abril de 2021, agosto de 2024). No hay copia de diciembre de 2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en agosto de 2024 a 48.391 en octubre de 2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).",
     ],
     faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.",
-    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones. El padrón de ARCA se actualiza cada semana y el valor del mes se reemplaza por el del archivo más nuevo de ese mes.",
+    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
     cambios: [
+      { fecha: "2026-10-29", cambio: "La card vuelve a mostrar sólo la tasa de empleo: se saca de su explicación el conteo de empleadores inscriptos en ARCA. Un dato que no puntúa no va dentro de la tarjeta de otro indicador. El padrón se sigue descargando y guardando cada mes como archivo, sin publicarse en el sitio.", adr: "0412" },
       { fecha: "2026-10-27", cambio: "Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.", adr: "0383" },
       { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26 de octubre de 2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
       { fecha: "2026-10-27", cambio: "Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en octubre de 2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (junio de 2020, abril de 2021, agosto de 2024).", adr: "0389" },
@@ -3614,15 +3617,17 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "informalidad",
     cinturon: "vida_cotidiana",
-    rezago: "Encuesta trimestral publicada con uno a dos trimestres de rezago.",
+    rezago: "El informe trimestral sale unos 80 días después del cierre del trimestre; la planilla anual de informalidad, una vez al año, con el cuarto trimestre.",
     fuente: {
       organismo: "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)",
-      operacion: "EPH — asalariados sin descuento jubilatorio, tasa trimestral",
-      serie: "52.2_ASDJ_0_0_37 · API de datos.gob.ar",
+      operacion: "EPH — asalariados informales sin aportes propios, trimestral",
+      serie: "Planilla de informalidad laboral (cuadro 4.1) y planilla del informe de mercado de trabajo (cuadro 1.5) · INDEC",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
-      acceso: "Automático: API pública de series de tiempo.",
+      acceso: "Automático: se descargan las planillas Excel que el INDEC publica junto con los informes.",
     },
     transformaciones: [
+      "Qué cuenta como informal: el asalariado sin descuento jubilatorio que tampoco se paga sus aportes por su cuenta. El que factura con monotributo o como autónomo, aunque no tenga descuento, no cuenta. El INDEC publica esta separación desde el cuarto trimestre de 2023, por el cambio de cuestionario.",
+      "Hasta el último trimestre que cubre la planilla anual de informalidad se usa su cifra oficial. Para los trimestres posteriores se calcula: porcentaje de asalariados sin descuento jubilatorio por la proporción que no tiene aportes propios, ambos del informe de mercado de trabajo; cuando sale la planilla anual, la cifra oficial reemplaza al cálculo.",
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
@@ -3630,6 +3635,8 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
+      "Descontar al que se paga sus aportes es discutible: quien factura con monotributo cotiza, pero no tiene vacaciones pagas ni indemnización por despido. Se sigue la cifra oficial del INDEC, y la definición anterior, que los contaba como informales, queda explicada en el registro de cambios.",
+      "El cálculo de los trimestres que la planilla anual todavía no cubre difiere unas décimas de la cifra oficial, porque cambia el denominador; se corrige solo cuando el INDEC publica la planilla.",
       "Serie trimestral contra una base de un solo trimestre: sesgo estacional chico, aceptado y declarado.",
       "La serie trimestral pública original se discontinuó en 2020; la vigente la reemplaza desde el rediseño del componente.",
     ],
@@ -3639,6 +3646,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social vía la serie anual disponible, invertida, con base en el año 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente)." },
       { fecha: "2026-10-27", cambio: "La dimensión de prospectivas de empleo pasa a llamarse Empleo y se replantea: el principal es ahora la ocupación de la EPH (60% de lo que puntúa) e informalidad queda como complemento con el 40%, que sube de 34,19% a 40% interno y de 8,27% a 9,68% del índice mientras el equipo decide qué hacer con ella. El peso nominal de la dimensión no cambia.", adr: "0383" },
+      { fecha: "2026-10-29", cambio: "Pasa a medir los asalariados informales SIN aportes propios, la cifra oficial del INDEC: el asalariado sin descuento jubilatorio que se paga sus aportes (monotributo, autónomo) deja de contar como informal. Antes contaba a todo el que no tenía descuento, y castigaba como informal a un trabajador registrado que factura. La base sigue siendo el cuarto trimestre de 2023, ahora con la nueva definición.", adr: "0413" },
     ],
   },
 
@@ -3667,7 +3675,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.",
       "Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.",
       "Mide el stock de empleadores en los tramos de 1 a 50 trabajadores, no cierres o quiebras. Una empresa que supera 50 sale del universo y una que reduce su nómina a ese tramo entra; la serie no distingue esos cruces de altas o bajas de cobertura.",
-      "El equivalente por el lado de la ex Administración Federal de Ingresos Públicos (AFIP, actual ARCA) —la base de empleadores del Observatorio de Empleo y Dinámica Empresarial— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.",
+      "El equivalente por el lado de la ex Administración Federal de Ingresos Públicos (AFIP, actual ARCA) —la base de empleadores del Observatorio de Empleo y Dinámica Empresarial— dejaría ver el universo tributario completo, pero se publica una vez por año y con más de un año de rezago, así que no sirve para seguir el mandato mes a mes.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si el cuadro 4.2 deja de traer alguno de los siete tramos, el colector falla en voz alta en vez de publicar una suma incompleta.",
     revisiones: "La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.",

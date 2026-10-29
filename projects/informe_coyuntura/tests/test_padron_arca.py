@@ -1,4 +1,4 @@
-"""ADR-0389: padrón de empleadores de ARCA. Sin red, con CUIT inventados."""
+"""ADR-0389 y ADR-0412: padrón de empleadores de ARCA (se guarda, no se publica). Sin red, con CUIT inventados."""
 import io
 import json
 import sys
@@ -130,44 +130,31 @@ def test_fetch_guarda_el_mes_y_si_la_red_falla_sigue_con_lo_guardado(tmp_path):
         raise OSError("sin red")
     r = pa.fetch_padron_arca(reg, descargar=caida)
     assert not r["fresco"] and sorted(r["meses"]) == ["2026-10", "2026-11"]
-    assert "Empleadores inscriptos en ARCA" in r["texto"]
+    assert "texto" not in r          # ADR-0412: el padrón no se publica
 
 
-def test_el_texto_de_la_card_con_los_datos_versionados():
-    t = pa.texto_card(pa.leer_registro())
-    assert t == ("Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): 511.847 (24 de octubre de 2026): 290.897 empresas y "
-                 "sociedades y 220.950 personas. El 24 de agosto de 2024 eran 553.057 (−7,5 %). "
-                 "No puntúa todavía.")
-
-
-def test_el_texto_con_un_solo_mes_no_inventa_variacion():
-    t = pa.texto_card({"2026-10": _conteo("2026-10-24")})
-    assert "contra" not in t and "No puntúa" in t
-
-
-def test_publicar_agrega_el_texto_al_detalle_de_ocupacion_eph():
+def test_el_padron_no_se_publica_en_ninguna_card():
+    """ADR-0412: la card de ocupación queda sólo con la tasa de empleo."""
     sys.path.insert(0, str(RAIZ / "scripts"))
     import publicar
     raw = {"indec": {"ocupacion_eph": {"valor": 0.4, "tasa": 45.0, "tasa_2023": 44.6,
                                        "fecha": "2026-04-01"}},
-           "padron_arca": {"texto": "Empleadores inscriptos en ARCA: 1."}}
-    out = publicar._sumar_padron_arca(publicar.build_vida(raw), {})
+           "padron_arca": {"meses": pa.leer_registro(), "fresco": True}}
+    out = publicar._restaurar_detalle_ocupacion(publicar.build_vida(raw), {})
     det = out["ocupacion_eph"]["detalle_txt"]
-    assert det.startswith("Tasa de empleo 45,0%") and det.endswith("Empleadores inscriptos en ARCA: 1.")
+    assert det.startswith("Tasa de empleo 45,0%") and "ARCA" not in det and "No puntúa" not in det
     assert "padron_arca" not in out and "arca_empleadores" not in out   # no es card propia
     assert "padron_arca_txt" not in out["ocupacion_eph"]
+    assert not hasattr(pa, "texto_card")
 
 
-def test_un_indec_caido_no_borra_el_padron():
-    """Codex, 27-oct: si la EPH no contesta, la card recupera su valor y su
-    oración del snapshot anterior, y el padrón nuevo igual se muestra."""
+def test_un_indec_caido_restaura_la_tasa_sin_la_oracion_vieja_del_padron():
     sys.path.insert(0, str(RAIZ / "scripts"))
     import publicar
-    raw = {"indec": {"ocupacion_eph": {"valor": None}},
-           "padron_arca": {"texto": "Empleadores inscriptos en ARCA: 2."}}
+    raw = {"indec": {"ocupacion_eph": {"valor": None}}}
     previo = {"ocupacion_eph": {"valor": 0.4, "fecha_dato": "2026-04-01",
                                 "detalle_txt": "Tasa de empleo 45,0%. Empleadores inscriptos en ARCA: 1."}}
     out = publicar._carry_forward(publicar.build_vida(raw), previo)
-    out = publicar._sumar_padron_arca(out, previo)
+    out = publicar._restaurar_detalle_ocupacion(out, previo)
     assert out["ocupacion_eph"]["valor"] == 0.4
-    assert out["ocupacion_eph"]["detalle_txt"] == "Tasa de empleo 45,0%. Empleadores inscriptos en ARCA: 2."
+    assert out["ocupacion_eph"]["detalle_txt"] == "Tasa de empleo 45,0%"

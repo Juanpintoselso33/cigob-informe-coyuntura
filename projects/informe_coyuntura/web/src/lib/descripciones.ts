@@ -324,14 +324,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
   },
   alquiler_real: {
-    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4º trimestre de 2023.",
+    que: "Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
-    frecuencia: "Mensual", tipo: "Variación mensual nominal (tarjeta) · nivel relativo al índice general de precios (índice)",
+    frecuencia: "Mensual", tipo: "Nivel real (índice, fines de 2023 = 100)",
   },
   alquiler_udesa_real: {
-    que: "Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.",
+    que: "Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.",
     aporta: "El índice de precios al consumidor mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.",
-    frecuencia: "Mensual (carga manual)", tipo: "Variación real interanual (tarjeta) · 100 menos esa variación en puntos (índice)",
+    frecuencia: "Mensual (carga manual)", tipo: "Nivel real reconstruido (índice, fines de 2023 = 100)",
   },
   consumo_carne_vacuna: {
     que: "Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.",
@@ -354,8 +354,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral (unos 80 días de rezago)", tipo: "Diferencia contra 2023 (puntos porcentuales)",
   },
   informalidad: {
-    que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).",
-    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4º trimestre de 2023 exacto (el trimestre de arranque del mandato).",
+    que: "Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC). El asalariado que no tiene descuento pero se paga sus aportes, por ejemplo con monotributo, no cuenta como informal.",
+    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. Es la definición que el INDEC publica desde el cuarto trimestre de 2023, cuando cambió el cuestionario. En el índice de impacto social su base es el 4º trimestre de 2023 exacto (el trimestre de arranque del mandato).",
     frecuencia: "Trimestral (encuesta de hogares)", tipo: "Nivel (%)",
   },
   trabajo_independiente: {

@@ -392,6 +392,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0392](0392-la-carne-puntua-el-consumo-no-la-faena.md) | La carne puntúa el consumo, no la faena | `consumo_carne_vacuna`, `consumo_carnes_total`, `consumo_carnes_otras` | vigente |
 | [0393](0393-la-victimizacion-se-rebasea-al-4t-2023.md) | La victimización se rebasea al 4T-2023 | `inseguridad` | vigente |
 | [0394](0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) | La pobreza del INDEC se fecha al inicio de su semestre | `pobreza_nowcast`, `pobreza_indec` | vigente |
+| [0411](0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) | Los dos alquileres se leen como nivel real contra el 4T-2023 | `alquiler_real`, `alquiler_udesa_real` | vigente |
+| [0412](0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) | El padrón de ARCA se guarda y no se publica | `ocupacion_eph` | vigente |
+| [0413](0413-informalidad-mide-asalariados-sin-aportes-propios.md) | La informalidad cuenta sólo al asalariado sin aportes propios | `informalidad` | vigente |
 
 ### Espíritu de época
 

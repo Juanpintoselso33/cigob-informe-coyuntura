@@ -1,4 +1,4 @@
-"""Empleadores inscriptos en ARCA, del padrón público sin nombres (ADR-0389).
+"""Empleadores inscriptos en ARCA, del padrón público sin nombres (ADR-0389, ADR-0412).
 
 ARCA publica un zip con un registro de ancho fijo por CUIT, sin nombres, que
 reemplaza cada semana. Cada registro tiene 21 caracteres:
@@ -14,6 +14,10 @@ es el registro versionado `data/vida/arca_empleadores.json`, un valor por mes
 
 La marca de empleador es de inscripción, no de empleo efectivo: cuenta CUIT con
 la marca activa, tengan o no personal declarado.
+
+**No se publica** (ADR-0412): el padrón se descarga y se guarda todos los meses
+como archivo, pero no es una card ni aparece en la explicación de otra. Un dato
+que no puntúa no va dentro de la tarjeta de otro indicador.
 """
 import json
 import logging
@@ -46,7 +50,6 @@ JURIDICAS = ("30", "33", "34")
 PROPORCION_MIN, PROPORCION_MAX = 0.02, 0.30
 MIN_REGISTROS = 1_000_000
 MESES_PARA_PUNTUAR = 12
-MESES_ES = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
 RE_MES = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
 RE_FECHA_NOMBRE = re.compile(r"\.(\d{8})\.tmp$")
 CAMPOS = ("empleadores", "juridicas", "humanas", "monotributistas", "blanco", "cuit_total")
@@ -208,42 +211,10 @@ def guardar_registro(meses: dict, path: Path = REGISTRO) -> None:
     Path(path).write_text(json.dumps(cuerpo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-# ── Texto de la card ─────────────────────────────────────────────────────────
-
-def _n(x: int) -> str:
-    return f"{x:,}".replace(",", ".")
-
-
-def _fecha(iso: str) -> str:
-    d = date.fromisoformat(iso)
-    return f"{d.day} de {MESES_ES[d.month - 1]} de {d.year}"
-
-
-def texto_card(meses: dict) -> str:
-    """La oración que la card de ocupacion_eph muestra. No puntúa."""
-    if not meses:
-        raise ValueError("registro vacío")
-    ult_mes = max(meses)
-    u = meses[ult_mes]
-    t = (f"Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): {_n(u['empleadores'])} ({_fecha(u['fecha_archivo'])}): "
-         f"{_n(u['juridicas'])} empresas y sociedades y {_n(u['humanas'])} personas")
-    previos = [m for m in meses if m < ult_mes]
-    if previos:
-        p = meses[max(previos)]
-        dif = u["empleadores"] - p["empleadores"]
-        pct = f"{abs(dif) / p['empleadores'] * 100:.1f}".replace(".", ",")
-        signo = "+" if dif >= 0 else "−"
-        t += f". El {_fecha(p['fecha_archivo'])} eran {_n(p['empleadores'])} ({signo}{pct} %)"
-    # las salvedades (limpieza del padrón, sin base del mandato, marca de inscripción)
-    # van en la ficha, no se repiten en la card
-    t += ". No puntúa todavía."
-    return t
-
-
 # ── Colector del pipeline ────────────────────────────────────────────────────
 
 def fetch_padron_arca(path: Path = REGISTRO, descargar=descargar_y_contar) -> dict:
-    """Baja el padrón, anota el mes en el registro y devuelve {meses, texto, fresco}.
+    """Baja el padrón, anota el mes en el registro y devuelve {meses, fresco}.
 
     Si la red o el formato fallan, sigue con lo guardado y lo dice en el log:
     el dato no puntúa, así que no corresponde tumbar la corrida."""
@@ -258,4 +229,4 @@ def fetch_padron_arca(path: Path = REGISTRO, descargar=descargar_y_contar) -> di
         fresco = True
     except Exception as e:  # noqa: BLE001 — red, zip o formato: se sigue con lo guardado
         logger.error("padron_arca: no se pudo actualizar, sigo con lo guardado: %s", e)
-    return {"meses": meses, "texto": texto_card(meses), "fresco": fresco}
+    return {"meses": meses, "fresco": fresco}

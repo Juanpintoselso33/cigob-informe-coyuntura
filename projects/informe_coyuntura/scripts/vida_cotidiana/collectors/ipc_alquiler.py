@@ -68,10 +68,33 @@ def niveles():
     return parsear(r.content)
 
 
+BASE_MESES = ('2023-10', '2023-11', '2023-12')   # 4º trimestre de 2023
+
+
+def base_4t2023(serie):
+    """Promedio del 4T-2023 de {YYYY-MM: nivel}; exige los tres meses."""
+    faltan = [m for m in BASE_MESES if m not in serie]
+    if faltan:
+        raise ValueError(f'base 4T-2023 incompleta (faltan {faltan})')
+    return sum(serie[m] for m in BASE_MESES) / 3.0
+
+
+def indice_real(alquiler, general):
+    """{YYYY-MM: alquiler real} con 100 = 4T-2023, desde oct-2023.
+
+    100 x (alquiler_t / alquiler_base) / (general_t / general_base): cuánto se
+    encareció el alquiler del IPC contra el resto de los precios del mismo
+    aglomerado. Por encima de 100 = más caro en términos reales. Es la misma
+    cuenta que puntúa (`itvc_alquiler`) puesta del lado de la lectura: aquel es
+    100 x base / real, de modo que >100 = alivio."""
+    a_base, g_base = base_4t2023(alquiler), base_4t2023(general)
+    return {ym: round(100.0 * (alquiler[ym] / a_base) / (general[ym] / g_base), 2)
+            for ym in sorted(set(alquiler) & set(general))
+            if ym >= BASE_MESES[0] and alquiler[ym] and general[ym]}
+
+
 def tarjeta():
-    serie = niveles()['alquiler']
-    meses = sorted(serie)
-    actual, previo = meses[-2:][::-1]
-    return {'valor': serie[actual], 'fecha': actual+'-01',
-            'variacion_mensual_pct': 100*(serie[actual]/serie[previo]-1),
-            'fuente_url': URL}
+    n = niveles()
+    serie = indice_real(n['alquiler'], n['general'])
+    ultimo = max(serie)
+    return {'valor': serie[ultimo], 'fecha': ultimo + '-01', 'fuente_url': URL}

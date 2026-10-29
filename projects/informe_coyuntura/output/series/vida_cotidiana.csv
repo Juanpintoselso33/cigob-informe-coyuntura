@@ -181,75 +181,75 @@ fecha,indicador,valor,unidad,fuente
 2017-01-01,subocupacion_demandante,6.6,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-10-01,subocupacion_demandante,7.2,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-07-01,subocupacion_demandante,7.0,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
-2026-09-01,sentimiento_digital,68.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-08-01,sentimiento_digital,64.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-07-01,sentimiento_digital,58.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-06-01,sentimiento_digital,59.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-05-01,sentimiento_digital,62.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-04-01,sentimiento_digital,70.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-03-01,sentimiento_digital,72.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-02-01,sentimiento_digital,65.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-01-01,sentimiento_digital,70.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-12-01,sentimiento_digital,61.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-11-01,sentimiento_digital,70.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-10-01,sentimiento_digital,75.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-09-01,sentimiento_digital,79.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-08-01,sentimiento_digital,85.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-07-01,sentimiento_digital,75.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-06-01,sentimiento_digital,78.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-05-01,sentimiento_digital,77.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-04-01,sentimiento_digital,82.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-03-01,sentimiento_digital,74.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-02-01,sentimiento_digital,84.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-01-01,sentimiento_digital,85.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-12-01,sentimiento_digital,77.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-11-01,sentimiento_digital,83.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-10-01,sentimiento_digital,80.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-09-01,sentimiento_digital,83.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-09-01,sentimiento_digital,68.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-08-01,sentimiento_digital,64.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-07-01,sentimiento_digital,59.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-06-01,sentimiento_digital,60.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-05-01,sentimiento_digital,63.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-04-01,sentimiento_digital,69.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-03-01,sentimiento_digital,72.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-02-01,sentimiento_digital,64.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-01-01,sentimiento_digital,69.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-12-01,sentimiento_digital,61.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-11-01,sentimiento_digital,69.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-10-01,sentimiento_digital,75.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-09-01,sentimiento_digital,79.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-08-01,sentimiento_digital,86.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-07-01,sentimiento_digital,76.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-06-01,sentimiento_digital,77.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-05-01,sentimiento_digital,78.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-04-01,sentimiento_digital,83.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-03-01,sentimiento_digital,75.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-02-01,sentimiento_digital,84.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-01-01,sentimiento_digital,82.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-12-01,sentimiento_digital,76.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-11-01,sentimiento_digital,82.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-10-01,sentimiento_digital,78.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-09-01,sentimiento_digital,83.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2024-08-01,sentimiento_digital,86.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-07-01,sentimiento_digital,78.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-06-01,sentimiento_digital,84.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-05-01,sentimiento_digital,98.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-04-01,sentimiento_digital,97.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-03-01,sentimiento_digital,85.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-02-01,sentimiento_digital,90.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-01-01,sentimiento_digital,103.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-07-01,sentimiento_digital,78.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-06-01,sentimiento_digital,86.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-05-01,sentimiento_digital,98.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-04-01,sentimiento_digital,98.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-03-01,sentimiento_digital,86.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-02-01,sentimiento_digital,90.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-01-01,sentimiento_digital,103.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2023-12-01,sentimiento_digital,94.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-11-01,sentimiento_digital,102.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-10-01,sentimiento_digital,102.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-09-01,sentimiento_digital,90.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-08-01,sentimiento_digital,102.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-07-01,sentimiento_digital,86.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-06-01,sentimiento_digital,86.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-05-01,sentimiento_digital,89.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-04-01,sentimiento_digital,95.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-03-01,sentimiento_digital,101.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-02-01,sentimiento_digital,83.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-01-01,sentimiento_digital,83.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-12-01,sentimiento_digital,66.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-11-01,sentimiento_digital,83.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-10-01,sentimiento_digital,83.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-09-01,sentimiento_digital,89.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-08-01,sentimiento_digital,105.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-07-01,sentimiento_digital,99.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-06-01,sentimiento_digital,92.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-05-01,sentimiento_digital,76.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-04-01,sentimiento_digital,76.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-03-01,sentimiento_digital,78.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-02-01,sentimiento_digital,66.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-01-01,sentimiento_digital,67.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-12-01,sentimiento_digital,59.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-11-01,sentimiento_digital,81.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-10-01,sentimiento_digital,73.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-09-01,sentimiento_digital,71.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-08-01,sentimiento_digital,68.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-11-01,sentimiento_digital,102.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-10-01,sentimiento_digital,102.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-09-01,sentimiento_digital,92.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-08-01,sentimiento_digital,102.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-07-01,sentimiento_digital,87.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-06-01,sentimiento_digital,87.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-05-01,sentimiento_digital,90.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-04-01,sentimiento_digital,95.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-03-01,sentimiento_digital,102.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-02-01,sentimiento_digital,83.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-01-01,sentimiento_digital,84.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-12-01,sentimiento_digital,69.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-11-01,sentimiento_digital,84.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-10-01,sentimiento_digital,83.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-09-01,sentimiento_digital,91.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-08-01,sentimiento_digital,106.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-07-01,sentimiento_digital,100.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-06-01,sentimiento_digital,93.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-05-01,sentimiento_digital,75.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-04-01,sentimiento_digital,75.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-03-01,sentimiento_digital,78.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-02-01,sentimiento_digital,67.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-01-01,sentimiento_digital,67.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-12-01,sentimiento_digital,59.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-11-01,sentimiento_digital,81.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-10-01,sentimiento_digital,73.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-09-01,sentimiento_digital,72.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-08-01,sentimiento_digital,69.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2021-07-01,sentimiento_digital,67.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-06-01,sentimiento_digital,66.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-05-01,sentimiento_digital,63.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-04-01,sentimiento_digital,64.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-03-01,sentimiento_digital,71.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-02-01,sentimiento_digital,77.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-01-01,sentimiento_digital,70.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-06-01,sentimiento_digital,66.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-05-01,sentimiento_digital,63.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-04-01,sentimiento_digital,64.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-03-01,sentimiento_digital,70.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-02-01,sentimiento_digital,76.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-01-01,sentimiento_digital,70.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-09-01,ratio_motos_autos,1.5445,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2026-08-01,ratio_motos_autos,1.478,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2026-07-01,ratio_motos_autos,1.4071,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
@@ -976,22 +976,35 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_endeudamiento,88.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-11-01,itvc_endeudamiento,104.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-10-01,itvc_endeudamiento,106.9,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
-2026-09-01,itvc_alquiler_udesa,109.8,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-08-01,itvc_alquiler_udesa,109.4,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-07-01,itvc_alquiler_udesa,109.1,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-06-01,itvc_alquiler_udesa,107.0,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-05-01,itvc_alquiler_udesa,105.9,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-04-01,itvc_alquiler_udesa,104.2,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-03-01,itvc_alquiler_udesa,103.4,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-02-01,itvc_alquiler_udesa,103.5,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-01-01,itvc_alquiler_udesa,101.6,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-12-01,itvc_alquiler_udesa,100.1,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-11-01,itvc_alquiler_udesa,99.6,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-10-01,itvc_alquiler_udesa,99.6,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-09-01,itvc_alquiler_udesa,100.5,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-08-01,itvc_alquiler_udesa,100.8,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-07-01,itvc_alquiler_udesa,101.0,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2025-06-01,itvc_alquiler_udesa,101.2,índice (100 = el alquiler sube igual que los precios),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-09-01,itvc_alquiler_udesa,173.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-08-01,itvc_alquiler_udesa,173.3,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-07-01,itvc_alquiler_udesa,174.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-06-01,itvc_alquiler_udesa,174.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-05-01,itvc_alquiler_udesa,174.4,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-04-01,itvc_alquiler_udesa,171.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-03-01,itvc_alquiler_udesa,169.1,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-02-01,itvc_alquiler_udesa,166.1,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2026-01-01,itvc_alquiler_udesa,163.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-12-01,itvc_alquiler_udesa,162.6,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-11-01,itvc_alquiler_udesa,160.4,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-10-01,itvc_alquiler_udesa,157.1,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-09-01,itvc_alquiler_udesa,156.6,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-08-01,itvc_alquiler_udesa,157.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-07-01,itvc_alquiler_udesa,159.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2025-06-01,itvc_alquiler_udesa,161.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-10-01,itvc_alquiler_udesa,157.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-09-01,itvc_alquiler_udesa,155.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-08-01,itvc_alquiler_udesa,155.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-07-01,itvc_alquiler_udesa,157.4,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-06-01,itvc_alquiler_udesa,159.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-05-01,itvc_alquiler_udesa,161.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-04-01,itvc_alquiler_udesa,161.1,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-03-01,itvc_alquiler_udesa,152.2,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-02-01,itvc_alquiler_udesa,138.6,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2024-01-01,itvc_alquiler_udesa,123.3,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2023-12-01,itvc_alquiler_udesa,115.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2023-11-01,itvc_alquiler_udesa,100.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
+2023-10-01,itvc_alquiler_udesa,83.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
 2026-09-01,itvc_alquiler,50.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-08-01,itvc_alquiler,50.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-07-01,itvc_alquiler,50.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
@@ -1320,46 +1333,17 @@ fecha,indicador,valor,unidad,fuente
 2014-03-01,inseguridad,34.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2014-02-01,inseguridad,37.0,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2014-01-01,inseguridad,36.4,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
-2026-04-01,informalidad,37.9,%,"INDEC EPH (52.2, trimestral)"
-2026-01-01,informalidad,37.9,%,"INDEC EPH (52.2, trimestral)"
-2025-10-01,informalidad,36.3,%,"INDEC EPH (52.2, trimestral)"
-2025-07-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
-2025-04-01,informalidad,37.7,%,"INDEC EPH (52.2, trimestral)"
-2025-01-01,informalidad,36.3,%,"INDEC EPH (52.2, trimestral)"
-2024-10-01,informalidad,36.1,%,"INDEC EPH (52.2, trimestral)"
-2024-07-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
-2024-04-01,informalidad,36.4,%,"INDEC EPH (52.2, trimestral)"
-2024-01-01,informalidad,35.7,%,"INDEC EPH (52.2, trimestral)"
-2023-10-01,informalidad,35.7,%,"INDEC EPH (52.2, trimestral)"
-2023-07-01,informalidad,35.8,%,"INDEC EPH (52.2, trimestral)"
-2023-04-01,informalidad,36.8,%,"INDEC EPH (52.2, trimestral)"
-2023-01-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
-2022-10-01,informalidad,35.5,%,"INDEC EPH (52.2, trimestral)"
-2022-07-01,informalidad,37.4,%,"INDEC EPH (52.2, trimestral)"
-2022-04-01,informalidad,37.8,%,"INDEC EPH (52.2, trimestral)"
-2022-01-01,informalidad,35.9,%,"INDEC EPH (52.2, trimestral)"
-2021-10-01,informalidad,33.3,%,"INDEC EPH (52.2, trimestral)"
-2021-07-01,informalidad,33.1,%,"INDEC EPH (52.2, trimestral)"
-2021-04-01,informalidad,31.5,%,"INDEC EPH (52.2, trimestral)"
-2021-01-01,informalidad,32.4,%,"INDEC EPH (52.2, trimestral)"
-2020-10-01,informalidad,32.7,%,"INDEC EPH (52.2, trimestral)"
-2020-07-01,informalidad,28.6,%,"INDEC EPH (52.2, trimestral)"
-2020-04-01,informalidad,23.8,%,"INDEC EPH (52.2, trimestral)"
-2020-01-01,informalidad,35.8,%,"INDEC EPH (52.2, trimestral)"
-2019-10-01,informalidad,35.9,%,"INDEC EPH (52.2, trimestral)"
-2019-07-01,informalidad,35.0,%,"INDEC EPH (52.2, trimestral)"
-2019-04-01,informalidad,34.5,%,"INDEC EPH (52.2, trimestral)"
-2019-01-01,informalidad,35.0,%,"INDEC EPH (52.2, trimestral)"
-2018-10-01,informalidad,35.3,%,"INDEC EPH (52.2, trimestral)"
-2018-07-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
-2018-04-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
-2018-01-01,informalidad,33.9,%,"INDEC EPH (52.2, trimestral)"
-2017-10-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
-2017-07-01,informalidad,34.4,%,"INDEC EPH (52.2, trimestral)"
-2017-04-01,informalidad,33.8,%,"INDEC EPH (52.2, trimestral)"
-2017-01-01,informalidad,33.3,%,"INDEC EPH (52.2, trimestral)"
-2016-10-01,informalidad,33.6,%,"INDEC EPH (52.2, trimestral)"
-2016-07-01,informalidad,33.8,%,"INDEC EPH (52.2, trimestral)"
+2026-04-01,informalidad,31.9,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2026-01-01,informalidad,32.0,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2025-10-01,informalidad,30.3,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2025-07-01,informalidad,31.3,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2025-04-01,informalidad,31.6,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2025-01-01,informalidad,29.8,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2024-10-01,informalidad,29.9,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2024-07-01,informalidad,30.5,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2024-04-01,informalidad,30.4,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2024-01-01,informalidad,30.0,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
+2023-10-01,informalidad,30.0,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
 2026-09-01,indice_lider,122.9,índice,UTDT — Índice Líder (CIF)
 2026-08-01,indice_lider,123.2,índice,UTDT — Índice Líder (CIF)
 2026-07-01,indice_lider,122.9,índice,UTDT — Índice Líder (CIF)
@@ -2447,136 +2431,68 @@ fecha,indicador,valor,unidad,fuente
 2021-11-01,brecha_salario_cbt,4.2,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-10-01,brecha_salario_cbt,4.16,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-09-01,brecha_salario_cbt,4.13,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
-2026-09-01,alquiler_udesa_real,-9.84,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-08-01,alquiler_udesa_real,-9.39,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-07-01,alquiler_udesa_real,-9.08,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-06-01,alquiler_udesa_real,-7.0,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-05-01,alquiler_udesa_real,-5.87,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-04-01,alquiler_udesa_real,-4.25,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-03-01,alquiler_udesa_real,-3.41,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-02-01,alquiler_udesa_real,-3.45,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-01-01,alquiler_udesa_real,-1.58,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-12-01,alquiler_udesa_real,-0.1,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-11-01,alquiler_udesa_real,0.43,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-10-01,alquiler_udesa_real,0.39,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-09-01,alquiler_udesa_real,-0.47,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-08-01,alquiler_udesa_real,-0.84,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-07-01,alquiler_udesa_real,-0.97,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2025-06-01,alquiler_udesa_real,-1.25,% real interanual,UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-09-01,alquiler_real,1.88,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-08-01,alquiler_real,2.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-07-01,alquiler_real,3.92,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-06-01,alquiler_real,3.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-05-01,alquiler_real,2.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-04-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-03-01,alquiler_real,3.52,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-02-01,alquiler_real,2.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2026-01-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-12-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-11-01,alquiler_real,2.89,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-10-01,alquiler_real,3.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-09-01,alquiler_real,3.53,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-08-01,alquiler_real,3.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-07-01,alquiler_real,3.35,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-06-01,alquiler_real,4.47,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-05-01,alquiler_real,7.21,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-04-01,alquiler_real,3.57,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-03-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-02-01,alquiler_real,6.53,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2025-01-01,alquiler_real,8.91,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-12-01,alquiler_real,6.52,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-11-01,alquiler_real,8.47,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-10-01,alquiler_real,9.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-09-01,alquiler_real,13.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-08-01,alquiler_real,14.14,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-07-01,alquiler_real,18.26,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-06-01,alquiler_real,11.61,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-05-01,alquiler_real,12.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-04-01,alquiler_real,11.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-03-01,alquiler_real,8.45,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-02-01,alquiler_real,10.63,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2024-01-01,alquiler_real,11.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-12-01,alquiler_real,9.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-11-01,alquiler_real,7.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-10-01,alquiler_real,10.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-09-01,alquiler_real,5.97,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-08-01,alquiler_real,9.33,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-07-01,alquiler_real,6.46,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-06-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-05-01,alquiler_real,3.19,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-04-01,alquiler_real,6.9,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-03-01,alquiler_real,4.88,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-02-01,alquiler_real,6.03,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2023-01-01,alquiler_real,6.38,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-12-01,alquiler_real,4.73,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-11-01,alquiler_real,4.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-10-01,alquiler_real,4.89,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-09-01,alquiler_real,3.15,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-08-01,alquiler_real,2.96,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-07-01,alquiler_real,4.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-06-01,alquiler_real,4.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-05-01,alquiler_real,7.37,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-04-01,alquiler_real,6.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-03-01,alquiler_real,3.76,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-02-01,alquiler_real,6.56,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2022-01-01,alquiler_real,3.1,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-12-01,alquiler_real,2.84,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-11-01,alquiler_real,1.83,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-10-01,alquiler_real,4.32,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-09-01,alquiler_real,2.56,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-08-01,alquiler_real,1.92,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-07-01,alquiler_real,3.05,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-06-01,alquiler_real,2.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-05-01,alquiler_real,3.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-04-01,alquiler_real,6.07,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-03-01,alquiler_real,2.78,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-02-01,alquiler_real,2.93,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2021-01-01,alquiler_real,3.09,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-12-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-11-01,alquiler_real,2.38,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-10-01,alquiler_real,3.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-09-01,alquiler_real,1.46,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-08-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-07-01,alquiler_real,0.74,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-06-01,alquiler_real,1.68,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-05-01,alquiler_real,-0.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-04-01,alquiler_real,1.16,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-03-01,alquiler_real,2.88,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-02-01,alquiler_real,2.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2020-01-01,alquiler_real,2.28,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-12-01,alquiler_real,1.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-11-01,alquiler_real,2.05,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-10-01,alquiler_real,2.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-09-01,alquiler_real,2.1,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-08-01,alquiler_real,2.76,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-07-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-06-01,alquiler_real,2.21,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-05-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-04-01,alquiler_real,2.94,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-03-01,alquiler_real,2.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-02-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2019-01-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-12-01,alquiler_real,2.0,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-11-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-10-01,alquiler_real,1.81,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-09-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-08-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-07-01,alquiler_real,1.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-06-01,alquiler_real,2.8,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-05-01,alquiler_real,2.45,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-04-01,alquiler_real,1.75,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-03-01,alquiler_real,1.84,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-02-01,alquiler_real,2.79,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2018-01-01,alquiler_real,1.86,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-12-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-11-01,alquiler_real,2.68,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-10-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-09-01,alquiler_real,2.27,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-08-01,alquiler_real,2.11,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-07-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-06-01,alquiler_real,2.17,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-05-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-04-01,alquiler_real,2.18,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-03-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-02-01,alquiler_real,2.85,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
-2017-01-01,alquiler_real,2.08,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-09-01,alquiler_udesa_real,57.57,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-08-01,alquiler_udesa_real,57.7,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-07-01,alquiler_udesa_real,57.19,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-06-01,alquiler_udesa_real,57.47,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-05-01,alquiler_udesa_real,57.35,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-04-01,alquiler_udesa_real,58.48,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-03-01,alquiler_udesa_real,59.15,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-02-01,alquiler_udesa_real,60.2,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-01-01,alquiler_udesa_real,61.1,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-12-01,alquiler_udesa_real,61.5,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-11-01,alquiler_udesa_real,62.35,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-10-01,alquiler_udesa_real,63.64,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-09-01,alquiler_udesa_real,63.85,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-08-01,alquiler_udesa_real,63.69,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-07-01,alquiler_udesa_real,62.9,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2025-06-01,alquiler_udesa_real,61.79,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-10-01,alquiler_udesa_real,63.39,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-09-01,alquiler_udesa_real,64.15,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-08-01,alquiler_udesa_real,64.23,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-07-01,alquiler_udesa_real,63.52,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-06-01,alquiler_udesa_real,62.58,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-05-01,alquiler_udesa_real,61.84,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-04-01,alquiler_udesa_real,62.08,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-03-01,alquiler_udesa_real,65.7,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-02-01,alquiler_udesa_real,72.17,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2024-01-01,alquiler_udesa_real,81.11,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2023-12-01,alquiler_udesa_real,86.27,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2023-11-01,alquiler_udesa_real,99.09,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2023-10-01,alquiler_udesa_real,120.43,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
+2026-09-01,alquiler_real,199.87,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-08-01,alquiler_real,200.11,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-07-01,alquiler_real,198.73,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-06-01,alquiler_real,195.56,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-05-01,alquiler_real,192.12,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-04-01,alquiler_real,191.38,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-03-01,alquiler_real,191.9,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-02-01,alquiler_real,191.69,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2026-01-01,alquiler_real,191.71,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-12-01,alquiler_real,192.05,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-11-01,alquiler_real,192.75,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-10-01,alquiler_real,191.98,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-09-01,alquiler_real,190.09,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-08-01,alquiler_real,187.45,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-07-01,alquiler_real,184.78,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-06-01,alquiler_real,182.14,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-05-01,alquiler_real,177.88,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-04-01,alquiler_real,168.41,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-03-01,alquiler_real,167.09,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-02-01,alquiler_real,164.73,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2025-01-01,alquiler_real,158.08,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-12-01,alquiler_real,148.08,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-11-01,alquiler_real,143.01,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-10-01,alquiler_real,135.28,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-09-01,alquiler_real,126.83,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-08-01,alquiler_real,116.19,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-07-01,alquiler_real,106.0,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-06-01,alquiler_real,93.26,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-05-01,alquiler_real,87.19,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-04-01,alquiler_real,81.1,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-03-01,alquiler_real,79.38,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-02-01,alquiler_real,81.6,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2024-01-01,alquiler_real,84.8,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2023-12-01,alquiler_real,90.7,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2023-11-01,alquiler_real,103.69,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
+2023-10-01,alquiler_real,108.97,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)

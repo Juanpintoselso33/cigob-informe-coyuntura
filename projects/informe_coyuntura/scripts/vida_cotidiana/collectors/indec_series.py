@@ -193,18 +193,15 @@ def fetch_indec() -> dict:
     except Exception as e:
         logger.error("ocupacion_eph FAIL: %s", e)
 
-    # Informalidad: TRIMESTRAL como métrica (52.2, viva hasta el último
-    # trimestre EPH; la anual 52.1 planchaba el dato un año) + anual de respaldo
+    # Informalidad SIN aportes propios (ADR-0413): asalariados sin descuento
+    # jubilatorio que tampoco se pagan sus aportes por su cuenta. No sale de la
+    # API de series sino de las planillas del INDEC (ver informalidad_eph.py).
     try:
-        results["informalidad_trimestral"] = _ultimo(INDEC_SERIES["informalidad_trimestral"])
-        logger.info("informalidad trimestral OK: %s", results["informalidad_trimestral"]["valor"])
+        import informalidad_eph
+        results["informalidad_trimestral"] = informalidad_eph.ultimo()
+        logger.info("informalidad sin aportes propios OK: %s", results["informalidad_trimestral"])
     except Exception as e:
-        logger.error("informalidad trimestral FAIL: %s", e)
-    try:
-        results["informalidad_anual"] = _ultimo(INDEC_SERIES["informalidad_anual"])
-        logger.info("informalidad anual OK: %s%%", results["informalidad_anual"]["valor"])
-    except Exception as e:
-        logger.error("informalidad anual FAIL: %s", e)
+        logger.error("informalidad sin aportes propios FAIL: %s", e)
 
     # ── Actividad / Industria ─────────────────────────────────────────────────
     for key in ["isac", "emae", "ipi"]:

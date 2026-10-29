@@ -152,18 +152,21 @@ def build_vida(raw):
         fuente_url=servicios.get("url"),
     )
     alq = indec.get("ipc_alquiler_gba", {})
-    _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
-         "% mensual alquileres", "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor del Gran Buenos Aires, alquiler de la vivienda (planilla original)",
+    # ADR-0411: la tarjeta es el alquiler real contra el 4T-2023 (100 = fines de
+    # 2023; más = más caro en términos reales). El puntaje sigue saliendo de
+    # `itvc_alquiler`, la misma cuenta invertida.
+    _add(out, "alquiler_real", _red(alq.get("valor"), 2),
+         "índice (fines de 2023 = 100)", "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor del Gran Buenos Aires, alquiler de la vivienda y nivel general (planilla original)",
          alq.get("fecha"), fuente_url=alq.get('fuente_url'))
-    # ADR-0386: alquiler de los avisos de UdeSA - Mercado Libre, deflactado por
-    # el IPC GBA. La clave se llama SIEMPRE, con valor None si el colector no
-    # trajo nada, para que `_carry_forward` pueda restaurar el último valor.
+    # ADR-0386 y ADR-0411: alquiler de los avisos de UdeSA - Mercado Libre,
+    # reconstruido como nivel y deflactado por el IPC GBA contra el 4T-2023. La
+    # clave se llama SIEMPRE, con valor None si el colector no trajo nada, para
+    # que `_carry_forward` pueda restaurar el último valor.
     au = (raw.get("alquiler_udesa") or {}).get("alquiler_udesa_real") or {}
     _add(out, "alquiler_udesa_real", _red(au.get("valor"), 2),
-         "% real interanual",
+         "índice (fines de 2023 = 100)",
          "Universidad de San Andrés - Mercado Libre Inmuebles (carga manual) + Instituto Nacional de Estadística y Censos (INDEC), índice de precios al consumidor del Gran Buenos Aires (elaboración CIGOB)",
-         au.get("fecha"), fuente_url=au.get("fuente_url"),
-         variacion_nominal_pct=au.get("nominal_pct"), ipc_interanual_pct=au.get("ipc_pct"))
+         au.get("fecha"), fuente_url=au.get("fuente_url"))
     # ADR-0392: las dos cards salen de las series mensuales de SAGYP por carne,
     # las MISMAS que puntúan (antes, tablero para la card y faena del INDEC
     # para el puntaje). CICCRA queda como respaldo de la vacuna si SAGYP no
@@ -205,7 +208,7 @@ def build_vida(raw):
     out["consumo_carnes_total"]["variaciones"] = variaciones
     out["consumo_carnes_total"]["otras_kg"] = otras
     out["consumo_carnes_total"]["ratio_bovina"] = carnes.get("ratio_bovina")
-    inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
+    inf = indec.get("informalidad_trimestral", {})   # ADR-0413: sin aportes propios; el respaldo anual medía otra cosa
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)", inf.get("fecha"))
     # ADR-0383: ocupación según la EPH continua. La card muestra la variación
@@ -221,15 +224,10 @@ def build_vida(raw):
             f"Tasa de empleo {ocu['tasa']:.1f}% de la población total, contra "
             f"{ocu['tasa_2023']:.1f}% en el mismo trimestre de 2023"
         ).replace(".", ",")
-    # ADR-0389: el padrón de empleadores de ARCA acompaña a la ocupación como
-    # dato dentro de la explicación; no puntúa ni es card propia. Va aparte de
-    # `ocu["valor"]` para que un INDEC caído no lo borre ni al revés.
-    # El texto se guarda aparte y se suma al detalle DESPUÉS de `_carry_forward`
-    # (ver `_sumar_padron_arca`): si el INDEC no contesta, la card recupera su
-    # valor anterior y el padrón igual se muestra.
-    arca = raw.get("padron_arca") or {}
-    if arca.get("texto"):
-        out["ocupacion_eph"]["padron_arca_txt"] = arca["texto"]
+    # ADR-0412: el padrón de empleadores de ARCA ya no se publica. El colector
+    # lo sigue descargando y guardando cada mes (data/vida/arca_empleadores.json),
+    # pero ni la card ni su explicación lo mencionan: un dato que no puntúa no
+    # va dentro de la tarjeta de otro indicador.
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.
@@ -2278,13 +2276,6 @@ def _scoring_vida_itvc(c, series):
                            f"{coma(info['puntaje_aplicado'])} (100 = igual que en ese semestre, "
                            f"antes del mandato; más = mejora); pesa "
                            f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
-            if ikey == "alquiler_udesa_real":
-                # ADR-0386: la fuente sólo da interanuales, no hay nivel contra 4T-2023
-                lectura = lectura.replace("contra el arranque del mandato", "contra hace un año")
-                formula = (f"Índice = 100 − variación real interanual del alquiler publicado: "
-                           f"{coma(info['puntaje_aplicado'])} (100 = el alquiler real quedó igual que "
-                           f"hace un año; más = bajó en términos reales); pesa "
-                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")
                 proporcion_t = ind.get("transporte_pct_canasta")
@@ -2985,24 +2976,19 @@ def _carry_forward(enriquecido, previo):
     return enriquecido
 
 
-def _sumar_padron_arca(enriquecido, previo):
-    """ADR-0389: suma el texto del padrón de ARCA al detalle de `ocupacion_eph`.
+def _restaurar_detalle_ocupacion(enriquecido, previo):
+    """Si el INDEC no contestó, la card recupera su valor (`_carry_forward`) y acá
+    se le devuelve la oración de la tasa de empleo del snapshot anterior.
 
-    Corre DESPUÉS de `_carry_forward`, para que las dos fuentes no dependan una
-    de otra: si el INDEC no contestó, la card recupera su valor y la oración de
-    la EPH del snapshot anterior, y el padrón nuevo igual se muestra."""
+    Los snapshots anteriores a ADR-0412 traían además una oración sobre el padrón
+    de ARCA; se la descarta al restaurar."""
     ocu = enriquecido.get("ocupacion_eph")
-    if not ocu:
+    if not ocu or ocu.get("detalle_txt") or ocu.get("valor") is None:
         return enriquecido
-    padron = ocu.pop("padron_arca_txt", None)
-    eph = ocu.get("detalle_txt")
-    if not eph and ocu.get("valor") is not None:
-        anterior = (previo.get("ocupacion_eph") or {}).get("detalle_txt") or ""
-        eph = anterior.split("Empleadores inscriptos en ARCA")[0].rstrip(". ") or None
-    if padron:
-        ocu["detalle_txt"] = (eph + ". " if eph else "") + padron
-    elif eph:
-        ocu["detalle_txt"] = eph
+    anterior = (previo.get("ocupacion_eph") or {}).get("detalle_txt") or ""
+    restaurado = anterior.split("Empleadores inscriptos en ARCA")[0].rstrip(". ")
+    if restaurado:
+        ocu["detalle_txt"] = restaurado
     return enriquecido
 
 
@@ -3075,7 +3061,7 @@ def main():
         if enriquecido:
             enriquecido = _sellar_vida(enriquecido, raw)
             enriquecido = _carry_forward(enriquecido, prev_vida)
-            _sumar_padron_arca(enriquecido, prev_vida)
+            _restaurar_detalle_ocupacion(enriquecido, prev_vida)
             vida = informe["cinturones"]["vida_cotidiana"]
             vida["indicadores"] = enriquecido
             vida["fuente_enriquecida"] = vida_path.name

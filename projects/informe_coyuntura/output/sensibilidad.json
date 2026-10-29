@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-29T03:46:27.527897+00:00",
+    "snapshot": "2026-10-29T12:03:11.096022-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,47 +58,47 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.6,
+    "valor_recomputado": 79.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 78.1,
-        "p95": 80.7,
+        "media": 79.6,
+        "p05": 78.4,
+        "p95": 80.9,
         "desvio": 0.77
       },
       "combinado": {
-        "media": 79.3,
-        "p05": 77.5,
-        "p95": 80.9,
-        "desvio": 1.03
+        "media": 79.6,
+        "p05": 77.8,
+        "p95": 81.3,
+        "desvio": 1.05
       },
       "insumos": {
-        "media": 79.3,
-        "p05": 78.2,
-        "p95": 80.3,
-        "desvio": 0.63
+        "media": 79.6,
+        "p05": 78.5,
+        "p95": 80.7,
+        "desvio": 0.66
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 83.2,
+      "apertura_comercial": 83.7,
       "cepo_mulc": 76.1,
-      "fal_modernizacion_laboral": 76.2,
-      "reduccion_estado": 81.6,
-      "juicios_trabajo_capital": 81.3,
-      "rigi_inversiones": 81.0,
-      "gasto_funcionamiento": 77.8,
-      "concesiones_infraestructura": 78.3,
-      "desregulacion_normativa": 78.9,
-      "siniestralidad_laboral": 79.6,
-      "privatizaciones": 79.2,
-      "asistencia_directa": 79.3,
-      "protocolo_antipiquetes": 79.4,
-      "libertad_opcion_salud": 79.4
+      "fal_modernizacion_laboral": 76.5,
+      "reduccion_estado": 81.8,
+      "juicios_trabajo_capital": 81.6,
+      "rigi_inversiones": 81.3,
+      "gasto_funcionamiento": 78.1,
+      "concesiones_infraestructura": 78.6,
+      "desregulacion_normativa": 79.2,
+      "privatizaciones": 79.4,
+      "siniestralidad_laboral": 79.8,
+      "protocolo_antipiquetes": 79.7,
+      "asistencia_directa": 79.6,
+      "libertad_opcion_salud": 79.6
     },
     "tension": {
-      "base": 2.1,
+      "base": 2.0,
       "rango_combinado": [
         1.9,
         2.2
@@ -106,49 +106,49 @@
     }
   },
   "itvc": {
-    "valor_publicado": 97.9,
-    "valor_recomputado": 97.9,
+    "valor_publicado": 98.6,
+    "valor_recomputado": 98.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 97.9,
-        "p05": 96.2,
-        "p95": 99.5,
-        "desvio": 1.04
+        "media": 98.6,
+        "p05": 96.9,
+        "p95": 100.3,
+        "desvio": 1.05
       },
       "combinado": {
-        "media": 97.9,
-        "p05": 96.2,
-        "p95": 99.5,
-        "desvio": 1.02
+        "media": 98.6,
+        "p05": 96.9,
+        "p95": 100.3,
+        "desvio": 1.04
       }
     },
     "leave_one_out": {
-      "brecha_salario_cbt": 101.2,
-      "pobreza_nowcast": 96.0,
-      "mora_familias": 99.6,
-      "peso_tarifas": 96.3,
-      "alquiler_real": 99.4,
-      "ocupacion_eph": 96.4,
-      "consumo_supermercados": 99.0,
-      "informalidad": 98.8,
-      "carga_servicio_deuda_hogares": 97.1,
-      "icg_utdt": 97.1,
-      "motorizacion_total": 97.3,
-      "ipc_alimentos": 97.3,
-      "inseguridad": 98.3,
-      "tasa_homicidios": 97.6,
+      "brecha_salario_cbt": 102.0,
+      "pobreza_nowcast": 96.7,
+      "mora_familias": 100.3,
+      "alquiler_real": 100.2,
+      "ocupacion_eph": 97.1,
+      "consumo_supermercados": 99.7,
+      "informalidad": 99.5,
+      "peso_tarifas": 97.7,
       "alquiler_udesa_real": 97.7,
-      "consumo_carnes_total": 97.8,
-      "ratio_motos_autos": 97.9,
-      "consumo_carne_vacuna": 97.9,
-      "tasa_robos": 97.9
+      "carga_servicio_deuda_hogares": 97.8,
+      "icg_utdt": 97.9,
+      "motorizacion_total": 98.1,
+      "inseguridad": 99.0,
+      "tasa_homicidios": 98.3,
+      "ratio_motos_autos": 98.7,
+      "ipc_alimentos": 98.5,
+      "consumo_carnes_total": 98.6,
+      "consumo_carne_vacuna": 98.6,
+      "tasa_robos": 98.6
     },
     "tension": {
-      "base": 5.4,
+      "base": 5.3,
       "rango_combinado": [
-        5.1,
-        5.8
+        4.9,
+        5.6
       ]
     }
   },

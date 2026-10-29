@@ -5,7 +5,8 @@
   "carga": "MANUAL, una vez por mes (ADR-0386). Se lee el PDF de AMBA y se copia la frase textual; no hay serie descargable.",
   "como_cargar": "python scripts/vida_cotidiana/cargar_alquiler_udesa.py --mes AAAA-MM --valor <interanual deptos AMBA, %> --url <PDF> --frase \"<frase textual>\"",
   "serie_principal": "interanual_deptos_amba_pct: variación interanual nominal (pesos corrientes) del precio de alquiler de departamentos en AMBA, mediana de avisos publicados en Mercado Libre.",
-  "sin_dato": "Los meses de «sin_dato» no se interpolan ni se encadenan desde la intermensual. El precio mediano por m2 sólo está en gráficos de imagen, no en el texto: no se carga."
+  "sin_dato": "Los meses de «sin_dato» no tienen la interanual de departamentos de AMBA. El nivel de esos meses se reconstruye con la intermensual donde está publicada (ADR-0411); si tampoco hay intermensual, el mes queda sin nivel y no se imputa ni se interpola. El precio mediano por m2 sólo está en gráficos de imagen, no en el texto: no se carga.",
+  "intermensual_abr_2024": "El informe de abril de 2024 no distingue departamentos de casas: da una sola cifra para ambos (3.2 %). Se usa por decisión de Juan del 29-oct-2026."
  },
  "meses": {
   "2023-01": {
@@ -130,8 +131,8 @@
   },
   "2024-04": {
    "interanual_deptos_amba_pct": null,
-   "intermensual_deptos_amba_pct": null,
-   "frase": null,
+   "intermensual_deptos_amba_pct": 3.2,
+   "frase": "En AMBA, durante el mes de abril de 2024, se registraron variaciones en el precio de alquiler en pesos corrientes de departamentos y casas del 3.2%, respecto a marzo de 2024.",
    "url_pdf": "https://drive.google.com/file/d/1csJrTs1G09VBZtxP64DTsqH72z_SDYvy/view",
    "archivo": "amba_202404.pdf",
    "cargado_en": "2026-10-27"

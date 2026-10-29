@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'vida'
 indicadores: [precios, alquiler_real, itvc_alquiler]
+relacionado: ['0411']
 corregido_por: ['0112', '0113']
 ambito: 'ITVC · dimensión `precios` · `alquiler_real` (nuevo) · serie `itvc_alquiler`'
 origen: 'Auditoría de Vida Cotidiana, punto 3.6 y recomendación 4 (prioridad alta)'

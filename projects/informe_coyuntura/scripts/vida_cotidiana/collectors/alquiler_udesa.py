@@ -1,21 +1,34 @@
-"""Alquiler real a partir de UdeSA - Mercado Libre Inmuebles (ADR-0386).
+"""Alquiler real a partir de UdeSA - Mercado Libre Inmuebles (ADR-0386, ADR-0411).
 
-La fuente no tiene serie descargable: publica un PDF por mes en una carpeta de
-Google Drive y las cifras viven en la prosa del informe. Por eso la carga es
-**manual, una vez por mes** (`cargar_alquiler_udesa.py`), y este módulo sólo lee
-el registro versionado `data/vida/alquiler_udesa.json`, lo valida y calcula.
+La fuente no tiene serie descargable ni publica niveles: sale un PDF por mes en
+una carpeta de Google Drive y las cifras viven en la prosa del informe. Por eso la
+carga es **manual, una vez por mes** (`cargar_alquiler_udesa.py`), y este módulo
+sólo lee el registro versionado `data/vida/alquiler_udesa.json`, lo valida y calcula.
 
-    real(t) = (1 + alquiler_nominal_interanual(t)) / (1 + IPC_interanual(t)) − 1
+Desde ADR-0411 el indicador es un NIVEL contra el 4T-2023, como los demás
+componentes de precios, y no una variación interanual. Como la fuente sólo da
+variaciones, el nivel nominal es una RECONSTRUCCIÓN de CIGOB, en orden cronológico:
 
-El IPC es el nivel general del GBA de la planilla original del INDEC (la misma
-que usa `alquiler_real`, ADR-0291), no el nacional: el alquiler de UdeSA es de
-AMBA y dividir por un índice de otra plaza mezclaría dos mercados.
+  1. sep-2023 = 100 (semilla).
+  2. Desde oct-2023, para cada mes t: si la interanual nominal de t está
+     publicada y el nivel de t−12 es conocido, nivel(t) = nivel(t−12) x (1 + ia).
+  3. Si no, y la intermensual de t está publicada y el nivel de t−1 es conocido,
+     nivel(t) = nivel(t−1) x (1 + mm).
+  4. Si no, el mes queda SIN nivel: no se imputa ni se interpola.
 
-Componente del ITVC: `100 − real` (en puntos porcentuales). 100 = el alquiler
-publicado subió igual que los precios en el año; por debajo de 100, se encareció
-en términos reales (deterioro). No es un nivel contra el 4T-2023 como los demás
-componentes de precios: la fuente sólo da variaciones interanuales y no se
-encadenan (ADR-0386).
+Se prefiere la interanual publicada porque encadenar las mensuales da
+sistemáticamente menos que las interanuales que el propio informe publica.
+
+    real(t) = 100 x [nivel(t) / base_nominal] / [IPC general GBA(t) / base_IPC]
+
+con base = promedio oct-dic 2023 de cada uno. El IPC es el nivel general del GBA
+de la planilla original del INDEC (la misma que usa `alquiler_real`, ADR-0291), no
+el nacional: el alquiler de UdeSA es de AMBA y dividir por un índice de otra plaza
+mezclaría dos mercados.
+
+Componente del índice de impacto social: 100 x 100 / real, la misma construcción
+que `itvc_alquiler`. 100 = igual que a fines de 2023; por encima, el alquiler
+pedido bajó en términos reales (alivio); por debajo, se encareció.
 
 Sin red: todo lo que calcula recibe los niveles del IPC por argumento.
 """
@@ -33,8 +46,8 @@ RE_URL = re.compile(r"^https://[^\s]+$")
 # ~290 % interanual (abr-2024), así que 400 sirve de tope sin tapar la historia.
 INTERANUAL_MIN, INTERANUAL_MAX = -50.0, 400.0
 DIAS_SIN_CARGA_AVISO = 45
-# Puntos de índice por punto porcentual de encarecimiento real.
-PUNTOS_POR_PP = 1.0
+SEMILLA_MES = "2023-09"       # nivel nominal = 100 (ADR-0411)
+BASE_MESES = ("2023-10", "2023-11", "2023-12")   # 4T-2023, la base de los dos niveles
 
 
 def validar_entrada(mes, entrada) -> None:
@@ -52,9 +65,12 @@ def validar_entrada(mes, entrada) -> None:
         if not str(entrada.get("frase") or "").strip():
             raise ValueError(f"{mes}: un valor sin la frase textual del PDF no entra")
     mensual = entrada.get("intermensual_deptos_amba_pct")
-    if mensual is not None and (isinstance(mensual, bool) or not isinstance(mensual, (int, float))
-                                 or not -60.0 <= mensual <= 100.0):
-        raise ValueError(f"{mes}: intermensual inválido: {mensual!r}")
+    if mensual is not None:
+        if (isinstance(mensual, bool) or not isinstance(mensual, (int, float))
+                or not -60.0 <= mensual <= 100.0):
+            raise ValueError(f"{mes}: intermensual inválido: {mensual!r}")
+        if not str(entrada.get("frase") or "").strip():
+            raise ValueError(f"{mes}: una intermensual sin la frase textual del PDF no entra")
     if not RE_URL.match(str(entrada.get("url_pdf") or "")):
         raise ValueError(f"{mes}: url_pdf ausente o no https")
     try:
@@ -77,45 +93,68 @@ def leer_registro(path: Path = REGISTRO) -> dict:
     return validar_registro(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
-def ipc_interanual_pct(niveles_general: dict, mes: str):
-    """% interanual del nivel general en `mes`, o None si falta el mes o su año previo."""
-    previo = f"{int(mes[:4]) - 1}{mes[4:]}"
-    actual, anterior = niveles_general.get(mes), niveles_general.get(previo)
-    if not actual or not anterior:
-        return None
-    return (actual / anterior - 1) * 100.0
+def _mes_antes(mes: str, k: int) -> str:
+    t = int(mes[:4]) * 12 + int(mes[5:]) - 1 - k
+    return f"{t // 12}-{t % 12 + 1:02d}"
 
 
-def real_interanual_pct(nominal_pct: float, ipc_pct: float) -> float:
-    """Variación real: (1 + nominal) / (1 + IPC) − 1, en %."""
-    return ((1 + nominal_pct / 100.0) / (1 + ipc_pct / 100.0) - 1) * 100.0
+def reconstruir_niveles(meses: dict) -> dict:
+    """{mes: nivel nominal} con sep-2023 = 100, según la regla de ADR-0411.
+
+    Prefiere la interanual publicada (sobre el nivel de hace 12 meses); si no
+    hay, usa la intermensual (sobre el mes anterior); si tampoco, el mes queda
+    sin nivel. Nunca imputa ni interpola."""
+    niveles = {SEMILLA_MES: 100.0}
+    for mes in sorted(meses):
+        if mes <= SEMILLA_MES:
+            continue
+        e = meses[mes]
+        ia = e.get("interanual_deptos_amba_pct")
+        mm = e.get("intermensual_deptos_amba_pct")
+        previo_12, previo_1 = niveles.get(_mes_antes(mes, 12)), niveles.get(_mes_antes(mes, 1))
+        if ia is not None and previo_12 is not None:
+            niveles[mes] = previo_12 * (1 + ia / 100.0)
+        elif mm is not None and previo_1 is not None:
+            niveles[mes] = previo_1 * (1 + mm / 100.0)
+    return niveles
 
 
-def indice_componente(real_pct: float) -> float:
-    """100 − real: 100 = el alquiler siguió a los precios; < 100 = más caro en términos reales."""
-    return round(100.0 - PUNTOS_POR_PP * real_pct, 1)
+def _base(serie: dict) -> float:
+    faltan = [m for m in BASE_MESES if m not in serie]
+    if faltan:
+        raise ValueError(f"base 4T-2023 incompleta (faltan {faltan})")
+    return sum(serie[m] for m in BASE_MESES) / 3.0
+
+
+def indice_componente(real: float) -> float:
+    """100 x 100 / real: 100 = igual que a fines de 2023; > 100 = más barato en términos reales."""
+    return round(10000.0 / real, 1)
 
 
 def serie(meses: dict, niveles_general: dict) -> list:
-    """[{mes, nominal, ipc, real}] ascendente, sólo meses con interanual cargado Y IPC publicado.
+    """[{mes, nivel_nominal, ipc, real}] ascendente, desde oct-2023, sólo meses con
+    nivel reconstruido Y IPC publicado.
 
-    Un mes sin carga no se interpola: queda fuera y la serie conserva el último
+    Un mes sin nivel no se interpola: queda fuera y la serie conserva el último
     punto como desactualizado (lo vigila MAX_DIAS)."""
+    nominal = reconstruir_niveles(meses)
+    base_nom = _base(nominal)
+    base_ipc = _base(niveles_general)
     out = []
-    for mes in sorted(meses):
-        nominal = meses[mes].get("interanual_deptos_amba_pct")
-        if nominal is None:
+    for mes in sorted(nominal):
+        if mes < BASE_MESES[0]:
             continue
-        ipc = ipc_interanual_pct(niveles_general, mes)
-        if ipc is None:
+        ipc = niveles_general.get(mes)
+        if not ipc:
             continue
-        out.append({"mes": mes, "nominal": nominal, "ipc": round(ipc, 2),
-                    "real": round(real_interanual_pct(nominal, ipc), 2)})
+        real = 100.0 * (nominal[mes] / base_nom) / (ipc / base_ipc)
+        out.append({"mes": mes, "nivel_nominal": round(nominal[mes], 2), "ipc": ipc,
+                    "real": round(real, 2)})
     return out
 
 
 def tarjeta(meses: dict = None, niveles_general: dict = None) -> dict:
-    """Último punto real: {valor, fecha, nominal_pct, ipc_pct, mes, fuente_url}."""
+    """Último punto real: {valor, fecha, indice, nivel_nominal, frase, fuente_url}."""
     if meses is None:
         meses = leer_registro()
     if niveles_general is None:
@@ -126,10 +165,10 @@ def tarjeta(meses: dict = None, niveles_general: dict = None) -> dict:
         niveles_general = niveles()["general"]
     pts = serie(meses, niveles_general)
     if not pts:
-        raise ValueError("alquiler_udesa: ningún mes con interanual cargado e IPC publicado")
+        raise ValueError("alquiler_udesa: ningún mes con nivel reconstruido e IPC publicado")
     u = pts[-1]
-    return {"valor": u["real"], "fecha": u["mes"] + "-01", "nominal_pct": u["nominal"],
-            "ipc_pct": u["ipc"], "indice": indice_componente(u["real"]),
+    return {"valor": u["real"], "fecha": u["mes"] + "-01", "indice": indice_componente(u["real"]),
+            "nivel_nominal": u["nivel_nominal"],
             "frase": meses[u["mes"]].get("frase"), "fuente_url": meses[u["mes"]]["url_pdf"]}
 
 

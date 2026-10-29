@@ -727,8 +727,9 @@ SERIES_REBASEADAS = {
     # agua+energía y transporte llegan contra sus propias anclas (ADR-0235).
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
-    # ADR-0386: 100 − alquiler real interanual (en pp); sólo hay serie desde
-    # jun-2025 porque el informe de UdeSA no da la interanual de AMBA antes.
+    # ADR-0386 y ADR-0411: 100 x base / alquiler real contra el 4T-2023, igual
+    # que `itvc_alquiler`; el nivel nominal de UdeSA se reconstruye con las
+    # variaciones publicadas y los meses sin nivel no tienen punto.
     "itvc_alquiler_udesa": "alquiler_udesa_real",
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",

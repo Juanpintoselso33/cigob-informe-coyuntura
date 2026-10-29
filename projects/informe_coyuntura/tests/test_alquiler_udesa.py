@@ -1,4 +1,4 @@
-"""Alquiler real de UdeSA - Mercado Libre (ADR-0386). Sin red.
+"""Alquiler real de UdeSA - Mercado Libre (ADR-0386, ADR-0411). Sin red.
 
 Cuatro cosas: el registro versionado está bien formado y cada valor trae su frase,
 el cálculo real/índice, el script de carga mensual y el aviso de atraso, y la
@@ -88,58 +88,120 @@ def test_entradas_mal_formadas_se_rechazan(mes, kw):
         au.validar_entrada(mes, entrada(**kw))
 
 
-# ── cálculo ───────────────────────────────────────────────────────────────────
-def niveles_ipc():
-    # IPC con +30% interanual constante desde 2025-01
-    n = {}
-    for i in range(24):
-        a, m = 2025 + (i // 12), i % 12 + 1
-        n[f"{a}-{m:02d}"] = 100 * 1.30 ** (i / 12)
+# ── cálculo (ADR-0411) ────────────────────────────────────────────────────────
+def niveles_ipc(tasa_mensual=0.0):
+    """IPC general: 100 en sep-2023, creciendo a `tasa_mensual` por mes hasta fin de 2026."""
+    n, nivel = {}, 100.0
+    for i in range(0, 52):
+        a, m = 2023 + (8 + i) // 12, (8 + i) % 12 + 1
+        n[f"{a}-{m:02d}"] = nivel
+        nivel *= 1 + tasa_mensual
     return n
 
 
-def test_real_es_nominal_deflactado():
-    assert au.real_interanual_pct(30.0, 30.0) == pytest.approx(0.0)
-    assert au.real_interanual_pct(20.4, 33.5) == pytest.approx(-9.8, abs=0.05)
-    assert au.real_interanual_pct(50.0, 20.0) == pytest.approx(25.0)
+def mes_(mes, ia=None, mm=None):
+    return entrada(interanual_deptos_amba_pct=ia, intermensual_deptos_amba_pct=mm,
+                   frase="…" if ia is not None or mm is not None else None)
 
 
-def test_indice_signo_de_la_dimension_de_precios():
-    assert au.indice_componente(0.0) == 100.0
-    assert au.indice_componente(-9.84) == 109.8      # más barato en términos reales = alivio
-    assert au.indice_componente(12.0) == 88.0        # más caro = deterioro
+def test_reconstruccion_prefiere_la_interanual_y_usa_la_mensual_si_falta():
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0),
+             "2024-10": mes_(0, ia=50.0, mm=1.0)}
+    n = au.reconstruir_niveles(meses)
+    assert n["2023-09"] == 100.0
+    assert n["2023-10"] == pytest.approx(110.0) and n["2023-12"] == pytest.approx(133.1)
+    assert n["2024-10"] == pytest.approx(110.0 * 1.5)        # interanual sobre el nivel de oct-2023
+    assert "2024-09" not in n and "2024-11" not in n          # nada se imputa ni se interpola
 
 
-def test_ipc_interanual_necesita_el_mes_del_año_anterior():
-    n = niveles_ipc()
-    assert au.ipc_interanual_pct(n, "2026-03") == pytest.approx(30.0)
-    assert au.ipc_interanual_pct(n, "2025-03") is None
+def test_un_mes_sin_nivel_previo_no_se_calcula_y_corta_la_cadena():
+    meses = {"2023-10": mes_(0, mm=10.0),
+             "2023-11": mes_(0),                              # sin dato
+             "2023-12": mes_(0, mm=5.0)}                       # falta noviembre: no hay base
+    n = au.reconstruir_niveles(meses)
+    assert "2023-11" not in n and "2023-12" not in n
 
 
-def test_serie_no_interpola_meses_sin_dato_ni_sin_ipc():
-    meses = {"2026-01": entrada(interanual_deptos_amba_pct=30.0),
-             "2026-02": entrada(interanual_deptos_amba_pct=None),
-             "2026-03": entrada(interanual_deptos_amba_pct=39.0),
-             "2027-01": entrada(interanual_deptos_amba_pct=40.0)}     # IPC no publicado
-    pts = au.serie(meses, niveles_ipc())
-    assert [p["mes"] for p in pts] == ["2026-01", "2026-03"]
-    assert pts[0]["real"] == pytest.approx(0.0, abs=0.01)
-    assert pts[1]["real"] == pytest.approx(0.0 + (1.39 / 1.30 - 1) * 100, abs=0.01)
+def test_la_interanual_sin_el_nivel_de_hace_doce_meses_cae_a_la_mensual():
+    meses = {"2023-10": mes_(0, mm=10.0), "2024-11": mes_(0, ia=30.0, mm=2.0)}
+    # nov-2024: no hay nivel de nov-2023 ni de oct-2024, así que no hay nivel
+    assert "2024-11" not in au.reconstruir_niveles(meses)
+
+
+def test_real_es_el_nominal_sobre_el_ipc_con_base_oct_dic_2023():
+    # nominal y precios suben igual → real = 100 en todos los meses con base
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0)}
+    ipc = {"2023-09": 100.0, "2023-10": 110.0, "2023-11": 121.0, "2023-12": 133.1}
+    pts = au.serie(meses, ipc)
+    assert [p["mes"] for p in pts] == ["2023-10", "2023-11", "2023-12"]
+    assert all(p["real"] == pytest.approx(100.0, abs=0.01) for p in pts)
+
+
+def test_real_baja_si_el_alquiler_sube_menos_que_los_precios():
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0),
+             "2024-01": mes_(0, mm=0.0)}
+    ipc = {"2023-09": 100.0, "2023-10": 110.0, "2023-11": 121.0, "2023-12": 133.1, "2024-01": 146.41}
+    pts = au.serie(meses, ipc)
+    base_nom = (110.0 + 121.0 + 133.1) / 3
+    base_ipc = (110.0 + 121.0 + 133.1) / 3
+    assert pts[-1]["real"] == pytest.approx(100 * (133.1 / base_nom) / (146.41 / base_ipc), abs=0.01)
+    assert pts[-1]["real"] < 100
+
+
+def test_serie_no_incluye_meses_sin_nivel_ni_sin_ipc():
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0),
+             "2024-01": mes_(0, mm=1.0)}
+    ipc = {"2023-09": 100.0, "2023-10": 110.0, "2023-11": 121.0, "2023-12": 133.1}   # sin ene-2024
+    assert [p["mes"] for p in au.serie(meses, ipc)] == ["2023-10", "2023-11", "2023-12"]
+
+
+def test_serie_exige_la_base_del_ipc_completa():
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0)}
+    with pytest.raises(ValueError, match="base 4T-2023"):
+        au.serie(meses, {"2023-10": 110.0, "2023-11": 121.0})
+
+
+def test_indice_del_componente_es_100_por_base_sobre_real():
+    assert au.indice_componente(100.0) == 100.0
+    assert au.indice_componente(50.0) == 200.0       # la mitad de caro → alivio
+    assert au.indice_componente(125.0) == 80.0       # 25 % más caro → deterioro
 
 
 def test_tarjeta_es_el_ultimo_punto_y_coincide_con_la_serie():
-    meses = {"2026-01": entrada(interanual_deptos_amba_pct=30.0),
-             "2026-03": entrada(interanual_deptos_amba_pct=39.0)}
-    t = au.tarjeta(meses, niveles_ipc())
-    assert t["fecha"] == "2026-03-01"
-    assert t["valor"] == au.serie(meses, niveles_ipc())[-1]["real"]
+    meses = {"2023-10": mes_(0, mm=10.0), "2023-11": mes_(0, mm=10.0), "2023-12": mes_(0, mm=10.0),
+             "2024-01": mes_(0, mm=0.0)}
+    ipc = {"2023-09": 100.0, "2023-10": 110.0, "2023-11": 121.0, "2023-12": 133.1, "2024-01": 146.41}
+    t = au.tarjeta(meses, ipc)
+    assert t["fecha"] == "2024-01-01"
+    assert t["valor"] == au.serie(meses, ipc)[-1]["real"]
     assert t["indice"] == au.indice_componente(t["valor"])
-    assert t["nominal_pct"] == 39.0
 
 
 def test_tarjeta_sin_ningun_punto_levanta():
     with pytest.raises(ValueError):
         au.tarjeta({"2026-01": entrada(interanual_deptos_amba_pct=None)}, niveles_ipc())
+
+
+def test_abril_2024_usa_la_cifra_unica_del_informe(registro):
+    e = registro["meses"]["2024-04"]
+    assert e["intermensual_deptos_amba_pct"] == 3.2 and "3.2%" in e["frase"]
+    assert "departamentos y casas" in e["frase"]          # el informe no las separa
+    assert registro["meses"]["2024-11"]["intermensual_deptos_amba_pct"] is None   # sin dato: no se imputa
+
+
+def test_la_intermensual_tambien_trae_su_frase():
+    with pytest.raises(ValueError, match="frase"):
+        au.validar_entrada("2024-04", entrada(interanual_deptos_amba_pct=None,
+                                              intermensual_deptos_amba_pct=3.2, frase=None))
+
+
+def test_valores_reconstruidos_con_el_registro_real(registro):
+    """Con el registro versionado: la cadena pasa por los meses esperados y se corta en nov-2024."""
+    n = au.reconstruir_niveles(au.validar_registro(registro))
+    assert n["2024-10"] == pytest.approx(188.9, abs=0.1)
+    assert "2024-11" not in n and "2025-05" not in n
+    assert n["2025-09"] == pytest.approx(n["2024-09"] * 1.319, rel=1e-3)
+    assert n["2026-09"] == pytest.approx(n["2025-09"] * 1.204, rel=1e-3)
 
 
 # ── script de carga ───────────────────────────────────────────────────────────
@@ -242,3 +304,15 @@ def test_config_declara_el_tope_de_demora_de_la_carga_manual():
     assert config.MAX_DIAS["alquiler_udesa_real"] == 105
     texto = (RAIZ / "config.py").read_text(encoding="utf-8")
     assert "CARGA MANUAL mensual" in texto
+
+
+def test_carga_acepta_un_mes_con_solo_la_intermensual():
+    # hallazgo de Codex (29-oct): la reconstrucción usa la intermensual cuando
+    # falta la interanual, así que la carga no puede exigir la interanual
+    r = carga.agregar(registro_base(), "2026-10", None, "https://x.y/z", "subió 1.5%",
+                      hoy=date(2026, 11, 3), intermensual=1.5)
+    e = r["meses"]["2026-10"]
+    assert e["interanual_deptos_amba_pct"] is None and e["intermensual_deptos_amba_pct"] == 1.5
+    with pytest.raises(ValueError, match="falta el valor"):
+        carga.agregar(registro_base(), "2026-10", None, "https://x.y/z", "nada",
+                      hoy=date(2026, 11, 3))

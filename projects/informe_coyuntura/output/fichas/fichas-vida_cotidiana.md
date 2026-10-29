@@ -35,15 +35,15 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 97,9** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 10 en verde · 2 en amarillo · 3 en naranja · 4 en rojo |
+| **ITCIS: 98,6** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 10 en verde · 2 en amarillo · 3 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Presión de precios | Tres gastos sensibles. | 103,7 | AMARILLO | 25,0 % |
-| Empleo | Cuánta gente trabaja y en qué condiciones. | 100,1 | AMARILLO | 24,2 % |
+| Presión de precios | Tres gastos sensibles. | 106,7 | VERDE | 25,0 % |
+| Empleo | Cuánta gente trabaja y en qué condiciones. | 100,0 | AMARILLO | 24,2 % |
 | Ingresos | Si el ingreso alcanza. | 116,4 | VERDE | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,2 % |
@@ -65,10 +65,10 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % mensual | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,2 % |
-| Alquiler (índice de precios al consumidor del Gran Buenos Aires) | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % mensual alquileres | ROJO | 2,5 % |
-| Alquiler real (Universidad de San Andrés – Mercado Libre) | Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en… | −9,84 % real interanual | VERDE | 2,5 % |
+| Alquiler de contratos vigentes | Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y… | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
+| Alquiler de avisos nuevos | Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre… | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
-| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,7 % |
+| Informalidad laboral (asalariados sin ningún aporte) | Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en… | 31,9 % | NARANJA | 9,7 % |
 | Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
 | **DIMENSIÓN: Ingresos** | | | | |
 | Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas básicas totales | VERDE | 13,0 % |
@@ -367,27 +367,27 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler (índice de precios al consumidor del Gran Buenos Aires)
+# Alquiler de contratos vigentes
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4º trimestre de 2023.
+Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,88 % mensual alquileres** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 199,87 índice (fines de 2023 = 100)** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % mensual alquileres |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-09 (117 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes). |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | índice (fines de 2023 = 100) |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes). |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
 | **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4º trimestre de 2023.
+Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
@@ -395,8 +395,8 @@ La desregulación del mercado de alquileres fue uno de los cambios de política 
 
 ## Método de cómputo
 
-- La tarjeta muestra la variación mensual del alquiler.
-- El componente mide el encarecimiento RELATIVO del alquiler: nivel del alquiler contra el nivel general de precios del mismo aglomerado, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, el alquiler subió más que el resto de los precios desde el arranque.
+- La tarjeta muestra el alquiler real: el nivel del alquiler de la vivienda dividido por el nivel general de precios del mismo aglomerado, ambos contra su promedio del 4º trimestre de 2023 (= 100). Por encima de 100, el alquiler subió más que el resto de los precios desde fines de 2023; por debajo, menos.
+- El componente que puntúa es la misma cuenta invertida: el promedio del 4º trimestre de 2023 sobre el nivel del mes, de modo que, como en los demás componentes, por encima de 100 signifique mejora. La tarjeta y la serie del gráfico muestran el mismo valor; el puntaje se calcula aparte, con la cuenta invertida.
 - Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.
 
 ## Semáforo — valores que determinan el color
@@ -418,11 +418,11 @@ Este componente está hoy en **50**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,88 % mensual alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (199,87 índice (fines de 2023 = 100)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,88 % mensual alquileres (2026-09).
+Dato vigente: 199,87 índice (fines de 2023 = 100) (2026-09).
 
 El componente está en 50 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
@@ -450,6 +450,8 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 **2026-10-27** — Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.
 
+**2026-10-29** — La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler de contratos vigentes». El puntaje no cambia.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -458,27 +460,27 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler real (Universidad de San Andrés – Mercado Libre)
+# Alquiler de avisos nuevos
 
-Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −9,84 % real interanual** (2026-09) | **VERDE** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 57,57 índice (fines de 2023 = 100)** (2026-09) | **VERDE** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_udesa_real | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % real interanual |
-| **SERIE DISPONIBLE** | 2025-06 → 2026-09 (16 puntos) | **REZAGO DE PUBLICACIÓN** | El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses). |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | índice (fines de 2023 = 100) |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (29 puntos) | **REZAGO DE PUBLICACIÓN** | El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses). |
 | **PRODUCTOR DEL DATO** | Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles | **OPERACIÓN ESTADÍSTICA** | Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA |
 | **MODO DE ACCESO** | Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto subió en el último año el alquiler que se pide por los departamentos del Área Metropolitana de Buenos Aires en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
 
 El índice de precios al consumidor mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
 
@@ -486,9 +488,10 @@ El índice de precios al consumidor mide el alquiler de los contratos vigentes, 
 
 ## Método de cómputo
 
-- La tarjeta muestra la variación real interanual: (1 + alquiler nominal interanual) / (1 + inflación interanual del mismo mes) − 1.
-- El alquiler nominal es el que publica UdeSA – Mercado Libre para departamentos de AMBA en pesos corrientes, tal como figura en la prosa del informe. La inflación es el nivel general del IPC del Gran Buenos Aires del INDEC, la misma planilla que usa el costo del alquiler del IPC.
-- El componente que puntúa es 100 menos la variación real, en puntos: 100 significa que el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales. No se rebasea al 4º trimestre de 2023 porque la fuente sólo da variaciones interanuales y no se encadenan.
+- La fuente no publica niveles, sólo variaciones. El nivel nominal es una reconstrucción de CIGOB, mes a mes en orden cronológico: septiembre de 2023 vale 100; desde octubre de 2023, si la variación interanual del mes está publicada y se conoce el nivel de doce meses antes, el nivel es ése multiplicado por (1 + la interanual); si no, y se conoce el nivel del mes anterior, se usa la variación intermensual publicada; si tampoco, el mes queda sin nivel. Los meses sin dato no se rellenan ni se interpolan.
+- Se prefiere la interanual publicada porque encadenar las intermensuales da sistemáticamente menos que las interanuales que el propio informe publica; por eso la intermensual se usa sólo donde no hay interanual.
+- La tarjeta muestra el alquiler real: el nivel nominal reconstruido dividido por el nivel general del IPC del Gran Buenos Aires, ambos contra su promedio de octubre a diciembre de 2023 (= 100). Por debajo de 100, el alquiler pedido es más barato en términos reales que a fines de 2023.
+- El componente que puntúa es la misma construcción que la del alquiler del IPC: 100 por el promedio del 4º trimestre de 2023 sobre el nivel del mes, de modo que por encima de 100 signifique alivio. Como los demás componentes, se topea en 140.
 
 ## Semáforo — valores que determinan el color
 
@@ -503,25 +506,25 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **109,8**.
+Este componente está hoy en **140**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (−9,84 % real interanual) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (57,57 índice (fines de 2023 = 100)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: −9,84 % real interanual (2026-09).
+Dato vigente: 57,57 índice (fines de 2023 = 100) (2026-09).
 
-El componente está en 109,8 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
 **Color vigente: VERDE**
 
 Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.
+- **Participación en otros indicadores.** Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el peso que la dimensión le asigna a la vivienda.
 
 ## Transparencia — limitaciones declaradas
 
@@ -529,7 +532,8 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 - Sólo cubre departamentos del Área Metropolitana de Buenos Aires (la Ciudad de Buenos Aires y el Gran Buenos Aires) y no representa el interior del país.
 - Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.
 - La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.
-- El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.
+- El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual. Hasta entonces el nivel sale de encadenar variaciones mensuales, que acumulan error y dan menos que las interanuales publicadas, así que el tramo previo a esa fecha es el menos firme.
+- El informe de abril de 2024 no separa departamentos de casas: da una sola cifra para ambos y es la que se usa. Los meses en que el informe no trae la variación necesaria (noviembre de 2024 y los primeros meses de 2025) no tienen nivel; la serie tiene huecos y la cadena se reanuda donde hay interanual publicada.
 - La mediana de avisos puede cambiar por composición: más avisos de un barrio o tipo de departamento mueven la cifra sin que cambie el precio de un departamento dado.
 
 ## Si falta el dato / Política de revisiones
@@ -541,6 +545,8 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 ## Historial — cambios metodológicos documentados
 
 **2026-10-27** — Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.
+
+**2026-10-29** — Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler de avisos nuevos». El peso no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -754,13 +760,13 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Informalidad laboral
+# Informalidad laboral (asalariados sin ningún aporte)
 
-Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).
+Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC). El asalariado que no tiene descuento pero se paga sus aportes, por ejemplo con monotributo, no cuenta como informal.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 37,9 %** (2026-04) | **NARANJA** | Peso efectivo 9,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,9 %** (2026-04) | **NARANJA** | Peso efectivo 9,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -768,20 +774,22 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | informalidad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | % |
-| **SERIE DISPONIBLE** | 2016-07 → 2026-04 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
-| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-29 |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El informe trimestral sale unos 80 días después del cierre del trimestre; la planilla anual de informalidad, una vez al año, con el cuarto trimestre. |
+| **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados informales sin aportes propios, trimestral |
+| **MODO DE ACCESO** | Automático: se descargan las planillas Excel que el INDEC publica junto con los informes. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-29 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).
+Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC). El asalariado que no tiene descuento pero se paga sus aportes, por ejemplo con monotributo, no cuenta como informal.
 
-Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4º trimestre de 2023 exacto (el trimestre de arranque del mandato).
+Mide la precariedad laboral y la exclusión de la red de protección social. Es la definición que el INDEC publica desde el cuarto trimestre de 2023, cuando cambió el cuestionario. En el índice de impacto social su base es el 4º trimestre de 2023 exacto (el trimestre de arranque del mandato).
 
 **Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del Instituto Nacional de Estadística y Censos (INDEC) contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores de pequeñas y medianas empresas, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
 
 ## Método de cómputo
 
+- Qué cuenta como informal: el asalariado sin descuento jubilatorio que tampoco se paga sus aportes por su cuenta. El que factura con monotributo o como autónomo, aunque no tenga descuento, no cuenta. El INDEC publica esta separación desde el cuarto trimestre de 2023, por el cambio de cuestionario.
+- Hasta el último trimestre que cubre la planilla anual de informalidad se usa su cifra oficial. Para los trimestres posteriores se calcula: porcentaje de asalariados sin descuento jubilatorio por la proporción que no tiene aportes propios, ambos del informe de mercado de trabajo; cuando sale la planilla anual, la cifra oficial reemplaza al cálculo.
 - Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).
 
 ## Semáforo — valores que determinan el color
@@ -797,19 +805,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **94,2**.
+Este componente está hoy en **94**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (37,9 %) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (31,9 %) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 37,9 % (2026-04).
+Dato vigente: 31,9 % (2026-04).
 
-El componente está en 94,2 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+El componente está en 94 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
@@ -818,6 +826,8 @@ Ponderación vigente en el ITCIS: 9,7 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Solo asalariados: no captura la informalidad cuentapropista.
+- Descontar al que se paga sus aportes es discutible: quien factura con monotributo cotiza, pero no tiene vacaciones pagas ni indemnización por despido. Se sigue la cifra oficial del INDEC, y la definición anterior, que los contaba como informales, queda explicada en el registro de cambios.
+- El cálculo de los trimestres que la planilla anual todavía no cubre difiere unas décimas de la cifra oficial, porque cambia el denominador; se corrige solo cuando el INDEC publica la planilla.
 - Serie trimestral contra una base de un solo trimestre: sesgo estacional chico, aceptado y declarado.
 - La serie trimestral pública original se discontinuó en 2020; la vigente la reemplaza desde el rediseño del componente.
 
@@ -834,6 +844,8 @@ Ponderación vigente en el ITCIS: 9,7 % efectivo. El color es una lectura adicio
 **2026-07-04** — Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente).
 
 **2026-10-27** — La dimensión de prospectivas de empleo pasa a llamarse Empleo y se replantea: el principal es ahora la ocupación de la EPH (60% de lo que puntúa) e informalidad queda como complemento con el 40%, que sube de 34,19% a 40% interno y de 8,27% a 9,68% del índice mientras el equipo decide qué hacer con ella. El peso nominal de la dimensión no cambia.
+
+**2026-10-29** — Pasa a medir los asalariados informales SIN aportes propios, la cifra oficial del INDEC: el asalariado sin descuento jubilatorio que se paga sus aportes (monotributo, autónomo) deja de contar como informal. Antes contaba a todo el que no tenía descuento, y castigaba como informal a un trabajador registrado que factura. La base sigue siendo el cuarto trimestre de 2023, ahora con la nueva definición.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -873,7 +885,6 @@ Es el principal componente de la dimensión de empleo del índice de impacto soc
 
 - La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.
 - Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.
-- Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en la Agencia de Recaudación y Control Aduanero (ARCA), del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta las claves únicas de identificación tributaria (CUIT) con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay cinco puntos anteriores (agosto de 2014, marzo de 2015, junio de 2020, abril de 2021 y agosto de 2024) contados de copias del Internet Archive, reproducibles con un script del repositorio; ninguna es cercana a diciembre de 2023. Puntuará recién con 12 meses de registro mensual (desde octubre de 2026), con un ADR propio.
 
 ## Semáforo — valores que determinan el color
 
@@ -894,7 +905,7 @@ Este componente está hoy en **104**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023. Empleadores inscriptos en ARCA (Agencia de Recaudación y Control Aduanero): 511.847 (24 de octubre de 2026): 290.897 empresas y sociedades y 220.950 personas. El 24 de agosto de 2024 eran 553.057 (−7,5 %). No puntúa todavía.
+- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023
 
 ## Color vigente y por qué
 
@@ -911,15 +922,16 @@ Ponderación vigente en el ITCIS: 14,5 % efectivo. El color es una lectura adici
 - Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.
 - Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.
 - La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.
-- El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en octubre de 2026 y lo previo son tres copias sueltas del Internet Archive (junio de 2020, abril de 2021, agosto de 2024). No hay copia de diciembre de 2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en agosto de 2024 a 48.391 en octubre de 2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).
 
 ## Si falta el dato / Política de revisiones
 
 - **Si falta el dato:** Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.
 
-- **Política de revisiones:** La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones. El padrón de ARCA se actualiza cada semana y el valor del mes se reemplaza por el del archivo más nuevo de ese mes.
+- **Política de revisiones:** La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-29** — La card vuelve a mostrar sólo la tasa de empleo: se saca de su explicación el conteo de empleadores inscriptos en ARCA. Un dato que no puntúa no va dentro de la tarjeta de otro indicador. El padrón se sigue descargando y guardando cada mes como archivo, sin publicarse en el sitio.
 
 **2026-10-27** — Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.
 

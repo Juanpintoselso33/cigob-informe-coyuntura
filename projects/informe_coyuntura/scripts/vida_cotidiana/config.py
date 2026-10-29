@@ -29,7 +29,7 @@ INDEC_SERIES = {
     # Empleo (EPH - trimestral)
     "desocupacion":            "42.3_EPH_PUNTUATAL_0_M_30",    # Tasa desocupacion %
     "empleo":                  "42.3_EPH_PUNTUATAL_0_M_24",    # Tasa empleo %
-    "informalidad_trimestral": "52.2_ASDJ_0_0_37",             # Asalariados sin desc. jubil. (TRIMESTRAL, 2011→) — métrica del ITVC
+    "informalidad_trimestral": "52.2_ASDJ_0_0_37",             # Asalariados sin desc. jubil. (TRIMESTRAL, 2011→). YA NO es la métrica del ITVC (ADR-0413): `informalidad` sale de las planillas, ver scripts/informalidad_eph.py
     "informalidad_anual":      "52.1_ASDJ_0_0_37",             # variante anual: respaldo
     "subocupacion_demandante": "47.2_ECTSDT_0_T_47",           # Tasa sobre la PEA (trimestral)
     # Empleo registrado privado (ADR-0130): asalariados del sector privado

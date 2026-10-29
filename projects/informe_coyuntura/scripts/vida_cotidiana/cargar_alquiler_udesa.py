@@ -16,9 +16,12 @@ https://www.udesa.edu.ar/indices-mercado-libre :
          --url "https://drive.google.com/file/d/<id>/view" \\
          --frase "Si consideramos la variación interanual …"
 
-  4. Commitear data/vida/alquiler_udesa.json. Si el informe del mes no da la
-     variación interanual de AMBA, NO se carga (no se interpola): se anota con
-     --sin-dato y un motivo.
+  3b. Cargar también `--intermensual <departamentos AMBA, %>` cuando el informe
+     la dé: la reconstrucción del nivel (ADR-0411) la usa en los meses en que no
+     hay interanual publicada.
+  4. Commitear data/vida/alquiler_udesa.json. Si el informe del mes trae sólo la
+     intermensual, se carga sólo --intermensual (sin --valor). Si no trae ninguna
+     de las dos, NO se carga (no se interpola): se anota con --sin-dato y un motivo.
 
 Valida el formato y rechaza un mes duplicado (usar --reemplazar para corregir
 uno ya cargado). Nunca toca nada fuera del registro.
@@ -48,8 +51,9 @@ def agregar(registro: dict, mes: str, valor, url: str, frase: str, hoy: date = N
         "archivo": None,
         "cargado_en": hoy.isoformat(),
     }
-    if valor is None:
-        raise ValueError("falta el valor (si el informe no lo trae, usar --sin-dato)")
+    if valor is None and intermensual is None:
+        raise ValueError("falta el valor: cargar --valor o --intermensual "
+                         "(si el informe no trae ninguno, usar --sin-dato)")
     au.validar_entrada(mes, entrada)
     if mes > hoy.strftime("%Y-%m"):
         raise ValueError(f"{mes} es un mes futuro")

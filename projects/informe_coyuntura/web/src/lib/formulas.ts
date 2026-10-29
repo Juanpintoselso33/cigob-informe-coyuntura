@@ -192,12 +192,12 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Nivel del Índice Líder de la Universidad Torcuato Di Tella contra el arranque del mandato. Por encima de 100, las señales tempranas de la economía están mejor que en 2023.",
   },
   alquiler_real: {
-    latex: String.raw`100\cdot\frac{\left(\text{índice general de precios}\,/\,\text{alquiler}\right)_{\text{hoy}}}{\left(\text{índice general de precios}\,/\,\text{alquiler}\right)_{\text{4º trimestre 2023}}}`,
-    leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
+    latex: String.raw`100\cdot\frac{\text{alquiler}_{\text{hoy}}\,/\,\text{alquiler}_{\text{4º trimestre 2023}}}{\text{índice general de precios}_{\text{hoy}}\,/\,\text{índice general de precios}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Alquiler de la vivienda del índice de precios al consumidor del Gran Buenos Aires dividido por el índice general de precios del mismo aglomerado, contra el 4º trimestre de 2023 (= 100). Por encima de 100 = el alquiler se encareció en términos reales; por debajo, se abarató. El puntaje usa la misma cuenta invertida, de modo que un resultado por encima de 100 signifique mejora.",
   },
   alquiler_udesa_real: {
-    latex: String.raw`100-\left[\frac{1+\text{alquiler pedido}_{\text{interanual}}}{1+\text{índice de precios}_{\text{interanual}}}-1\right]\cdot 100`,
-    leyenda: "Variación interanual del alquiler pedido por los departamentos del Área Metropolitana de Buenos Aires en Mercado Libre (pesos corrientes), descontada la inflación interanual del mismo mes. El índice es 100 menos esa variación real, en puntos: 100 = el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales.",
+    latex: String.raw`100\cdot\frac{\text{alquiler pedido}_{\text{hoy}}\,/\,\text{alquiler pedido}_{\text{4º trimestre 2023}}}{\text{índice general de precios}_{\text{hoy}}\,/\,\text{índice general de precios}_{\text{4º trimestre 2023}}}`,
+    leyenda: "Alquiler pedido por los departamentos del Área Metropolitana de Buenos Aires en Mercado Libre, reconstruido como nivel a partir de las variaciones publicadas y dividido por el índice general de precios del Gran Buenos Aires, contra el 4º trimestre de 2023 (= 100). Por debajo de 100 = más barato en términos reales. El puntaje usa la misma cuenta invertida, de modo que un resultado por encima de 100 signifique mejora.",
   },
   trabajo_independiente: {
     latex: String.raw`100\cdot\frac{\text{participaci\'on}_{\text{4º trimestre 2023}}}{\text{participaci\'on}_{\text{hoy}}}\quad\text{con}\quad\text{participaci\'on}=\frac{\text{aut\'onomos}+\text{monotributo}}{\text{empleo registrado total}}`,
@@ -237,7 +237,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   informalidad: {
     latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4º trimestre 2023}}}{\text{informalidad}_{\text{hoy}}}`,
-    leyenda: "Asalariados sin descuento jubilatorio (Encuesta Permanente de Hogares, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La tarjeta muestra la tasa del trimestre.",
+    leyenda: "Asalariados sin descuento jubilatorio y sin aportes propios (Encuesta Permanente de Hogares, trimestral): se excluye al asalariado que se paga sus aportes por su cuenta. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La tarjeta muestra la tasa del trimestre.",
   },
   consumo_carne_vacuna: {
     latex: String.raw`100\cdot\frac{\text{vacuna por habitante}_{\text{hoy}}}{\text{vacuna por habitante}_{\text{4º trimestre 2023}}}`,

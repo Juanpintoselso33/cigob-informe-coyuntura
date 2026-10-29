@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [ocupacion_eph]
 archivos: ['scripts/vida_cotidiana/collectors/padron_arca.py', 'scripts/vida_cotidiana/padron_arca_backfill.py', 'scripts/vida_cotidiana/main.py', 'scripts/publicar.py', 'data/vida/arca_empleadores.json', '.github/workflows/data-pipeline.yml', 'web/src/lib/fichas.ts']
-relacionado: ['0383']
+relacionado: ['0383', '0412']
 ambito: 'Cinturón de impacto social · ITCIS · dimensión Empleo'
 origen: 'Reunión del 26-oct-2026 (Luis Babino): «el padrón de ARCA de inscriptos como empleadores, incluidos los que no tienen personal a cargo», como complemento de la ocupación de la EPH. Decisión de Juan del 27-oct-2026: guardar la cantidad todos los meses, mostrarla dentro de la explicación de ocupacion_eph sin puntuar, y puntuar recién con 12 meses de historia.'
 ---

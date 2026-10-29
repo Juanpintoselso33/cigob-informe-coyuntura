@@ -171,6 +171,65 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
   3. Recordar lo ya acordado: «DNU + delegados juntos».
 
 
+- **Alquiler de UdeSA: DECIDIDO (Juan, 29-oct), falta implementar.** Se compara contra el
+  4T-2023 así: de oct-2023 a sep-2024, las variaciones mensuales del informe encadenadas
+  (abr-2024 con el 3,2 % del informe; no se rellena ningún mes); de ahí en adelante, las
+  variaciones interanuales que publica el informe (sep-2025 y sep-2026). Resultado a
+  sep-2026: 42 % más barato en términos reales que oct-dic 2023. La ficha declara que es una
+  reconstrucción y que la cadena da en promedio 3 puntos menos por año que las interanuales
+  publicadas. Nada de este dato va en descripciones de otras tarjetas.
+
+- **Para la reunión: gasto de funcionamiento** (Luis, revisión de gestión 26-oct, 1.5 y 2.4).
+  Base, con dato a ago-2026: mismo mes de 2023 (hoy) −35,9 %; dic-2023 −50,3 % (pico de
+  aguinaldo, infla la caída); oct–dic 2023 −39,4 %; promedio 2023 −36,0 %; últimos 12 meses
+  contra todo 2023 −28,0 %. **Grilla completa (29-oct), base × ventana:** último mes −36,0 % (contra todo 2023) /
+  −39,4 % (contra oct–dic 2023); últimos 3 meses −26,0 / −30,0; últimos 12 meses −28,0 / −31,9.
+  El último mes y los 3 meses saltan según caiga un aguinaldo; los 12 meses no. Recomendado:
+  12 meses contra oct–dic 2023 (−31,9 %). 4T-2024 contra 4T-2023 daba −20,2 % (85). Con cualquier base puntúa 100
+  (todas pasan −25 %). Sueldos: sí, son el 78 % del gasto; recomendado dejarlo y decirlo en
+  la ficha (sin sueldos, −45 %, queda el 22 % del gasto). Sin decisión: la unidad dice
+  «frente a 2023-08» → pasar a castellano llano en la próxima tanda.
+
+- **Alquiler del IPC: DECIDIDO (Juan, 29-oct), falta implementar.** La tarjeta muestra lo
+  mismo que puntúa: el alquiler real (descontado con el IPC general del GBA) contra el
+  4T-2023 (hoy ≈ el doble). Rótulos: «Alquiler de contratos vigentes» (INDEC) y «Alquiler de
+  avisos nuevos» (UdeSA – Mercado Libre). Las canastas quedan descartadas.
+- **Para la reunión: ¿sacar el alquiler del INDEC?** (Juan, 29-oct: «me van a pedir que lo
+  saque»). El documento de Luis del 22-oct tenía un solo alquiler («COSTO REAL DEL ALQUILER
+  (VER EL INDICE DE SAN ANDRES…)»); la reunión del 26-oct no pidió sacar el del INDEC.
+  Argumentos para que quede: es lo que paga la mayoría de los inquilinos (contratos
+  vigentes), es el dato oficial, y sacarlo deja sólo el alquiler que favorece al Gobierno.
+  Argumento para sacarlo: buena parte de la suba es la puesta al día de contratos atrasados
+  por la ley de alquileres. Si sale, el de UdeSA queda con el 20 %.
+
+- **Padrón de empleadores de ARCA: DECIDIDO (Juan, 29-oct), falta implementar.** Sale la
+  oración del padrón de la tarjeta de ocupación y deja de publicarse (no puntúa). Regla: un
+  dato que no puntúa no va dentro de la descripción de otra tarjeta.
+
+- **Padrón de ARCA: se sigue bajando todos los meses como archivo, sin publicarlo** (Juan,
+  29-oct). No hay serie de inscriptos como empleadores que llegue a 2023.
+- **Para proponer a Luis en la próxima (Juan, 29-oct): reemplazar el complemento del padrón
+  por el trabajo registrado total del SIPA**, con monotributistas y autónomos y sin el
+  monotributo social (Secretaría de Trabajo, «Situación y evolución del trabajo registrado»,
+  mensual): 12.758 mil en nov-2023, 12.505 mil en jul-2026 (−2,0 %). No es el «empleo
+  registrado privado» que Luis descartó (sólo asalariados privados, −4,7 %). Y además,
+  no en lugar de: sumar la desocupación de la EPH (5,7 % en 4T-2023, 7,9 % en 2T-2026).
+  Superposición, para decirlo en la reunión: ninguno repite a otro, pero se pisan en parte.
+  La desocupación se mueve en buena medida con la ocupación (misma encuesta; se separan
+  cuando mucha gente sale a buscar trabajo o cuando el que lo pierde deja de buscar). El
+  registrado total se pisa con la ocupación (los registrados son ~6 de cada 10 ocupados) y
+  con la informalidad (las dos miran si el trabajo es en blanco). Lo propio de cada uno: la
+  desocupación es el dato más citado; el registrado es registro oficial, mensual, y cuenta
+  al monotributista como trabajo en blanco. Si entran, con poco peso dentro de empleo para
+  no contar tres veces la misma caída.
+
+- **Informalidad laboral: DECIDIDO (Juan, 29-oct), falta implementar.** Pasa a la medida del
+  INDEC «asalariados informales sin aportes propios» (cuadro 4.1 de la planilla de
+  informalidad laboral; el último trimestre, del cuadro 1.3 del informe de mercado de
+  trabajo): 30,0 % en 4T-2023, 31,9 % en 2T-2026. El asalariado que se paga sus aportes
+  (monotributo) deja de contar como informal. Ocupación de la EPH e informalidad son las dos
+  medidas de la dimensión de empleo. El empleo registrado sigue afuera (Luis, 22-oct).
+
 - **Resultados de la investigación del 28-oct (para decidir):**
   - **Dotación: cerrado.** Según el INDEC la serie no cambió de universo (las fusiones de
     ministerios suman en otro renglón). Sólo salieron dos organismos disueltos: INADI (408

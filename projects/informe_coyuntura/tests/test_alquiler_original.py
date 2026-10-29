@@ -48,9 +48,19 @@ def test_cabecera_mensual_no_exige_dia_uno(monkeypatch):
     assert alq.parsear(b'',hoy=date(2025,2,1))['alquiler']['2025-01']==105
 
 
-def test_tarjeta_calcula_variacion_del_original(monkeypatch):
-    monkeypatch.setattr(alq,'niveles',lambda:{'alquiler':{'2024-12':100,'2025-01':105}})
-    r=alq.tarjeta()
-    assert r['fecha']=='2025-01-01'
-    assert r['variacion_mensual_pct']==pytest.approx(5)
-    assert r['fuente_url']==alq.URL
+def test_tarjeta_es_el_alquiler_real_contra_el_4t_2023(monkeypatch):
+    """100 x (alquiler / alquiler base) / (general / general base); base = promedio oct-dic 2023."""
+    alquiler = {'2023-10': 90, '2023-11': 100, '2023-12': 110, '2024-01': 200}
+    general = {'2023-10': 180, '2023-11': 200, '2023-12': 220, '2024-01': 250}
+    monkeypatch.setattr(alq, 'niveles', lambda: {'alquiler': alquiler, 'general': general})
+    r = alq.tarjeta()
+    assert r['fecha'] == '2024-01-01'
+    assert r['valor'] == pytest.approx(100 * (200 / 100) / (250 / 200))     # 160
+    assert r['fuente_url'] == alq.URL
+    # el mes de la base mide 100 sólo si el alquiler y los precios se mueven igual
+    assert alq.indice_real(alquiler, general)['2023-11'] == pytest.approx(100.0)
+
+
+def test_indice_real_exige_la_base_completa():
+    with pytest.raises(ValueError, match='base 4T-2023'):
+        alq.indice_real({'2023-11': 1, '2023-12': 1}, {'2023-11': 1, '2023-12': 1})

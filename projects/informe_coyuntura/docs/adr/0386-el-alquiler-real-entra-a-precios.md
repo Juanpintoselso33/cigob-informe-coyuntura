@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [alquiler_udesa_real, alquiler_real]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'config.py', 'scripts/vida_cotidiana/main.py', 'scripts/vida_cotidiana/collectors/alquiler_udesa.py', 'scripts/vida_cotidiana/cargar_alquiler_udesa.py', 'data/vida/alquiler_udesa.json', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/datos.ts', 'web/src/lib/formulas.ts']
-relacionado: ['0373', '0359']
+relacionado: ['0359', '0373', '0411']
 ambito: 'Cinturón de impacto social · ITCIS · dimensión Presión de precios'
 origen: 'Reunión del 26-oct-2026: «Precios: se mantienen la inflación de alimentos y la canasta de servicios públicos; Juan va a evaluar sumar el costo real del alquiler de UdeSA (CIF) con Mercado Libre Inmuebles.» Decisión de Juan del 27-oct-2026: carga manual mensual.'
 ---

@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'vida'
 indicadores: [alquiler_real]
 archivos: ['scripts/vida_cotidiana/collectors/ipc_alquiler.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts']
+relacionado: ['0411']
 ambito: 'Fuente de alquiler GBA'
 ---
 
