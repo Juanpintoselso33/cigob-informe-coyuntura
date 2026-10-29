@@ -449,7 +449,7 @@ export const LABELS: Record<string, string> = {
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
   carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   icg_utdt: "Confianza en el Gobierno",
-  peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Alquiler de contratos vigentes", alquiler_udesa_real: "Alquiler de avisos nuevos", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
+  peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Alquiler real (INDEC)", alquiler_udesa_real: "Alquiler real (Universidad de San Andrés – Mercado Libre)", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne_vacuna: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral (asalariados sin ningún aporte)", ocupacion_eph: "Ocupación (Encuesta Permanente de Hogares)",
   mortalidad_pymes: "Empleadores activos de pequeñas y medianas empresas", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción",

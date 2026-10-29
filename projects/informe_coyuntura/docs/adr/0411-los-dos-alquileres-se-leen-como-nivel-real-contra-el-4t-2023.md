@@ -41,7 +41,7 @@ mide.
 
 ## Decisión
 
-**`alquiler_real` (rótulo «Alquiler de contratos vigentes»).** La tarjeta y su
+**`alquiler_real` (rótulo «Alquiler real (INDEC)»).** La tarjeta y su
 serie pasan a `100 × (alquiler_t / alquiler_base) / (general_t / general_base)`,
 con ambos del GBA y base el promedio oct–dic 2023. Por encima de 100 el alquiler
 se encareció en términos reales. Es la misma cuenta que `itvc_alquiler`
@@ -49,7 +49,7 @@ se encareció en términos reales. Es la misma cuenta que `itvc_alquiler`
 medición vista de los dos lados. Tarjeta y serie comparten
 `ipc_alquiler.indice_real` y el redondeo (dos decimales), por G3.
 
-**`alquiler_udesa_real` (rótulo «Alquiler de avisos nuevos»).** La fuente no
+**`alquiler_udesa_real` (rótulo «Alquiler real (Universidad de San Andrés – Mercado Libre)»).** La fuente no
 publica niveles; el nivel nominal es una **reconstrucción de CIGOB**, mes a mes en
 orden cronológico (`alquiler_udesa.reconstruir_niveles`):
 

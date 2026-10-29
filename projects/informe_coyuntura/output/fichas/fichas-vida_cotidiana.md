@@ -65,8 +65,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % mensual | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,2 % |
-| Alquiler de contratos vigentes | Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y… | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
-| Alquiler de avisos nuevos | Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre… | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
+| Alquiler real (INDEC) | Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y… | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
+| Alquiler real (Universidad de San Andrés – Mercado Libre) | Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre… | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral (asalariados sin ningún aporte) | Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en… | 31,9 % | NARANJA | 9,7 % |
 | Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
@@ -367,7 +367,7 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler de contratos vigentes
+# Alquiler real (INDEC)
 
 Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
 
@@ -450,7 +450,7 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 **2026-10-27** — Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.
 
-**2026-10-29** — La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler de contratos vigentes». El puntaje no cambia.
+**2026-10-29** — La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler real (INDEC)». El puntaje no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -460,7 +460,7 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler de avisos nuevos
+# Alquiler real (Universidad de San Andrés – Mercado Libre)
 
 Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
 
@@ -546,7 +546,7 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 **2026-10-27** — Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.
 
-**2026-10-29** — Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler de avisos nuevos». El peso no cambia.
+**2026-10-29** — Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler real (Universidad de San Andrés – Mercado Libre)». El peso no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
