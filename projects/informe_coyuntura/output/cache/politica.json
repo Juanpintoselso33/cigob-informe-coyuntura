@@ -1,22 +1,22 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-10-29T12:36:44.552572",
-  "score": 3.0,
+  "generated_at": "2026-10-29T15:17:29.367495",
+  "score": 3.2,
   "itcp": {
-    "valor": 70.0,
+    "valor": 67.5,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.2258,
-        "puntaje": 72.1,
+        "puntaje": 61.2,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.23,
-            "puntaje_banda": 57.1,
-            "puntaje_aplicado": 57.1,
-            "valor": 1.156,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 2.643,
             "peso_efectivo": 0.0519
           },
           "eficacia_legislativa": {
@@ -179,11 +179,14 @@
   },
   "indicadores": {
     "ratio_dnu": {
-      "valor": 1.156,
+      "valor": 2.643,
+      "metodo": "0415",
       "dnu_count": 37,
-      "leyes_count": 32,
+      "leyes_count": 14,
+      "leyes_publicadas": 31,
+      "tratados_excluidos": 17,
       "ventana_dias": 365,
-      "unidad": "decretos de necesidad y urgencia publicados por ley publicada",
+      "unidad": "decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",
       "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
@@ -191,108 +194,36 @@
       "ventana_hasta": "2026-10-29",
       "inventario_dnu": [
         {
-          "norma": "Decreto DNU 1286 / 2026",
-          "fecha_pub": "2026-10-28"
+          "norma": "Decreto DNU 793 / 2025",
+          "fecha_pub": "2025-11-11"
         },
         {
-          "norma": "Decreto DNU 1157 / 2026",
-          "fecha_pub": "2026-10-09"
+          "norma": "Decreto DNU 805 / 2025",
+          "fecha_pub": "2025-11-13"
         },
         {
-          "norma": "Decreto DNU 1103 / 2026",
-          "fecha_pub": "2026-09-28"
+          "norma": "Decreto DNU 825 / 2025",
+          "fecha_pub": "2025-11-20"
         },
         {
-          "norma": "Decreto 867 / 2026",
-          "fecha_pub": "2026-09-04"
+          "norma": "Decreto DNU 849 / 2025",
+          "fecha_pub": "2025-12-01"
         },
         {
-          "norma": "Decreto DNU 771 / 2026",
-          "fecha_pub": "2026-08-21"
+          "norma": "Decreto DNU 942 / 2025",
+          "fecha_pub": "2026-01-02"
         },
         {
-          "norma": "Decreto DNU 736 / 2026",
-          "fecha_pub": "2026-08-14"
+          "norma": "Decreto DNU 941 / 2025",
+          "fecha_pub": "2026-01-02"
         },
         {
-          "norma": "Decreto DNU 717 / 2026",
-          "fecha_pub": "2026-08-06"
+          "norma": "Decreto DNU 2 / 2026",
+          "fecha_pub": "2026-01-05"
         },
         {
-          "norma": "Decreto DNU 681 / 2026",
-          "fecha_pub": "2026-07-30"
-        },
-        {
-          "norma": "Decreto DNU 667 / 2026",
-          "fecha_pub": "2026-07-28"
-        },
-        {
-          "norma": "Decreto DNU 650 / 2026",
-          "fecha_pub": "2026-07-24"
-        },
-        {
-          "norma": "Decreto DNU 594 / 2026",
-          "fecha_pub": "2026-07-16"
-        },
-        {
-          "norma": "Decreto DNU 585 / 2026",
-          "fecha_pub": "2026-07-13"
-        },
-        {
-          "norma": "Decreto DNU 580 / 2026",
-          "fecha_pub": "2026-07-08"
-        },
-        {
-          "norma": "Decreto DNU 571 / 2026",
-          "fecha_pub": "2026-07-03"
-        },
-        {
-          "norma": "Decreto DNU 490 / 2026",
-          "fecha_pub": "2026-06-25"
-        },
-        {
-          "norma": "Decreto DNU 473 / 2026",
-          "fecha_pub": "2026-06-17"
-        },
-        {
-          "norma": "Decreto DNU 314 / 2026",
-          "fecha_pub": "2026-05-04"
-        },
-        {
-          "norma": "Decreto DNU 274 / 2026",
-          "fecha_pub": "2026-04-24"
-        },
-        {
-          "norma": "Decreto DNU 252 / 2026",
-          "fecha_pub": "2026-04-17"
-        },
-        {
-          "norma": "Decreto DNU 264 / 2026",
-          "fecha_pub": "2026-04-17"
-        },
-        {
-          "norma": "Decreto DNU 203 / 2026",
-          "fecha_pub": "2026-03-30"
-        },
-        {
-          "norma": "Decreto DNU 149 / 2026",
-          "fecha_pub": "2026-03-12"
-        },
-        {
-          "norma": "Decreto DNU 88 / 2026",
-          "fecha_pub": "2026-02-06"
-        },
-        {
-          "norma": "Decreto DNU 80 / 2026",
-          "fecha_pub": "2026-02-02"
-        },
-        {
-          "norma": "Decreto DNU 73 / 2026",
-          "fecha_pub": "2026-01-30"
-        },
-        {
-          "norma": "Decreto DNU 49 / 2026",
-          "fecha_pub": "2026-01-27"
+          "norma": "Decreto DNU 17 / 2026",
+          "fecha_pub": "2026-01-16"
         },
         {
           "norma": "Decreto DNU 26 / 2026",
@@ -307,44 +238,186 @@
           "fecha_pub": "2026-01-26"
         },
         {
-          "norma": "Decreto DNU 17 / 2026",
-          "fecha_pub": "2026-01-16"
+          "norma": "Decreto DNU 49 / 2026",
+          "fecha_pub": "2026-01-27"
         },
         {
-          "norma": "Decreto DNU 2 / 2026",
-          "fecha_pub": "2026-01-05"
+          "norma": "Decreto DNU 73 / 2026",
+          "fecha_pub": "2026-01-30"
         },
         {
-          "norma": "Decreto DNU 942 / 2025",
-          "fecha_pub": "2026-01-02"
+          "norma": "Decreto DNU 80 / 2026",
+          "fecha_pub": "2026-02-02"
         },
         {
-          "norma": "Decreto DNU 941 / 2025",
-          "fecha_pub": "2026-01-02"
+          "norma": "Decreto DNU 88 / 2026",
+          "fecha_pub": "2026-02-06"
         },
         {
-          "norma": "Decreto DNU 849 / 2025",
-          "fecha_pub": "2025-12-01"
+          "norma": "Decreto DNU 149 / 2026",
+          "fecha_pub": "2026-03-12"
         },
         {
-          "norma": "Decreto DNU 825 / 2025",
-          "fecha_pub": "2025-11-20"
+          "norma": "Decreto DNU 203 / 2026",
+          "fecha_pub": "2026-03-30"
         },
         {
-          "norma": "Decreto DNU 805 / 2025",
-          "fecha_pub": "2025-11-13"
+          "norma": "Decreto DNU 252 / 2026",
+          "fecha_pub": "2026-04-17"
         },
         {
-          "norma": "Decreto DNU 793 / 2025",
-          "fecha_pub": "2025-11-11"
+          "norma": "Decreto DNU 264 / 2026",
+          "fecha_pub": "2026-04-17"
+        },
+        {
+          "norma": "Decreto DNU 274 / 2026",
+          "fecha_pub": "2026-04-24"
+        },
+        {
+          "norma": "Decreto DNU 314 / 2026",
+          "fecha_pub": "2026-05-04"
+        },
+        {
+          "norma": "Decreto DNU 473 / 2026",
+          "fecha_pub": "2026-06-17"
+        },
+        {
+          "norma": "Decreto DNU 490 / 2026",
+          "fecha_pub": "2026-06-25"
+        },
+        {
+          "norma": "Decreto DNU 571 / 2026",
+          "fecha_pub": "2026-07-03"
+        },
+        {
+          "norma": "Decreto DNU 580 / 2026",
+          "fecha_pub": "2026-07-08"
+        },
+        {
+          "norma": "Decreto DNU 585 / 2026",
+          "fecha_pub": "2026-07-13"
+        },
+        {
+          "norma": "Decreto DNU 594 / 2026",
+          "fecha_pub": "2026-07-16"
+        },
+        {
+          "norma": "Decreto DNU 650 / 2026",
+          "fecha_pub": "2026-07-24"
+        },
+        {
+          "norma": "Decreto DNU 667 / 2026",
+          "fecha_pub": "2026-07-28"
+        },
+        {
+          "norma": "Decreto DNU 681 / 2026",
+          "fecha_pub": "2026-07-30"
+        },
+        {
+          "norma": "Decreto DNU 717 / 2026",
+          "fecha_pub": "2026-08-06"
+        },
+        {
+          "norma": "Decreto DNU 736 / 2026",
+          "fecha_pub": "2026-08-14"
+        },
+        {
+          "norma": "Decreto DNU 771 / 2026",
+          "fecha_pub": "2026-08-21"
+        },
+        {
+          "norma": "Decreto 867 / 2026",
+          "fecha_pub": "2026-09-04"
+        },
+        {
+          "norma": "Decreto DNU 1103 / 2026",
+          "fecha_pub": "2026-09-28"
+        },
+        {
+          "norma": "Decreto DNU 1157 / 2026",
+          "fecha_pub": "2026-10-09"
+        },
+        {
+          "norma": "Decreto DNU 1286 / 2026",
+          "fecha_pub": "2026-10-28"
         }
       ],
-      "detalle_txt": "37 decretos de necesidad y urgencia y 32 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026: 1,16 decretos por ley",
-      "obtenido_en": "2026-10-29T12:33:19",
+      "inventario_tratados": [
+        {
+          "ley": "27824",
+          "fecha_pub": "2026-09-18"
+        },
+        {
+          "ley": "27825",
+          "fecha_pub": "2026-09-18"
+        },
+        {
+          "ley": "27819",
+          "fecha_pub": "2026-09-15"
+        },
+        {
+          "ley": "27814",
+          "fecha_pub": "2026-07-17"
+        },
+        {
+          "ley": "27815",
+          "fecha_pub": "2026-07-17"
+        },
+        {
+          "ley": "27816",
+          "fecha_pub": "2026-07-17"
+        },
+        {
+          "ley": "27817",
+          "fecha_pub": "2026-07-17"
+        },
+        {
+          "ley": "27813",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27806",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27812",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27810",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27808",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27807",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27809",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27811",
+          "fecha_pub": "2026-06-18"
+        },
+        {
+          "ley": "27803",
+          "fecha_pub": "2026-04-10"
+        },
+        {
+          "ley": "27800",
+          "fecha_pub": "2026-02-26"
+        }
+      ],
+      "detalle_txt": "37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 57.1,
-      "puntaje_banda": 57.1,
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
       "peso_efectivo": 0.0519
     },
     "brecha_obra_publica": {
@@ -357,7 +430,7 @@
       "desactualizado": false,
       "variacion_12m": -0.8,
       "detalle_txt": "Brecha de -1,9 puntos porcentuales entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-09 a 2026-11; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-      "obtenido_en": "2026-10-29T12:33:20",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": false
     },
     "apoyo_empresario": {
@@ -376,7 +449,7 @@
         "UIA": -0.4
       },
       "detalle_txt": "En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-      "obtenido_en": "2026-10-29T12:33:20",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 32.5,
@@ -395,7 +468,7 @@
       "criticas_ventana": 0,
       "pendientes_de_codificar": 0,
       "detalle_txt": "En los últimos doce meses la Cámara Argentina de Comercio y Servicios se pronunció 4 veces sobre medidas del Gobierno nacional: 4 de apoyo y 0 de crítica. Saldo 1,0 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-      "obtenido_en": "2026-10-29T12:33:20",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 100.0,
@@ -419,7 +492,7 @@
         "SRA": 0.5
       },
       "detalle_txt": "En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-      "obtenido_en": "2026-10-29T12:33:20",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 55.5,
@@ -438,7 +511,7 @@
       "criticas_ventana": 2,
       "pendientes_de_codificar": 1,
       "detalle_txt": "En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-      "obtenido_en": "2026-10-29T12:33:20",
+      "obtenido_en": "2026-10-29T15:14:16",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 75.0,
@@ -455,7 +528,7 @@
       "cobertura_hasta": "2026-10-23",
       "referencia_temporal": "mes de inicio de las semanas ACLED",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:33:30",
+      "obtenido_en": "2026-10-29T15:14:25",
       "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
       "en_indice": true,
       "dimension": "conflicto_social",
@@ -470,7 +543,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-      "obtenido_en": "2026-10-29T12:33:31",
+      "obtenido_en": "2026-10-29T15:14:25",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 87.0,
@@ -486,7 +559,7 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
       "fecha_dato": "2026-08-23",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:33:35",
+      "obtenido_en": "2026-10-29T15:14:30",
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -501,7 +574,7 @@
       "detalle_txt": "12 meses a septiembre 2026: +32.2% nominal contra un deflactor de 33.0% ponderado por el flujo de cada mes → -0.6% real",
       "fecha_dato": "2026-09-30",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:33:37",
+      "obtenido_en": "2026-10-29T15:14:31",
       "en_indice": false
     },
     "transferencias_no_automaticas": {
@@ -516,7 +589,7 @@
       "detalle_txt": "12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor",
       "fecha_dato": "2026-09-30",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:08",
+      "obtenido_en": "2026-10-29T15:15:08",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 10.0,
@@ -534,7 +607,7 @@
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:09",
+      "obtenido_en": "2026-10-29T15:15:09",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 70.5,
@@ -552,7 +625,7 @@
       "desactualizado": false,
       "ultima_reunion_registrada": "2026-10-21",
       "detalle_txt": "0 de 10 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. No cuentan 2 sesiones que pidió la oposición y no juntaron quórum: ahí el que gana es el oficialismo. Última reunión: 2026-10-21. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-      "obtenido_en": "2026-10-29T12:34:09",
+      "obtenido_en": "2026-10-29T15:15:10",
       "en_indice": false
     },
     "comisiones_caidas": {
@@ -565,7 +638,7 @@
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:10",
+      "obtenido_en": "2026-10-29T15:15:11",
       "en_indice": false
     },
     "adhesion_reformas_provincial": {
@@ -596,7 +669,7 @@
       ],
       "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:10",
+      "obtenido_en": "2026-10-29T15:15:11",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 92.5,
@@ -614,7 +687,7 @@
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:39",
+      "obtenido_en": "2026-10-29T15:15:33",
       "en_indice": false
     },
     "rotacion_gabinete": {
@@ -627,7 +700,7 @@
       "salidas_estructurales": 2,
       "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
       "detalle_txt": "6 salidas en 12 meses = 4 políticas · 2 por bancas electorales — Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-      "obtenido_en": "2026-10-29T12:34:44",
+      "obtenido_en": "2026-10-29T15:15:38",
       "en_indice": false
     },
     "protestas_caba": {
@@ -638,7 +711,7 @@
       "cobertura_hasta": "2026-10-23",
       "referencia_temporal": "mes de inicio de las semanas ACLED",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:34:44",
+      "obtenido_en": "2026-10-29T15:15:38",
       "eventos_2023": 240,
       "var_vs_2023": 10.0,
       "detalle_txt": "264 eventos en 12 meses (grupos hasta 2026-09) frente a 240 en la base 2023 (+10,0%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -667,7 +740,7 @@
       "desactualizado": false,
       "detalle_txt": "Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.",
       "sin_origen_resuelto": 3,
-      "obtenido_en": "2026-10-29T12:34:57",
+      "obtenido_en": "2026-10-29T15:15:52",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 69.6,
@@ -697,7 +770,7 @@
           "desactualizado": false
         }
       },
-      "obtenido_en": "2026-10-29T12:35:38",
+      "obtenido_en": "2026-10-29T15:16:33",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 100.0,
@@ -715,7 +788,7 @@
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
       "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.",
-      "obtenido_en": "2026-10-29T12:35:53",
+      "obtenido_en": "2026-10-29T15:16:51",
       "en_indice": false,
       "dimension": "poder_legislativo"
     },
@@ -729,7 +802,7 @@
       "fecha_dato": "2026-10-29",
       "desactualizado": false,
       "detalle_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
-      "obtenido_en": "2026-10-29T12:35:53",
+      "obtenido_en": "2026-10-29T15:16:51",
       "en_indice": false
     },
     "insistencias_vetos": {
@@ -742,7 +815,7 @@
       "eventos_12m": [],
       "total_mandato": 3,
       "que": "insistencias",
-      "obtenido_en": "2026-10-29T12:35:53",
+      "obtenido_en": "2026-10-29T15:16:51",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
@@ -759,7 +832,7 @@
       "eventos_12m": [],
       "total_mandato": 6,
       "que": "rechazos",
-      "obtenido_en": "2026-10-29T12:35:53",
+      "obtenido_en": "2026-10-29T15:16:51",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
@@ -776,7 +849,7 @@
       "ultima_sancion_registrada": "2026-09-24",
       "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
       "detalle_txt": "31 leyes distintas en los 12 meses completos hasta 2026-09, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-      "obtenido_en": "2026-10-29T12:35:54",
+      "obtenido_en": "2026-10-29T15:16:51",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 45.8,
@@ -789,8 +862,8 @@
       "fuente": "Sistema Argentino de Información Jurídica (SAIJ) — buscador de jurisprudencia (Federal + Nacional)",
       "fecha_dato": "2026-01-01",
       "desactualizado": false,
-      "detalle_txt": "204 de 11438 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
-      "obtenido_en": "2026-10-29T12:35:57",
+      "detalle_txt": "204 de 11444 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+      "obtenido_en": "2026-10-29T15:16:54",
       "en_indice": false
     },
     "velocidad_resolucion": {
@@ -800,7 +873,7 @@
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-      "obtenido_en": "2026-10-29T12:35:57",
+      "obtenido_en": "2026-10-29T15:16:54",
       "en_indice": false
     },
     "paralisis_denuncias": {
@@ -933,7 +1006,7 @@
       ],
       "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
       "detalle_txt": "15 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
-      "obtenido_en": "2026-10-29T12:35:59",
+      "obtenido_en": "2026-10-29T15:16:56",
       "en_indice": false
     },
     "cobertura_judicial": {
@@ -942,7 +1015,7 @@
       "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
       "fecha_dato": "2026-10-01",
       "desactualizado": false,
-      "obtenido_en": "2026-10-29T12:36:00",
+      "obtenido_en": "2026-10-29T15:16:57",
       "estimado": true,
       "limites_metodologicos": [
         "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",

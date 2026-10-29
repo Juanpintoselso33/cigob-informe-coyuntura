@@ -689,14 +689,22 @@ _INFOLEG_FILAS_POR_PAGINA = 50
 
 
 def _infoleg_listado_completo(session: requests.Session, action_url: str, tipo: str,
-                              desde: date, hasta: date, texto: str = "") -> list[dict]:
+                              desde: date, hasta: date, texto: str = "",
+                              invisibles_tolerados: int = 0) -> list[dict]:
     """Todas las filas del listado de InfoLeg, paginando.
 
     La grilla devuelve 50 por página y el resto queda detrás de un submit del
     mismo formulario con `desplazamiento=AP` e `irAPagina`. Contar sólo la
     primera página daría 50 y no fallaría: la ventana de 365 días trae 48, o
-    sea que el techo estaba a dos normas de distancia."""
-    vistos, items, total = set(), [], None
+    sea que el techo estaba a dos normas de distancia.
+
+    `invisibles_tolerados` (ADR-0415): InfoLeg a veces declara un registro que
+    no muestra en ninguna fila —en septiembre de 2026 declara 8 leyes y lista 7,
+    con todos los números de ley consecutivos presentes—. Si se recorrieron
+    TODAS las páginas que el propio InfoLeg declara y faltan como mucho esa
+    cantidad de filas, se devuelve lo listado con un aviso en el log; un
+    listado al que le faltan páginas sigue cortando."""
+    vistos, items, total, paginas_decl, ultima, estancado = set(), [], None, None, 0, False
     for pagina in range(1, 60):
         data = {
             "tipoNorma": tipo, "numero": "", "anioSancion": "", "dependencia": "",
@@ -709,23 +717,40 @@ def _infoleg_listado_completo(session: requests.Session, action_url: str, tipo: 
         if pagina > 1:
             data["desplazamiento"] = "AP"
             data["irAPagina"] = str(pagina)
-        time.sleep(_DERROTAS_PAUSA_INFOLEG)
-        r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r = None
+        for intento in range(2):
+            # un 5xx suelto de InfoLeg (visto el 29-oct-2026) se reintenta una
+            # vez; si persiste, corta como cualquier otro error
+            time.sleep(_DERROTAS_PAUSA_INFOLEG * (1 + 3 * intento))
+            r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            if getattr(r, "status_code", 200) < 500:
+                break
         r.raise_for_status()
         if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
             raise ValueError(f"respuesta InfoLeg sin listado (tipo={tipo}, texto={texto!r})")
         m = re.search(r"Encontradas?[:\s]+(\d+)", r.text, re.IGNORECASE)
         if total is None:
             total = int(m.group(1)) if m else 0
+            mp = re.search(r"Encontradas?[:\s]+\d+\s+en\s+(\d+)\s+p", r.text, re.IGNORECASE)
+            paginas_decl = int(mp.group(1)) if mp else None
+        ultima = pagina
         antes = len(items)
         for it in _parsear_listado_infoleg(r.text):
             if it["infoleg_id"] not in vistos:
                 vistos.add(it["infoleg_id"])
                 items.append(it)
-        if len(items) >= total or len(items) == antes:
+        estancado = len(items) == antes
+        if len(items) >= total or estancado or (paginas_decl and pagina >= paginas_decl):
             # una página que no aporta filas nuevas no va a aportarlas en la
-            # siguiente: se corta acá y decide el control de total de abajo
+            # siguiente: se corta acá y decide el control de total de abajo.
+            # Tampoco se pide una página más allá de las que declara InfoLeg.
             break
+    if (len(items) != total and invisibles_tolerados and paginas_decl and not estancado
+            and ultima >= paginas_decl and 0 < total - len(items) <= invisibles_tolerados):
+        print(f"[WARN] {CINTURON}.ratio_dnu: InfoLeg declara {total} normas (tipo={tipo}) "
+              f"entre el {desde.isoformat()} y el {hasta.isoformat()} y lista {len(items)} "
+              f"en todas sus páginas; se cuentan las listadas")
+        return items
     if len(items) != total:
         raise ValueError(
             f"InfoLeg devolvió {len(items)} filas de {total} declaradas "
@@ -754,11 +779,268 @@ def _infoleg_contar_dnus(session: requests.Session, action_url: str,
     rotula «Decreto DNU 44 / 2026» siendo `DECTO-2026-44-APN-PTE`
     (ADR-0307). Decide el identificador del original; el rótulo queda como
     respaldo sólo si el texto se leyó y no trae identificador; si no se pudo
-    bajar, el conteo se corta."""
-    items = _infoleg_listado_completo(session, action_url, "2", desde, hasta,
-                                      texto="necesidad y urgencia")
-    dnus = [it for it in items if _es_dnu_infoleg(session, it)]
+    bajar, el conteo se corta.
+
+    Y la frase tampoco alcanza para ENCONTRARLOS (ADR-0415): hay DNU cuyo
+    texto no dice «necesidad y urgencia» —el 609/2019 del cepo, el 1043/2018
+    de la asignación no remunerativa, las modificaciones a la Ley de
+    Ministerios de 2018 y 2019— y que la búsqueda de texto no trae. Por eso
+    los candidatos son la unión de esa búsqueda y de los decretos que la
+    grilla rotula `Decreto DNU`, sacados del listado completo de decretos mes
+    a mes; la decisión sigue siendo la misma para los dos.
+
+    Un decreto con número anterior a 1994 no es un DNU del artículo 99 inc. 3
+    de la Constitución, que nace con la reforma de ese año: son decretos
+    secretos de la dictadura que InfoLeg publica décadas después rotulados
+    como DNU (el 179/1979 publicado en 2013). No cuentan."""
+    candidatos = {it["infoleg_id"]: it for it in _infoleg_listado_completo(
+        session, action_url, "2", desde, hasta, texto="necesidad y urgencia")}
+    for it in _infoleg_decretos_rotulados_dnu(session, action_url, desde, hasta):
+        candidatos.setdefault(it["infoleg_id"], it)
+    dnus = []
+    for it in sorted(candidatos.values(), key=lambda x: (x["fecha_pub"], x["infoleg_id"])):
+        num = _RE_NUMERO_NORMA.search(it.get("norma", ""))
+        if num and int(num.group(2)) < 1994:
+            continue
+        if _es_dnu_infoleg(session, it):
+            dnus.append(it)
     return len(dnus), dnus
+
+
+def _tramos_mensuales(desde: date, hasta: date) -> list[tuple[date, date]]:
+    """[desde, hasta] partido en meses calendario (el primero y el último,
+    recortados). El listado completo de decretos de un año pasa las 59
+    páginas que admite `_infoleg_listado_completo`; uno de un mes, no."""
+    out, a = [], desde
+    while a <= hasta:
+        b = min(date(a.year, a.month, calendar.monthrange(a.year, a.month)[1]), hasta)
+        out.append((a, b))
+        a = b + timedelta(days=1)
+    return out
+
+
+def _infoleg_decretos_rotulados_dnu(session: requests.Session, action_url: str,
+                                    desde: date, hasta: date) -> list[dict]:
+    """Los decretos que la grilla de InfoLeg rotula `Decreto DNU`, del
+    listado completo de decretos (sin búsqueda de texto), mes a mes. Un mes
+    que no se pudo listar entero corta el conteo, como cualquier otro."""
+    out = []
+    for a, b in _tramos_mensuales(desde, hasta):
+        out.extend(it for it in _infoleg_listado_completo(session, action_url, "2", a, b,
+                                                         invisibles_tolerados=2)
+                   if _RE_INFOLEG_DNU.match(it["norma"]))
+    return out
+
+
+# ── Leyes que aprueban tratados internacionales (ADR-0415) ──────────────────
+# Un tratado con otro país o con un organismo internacional sólo lo puede
+# aprobar el Congreso (arts. 75 inc. 22 y 99 inc. 11 de la Constitución): el
+# Poder Ejecutivo no tiene la alternativa de hacerlo por decreto. Contar esas
+# leyes en el denominador mide cuántos tratados llegaron al Congreso, no
+# cuánto legisla el Ejecutivo por decreto en lugar de por ley; por eso dejan
+# de contarse. La regla es de texto sobre el sumario de InfoLeg y se aplica en
+# un solo lugar: `_es_ley_de_tratado`, que usan la card y la serie.
+
+def _normalizar(s: str) -> str:
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().upper()
+    return re.sub(r"\s+", " ", s)
+
+
+# Encabezados de materia con que InfoLeg abre el sumario de una ley de tratado
+_TRAT_ENCABEZADO = re.compile(
+    r"^(TRATADOS?|CONVENIOS?|ACUERDOS?|CONVENCION(ES)?|PROTOCOLOS?|MERCOSUR|"
+    r"ORGANISMOS INTERNACIONALES|ENMIENDAS?|MEMORANDOS?|ORGANIZACION|NACIONES UNIDAS)\b")
+# Los que por sí solos ya nombran un instrumento internacional
+_TRAT_ENCABEZADO_FUERTE = re.compile(
+    r"^(TRATADOS?|CONVENCION(ES)?|PROTOCOLOS?|MERCOSUR|ORGANISMOS INTERNACIONALES|"
+    r"ENMIENDAS?|NACIONES UNIDAS)\b")
+_TRAT_INSTRUMENTO = (r"(TRATADO|CONVENIO|CONVENCION|ACUERDO|PROTOCOLO|ENMIENDA|MEMORANDO|"
+                     r"MEMORANDUM|ESTATUTO|PACTO|CARTA|ENTENDIMIENTO|DECLARACION CONJUNTA|"
+                     r"CONSTITUCION DE LA ORGANIZACION|REGLAMENTO SANITARIO)")
+_TRAT_APRUEBA = re.compile(
+    r"(APRUEBA|RATIFICA|ADHIER|ADHESION|APROBACION|DENUNCIA).{0,80}" + _TRAT_INSTRUMENTO
+    + r"|APRUEBA(N)?SE (EL|LA|LOS|LAS) (\w+ )?" + _TRAT_INSTRUMENTO)
+# El acto que sólo puede hacer el Congreso es aprobar (o ratificar, adherir,
+# denunciar): un encabezado «CONVENCIONES» sin ese verbo no alcanza (27.700 y
+# 27.044 sólo otorgan jerarquía constitucional a convenciones ya aprobadas).
+_TRAT_VERBO = re.compile(r"APRUEB|APROBACION|RATIFIC|ADHIER|ADHESION|DENUNCIA")
+_TRAT_MENCIONA_INSTRUMENTO = re.compile(r"\b" + _TRAT_INSTRUMENTO)
+# La otra parte es un Estado extranjero o un organismo internacional
+_TRAT_INTERNACIONAL = re.compile(
+    r"ENTRE (LA REPUBLICA ARGENTINA|EL GOBIERNO DE LA REPUBLICA ARGENTINA|LOS GOBIERNOS|"
+    r"EL MERCOSUR|EL MERCADO COMUN|LOS ESTADOS)|"
+    r"MERCOSUR|MERCADO COMUN DEL SUR|INTERNACIONAL|NACIONES UNIDAS|"
+    r"ORGANIZACION (DE|MUNDIAL|PANAMERICANA|INTERNACIONAL|PARA|DEL)|"
+    r"ESTADOS AMERICANOS|UNION EUROPEA|UNION POSTAL|UNESCO|\bOEA\b|\bOIT\b|\bOMC\b|"
+    r"REPUBLICA (DE|DEL|FEDERAL|FEDERATIVA|POPULAR|ISLAMICA|ORIENTAL|BOLIVARIANA|ARABE|CHECA|"
+    r"ESLOVACA|DOMINICANA|SOCIALISTA|HELENICA|ITALIANA|FRANCESA|PORTUGUESA|TUNECINA)|"
+    r"REINO|CONFEDERACION|FEDERACION DE RUSIA|SANTA SEDE|ESTADO PLURINACIONAL|"
+    r"ESTADO DE (ISRAEL|QATAR|KUWAIT|PALESTINA|LOS EMIRATOS)|EMIRATOS|JAPON|CANADA|"
+    r"AUSTRALIA|NUEVA ZELANDA|COMMONWEALTH|MANCOMUNIDAD|GRAN DUCADO|"
+    r"GOBIERNO DE (LA|EL|LOS|JAPON|CANADA|AUSTRALIA|NUEVA|MALASIA|RUMANIA|HUNGRIA|UCRANIA|"
+    r"IRLANDA|GEORGIA|MONGOLIA|SINGAPUR|TURQUIA|BELICE)|"
+    r"(HECHO|ADOPTAD[OA]S?|SUSCRIPT[OA]S?|FIRMAD[OA]S?|CELEBRAD[OA]S?) EN (LA CIUDAD DE )?"
+    r"(?!BUENOS AIRES\b)[A-Z]|"
+    r"BANCO (INTERAMERICANO|MUNDIAL|INTERNACIONAL|DE DESARROLLO DE AMERICA|ASIATICO|"
+    r"CENTROAMERICANO)|CORPORACION ANDINA|FONDO (MONETARIO|INTERNACIONAL|FINANCIERO PARA EL "
+    r"DESARROLLO|MULTILATERAL|COMUN PARA)|"
+    r"ASOCIACION LATINOAMERICANA|ALADI|UNASUR|CELAC|OCDE|ORGANISMO INTERNACIONAL|"
+    r"AGENCIA INTERNACIONAL|CONSEJO DE EUROPA|SECRETARIA DEL CONVENIO|"
+    r"MULTILATERAL|IBEROAMERICAN|LATINOAMERICAN|INTERAMERICAN|ADOPTAD[OA] POR LA CONFERENCIA|"
+    r"ISLAS MALVINAS|ESTADOS UNIDOS|CHILE|URUGUAY|PARAGUAY|BOLIVIA|BRASIL|CHINA|INDIA|"
+    r"COREA|ALEMANIA|ESPANA|FRANCIA|ITALIA|SUIZA|AUSTRIA|SINGAPUR|SAN MARINO|POLONIA|"
+    r"COSTA RICA|SERBIA|CUBA|RUMANIA|ECUADOR|BINACIONAL|TRINACIONAL|INTERGUBERNAMENTAL|"
+    # materias que sólo se acuerdan con otro Estado
+    r"EXTRADICION|ASISTENCIA (JURIDICA|JUDICIAL|LEGAL) (MUTUA|RECIPROCA)|"
+    r"TRASLADO DE (NACIONALES |PERSONAS )?CONDENAD|DOBLE IMPOSICION|CANJE DE NOTAS|"
+    r"USOS PACIFICOS DE LA ENERGIA NUCLEAR|PREFERENCIAS COMERCIALES|RECONOCIMIENTO MUTUO|"
+    r"PROTECCION RECIPROCA|SUPRESION DE VISAS|DE LA HAYA|"
+    # la Ley 24.080 regula la publicación de los tratados: el resumen la cita
+    # cuando anota la entrada en vigor de uno (27.028)
+    r"LEY N\S? ?24\.?080")
+# Instrumentos internos: Nación con provincias, con la Ciudad, pactos federales
+_TRAT_INTERNO = re.compile(
+    r"ESTADO NACIONAL Y (LA|LAS) PROVINCIA|INTERJURISDICCIONAL|PROVINCIA|PROVINCIAS|"
+    r"CONSENSO FISCAL|PACTO FEDERAL|COMPROMISO FEDERAL|ACUERDO FEDERAL|CIUDAD AUTONOMA|"
+    r"MUNICIPIO|CONVENIO COLECTIVO|PARITARI")
+# Operaciones que no son un instrumento internacional a ratificar aunque la
+# contraparte sea extranjera: conciliaciones con empresas (27.818, Bainbridge
+# Ltd.), operaciones de crédito público del art. 75 inc. 7 (27.668, el
+# programa con el Fondo Monetario Internacional), el acuerdo por la
+# expropiación de YPF (26.932). Decisión de Juan del 29-oct-2026.
+_TRAT_NO_ES = re.compile(
+    r"JERARQUIA CONSTITUCIONAL|"
+    r"ACUERDO DE CONCILIACION|CONCILIACION CELEBRAD|SOLUCION AMIGABLE|ARTICULO 75,? INCISO 7\b|"
+    r"OPERACIONES DE CREDITO PUBLICO|FACILIDADES EXTENDIDAS|YACIMIENTOS PETROLIFEROS|REPSOL")
+# Casos decididos uno por uno, por número de ley (ADR-0415). La regla de texto
+# ya los resuelve así; la tabla fija la decisión aunque InfoLeg reescriba el
+# sumario.
+_LEYES_TRATADO_DECIDIDAS: dict[str, bool] = {
+    "26932": False,   # acuerdo con Repsol por la expropiación de YPF
+    "27668": False,   # programa de facilidades extendidas con el FMI (crédito público)
+    "27818": False,   # acuerdo de conciliación con Bainbridge Ltd.
+    "27531": True,    # octavo protocolo adicional a la Constitución de la Unión Postal Universal
+    "27699": True,    # protocolo que modifica el convenio sobre datos personales (Estrasburgo)
+}
+_RE_NUMERO_LEY = re.compile(r"^\s*Ley\s+([\d\.]+)", re.IGNORECASE)
+_RESUMEN_LEY: dict[str, str] = {}   # infoleg_id → resumen completo leído; no cambia
+
+
+def clasificar_ley_tratado(sumario: str) -> str:
+    """'tratado' / 'no' / 'indeterminado' según el sumario de la ley.
+
+    Hace falta un verbo de aprobación (apruébase, ratifícase, adhesión,
+    denuncia) y un instrumento, en cualquier orden; otorgar jerarquía
+    constitucional a una convención ya aprobada no es aprobarla.
+    'indeterminado' = aprueba un instrumento pero el texto no dice con quién: ni
+    un Estado u organismo extranjero ni una provincia. Quien llama decide qué
+    hacer con eso (leer el resumen completo y, si sigue, cortar)."""
+    s = _normalizar(sumario)
+    if not (_TRAT_ENCABEZADO.search(s) or _TRAT_APRUEBA.search(s)):
+        return "no"
+    # el verbo de aprobación puede ir antes o después del instrumento
+    # («APRUEBASE EL CONVENIO…» o «CONVENIO … – APROBACION»), pero tiene que estar
+    if not (_TRAT_VERBO.search(s) and _TRAT_MENCIONA_INSTRUMENTO.search(s)):
+        return "no"
+    if _TRAT_NO_ES.search(s):
+        return "no"
+    internacional = bool(_TRAT_INTERNACIONAL.search(s))
+    if _TRAT_INTERNO.search(s) and not internacional:
+        return "no"
+    if internacional or _TRAT_ENCABEZADO_FUERTE.search(s):
+        return "tratado"
+    return "indeterminado"
+
+
+def _resumen_completo_infoleg(session: requests.Session, item: dict) -> str:
+    """El resumen entero de la ficha `verNorma.do` (la grilla lo recorta con
+    «...»). RuntimeError si no se pudo leer: un sumario que no alcanza para
+    clasificar no se completa adivinando."""
+    iid = str(item["infoleg_id"])
+    if iid in _RESUMEN_LEY:
+        return _RESUMEN_LEY[iid]
+    url = f"https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id={iid}"
+    r = None
+    for _ in range(2):
+        try:
+            time.sleep(_PAUSA_TEXTO_INFOLEG)
+            r = session.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        except requests.RequestException:
+            r = None
+            continue
+        if r.status_code == 200:
+            break
+    if r is None or r.status_code != 200:
+        raise RuntimeError(f"no se pudo leer la ficha de {item['norma'][:30]!r} "
+                           f"({'sin respuesta' if r is None else f'HTTP {r.status_code}'})")
+    if not getattr(r, "encoding", None) or r.encoding.lower() == "iso-8859-1":
+        r.encoding = getattr(r, "apparent_encoding", None) or "latin-1"
+    texto = re.sub(r"\s+", " ", BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True))
+    m = re.search(r"Resumen:\s*(.+?)\s*(?:Texto completo de la norma|Esta norma|Copyright|$)", texto)
+    if not m:
+        raise RuntimeError(f"la ficha de {item['norma'][:30]!r} no trae el resumen")
+    _RESUMEN_LEY[iid] = m.group(1)
+    return m.group(1)
+
+
+def _es_ley_de_tratado(session: requests.Session, item: dict) -> bool:
+    """¿La ley aprueba un tratado internacional? (ADR-0415).
+
+    Decide el sumario de la grilla; si viene recortado («...») y parece un
+    instrumento, se lee el resumen completo de la ficha. Si aun así no se puede
+    decir con quién es, ValueError con el número de ley: corta el conteo en
+    vez de suponer, y se resuelve sumándola a `_LEYES_TRATADO_DECIDIDAS`."""
+    num = _RE_NUMERO_LEY.search(item.get("norma", ""))
+    numero = num.group(1).replace(".", "") if num else None
+    if numero in _LEYES_TRATADO_DECIDIDAS:
+        return _LEYES_TRATADO_DECIDIDAS[numero]
+    sumario = item.get("sumario", "")
+    clase = clasificar_ley_tratado(sumario)
+    recortado = sumario.rstrip().endswith(("...", "…"))
+    # recortado y menciona un instrumento en cualquier orden (26.986: «CONVENIO
+    # CONSTITUTIVO … APRUEBANSE LAS MODIFICACIONES…»): lo decide el resumen entero
+    if recortado and (clase != "no" or _TRAT_ENCABEZADO.search(_normalizar(sumario))
+                      or _TRAT_MENCIONA_INSTRUMENTO.search(_normalizar(sumario))):
+        clase = clasificar_ley_tratado(
+            sumario.rstrip(" .…") + " " + _resumen_completo_infoleg(session, item))
+    if clase == "indeterminado":
+        raise ValueError(f"no se puede decidir si la {item.get('norma', '')[:12].strip()} "
+                         f"aprueba un tratado internacional (sumario: {sumario[:120]!r}); "
+                         f"decidirlo en _LEYES_TRATADO_DECIDIDAS")
+    return clase == "tratado"
+
+
+def ratio_dnu_insumos(session: requests.Session, action_url: str,
+                      desde: date, hasta: date) -> dict:
+    """Todo lo que hace falta para contar el ratio en cualquier ventana dentro
+    de [desde, hasta], bajado UNA vez: leyes publicadas (cada una marcada
+    tratado o no) y DNU publicados. La card lo pide para su ventana y la serie
+    para el tramo que cubren todas las suyas; las dos cuentan con
+    `ratio_dnu_contar`, así que no pueden divergir (ADR-0415)."""
+    leyes = []
+    for anio in range(desde.year, hasta.year + 1):
+        a, b = max(desde, date(anio, 1, 1)), min(hasta, date(anio, 12, 31))
+        leyes.extend(_infoleg_listado_completo(session, action_url, "1", a, b,
+                                               invisibles_tolerados=2))
+    for it in leyes:
+        it["tratado"] = _es_ley_de_tratado(session, it)
+    _, dnus = _infoleg_contar_dnus(session, action_url, desde, hasta)
+    return {"desde": desde.isoformat(), "hasta": hasta.isoformat(),
+            "leyes": leyes, "dnus": dnus}
+
+
+def ratio_dnu_contar(insumos: dict, desde: date, hasta: date) -> dict:
+    """Conteo de una ventana [desde, hasta] (fechas de publicación, las dos
+    incluidas) sobre los insumos de `ratio_dnu_insumos`. Sin red."""
+    if not (insumos["desde"] <= desde.isoformat() and hasta.isoformat() <= insumos["hasta"]):
+        raise ValueError("la ventana pedida no está cubierta por los insumos bajados")
+    d, h = desde.isoformat(), hasta.isoformat()
+    leyes = [it for it in insumos["leyes"] if d <= it["fecha_pub"] <= h]
+    tratados = [it for it in leyes if it["tratado"]]
+    dnus = [it for it in insumos["dnus"] if d <= it["fecha_pub"] <= h]
+    return {"dnus": len(dnus), "leyes_publicadas": len(leyes), "tratados": len(tratados),
+            "leyes": len(leyes) - len(tratados),
+            "inventario_dnu": dnus, "inventario_tratados": tratados}
 
 
 # Identificador del sistema de gestión documental que encabeza el original de
@@ -978,6 +1260,16 @@ def inicio_ventana_365(hasta: date) -> date:
     return hasta - timedelta(days=364)
 
 
+# Versión de método del cociente (ADR-0415). Un valor guardado sin ella se
+# calculó CON las leyes de tratados en el denominador: es otra definición, y
+# puntuarlo con las bandas escaladas a la referencia sin tratados mezclaría
+# las dos. Sin esta marca, el valor no puntúa ni se publica como vigente.
+METODO_RATIO_DNU = "0415"
+
+UNIDAD_RATIO_DNU = ("decretos de necesidad y urgencia publicados por ley publicada, "
+                    "sin contar las leyes que aprueban tratados internacionales")
+
+
 def fetch_ratio_dnu() -> dict | None:
     """
     Ratio DNU = count(DNUs) / count(leyes publicadas) en los últimos 365 días
@@ -992,51 +1284,51 @@ def fetch_ratio_dnu() -> dict | None:
     Boletín Oficial** (ADR-0241). Mezclar leyes sancionadas con DNU publicados
     compararía dos momentos distintos del trámite.
 
-    Fuente: servicios.infoleg.gob.ar
-    - Leyes: tipoNorma=1 (Ley), por fecha de publicación
-    - DNUs: tipoNorma=2 (Decreto) acotado con texto="necesidad y urgencia" y
-      filtrado por el tipo que declara la grilla (`Decreto DNU`). La frase sola
-      no alcanza: la dicen también decretos que no son DNU.
-    Requiere GET previo para obtener jsessionid del formulario.
+    Denominador sin tratados (ADR-0415): las leyes que aprueban un tratado
+    internacional no cuentan, porque un tratado no se puede aprobar por
+    decreto. Numerador completo: la búsqueda de texto más los rotulados DNU.
+
+    Fuente: servicios.infoleg.gob.ar (`ratio_dnu_insumos` / `ratio_dnu_contar`,
+    las mismas funciones que la serie mensual).
     """
     try:
         hasta = date.today()
         desde = inicio_ventana_365(hasta)
 
-        session = requests.Session()
-        r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-        r_home.raise_for_status()
-
-        action_m = re.search(r'action="(/infolegInternet/[^"]+)"', r_home.text)
-        if not action_m:
-            raise ValueError("No se encontró la URL del formulario InfoLeg")
-        action_url = "https://servicios.infoleg.gob.ar" + action_m.group(1)
-
-        leyes = _infoleg_session_count(session, action_url, "1", desde, hasta)
-        if leyes == 0:
+        session, action_url = _infoleg_abrir_sesion()
+        c = ratio_dnu_contar(ratio_dnu_insumos(session, action_url, desde, hasta), desde, hasta)
+        if c["leyes_publicadas"] == 0:
             raise ValueError("0 leyes — posible fallo en búsqueda InfoLeg (tipoNorma=1)")
-
-        dnus, inventario = _infoleg_contar_dnus(session, action_url, desde, hasta)
-
+        if c["leyes"] == 0:
+            raise ValueError("todas las leyes de la ventana aprueban tratados: el cociente no está definido")
+        dnus, leyes = c["dnus"], c["leyes"]
         ratio = round(dnus / leyes, 3)
+        tratados = [_RE_NUMERO_LEY.search(it["norma"]).group(1) if _RE_NUMERO_LEY.search(it["norma"])
+                    else it["norma"][:12].strip() for it in c["inventario_tratados"]]
 
         return {
             "valor": ratio,
+            "metodo": METODO_RATIO_DNU,
             "dnu_count": dnus,
             "leyes_count": leyes,
+            "leyes_publicadas": c["leyes_publicadas"],
+            "tratados_excluidos": c["tratados"],
             "ventana_dias": 365,
-            "unidad": "decretos de necesidad y urgencia publicados por ley publicada",
+            "unidad": UNIDAD_RATIO_DNU,
             "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato": str(date.today()),
             "desactualizado": False,
             "ventana_desde": desde.isoformat(),
             "ventana_hasta": hasta.isoformat(),
             "inventario_dnu": [{"norma": it["norma"].split(" PODER")[0].strip(),
-                                "fecha_pub": it["fecha_pub"]} for it in inventario],
+                                "fecha_pub": it["fecha_pub"]} for it in c["inventario_dnu"]],
+            "inventario_tratados": [{"ley": n, "fecha_pub": it["fecha_pub"]}
+                                    for n, it in zip(tratados, c["inventario_tratados"])],
             "detalle_txt": (
                 f"{dnus} decretos de necesidad y urgencia y {leyes} leyes publicados "
                 f"en el Boletín Oficial entre el {_fecha_dmy(desde.isoformat())} y el "
-                f"{_fecha_dmy(hasta.isoformat())}: "
+                f"{_fecha_dmy(hasta.isoformat())}, sin contar {c['tratados']} leyes que "
+                f"aprueban tratados internacionales: "
                 f"{f'{ratio:.2f}'.replace('.', ',')} decretos por ley"),
         }
 
@@ -8842,7 +9134,24 @@ def _valor_itcp(nombre: str, entry: dict):
     Cualquier otro indicador puntúa directo sobre su propio "valor"."""
     if nombre == "protestas_caba":
         return entry.get("var_vs_2023")
+    if nombre == "ratio_dnu" and entry.get("metodo") != METODO_RATIO_DNU:
+        return None   # calculado con otra definición (ADR-0415): no puntúa
     return entry.get("valor")
+
+
+def _arrastre(nombre: str, anterior: dict) -> dict | None:
+    """Lo que se conserva de la corrida anterior cuando el fetch falla.
+
+    Un `ratio_dnu` guardado con el método previo (sin la marca de ADR-0415)
+    no se arrastra: None, y el indicador queda sin dato —sin tarjeta y fuera
+    del índice, que renormaliza— igual que uno que nunca se pudo calcular,
+    hasta que haya un cálculo con la regla nueva. Una tarjeta con valor que no
+    puntúa rompería la coherencia tarjetas = componentes del índice."""
+    if nombre == "ratio_dnu" and anterior.get("metodo") != METODO_RATIO_DNU:
+        print(f"[WARN] {CINTURON}.ratio_dnu: el valor guardado ({anterior.get('valor')}) es del "
+              f"método anterior a ADR-0415 (contaba los tratados); queda sin dato hasta un cálculo nuevo")
+        return None
+    return {**anterior, "desactualizado": True}
 
 
 def _resultado_utilizable(nombre: str, resultado: dict | None) -> bool:
@@ -9002,7 +9311,9 @@ def main() -> None:
                 frescos[nombre] = _sellar(resultado)
                 frescos_count += 1
         elif nombre in indicadores_anteriores:
-            frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
+            arrastrado = _arrastre(nombre, indicadores_anteriores[nombre])
+            if arrastrado is not None:
+                frescos[nombre] = arrastrado
 
     # Compuesto bicameral de cohesión (ADR-0048): una sola card desde las dos
     # corridas por cámara. Cada cámara conserva sus tres ramas de fallback

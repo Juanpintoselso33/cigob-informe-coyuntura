@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-29 12:50:50"
+generado: "2026-10-29 15:36:51"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -44,12 +44,12 @@ schema_version: "1.2.0"
 | base_monetaria | 1.68 | % mensual nominal | 2026-10-26 | fresco |
 | tc_mayorista | 1.38 | % mensual | 2026-10-28 | fresco |
 
-### 🟢 Politica — score 3.0/10 (estable)
+### 🟢 Politica — score 3.2/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ratio_dnu | 1.156 | decretos de necesidad y urgencia publicados por ley publicada | 2026-10-29 | fresco |
+| ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-10-29 | fresco |
 | apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
@@ -104,7 +104,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 7.53 | % de brecha entre el contado con liquidación y el mayorista | 2026-10-29 | fresco |
+| cepo_mulc | 7.23 | % de brecha entre el contado con liquidación y el mayorista | 2026-10-29 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-08-01 | fresco |
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-10-29 12:50:50 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-29 15:36:51 — schema 1.2.0*

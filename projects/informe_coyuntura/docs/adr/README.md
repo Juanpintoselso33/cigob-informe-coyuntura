@@ -249,6 +249,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0401](0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) | La cohesión mide las votaciones divididas, contra la historia | `cohesion_bloque` | vigente |
 | [0402](0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) | El alineamiento de senadores se compara con la historia | `alineamiento_senadores_prov` | vigente |
 | [0410](0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) | El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara | `ratio_dnu`, `insistencias_vetos`, `rechazos_decretos` | vigente |
+| [0415](0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) | Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas | `ratio_dnu` | vigente |
 
 ### Gestión (ITCG)
 

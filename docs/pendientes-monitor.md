@@ -34,16 +34,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 Temas para la próxima revisión con Luis (la del 28-oct, 15 h, ya fue; lo que quedó esperando
 a Luis está en la sección 3).
 
-1. **Gasto de funcionamiento: ¿con o sin sueldos?** (Luis, revisión de gestión 26-oct, 1.5 y
-   2.4; base decidida por Juan el 29-oct, ADR-0414: promedio de los últimos 12 meses contra el
-   promedio de todo 2023, −28,0 % a ago-2026.) Los sueldos son el 78 % del gasto; sin ellos,
-   −45 % y queda el 22 % del gasto. Recomendado: dejarlos y decirlo en la ficha. Para tener a
-   mano, la grilla base × ventana (dato a ago-2026): último mes −36,0 % (contra todo 2023) /
-   −39,4 % (oct–dic 2023); últimos 3 meses −26,0 / −30,0; últimos 12 meses −28,0 / −31,9.
-   Otras bases: mismo mes de 2023 −35,9 %; dic-2023 −50,3 % (pico de aguinaldo); 4T-2024
-   contra 4T-2023 −20,2 % (puntaje 85). Con cualquier base puntúa 100 (todas pasan −25 %).
-   Se descartó oct–dic 2023 porque trae medio aguinaldo en 3 meses y exagera la caída 4 a 7 puntos.
-2. **Decretos de necesidad y urgencia por ley** (Juan, 28-oct; ADR-0410). Hoy 1,09 por ley
+1. **Decretos de necesidad y urgencia por ley** (Juan, 28-oct; ADR-0410). Hoy 1,09 por ley
    (puntaje 57). Los ceros de vetos dados vuelta y de decretos derogados son correctos.
    - **Tratados en el denominador:** de las 32 leyes de la ventana, unas 19 aprueban
      tratados. Sin ellos el cociente sería 2,85 (puntaje 10 en vez de 57); habría que
@@ -51,7 +42,7 @@ a Luis está en la sección 3).
    - **Decretos de rutina** (siete de ejercicios militares y uno de viaje del Presidente): sin
      ellos 0,91 (puntaje ~67).
    - Recordar lo ya acordado: «decretos de necesidad y urgencia + delegados juntos» (ADR-0377).
-3. **Empleo: sumar el trabajo registrado total y la desocupación** (Juan, 29-oct; para
+2. **Empleo: sumar el trabajo registrado total y la desocupación** (Juan, 29-oct; para
    proponer en la próxima). Reemplaza al complemento del padrón de ARCA, que salió (ADR-0412).
    - Trabajo registrado total del sistema previsional, con monotributistas y autónomos y sin
      el monotributo social (Secretaría de Trabajo, «Situación y evolución del trabajo
@@ -68,7 +59,7 @@ a Luis está en la sección 3).
      desocupación es el dato más citado; el registrado es registro oficial, mensual, y cuenta
      al monotributista como trabajo en blanco. Si entran, con poco peso dentro de empleo para
      no contar tres veces la misma caída.
-4. **¿Sacar el alquiler del INDEC?** (Juan, 29-oct: «me van a pedir que lo saque».) El
+3. **¿Sacar el alquiler del INDEC?** (Juan, 29-oct: «me van a pedir que lo saque».) El
    documento de Luis del 22-oct tenía un solo alquiler («COSTO REAL DEL ALQUILER (VER EL INDICE
    DE SAN ANDRES…)»); la reunión del 26-oct no pidió sacar el del INDEC. Para que quede: es lo
    que paga la mayoría de los inquilinos (contratos vigentes), es el dato oficial, y sacarlo deja
@@ -134,6 +125,9 @@ Ideas (nada de esto se arranca solo):
 ---
 
 ## 6. Hecho
+
+- Gasto de funcionamiento: los sueldos se quedan (Juan, 29-oct: «yo diría que no»); la ficha ya lo declara.
+- Rótulos de los alquileres: «Alquiler real (INDEC)» y «Alquiler real (Universidad de San Andrés – Mercado Libre)» (Juan, 29-oct; commit 2dff1ea3).
 
 - Excel v7 de gestión y mensaje a Marcos: enviado por Juan («ok listo ya le pasé», 28-oct).
 

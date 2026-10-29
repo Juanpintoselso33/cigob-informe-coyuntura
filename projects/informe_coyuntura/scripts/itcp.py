@@ -264,7 +264,16 @@ BANDAS_ITCP = {
         # sin fundamento: ACIJ (2011-2024, CFK+Macri+AF+primer año Milei)
         # midió 344 DNU / 1.058 leyes ≈ 0,33 — "cada 3 leyes, 1 DNU" — casi
         # exactamente el corte de 0,3 para el puntaje máximo).
-        (-INF, 0.3, 100), (0.3, 0.7, 85), (0.7, 1.2, 65), (1.2, 2.0, 40), (2.0, INF, 10),
+        # ADR-0415 sacó del denominador las leyes que aprueban tratados
+        # internacionales y sumó los DNU que la búsqueda de texto no traía; la
+        # referencia se rehízo con esa misma regla y el mismo código, por
+        # publicación en InfoLeg, 2011-2023 (antes del mandato): 313 DNU / 872
+        # leyes (1.079 publicadas − 207 de tratados) = 0,3589. Los cortes de
+        # 0,3/0,7/1,2/2,0 se escalan por 0,3589 / (344/1.058 = 0,3251) = 1,104
+        # → 0,331 · 0,773 · 1,325 · 2,208, redondeados a centésimos (la
+        # precisión de la propia referencia; redondear a 0,05 habría corrido el
+        # corte del máximo un 6 % y roto la proporción entre tramos).
+        (-INF, 0.33, 100), (0.33, 0.77, 85), (0.77, 1.32, 65), (1.32, 2.21, 40), (2.21, INF, 10),
     ],
     "eficacia_legislativa": [
         # ADR-0061 (2026-07-15) reemplaza la métrica Y las anclas de ADR-0050:

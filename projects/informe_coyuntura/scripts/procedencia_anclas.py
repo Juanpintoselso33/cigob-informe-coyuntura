@@ -243,7 +243,7 @@ PROCEDENCIA = {
     "juicios_trabajo_capital": ("convencion", "toma la escala de litigiosidad_laboral (hoy suspendida; la misma que usa siniestralidad_laboral), que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"),
 
     # ── ITCP ────────────────────────────────────────────────────────────────
-    "ratio_dnu": ("externa", "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"),
+    "ratio_dnu": ("externa", "práctica 2011-2023 (tres presidencias, antes del mandato) medida con la regla del indicador —por publicación, sin leyes de tratados, con todos los DNU—: 313 DNU / 872 leyes ≈ 0,36; los cortes de ACIJ (2011-2024: 344 / 1.058 ≈ 0,33) escalados por esa razón (ADR-0058/0059/0415)"),
     "eficacia_legislativa": ("externa", "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"),
     "insistencias_vetos": ("conceptual", "el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377)"),
     "rechazos_decretos": ("conceptual", "el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377)"),

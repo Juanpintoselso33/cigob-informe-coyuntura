@@ -15,6 +15,9 @@ import generar_informe
 def test_recalculo_reemplaza_aporte_obsoleto(cinturon, clave, indicador, valor):
     datos = {indicador: {'valor': valor, 'en_indice': False,
                         f'puntaje_{clave}': -999, 'peso_efectivo': -1}}
+    if indicador == 'ratio_dnu':
+        # sin la marca de método un valor guardado no puntúa (ADR-0415)
+        datos[indicador]['metodo'] = '0415'
     _, resultado = generar_informe._recalcular_indice(cinturon, datos, 0)
     assert resultado is not None
     tarjeta = datos[indicador]

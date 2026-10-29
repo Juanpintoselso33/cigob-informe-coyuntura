@@ -182,41 +182,41 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-10-01,ratio_dnu,1.156,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-09-01,ratio_dnu,1.094,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-08-01,ratio_dnu,1.48,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-07-01,ratio_dnu,1.4,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-06-01,ratio_dnu,1.55,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-05-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-04-01,ratio_dnu,2.571,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-03-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-02-01,ratio_dnu,2.643,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2026-01-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-12-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-11-01,ratio_dnu,3.364,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-10-01,ratio_dnu,3.455,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-09-01,ratio_dnu,1.242,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-08-01,ratio_dnu,0.93,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-07-01,ratio_dnu,1.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-06-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-05-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-04-01,ratio_dnu,1.023,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-03-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-02-01,ratio_dnu,1.119,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2025-01-01,ratio_dnu,1.143,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-12-01,ratio_dnu,1.119,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-11-01,ratio_dnu,1.19,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-10-01,ratio_dnu,1.238,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-09-01,ratio_dnu,1.656,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-08-01,ratio_dnu,2.476,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-07-01,ratio_dnu,2.429,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-06-01,ratio_dnu,2.043,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-05-01,ratio_dnu,1.913,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-04-01,ratio_dnu,1.344,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-03-01,ratio_dnu,1.212,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-02-01,ratio_dnu,1.147,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2024-01-01,ratio_dnu,1.088,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
-2023-12-01,ratio_dnu,1.029,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-10-01,ratio_dnu,2.643,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-09-01,ratio_dnu,2.5,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-08-01,ratio_dnu,3.364,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-07-01,ratio_dnu,3.182,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-06-01,ratio_dnu,3.1,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-05-01,ratio_dnu,3.667,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-04-01,ratio_dnu,4.0,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-03-01,ratio_dnu,4.5,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-02-01,ratio_dnu,3.7,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-01-01,ratio_dnu,3.9,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-12-01,ratio_dnu,4.125,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-11-01,ratio_dnu,4.625,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-10-01,ratio_dnu,4.75,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-09-01,ratio_dnu,3.727,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-08-01,ratio_dnu,3.636,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-07-01,ratio_dnu,3.909,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-06-01,ratio_dnu,3.357,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-05-01,ratio_dnu,3.357,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-04-01,ratio_dnu,3.214,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-03-01,ratio_dnu,3.067,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-02-01,ratio_dnu,3.917,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2025-01-01,ratio_dnu,4.0,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-12-01,ratio_dnu,3.917,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-11-01,ratio_dnu,4.167,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-10-01,ratio_dnu,4.333,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-09-01,ratio_dnu,2.524,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-08-01,ratio_dnu,2.6,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-07-01,ratio_dnu,2.55,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-06-01,ratio_dnu,2.238,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-05-01,ratio_dnu,2.095,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-04-01,ratio_dnu,1.433,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-03-01,ratio_dnu,1.29,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-02-01,ratio_dnu,1.219,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2024-01-01,ratio_dnu,1.156,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2023-12-01,ratio_dnu,1.094,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
 2026-09-01,produccion_legislativa,31,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-08-01,produccion_legislativa,29,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-07-01,produccion_legislativa,22,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas

@@ -10,9 +10,22 @@ import parametrica
 
 
 def test_banda_low_exclusivo_high_inclusivo():
-    bandas = itcp.BANDAS_ITCP["ratio_dnu"]  # (-inf,0.3,100)·(0.3,0.7,85)·...
-    assert itcp.puntaje_banda(0.3, bandas) == 100   # high inclusivo
-    assert itcp.puntaje_banda(0.30001, bandas) == 85  # low exclusivo del siguiente tramo
+    bandas = itcp.BANDAS_ITCP["ratio_dnu"]  # (-inf,0.33,100)·(0.33,0.77,85)·...
+    assert itcp.puntaje_banda(0.33, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(0.33001, bandas) == 85  # low exclusivo del siguiente tramo
+
+
+def test_bandas_ratio_dnu_escaladas_a_la_referencia_sin_tratados():
+    """ADR-0415: los cortes de ACIJ (0,3/0,7/1,2/2,0 sobre 344/1.058) escalados
+    por la referencia 2011-2023 medida con la regla nueva (313/872)."""
+    f = (313 / 872) / (344 / 1058)
+    cortes = [hi for _, hi, _ in sorted(itcp.BANDAS_ITCP["ratio_dnu"])[:-1]]
+    assert cortes == [0.33, 0.77, 1.32, 2.21]
+    for viejo, nuevo in zip((0.3, 0.7, 1.2, 2.0), cortes):
+        assert abs(viejo * f - nuevo) < 0.005
+    assert [p for *_, p in sorted(itcp.BANDAS_ITCP["ratio_dnu"])] == [100, 85, 65, 40, 10]
+    # la ventana del 29-oct-2026: 37 / 14 = 2,64 cae en el piso
+    assert itcp.puntaje_banda(37 / 14, itcp.BANDAS_ITCP["ratio_dnu"]) == 10
 
 
 def test_banda_protestas_caba_var_vs_2023():

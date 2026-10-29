@@ -128,6 +128,10 @@ PRESUPUESTO_INDICADOR = {
     "comisiones_caidas": 600,
     # Arma la canasta de Trends por tandas, que es justo lo que rate-limitea.
     "sentimiento_digital": 600,
+    # Lista todos los decretos mes a mes desde enero de 2023 (para encontrar
+    # los DNU que no dicen «necesidad y urgencia») y lee el original de cada
+    # candidato y la ficha de cada ley de tratado recortada (ADR-0415).
+    "ratio_dnu": 900,
 }
 
 
@@ -1027,32 +1031,29 @@ def fetch_transferencias_no_automaticas_serie() -> list:
 def fetch_ratio_dnu_serie() -> list:
     """Serie MENSUAL del ratio DNUs/leyes (InfoLeg), ventana móvil de 365 días
     al fin de cada mes desde dic-2023 — misma fórmula que el indicador
-    (ADR-0058; antes era un punto por año calendario, no comparable mes a
-    mes). Los DNU se cuentan por tipo jurídico, no por coincidencia textual
-    (ADR-0241): con la misma ventana y la misma regla de fecha que la card. InfoLeg no expone un dump con fecha por registro como el CKAN de
-    HCDN, así que cada mes requiere su propia consulta al buscador (una de
-    leyes + una de DNUs), reutilizando la misma sesión.
+    (ADR-0058). Los DNU se cuentan por tipo jurídico, no por coincidencia
+    textual (ADR-0241/0410), y las leyes sin las que aprueban tratados
+    internacionales (ADR-0415).
+
+    Las mismas funciones que la card: `politica.ratio_dnu_insumos` baja UNA
+    vez las leyes y los DNU del tramo que cubren todas las ventanas, y
+    `politica.ratio_dnu_contar` cuenta cada una. Un error de lectura corta la
+    serie entera (la anterior queda como está) en vez de saltar meses.
     [[YYYY-MM-01, ratio]]."""
-    s = requests.Session()
-    rh = s.get(politica.INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-    rh.raise_for_status()
-    m = re.search(r'action="(/infolegInternet/[^"]+)"', rh.text)
-    if not m:
-        raise ValueError("InfoLeg: no se encontró el form action")
-    au = "https://servicios.infoleg.gob.ar" + m.group(1)
+    ventanas = [(ym, politica.inicio_ventana_365(date.fromisoformat(fin)), date.fromisoformat(fin))
+                for ym, _cutoff, fin in _hcdn_ventanas_12m()]
+    if not ventanas:
+        return []
+    s, au = politica._infoleg_abrir_sesion()
+    insumos = politica.ratio_dnu_insumos(s, au, min(v[1] for v in ventanas),
+                                         max(v[2] for v in ventanas))
     out = []
-    for ym, cutoff_iso, fin_iso in _hcdn_ventanas_12m():
-        hasta = date.fromisoformat(fin_iso)
-        desde = politica.inicio_ventana_365(hasta)
-        try:
-            leyes = politica._infoleg_session_count(s, au, "1", desde, hasta)
-            if not leyes:
-                continue
-            dnus, _ = politica._infoleg_contar_dnus(s, au, desde, hasta)
-        except Exception as e:
-            print(f"  [WARN] ratio_dnu serie {ym}: {e}")
+    for ym, desde, hasta in ventanas:
+        c = politica.ratio_dnu_contar(insumos, desde, hasta)
+        if not c["leyes"]:
+            print(f"  [WARN] ratio_dnu serie {ym}: sin leyes en la ventana, se omite")
             continue
-        out.append([f"{ym}-01", round(dnus / leyes, 3)])
+        out.append([f"{ym}-01", round(c["dnus"] / c["leyes"], 3)])
     return out
 
 
@@ -1754,7 +1755,7 @@ POLITICA_DERIVADAS = [
     ("transferencias_no_automaticas", "% real vs 2023 (12m móviles)",
      "Presupuesto Abierto (devengado, transferencias a provincias sin las automáticas) + IPC INDEC deflactado mes a mes",
      fetch_transferencias_no_automaticas_serie),
-    ("ratio_dnu", "decretos de necesidad y urgencia publicados por ley publicada", "InfoLeg",
+    ("ratio_dnu", politica.UNIDAD_RATIO_DNU, "InfoLeg",
      fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",

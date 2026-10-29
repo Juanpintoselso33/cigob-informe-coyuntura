@@ -519,7 +519,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   iai: "% frente a un año atrás", icip: "% interanual", credito_privado: "% real frente a un año atrás", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
-  votometro_ventaja_lla: "puntos porcentuales", ratio_dnu: "decretos por ley publicada", movilizacion_cepa: "índice",
+  votometro_ventaja_lla: "puntos porcentuales", ratio_dnu: "decretos por ley, sin tratados", movilizacion_cepa: "índice",
   brecha_obra_publica: "puntos porcentuales",
   apoyo_empresario: "saldo",
   apoyo_comercio: "saldo",
@@ -592,7 +592,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   resultado_primario: "% de la recaudación (resultado primario acumulado 12 meses)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
-  votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "decretos de necesidad y urgencia publicados por ley publicada",
+  votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "Decretos de necesidad y urgencia publicados por ley publicada, sin contar las que aprueban tratados internacionales",
   brecha_obra_publica: "Puntos porcentuales de brecha",
   apoyo_empresario: "Saldo de apoyos y críticas (−1 a +1)",
   apoyo_comercio: "Saldo de apoyos y críticas (−1 a +1)",

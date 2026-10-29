@@ -35,14 +35,14 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 70,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 3 en amarillo · 1 en naranja · 1 en rojo |
+| **ITCP: 67,5** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 2 en amarillo · 1 en naranja · 2 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 72,1 | VERDE | 22,6 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 61,2 | VERDE | 22,6 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 53,8 | AMARILLO | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,8 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
@@ -62,7 +62,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,16 decretos de necesidad y urgencia publicados por ley publicada | AMARILLO | 5,2 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | ROJO | 5,2 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
 | Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
@@ -97,25 +97,25 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 # Decretos de necesidad y urgencia por ley
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,16 decretos de necesidad y urgencia publicados por ley publicada** (2026-10) | **AMARILLO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-10) | **ROJO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_dnu | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada |
+| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
-| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y abre el texto original de cada uno para leer con qué tipo se firmó; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
+| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. La gran mayoría de los decretos de necesidad y urgencia nunca llega a votarse en el recinto y sigue vigente, pero el Congreso puede derogarlos con el rechazo de las dos cámaras, como hizo con el de los fondos reservados de inteligencia en 2024 y el de la marina mercante en 2025. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
@@ -124,9 +124,11 @@ Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, n
 ## Método de cómputo
 
 - Ratio = decretos de necesidad y urgencia publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
-- Un decreto cuenta como de necesidad y urgencia por el TIPO JURÍDICO con el que se firmó, que encabeza su texto original publicado en el Boletín (el identificador empieza con «DNU-», frente a «DECTO-» de un decreto común), no por la frase. La búsqueda por «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por uno de necesidad y urgencia, los reglamentarios, los vetos que la citan al fundarse y los decretos comunes que modifican una norma dictada en su momento así. El rótulo «Decreto DNU» de la grilla de InfoLeg no alcanza: es un dato de catálogo y se equivoca en las dos direcciones. Si un texto original no se puede leer, decide ese rótulo.
-- El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.
-- La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
+- Del denominador salen las leyes que aprueban o ratifican un tratado, convenio, acuerdo, protocolo o enmienda con otro país o con un organismo internacional. La Constitución reserva esa aprobación al Congreso (artículos 75, inciso 22, y 99, inciso 11): el Poder Ejecutivo no puede hacerlo por decreto, así que contar esas leyes mediría cuántos tratados llegaron al Congreso y no cuánto se legisla por decreto en lugar de por ley. Los convenios de la Nación con las provincias o con la Ciudad de Buenos Aires no son tratados internacionales y siguen contando, igual que las leyes que aprueban operaciones con una contraparte extranjera que no son un instrumento internacional a ratificar: el acuerdo de conciliación con una empresa, el programa con el Fondo Monetario Internacional (una operación de crédito público) o el convenio con Repsol por la expropiación de YPF. La clasificación sale del resumen que publica InfoLeg; si con el resumen completo no se puede saber con quién es el acuerdo, el indicador se corta en vez de suponer.
+- Un decreto cuenta como de necesidad y urgencia por el TIPO JURÍDICO con el que se firmó, que encabeza su texto original publicado en el Boletín (el identificador empieza con «DNU-», frente a «DECTO-» de un decreto común), no por la frase. La búsqueda por «necesidad y urgencia» es sólo un filtro previo que arma la lista de candidatos: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por uno de necesidad y urgencia, los reglamentarios, los vetos que la citan al fundarse y los decretos comunes que modifican una norma dictada en su momento así. Y hay decretos de necesidad y urgencia que no la dicen, así que a los candidatos se suman los que la grilla de InfoLeg rotula «Decreto DNU». Ese rótulo no decide: es un dato de catálogo y se equivoca en las dos direcciones. Si el texto original se leyó y no trae identificador, decide el rótulo; si no se pudo leer, el indicador se corta. Los decretos con número anterior a 1994 no cuentan: son decretos secretos de antes de la reforma constitucional que creó esta figura, publicados décadas después.
+- Cuentan todos los decretos de necesidad y urgencia, también los de rutina: los que autorizan la salida o el ingreso de tropas para ejercicios militares y los que tratan los viajes del Presidente. Hasta 2023 esas autorizaciones las daba una ley; que desde entonces salgan por decreto es justamente el reemplazo de la ley que el indicador quiere ver. Los decretos delegados no se suman: se dictan con una autorización previa del Congreso, que fija la materia y el plazo, así que no reemplazan a una ley sino que la ejecutan.
+- El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto. La única excepción: si se recorrieron todas las páginas que el buscador declara y faltan una o dos filas que no muestra en ninguna, se cuentan las que muestra y queda un aviso en el registro de la corrida.
+- La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023, con las mismas reglas y la misma función de conteo que la tarjeta: baja una sola vez las leyes y los decretos de todo el tramo y cuenta cada ventana sobre esa lista. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
 
 ## Semáforo — valores que determinan el color
 
@@ -134,26 +136,26 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (decretos de necesidad y urgencia publicados por ley publicada) | Color |
+| Rango (decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales) | Color |
 |---|---|
-| ≤ 1,08 | VERDE |
-| 1,08 – 1,6 | AMARILLO |
-| 1,6 – 1,87 | NARANJA |
-| ≥ 1,87 | ROJO |
+| ≤ 1,19 | VERDE |
+| 1,19 – 1,76 | AMARILLO |
+| 1,76 – 2,06 | NARANJA |
+| ≥ 2,06 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 37 decretos de necesidad y urgencia y 32 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026: 1,16 decretos por ley
+- 37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley
 
 ## Color vigente y por qué
 
-Dato vigente: 1,16 decretos de necesidad y urgencia publicados por ley publicada (2026-10).
+Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales (2026-10).
 
-1,156 decretos de necesidad y urgencia publicados por ley publicada está en Amarillo, a 0,08 del límite con Verde (1,08).
+2,643 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales está en Rojo, a 0,58 del límite con Naranja (2,062).
 
-**Color vigente: AMARILLO**
+**Color vigente: ROJO**
 
 Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -161,17 +163,21 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 
 - Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
 - La dependencia es una vulnerabilidad real pero latente: la gran mayoría de los decretos de necesidad y urgencia de la gestión nunca se votó en el recinto y sigue vigente. De los que se votaron, el Congreso derogó dos con el rechazo de las dos cámaras —los fondos reservados de inteligencia (septiembre de 2024) y la marina mercante (agosto de 2025)—; el Senado rechazó solo el decreto 70/2023, que siguió vigente, y Diputados aprobó el del acuerdo con el Fondo Monetario Internacional. Los otros cuatro derogados el 21 de agosto de 2025 eran decretos delegados, que no entran en este cociente.
-- El conteo depende del filtro textual previo y del texto original de cada decreto. El cotejo del 28 de octubre de 2026 no encontró en la ventana ningún decreto de necesidad y urgencia fuera del filtro, y sí tres que InfoLeg rotula como decretos comunes (867/2026, 521/2025 y 493/2025); el del 8 de septiembre había encontrado el caso inverso, el 44/2026. Si InfoLeg deja de publicar el texto original de una norma, esa norma se clasifica por el rótulo.
+- El conteo depende de dos caminos para encontrar candidatos —la frase y el rótulo del catálogo— y del texto original de cada decreto. Un decreto de necesidad y urgencia que no dijera la frase y que InfoLeg rotulara como decreto común quedaría afuera: para verlo habría que abrir el original de todos los decretos. Si el texto original de una norma no se puede leer, el indicador no se actualiza y se mantiene el último valor calculado con el método vigente, señalado como desactualizado; el rótulo decide sólo cuando el original se leyó y no trae su identificador.
+- Qué ley aprueba un tratado sale de una regla de texto sobre el resumen de InfoLeg, no de una lista oficial. Los casos dudosos —acuerdos con una contraparte extranjera que no son tratados, protocolos cuyo resumen no nombra a la otra parte— se decidieron uno por uno y quedan fijados; uno nuevo que la regla no pueda resolver detiene el indicador hasta decidirlo.
+- El denominador es chico: con pocas leyes en la ventana, cada ley de más o de menos mueve mucho el cociente, y cuando el Congreso aprueba pocas leyes que no sean tratados el valor sube aunque el número de decretos no cambie.
 - Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
-- El buscador no ofrece descarga masiva: reconstruir la serie mensual exige dos consultas por mes —una de leyes y una de decretos—, no un volcado único como el de otros portales de datos abiertos.
+- El buscador no ofrece descarga masiva: para encontrar los decretos rotulados como de necesidad y urgencia hay que listar todos los decretos mes a mes, y para la serie eso son varios cientos de consultas por corrida, no un volcado único como el de otros portales de datos abiertos.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
+- **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado, siempre que se haya calculado con el método vigente; un valor anterior al cambio de método no se arrastra: el indicador queda sin dato hasta el primer cálculo nuevo. Sin ningún valor utilizable, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
 
 - **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-29** — Las leyes que aprueban tratados, convenios o protocolos con otros países u organismos internacionales dejan de contar en el denominador: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que reemplace a esa ley. Se suman los decretos de necesidad y urgencia que no dicen esa frase y que la búsqueda de texto no encontraba (26 entre 2011 y 2019, ninguno desde septiembre de 2019). Los cortes del puntaje se escalan a la referencia 2011-2023 medida con la misma regla (313 decretos sobre 872 leyes, 0,36): pasan de 0,3 · 0,7 · 1,2 · 2 a 0,33 · 0,77 · 1,32 · 2,21. Con la ventana del 29 de octubre de 2026 el cociente pasa de 1,16 (37 decretos sobre 32 leyes) a 2,64 (37 sobre 14: de 31 leyes publicadas, 17 aprueban tratados) y el puntaje del componente, de 57 a 10.
 
 **2026-10-28** — Un decreto cuenta como de necesidad y urgencia por el tipo con el que se firmó, que figura en el encabezado de su texto original, y no por el rótulo del catálogo de InfoLeg, que trataba como comunes a tres decretos de necesidad y urgencia (presupuesto, septiembre de 2026; ejercicios militares y agua potable, julio de 2025). La ventana actual suma uno (de 36 a 37 sobre 32 leyes); en la serie, suman dos los cierres de julio de 2025 a junio de 2026 y uno los de septiembre y octubre de 2026.
 

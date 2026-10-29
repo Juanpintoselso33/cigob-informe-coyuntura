@@ -80,26 +80,26 @@ def test_infoleg_session_count_falla_sin_conteo():
 
 
 def test_fetch_ratio_dnu_usa_ventana_movil_365_dias(monkeypatch):
+    """Leyes y DNU se piden sobre la misma ventana de 365 fechas incluidas.
+    Desde ADR-0415 las leyes se listan (hay que leer cada sumario para sacar
+    los tratados), y el conteo lo hace `ratio_dnu_contar`, el mismo de la serie."""
     class FechaFija(date):
         @classmethod
         def today(cls):
             return cls(2026, 7, 15)
 
     monkeypatch.setattr(politica, "date", FechaFija)
-
-    class _SesionFake:
-        def get(self, url, **kwargs):
-            return _RespuestaHome()
-
-    monkeypatch.setattr(politica.requests, "Session", lambda: _SesionFake())
+    monkeypatch.setattr(politica, "_infoleg_abrir_sesion", lambda: (None, "x"))
 
     llamadas = []
 
-    def fake_count(session, action_url, tipo, desde, hasta, texto=""):
+    def fake_listado(session, action_url, tipo, desde, hasta, texto="", invisibles_tolerados=0):
         llamadas.append((tipo, desde, hasta, texto))
-        return {"1": 17, "2": 27}[tipo]
+        return [{"infoleg_id": f"{desde.year}-{i}", "norma": f"Ley {27700 + i}",
+                 "fecha_pub": f"{desde.year}-{max(desde.month, 8 if desde.year == 2025 else 1):02d}-10",
+                 "sumario": "REGIMEN PENAL DISPOSICIONES"} for i in range(17 if desde.year == 2025 else 0)]
 
-    monkeypatch.setattr(politica, "_infoleg_session_count", fake_count)
+    monkeypatch.setattr(politica, "_infoleg_listado_completo", fake_listado)
 
     def fake_dnus(session, action_url, desde, hasta):
         llamadas.append(("2", desde, hasta, "necesidad y urgencia"))
@@ -113,16 +113,17 @@ def test_fetch_ratio_dnu_usa_ventana_movil_365_dias(monkeypatch):
     assert ind["valor"] == round(27 / 17, 3)
     assert ind["dnu_count"] == 27
     assert ind["leyes_count"] == 17
+    assert ind["leyes_publicadas"] == 17 and ind["tratados_excluidos"] == 0
     assert ind["ventana_dias"] == 365
     assert "periodo" not in ind
     assert len(ind["inventario_dnu"]) == 27
-    assert len(llamadas) == 2
-    for tipo, desde, hasta, texto in llamadas:
-        assert hasta == date(2026, 7, 15)
-        assert desde == date(2025, 7, 16)
-        assert (hasta - desde).days + 1 == 365  # ambos extremos incluidos
-        if tipo == "2":
-            assert texto == "necesidad y urgencia"
+    # leyes: una consulta por año calendario de la ventana; DNU: una
+    assert [(t, d, h) for t, d, h, _ in llamadas] == [
+        ("1", date(2025, 7, 16), date(2025, 12, 31)),
+        ("1", date(2026, 1, 1), date(2026, 7, 15)),
+        ("2", date(2025, 7, 16), date(2026, 7, 15)),
+    ]
+    assert (date(2026, 7, 15) - date(2025, 7, 16)).days + 1 == 365  # ambos extremos incluidos
 
 
 def test_fetch_ratio_dnu_none_si_cero_leyes(monkeypatch):
@@ -132,13 +133,8 @@ def test_fetch_ratio_dnu_none_si_cero_leyes(monkeypatch):
             return cls(2026, 7, 15)
 
     monkeypatch.setattr(politica, "date", FechaFija)
-
-    class _SesionFake:
-        def get(self, url, **kwargs):
-            return _RespuestaHome()
-
-    monkeypatch.setattr(politica.requests, "Session", lambda: _SesionFake())
-    monkeypatch.setattr(politica, "_infoleg_session_count", lambda *a, **k: 0)
+    monkeypatch.setattr(politica, "_infoleg_abrir_sesion", lambda: (None, "x"))
+    monkeypatch.setattr(politica, "_infoleg_listado_completo", lambda *a, **k: [])
     monkeypatch.setattr(politica, "_infoleg_contar_dnus", lambda *a, **k: (0, []))
 
     assert politica.fetch_ratio_dnu() is None

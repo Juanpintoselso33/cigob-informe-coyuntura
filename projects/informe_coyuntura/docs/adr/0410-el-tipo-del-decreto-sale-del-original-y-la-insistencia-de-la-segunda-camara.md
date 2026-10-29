@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [ratio_dnu, insistencias_vetos, rechazos_decretos]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'data/politica/derrotas_legislativas_eventos.json', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_politica_ratio_dnu.py', 'tests/test_insistencias_y_rechazos.py']
-relacionado: ['0241', '0307', '0377']
+relacionado: ['0241', '0307', '0377', '0415']
 ambito: 'Cinturón político · ITCP · dimensión Poder legislativo · cómo se tipifica un decreto de necesidad y urgencia y cómo se fecha una insistencia'
 origen: 'Revisión pedida por Juan el 28-oct-2026 de «Decretos de necesidad y urgencia por ley», «Vetos que el Congreso dio vuelta» y «Decretos derogados por el Congreso» (hoy 1,13 / 0 / 0).'
 ---
