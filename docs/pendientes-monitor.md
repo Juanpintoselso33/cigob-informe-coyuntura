@@ -34,14 +34,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 Temas para la próxima revisión con Luis (la del 28-oct, 15 h, ya fue; lo que quedó esperando
 a Luis está en la sección 3).
 
-1. **Decretos de necesidad y urgencia por ley** (Juan, 28-oct; ADR-0410). Hoy 1,09 por ley
-   (puntaje 57). Los ceros de vetos dados vuelta y de decretos derogados son correctos.
-   - **Tratados en el denominador:** de las 32 leyes de la ventana, unas 19 aprueban
-     tratados. Sin ellos el cociente sería 2,85 (puntaje 10 en vez de 57); habría que
-     recalcular la referencia histórica con el mismo criterio.
-   - **Decretos de rutina** (siete de ejercicios militares y uno de viaje del Presidente): sin
-     ellos 0,91 (puntaje ~67).
-   - Recordar lo ya acordado: «decretos de necesidad y urgencia + delegados juntos» (ADR-0377).
+1. **RIGI: qué queremos medir** (Marcos, «261029 REVISION CINTURON DE GESTION», 30-oct:
+   «Hay que revisar que queremos medir la tasa de aprobación no me convence»). Conversación
+   pendiente con Luis; hoy el indicador es la tasa de aprobación con la escala de las
+   concesiones (ADR-0406).
 2. **Empleo: sumar el trabajo registrado total y la desocupación** (Juan, 29-oct; para
    proponer en la próxima). Reemplaza al complemento del padrón de ARCA, que salió (ADR-0412).
    - Trabajo registrado total del sistema previsional, con monotributistas y autónomos y sin
@@ -66,7 +62,7 @@ a Luis está en la sección 3).
    sólo el alquiler que favorece al Gobierno. Para sacarlo: buena parte de la suba es la puesta
    al día de contratos atrasados por la ley de alquileres. Si sale, el de UdeSA queda con el 20 %.
 
-No quedan otros temas para Luis marcados como abiertos: producción legislativa, cohesión,
+No quedan otros temas para Luis marcados como abiertos: decretos por ley (ADR-0415), producción legislativa, cohesión,
 transferencias y bandas ya los resolvió Juan con ADR (ver «Hecho»).
 
 ## 3. Esperan a otro
@@ -126,6 +122,8 @@ Ideas (nada de esto se arranca solo):
 
 ## 6. Hecho
 
+- Decretos por ley sin tratados y con todos los DNU (ADR-0415, f1d1a6a2; Juan: «Aplicarlo», 29-oct). Ley 26.745 (BID) contada como no tratado (Juan, «Sí»). Se dejan los DNU de rutina; los delegados no se suman.
+- Revisión de gestión de Marcos (30-oct): litigiosidad, insistencia y decretos derogados «está bien». Cortes: «Por qué importa» con el texto de Marcos. FAL: se deja como está (Juan, 30-oct); el 54 del mensual es el corte a septiembre, con 3 de 5 hitos.
 - Gasto de funcionamiento: los sueldos se quedan (Juan, 29-oct: «yo diría que no»); la ficha ya lo declara.
 - Rótulos de los alquileres: «Alquiler real (INDEC)» y «Alquiler real (Universidad de San Andrés – Mercado Libre)» (Juan, 29-oct; commit 2dff1ea3).
 
