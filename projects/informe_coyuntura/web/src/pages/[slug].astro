@@ -9,7 +9,7 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
-  tramosSemaforo, LECTURA_SEMAFORO, colorPorTension,
+  tramosSemaforo, LECTURA_SEMAFORO, colorPorTension, peorDimension,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -32,8 +32,17 @@ const esMacro = meta.key === "macro";
 // Resumen editorial del cinturón, debajo del texto del índice en la cabecera
 // (pedido del 28-oct-2026; por ahora sólo política). Mismo tipo de letra que
 // el pie de la barra.
+// Cierre del resumen de macro armado con los datos (revisión del 30-oct-2026):
+// fecha de corte (armado del snapshot), valor del índice y dimensión más tensionada.
+const MESES_LARGOS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const fechaCorte = `${Number(informe.generated_at.slice(8, 10))} de ${MESES_LARGOS[Number(informe.generated_at.slice(5, 7)) - 1]} de ${informe.generated_at.slice(0, 4)}`;
+const indiceMacro = esMacro ? indiceDe(c) : null;
+const peorMacro = esMacro ? peorDimension(c) : null;
+const cierreMacro = indiceMacro && peorMacro
+  ? ` Al ${fechaCorte}, el índice macroeconómico marca ${num(indiceMacro.data.valor as number)}/100 y la dimensión más tensionada es ${peorMacro.nombre.charAt(0).toLowerCase()}${peorMacro.nombre.slice(1)}.`
+  : "";
 const RESUMEN_CINTURON: Record<string, string[]> = {
-  macro: ["La economía está ordenada, pero no crece. El Estado gasta menos de lo que recauda, se financia a tasas razonables y el comercio exterior deja un superávit de 26.500 millones de dólares, gracias a buenos precios de exportación. En contra, la actividad cae 1,4 % en un año, la industria retrocede y el crédito no arranca. La inflación, en 1,9 % mensual, si bien es notablemente más baja que al inicio, no termina de bajar. Además, el peso está caro para producir, y hoy eso se compensa con buenos precios internacionales. La casa está en orden, pero la estabilidad depende de que el mundo siga acompañando y de que la producción y el crédito se reactiven antes de que la inflación vuelva a apretar."],
+  macro: [`La situación macroeconómica combina avances en la estabilización de precios y las cuentas públicas con restricciones en la actividad, la inversión y el financiamiento. El cinturón permite identificar qué condiciones favorecen la continuidad del programa económico y cuáles mantienen tensiones.${cierreMacro}`],
   gestion: ["Este cinturón examina el grado de cumplimiento de los compromisos asumidos por el gobierno, no sus beneficios ni sus efectos económicos o sociales.", "En este sentido registra avances verificables en varios compromisos de reforma: reducción de dotación y gasto de funcionamiento, desregulación normativa, medidas de normalización cambiaria y procesos de privatización y concesión. Persisten etapas pendientes en reformas laborales, inversiones y otras transformaciones."],
   vida_cotidiana: ["El impacto social presenta resultados desiguales respecto del inicio del mandato. Algunas mediciones de ingresos y pobreza muestran mejoras, mientras el consumo, el endeudamiento de los hogares y aspectos del empleo mantienen restricciones. La vulnerabilidad financiera aparece como una de las principales tensiones. La lectura conjunta muestra que la evolución de los ingresos no alcanza por sí sola para describir las condiciones de vida."],
   politica: ["El Gobierno conserva capacidad para impulsar parte de su agenda legislativa y sostener acuerdos con otros sectores, aunque depende de apoyos que no son permanentes. La cohesión del bloque oficialista y una conflictividad menor que al inicio del mandato conviven con tensiones en el respaldo territorial y posiciones críticas de sectores empresariales. La principal cuestión para seguir es la continuidad de esos acuerdos."],
