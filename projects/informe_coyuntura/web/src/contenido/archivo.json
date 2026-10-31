@@ -1,6 +1,37 @@
 {
  "meses": [
   {
+   "mes": "2026-10",
+   "corrida": "2ac0cb834f",
+   "generado": "2026-10-31T23:00:00+00:00",
+   "modo": "series_cortadas",
+   "score_global": 3.8,
+   "riesgo_dominante": "político",
+   "cinturon_dominante": "vida_cotidiana",
+   "alerta_multicinturon": false,
+   "cinturones": {
+    "macro": {
+     "score": 4.8,
+     "estado": "en_tension"
+    },
+    "politica": {
+     "score": 2.9,
+     "estado": "estable"
+    },
+    "vida_cotidiana": {
+     "score": 5.3,
+     "estado": "en_tension"
+    },
+    "gestion": {
+     "score": 2.1,
+     "estado": "estable"
+    }
+   },
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 4302
+  },
+  {
    "mes": "2026-09",
    "corrida": "a789af4950",
    "generado": "2026-09-30T20:00:00-03:00",
