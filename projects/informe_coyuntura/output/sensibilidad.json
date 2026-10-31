@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-29T15:36:51.473833-03:00",
+    "snapshot": "2026-10-31T23:00:00+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,47 +58,47 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.9,
-    "valor_recomputado": 79.9,
+    "valor_publicado": 79.4,
+    "valor_recomputado": 79.4,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.9,
-        "p05": 78.6,
-        "p95": 81.2,
-        "desvio": 0.76
+        "media": 79.4,
+        "p05": 78.1,
+        "p95": 80.7,
+        "desvio": 0.77
       },
       "combinado": {
-        "media": 79.8,
-        "p05": 78.0,
-        "p95": 81.5,
-        "desvio": 1.06
+        "media": 79.3,
+        "p05": 77.5,
+        "p95": 80.9,
+        "desvio": 1.03
       },
       "insumos": {
-        "media": 79.8,
-        "p05": 78.7,
-        "p95": 80.9,
-        "desvio": 0.68
+        "media": 79.3,
+        "p05": 78.2,
+        "p95": 80.3,
+        "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 84.1,
+      "apertura_comercial": 83.2,
       "cepo_mulc": 76.1,
-      "fal_modernizacion_laboral": 76.7,
-      "reduccion_estado": 82.1,
-      "juicios_trabajo_capital": 81.8,
-      "rigi_inversiones": 81.5,
-      "gasto_funcionamiento": 78.3,
-      "concesiones_infraestructura": 78.8,
-      "desregulacion_normativa": 79.5,
-      "privatizaciones": 79.6,
-      "siniestralidad_laboral": 80.1,
-      "asistencia_directa": 79.8,
-      "libertad_opcion_salud": 79.8,
-      "protocolo_antipiquetes": 79.9
+      "fal_modernizacion_laboral": 76.2,
+      "reduccion_estado": 81.6,
+      "juicios_trabajo_capital": 81.3,
+      "rigi_inversiones": 81.0,
+      "gasto_funcionamiento": 77.8,
+      "concesiones_infraestructura": 78.3,
+      "desregulacion_normativa": 78.9,
+      "siniestralidad_laboral": 79.6,
+      "privatizaciones": 79.2,
+      "asistencia_directa": 79.3,
+      "protocolo_antipiquetes": 79.4,
+      "libertad_opcion_salud": 79.4
     },
     "tension": {
-      "base": 2.0,
+      "base": 2.1,
       "rango_combinado": [
         1.9,
         2.2
@@ -153,53 +153,52 @@
     }
   },
   "itcp": {
-    "valor_publicado": 67.5,
-    "valor_recomputado": 67.5,
+    "valor_publicado": 71.0,
+    "valor_recomputado": 71.0,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 67.5,
-        "p05": 66.0,
-        "p95": 69.0,
-        "desvio": 0.91
+        "media": 71.0,
+        "p05": 69.5,
+        "p95": 72.4,
+        "desvio": 0.85
       },
       "combinado": {
-        "media": 67.3,
-        "p05": 65.5,
-        "p95": 69.2,
-        "desvio": 1.08
+        "media": 70.7,
+        "p05": 69.0,
+        "p95": 72.5,
+        "desvio": 1.05
       },
       "insumos": {
-        "media": 67.3,
-        "p05": 66.3,
-        "p95": 68.3,
-        "desvio": 0.6
+        "media": 70.7,
+        "p05": 69.7,
+        "p95": 71.7,
+        "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "transferencias_no_automaticas": 73.5,
-      "ratio_dnu": 71.0,
-      "adhesion_reformas_provincial": 64.1,
-      "votos_sobre_bancas": 70.0,
-      "cohesion_bloque": 65.1,
-      "alineamiento_senadores_prov": 65.8,
-      "apoyo_comercio": 65.9,
-      "apoyo_empresario": 69.1,
-      "insistencias_vetos": 66.0,
-      "rechazos_decretos": 66.0,
-      "cobertura_judicial": 68.6,
-      "eficacia_legislativa": 66.6,
-      "produccion_legislativa": 68.2,
-      "conflictividad_nacional": 67.0,
-      "apoyo_campo": 68.0,
-      "apoyo_construccion": 67.1,
-      "jornadas_individuales_no_trabajadas_12m": 67.8
+      "transferencias_no_automaticas": 76.9,
+      "adhesion_reformas_provincial": 67.6,
+      "cohesion_bloque": 68.5,
+      "votos_sobre_bancas": 73.4,
+      "produccion_legislativa": 72.9,
+      "cobertura_judicial": 72.7,
+      "alineamiento_senadores_prov": 69.3,
+      "apoyo_comercio": 69.4,
+      "apoyo_empresario": 72.5,
+      "insistencias_vetos": 69.7,
+      "rechazos_decretos": 69.7,
+      "eficacia_legislativa": 71.8,
+      "conflictividad_nacional": 70.5,
+      "apoyo_construccion": 70.5,
+      "apoyo_campo": 71.4,
+      "jornadas_individuales_no_trabajadas_12m": 71.3
     },
     "tension": {
-      "base": 3.2,
+      "base": 2.9,
       "rango_combinado": [
-        3.1,
-        3.5
+        2.8,
+        3.1
       ]
     }
   }

@@ -35,14 +35,14 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 67,5** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 2 en amarillo · 1 en naranja · 2 en rojo |
-Componentes que puntúan en este corte: 17 de 17 publicados.
+| **ITCP: 71,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 2 en amarillo · 1 en naranja · 1 en rojo |
+Componentes que puntúan en este corte: 16 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 61,2 | VERDE | 22,6 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 76,5 | VERDE | 22,6 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 53,8 | AMARILLO | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,8 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
@@ -62,11 +62,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | ROJO | 5,2 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
-| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
-| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
-| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | — | fuera del índice |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 8,8 % |
+| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 4,4 % |
+| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 4,4 % |
+| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó. | 31 leyes sancionadas (12m) | AMARILLO | 5,0 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real frente a 2023 | ROJO | 8,2 % |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
@@ -85,7 +85,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % frente a 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
 
-*Datos al 2026-10-29.*
+*Datos al 2026-10-31.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -101,7 +101,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-10) | **ROJO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-10) | **—** | Fuera del índice | Cinturón Política |
 
 ## Identificación
 
@@ -111,7 +111,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -130,34 +130,11 @@ Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, n
 - El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto. La única excepción: si se recorrieron todas las páginas que el buscador declara y faltan una o dos filas que no muestra en ninguna, se cuentan las que muestra y queda un aviso en el registro de la corrida.
 - La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023, con las mismas reglas y la misma función de conteo que la tarjeta: baja una sola vez las leyes y los decretos de todo el tramo y cuenta cada ventana sobre esa lista. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
 
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales) | Color |
-|---|---|
-| ≤ 1,19 | VERDE |
-| 1,19 – 1,76 | AMARILLO |
-| 1,76 – 2,06 | NARANJA |
-| ≥ 2,06 | ROJO |
-
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley
-
-## Color vigente y por qué
-
-Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales (2026-10).
-
-2,643 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales está en Rojo, a 0,58 del límite con Naranja (2,062).
-
-**Color vigente: ROJO**
-
-Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+- El informe publica el valor (2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Transparencia — limitaciones declaradas
 
@@ -225,7 +202,7 @@ Qué dicen en público, por escrito y con firma institucional, las cámaras de l
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-08 → 2026-09 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) y Asociación de Fábricas Argentinas de Componentes (AFAC) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -261,7 +238,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- El informe publica el valor (−0,45 saldo de postura (−1 a +1, 12m móviles)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -338,7 +315,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-10 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de Comercio y Servicios (CAC) | **OPERACIÓN ESTADÍSTICA** | Comunicados de prensa fechados de la sección «Comunicados de prensa» de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -373,7 +350,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la Cámara Argentina de Comercio y Servicios se pronunció 4 veces sobre medidas del Gobierno nacional: 4 de apoyo y 0 de crítica. Saldo 1,0 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- El informe publica el valor (1 saldo de postura (−1 a +1, 12m móviles)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -432,7 +409,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2026-01 → 2026-09 (9 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de las secciones de prensa de sus sitios |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -467,7 +444,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- El informe publica el valor (−0,15 saldo de postura (−1 a +1, 12m móviles)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -525,7 +502,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-09 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -561,7 +538,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- El informe publica el valor (0,2 saldo de postura (−1 a +1, 12m móviles)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -616,7 +593,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % frente a 2023 |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de Armed Conflict Location & Event Data (ACLED) se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -649,7 +626,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
+- El informe publica el valor (−27,2 % frente a 2023) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -715,7 +692,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | jornadas individuales no trabajadas (12m) |
 | **SERIE DISPONIBLE** | 2006-12 → 2026-07 (236 puntos) | **REZAGO DE PUBLICACIÓN** | La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo, Empleo y Seguridad Social | **OPERACIÓN ESTADÍSTICA** | Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro |
-| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -749,7 +726,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.
+- El informe publica el valor (4.820.775 jornadas individuales no trabajadas (12m)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -810,7 +787,7 @@ Cuánto devengó la Nación, en términos reales, como transferencias a provinci
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % real frente a 2023 |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC) llega unos 45 días después, que es el que fija el último mes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Presupuesto Abierto); deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2023, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2023, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -845,7 +822,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor
+- El informe publica el valor (−82,1 % real frente a 2023) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -892,7 +869,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de proyectos** (2026-10) | **VERDE** | Peso efectivo 6,8 % del ITCP | Cinturón Política |
+| **Hoy: 27,3 % de proyectos** (2026-10) | **VERDE** | Peso efectivo 8,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -902,7 +879,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La demora de carga no está garantizada. La fecha de consulta no certifica que el catálogo incluya todos los proyectos o sanciones recientes. |
 | **PRODUCTOR DEL DATO** | Honorable Cámara de Diputados de la Nación (HCDN) | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -947,7 +924,7 @@ Dato vigente: 27,3 % de proyectos (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 8,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1007,7 +984,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
 | **SERIE DISPONIBLE** | 2024-07 → 2026-09 (27 puntos) | **REZAGO DE PUBLICACIÓN** | El catálogo nacional puede omitir adhesiones ya publicadas. Se relee la tabla y se verifican leyes complementarias identificadas por la auditoría; el descubrimiento de nuevas omisiones requiere revisión periódica. |
 | **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) · Boletines Oficiales de Santa Fe y de la Ciudad de Buenos Aires | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1040,7 +1017,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.
+- El informe publica el valor (75 % de jurisdicciones (sobre 24) adheridas al RIGI) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1098,7 +1075,7 @@ Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % de las bancas de la cámara |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-10 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia los últimos 12 meses, así que describe en promedio la situación de hace unos seis meses aunque su último dato sea de la semana pasada. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (título, resultado, voto de cada legislador y su bloque), cruzadas con el catálogo de proyectos parlamentarios y los dictámenes de comisión de la Cámara de Diputados para saber quién mandó cada proyecto |
-| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1135,7 +1112,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
+- El informe publica el valor (22,3 % de las bancas de la cámara) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1197,7 +1174,7 @@ Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en l
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1231,7 +1208,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 100,0% = Diputados 100,0% (peso 65%, 26 actas) · última acta 2026-10-22 · Senado 100,0% (peso 35%, 42 actas) · última acta 2026-09-24
+- El informe publica el valor (100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1296,7 +1273,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
+| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-10) | **VERDE** | Peso efectivo 4,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1306,7 +1283,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | vetos insistidos por las dos cámaras, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — vetos presidenciales insistidos por las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1338,7 +1315,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue ley 27.796 (Emergencia sanitaria pediátrica del Hospital Garrahan y residencias), el 02/10/2025.
+- El informe publica el valor (0 vetos insistidos por las dos cámaras, últimos 12 meses) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1348,7 +1325,7 @@ Dato vigente: 0 vetos insistidos por las dos cámaras, últimos 12 meses (2026-1
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1382,7 +1359,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
+| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-10) | **VERDE** | Peso efectivo 4,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1392,7 +1369,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos derogados por las dos cámaras, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — decretos de necesidad y urgencia y delegados rechazados por las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1424,7 +1401,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue Decreto delegado 462/2025 (Transformación de los institutos nacionales de Tecnología Agropecuaria, de Tecnología Industrial, de Vitivinicultura y de la Propiedad Industrial; disolución de otros tres organismos), el 21/08/2025.
+- El informe publica el valor (0 decretos derogados por las dos cámaras, últimos 12 meses) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1434,7 +1411,7 @@ Dato vigente: 0 decretos derogados por las dos cámaras, últimos 12 meses (2026
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1468,7 +1445,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31 leyes sancionadas (12m)** (2026-09) | **AMARILLO** | Peso efectivo 3,8 % del ITCP | Cinturón Política |
+| **Hoy: 31 leyes sancionadas (12m)** (2026-09) | **AMARILLO** | Peso efectivo 5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1478,7 +1455,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | leyes sancionadas (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | La carga del catálogo tiene un rezago no garantizado. Se informa la última sanción registrada y se excluye el mes en curso; un mes calendario cerrado no asegura que todas sus leyes ya estén cargadas. |
 | **PRODUCTOR DEL DATO** | Cámaras de Diputados y Senadores | **OPERACIÓN ESTADÍSTICA** | Catálogo de leyes sancionadas más sanciones omitidas cotejadas en el Boletín Oficial, diarios de sesiones y boletines parlamentarios |
-| **MODO DE ACCESO** | Catálogo automático por API; complementos curados con enlace al original y fecha de revisión manual. No se garantiza actualización automática del registro complementario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Catálogo automático por API; complementos curados con enlace al original y fecha de revisión manual. No se garantiza actualización automática del registro complementario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1513,7 +1490,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 31 leyes distintas en los 12 meses completos hasta 2026-09, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.
+- El informe publica el valor (31 leyes sancionadas (12m)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1523,7 +1500,7 @@ Dato vigente: 31 leyes sancionadas (12m) (2026-09).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1577,7 +1554,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Actualización irregular. La serie sólo avanza hasta la fecha revisada de los registros complementarios; ejecutar el colector no extiende esa fecha. Un nuevo padrón requiere volver a conciliar los ajustes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados, designaciones y renuncias, conciliados con normas y bajas documentadas |
-| **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1612,7 +1589,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Cobertura estimada: 705 de 955 cargos al 2026-10-20. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −7 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).
+- El informe publica el valor (73,82 % estimado de cargos con juez designado) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1674,7 +1651,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % votos de senadores no-LLA alineados con LLA, por provincia |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-10 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 

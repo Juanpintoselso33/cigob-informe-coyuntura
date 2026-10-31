@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 79,9** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
+| **ITCG: 79,4** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 70,4 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,0 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,9 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,23 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -80,7 +80,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Reducción de cortes de calle en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | VERDE | 4,0 % |
 | Implementación de la libre elección de cobertura de salud | Cuánto avanzó la implementación de la libre elección de cobertura de salud. | 100 Avance de la libre elección de cobertura de salud (hitos 0–100) | VERDE | 2,0 % |
 
-*Datos al 2026-10-29.*
+*Datos al 2026-10-31.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,23 % de brecha entre el contado con liquidación y el mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 8 % de brecha entre el contado con liquidación y el mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -106,7 +106,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % de brecha entre el contado con liquidación y el mayorista |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Cotizaciones intradiarias: se conservan las marcas de actualización de ambas patas y el corte es el día argentino de la más antigua. La serie mensual usa promedios, y su último punto es el promedio del mes en curso, todavía parcial. |
 | **PRODUCTOR DEL DATO** | dolarapi.com (agregador privado de cotizaciones; el mayorista replica la referencia oficial del dólar mayorista del Banco Central) · para la historia, ArgentinaDatos (del mismo proyecto) y el Banco Central | **OPERACIÓN ESTADÍSTICA** | Cotizaciones del dólar contado con liquidación y del mayorista; brecha porcentual entre ambos |
-| **MODO DE ACCESO** | Automático: la tarjeta lee la interfaz pública de dolarapi.com; la serie histórica, desde diciembre de 2023, divide el promedio mensual del contado con liquidación de ArgentinaDatos por el promedio mensual de la referencia oficial del dólar mayorista que publica el Banco Central. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: la tarjeta lee la interfaz pública de dolarapi.com; la serie histórica, desde diciembre de 2023, divide el promedio mensual del contado con liquidación de ArgentinaDatos por el promedio mensual de la referencia oficial del dólar mayorista que publica el Banco Central. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -140,13 +140,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Contado con liquidación venta 1651.40 (2026-10-29T15:00:00-03:00) / mayorista venta 1540.00 (2026-10-29T11:36:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- El informe publica el valor (8 % de brecha entre el contado con liquidación y el mayorista) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 7,23 % de brecha entre el contado con liquidación y el mayorista (2026-10).
+Dato vigente: 8 % de brecha entre el contado con liquidación y el mayorista (2026-10).
 
-7,23 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 6,77 del límite con Amarillo (14,0).
+8,0 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 6,0 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -207,7 +207,7 @@ La recaudación de derechos de importación, exportación y tasa de estadística
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % del intercambio (alícuota efectiva) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El titular usa el último mes común entre cinco series oficiales con rezagos distintos: unos 2 meses. |
 | **PRODUCTOR DEL DATO** | Agencia de Recaudación y Control Aduanero (ARCA: recaudación de derechos) + Instituto Nacional de Estadística y Censos (INDEC: intercambio comercial) + Banco Central de la República Argentina (BCRA: tipo de cambio) | **OPERACIÓN ESTADÍSTICA** | Alícuota efectiva del comercio exterior: derechos de exportación, importación y tasa de estadística recaudados sobre el intercambio total |
-| **MODO DE ACCESO** | Automático: APIs públicas de series de tiempo y del BCRA; el ICA se completa con la planilla original descubierta en el catálogo INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: APIs públicas de series de tiempo y del BCRA; el ICA se completa con la planilla original descubierta en el catálogo INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -239,7 +239,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- US$ 1.223 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 17.095 M de intercambio (2026-09) · canal aduanero sin fuente pública
+- El informe publica el valor (7,16 % del intercambio (alícuota efectiva)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -299,7 +299,7 @@ Cuántos artículos de normas quedaron modificados o eliminados por el programa 
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | artículos de normas modificados o eliminados, acumulados desde dic-2023 |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El ministerio publica el informe de cada mes durante las primeras semanas del siguiente (alrededor de 1 mes). |
 | **PRODUCTOR DEL DATO** | Ministerio de Desregulación y Transformación del Estado — Unidad de Evaluación de Impacto | **OPERACIÓN ESTADÍSTICA** | Análisis de la desregulación implementada, informe mensual — artículos de normas modificados o eliminados, acumulados desde el 10 de diciembre de 2023 |
-| **MODO DE ACCESO** | Automático: se leen los enlaces de la página oficial y se extraen las cifras de portada y las etiquetas del gráfico de los últimos tres meses. Los nombres de archivo son irregulares, por lo que se descubren en el portal. Se conserva cada edición con URL y huella del PDF cuando se vuelve a consultar; la última edición se consulta nuevamente para detectar revisiones. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: se leen los enlaces de la página oficial y se extraen las cifras de portada y las etiquetas del gráfico de los últimos tres meses. Los nombres de archivo son irregulares, por lo que se descubren en el portal. Se conserva cada edición con URL y huella del PDF cuando se vuelve a consultar; la última edición se consulta nuevamente para detectar revisiones. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -335,7 +335,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 17.606 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+491 en el mes) · los produjeron 807 normas de desregulación, que modificaron o eliminaron 2891 normas anteriores
+- El informe publica el valor (17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -414,7 +414,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 | **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | La serie de dotación se publica con unos 2 meses de rezago; los últimos meses aparecen imputados y se revisan. |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) + Secretaría de Transformación del Estado | **OPERACIÓN ESTADÍSTICA** | Dotación de personal del Estado nacional (serie mensual). La planilla abre el total en dos universos: la Administración Pública Nacional y las empresas y sociedades del Estado; este indicador usa el primero |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -448,7 +448,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 181.880 agentes (2026-08) frente a 231.305 en diciembre de 2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%
+- El informe publica el valor (−21,37 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -515,7 +515,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 | **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 |
 | **SERIE DISPONIBLE** | 2024-01 → 2026-08 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Las series de gasto se publican con unos 2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real del promedio de los últimos 12 meses contra el promedio de los 12 meses de 2023 |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -547,7 +547,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio mensual de septiembre de 2025 a agosto de 2026 contra el de enero a diciembre de 2023, descontada la inflación
+- El informe publica el valor (−28 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -610,7 +610,7 @@ Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecani
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | Índice 0–100 (FAL: cinco hitos de construcción y adopción) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La Comisión Nacional de Valores (CNV) se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día. |
 | **PRODUCTOR DEL DATO** | InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, Resolución General 1167/2026 de la CNV y Resolución General 5907/2026 de la Agencia de Recaudación y Control Aduanero (ARCA) · estado judicial de la Ley 27.802 · bancos · CNV (registro de fondos comunes de inversión) | **OPERACIÓN ESTADÍSTICA** | Avance del Fondo de Asistencia Laboral: cinco hitos de construcción del régimen (18% cada uno, 90% en total) + adopción efectiva (10%) |
-| **MODO DE ACCESO** | Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -645,7 +645,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-29; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- El informe publica el valor (90 Índice 0–100 (FAL: cinco hitos de construcción y adopción)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -724,7 +724,7 @@ Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación del índice de incidencia (mismo período, contra el año anterior) |
 | **SERIE DISPONIBLE** | 2020-12 → 2026-10 (71 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El informe provisorio sale entre dos y tres meses después del cierre del período (el de enero a junio de 2026 dice «elaboración: septiembre»; el de enero a marzo de 2025 ya estaba publicado el 13 de julio de 2025). La serie anual se actualiza una vez por año. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Informe provisorio de accidentabilidad laboral (Cuadro 1: personas trabajadoras cubiertas y casos de accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, sin accidentes in itinere, total del sistema) y Serie histórica de indicadores de AT y EP (índice de incidencia por mil cubiertos, Revisión 4) |
-| **MODO DE ACCESO** | Automático: lectura del PDF vigente y de la planilla anual. El informe se publica siempre en la misma dirección y se sobrescribe, así que cada edición leída se guarda en un registro propio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura del PDF vigente y de la planilla anual. El informe se publica siempre en la misma dirección y se sobrescribe, así que cada edición leída se guarda en un registro propio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -758,7 +758,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Enero a junio de 2026: 149.066 casos de AT y EP con baja (14,92 por mil cubiertos) contra 159.671 (15,7 por mil) en el mismo período del año anterior
+- El informe publica el valor (−5 % variación del índice de incidencia (mismo período, contra el año anterior)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -814,7 +814,7 @@ Cuánto varían los juicios laborales que se inician en la Justicia Nacional del
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios entrados (12 meses frente a los 12 meses previos) |
 | **SERIE DISPONIBLE** | 2024-12 → 2026-10 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Semestral. El primer semestre se publica en el segundo semestre del mismo año; el segundo, hacia mayo del año siguiente (el de 2025 trae «datos actualizados al 20 de mayo de 2026»). |
 | **PRODUCTOR DEL DATO** | Consejo de la Magistratura — Oficina de Estadísticas del Poder Judicial de la Nación | **OPERACIÓN ESTADÍSTICA** | Justicia Nacional del Trabajo: expedientes entrados en primera instancia (80 juzgados nacionales del trabajo), resumen de trámite de expedientes por semestre |
-| **MODO DE ACCESO** | Automático: lectura de las planillas de datos abiertos que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura de las planillas de datos abiertos que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -847,7 +847,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 frente a 55.040 en los 12 previos (sólo Capital)
+- El informe publica el valor (12,4 % variación juicios entrados (12 meses frente a los 12 meses previos)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -908,7 +908,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de avance (etapas 0-4, cartera Ley Bases) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial y Comisión Nacional de Valores (CNV) (hechos) + Fundación CIGOB (curaduría del registro) | **OPERACIÓN ESTADÍSTICA** | Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), ocho empresas. Corredores Viales queda fuera: su privatización es la concesión de la red vial, que mide el indicador de concesiones de infraestructura |
-| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -940,7 +940,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener
+- El informe publica el valor (53,1 % de avance (etapas 0-4, cartera Ley Bases)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1004,7 +1004,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de inversión aprobada sobre el pipeline |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (29 puntos) | **REZAGO DE PUBLICACIÓN** | Sin rezago: foto de la plataforma oficial al día de la actualización. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía — plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI) | **OPERACIÓN ESTADÍSTICA** | Cartera del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total de la cartera (aprobada + en evaluación) |
-| **MODO DE ACCESO** | Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1037,7 +1037,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 27 proyectos aprobados (US$ 76.173M) / 21 en evaluación (US$ 133.221M) → 36,4% de la inversión total ya aprobada
+- El informe publica el valor (36,4 % de inversión aprobada sobre el pipeline) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1101,7 +1101,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
-| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1133,7 +1133,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9.091 de 9.091 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)
+- El informe publica el valor (100 % de km adjudicados / km del plan (Red Federal de Concesiones)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1205,7 +1205,7 @@ Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la 
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno: el hito tiene la fecha de su publicación en el Boletín Oficial. Una norma posterior que restituyera intermediarios se incorpora por revisión, con su fecha. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial — Resolución 84/2024 del Ministerio de Capital Humano; contexto: Secretaría de Hacienda — Presupuesto Abierto | **OPERACIÓN ESTADÍSTICA** | Hito de desintermediación de los planes sociales: 100 desde el cese de las unidades de gestión y de certificación del Potenciar Trabajo, 0 antes |
-| **MODO DE ACCESO** | Semiautomático: la norma y su fecha se asientan en el código del colector (verificadas en el Boletín Oficial); el colector evalúa el hito en cada corrida. El porcentaje del gasto clasificado como ayudas a personas se lee de la API de Presupuesto Abierto y se muestra como contexto, sin puntuar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: la norma y su fecha se asientan en el código del colector (verificadas en el Boletín Oficial); el colector evalúa el hito en cada corrida. El porcentaje del gasto clasificado como ayudas a personas se lee de la API de Presupuesto Abierto y se muestra como contexto, sin puntuar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1238,7 +1238,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Unidades de gestión y de certificación sin actividad desde el 2024-04-10 (Resolución 84/2024 del Ministerio de Capital Humano, art. 6: «cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación del Potenciar Trabajo») · Contexto: el devengado 2026 de Volver al Trabajo y Acompañamiento Social está 100,0% clasificado como ayudas a personas (Potenciar Trabajo 2023: 98,3%); ese porcentaje no mide la intermediación y no puntúa. · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.
+- El informe publica el valor (100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1301,7 +1301,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
 | **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora privada; relevamiento diario de cortes sobre más de cien medios desde 2009; sus informes mensuales detallados son por suscripción) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en la Ciudad de Buenos Aires contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
-| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1334,7 +1334,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.
+- El informe publica el valor (74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1410,7 +1410,7 @@ Cuánto avanzó la implementación de la libre elección de cobertura de salud: 
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | Avance de la libre elección de cobertura de salud (hitos 0–100) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Las fechas de numerador y denominador se publican por separado. Se usa el último Registro Nacional de Entidades de Medicina Prepaga (RNEMP) disponible que no sea posterior al mes del Registro Nacional de Agentes del Seguro de Salud (RNAS); si se arrastra un denominador, la razón combina fechas distintas. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial · Superintendencia de Servicios de Salud · Agencia de Recaudación y Control Aduanero (ARCA) | **OPERACIÓN ESTADÍSTICA** | Avance de la libre elección de cobertura por cinco hitos fechados: cuatro normativos y operativos (Boletín Oficial, ARCA) y el funcionamiento verificado en los padrones de la Superintendencia (beneficiarios por Agente del Seguro de Salud y usuarios de entidades de medicina prepaga) |
-| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el decreto de necesidad y urgencia 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-29 |
+| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el decreto de necesidad y urgencia 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1444,7 +1444,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 5 de 5 hitos cumplidos. Contexto: 32.2 % de los usuarios de prepagas con aportes derivados directo — 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.
+- El informe publica el valor (100 Avance de la libre elección de cobertura de salud (hitos 0–100)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 

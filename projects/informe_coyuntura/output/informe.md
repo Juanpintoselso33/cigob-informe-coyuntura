@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-29 15:36:51"
+generado: "2026-10-31 23:00:00"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -40,36 +40,36 @@ schema_version: "1.2.0"
 | credito_privado | -0.6 | % interanual real (crédito en pesos) | 2026-09-01 | fresco |
 | costo_financiamiento_tesoro | 6.22 | % real anual (tasa efectiva anual frente a la inflación esperada) | 2026-09-01 | fresco |
 | resultado_primario | 6.02 | % de la recaudación (acumulado de 12 meses) | 2026-08-01 | fresco |
-| prestamos_privados | 2.38 | % mensual nominal | 2026-10-23 | fresco |
-| base_monetaria | 1.68 | % mensual nominal | 2026-10-26 | fresco |
-| tc_mayorista | 1.38 | % mensual | 2026-10-28 | fresco |
+| prestamos_privados | 150120279.0 | % mensual nominal | 2026-10-26 | fresco |
+| base_monetaria | 46804518.0 | % mensual nominal | 2026-10-26 | fresco |
+| tc_mayorista | 1538.4739 | % mensual | 2026-10-28 | fresco |
 
-### 🟢 Politica — score 3.2/10 (estable)
+### 🟢 Politica — score 2.9/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-10-29 | fresco |
-| apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
+| apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
-| apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| apoyo_construccion | 0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
+| apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
+| apoyo_construccion | 0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
 | conflictividad_nacional | -27.2 | % frente a 2023 | 2026-09-01 | fresco |
-| jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
+| jornadas_individuales_no_trabajadas_12m | 4820775.0 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | transferencias_no_automaticas | -82.1 | % real frente a 2023 | 2026-09-30 | fresco |
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-10-29 | fresco |
 | comisiones_caidas | 96.6 | % de proyectos | 2026-10-29 | fresco |
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-29 | fresco |
-| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-29 | fresco |
-| rotacion_gabinete | 6 | salidas de rango ministerial (acumulado de 12 meses) | 2026-10-29 | fresco |
+| derrotas_legislativas | 0.0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-29 | fresco |
+| rotacion_gabinete | 6.0 | salidas de rango ministerial (acumulado de 12 meses) | 2026-10-29 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 | votos_sobre_bancas | 22.3 | % de las bancas de la cámara | 2026-10-29 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | 2026-10-22 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-29 | fresco |
+| bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-31 | fresco |
 | insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-10-29 | fresco |
 | rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-10-29 | fresco |
-| produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-09-01 | fresco |
+| produccion_legislativa | 31.0 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
 | alineamiento_senadores_prov | 56.5 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
@@ -83,7 +83,7 @@ schema_version: "1.2.0"
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-29 | octubre de 2026 (ADR-0377) | Contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera: mezclaba el intento con la derrota. Se reemplaza por lo consumado en las dos cámaras: vetos insistidos y decretos derogados. |
 | judicializacion | 1.78 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | octubre de 2026 (ADR-0374) | Mide cuántos expedientes resuelve la Corte Suprema sobre los que le entran: la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. |
-| paralisis_denuncias | 15 | sesiones de las comisiones de control (12m) | 2026-10-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
+| paralisis_denuncias | 15.0 | sesiones de las comisiones de control (12m) | 2026-10-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
 
 ### 🟡 Vida Cotidiana — score 5.3/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -91,20 +91,20 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 1.93 | % mensual | 2026-09-01 | fresco |
-| desocupacion | 0.1 | % | 2026-04-01 | fresco |
+| desocupacion | 0.079 | % | 2026-04-01 | fresco |
 
 **Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
 
 | Indicador | Último valor | Unidad | Fecha |
 |---|---|---|---|
-| icc_utdt | 41.52 | índice | 2026-10-01 |
+| icc_utdt | 41.5 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.0/10 (estable)
+### 🟢 Gestion — score 2.1/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 7.23 | % de brecha entre el contado con liquidación y el mayorista | 2026-10-29 | fresco |
+| cepo_mulc | 8.0 | % de brecha entre el contado con liquidación y el mayorista | 2026-10-28 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-08-01 | fresco |
@@ -129,9 +129,5 @@ schema_version: "1.2.0"
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-29 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 | litigiosidad_laboral | 0.1 | % variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos) | 2026-07-01 | octubre de 2026 (ADR-0385) | Contaba los juicios que llegan al sistema de riesgos del trabajo, no los accidentes y enfermedades que el sistema registra, que es lo que pidió medir la dirección de CiGob. Lo reemplaza la siniestralidad registrada, con el mismo peso en la dimensión. El dato se sigue calculando. |
 
-## Advertencias
-
-- `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
-
 ---
-*Generado por CIGOB — 2026-10-29 15:36:51 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-31 23:00:00 — schema 1.2.0*
