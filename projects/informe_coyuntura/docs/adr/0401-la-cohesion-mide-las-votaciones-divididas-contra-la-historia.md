@@ -9,7 +9,7 @@ indicadores: [cohesion_bloque]
 parametros: ['UMBRAL_MINORIA_DIVIDIDA', 'ANCLAS_ITCP["cohesion_bloque"]', 'BANDAS_ITCP["cohesion_bloque"]']
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'scripts/itcp.py', 'scripts/procedencia_anclas.py', 'scripts/sensibilidad.py', 'data/politica/cohesion_bloque_diputados_minoria.json', 'tests/test_politica_cohesion.py', 'tests/test_descargar_series_cohesion.py', 'tests/test_itcp.py', 'tests/test_senado_lectura_completa.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts']
 modifica: ['0048']
-relacionado: ['0042', '0048', '0400', '0402']
+relacionado: ['0042', '0048', '0400', '0402', '0416']
 ambito: 'ITCP · dimensión Cohesión interna · universo de votaciones y anclas de la cohesión del bloque'
 origen: 'Auditoría del cinturón político del 28-oct-2026; decisión de Juan del mismo día.'
 ---
