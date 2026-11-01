@@ -9,6 +9,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import politica  # noqa: E402
 
+_CURL_REAL = politica._curl_pdf   # conftest lo reemplaza en cada test
+
 
 def test_si_requests_falla_se_usa_curl(monkeypatch):
     monkeypatch.setattr(politica, "_paced_get", lambda *a, **k: None)
@@ -27,4 +29,4 @@ def test_curl_rechaza_lo_que_no_es_pdf(monkeypatch):
     class R:
         returncode, stdout = 0, b"<html>error</html>"
     monkeypatch.setattr(politica.subprocess, "run", lambda *a, **k: R())
-    assert politica._curl_pdf("https://x/acta.pdf") is None
+    assert _CURL_REAL("https://x/acta.pdf") is None

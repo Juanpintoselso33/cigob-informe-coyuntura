@@ -190,6 +190,21 @@ def _parse_fecha(f):
         return None
 
 
+def _horas_antes_del_snapshot(sello, generado) -> float:
+    """Horas entre el sello `obtenido_en` de una card y el `generated_at` del
+    snapshot; 0 si falta alguno o no se puede leer (en la duda, G3 bloquea)."""
+    if not sello or not generado:
+        return 0.0
+    try:
+        s = datetime.fromisoformat(str(sello))
+        g = datetime.fromisoformat(str(generado))
+    except ValueError:
+        return 0.0
+    if (s.tzinfo is None) != (g.tzinfo is None):
+        s, g = s.replace(tzinfo=None), g.replace(tzinfo=None)
+    return (g - s).total_seconds() / 3600
+
+
 def main() -> int:
     warn_only = "--warn-only" in sys.argv
     fallas, avisos = [], []
@@ -200,6 +215,7 @@ def main() -> int:
     inf = json.loads((SNAPSHOT / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((SNAPSHOT / "series.json").read_text(encoding="utf-8"))
     hoy = date.today()
+    generado = inf.get("generated_at")
 
     for ck, c in inf["cinturones"].items():
         # G1 — cinturón
@@ -290,7 +306,11 @@ def main() -> int:
                         # sus cards salieron del archivo de la víspera sin
                         # `desactualizado`, la serie de reduccion_estado bajó
                         # septiembre y el gate cortó la publicación entera.
-                        no_bajada_hoy = dias_sin_fetch is not None and dias_sin_fetch >= 1
+                        # Se mide en horas contra el arranque del snapshot, no en
+                        # días de calendario: una descarga de las 23:59 sigue
+                        # fresca para un gate que corre pasada la medianoche
+                        # (Codex, 1-nov-2026). Una corrida entera dura < 1 h.
+                        no_bajada_hoy = _horas_antes_del_snapshot(sello, generado) > 6
                         if i.get("desactualizado") or no_bajada_hoy:
                             avisos.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v}, pero la "
                                           f"card está en carry-forward — lo vigila G2")
