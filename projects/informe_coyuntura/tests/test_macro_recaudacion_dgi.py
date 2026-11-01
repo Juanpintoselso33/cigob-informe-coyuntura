@@ -234,3 +234,34 @@ def test_la_serie_y_la_card_comparten_la_constante():
     inicio = fuente.index("def fetch_recaudacion_real_serie")
     cuerpo = fuente[inicio:inicio + 900]
     assert "macro.INDEC_RECAUDACION_ID" in cuerpo, cuerpo[:400]
+
+
+def test_el_texto_de_sentido_dice_cada_componente_por_separado():
+    """Sep-2026: agregado +6,8 %, IVA +1,6 %, cheque −0,3 %. El texto decía que
+    «la porción ligada a actividad (IVA + cheque) fue en sentido distinto», pero
+    `diverge` sólo mira si ALGUNO tiene otro signo: el IVA fue en el mismo
+    sentido. Y nombraba la aduana, que no integra la base (ADR-0127)."""
+    control = {"iva_diverge": False, "cheque_diverge": True, "diverge": True}
+    txt = macro._texto_sentido_componentes(control)
+    assert "IVA + cheque" not in txt and "aduana" not in txt.lower()
+    assert txt == ("El impuesto al valor agregado fue en el mismo sentido que el "
+                   "agregado y el cheque, en sentido distinto.")
+    ambos = macro._texto_sentido_componentes(
+        {"iva_diverge": True, "cheque_diverge": True, "diverge": True})
+    assert "los dos" in ambos and "aduana" not in ambos.lower()
+    ninguno = macro._texto_sentido_componentes(
+        {"iva_diverge": False, "cheque_diverge": False, "diverge": False})
+    assert "mismo sentido" in ninguno
+
+
+def test_control_tributario_publica_el_sentido_de_cada_componente():
+    ipc = {f"2025-{m:02d}": 100.0 for m in range(1, 13)}
+    ipc.update({f"2026-{m:02d}": 100.0 for m in range(1, 9)})
+    serie_sa = {f"2025-{m:02d}": 90.0 for m in range(1, 13)}
+    serie_sa.update({f"2026-{m:02d}": 90.0 for m in range(1, 8)})
+    serie_sa["2026-08"] = 90.0 * 1.068
+    iva_nom = {ym: 1000.0 * (1.016 if ym == "2026-08" else 1.0) for ym in ipc}
+    cheque_nom = {ym: 500.0 * (0.997 if ym == "2026-08" else 1.0) for ym in ipc}
+    c = macro._control_tributario(serie_sa, iva_nom, cheque_nom, ipc, "2026-08")
+    assert (c["agregado_var_ia_real"], c["iva_var_ia_real"], c["cheque_var_ia_real"]) == (6.8, 1.6, -0.3)
+    assert c["iva_diverge"] is False and c["cheque_diverge"] is True and c["diverge"] is True

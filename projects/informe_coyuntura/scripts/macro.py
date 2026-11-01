@@ -66,8 +66,9 @@ INDEC_RECAUDACION_DGA_ID   = "172.3_SOTAL_DDGA_M_0_0_12"  # aduana — contexto 
 # entre 30% y 62% del total según el mes (verificado con datos.gob.ar,
 # ago-2026: 53,6%). No son una fuente distinta que "confirma" o "desmiente" al
 # agregado: son parte de él. Sirven para abrir el agregado en la porción ligada
-# a actividad (IVA + cheque) contra el resto (Ganancias, cambios normativos,
-# anticipos, aduana) y ver de cuál de las dos partes viene un movimiento.
+# a actividad (IVA + cheque) contra el resto (Ganancias, Ingresos Brutos del
+# Convenio Multilateral, cambios normativos, anticipos) y ver de cuál de las dos
+# partes viene un movimiento. La aduana no está en el agregado (ADR-0127).
 INDEC_IVA_DGI_ID = "142.3_IVA_D_2001_M_7"      # IVA-DGI mensual (M ARS) — componente
 INDEC_CHEQUE_ID   = "142.3_CREDI_2001_M_24"    # Créditos y débitos bancarios — componente
 # IMIG (Informe Mensual de Ingresos y Gastos, Sec. de Hacienda): resultado
@@ -538,6 +539,19 @@ def fetch_badlar() -> dict | None:
         return None
 
 
+def tem_de_tna(tna_pct: float) -> float:
+    """Tasa efectiva mensual (%) de una tasa NOMINAL anual (%) de depósitos a
+    30 días, como la BADLAR del BCRA («en % n.a.»): TEM = TNA / 12.
+
+    La TNA ya es la tasa del período multiplicada por los períodos del año, así
+    que no se le saca raíz doceava: eso sólo vale para una tasa EFECTIVA anual
+    (como la expectativa de inflación del REM, ver
+    itcm.rem_mensual_equivalente). Hasta nov-2026 la BADLAR se convertía con
+    raíz doceava y la tasa real del IdC salía subestimada (sep-2026: TNA
+    22,8125 % → 1,727 % en vez de 1,901 % mensual)."""
+    return tna_pct / 12.0
+
+
 IDC_MESES_HIST = 120        # ventana de descarga: ~10 años (la muestra usable
                             # arranca 13 meses después del inicio de las fuentes)
 IDC_MIN_MESES = 60          # mínimo de historia para que los z-scores signifiquen algo
@@ -548,7 +562,8 @@ _IDC_BASE_MEMO: dict = {}   # memo por corrida: indicador y serie comparten la
 def _idc_base_mensual(meses_hist: int = IDC_MESES_HIST) -> dict:
     """Los tres NIVELES mensuales del IdC rediseñado (ADR-0028) sobre toda la
     historia disponible: {YYYY-MM: (tasa_real_pp, dep_real_ia_pct, holgura_pct)}.
-      • tasa_real:   TEM de la BADLAR de fin de mes − IPC m/m del mes (pp).
+      • tasa_real:   TEM de la BADLAR de fin de mes (TNA/12, `tem_de_tna`)
+                     − IPC m/m del mes (pp).
       • dep_real_ia: depósitos privados fin de mes, variación i.a. REAL (%) —
                      la interanual absorbe la estacionalidad (aguinaldos, cosecha).
       • holgura:     (1 − préstamos/depósitos) × 100 de fin de mes (%). Es un
@@ -567,7 +582,7 @@ def _idc_base_mensual(meses_hist: int = IDC_MESES_HIST) -> dict:
         prev1, prev12 = _ym_shift(ym, -1), _ym_shift(ym, -12)
         if prev1 not in ipc or prev12 not in dep or prev12 not in ipc:
             continue
-        tem = ((1.0 + badlar[ym] / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
+        tem = tem_de_tna(badlar[ym])
         ipc_m = (ipc[ym] / ipc[prev1] - 1.0) * 100.0
         dep_real = ((dep[ym] / dep[prev12]) / (ipc[ym] / ipc[prev12]) - 1.0) * 100.0
         holgura = (1.0 - pre[ym] / dep[ym]) * 100.0
@@ -861,12 +876,9 @@ def fetch_saldo_comercial_12m() -> dict | None:
             "obtenido_en": datos.get('obtenido_en'),
             "fecha_dato": comunes[0][0],
             "desactualizado": not datos['consulta_oficial_exitosa'],
-            "expo_12m": round(expo_12, 0),
-            "impo_12m": round(impo_12, 0),
-            "expo_var_ia": round((expo_12 / expo_prev - 1) * 100, 1),
-            "impo_var_ia": round((impo_12 / impo_prev - 1) * 100, 1),
-            "expo_delta_12m": round(expo_12 - expo_prev, 0),
-            "impo_delta_12m": round(impo_12 - impo_prev, 0),
+            # composición para la regla automática: la misma función que usa
+            # la reconstrucción histórica (validacion_externa)
+            **itcm.composicion_saldo(expo_12, expo_prev, impo_12, impo_prev),
         }
     except Exception as e:
         _warn("saldo_comercial_12m (ICA)", e)
@@ -915,8 +927,14 @@ def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: di
     Entre ambos son entre ~30% y ~62% del agregado según el mes. Comparar su
     sentido contra el del agregado no "confirma" ni "desmiente" nada de forma
     independiente — muestra si el movimiento del agregado vino de la porción
-    ligada a actividad (IVA + cheque) o del resto (Ganancias, cambios
-    normativos, anticipos, aduana).
+    ligada a actividad (IVA + cheque) o del resto (Ganancias, Ingresos Brutos
+    del Convenio Multilateral, cambios normativos, anticipos). La aduana no
+    integra el agregado (ADR-0127), así que no puede explicar nada de él.
+
+    El sentido se compara componente por componente (`iva_diverge`,
+    `cheque_diverge`); `diverge` es «alguno de los dos». No se calcula el
+    movimiento conjunto de IVA + cheque, así que el texto público no puede
+    afirmar nada sobre esa suma (`_texto_sentido_componentes`).
 
     El agregado (`serie_sa`, ya real y desestacionalizado) se lee en su propia
     variación interanual real —la misma unidad que corresponde a un nivel
@@ -956,9 +974,36 @@ def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: di
         "agregado_var_ia_real": agregado_r,
         "iva_var_ia_real": iva_r,
         "cheque_var_ia_real": cheque_r,
+        "iva_diverge": signo(agregado_r) != signo(iva_r),
+        "cheque_diverge": signo(agregado_r) != signo(cheque_r),
         "diverge": signo(agregado_r) != signo(iva_r) or signo(agregado_r) != signo(cheque_r),
         "meses_atraso": _ym_idx(ultimo) - _ym_idx(ym),
     }
+
+
+def _texto_sentido_componentes(control: dict) -> str:
+    """Frase pública sobre el sentido de IVA-DGI y cheque frente al agregado.
+
+    Dice sólo lo que `_control_tributario` comprueba: el signo de CADA
+    componente por separado contra el del agregado. No afirma nada sobre la
+    suma IVA + cheque (no se calcula) ni nombra la aduana, que no integra la
+    base imponible (ADR-0127)."""
+    iva, cheque = control["iva_diverge"], control["cheque_diverge"]
+    if not iva and not cheque:
+        return ("El impuesto al valor agregado y el cheque fueron en el mismo sentido "
+                "que el agregado.")
+    if iva and cheque:
+        # Los dos en contra: el movimiento del agregado sólo puede venir del resto.
+        return ("El impuesto al valor agregado y el cheque fueron, los dos, en sentido "
+                "distinto del agregado: su movimiento viene del resto (Ganancias, Ingresos "
+                "Brutos del Convenio Multilateral, cambios normativos, anticipos).")
+    # Uno a favor y otro en contra: sin los pesos no se sabe cuánto explica cada
+    # parte, así que se informan los signos y nada más.
+    if iva:
+        return ("El cheque fue en el mismo sentido que el agregado y el impuesto al valor "
+                "agregado, en sentido distinto.")
+    return ("El impuesto al valor agregado fue en el mismo sentido que el agregado y el "
+            "cheque, en sentido distinto.")
 
 
 def fetch_recaudacion() -> dict | None:
@@ -1043,11 +1088,7 @@ def fetch_recaudacion() -> dict | None:
                 f" Composición ({control['fecha']}, variación interanual real){desfasaje}: impuesto al valor agregado "
                 f"{cm(control['iva_var_ia_real'])}%, cheque {cm(control['cheque_var_ia_real'])}%, "
                 f"agregado {cm(control['agregado_var_ia_real'])}%"
-                + (". La porción ligada a actividad (IVA + cheque) fue en sentido distinto del "
-                   "agregado: el movimiento del agregado no vino (sólo) de esa porción — puede "
-                   "venir del resto (Ganancias, cambios normativos, anticipos, aduana)."
-                   if control["diverge"]
-                   else ". La porción ligada a actividad fue en el mismo sentido que el agregado.")
+                + ". " + _texto_sentido_componentes(control)
                 + " IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no "
                   "una fuente independiente— y tampoco miden actividad de forma directa (hay "
                   "evasión, cambios de alícuota y anticipos), y el cheque además capta "
@@ -2171,10 +2212,9 @@ def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     anual, pero de eso se encarga el motor: la transformación está declarada
     junto a las bandas (TRANSFORMACIONES_ITCM, ADR-0082) y acá se pasan los
     valores crudos."""
-    ajustes = {}
-    auto_saldo = itcm.ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m", {}))
-    if auto_saldo:
-        ajustes["saldo_comercial_12m"] = auto_saldo
+    # Reglas automáticas: la misma entrada que usa la historia
+    # (validacion_externa.construir_serie_itcm).
+    ajustes = itcm.ajustes_automaticos(indicadores)
     periodo = datetime.now().strftime("%Y-%m")
     ajustes.update(itcm.cargar_ajustes(AJUSTES_PATH, periodo))
     valores = {nombre: indicadores.get(nombre, {}).get("valor")

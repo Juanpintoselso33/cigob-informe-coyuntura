@@ -700,6 +700,40 @@ def texto_bandas(indicador: str) -> str:
 SUPERAVIT_RELEVANTE_PCT_COMERCIO = 3.0
 
 
+def composicion_saldo(expo_12: float, expo_prev: float,
+                      impo_12: float, impo_prev: float) -> dict:
+    """Los campos de composición expo/impo que lee `ajuste_automatico_saldo`,
+    desde los acumulados de 12 meses (millones de USD) y los de los 12 meses
+    previos. Lo usan la tarjeta (macro.fetch_saldo_comercial_12m) y la
+    reconstrucción histórica (validacion_externa), para que la regla se
+    alimente igual en los dos lados."""
+    return {
+        "expo_12m": round(expo_12, 0),
+        "impo_12m": round(impo_12, 0),
+        "expo_var_ia": round((expo_12 / expo_prev - 1) * 100, 1),
+        "impo_var_ia": round((impo_12 / impo_prev - 1) * 100, 1),
+        "expo_delta_12m": round(expo_12 - expo_prev, 0),
+        "impo_delta_12m": round(impo_12 - impo_prev, 0),
+    }
+
+
+def ajustes_automaticos(indicadores: dict) -> dict:
+    """{indicador: ajuste} de las reglas AUTOMÁTICAS del ITCM sobre
+    {indicador: dict del indicador}. Hoy hay una sola: la del saldo comercial
+    (ADR-0056, umbral en % del comercio por ADR-0404). No incluye los overrides
+    manuales del analista (`cargar_ajustes`), que sólo rigen para la tarjeta.
+
+    Es el único punto de entrada de las reglas: la tarjeta
+    (macro.calcular_itcm_cinturon) y la historia
+    (validacion_externa.construir_serie_itcm) lo llaman los dos, así que una
+    regla nueva no puede aplicarse en uno y olvidarse en el otro."""
+    out = {}
+    auto_saldo = ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m") or {})
+    if auto_saldo:
+        out["saldo_comercial_12m"] = auto_saldo
+    return out
+
+
 def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
     """Regla automática del "Subcomponente D" de la Paramétrica: un superávit
     comercial que refleja caída de demanda interna (menos importaciones) más

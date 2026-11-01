@@ -417,6 +417,41 @@ def _valores_itcm_por_mes() -> dict:
     }
 
 
+def _ym_menos_12(ym: str) -> str:
+    return f"{int(ym[:4]) - 1}{ym[4:]}"
+
+
+def _ajustes_itcm_por_mes() -> dict:
+    """{YYYY-MM: ajustes} de las reglas AUTOMÁTICAS del ITCM para cada mes de
+    la historia, con la misma función que la tarjeta (itcm.ajustes_automaticos).
+
+    Hoy es sólo la regla del saldo comercial (ADR-0056 / ADR-0404): un
+    superávit que se explica sobre todo por caída de importaciones se penaliza.
+    Necesita la composición expo/impo de 12 meses de ese mes y del mismo mes
+    del año anterior, que se guarda como `saldo_comercial_expo_12m` y
+    `saldo_comercial_impo_12m` en las series de macro. Un mes sin esa
+    composición queda sin ajuste — no se reconstruye desde el saldo en % del
+    comercio redondeado. Los overrides manuales del analista no entran: rigen
+    sólo para la tarjeta del mes."""
+    series = _cargar_series_itcm()
+    m = lambda k: _mensual(series.get(k) or [])
+    saldo = m("saldo_comercial_12m")
+    expo, impo = m("saldo_comercial_expo_12m"), m("saldo_comercial_impo_12m")
+    out = {}
+    for ym, valor in saldo.items():
+        prev = _ym_menos_12(ym)
+        if valor is None or not all(k in d for d in (expo, impo) for k in (ym, prev)):
+            continue
+        if not expo[prev] or not impo[prev]:
+            continue
+        ind = {"valor": valor,
+               **itcm.composicion_saldo(expo[ym], expo[prev], impo[ym], impo[prev])}
+        ajustes = itcm.ajustes_automaticos({"saldo_comercial_12m": ind})
+        if ajustes:
+            out[ym] = ajustes
+    return out
+
+
 LINEA_BASE_YM = "2023-12"
 
 
@@ -513,7 +548,8 @@ def _anotar_dimensiones(acumulador: dict, ym: str, r: dict) -> None:
 
 
 def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
-                    hasta: str | None = None, dimensiones: dict | None = None) -> dict:
+                    hasta: str | None = None, dimensiones: dict | None = None,
+                    ajustes_por_mes: dict | None = None) -> dict:
     """Reconstruye la serie y descarta los meses que no llegan al piso.
 
     Se descarta en vez de publicar-con-advertencia porque el consumidor de esto
@@ -526,13 +562,17 @@ def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
     tampoco deja punto de dimensión. Que las dos series compartan la exclusión
     no es un detalle — publicar la dimensión de un mes que el índice descartó
     sería publicar la parte de un número que se decidió no publicar.
+
+    `ajustes_por_mes`, si viene, pasa a `calcular(valores, ajustes)` los
+    ajustes automáticos de cada mes (las reglas que la tarjeta también aplica).
     """
     out = {}
     for ym, valores in valores_por_mes.items():
         if hasta and ym > hasta:
             print(f"  [i] serie {nombre}: {ym} excluido por mes en curso (incompleto)")
             continue
-        r = calcular(valores)
+        ajustes = (ajustes_por_mes or {}).get(ym)
+        r = calcular(valores, ajustes) if ajustes else calcular(valores)
         if not r:
             continue
         cobertura = _cobertura_de_peso(r)
@@ -548,7 +588,8 @@ def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
 
 def construir_serie_itcm(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista). Los insumos
+    (mismo motor, puntaje interpolado, sin overrides del analista pero CON las
+    reglas automáticas que aplica la tarjeta: `_ajustes_itcm_por_mes`). Los insumos
     se derivan del catálogo activo; IAI incluye la dimensión de inversión.
     Reservas netas solo desde jun-2024 (límite de fuente documentado).
 
@@ -557,7 +598,8 @@ def construir_serie_itcm(dimensiones: dict | None = None) -> dict:
     que todos los componentes tengan dato para ese mes. Se aplica el piso de
     cobertura y se conserva la composición mensual efectivamente observada."""
     return _serie_con_piso("ITCM", _valores_itcm_por_mes(), itcm.calcular_itcm,
-                           dimensiones=dimensiones)
+                           dimensiones=dimensiones,
+                           ajustes_por_mes=_ajustes_itcm_por_mes())
 
 
 # Pares cuyo acoplamiento es DE DISEÑO, con el motivo. No son hallazgos: que

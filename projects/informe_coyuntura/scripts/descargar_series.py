@@ -318,6 +318,22 @@ def fetch_saldo_12m_usd_serie(limit: int = 60) -> list:
     return [[f, round(ex - im, 1)] for f, ex, im in _ica_12m(limit)]
 
 
+def fetch_expo_12m_serie(limit: int = 60) -> list:
+    """Exportaciones acumuladas de 12 meses (millones de USD). Junto con las
+    importaciones, es la composición que la regla automática del saldo
+    comercial (ADR-0056) necesita para reconstruir la historia del ITCM con la
+    misma regla que la tarjeta: el saldo en % del comercio no alcanza para
+    saber si el superávit vino de exportar más o de importar menos.
+    [[YYYY-MM-01, M USD]]. No puntúa ni se muestra."""
+    return [[f, round(ex, 1)] for f, ex, im in _ica_12m(limit)]
+
+
+def fetch_impo_12m_serie(limit: int = 60) -> list:
+    """Importaciones acumuladas de 12 meses (millones de USD); ver
+    `fetch_expo_12m_serie`. [[YYYY-MM-01, M USD]]."""
+    return [[f, round(im, 1)] for f, ex, im in _ica_12m(limit)]
+
+
 def _tesoro_por_mes() -> dict:
     """Mapa {YYYY-MM: dep. Tesoro en USD (M)} del Balance Consolidado del BCRA,
     para componer la serie histórica de reservas netas."""
@@ -963,6 +979,10 @@ MACRO_DERIVADAS = [
     ("saldo_comercial_12m", "% del comercio (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_serie),
     # el mismo saldo en dólares: acompaña a la cuenta corriente en el modal (ADR-0404)
     ("saldo_comercial_12m_usd", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_usd_serie),
+    # composición del saldo para la regla automática en la historia del ITCM
+    # (ADR-0056): validacion_externa._ajustes_itcm_por_mes las lee
+    ("saldo_comercial_expo_12m", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_expo_12m_serie),
+    ("saldo_comercial_impo_12m", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_impo_12m_serie),
     # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
     ("reservas_bcra", "millones de dólares netos", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
