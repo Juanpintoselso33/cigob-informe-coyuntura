@@ -190,7 +190,7 @@ PROCEDENCIA = {
     "ipc_total": ("conceptual", "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual"),
     "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
     "desequilibrio_monetario": ("convencion", "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"),
-    "recaudacion": ("conceptual", "anclas sobre el nivel real desestacionalizado de la base imponible (100 = 4T-2023, ADR-0152); los cortes históricos de variación real en torno al cero caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
+    "recaudacion": ("conceptual", "anclas sobre el nivel real desestacionalizado de la base imponible (100 = 4T-2023, ADR-0152): pasos de 10 puntos de esa base (80/90/100/110), fijados sobre la grilla y no sobre la distribución observada"),
     "saldo_comercial_12m": ("historia_larga", "en % del comercio, centro en el equilibrio (0 → 50) y cortes en 1, 1,5 y 2 desvíos (8,48 pp) de ene-2004 a nov-2023; techo institucional 85 (ADR-0120, ADR-0404)"),
     "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),
     "idc": ("conceptual", "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"),

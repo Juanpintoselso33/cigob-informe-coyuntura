@@ -24,10 +24,6 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    mover; el resto de las escalas calibradas sobre el propio mandato ya pasó a historia
    previa). Fuente: auditoría del 28-oct, B2. Estado: decidir si se llevan a historia
    previa o se dejan declaradas.
-2. **Restos del bloque C de la auditoría del 28-oct.** Verificado el 29-oct en fichas.ts,
-   datos.ts, itcp.py y procedencia_anclas.py: los textos públicos ya están corregidos. Quedan
-   sólo dos comentarios internos del código, que no se publican (itcp.py «CAC y CAME»;
-   procedencia_anclas.py, recaudación «en torno al cero»). Se arreglan en la próxima tanda.
 
 ## 2. Para la reunión con Luis
 
@@ -116,6 +112,10 @@ Ideas (nada de esto se arranca solo):
 ---
 
 ## 6. Hecho
+
+- Internos, 1-nov: los dos comentarios del bloque C (itcp.py «CAC y CAME»; procedencia_anclas.py,
+  recaudación «en torno al cero») corregidos, y `verificacion_remediacion.py` al día (decretos con
+  ADR-0415, saldo empresario vuelto por ADR-0310, IAF fuera por ADR-0378): pasa.
 
 - Decretos por ley sin tratados y con todos los DNU (ADR-0415, f1d1a6a2; Juan: «Aplicarlo», 29-oct). Ley 26.745 (BID) contada como no tratado (Juan, «Sí»). Se dejan los DNU de rutina; los delegados no se suman.
 - Vetos insistidos (Marcos, 31-oct, «3 insistencias Congreso quebraron veto MILEI»): el registro tiene las mismas tres (Discapacidad 4-sep-2025; Universitario y Garrahan 2-oct-2025). La tarjeta da 0 porque cuenta 12 meses y ya salieron de la ventana. Juan, 1-nov: se dejan los 12 meses y se le explica a Marcos.

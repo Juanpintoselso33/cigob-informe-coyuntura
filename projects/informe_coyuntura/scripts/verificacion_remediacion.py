@@ -30,8 +30,10 @@ OCULTOS = {"macro": publicar.MACRO_OCULTOS, "politica": publicar.POLITICA_OCULTO
 
 # Lo que cada entrega decidió, para poder verificarlo contra el snapshot y no
 # contra la memoria de quien lo revisa.
+# `apoyo_empresario` estuvo suspendido (ADR-0246) y volvió con el corpus
+# cerrado (ADR-0310): ya no se controla como suspendido.
 SUSPENDIDOS = {
-    "apoyo_empresario": "0246", "reestructuracion_organismos": "0247",
+    "reestructuracion_organismos": "0247",
     "sentimiento_digital": "0248", "judicializacion": "0255",
 }
 # Un indicador cuya auditoría verificó un MES concreto no se controla contra la
@@ -50,13 +52,18 @@ VALORES_EN_SERIE = {            # indicador: (mes, valor, tolerancia, ADR)
     # de la otra. El punto verificado es el último que tenía la SERIE
     # (`web/src/data/series.json`) al mudar este control.
     "icc_utdt": ("2026-08", 40.2, 0.15, "0242"),
+    # `ratio_dnu` y `credito_privado` pasaron de la card a un mes de la serie
+    # el 1-nov-2026: la card avanza con el calendario. Decretos se mide desde
+    # ADR-0415 con DNU y delegados sobre leyes del Ejecutivo sin tratados; el
+    # punto es el último mes cerrado al cambiar este control.
+    "ratio_dnu": ("2026-09", 2.5, 0.06, "0415"),
+    "credito_privado": ("2026-09", -0.6, 0.15, "0251"),
 }
 
 VALORES_ESPERADOS = {           # indicador: (valor, tolerancia, ADR)
-    "iaf_transferencias": (1.6, 0.15, "0239"),
-    "ratio_dnu": (1.48, 0.06, "0241"),
+    # `iaf_transferencias` salió del perímetro: lo reemplazaron las
+    # transferencias no automáticas (ADR-0378).
     "concesiones_infraestructura": (100.0, 0.6, "0244"),
-    "credito_privado": (-1.5, 0.8, "0251"),
 }
 IDS_MUERTOS = ("pluriempleo",)
 UNIDADES_ESPERADAS = {

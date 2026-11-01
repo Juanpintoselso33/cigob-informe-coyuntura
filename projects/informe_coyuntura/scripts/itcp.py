@@ -849,7 +849,8 @@ DIMENSIONES_ITCP = {
         # postura pública de la industria hasta que se sumen las cámaras del
         # campo, el comercio y la tecnología (pendiente decidido).
         #
-        # ADR-0380 (2026-10-27): se suma el comercio (CAC y CAME), a partes
+        # ADR-0380 (2026-10-27): se suma el comercio (la CAC; CAME quedó codificada
+        # pero fuera del perímetro), a partes
         # iguales con la industria. Es el primer paso del pendiente de ADR-0372 —
         # sumar sectores—; el campo y la tecnología quedan para más adelante
         # porque ninguna de sus cámaras tiene hoy un corpus completo desde
