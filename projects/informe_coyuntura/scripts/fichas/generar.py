@@ -443,12 +443,26 @@ for n, (ikey, o) in enumerate(ind.items(), 1):
               "donde 100 equivale a tensión 5; no es un índice temporal base 100.")
             titulo_rango = "Rango (índice de asequibilidad; 100 = tensión 5)"
         else:
-            w("Este cinturón no usa tablas de bandas por indicador: el componente entra "
-              "como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el "
-              "arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, "
-              "deterioro. El color se lee sobre ese número rebaseado, no sobre el valor "
-              "en su unidad original.")
-            titulo_rango = "Rango (índice base 100 = 4º trim. 2023)"
+            # La base sale de lo que el snapshot declara para ESTE componente
+            # (`aporte_formula`, que arma publicar.py): no es siempre el 4T-2023.
+            m_base = re.search(r"frente (a la|al|a el|a) (.+?): ", o.get("aporte_formula") or "")
+            if m_base:
+                art = {"a el": "al"}.get(m_base.group(1), m_base.group(1))
+                base_txt = f"{art} {m_base.group(2)}"
+                if base_txt == "a 4º trimestre de 2023":
+                    base_txt = "al promedio del 4º trimestre de 2023, el arranque del mandato"
+                w("Este cinturón no usa tablas de bandas por indicador: el componente entra "
+                  f"como un número rebaseado a 100 frente {base_txt}. Por encima de 100 hay "
+                  "mejora; por debajo, deterioro. El color se lee sobre ese número "
+                  "rebaseado, no sobre el valor en su unidad original.")
+                titulo_rango = ("Rango (índice base 100 = 4º trim. 2023)"
+                                if "4º trimestre de 2023" in base_txt else "Rango (índice base 100)")
+            else:
+                w("Este cinturón no usa tablas de bandas por indicador: el componente entra "
+                  "como un número rebaseado a 100. Por encima de 100 hay mejora; por debajo, "
+                  "deterioro. El color se lee sobre ese número rebaseado, no sobre el valor "
+                  "en su unidad original.")
+                titulo_rango = "Rango (índice base 100)"
         w("")
         w("**Valores que definen cada color**")
         w("")
@@ -469,8 +483,8 @@ for n, (ikey, o) in enumerate(ind.items(), 1):
         w(f"- {duro}")
     else:
         w(f"- El informe publica el valor ({coma(o.get('valor'))} {o.get('unidad') or ''}) "
-          "pero no los números que lo componen: la fuente entrega la serie ya calculada. "
-          "Para auditar el dato hay que ir a la operación estadística citada más arriba.")
+          "pero no los números que lo componen. "
+          "Para auditar el dato hay que ir a la fuente citada más arriba.")
     w("")
     por_que = sem.get("por_que")
     if not por_que and indice is not None:

@@ -2894,6 +2894,9 @@ METODO_OBTENCION_EXCEPCIONES = {
     "fal_modernizacion_laboral": "semiautomatico",
     "protocolo_antipiquetes": "semiautomatico",
     "privatizaciones": "manual",
+    # El alquiler de UdeSA se carga a mano cada mes desde el informe de la
+    # universidad (cargar_alquiler_udesa.py; ADR-0386 y ADR-0411).
+    "alquiler_udesa_real": "manual",
 }
 
 

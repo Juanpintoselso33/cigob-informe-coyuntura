@@ -178,7 +178,7 @@ export const FICHAS: Record<string, Ficha> = {
     resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Parte de sus pesos y escalas vienen del documento institucional de CiGob y el resto es elaboración propia, documentada en cada ficha.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales, sector externo, financiamiento, y actividad e inversión.",
-      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial, las reservas y el cruce del tipo de cambio real con los términos del intercambio), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman una parte considerable del índice (su peso se ve en la composición del índice). El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
+      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen las dimensiones de precios, cuentas fiscales, financiamiento y actividad y los umbrales de los indicadores originales. El resto es elaboración propia: el sector externo (que reúne el saldo comercial y el cruce del tipo de cambio real con los términos del intercambio; las reservas netas están en la estabilidad monetaria-inflacionaria), la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman una parte considerable del índice (su peso se ve en la composición del índice). El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
       "Criterio de selección: fuentes públicas oficiales (Instituto Nacional de Estadística y Censos [INDEC], Banco Central de la República Argentina [BCRA], Agencia de Recaudación y Control Aduanero [ARCA]), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), con dos excepciones: las reservas netas, porque el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024, y el desequilibrio monetario, que arranca en abril de 2025 con la apertura del cepo a personas humanas.",
@@ -194,7 +194,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Hasta julio de 2026 el puntaje era escalonado (toda la banda valía lo mismo). El análisis de sensibilidad midió que esos escalones aportaban el doble de incertidumbre que los pesos y creaban saltos de 15–25 puntos entre valores casi iguales; la interpolación los elimina sin tocar los umbrales institucionales.",
     ],
     agregacion: {
-      latex: String.raw`\text{índice macroeconómico}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
+      latex: String.raw`\text{índice macroeconómico}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)\\ \text{salvo en el sector externo, donde el tipo de cambio real y los términos del intercambio se cruzan en una matriz en vez de promediarse}`,
       leyenda: "Promedio ponderado en dos niveles: primero dentro de cada dimensión (pesos internos), después entre dimensiones (pesos institucionales: estabilidad monetaria 31,44 %, cuentas fiscales 19,2 %, sector externo 15,8 %, financiamiento 10,56 % y actividad 23 %). La excepción es el cruce del tipo de cambio real con los términos del intercambio, dentro del sector externo: no promedia sus dos indicadores, los cruza en una matriz de cuatro esquinas.",
       parrafos: [
         "No hay pesos implícitos: la composición completa — dimensiones, pesos, puntajes del mes — se publica en la tabla de abajo y en la página del cinturón.",
@@ -214,7 +214,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el índice macroeconómico mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice macroeconómico: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice macroeconómico: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador del cinturón publica su propia ficha, su fórmula y su tensión equivalente — cómo se leería el cinturón si solo existiera ese indicador —, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -1635,7 +1635,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Mide lo que una cámara decidió declarar en público, no el humor de las constructoras ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
-      "Se pronuncia poco sobre el Gobierno nacional: dieciséis veces desde diciembre de 2023 y cuatro en los últimos doce meses, el mínimo para entrar. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo.",
+      "Se pronuncia poco sobre el Gobierno nacional: pocas veces desde diciembre de 2023; los conteos de los últimos doce meses y el mínimo para entrar se ven en la tarjeta. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo.",
       "En 42 de las 600 notas los dos lectores no coincidieron. Dos los resolvió una persona (Juan, el 27 de octubre de 2026); los otros 40 no decidían el puntaje de la ventana en la que se clasificaron, siguen sin resolver y no cuentan hasta que alguien los resuelva. Casi todos son discursos de sus delegaciones en actos provinciales.",
       "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta las notas nuevas y avisa cada una como pendiente; mientras haya una sin clasificar la serie no avanza.",
       "Para verificar que las reglas no dejan lugar a la interpretación, las notas las clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 99% de las posturas y en el 94% de los destinatarios (kappa de 0,90 y 0,85). Ambos son sistemas de inteligencia artificial, de dos modelos distintos, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta.",
@@ -2956,7 +2956,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "concesiones_infraestructura",
     cinturon: "gestion",
-    rezago: "Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo.",
+    rezago: "Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la última consulta a CONTRAT.AR; si esa consulta no está disponible, la de la resolución más reciente registrada. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo.",
     fuente: {
       organismo: "Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector",
       operacion: "Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella.",
@@ -3172,7 +3172,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y sigue siendo el componente más pesado del índice (su peso vigente está en la composición del índice, arriba).",
+      "Pertenece a la dimensión de ingresos (su peso vigente está en la composición del índice, arriba).",
       "El índice de impacto social promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
@@ -3308,7 +3308,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Es el componente secundario de vulnerabilidad financiera; la mora conserva el mayor peso porque es directa, mensual y más fresca.",
-      "La correlación alta en niveles con la mora (+0,883) refleja la crisis compartida, pero en cambios mensuales baja a +0,182: la carga anticipa presión y la mora confirma incumplimiento.",
+      "La correlación en niveles con la mora es alta porque ambas reflejan la misma crisis, pero baja mucho al mirar los cambios mensuales: la carga anticipa presión y la mora confirma incumplimiento.",
     ],
     limitaciones: [
       "El denominador cubre masa salarial registrada: no representa directamente a hogares informales o sin ingresos salariales.",
@@ -4097,7 +4097,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Cubre comercio registrado de cadenas de supermercados: no ve el almacén de barrio, la feria ni el comercio informal, que es justamente donde se refugia parte del gasto cuando el ingreso se estrecha.",
       "Tampoco ve el traslado de compras al canal mayorista y de descuento. Ese canal se mueve en sentido contrario —comprar ahí es señal de ajuste, no de holgura— y por eso no se suma a este componente; se sigue publicando aparte, en el panel de contraste externo del cinturón.",
-      "«A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado y medido: entre los dos la correlación es +0,558 en niveles y +0,058 al mirar los cambios mes a mes.",
+      "«A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado.",
       "Mide cantidad vendida, no calidad de lo comprado: un carrito que cambia primera marca por segunda a igual volumen se registra igual.",
     ],
     faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la tarjeta a un mes anterior, que es peor que no actualizarla.",
@@ -4156,7 +4156,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La solidez del índice se sostiene en los otros dos controles que se publican en cada edición: cuánta información distinta aporta cada componente (redundancia) y cuánto se mueve el resultado si cambian los pesos (sensibilidad). Por el mismo motivo el índice de gestión no figura en la matriz de validación cruzada.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice de gestión: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice de gestión: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador publica su ficha, su fórmula, su tensión equivalente y los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -4331,7 +4331,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Participa además de la matriz de validación cruzada que compara a la vez los tres índices del informe que tienen contraste externo —índice macroeconómico, índice de impacto social e índice político— contra sus tres anclas, publicada en la página del cinturón. El índice de gestión no participa: un índice de ejecución no tiene contraste externo.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice político: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice político: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
