@@ -224,18 +224,22 @@ def test_un_pendiente_sin_codificar_ya_cuenta_como_publicar(corpus):
 
 # ── el caso vivo, contra el corpus versionado ───────────────────────────────
 
-def test_el_caso_real_de_aea_dispara_hoy():
+def test_el_caso_real_de_aea_ya_no_esta_muda():
     # Contra el inventario VIVO, la fecha de evaluación no puede quedar antes del
     # último comunicado registrado: con HOY fijo en el 20-sep, el comunicado de
     # la UIA del 23-sep daba silencio negativo («fecha futura», no evaluable) y
     # tiró la corrida nocturna del 26 al 28-sep sin que nada estuviera mal.
+    #
+    # ADR-0332 midió a AEA muda desde el 31-mar-2026. El 27-oct-2026 volvió a
+    # publicar («La libertad de prensa y el respeto institucional…»): el silencio
+    # terminó y el aviso se cierra solo. AEA sigue fuera del cálculo por decisión
+    # de Juan (ADR-0334); este test ya no puede afirmar que sigue muda.
     ultimos = [max(f) for f in politica._apoyo_fechas_del_inventario().values() if f]
     hoy = max([HOY] + [date.fromisoformat(u) for u in ultimos])
     s = politica.silencio_por_camara(hoy)
     assert s["AEA"]["evaluable"], f"AEA quedó sin evaluar: {s['AEA'].get('motivo')}"
-    assert s["AEA"]["ultimo"] == "2026-03-31"
-    assert s["AEA"]["silencio"] > s["AEA"]["umbral"], (
-        "si AEA volvió a publicar, este test tiene que fallar: quiere decir que el "
-        "hallazgo de ADR-0332 dejó de estar vigente y hay que revisar el ADR")
+    assert s["AEA"]["ultimo"] >= "2026-10-27"
+    assert "AEA" not in politica.APOYO_CAMARAS_PERIMETRO, (
+        "AEA volvió al cálculo: eso lo decide Juan y lleva ADR (ADR-0334)")
     assert s["UIA"]["evaluable"] and s["UIA"]["silencio"] <= s["UIA"]["umbral"], (
-        "UIA también quedó muda o sin evaluar: es un hallazgo nuevo, no este")
+        "UIA quedó muda o sin evaluar: es un hallazgo nuevo")

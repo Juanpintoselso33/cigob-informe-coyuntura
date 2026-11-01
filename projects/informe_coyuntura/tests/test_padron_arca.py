@@ -114,8 +114,8 @@ def test_el_registro_guarda_un_valor_por_mes_el_mas_nuevo():
 
 def test_el_registro_versionado_es_valido_y_no_guarda_cuit():
     meses = pa.leer_registro()
-    assert "2026-10" in meses and meses["2026-10"]["empleadores"] == 511847
-    assert meses["2024-08"]["empleadores"] - meses["2026-10"]["empleadores"] == 41210
+    assert "2026-10" in meses and meses["2026-10"]["empleadores"] == 509806
+    assert meses["2024-08"]["empleadores"] - meses["2026-10"]["empleadores"] == 43251
     crudo = (RAIZ / "data/vida/arca_empleadores.json").read_text(encoding="utf-8")
     assert "cuit" not in {k for m in json.loads(crudo)["meses"].values() for k in m}
 

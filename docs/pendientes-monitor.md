@@ -67,14 +67,9 @@ transferencias y bandas ya los resolvió Juan con ADR (ver «Hecho»).
 
 ## 3. Esperan a otro
 
-1. **Documento de Ever** (Luis, acuerdos del 26-oct: «Luis le pasa el documento de Ever»; punto
-   30). Con él se decide el resto de la Encuesta Permanente de Hogares: desocupación,
-   subocupación, ingresos. Nota: «el resto espera a Ever» no es un pedido en sí; lo acordado en
-   empleo (ocupación como principal) ya está hecho.
-2. **Rubros excluidos de las transferencias no automáticas** (Luis los revisa; ADR-0378, punto 26).
-3. **Victimización** (fuente: Universidad Torcuato Di Tella): no publicó desde el informe de
+1. **Victimización** (fuente: Universidad Torcuato Di Tella): no publicó desde el informe de
    julio (subido el 5-ago). Ver sección 4.
-4. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
+2. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
    llegar al mínimo de comunicados (ADR-0391); entran si lo llegan.
 
 ## 4. Con fecha y cargas mensuales
@@ -123,6 +118,7 @@ Ideas (nada de esto se arranca solo):
 ## 6. Hecho
 
 - Decretos por ley sin tratados y con todos los DNU (ADR-0415, f1d1a6a2; Juan: «Aplicarlo», 29-oct). Ley 26.745 (BID) contada como no tratado (Juan, «Sí»). Se dejan los DNU de rutina; los delegados no se suman.
+- Vetos insistidos (Marcos, 31-oct, «3 insistencias Congreso quebraron veto MILEI»): el registro tiene las mismas tres (Discapacidad 4-sep-2025; Universitario y Garrahan 2-oct-2025). La tarjeta da 0 porque cuenta 12 meses y ya salieron de la ventana. Juan, 1-nov: se dejan los 12 meses y se le explica a Marcos.
 - Revisión de gestión de Marcos (30-oct): litigiosidad, insistencia y decretos derogados «está bien». Cortes: «Por qué importa» con el texto de Marcos. FAL: se deja como está (Juan, 30-oct); el 54 del mensual es el corte a septiembre, con 3 de 5 hitos.
 - Gasto de funcionamiento: los sueldos se quedan (Juan, 29-oct: «yo diría que no»); la ficha ya lo declara.
 - Rótulos de los alquileres: «Alquiler real (INDEC)» y «Alquiler real (Universidad de San Andrés – Mercado Libre)» (Juan, 29-oct; commit 2dff1ea3).

@@ -53,13 +53,13 @@
       "url": "https://web.archive.org/web/20240830074549id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
     },
     "2026-10": {
-      "fecha_archivo": "2026-10-24",
-      "empleadores": 511847,
-      "juridicas": 290897,
-      "humanas": 220950,
-      "monotributistas": 44720,
-      "blanco": 48391,
-      "cuit_total": 6211641
+      "fecha_archivo": "2026-10-31",
+      "empleadores": 509806,
+      "juridicas": 290182,
+      "humanas": 219624,
+      "monotributistas": 44145,
+      "blanco": 48274,
+      "cuit_total": 6190311
     }
   }
 }

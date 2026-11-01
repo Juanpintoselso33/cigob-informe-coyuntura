@@ -204,7 +204,7 @@ def guardar_registro(meses: dict, path: Path = REGISTRO) -> None:
     cuerpo = {
         "fuente": URL_PAGINA,
         "nota": "Un valor por mes: el del último archivo visto. ARCA reemplaza el archivo cada "
-                "semana y no conserva historia, por eso el registro mensual arranca en oct-2026; lo anterior son tres copias del Wayback (ver `url`, reproducibles con scripts/vida_cotidiana/padron_arca_backfill.py). "
+                "semana y no conserva historia, por eso el registro mensual arranca en oct-2026; lo anterior son cinco copias del Wayback (ver `url`, reproducibles con scripts/vida_cotidiana/padron_arca_backfill.py). "
                 "Cuenta CUIT con la marca de empleador activa (ADR-0389). Sin CUIT individuales.",
         "meses": meses,
     }

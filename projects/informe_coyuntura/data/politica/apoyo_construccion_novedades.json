@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 892,
+  "comunicados_vistos": 901,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-10-29",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-10-29"
+  "inventario_verificado": "2026-11-01",
+  "nuevos_en_la_corrida": 5,
+  "ultima_corrida": "2026-11-01"
  },
  "pendientes": {
   "CAMARCO|49378": {
@@ -20,6 +20,61 @@
    "texto": "Dirigentes jóvenes de la construcción de todo el país participaron del VII Summit de CAMARCO Joven, un espacio de encuentro, formación y networking pensado para fortalecer el liderazgo de las nuevas generaciones del sector. \n La apertura estuvo a cargo de Juan Gallará, Presidente de CAMARCO Joven, quien dio inicio a una agenda que combinó exposiciones de referentes empresariales, espacios de debate y actividades para fomentar la integración entre los participantes.\n Uno de los momentos centrales del encuentro fue “CAMARCO Joven Federal” , una dinámica en la que las delegaciones de todo el país compartieron iniciativas, experiencias y desafíos propios de cada región.\n La agenda incluyó una presentación sobre las nuevas tendencias en comercio electrónico aplicadas a la industria de la construcción, a cargo de César Felgueras y María Florencia Convertini, de Mercado Libre, así como también un panel integrado por Franco Mignacco, chair del Comité de Accionistas de EXAR, y Francisco Paolini, CEO de Grupo Paolini, quienes analizaron la coyuntura económica y los desafíos de la matriz productiva argentina.\n Además, el politólogo y empresario Rosendo Grobocopatel compartió reflexiones sobre liderazgo y la construcción de proyectos colectivos, mientras que Federico Lufft, vicepresidente de Milicic, abordó los procesos de transformación empresarial, con foco en la continuidad, la innovación y la construcción de legado en las organizaciones.\n El Summit concluyó con un espacio de networking que permitió consolidar vínculos entre jóvenes empresarios y dirigentes de distintas provincias, promoviendo el intercambio de ideas y la generación de nuevas oportunidades de colaboración.\n Con una participación federal y una agenda orientada al desarrollo de capacidades de liderazgo, el VII Summit de CAMARCO Joven volvió a consolidarse como uno de los principales espacios de encuentro para quienes trabajan en la construcción del futuro del sector en todo el país.",
    "titulo": "Se realizó el VII Summit de CAMARCO Joven en Bariloche",
    "url": "https://www.camarco.org.ar/2026/10/28/se-realizo-el-vii-summit-de-camarco-joven-en-bariloche/"
+  },
+  "CAMARCO|49396": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-29",
+   "id": "49396",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La solidaridad también construye. La Cámara Argentina de la Construcción, acompaña a la Delegación Corrientes , que organiza la campaña solidaria “Construyamos Puentes de Solidaridad” e invita a participar a las empresas asociadas de todo el país y a la comunidad.\n Como consecuencia de las inundaciones en la provincia, la Delegación Corrientes propone esta iniciativa de dos etapas, destinada a acompañar y brindar asistencia a las familias afectadas de las zonas de Ituzaingó, Isla Apipé, Paso de la Patria e Itatí.\n El objetivo de la Etapa 1 , que finaliza el 10 de diciembre, busca recolectar alimentos y diferentes productos de higiene y limpieza.\n La Etapa 2 consistirá en recuperar las viviendas afectadas.\n Etapa 1: la recepción de donaciones se extenderá hasta el 10 de diciembre.\n Alimentos y agua: agua mineral en botellas de 1,5 litros, leche en polvo, arroz, fideos, polenta, yerba y azúcar.\n Higiene y limpieza: jabón de tocador, lavandina, detergente, repelente para mosquitos y bolsas de residuos reforzadas.\n Otros elementos: colchones nuevos de una plaza, almohadas nuevas y ropa usada de niños y adultos, limpia, clasificada y en buen estado .\n CAMARCO Corrientes coordinará la recepción, el registro y la entrega de los elementos. La ropa será destinada a Cáritas y para las zonas de difícil acceso, se buscará coordinar el traslado con Prefectura Naval Argentina. No se entregará dinero a las personas ni a las instituciones destinatarias. \n Los puntos de recepción son: \n Sede CAMARCO Corrientes , Mendoza 341, Corrientes Capital.\n Se recibirán alimentos, vestimenta (en buenas condiciones) y productos de limpieza e higiene personal.\n Depósitos de ARCA S.A. , Avenida Maipú 5050, Corrientes Capital.\n Se recibirán colchones y almohadas.\n Aportes económicos \n Para quienes opten por donar dinero, se habilitará una cuenta específica. Su CBU se comunicará posteriormente. Los aportes se destinarán exclusivamente a adquirir los elementos incluidos en la campaña. \n Consultas y coordinación de donaciones: \n Sr. Daniel – CAMARCO Delegación Corrientes\n Mendoza 341, Corrientes Capital\n Teléfono: 379 432-9295\n Correo: corrientes@delegaciones.camarco.org.ar",
+   "titulo": "Construyamos Puentes de solidaridad | Campaña solidaria",
+   "url": "https://www.camarco.org.ar/2026/10/29/construyamos-puentes-de-solidaridad-campana-solidaria/"
+  },
+  "CAMARCO|49460": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-30",
+   "id": "49460",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Asociación Argentina de Tecnología Nuclear (AATN) realizará una nueva edición de su Congreso Anual los días 11, 12 y 13 de noviembre de 2026 en el Parque de Innovación de la Ciudad Autónoma de Buenos Aires .\n El encuentro reunirá a profesionales, investigadores, representantes de instituciones públicas y privadas, y empresas vinculadas al sector nuclear, consolidándose como un espacio de referencia para el intercambio de conocimientos, experiencias y perspectivas sobre el presente y el futuro de esta actividad estratégica.\n Bajo el lema “Tecnología que impulsa el futuro” , el Congreso abordará temas vinculados con la innovación tecnológica, el desarrollo del sector, la vinculación entre actores de la cadena de valor y las oportunidades que generan los proyectos nucleares para distintas disciplinas, entre ellas la construcción, la ingeniería y la infraestructura.\n El programa incluirá conferencias de especialistas, espacios de networking y actividades orientadas a promover el intercambio entre empresas, organismos, instituciones académicas y referentes de la industria.\n Más información e inscripciones en www.aatn.org.ar",
+   "titulo": "Congreso Anual AATN 2026",
+   "url": "https://www.camarco.org.ar/2026/10/30/congreso-anual-aatn-2026/"
+  },
+  "CAMARCO|49464": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-30",
+   "id": "49464",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Presentamos el nuevo sitio web del Ciclo CAMARCO 2026: Construyamos Puentes , un espacio que permite recorrer los encuentros, debates y reflexiones que formaron parte de esta iniciativa desarrollada en el marco de los 90 años de la institución.\n La plataforma reúne presentaciones, paneles, conversatorios y materiales de consulta vinculados a los cuatro ejes temáticos que guiaron el Ciclo:\n * Infraestructura para la Competitividad\n* Nuevos Modelos de Financiamiento en Infraestructura\n* Política Pública\n* Perspectiva Institucional\n A lo largo del año, referentes del sector público, privado, académico y de la sociedad civil compartieron experiencias, diagnósticos y propuestas en distintos puntos del país, promoviendo el intercambio de ideas y la construcción de consensos para el desarrollo de la Argentina.\n El nuevo sitio ofrece la posibilidad de explorar los contenidos por temática, revivir cada encuentro federal y acceder a las exposiciones y paneles que marcaron esta edición.\n De esta manera, CAMARCO pone a disposición una herramienta que preserva y amplía el alcance de las conversaciones impulsadas durante el Ciclo, invitando a todos los interesados a continuar reflexionando sobre los desafíos y oportunidades que enfrenta el sector.\n Accedé al sitio y explorá el recorrido completo del Ciclo CAMARCO 2026:\n https://www.camarco.org.ar/ciclo-2026/",
+   "titulo": "Todo el Ciclo CAMARCO 2026, ahora en un solo lugar",
+   "url": "https://www.camarco.org.ar/2026/10/30/todo-el-ciclo-camarco-2026-ahora-en-un-solo-lugar/"
+  },
+  "CAMARCO|49472": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-30",
+   "id": "49472",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Se realizará “La Pampa Negocios 360” , un espacio organizado por la provincia de La Pampa y el Consejo Federal de Inversiones (CFI), pensado para conectar inversores, empresas y actores estratégicos con oportunidades concretas de inversión en la provincia.\n El evento está pensado para generar vínculos, acercar proyectos y construir nuevas oportunidades a partir de la articulación entre el sector público y el sector privado.\n Será el jueves 5 de noviembre de 9 a 18 h en el Golden Center de Buenos Aires. \n Más información e inscripciones , AQUÍ .",
+   "titulo": "La Pampa Negocios 360",
+   "url": "https://www.camarco.org.ar/2026/10/30/la-pampa-negocios-360/"
+  },
+  "CAMARCO|49480": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-30",
+   "id": "49480",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Embajada de la República Oriental del Uruguay en la República Argentina invita a participar del I Foro Empresarial MERCOSUR–Unión Europea , que se realizará el próximo 2 de diciembre de 2026 en el Centro de Convenciones de Punta del Este, Uruguay .\n El encuentro es organizado por el Gobierno del Uruguay, en el marco de la Presidencia Pro Tempore del MERCOSUR, junto con la Unión Europea, y cuenta con el apoyo del Banco Interamericano de Desarrollo (BID), CAF (Banco de Desarrollo de América Latina y el Caribe), el Banco Europeo de Inversiones y Uruguay XXI.\n La iniciativa reunirá a autoridades y representantes del sector empresarial de ambos bloques con el objetivo de promover oportunidades de comercio, inversión y cooperación. Entre los principales temas de agenda se destacan la agroindustria sostenible, la innovación y competitividad digital, el financiamiento para proyectos productivos, la infraestructura, la logística, la energía y las energías renovables, así como el desarrollo de materias primas críticas.\n Además de los paneles temáticos, el Foro contará con espacios de networking y reuniones de negocios B2B orientadas a fomentar nuevos vínculos comerciales y proyectos de cooperación entre empresas de ambas regiones.\n Las empresas y entidades interesadas en participar pueden consultar el programa completo e inscribirse a través del sitio oficial del evento: https://foroempresarialmercosurue.com/",
+   "titulo": "I Foro Empresarial MERCOSUR–Unión Europea",
+   "url": "https://www.camarco.org.ar/2026/10/30/i-foro-empresarial-mercosur-union-europea/"
   }
  },
  "revisadas": {
@@ -2699,6 +2754,56 @@
   "CAMARCO|49378": {
    "fecha": "2026-10-28",
    "titulo": "Se realizó el VII Summit de CAMARCO Joven en Bariloche"
+  },
+  "CAMARCO|49396": {
+   "fecha": "2026-10-29",
+   "titulo": "Construyamos Puentes de solidaridad | Campaña solidaria"
+  },
+  "CAMARCO|49460": {
+   "fecha": "2026-10-30",
+   "titulo": "Congreso Anual AATN 2026"
+  },
+  "CAMARCO|49464": {
+   "fecha": "2026-10-30",
+   "titulo": "Todo el Ciclo CAMARCO 2026, ahora en un solo lugar"
+  },
+  "CAMARCO|49472": {
+   "fecha": "2026-10-30",
+   "titulo": "La Pampa Negocios 360"
+  },
+  "CAMARCO|49475": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Analista RR.HH"
+  },
+  "CAMARCO|49478": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Jefe/a de Taller"
+  },
+  "CAMARCO|49480": {
+   "fecha": "2026-10-30",
+   "titulo": "I Foro Empresarial MERCOSUR–Unión Europea"
+  },
+  "CAMARCO|49482": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Jefe/a de Equipos"
+  },
+  "CAMARCO|49485": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Jefe/a de Equipos"
+  },
+  "CAMARCO|49489": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Mecánico/a Vial"
+  },
+  "CAMARCO|49495": {
+   "fecha": "2026-10-30",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Mecánico/a Vial"
   }
  }
 }
