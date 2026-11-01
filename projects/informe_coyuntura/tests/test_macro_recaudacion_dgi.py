@@ -241,17 +241,22 @@ def test_el_texto_de_sentido_dice_cada_componente_por_separado():
     «la porción ligada a actividad (IVA + cheque) fue en sentido distinto», pero
     `diverge` sólo mira si ALGUNO tiene otro signo: el IVA fue en el mismo
     sentido. Y nombraba la aduana, que no integra la base (ADR-0127)."""
-    control = {"iva_diverge": False, "cheque_diverge": True, "diverge": True}
-    txt = macro._texto_sentido_componentes(control)
+    def c(agr, iva, chq, d_iva, d_chq):
+        return {"agregado_var_ia_real": agr, "iva_var_ia_real": iva, "cheque_var_ia_real": chq,
+                "iva_diverge": d_iva, "cheque_diverge": d_chq, "diverge": d_iva or d_chq}
+    txt = macro._texto_sentido_componentes(c(6.8, 1.6, -0.3, False, True))
     assert "IVA + cheque" not in txt and "aduana" not in txt.lower()
     assert txt == ("El impuesto al valor agregado fue en el mismo sentido que el "
                    "agregado y el cheque, en sentido distinto.")
-    ambos = macro._texto_sentido_componentes(
-        {"iva_diverge": True, "cheque_diverge": True, "diverge": True})
+    ambos = macro._texto_sentido_componentes(c(2.0, -1.0, -1.0, True, True))
     assert "los dos" in ambos and "aduana" not in ambos.lower()
-    ninguno = macro._texto_sentido_componentes(
-        {"iva_diverge": False, "cheque_diverge": False, "diverge": False})
+    # Hallazgo de Codex: con los dos en contra no se puede atribuir el movimiento al resto.
+    assert "resto" not in ambos
+    ninguno = macro._texto_sentido_componentes(c(2.0, 1.0, 1.0, False, False))
     assert "mismo sentido" in ninguno
+    # Agregado en cero con componentes que se compensan: se describe, no se atribuye.
+    cero = macro._texto_sentido_componentes(c(0.0, 10.0, -10.0, True, True))
+    assert cero == "El agregado no cambió; el impuesto al valor agregado subió y el cheque bajó."
 
 
 def test_control_tributario_publica_el_sentido_de_cada_componente():

@@ -97,8 +97,32 @@ def test_la_ventana_de_febrero_lee_tambien_las_actas_de_diciembre(colector, monk
         leidas.append(path)
         return SimpleNamespace(text='votos')
     monkeypatch.setattr(politica, '_paced_get', leer)
-    monkeypatch.setattr(politica, '_parsear_acta', lambda _: filas_validas())
+    # Diciembre y febrero votan distinto: si diciembre se descartara antes de
+    # agregar, el valor sería el de febrero solo (hallazgo de Codex sobre el test).
+    diciembre = [
+        {'nombre': 'A', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Córdoba', 'voto': 'AFIRMATIVO'},
+        {'nombre': 'D', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Salta', 'voto': 'AFIRMATIVO'},
+        {'nombre': 'E', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Jujuy', 'voto': 'NEGATIVO'},
+        {'nombre': 'B', 'bloque': 'OTRO', 'provincia': 'Córdoba', 'voto': 'AFIRMATIVO'},
+        {'nombre': 'C', 'bloque': 'OTRO', 'provincia': 'Salta', 'voto': 'NEGATIVO'},
+    ]
+    febrero = [
+        {'nombre': 'A', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Córdoba', 'voto': 'NEGATIVO'},
+        {'nombre': 'D', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Salta', 'voto': 'NEGATIVO'},
+        {'nombre': 'E', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Jujuy', 'voto': 'NEGATIVO'},
+        {'nombre': 'B', 'bloque': 'OTRO', 'provincia': 'Córdoba', 'voto': 'AFIRMATIVO'},
+        {'nombre': 'C', 'bloque': 'OTRO', 'provincia': 'Salta', 'voto': 'AFIRMATIVO'},
+    ]
+    monkeypatch.setattr(politica, '_parsear_acta',
+                        lambda text: diciembre if text == 'dic' else febrero)
+    monkeypatch.setattr(politica, '_paced_get',
+                        lambda _s, _b, path: (leidas.append(path), SimpleNamespace(text=path.rsplit('/', 1)[1]))[1])
     resultado = colector()
     assert sorted(pedidos) == [2025, 2026]
     assert sorted(leidas) == ['/votaciones/detalleActa/dic', '/votaciones/detalleActa/feb']
     assert resultado['fecha_dato'] == '2026-02-05'
+    if 'n_actas' in resultado:
+        assert resultado['n_actas'] == 2
+    por_anio[2025] = []
+    solo_febrero = colector()
+    assert solo_febrero['valor'] != resultado['valor']

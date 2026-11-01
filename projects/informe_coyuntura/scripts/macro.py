@@ -984,21 +984,26 @@ def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: di
 def _texto_sentido_componentes(control: dict) -> str:
     """Frase pública sobre el sentido de IVA-DGI y cheque frente al agregado.
 
-    Dice sólo lo que `_control_tributario` comprueba: el signo de CADA
-    componente por separado contra el del agregado. No afirma nada sobre la
-    suma IVA + cheque (no se calcula) ni nombra la aduana, que no integra la
-    base imponible (ADR-0127)."""
+    Dice sólo lo que `_control_tributario` comprueba: cómo se movió CADA
+    componente y si fue en el sentido del agregado. No atribuye el movimiento
+    del agregado a ninguna parte: el agregado está desestacionalizado y los
+    componentes no, así que no forman una suma que permita repartirlo. Tampoco
+    nombra la aduana, que no integra la base imponible (ADR-0127)."""
+    def mov(x):
+        if abs(x) < BANDA_MUERTA_SENTIDO_PCT:
+            return "no cambió"
+        return "subió" if x > 0 else "bajó"
+    agregado = control["agregado_var_ia_real"]
+    if abs(agregado) < BANDA_MUERTA_SENTIDO_PCT:
+        return (f"El agregado no cambió; el impuesto al valor agregado {mov(control['iva_var_ia_real'])} "
+                f"y el cheque {mov(control['cheque_var_ia_real'])}.")
     iva, cheque = control["iva_diverge"], control["cheque_diverge"]
     if not iva and not cheque:
         return ("El impuesto al valor agregado y el cheque fueron en el mismo sentido "
                 "que el agregado.")
     if iva and cheque:
-        # Los dos en contra: el movimiento del agregado sólo puede venir del resto.
         return ("El impuesto al valor agregado y el cheque fueron, los dos, en sentido "
-                "distinto del agregado: su movimiento viene del resto (Ganancias, Ingresos "
-                "Brutos del Convenio Multilateral, cambios normativos, anticipos).")
-    # Uno a favor y otro en contra: sin los pesos no se sabe cuánto explica cada
-    # parte, así que se informan los signos y nada más.
+                "distinto del agregado.")
     if iva:
         return ("El cheque fue en el mismo sentido que el agregado y el impuesto al valor "
                 "agregado, en sentido distinto.")
