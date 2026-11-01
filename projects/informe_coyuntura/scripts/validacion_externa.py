@@ -670,7 +670,11 @@ def matriz_redundancia_itcg(umbral: float = 0.7) -> dict:
     escala = parametrica.Escala(itcg.BANDAS_ITCG,
                                 getattr(itcg, "ANCLAS_ITCG", None),
                                 getattr(itcg, "TRANSFORMACIONES_ITCG", None))
-    return matriz_redundancia(escala, itcg.DIMENSIONES_ITCG,
+    vigentes = parametrica.indicadores_vigentes(itcg.DIMENSIONES_ITCG,
+                                                itcg.INDICADORES_SUSPENDIDOS)
+    dims = {k: {**itcg.DIMENSIONES_ITCG[k], "indicadores": d}
+            for k, d in vigentes.items()}
+    return matriz_redundancia(escala, dims,
                               _valores_itcg_por_mes(), ACOPLADOS_POR_DISENO, umbral)
 
 
@@ -746,14 +750,15 @@ def matriz_redundancia_itcp(umbral: float = 0.7) -> dict:
 
 
 
-ITCG_SERIES = [
-    "cepo_mulc", "apertura_comercial", "desregulacion_normativa",
-    "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
-    "reestructuracion_organismos", "fal_modernizacion_laboral",
-    "siniestralidad_laboral", "juicios_trabajo_capital", "privatizaciones", "rigi_inversiones",
-    "concesiones_infraestructura", "asistencia_directa",
-    "protocolo_antipiquetes", "libertad_opcion_salud",
-]
+# Se DERIVAN de las dimensiones vigentes, como ITVC/ITCP (ADR-0082, ADR-0245).
+# La lista escrita a mano seguía nombrando a masa_salarial y
+# reestructuracion_organismos, suspendidos en el índice: la matriz de
+# redundancia (y la reconstrucción) puntuaban 15 indicadores y 102 pares de un
+# índice que no es el que se publica. rigi_inversiones se queda en la lista y
+# se saca más abajo con ITCG_SERIE_NO_COMPARABLE (ADR-0086).
+ITCG_SERIES = [k for d in parametrica.indicadores_vigentes(
+                   itcg.DIMENSIONES_ITCG, itcg.INDICADORES_SUSPENDIDOS).values()
+               for k in d]
 
 
 def construir_serie_itcg(dimensiones: dict | None = None) -> dict:

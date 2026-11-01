@@ -75,3 +75,30 @@ def test_historia_no_cachea_como_completo_un_anio_con_html_sin_votos(monkeypatch
     monkeypatch.setattr(politica, '_paced_get', lambda _s, _b, path: SimpleNamespace(text=path))
     monkeypatch.setattr(politica, '_parsear_acta', lambda text: filas_validas() if text.endswith('/1') else [])
     assert getattr(politica, nombre)(2025) is None
+
+
+def test_la_ventana_de_febrero_lee_tambien_las_actas_de_diciembre(colector, monkeypatch):
+    """Hallazgo Codex (politica #4): la card pedía sólo el año en curso y la
+    ventana de 90 días se cortaba el 1 de enero; la serie junta todos los años."""
+    class Febrero(datetime):
+        @classmethod
+        def now(cls):
+            return cls(2026, 2, 10, 9)
+    monkeypatch.setattr(politica, 'datetime', Febrero)
+    pedidos = []
+    por_anio = {2025: [{'id': 'dic', 'fecha': datetime(2025, 12, 10)}],
+                2026: [{'id': 'feb', 'fecha': datetime(2026, 2, 5)}]}
+    def listar(_s, anio):
+        pedidos.append(anio)
+        return por_anio[anio]
+    monkeypatch.setattr(politica, '_descubrir_actas_senado', listar)
+    leidas = []
+    def leer(_session, _base, path):
+        leidas.append(path)
+        return SimpleNamespace(text='votos')
+    monkeypatch.setattr(politica, '_paced_get', leer)
+    monkeypatch.setattr(politica, '_parsear_acta', lambda _: filas_validas())
+    resultado = colector()
+    assert sorted(pedidos) == [2025, 2026]
+    assert sorted(leidas) == ['/votaciones/detalleActa/dic', '/votaciones/detalleActa/feb']
+    assert resultado['fecha_dato'] == '2026-02-05'

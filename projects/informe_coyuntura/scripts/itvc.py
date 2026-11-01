@@ -878,8 +878,8 @@ def indices_desde_series(vida_ind, series, baselines=None):
     """Índices base-100 por componente del ITVC (None = componente sin dato).
 
     `series` es {indicador: [{fecha, valor}, ...]} y `vida_ind` los indicadores
-    del cinturón, que sólo se usan para los tres fallbacks de baselines.
-    `baselines` es el contenido ya leído de `data/vida/itvc_baselines.json`:
+    del cinturón (hoy sin uso: ya no quedan respaldos a constante).
+    `baselines` (sin uso; se conserva la firma) es el contenido ya leído de `data/vida/itvc_baselines.json`:
     se recibe como dict y no como ruta a propósito, para que este módulo siga
     sin conocer el layout del repo y lo puedan importar tanto publicar.py como
     generar_informe.py (ADR-0208)."""
@@ -988,21 +988,14 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # más búsquedas de inflación/precios = más urgencia percibida.
     idx["sentimiento_digital"] = rebase_de_serie(series, "sentimiento_digital",
                                                        invertido=True)
-    # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
-    # fuente) × valor actual del indicador, si la serie no está disponible.
-    bas = baselines or {}
-    # ADR-0224: `patentamiento_motos` salió de este bucle junto con su condición
-    # de componente. El fallback a baseline existía porque CAFAM se consulta mes
-    # a mes y podía no contestar; la motorización total viene de un CSV que la
-    # DNRPA publica entero en cada corrida, así que o está completa o no está —
-    # el mismo criterio deliberado que ya tenía autos.
-    for ikey, invertido in (("inseguridad", True),):
-        if idx[ikey] is not None:
-            continue
-        b = (bas.get(ikey) or {}).get("valor")
-        v = (vida_ind.get(ikey) or {}).get("valor")
-        idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
-                     if b and isinstance(v, (int, float)) and v else None)
+    # SIN respaldo para `inseguridad`: antes, si faltaba la serie del IVI, se
+    # dividía la constante de itvc_baselines.json (2.435.858 HECHOS delictivos
+    # del SNIC 2023) por el valor actual (% de HOGARES víctimas): unidades y
+    # fuentes incompatibles, que daba índices absurdos (hasta 8.922.556,8 antes
+    # del tope). Si falta la serie, el componente queda None y el motor
+    # renormaliza, como con cualquier otro componente sin dato. El rebase a
+    # 4T-2023 del IVI (ADR-0393) ya está arriba, con la unidad correcta.
+    # ADR-0224: `patentamiento_motos` salió del respaldo por la misma razón.
     # WINSORIZACIÓN ASIMÉTRICA (ADR-0033, tratamiento de outliers JRC): los
     # componentes B100 se acotan al TECHO de 140 — un boom puntual no debe
     # comprar compensación ilimitada en la agregación lineal. SIN piso

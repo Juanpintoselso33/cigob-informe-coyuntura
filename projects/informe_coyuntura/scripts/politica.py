@@ -6067,6 +6067,24 @@ def _descubrir_actas_senado(session: requests.Session, anio: int):
     return actas
 
 
+def _descubrir_actas_senado_ventana(session, limite: datetime, referencia: datetime):
+    """Actas de TODOS los años que cruza la ventana [limite, referencia],
+    sin repetidas. Antes la card pedía sólo las del año de `anio`, y entre
+    enero y marzo la ventana de 90 días se cortaba el 1 de enero mientras la
+    serie histórica (que junta todos los años) seguía mirando diciembre.
+    None si falla el listado de cualquiera de los años."""
+    actas, vistos = [], set()
+    for a in range(limite.year, referencia.year + 1):
+        parte = _descubrir_actas_senado(session, a)
+        if parte is None:
+            return None
+        for acta in parte:
+            if acta["id"] not in vistos:
+                vistos.add(acta["id"])
+                actas.append(acta)
+    return actas
+
+
 def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
     """Cohesión del bloque LLA en el Senado — mismo índice de Rice que
     fetch_cohesion_bloque, indicador COMPLEMENTARIO (otra cámara, otra
@@ -6080,9 +6098,6 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     el brief)."""
     anio = anio or datetime.now().year
     session = _hcdn_votaciones_session()
-    actas = _descubrir_actas_senado(session, anio)
-    if actas is None:
-        return None
 
     # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
     # a medianoche del fin de mes, y con la hora del día incluida una acta
@@ -6092,8 +6107,10 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     referencia = (datetime(hoy.year, hoy.month, hoy.day)
                   if anio == hoy.year else datetime(anio, 12, 31))
     limite = referencia - timedelta(days=dias_ventana)
-    indices = []
-    fecha_max = None
+    actas = _descubrir_actas_senado_ventana(session, limite, referencia)
+    if actas is None:
+        return None
+    detalle = []
     for acta in actas:
         if not limite <= acta["fecha"] <= referencia:
             continue
@@ -6103,24 +6120,23 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
         filas = _parsear_acta(r.text)
         if not filas:
             return None  # HTTP 200 sin votos tampoco acredita una lectura completa.
-        if not es_votacion_dividida(_minoria_acta_senado(r.text, filas)):
-            continue   # votación casi unánime: no pone a prueba al bloque (ADR-0401)
+        minoria = _minoria_acta_senado(r.text, filas)
         filas = filas_senado_a_la_fecha(filas, acta["fecha"])   # ADR-0400
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
-        if rice is None:
-            continue
-        indices.append(rice)
-        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+        if rice is not None:
+            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice, "minoria": minoria})
+    # Misma agregación que la serie histórica (ADR-0401: sólo votaciones divididas).
+    agregado = _agregar_cohesion_ventana(detalle, referencia, dias_ventana)
 
     return {
-        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "valor": agregado["valor"] if agregado else None,
         "unidad": ("% cohesión (índice de Rice, Senado), promedio de las votaciones divididas "
                    "(la minoría tuvo al menos 10 % de los votos) de los últimos 90 días"),
         "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
-        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
-        "n_actas": len(indices),
+        "fecha_dato": agregado["fecha_dato"] if agregado else None,
+        "n_actas": agregado["n_actas"] if agregado else 0,
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
         "desactualizado": False,
     }
@@ -6244,20 +6260,16 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     el portal."""
     anio = anio or datetime.now().year
     session = _hcdn_votaciones_session()
-    actas = _descubrir_actas_senado(session, anio)
-    if actas is None:
-        return None
 
-    # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
-    # a medianoche del fin de mes, y con la hora del día incluida una acta
-    # fechada exactamente `dias_ventana` días atrás quedaba fuera de la card
-    # pero dentro de la serie (borde inconsistente entre las dos vistas).
+    # Referencia SIEMPRE a medianoche (ver fetch_cohesion_bloque_senado).
     hoy = datetime.now()
     referencia = (datetime(hoy.year, hoy.month, hoy.day)
                   if anio == hoy.year else datetime(anio, 12, 31))
     limite = referencia - timedelta(days=dias_ventana)
-    acumulado = {}
-    fecha_max = None
+    actas = _descubrir_actas_senado_ventana(session, limite, referencia)
+    if actas is None:
+        return None
+    detalle = []
     for acta in actas:
         if not limite <= acta["fecha"] <= referencia:
             continue
@@ -6268,31 +6280,18 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
         if not filas:
             return None
         resultado_acta = _alineamiento_por_provincia(filas_senado_a_la_fecha(filas, acta["fecha"]))
-        for provincia, (coincide, total) in resultado_acta.items():
-            c0, t0 = acumulado.get(provincia, (0, 0))
-            acumulado[provincia] = (c0 + coincide, t0 + total)
         if resultado_acta:
-            fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"),
+                            "provincias": {p: list(ct) for p, ct in resultado_acta.items()}})
+    # Misma agregación que la serie histórica.
+    agregado = _agregar_alineamiento_ventana(detalle, referencia, dias_ventana)
 
-    if not acumulado:
-        return {
-            "valor": None,
-            "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
-            "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
-            "fecha_dato": None,
-            "n_provincias": 0,
-            "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
-            "desactualizado": False,
-        }
-
-    ratios_por_provincia = [c / t for c, t in acumulado.values() if t > 0]
-    valor = round(100 * sum(ratios_por_provincia) / len(ratios_por_provincia), 1)
     return {
-        "valor": valor,
+        "valor": agregado["valor"] if agregado else None,
         "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
         "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
-        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
-        "n_provincias": len(acumulado),
+        "fecha_dato": agregado["fecha_dato"] if agregado else None,
+        "n_provincias": agregado["n_provincias"] if agregado else 0,
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
         "desactualizado": False,
     }
