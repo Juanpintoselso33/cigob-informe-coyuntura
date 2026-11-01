@@ -284,7 +284,14 @@ def main() -> int:
                         # desaparezca del log, pero el dueño de la frescura es G2
                         # (ADR-0174, y el mismo criterio de ADR-0133: una fuente
                         # demorada no tira abajo el pipeline).
-                        if i.get("desactualizado"):
+                        # Una card que no se bajó en ESTA corrida (sello de un
+                        # día anterior) también es carry-forward aunque no lleve
+                        # la marca: el 31-oct-2026 gestion agotó su presupuesto,
+                        # sus cards salieron del archivo de la víspera sin
+                        # `desactualizado`, la serie de reduccion_estado bajó
+                        # septiembre y el gate cortó la publicación entera.
+                        no_bajada_hoy = dias_sin_fetch is not None and dias_sin_fetch >= 1
+                        if i.get("desactualizado") or no_bajada_hoy:
                             avisos.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v}, pero la "
                                           f"card está en carry-forward — lo vigila G2")
                         else:

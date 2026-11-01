@@ -483,6 +483,10 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
         try:
             with presupuesto(PRESUPUESTO_INDICADOR.get(nombre, PRESUPUESTO_INDICADOR_DEFAULT)):
                 data = fetch()
+            if not data:
+                # Una serie vacía es un fallo (el fetcher la omitió), no un
+                # «list index out of range» que no dice nada en el log.
+                raise ValueError("el fetcher no devolvió puntos")
             for fecha, valor in data:
                 rows.append([fecha, nombre, valor, unidad, fuente])
             print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})"

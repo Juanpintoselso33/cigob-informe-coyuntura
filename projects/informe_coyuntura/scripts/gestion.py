@@ -3820,24 +3820,31 @@ def actualizar_acled_cortes() -> None:
             return
         H = {"Authorization": f"Bearer {r.json()['access_token']}",
              "User-Agent": "Mozilla/5.0"}
-        eventos, pagina = [], 1
+        # Desde fines de oct-2026 la API no acepta `page` (400): pagina con el
+        # `next_cursor` de cada respuesta, que se omite en el primer pedido.
+        eventos, pagina, cursor = [], 1, None
         while pagina <= 40:
-            r2 = requests.get(ACLED_READ_URL,
-                              params={"country": "Argentina",
-                                      "admin1": "Ciudad Autonoma de Buenos Aires",
-                                      "event_date": "2018-01-01|2030-01-01",
-                                      "event_date_where": "BETWEEN",
-                                      "limit": 1000, "page": pagina},
-                              headers=H, timeout=120)
+            params = {"country": "Argentina",
+                      "admin1": "Ciudad Autonoma de Buenos Aires",
+                      "event_date": "2018-01-01|2030-01-01",
+                      "event_date_where": "BETWEEN",
+                      "limit": 1000}
+            if cursor:
+                params["cursor"] = cursor
+            r2 = requests.get(ACLED_READ_URL, params=params, headers=H, timeout=120)
             if r2.status_code == 403:
                 print("[INFO] gestion.acled_cortes: la cuenta UBA sigue en nivel Open "
                       "(403 en eventos); se reintenta en la próxima corrida.")
                 return
             r2.raise_for_status()
-            lote = r2.json().get("data", [])
+            cuerpo = r2.json()
+            lote = cuerpo.get("data", [])
             if not lote:
                 break
             eventos.extend(lote)
+            cursor = cuerpo.get("next_cursor")
+            if not cursor:
+                break
             pagina += 1
         if not eventos:
             print("[WARN] gestion.acled_cortes: API de eventos accesible pero vacía.")

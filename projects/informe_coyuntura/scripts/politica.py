@@ -64,6 +64,7 @@ varios de estos indicadores dejan lo ambiguo en triage (`pendientes_de_codificar
 de `METODO_OBTENCION_EXCEPCIONES` en publicar.py (ADR-0234), que es el único lugar
 donde eso se define.
 """
+import subprocess
 import sys
 import io
 import collections
@@ -688,6 +689,16 @@ _RE_INFOLEG_DNU = re.compile(r"^decreto\s+dnu\b", re.IGNORECASE)
 _INFOLEG_FILAS_POR_PAGINA = 50
 
 
+def _infoleg_sin_listado(html: str, detalle: str) -> Exception:
+    """Error de una búsqueda de InfoLeg que no trajo listado. Si es la página
+    de mantenimiento («El sistema no se encuentra disponible», toda la última
+    semana de octubre de 2026), el texto lo dice en términos de red para que
+    aviso_slack lo trate como fuente caída y no como error de código."""
+    if "no se encuentra disponible" in html:
+        return ConnectionError(f"InfoLeg fuera de servicio, temporarily unavailable ({detalle})")
+    return ValueError(f"respuesta InfoLeg sin listado ({detalle})")
+
+
 def _infoleg_listado_completo(session: requests.Session, action_url: str, tipo: str,
                               desde: date, hasta: date, texto: str = "",
                               invisibles_tolerados: int = 0) -> list[dict]:
@@ -727,7 +738,7 @@ def _infoleg_listado_completo(session: requests.Session, action_url: str, tipo: 
                 break
         r.raise_for_status()
         if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
-            raise ValueError(f"respuesta InfoLeg sin listado (tipo={tipo}, texto={texto!r})")
+            raise _infoleg_sin_listado(r.text, f"tipo={tipo}, texto={texto!r}")
         m = re.search(r"Encontradas?[:\s]+(\d+)", r.text, re.IGNORECASE)
         if total is None:
             total = int(m.group(1)) if m else 0
@@ -5613,14 +5624,34 @@ def _diputados_acta_pdf(session: requests.Session, id_acta: int):
     403 agotado, 5xx) -- los callers que cachean por año necesitan la
     distinción para no congelar un fallo como si fuera un hueco."""
     _registrar_fallo_http(None, None)
-    r = _paced_get(session, HCDN_VOTACIONES_BASE, _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta),
-                   aceptar_404=True)
+    path = _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta)
+    r = _paced_get(session, HCDN_VOTACIONES_BASE, path, aceptar_404=True)
     if r is None:
+        # Nov-2026: desde CI el acta 6026 dio ReadTimeout cuatro noches seguidas
+        # (desde la Mac baja en 0,1 s) y congeló votos_sobre_bancas, que exige
+        # la lectura entera. Segundo intento por curl, como con el WAF del INDEC.
+        contenido = _curl_pdf(f"{HCDN_VOTACIONES_BASE}{path}")
+        if contenido is not None:
+            return contenido
         _avisar_fallo_acta_diputados(id_acta)
         return _ACTA_FALLO
     if r.status_code == 404:
         return _ACTA_NO_EXISTE
     return r.content
+
+
+def _curl_pdf(url: str, intentos: int = 2) -> bytes | None:
+    """GET por curl con tiempo largo; bytes sólo si llegó un PDF."""
+    for _ in range(intentos):
+        try:
+            out = subprocess.run(["curl", "-sS", "--fail", "-L", "--max-time", "90",
+                                  "-A", HTTP_HEADERS.get("User-Agent", "Mozilla/5.0"), url],
+                                 capture_output=True, timeout=120)
+        except (OSError, subprocess.TimeoutExpired):
+            continue
+        if out.returncode == 0 and out.stdout.startswith(b"%PDF"):
+            return out.stdout
+    return None
 
 
 # Caché PERMANENTE por acta (id -> {fecha, rice}): a diferencia de los
@@ -6631,7 +6662,7 @@ def _infoleg_buscar(session: requests.Session, action_url: str, *, tipo: str,
     r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
-        raise ValueError(f"respuesta InfoLeg sin listado (tipo={tipo}, texto={texto!r}, numero={numero!r})")
+        raise _infoleg_sin_listado(r.text, f"tipo={tipo}, texto={texto!r}, numero={numero!r}")
     return r.text
 
 
