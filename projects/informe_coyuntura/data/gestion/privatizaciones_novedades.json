@@ -1,10 +1,12 @@
 {
  "_meta": {
   "cobertura": {
-   "consultas_fallidas": [],
+   "consultas_fallidas": [
+    "SOFSE|2026-09"
+   ],
    "consultas_previstas": 24,
-   "consultas_sin_error": 24,
-   "estado": "sin_fallos_detectados",
+   "consultas_sin_error": 23,
+   "estado": "incompleta",
    "relectura_pendiente": [],
    "textos_fallidos": []
   },
