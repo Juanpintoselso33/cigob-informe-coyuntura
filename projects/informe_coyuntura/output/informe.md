@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-01 12:34:56"
+generado: "2026-11-02 00:40:38"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -118,7 +118,7 @@ schema_version: "1.2.0"
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-01 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-01 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-02 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -126,7 +126,7 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -32.65 | % de variación real frente a 2023-08 (remuneraciones del sector público nacional) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-29 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-01 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 | litigiosidad_laboral | 0.1 | % variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos) | 2026-07-01 | octubre de 2026 (ADR-0385) | Contaba los juicios que llegan al sistema de riesgos del trabajo, no los accidentes y enfermedades que el sistema registra, que es lo que pidió medir la dirección de CiGob. Lo reemplaza la siniestralidad registrada, con el mismo peso en la dimensión. El dato se sigue calculando. |
 
 ## Advertencias
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:ratio_dnu,apoyo_empresario,apoyo_campo,apoyo_construccion,derrotas_legislativas,votos_sobre_bancas,bloqueo_sostenido,insistencias_vetos,rechazos_decretos`
 
 ---
-*Generado por CIGOB — 2026-11-01 12:34:56 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-02 00:40:38 — schema 1.2.0*

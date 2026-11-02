@@ -96,7 +96,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -25 → 100 · -25–-15 → 85 · -15–-5 → 65 · -5–0 → 40 · > 0 → 10
 
-**Lo gobiernan**: [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0414](../adr/0414-el-gasto-de-funcionamiento-se-compara-con-todo-2023.md) El gasto de funcionamiento se compara con todo 2023
 
 ### Dimensión `reforma_laboral` (15%)
 
@@ -256,7 +256,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+59 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -316,3 +316,4 @@ histórica.
 - [0406](../adr/0406-el-rigi-usa-la-escala-de-las-concesiones.md) — El RIGI usa la escala de las concesiones
 - [0407](../adr/0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) — Corredores Viales sale de la cartera de privatizaciones
 - [0408](../adr/0408-los-piquetes-vuelven-a-la-ciudad.md) — Los piquetes vuelven a la Ciudad de Buenos Aires
+- [0414](../adr/0414-el-gasto-de-funcionamiento-se-compara-con-todo-2023.md) — El gasto de funcionamiento se compara con todo 2023

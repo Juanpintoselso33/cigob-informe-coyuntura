@@ -169,7 +169,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0235](../adr/0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) La canasta de servicios puntúa contra asequibilidad, no contra 2023
 
-#### Alquiler (índice de precios al consumidor del Gran Buenos Aires)
+#### Alquiler real (INDEC)
 
 `alquiler_real`
 
@@ -181,7 +181,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original · [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios
+**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original · [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios · [ADR-0411](../adr/0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) Los dos alquileres se leen como nivel real contra el 4T-2023
 
 #### Alquiler real (Universidad de San Andrés – Mercado Libre)
 
@@ -195,7 +195,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios
+**Lo gobiernan**: [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios · [ADR-0411](../adr/0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) Los dos alquileres se leen como nivel real contra el 4T-2023
 
 ### Dimensión `vulnerabilidad` (10%)
 
@@ -241,9 +241,9 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo» · [ADR-0389](../adr/0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) El padrón de empleadores de ARCA acompaña a la ocupación
+**Lo gobiernan**: [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo» · [ADR-0389](../adr/0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) El padrón de empleadores de ARCA acompaña a la ocupación · [ADR-0412](../adr/0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) El padrón de ARCA se guarda y no se publica
 
-#### Informalidad laboral
+#### Informalidad laboral (asalariados sin ningún aporte)
 
 `informalidad`
 
@@ -255,7 +255,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) La informalidad es una condición del empleo, no del ingreso · [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo»
+**Lo gobiernan**: [ADR-0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) La informalidad es una condición del empleo, no del ingreso · [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo» · [ADR-0413](../adr/0413-informalidad-mide-asalariados-sin-aportes-propios.md) La informalidad cuenta sólo al asalariado sin aportes propios
 
 ### Dimensión `percepcion` (8%)
 
@@ -358,7 +358,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-61 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+64 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -421,3 +421,6 @@ histórica.
 - [0392](../adr/0392-la-carne-puntua-el-consumo-no-la-faena.md) — La carne puntúa el consumo, no la faena
 - [0393](../adr/0393-la-victimizacion-se-rebasea-al-4t-2023.md) — La victimización se rebasea al 4T-2023
 - [0394](../adr/0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) — La pobreza del INDEC se fecha al inicio de su semestre
+- [0411](../adr/0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) — Los dos alquileres se leen como nivel real contra el 4T-2023
+- [0412](../adr/0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) — El padrón de ARCA se guarda y no se publica
+- [0413](../adr/0413-informalidad-mide-asalariados-sin-aportes-propios.md) — La informalidad cuenta sólo al asalariado sin aportes propios

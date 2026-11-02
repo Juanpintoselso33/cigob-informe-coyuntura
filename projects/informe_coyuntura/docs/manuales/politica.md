@@ -39,9 +39,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
 
-**Bandas**: ≤ 0.3 → 100 · 0.3–0.7 → 85 · 0.7–1.2 → 65 · 1.2–2 → 40 · > 2 → 10
+**Bandas**: ≤ 0.33 → 100 · 0.33–0.77 → 85 · 0.77–1.32 → 65 · 1.32–2.21 → 40 · > 2.21 → 10
 
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
 
 #### Eficacia legislativa de proyectos maduros
 
@@ -370,7 +370,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-108 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+109 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -480,3 +480,4 @@ histórica.
 - [0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) — La cohesión mide las votaciones divididas, contra la historia
 - [0402](../adr/0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) — El alineamiento de senadores se compara con la historia
 - [0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) — El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
+- [0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) — Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
