@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-02 03:41:21"
+generado: "2026-11-02 04:34:21"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -49,7 +49,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-11-02 | fresco |
+| ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-11-02 | ⚠ cache |
 | apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
 | apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
@@ -58,7 +58,7 @@ schema_version: "1.2.0"
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | transferencias_no_automaticas | -82.1 | % real frente a 2023 | 2026-09-30 | fresco |
-| eficacia_legislativa | 27.3 | % de proyectos | 2026-11-01 | ⚠ cache |
+| eficacia_legislativa | 27.3 | % de proyectos | 2026-11-02 | fresco |
 | comisiones_caidas | 96.5 | % de proyectos | 2026-11-02 | fresco |
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-11-02 | fresco |
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-02 | fresco |
@@ -131,7 +131,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion,eficacia_legislativa,votos_sobre_bancas,bloqueo_sostenido`
+- `desactualizado:politica:ratio_dnu,apoyo_empresario,apoyo_campo,apoyo_construccion,votos_sobre_bancas,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-11-02 03:41:21 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-02 04:34:21 — schema 1.2.0*
