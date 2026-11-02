@@ -134,3 +134,20 @@ def test_un_pedido_con_variaciones_va_a_la_copia(monkeypatch):
     assert not indec_api.atiende({"ids": EMAE_IA, "representation_mode": "percent_change"})
     assert not indec_api.atiende({"ids": EMAE_IA + ",otra"})
     assert indec_api.atiende({"ids": EMAE_IA, "format": "json", "limit": 2, "sort": "desc"})
+
+
+def test_si_la_api_cae_no_se_le_vuelve_a_pedir_en_la_corrida(monkeypatch):
+    """La copia parte los 15 sectores en 15 pedidos que pasan otra vez por
+    `datos_gob.get`: sin el corte, 15 esperas a una API colgada (Codex)."""
+    pedidos = _api(monkeypatch, {}, status=503)
+    ids = ",".join(macro.INDEC_EMAE_SECTORES)
+
+    def copia(url, params, **kw):
+        if "," in params["ids"]:
+            for sid in params["ids"].split(","):
+                datos_gob.get(url, params={**params, "ids": sid}, **kw)
+        return _R({"data": [], "count": 0, "meta": []})
+
+    monkeypatch.setattr(datos_gob, "_get", copia)
+    datos_gob.get("u", params={"ids": ids, "limit": 30, "sort": "desc"})
+    assert len(pedidos) == 1

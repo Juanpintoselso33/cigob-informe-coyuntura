@@ -150,3 +150,4 @@ def _sin_api_del_indec(monkeypatch):
         return
     monkeypatch.setattr(indec_api, "_cache", {})
     monkeypatch.setattr(indec_api, "_origen", {})
+    monkeypatch.setattr(indec_api, "_caida", False)

@@ -77,6 +77,10 @@ PARAMETROS = {"ids", "format", "limit", "sort", "start_date", "metadata", "heade
 
 _cache: dict[str, list] = {}
 _origen: dict[str, str] = {}
+# Una vez que la API falló en este proceso, no se le vuelve a pedir: la vuelta a
+# la copia parte los 15 sectores en 15 pedidos que pasan otra vez por acá, y con
+# la API colgada eran 15 esperas de 30 s, más que el tope de macro (Codex).
+_caida = False
 
 
 class TokenRechazado(RuntimeError):
@@ -87,7 +91,7 @@ def atiende(params: dict) -> bool:
     ids = [i for i in str(params.get("ids", "")).split(",") if i]
     # Sin la variable (local sin .env, pytest) ni se intenta: va a la copia.
     # Vacía sí entra, para que `_token` la rechace.
-    return ("INDEC_API_TOKEN" in os.environ
+    return (not _caida and "INDEC_API_TOKEN" in os.environ
             and bool(ids) and all(i in SERIES for i in ids)
             and set(params) <= PARAMETROS
             and str(params.get("format", "json")) == "json")
@@ -100,6 +104,9 @@ def via(series_id: str) -> str:
 
 
 def marcar_copia(ids: str) -> None:
+    """La API no respondió: esta serie y todo lo que siga en el proceso, a la copia."""
+    global _caida
+    _caida = True
     for sid in ids.split(","):
         _origen[sid] = "datos.gob.ar"
 
