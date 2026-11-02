@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-02 12:31:33"
+generado: "2026-11-02 13:21:34"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -61,15 +61,15 @@ schema_version: "1.2.0"
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-11-02 | fresco |
 | comisiones_caidas | 96.5 | % de proyectos | 2026-11-02 | fresco |
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-11-02 | fresco |
-| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-02 | fresco |
+| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-02 | ⚠ cache |
 | rotacion_gabinete | 4 | salidas de rango ministerial (acumulado de 12 meses) | 2026-11-02 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
-| votos_sobre_bancas | 22.3 | % de las bancas de la cámara | 2026-10-29 | ⚠ cache |
+| votos_sobre_bancas | 22.3 | % de las bancas de la cámara | 2026-11-02 | fresco |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | 2026-10-29 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-29 | ⚠ cache |
-| insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-02 | fresco |
-| rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-11-02 | fresco |
-| produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-10-01 | fresco |
+| insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-02 | ⚠ cache |
+| rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-11-02 | ⚠ cache |
+| produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-10-01 | ⚠ cache |
 | cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
 | alineamiento_senadores_prov | 61.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-10-29 | fresco |
 
@@ -114,7 +114,7 @@ schema_version: "1.2.0"
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 36.4 | % de inversión aprobada sobre el pipeline | 2026-11-02 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-02 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-02 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
@@ -131,7 +131,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:ratio_dnu,apoyo_empresario,apoyo_campo,apoyo_construccion,votos_sobre_bancas,bloqueo_sostenido`
+- `desactualizado:politica:ratio_dnu,apoyo_empresario,apoyo_campo,apoyo_construccion,derrotas_legislativas,bloqueo_sostenido,insistencias_vetos,rechazos_decretos,produccion_legislativa`
 
 ---
-*Generado por CIGOB — 2026-11-02 12:31:33 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-02 13:21:34 — schema 1.2.0*

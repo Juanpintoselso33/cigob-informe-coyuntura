@@ -1088,7 +1088,7 @@ Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 22,3 % de las bancas de la cámara** (2026-10) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
+| **Hoy: 22,3 % de las bancas de la cámara** (2026-11) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1098,7 +1098,7 @@ Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % de las bancas de la cámara |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-11 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia los últimos 12 meses, así que describe en promedio la situación de hace unos seis meses aunque su último dato sea de la semana pasada. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (título, resultado, voto de cada legislador y su bloque), cruzadas con el catálogo de proyectos parlamentarios y los dictámenes de comisión de la Cámara de Diputados para saber quién mandó cada proyecto |
-| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-02 |
+| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-02 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1139,7 +1139,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 22,3 % de las bancas de la cámara (2026-10).
+Dato vigente: 22,3 % de las bancas de la cámara (2026-11).
 
 22,3 % de las bancas de la cámara está en Verde, a 4,3 del límite con Amarillo (18,0).
 
