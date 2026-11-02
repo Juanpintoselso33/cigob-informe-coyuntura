@@ -458,6 +458,20 @@ def test_diputados_acta_id_maximo_fallo_transitorio_devuelve_none(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
 
 
+def test_diputados_acta_id_maximo_tolerante_toma_el_ultimo_leido(monkeypatch):
+    # Votos sobre bancas: si el id siguiente no contesta, vale el máximo leído,
+    # sin memoizar ni persistir (la próxima corrida vuelve a probar).
+    existentes = {5, 6}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: politica._ACTA_FALLO if id == 7
+                         else (b"x" if id in existentes else None))
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5,
+                                              tolerar_fallo_al_avanzar=True) == 6
+    assert politica._ID_MAXIMO_MEMO.get("valor") is None
+    assert not politica.DIPUTADOS_ID_MAXIMO_STORE.exists()
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
+
+
 def _mock_acta_diputados(monkeypatch, fechas: dict, filas_lla_por_id: dict | None = None):
     """Helper: simula el endpoint PDF para los ids en `fechas`
     ({id: datetime}), con _parsear_acta_diputados_pdf devolviendo

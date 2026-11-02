@@ -5791,7 +5791,8 @@ def _acta_o_cacheada(session: requests.Session, id_acta: int, cache: dict):
     return contenido
 
 
-def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
+def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959,
+                              tolerar_fallo_al_avanzar: bool = False) -> int | None:
     """Encuentra el id de acta más reciente disponible, caminando desde
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
     2026-07-09). Si la semilla ya no existe (quedó vieja), retrocede de a
@@ -5873,6 +5874,15 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
             return None
         contenido = _acta_o_cacheada(session, sonda, cache)
         if contenido is _ACTA_FALLO:
+            if tolerar_fallo_al_avanzar:
+                # Nov-2026: desde CI el servidor de Diputados se cuelga con ids
+                # que todavía no existen (desde la Mac contesta 404 al instante).
+                # Para votos_sobre_bancas, que cachea acta por acta, alcanza con
+                # el máximo leído: un acta nueva entra la noche en que conteste.
+                # No se memoiza ni se persiste, así la próxima corrida reintenta.
+                print(f"  [WARN] _diputados_acta_id_maximo: el acta {sonda} no contestó; "
+                      f"se toma {maximo} como la más reciente")
+                return maximo
             return None
         if isinstance(contenido, bytes):
             maximo = sonda
@@ -8824,7 +8834,7 @@ def _vsb_actualizar_diputados(cache: dict) -> bool:
     anteriores a la instalación del Congreso), saltea lo ya cacheado y guarda
     cada acta apenas la lee. True si no hubo ningún fallo transitorio."""
     session = _hcdn_votaciones_session()
-    id_maximo = _diputados_acta_id_maximo(session)
+    id_maximo = _diputados_acta_id_maximo(session, tolerar_fallo_al_avanzar=True)
     if id_maximo is None:
         return False
     actas = cache["diputados"]
