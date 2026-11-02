@@ -377,9 +377,9 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "EMAE — Estimador Mensual de Actividad Económica, variación interanual de la serie original (base 2004)",
-      serie: "143.3_ICE_SERVIA_2004_A_25 · API de Series de Tiempo (datos.gob.ar)",
+      serie: "Catálogo API-INDEC · estimador mensual de actividad económica, nivel general (variación interanual de la serie original)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
-      acceso: "Automático: API pública de series de tiempo de datos.gob.ar.",
+      acceso: "Automático: API del propio INDEC (Catálogo API-INDEC), con token. Si no responde, la copia de la API de series de tiempo de datos.gob.ar, que llega un mes más tarde.",
     },
     transformaciones: [
       "La variación interanual viene calculada por la fuente; la única transformación es de formato (fracción a porcentaje).",
@@ -404,6 +404,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
+      { fecha: "2026-11-02", cambio: "El dato pasa a leerse de la API del propio INDEC en lugar de la copia de datos.gob.ar, que llegaba un mes tarde y sin las revisiones más recientes: el 2 de noviembre de 2026 la copia terminaba en julio y el INDEC ya había publicado agosto. Es la misma serie; los meses de 2026 cambian hasta 0,06 puntos por la revisión que el INDEC publicó con agosto.", adr: "0417" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Actividad económica (frente a un año atrás)» y la unidad a «% frente a un año atrás», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -689,9 +690,9 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "EMAE — Estimador Mensual de Actividad Económica, apertura sectorial (índices por sector, base 2004)",
-      serie: "15 series del dataset 11.3 · API de Series de Tiempo (datos.gob.ar)",
+      serie: "Catálogo API-INDEC · estimador mensual de actividad económica por sectores (los 15 sectores, códigos A a O)",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
-      acceso: "Automático: API pública de series de tiempo de datos.gob.ar, en una única consulta con las quince series.",
+      acceso: "Automático: API del propio INDEC (Catálogo API-INDEC), con token. Si no responde, la copia de la API de series de tiempo de datos.gob.ar, que llega un mes más tarde.",
     },
     transformaciones: [
       "Para cada uno de los quince sectores se calcula la variación contra el mismo mes del año anterior, sobre el índice original.",
@@ -720,6 +721,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005." },
       { fecha: "2026-10-16", cambio: "Desde el 16 de octubre de 2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. Esas cifras son las del 16 de octubre de 2026: desde que salió la recaudación del impuesto al valor agregado y del impuesto al cheque el peso vigente es el que publica la tarjeta." },
+      { fecha: "2026-11-02", cambio: "Los quince sectores pasan a leerse de la API del propio INDEC en lugar de la copia de datos.gob.ar, que llegaba un mes tarde: el 2 de noviembre de 2026 la copia terminaba en julio y el INDEC ya había publicado agosto. Son las mismas series, con la revisión que el INDEC publicó con agosto.", adr: "0417" },
     ],
   },
 

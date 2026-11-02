@@ -958,9 +958,9 @@ def fetch_resultado_primario_serie() -> list:
 
 MACRO_DERIVADAS = [
     ("ipc_total", "% mensual", "INDEC (derivado del nivel del IPC)", fetch_ipc_mm_serie),
-    ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
+    ("emae_ia", "% i.a.", "INDEC (Catálogo API-INDEC)", fetch_emae_ia_serie),
     ("emae_difusion", "% de sectores en crecimiento i.a.",
-     "INDEC — EMAE apertura sectorial (vía datos.gob.ar)", fetch_emae_difusion_serie),
+     "INDEC — EMAE apertura sectorial (Catálogo API-INDEC)", fetch_emae_difusion_serie),
     ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (planilla original vigente)", fetch_ipi_serie),
     ("actividad_tributaria", "% i.a. real (compuesto IVA-DGI/cheque)",
      "Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)",
@@ -3159,7 +3159,7 @@ VIDA_DERIVADAS.append(
 )
 
 GESTION_INDEC = [
-    ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
+    ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC (Catálogo API-INDEC)"),
     # (33.4 ISAC insumo cemento se retiró jul-2026: no lo consumía ningún
     #  indicador ni el front — la card de construcción usa el ISAC general
     #  33.2 s.e., ver despacho_cemento arriba.)

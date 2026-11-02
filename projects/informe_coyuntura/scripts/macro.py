@@ -9,6 +9,7 @@ import json
 import requests
 
 import datos_gob
+import indec_api
 import urllib3
 import logging
 from datetime import datetime, timedelta, date
@@ -667,7 +668,8 @@ def fetch_emae_ia() -> dict | None:
         return {
             "valor": round(float(val) * 100, 2),
             "unidad": "% interanual",
-            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) (vía datos.gob.ar)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) "
+                      f"({indec_api.via(INDEC_EMAE_IA_ID)})",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -757,7 +759,8 @@ def fetch_emae_difusion() -> dict | None:
         return {
             "valor": difusion[ym],
             "unidad": "% de sectores en crecimiento interanual",
-            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE), apertura sectorial (vía datos.gob.ar)",
+            "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE), apertura sectorial "
+                      f"({indec_api.via(next(iter(INDEC_EMAE_SECTORES)))})",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "sectores_totales": len(variaciones),

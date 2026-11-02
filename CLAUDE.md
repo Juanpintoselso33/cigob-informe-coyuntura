@@ -79,10 +79,13 @@ Mac — set up and verified 2026-08-13:
   find . -type d ! -perm -u+w -exec chmod u+w {} +
   ```
 
-### `.env`: seven credentials, and one trap that fails silently
+### `.env`: eight credentials, and one trap that fails silently
 
-`projects/informe_coyuntura/.env` holds seven credentials (BA Transporte ×2,
-Presupuesto Abierto, ACLED ×2, ACLED-UBA ×2). It is gitignored, copied to each
+`projects/informe_coyuntura/.env` holds eight credentials (BA Transporte ×2,
+Presupuesto Abierto, ACLED ×2, ACLED-UBA ×2, `INDEC_API_TOKEN`).
+**`INDEC_API_TOKEN` expires every 6 months** (next: 2027-05-01) — regenerate it at
+api.indec.gob.ar → «Gestionar la cuenta», then update both `.env` and the repo
+secret (ADR-0417). A rejected token fails loudly on purpose; the EMAE cards go stale. It is gitignored, copied to each
 machine by hand, never versioned. Nothing loads it for you — there is no
 python-dotenv in `requirements.txt`, the scripts read `os.environ` directly, and
 the CI injects the same names from GitHub secrets. Locally you export it
@@ -112,7 +115,7 @@ burning 20 minutes on a run that will quietly use cache:
 ```zsh
 # zsh (the Mac's shell): ${(P)v} is its indirect expansion; in bash it is ${!v}
 set -a; source ./.env; set +a
-for v in BA_TRANSPORTE_CLIENT_ID PRESUPUESTO_ABIERTO_TOKEN ACLED_USERNAME; do
+for v in BA_TRANSPORTE_CLIENT_ID PRESUPUESTO_ABIERTO_TOKEN ACLED_USERNAME INDEC_API_TOKEN; do
   [ -n "${(P)v}" ] || echo "FALTA $v"
 done
 ```
@@ -268,7 +271,7 @@ time: guessing "full pipeline" for a one-cinturón change burns ~20 min doing no
 useful; guessing "just this collector" when multiple cinturones are
 genuinely stale produces false G3 gate failures that look like real bugs.
 
-**Before any of the sequences below**: the collectors need the seven
+**Before any of the sequences below**: the collectors need the eight
 credentials exported (`set -a; source ./.env; set +a` — see the `.env` section
 above). Without them the fetches fail auth and every collector falls back to
 cache *silently*: the run finishes, the gate passes, and you publish stale data.

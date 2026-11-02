@@ -35,6 +35,8 @@ from itertools import count
 import requests
 from requests import RequestException
 
+import indec_api
+
 logger = logging.getLogger(__name__)
 
 LECTURAS_BUENAS = 3
@@ -183,6 +185,18 @@ def _completar_ipc(r, params: dict):
 def get(url: str, params: dict | None = None, **kwargs):
     """Como `requests.get`, pero devuelve una lectura completa de la serie."""
     params = dict(params or {})
+    # El EMAE y el índice de salarios salen de la API del propio INDEC, que tiene
+    # la publicación vigente (ADR-0417). Un token rechazado no vuelve a la copia:
+    # tiene que fallar para que se vea. Cualquier otra falla, sí.
+    if indec_api.atiende(params):
+        try:
+            return indec_api.get(params, timeout=kwargs.get("timeout"))
+        except indec_api.TokenRechazado:
+            raise
+        except Exception as e:                                # noqa: BLE001
+            logger.warning("Catálogo API-INDEC sin respuesta para %s (%s); se lee la "
+                           "copia de datos.gob.ar", params["ids"], e)
+            indec_api.marcar_copia(str(params["ids"]))
     if str(params.get("ids", "")) == "148.3_INIVELNAL_DICI_M_26":
         return _completar_ipc(_get(url, params, **kwargs), params)
     return _get(url, params, **kwargs)

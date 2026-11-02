@@ -111,6 +111,7 @@ jobs:
           ACLED_PASSWORD: ${{ secrets.ACLED_PASSWORD }}
           ACLED_UBA_USERNAME: ${{ secrets.ACLED_UBA_USERNAME }}
           ACLED_UBA_PASSWORD: ${{ secrets.ACLED_UBA_PASSWORD }}
+          INDEC_API_TOKEN: ${{ secrets.INDEC_API_TOKEN }}
         run: |
           set +e
           # Se duplica la salida a un archivo para que el aviso a Slack pueda

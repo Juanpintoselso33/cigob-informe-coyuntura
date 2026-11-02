@@ -135,3 +135,18 @@ def _verificacion_rigi_aislada(monkeypatch, tmp_path):
         return
     monkeypatch.setattr(politica, "ADHESION_VERIFICACION_PATH",
                         tmp_path / "adhesion_reformas_verificacion.json", raising=False)
+
+
+@pytest.fixture(autouse=True)
+def _sin_api_del_indec(monkeypatch):
+    """Sin token, `datos_gob.get` no deriva nada a la API del INDEC (ADR-0417):
+    los tests que simulan datos.gob.ar siguen viendo datos.gob.ar aunque quien
+    corre la suite tenga el .env exportado. Y la cache de lecturas no pasa de
+    un test a otro."""
+    monkeypatch.delenv("INDEC_API_TOKEN", raising=False)
+    try:
+        import indec_api
+    except Exception:
+        return
+    monkeypatch.setattr(indec_api, "_cache", {})
+    monkeypatch.setattr(indec_api, "_origen", {})
