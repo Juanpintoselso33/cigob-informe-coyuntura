@@ -64,7 +64,6 @@ varios de estos indicadores dejan lo ambiguo en triage (`pendientes_de_codificar
 de `METODO_OBTENCION_EXCEPCIONES` en publicar.py (ADR-0234), que es el único lugar
 donde eso se define.
 """
-import subprocess
 import sys
 import io
 import collections
@@ -5627,31 +5626,11 @@ def _diputados_acta_pdf(session: requests.Session, id_acta: int):
     path = _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta)
     r = _paced_get(session, HCDN_VOTACIONES_BASE, path, aceptar_404=True)
     if r is None:
-        # Nov-2026: desde CI el acta 6026 dio ReadTimeout cuatro noches seguidas
-        # (desde la Mac baja en 0,1 s) y congeló votos_sobre_bancas, que exige
-        # la lectura entera. Segundo intento por curl, como con el WAF del INDEC.
-        contenido = _curl_pdf(f"{HCDN_VOTACIONES_BASE}{path}")
-        if contenido is not None:
-            return contenido
         _avisar_fallo_acta_diputados(id_acta)
         return _ACTA_FALLO
     if r.status_code == 404:
         return _ACTA_NO_EXISTE
     return r.content
-
-
-def _curl_pdf(url: str, intentos: int = 2) -> bytes | None:
-    """GET por curl con tiempo largo; bytes sólo si llegó un PDF."""
-    for _ in range(intentos):
-        try:
-            out = subprocess.run(["curl", "-sS", "--fail", "-L", "--max-time", "90",
-                                  "-A", HTTP_HEADERS.get("User-Agent", "Mozilla/5.0"), url],
-                                 capture_output=True, timeout=120)
-        except (OSError, subprocess.TimeoutExpired):
-            continue
-        if out.returncode == 0 and out.stdout.startswith(b"%PDF"):
-            return out.stdout
-    return None
 
 
 # Caché PERMANENTE por acta (id -> {fecha, rice}): a diferencia de los

@@ -135,15 +135,3 @@ def _verificacion_rigi_aislada(monkeypatch, tmp_path):
         return
     monkeypatch.setattr(politica, "ADHESION_VERIFICACION_PATH",
                         tmp_path / "adhesion_reformas_verificacion.json", raising=False)
-
-
-@pytest.fixture(autouse=True)
-def _actas_sin_curl_real(monkeypatch):
-    """El fallback por curl de las actas de Diputados saldría a la red: los
-    tests que simulan un fallo de requests esperan _ACTA_FALLO, no una
-    descarga real (Codex, 1-nov-2026). Quien quiera probar curl lo pide."""
-    try:
-        import politica
-    except Exception:
-        return
-    monkeypatch.setattr(politica, "_curl_pdf", lambda url, intentos=2: None, raising=False)
