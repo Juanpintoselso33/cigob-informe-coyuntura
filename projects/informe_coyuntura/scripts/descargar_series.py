@@ -1906,13 +1906,13 @@ VIDA_INDEC = [
     # NIVEL del IPC bajo clave propia: es un INSUMO (deflactor del crédito de
     # consumo en publicar), no la serie de la card ipc_total (que publica el
     # % m/m desde macro) — con la misma clave, la fusión de CSVs las mezclaba.
-    ("148.3_INIVELNAL_DICI_M_26", "ipc_nivel",    "indice base dic-2016=100", "INDEC/datos.gob.ar"),
+    ("148.3_INIVELNAL_DICI_M_26", "ipc_nivel",    "indice base dic-2016=100", "INDEC (Catálogo API-INDEC)"),
     ("42.3_EPH_PUNTUATAL_0_M_30", "desocupacion", "%",                        "INDEC/datos.gob.ar"),
 ]
 # Derivadas: la variación m/m % de cada serie INDEC de índices (misma métrica que
 # muestra la card del indicador), reconstruida para todo el histórico disponible.
 VIDA_DERIVADAS = [
-    ("ipc_alimentos",    "% m/m",           "INDEC serie 146.3", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
+    ("ipc_alimentos",    "% m/m",           "INDEC (Catálogo API-INDEC)", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
 ]
 
 

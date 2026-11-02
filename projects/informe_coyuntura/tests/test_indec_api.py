@@ -151,3 +151,16 @@ def test_si_la_api_cae_no_se_le_vuelve_a_pedir_en_la_corrida(monkeypatch):
     monkeypatch.setattr(datos_gob, "_get", copia)
     datos_gob.get("u", params={"ids": ids, "limit": 30, "sort": "desc"})
     assert len(pedidos) == 1
+
+
+def test_ipc_y_canastas_apuntan_a_la_apertura_correcta():
+    """ADR-0418. Cada id de datos.gob.ar se verificó contra la copia en todos los
+    meses comunes (2-nov-2026); acá queda fijo a qué apertura apunta."""
+    esperado = {"148.3_INIVELNAL_DICI_M_26": "0", "148.3_INUCLEONAL_DICI_M_19": "N",
+                "148.3_IREGULANAL_DICI_M_22": "R", "146.3_IALIMENNAL_DICI_M_45": "01",
+                "146.3_IVIVIENNAL_DICI_M_52": "04",
+                "150.1_CSTA_BARIA_0_D_26": "CBA", "150.1_CSTA_BATAL_0_D_20": "CBT"}
+    for sid, codigo in esperado.items():
+        servicio, filtros, escala = indec_api.SERIES[sid]
+        assert filtros["codigo"] == codigo and escala == 1, sid
+        assert filtros["region"] == ("GBA" if sid.startswith("150.1") else "Nacional"), sid

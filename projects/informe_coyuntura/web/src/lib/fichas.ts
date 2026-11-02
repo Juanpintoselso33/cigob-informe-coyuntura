@@ -3170,9 +3170,9 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables, RIPTE) + Instituto Nacional de Estadística y Censos (INDEC: Canasta Básica Total)",
       operacion: "RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente",
-      serie: "RIPTE (planilla oficial mensual) + CBT 150.1_CSTA_BATAL_0_D_20 (datos.gob.ar)",
+      serie: "RIPTE (planilla oficial mensual) + Canasta Básica Total por adulto equivalente, GBA (Catálogo API-INDEC)",
       url: "https://www.argentina.gob.ar/trabajo/seguridadsocial/ripte",
-      acceso: "Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común.",
+      acceso: "Automático: descarga de la planilla oficial del RIPTE y API del propio INDEC para la canasta (si no responde, la copia de datos.gob.ar); el cociente se calcula alineando por mes común.",
     },
     transformaciones: [
       "Canastas cubiertas = salario formal promedio ÷ canasta básica total del mismo mes.",
@@ -3191,6 +3191,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
     revisiones: "Cada actualización re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.",
     cambios: [
+      { fecha: "2026-11-02", cambio: "La canasta básica total pasa a leerse de la API del propio INDEC en lugar de la copia de datos.gob.ar, que llegaba un mes tarde. Es la misma serie; como el cociente se alinea por mes común con el salario, el indicador avanza cuando lo hace el salario.", adr: "0418" },
       { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto a la pobreza. Su peso interno pasa de 46,48% a 64,69% porque la dimensión es más chica; su peso en el índice no cambia (13,04%).", adr: "0373" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 como rebase directo del cociente, con 22,75% de peso efectivo." },
       { fecha: "2026-07-04", cambio: "Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice." },
@@ -3205,9 +3206,9 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general",
-      serie: "146.3_IALIMENNAL_DICI_M_45 + IPC general 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
+      serie: "Catálogo API-INDEC · IPC nacional, división «Alimentos y bebidas no alcohólicas» (01) y nivel general (0), índices base diciembre 2016",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
-      acceso: "Automático: API pública de series de tiempo.",
+      acceso: "Automático: API del propio INDEC (Catálogo API-INDEC), con token. Si no responde, la copia de la API de series de tiempo de datos.gob.ar, que llega un mes más tarde.",
     },
     transformaciones: [
       "La tarjeta muestra la variación mensual de los alimentos.",
@@ -3226,6 +3227,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 (entonces como nivel contra el salario)." },
       { fecha: "2026-07-04", cambio: "Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta." },
+      { fecha: "2026-11-02", cambio: "Los dos índices pasan a leerse de la API del propio INDEC en lugar de la copia de datos.gob.ar. El IPC de alimentos llegaba un mes tarde y, como el cociente sólo se calcula con los dos índices del mismo mes, el indicador quedaba un mes atrás aunque el IPC general ya estuviera publicado. Son las mismas series.", adr: "0418" },
     ],
   },
 

@@ -6,7 +6,7 @@ fecha: 2026-09-08
 cinturon: 'macro'
 indicadores: [saldo_comercial_12m]
 archivos: ['scripts/ica.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'tests/test_ica_vigente.py']
-relacionado: ['0056', '0272']
+relacionado: ['0056', '0272', '0418']
 ambito: 'Actualidad y ventanas completas del intercambio comercial'
 origen: 'Contraste integral contra la publicación oficial de julio de 2026'
 ---

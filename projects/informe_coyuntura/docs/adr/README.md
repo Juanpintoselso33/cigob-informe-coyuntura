@@ -495,3 +495,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0396](0396-la-lectura-sale-del-valor-crudo-y-las-tablas-de-color-cierran.md) | La lectura sale del valor crudo y las tablas de color cierran | `ratio_dnu`, `jornadas_individuales_no_trabajadas_12m`, `reservas_bcra` | vigente |
 | [0416](0416-correcciones-de-calculo-de-la-revision-de-codex.md) | Correcciones de cálculo de la revisión del 1 de noviembre de 2026 | `idc`, `saldo_comercial_12m`, `recaudacion` | vigente |
 | [0417](0417-emae-y-salarios-desde-la-api-del-indec.md) | EMAE y salarios desde la API del INDEC | `emae_ia`, `emae_difusion` | vigente |
+| [0418](0418-ipc-y-canastas-desde-la-api-del-indec.md) | IPC y canastas desde la API del INDEC | `ipc_alimentos`, `brecha_salario_cbt` | vigente |

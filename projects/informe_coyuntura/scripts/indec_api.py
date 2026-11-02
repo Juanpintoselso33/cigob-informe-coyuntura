@@ -1,4 +1,4 @@
-"""Series del INDEC leídas de su propia API, el Catálogo API-INDEC (ADR-0417).
+"""Series del INDEC leídas de su propia API, el Catálogo API-INDEC (ADR-0417, ADR-0418).
 
 La API de series de datos.gob.ar es una copia del INDEC que llega tarde: medido el
 2-nov-2026, el EMAE y el índice de salarios llegaban ahí a julio cuando el INDEC
@@ -69,6 +69,17 @@ SERIES = {
     "149.1_TL_INDIIOS_OCTU_0_21": ("indice_salarios", {"codigo": "0", "tipo_de_indicador": "Indice"}, 1),    # nivel general
     "149.1_TL_REGIADO_OCTU_0_16": ("indice_salarios", {"codigo": "100", "tipo_de_indicador": "Indice"}, 1),  # total registrado
     "149.1_SOR_PUBICO_OCTU_0_14": ("indice_salarios", {"codigo": "120", "tipo_de_indicador": "Indice"}, 1),  # sector público
+    # IPC nacional, base dic-2016=100 (ADR-0418). El nivel general ya se
+    # completaba desde la planilla (ipc_indec.py); las aperturas se quedaban un
+    # mes atrás, y `ipc_alimentos` (alimentos contra general) con ellas.
+    "148.3_INIVELNAL_DICI_M_26":  ("ipc_nacional", {"region": "Nacional", "codigo": "0", "tipo_de_indicador": "Indice"}, 1),
+    "148.3_INUCLEONAL_DICI_M_19": ("ipc_nacional", {"region": "Nacional", "codigo": "N", "tipo_de_indicador": "Indice"}, 1),
+    "148.3_IREGULANAL_DICI_M_22": ("ipc_nacional", {"region": "Nacional", "codigo": "R", "tipo_de_indicador": "Indice"}, 1),
+    "146.3_IALIMENNAL_DICI_M_45": ("ipc_nacional", {"region": "Nacional", "codigo": "01", "tipo_de_indicador": "Indice"}, 1),
+    "146.3_IVIVIENNAL_DICI_M_52": ("ipc_nacional", {"region": "Nacional", "codigo": "04", "tipo_de_indicador": "Indice"}, 1),
+    # Canastas básicas por adulto equivalente, GBA, pesos corrientes (ADR-0418)
+    "150.1_CSTA_BARIA_0_D_26":    ("valorizacion_canastas_cba_cbt", {"region": "GBA", "codigo": "CBA", "tipo_de_indicador": "CBA"}, 1),
+    "150.1_CSTA_BATAL_0_D_20":    ("valorizacion_canastas_cba_cbt", {"region": "GBA", "codigo": "CBT", "tipo_de_indicador": "CBT"}, 1),
 }
 
 # Parámetros de datos.gob.ar que esta lectura sabe responder. Con cualquier otro

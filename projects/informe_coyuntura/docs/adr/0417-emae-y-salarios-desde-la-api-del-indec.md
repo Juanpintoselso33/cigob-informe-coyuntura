@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'ITCM'
 indicadores: [emae_ia, emae_difusion]
 archivos: ['scripts/indec_api.py', 'scripts/datos_gob.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'web/src/lib/fichas.ts', 'tests/test_indec_api.py', 'tests/conftest.py', '.github/workflows/data-pipeline.yml']
-relacionado: ['0124', '0256']
+relacionado: ['0124', '0256', '0418']
 ambito: 'Fuente del EMAE (nivel general y 15 sectores) y del índice de salarios: la API del propio INDEC en lugar de la copia de datos.gob.ar'
 origen: 'Juan, 2-nov-2026: «fijate la nueva api de indec a ver si nos sirve» y, visto el relevamiento, «cargalo y arrancá con EMAE y salarios».'
 ---

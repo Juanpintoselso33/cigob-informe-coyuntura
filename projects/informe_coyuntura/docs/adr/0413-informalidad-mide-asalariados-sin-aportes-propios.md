@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [informalidad]
 archivos: ['scripts/informalidad_eph.py', 'scripts/vida_cotidiana/collectors/indec_series.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/datos.ts', 'tests/test_informalidad_eph.py']
-relacionado: ['0214', '0383']
+relacionado: ['0214', '0383', '0418']
 ambito: 'Cinturón de impacto social · ITCIS · dimensión Empleo · componente informalidad'
 origen: 'Decisión de Juan del 29-oct-2026: el indicador castigaba como informal a un trabajador registrado que factura con monotributo; pasa a la cifra oficial del INDEC, asalariados informales sin aportes propios.'
 ---
