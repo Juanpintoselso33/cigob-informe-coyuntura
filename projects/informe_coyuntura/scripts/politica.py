@@ -5779,6 +5779,18 @@ def _hoy_buenos_aires() -> str:
         return datetime.now().strftime("%Y-%m-%d")
 
 
+def _acta_o_cacheada(session: requests.Session, id_acta: int, cache: dict):
+    """Como _diputados_acta_pdf, pero un fallo de red sobre un acta que ya está
+    en el caché permanente cuenta como existente: el acta se leyó antes, así que
+    existe. Nov-2026: la 6026 daba ReadTimeout desde CI y, sin el máximo,
+    votos_sobre_bancas no leía nada aunque el acta estuviera cacheada. Un 404
+    sigue mandando (un id corrupto en el caché no se inventa como acta)."""
+    contenido = _diputados_acta_pdf(session, id_acta)
+    if contenido is _ACTA_FALLO and str(id_acta) in cache:
+        return b"%PDF"
+    return contenido
+
+
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
     """Encuentra el id de acta más reciente disponible, caminando desde
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
@@ -5835,7 +5847,7 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
         actual = arranque
         intentos = 0
         while actual > 0:
-            contenido = _diputados_acta_pdf(session, actual)
+            contenido = _acta_o_cacheada(session, actual, cache)
             if contenido is _ACTA_FALLO:
                 return None
             if isinstance(contenido, bytes):
@@ -5859,7 +5871,7 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
             print(f"  [WARN] _diputados_acta_id_maximo: más de {_TOPE_AVANCE_ID} ids nuevos "
                   f"desde {actual} -- sospechoso, no se determina el máximo")
             return None
-        contenido = _diputados_acta_pdf(session, sonda)
+        contenido = _acta_o_cacheada(session, sonda, cache)
         if contenido is _ACTA_FALLO:
             return None
         if isinstance(contenido, bytes):

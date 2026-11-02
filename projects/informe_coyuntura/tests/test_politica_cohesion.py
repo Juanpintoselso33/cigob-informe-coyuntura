@@ -327,6 +327,18 @@ def test_diputados_acta_id_maximo_tolera_huecos_de_numeracion(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 9
 
 
+def test_diputados_acta_id_maximo_no_rebaja_un_acta_ya_cacheada(monkeypatch):
+    # Nov-2026: desde CI el acta 6026 daba ReadTimeout aunque ya estaba en el
+    # caché permanente, y sin el máximo votos_sobre_bancas no leía nada.
+    monkeypatch.setattr(politica, "_cargar_cache_cohesion_diputados",
+                         lambda: {"5": {"fecha": "2026-10-01", "rice": 90.0},
+                                  "6": {"fecha": "2026-10-22", "rice": 88.0}})
+    def acta(s, id):
+        return politica._ACTA_FALLO if id <= 6 else None
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", acta)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 6
+
+
 def test_diputados_acta_id_maximo_retrocede_y_encuentra(monkeypatch):
     # Retroceso EXITOSO: la semilla 60 no existe, retrocede de a 50 hasta 10
     # (válido) y desde ahí avanza hasta el máximo real (11).
