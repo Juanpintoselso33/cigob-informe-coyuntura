@@ -35,7 +35,11 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 60   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+    timeout-minutes: 100  # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+                          # 1-nov-2026: con el Congreso lento desde el runner, política
+                          # y series agotaron sus presupuestos (10m + 35m) y la suma de
+                          # presupuestos (88m) ya no entraba en 60: dos corridas murieron
+                          # en los tests y en BigQuery. 100 = presupuestos + tests + export.
                           # 16-oct-2026: 45 quedó al ras. Las series tardan 21-25 min
                           # en el runner (11 en local: los sitios del Congreso le
                           # contestan lento) y la corrida del #75 murió en los tests.
