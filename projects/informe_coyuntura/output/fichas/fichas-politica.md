@@ -101,7 +101,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-10) | **ROJO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-11) | **ROJO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -111,7 +111,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-02 |
+| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-02 |
 
 ## Definición — qué mide y por qué importa
 
@@ -147,11 +147,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 30/10/2025 y el 29/10/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley
+- 37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 03/11/2025 y el 02/11/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley
 
 ## Color vigente y por qué
 
-Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales (2026-10).
+Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales (2026-11).
 
 2,643 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales está en Rojo, a 0,58 del límite con Naranja (2,062).
 

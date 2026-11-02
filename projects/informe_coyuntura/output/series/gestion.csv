@@ -100,6 +100,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2024-01-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2023-12-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-11-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-10-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-09-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-08-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
