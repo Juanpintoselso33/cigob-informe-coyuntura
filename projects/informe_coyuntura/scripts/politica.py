@@ -8841,6 +8841,7 @@ def _vsb_actualizar_diputados(cache: dict) -> bool:
     ausentes = set(cache.get("diputados_ausentes", []))
     piso = cache.get("diputados_piso")
     completo = True
+    pendientes: list[int] = []
     huecos_seguidos = 0
     viejas_seguidas = 0
     id_actual = id_maximo
@@ -8854,10 +8855,20 @@ def _vsb_actualizar_diputados(cache: dict) -> bool:
         if entrada is None or falta_leer:
             if id_actual in ausentes:
                 entrada = None
+            elif len(pendientes) >= 3:
+                # Cada id colgado cuesta 20 s: después de tres, el resto del
+                # tramo sin cachear también queda para la próxima corrida.
+                pendientes.append(id_actual)
+                entrada = None
             else:
                 contenido = _diputados_acta_pdf(session, id_actual)
                 if contenido is _ACTA_FALLO:
-                    completo = False
+                    # Nov-2026: desde CI el servidor se cuelga con los ids que no
+                    # existen (desde la Mac dan 404 al instante). Un id que no
+                    # contesta queda pendiente para la noche siguiente, con el mismo
+                    # criterio que el máximo (decisión de Juan, 2-nov-2026); el piso
+                    # no avanza mientras haya pendientes.
+                    pendientes.append(id_actual)
                 elif contenido is _ACTA_NO_EXISTE:
                     if id_actual < id_maximo - 30:   # las más recientes pueden publicarse después
                         ausentes.add(id_actual)
@@ -8877,7 +8888,10 @@ def _vsb_actualizar_diputados(cache: dict) -> bool:
         if viejas_seguidas >= 5 or huecos_seguidos >= VSB_MARGEN_HUECOS_DIPUTADOS:
             break
         id_actual -= 1
-    if completo and huecos_seguidos >= VSB_MARGEN_HUECOS_DIPUTADOS and actas:
+    if pendientes:
+        print(f"  [WARN] votos_sobre_bancas: {len(pendientes)} id(s) de Diputados no contestaron "
+              f"y quedan para la próxima corrida ({', '.join(map(str, sorted(pendientes)))})")
+    if completo and not pendientes and huecos_seguidos >= VSB_MARGEN_HUECOS_DIPUTADOS and actas:
         cache["diputados_piso"] = min(int(k) for k in actas)
     _vsb_guardar_cache(cache)
     return completo
