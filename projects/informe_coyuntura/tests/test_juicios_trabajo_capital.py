@@ -87,3 +87,56 @@ def test_la_serie_es_escalonada_mensual(monkeypatch):
     assert "2024-11-01" not in serie
     meses = sorted(serie)
     assert serie[meses[-1]] == 12.4         # el último llega al mes en curso
+
+
+# El 2-nov-2026 el PJN devolvió vacíos los listados de 2025 y 2026: con lo que
+# quedaba, la card publicó el 2º semestre de 2024 (−5,4 %) como si fuera vigente.
+VIEJOS = {k: v for k, v in SEMESTRES.items() if k[0] < 2025}
+
+
+def _publicado(monkeypatch, fecha):
+    monkeypatch.setattr(gestion, "load_cache", lambda: {"indicadores": {
+        "juicios_trabajo_capital": {"valor": 12.4, "fecha_dato": fecha}}})
+
+
+def test_un_listado_con_menos_semestres_que_lo_publicado_no_se_publica(monkeypatch):
+    _publicado(monkeypatch, "2026-06-01")
+    with pytest.raises(ValueError, match="incompleto"):
+        gestion._pjn_no_retrocede(max(VIEJOS))
+    with pytest.raises(ValueError, match="incompleto"):
+        gestion._pjn_no_retrocede(None)
+
+
+def test_la_card_no_cae_en_una_ventana_mas_vieja_por_un_hueco(monkeypatch):
+    _publicado(monkeypatch, "2026-06-01")
+    con_hueco = {k: v for k, v in SEMESTRES.items() if k != (2025, 2)}
+    monkeypatch.setattr(gestion, "_pjn_juicios_semestrales", lambda: con_hueco)
+    monkeypatch.setattr(gestion, "_warn", lambda *a: None)
+    assert gestion.fetch_juicios_trabajo_capital() is None
+
+
+def test_el_mismo_semestre_o_uno_nuevo_si_se_publica(monkeypatch):
+    _publicado(monkeypatch, "2026-06-01")
+    monkeypatch.setattr(gestion, "_pjn_juicios_semestrales", lambda: SEMESTRES)
+    assert gestion.fetch_juicios_trabajo_capital()["valor"] == 12.4
+    _publicado(monkeypatch, "2025-12-01")
+    gestion._pjn_no_retrocede((2026, 1))
+    _publicado(monkeypatch, "")
+    gestion._pjn_no_retrocede(max(VIEJOS))
+
+
+def test_la_serie_tampoco_se_arma_con_el_listado_incompleto(monkeypatch):
+    """`descargar_series` usa `_pjn_juicios_semestrales` directo: el corte tiene
+    que estar ahí, si no la serie se trunca en 2024 (pasó el 2-nov-2026)."""
+    _publicado(monkeypatch, "2026-06-01")
+
+    def opciones(step, anio, **kw):
+        if step == "titulo":
+            return [{"value": "t", "label": "Datos abiertos"}] if anio < 2025 else []
+        return [{"value": f"{anio}-{s}", "label": f"Trámite de expedientes {s}º semestre"}
+                for s in (1, 2)]
+
+    monkeypatch.setattr(gestion, "_pjn_opciones", opciones)
+    monkeypatch.setattr(gestion, "_http_get_resiliente", lambda url: FIXTURE.read_bytes())
+    with pytest.raises(ValueError, match="incompleto"):
+        gestion._pjn_juicios_semestrales(hasta=2026)

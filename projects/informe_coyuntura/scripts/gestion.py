@@ -2220,7 +2220,28 @@ def _pjn_juicios_semestrales(hasta: int | None = None) -> dict:
                 contenido = _http_get_resiliente(
                     f"{PJN_API}/file.php?id={arch['value']}&mode=inline")
                 out[(anio, int(m.group(1)))] = _pjn_entrados_primera(contenido.decode("latin-1"))
+    _pjn_no_retrocede(max(out) if out else None)
     return out
+
+
+def _pjn_publicado() -> str:
+    """fecha_dato de la última card publicada de juicios ("" si no hay)."""
+    previo = load_cache().get("indicadores", {}).get("juicios_trabajo_capital")
+    return (previo or {}).get("fecha_dato") or ""
+
+
+def _pjn_no_retrocede(semestre: tuple | None) -> None:
+    """El 2-nov-2026 el PJN devolvió vacíos los listados de 2025 y 2026, y con lo
+    que quedaba (2023-2024) la card pasó de +12,4 % (1er semestre de 2026) a
+    −5,4 % (2º de 2024) sin marca de desactualizada, y la serie se truncó en
+    2024. Una fuente que de un día para otro trae menos semestres que los ya
+    publicados está incompleta, no revisada: se falla, y la card y la serie
+    conservan lo último publicado."""
+    publicado = _pjn_publicado()
+    if publicado and (semestre is None or _fecha_semestre(semestre) < publicado):
+        hasta = f"el {semestre[1]}º semestre de {semestre[0]}" if semestre else "ningún semestre"
+        raise ValueError(f"PJN: el listado llega hasta {hasta} y ya se publicó hasta "
+                         f"{publicado[:7]}; listado incompleto, se mantiene lo publicado")
 
 
 def _semestre_previo(s: tuple) -> tuple:
@@ -2268,6 +2289,8 @@ def fetch_juicios_trabajo_capital() -> dict | None:
     try:
         semestres = _pjn_juicios_semestrales()
         ultimo = _ultimo_semestre_completo(semestres)
+        # Un hueco en el medio hace caer en una ventana más vieja: tampoco vale.
+        _pjn_no_retrocede(ultimo)
         var, actual, anterior = _juicios_trabajo_variacion(semestres, ultimo)
         return {
             "valor":          var,
