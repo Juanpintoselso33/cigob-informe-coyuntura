@@ -75,7 +75,8 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    la cobertura dentro de legislativo y qué pasa con el 16 % de la dimensión que desaparece
    (repartirlo entre las otras cinco o sumarlo a legislativo). ADR nuevo que reemplace a 0374.
    **Juan (3-nov): darle más peso a la dimensión poder legislativo** (hoy 22,58 %). Falta
-   definir cuánto.
+   definir cuánto. Opción que planteó: que el 16,13 % de poder judicial pase entero a
+   legislativo (22,58 + 16,13 = 38,71 %, las otras cuatro dimensiones sin cambios).
 
 ## 2. Para la reunión con Luis
 
