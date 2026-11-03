@@ -8776,6 +8776,7 @@ def _vsb_resolver_origen(cache: dict) -> bool:
             session = session or _hcdn_votaciones_session()
             exps = _vsb_expedientes_de_od_senado(session, e["ods"])
             if exps is None:
+                _VSB_FALLAS.append("no se pudo leer la Orden del Día de una votación del Senado")
                 completo = False
             else:
                 e["expedientes_od"] = exps
@@ -8784,6 +8785,7 @@ def _vsb_resolver_origen(cache: dict) -> bool:
             indice = _vsb_indice_origen_pe()
         except Exception as ex:
             print(f"  [WARN] votos_sobre_bancas: no se pudo leer el catálogo de origen ({ex})")
+            _VSB_FALLAS.append(f"no se pudo leer el catálogo de origen ({ex})")
             completo = False
     for e, f in pendientes:
         if f is _vsb_origen_pe_senado and not e.get("expedientes") and e.get("ods") \
@@ -8878,6 +8880,7 @@ def _vsb_actualizar_diputados(cache: dict) -> bool:
                     if nueva is None or nueva.get("fecha") is None:
                         print(f"  [WARN] votos_sobre_bancas: acta {id_actual} de Diputados sin "
                               f"cabecera o fecha legible -- se omite")
+                        _VSB_FALLAS.append(f"acta {id_actual} de Diputados sin cabecera o fecha legible")
                         completo = False
                     else:
                         actas[str(id_actual)] = entrada = nueva
@@ -8980,6 +8983,7 @@ def _vsb_actualizar_senado(cache: dict) -> bool:
     for anio in range(VSB_INICIO.year, date.today().year + 1):
         listado = _descubrir_actas_senado(session, anio)
         if listado is None:
+            _VSB_FALLAS.append(f"el Senado no devolvió el listado de actas de {anio}")
             completo = False
             continue
         for acta in listado:
@@ -8990,6 +8994,8 @@ def _vsb_actualizar_senado(cache: dict) -> bool:
             filas = _vsb_filas_senado(r.text) if r is not None else []
             cab = _parsear_cabecera_acta_senado(r.text) if r is not None else None
             if not filas or cab is None:
+                _VSB_FALLAS.append(f"acta {acta['id']} del Senado "
+                                   + ("sin respuesta" if r is None else "ilegible"))
                 completo = False
                 continue
             actas[acta["id"]] = {**cab, **_vsb_conteos(filas_senado_a_la_fecha(filas, cab["fecha"])),
@@ -8998,9 +9004,21 @@ def _vsb_actualizar_senado(cache: dict) -> bool:
     return completo
 
 
+# Por qué quedó incompleta la última lectura. Sin esto, la serie fallaba con un
+# «el fetcher no devolvió puntos» que el aviso de Slack leía como error de
+# código, cuando era el catálogo de Diputados que no contestó (3-nov-2026).
+_VSB_FALLAS: list[str] = []
+
+
+def _vsb_incompleta() -> str:
+    return "lectura de actas incompleta: " + "; ".join(dict.fromkeys(_VSB_FALLAS) or ["sin motivo registrado"])
+
+
 def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:
     """(caché al día, completo). `completo` = ninguna descarga falló; con
-    False el caller no debe presentar el resultado como una lectura entera."""
+    False el caller no debe presentar el resultado como una lectura entera
+    (el motivo queda en `_vsb_incompleta()`)."""
+    _VSB_FALLAS.clear()
     cache = _vsb_cargar_cache()
     ok_dip = _vsb_actualizar_diputados(cache)
     ok_sen = _vsb_actualizar_senado(cache)
@@ -9028,7 +9046,7 @@ def fetch_votos_sobre_bancas() -> dict | None:
     try:
         cache, completo = votos_sobre_bancas_actualizar()
         if not completo:
-            _warn("votos_sobre_bancas", "lectura de actas incompleta -- se conserva el último valor")
+            _warn("votos_sobre_bancas", f"{_vsb_incompleta()} -- se conserva el último valor")
             return None
         valor = votos_sobre_bancas_valor(cache, date.today())
         if valor is None:
@@ -9074,8 +9092,7 @@ def votos_sobre_bancas_serie() -> list:
     cada fin de mes (y hoy). Es el mismo cálculo que la card."""
     cache, completo = votos_sobre_bancas_actualizar()
     if not completo:
-        print("  [WARN] votos_sobre_bancas serie: lectura de actas incompleta -- serie omitida")
-        return []
+        raise ValueError(_vsb_incompleta())
     out = []
     for fin in _fines_de_mes_politica(date(2023, 12, 1), date.today()):
         valor = votos_sobre_bancas_valor(cache, fin)

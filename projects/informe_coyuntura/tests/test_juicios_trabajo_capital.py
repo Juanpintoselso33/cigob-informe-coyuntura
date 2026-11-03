@@ -131,8 +131,8 @@ def test_la_serie_tampoco_se_arma_con_el_listado_incompleto(monkeypatch):
     _publicado(monkeypatch, "2026-06-01")
 
     def opciones(step, anio, **kw):
-        if step == "titulo":
-            return [{"value": "t", "label": "Datos abiertos"}] if anio < 2025 else []
+        if step == "titulo" or anio >= 2025:
+            return [{"value": "t", "label": "Datos abiertos"}] if step == "titulo" else []
         return [{"value": f"{anio}-{s}", "label": f"Trámite de expedientes {s}º semestre"}
                 for s in (1, 2)]
 
@@ -140,3 +140,27 @@ def test_la_serie_tampoco_se_arma_con_el_listado_incompleto(monkeypatch):
     monkeypatch.setattr(gestion, "_http_get_resiliente", lambda url: FIXTURE.read_bytes())
     with pytest.raises(ValueError, match="incompleto"):
         gestion._pjn_juicios_semestrales(hasta=2026)
+
+
+def test_los_anios_sin_titulo_se_leen_como_los_pide_la_pagina(monkeypatch):
+    """Desde 2025 el PJN no agrupa los archivos bajo «Datos abiertos»: el selector
+    de títulos viene vacío y la página pide los archivos con tit=0 y sub=-1. El
+    3-nov-2026 el colector sólo miraba bajo títulos y perdía 2025 y 2026."""
+    _publicado(monkeypatch, "2026-06-01")
+    pedidos = []
+
+    def opciones(step, anio, **kw):
+        if step == "titulo":
+            return [{"value": "t", "label": "1 - Datos abiertos (CSV)"}] if anio < 2025 else []
+        pedidos.append((anio, kw["tit"], kw["sub"]))
+        if anio >= 2025 and (kw["tit"], kw["sub"]) != (0, -1):
+            return []
+        return [{"value": f"{anio}-{s}", "label": f"Resumen - Trámite de expedientes {s}º semestre"}
+                for s in ((1,) if anio == 2026 else (1, 2))]
+
+    monkeypatch.setattr(gestion, "_pjn_opciones", opciones)
+    monkeypatch.setattr(gestion, "_http_get_resiliente", lambda url: FIXTURE.read_bytes())
+    semestres = gestion._pjn_juicios_semestrales(hasta=2026)
+    assert max(semestres) == (2026, 1)
+    assert (2025, 2) in semestres
+    assert (2024, "t", 0) in pedidos and (2026, 0, -1) in pedidos

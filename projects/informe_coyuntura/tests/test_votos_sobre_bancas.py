@@ -247,7 +247,44 @@ def test_lectura_incompleta_no_se_publica_como_actualizacion(monkeypatch):
     cache = {"diputados": {"1": dip()}, "senado": {}}
     monkeypatch.setattr(politica, "votos_sobre_bancas_actualizar", lambda: (cache, False))
     assert politica.fetch_votos_sobre_bancas() is None
-    assert politica.votos_sobre_bancas_serie() == []
+    with pytest.raises(ValueError, match="lectura de actas incompleta"):
+        politica.votos_sobre_bancas_serie()
+
+
+def test_la_serie_incompleta_dice_por_que_y_un_timeout_no_suena_como_codigo(monkeypatch):
+    """3-nov-2026: el catálogo de origen de Diputados no contestó y la serie falló
+    con «el fetcher no devolvió puntos», que el aviso de Slack tomó por error de
+    código. El motivo tiene que llegar a la línea [ERR]."""
+    import aviso_slack
+    cache = {"diputados": {"1": dip()}, "senado": {}}
+    monkeypatch.setattr(politica, "_vsb_cargar_cache", lambda: cache)
+    monkeypatch.setattr(politica, "_vsb_actualizar_diputados", lambda c: True)
+    monkeypatch.setattr(politica, "_vsb_actualizar_senado", lambda c: True)
+
+    def origen_caido(c):
+        politica._VSB_FALLAS.append("no se pudo leer el catálogo de origen (HTTPSConnectionPool("
+                                    "host='datos.hcdn.gob.ar', port=443): Read timed out.)")
+        return False
+
+    monkeypatch.setattr(politica, "_vsb_resolver_origen", origen_caido)
+    with pytest.raises(ValueError) as e:
+        politica.votos_sobre_bancas_serie()
+    assert "Read timed out" in str(e.value)
+    linea = f"  [ERR] votos_sobre_bancas: {e.value} -- se conservan las filas anteriores  137s"
+    assert not list(aviso_slack._eventos(linea))
+    # un acta ilegible, en cambio, sí avisa
+    monkeypatch.setattr(politica, "_vsb_resolver_origen", lambda c: True)
+
+    def acta_rota(c):
+        politica._VSB_FALLAS.append("acta 6001 de Diputados sin cabecera o fecha legible")
+        return False
+
+    monkeypatch.setattr(politica, "_vsb_actualizar_diputados", acta_rota)
+    with pytest.raises(ValueError) as e:
+        politica.votos_sobre_bancas_serie()
+    assert "Read timed out" not in str(e.value)
+    linea = f"  [ERR] votos_sobre_bancas: {e.value} -- se conservan las filas anteriores  3s"
+    assert list(aviso_slack._eventos(linea))
 
 
 # ── el cache por acta se escribe de a una y retoma ───────────────────────────

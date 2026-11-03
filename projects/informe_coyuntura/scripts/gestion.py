@@ -2211,9 +2211,13 @@ def _pjn_juicios_semestrales(hasta: int | None = None) -> dict:
     out = {}
     for anio in range(PJN_DESDE, hasta + 1):
         titulos = _pjn_opciones("titulo", anio=anio, jur=PJN_JUR_TRABAJO)
-        csv_tit = [t["value"] for t in titulos if "datos abiertos" in str(t.get("label", "")).lower()]
-        for tit in csv_tit:
-            for arch in _pjn_opciones("archivo", anio=anio, jur=PJN_JUR_TRABAJO, tit=tit, sub=0):
+        # Desde 2025 el PJN publica los archivos sin título: la página los pide
+        # con tit=0 y sub=-1 cuando el selector de títulos viene vacío.
+        listados = ([(t["value"], 0) for t in titulos
+                     if "datos abiertos" in str(t.get("label", "")).lower()]
+                    if titulos else [(0, -1)])
+        for tit, sub in listados:
+            for arch in _pjn_opciones("archivo", anio=anio, jur=PJN_JUR_TRABAJO, tit=tit, sub=sub):
                 m = _PJN_SEMESTRE.search(str(arch.get("label", "")))
                 if not m:
                     continue

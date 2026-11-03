@@ -1,5 +1,5 @@
 {
-  "revisado_el": "2026-10-20",
+  "revisado_el": "2026-11-03",
   "alcance": "Bajas corroboradas fuera del CSV de renuncias. Registro complementario, no censo exhaustivo de fallecimientos.",
   "eventos": [
     {
@@ -41,6 +41,14 @@
       "tipo": "remocion",
       "organo": "Juzgado Federal de Primera Instancia Nº 4 de Mar del Plata",
       "fuente": "https://consejomagistratura.gov.ar/index.php/2026/08/18/el-jurado-de-enjuiciamiento-destituyo-a-alfredo-lopez/"
+    },
+    {
+      "persona": "SALMAIN, Gastón Alberto",
+      "fecha": "2026-10-29",
+      "tipo": "remocion",
+      "organo": "Juzgado Federal de Primera Instancia Nº 1 de Rosario",
+      "fuente": "https://consejomagistratura.gov.ar/index.php/2026/10/29/el-jurado-de-enjuiciamiento-de-magistrados-destituyo-a-gaston-salmain/",
+      "nota": "El Jurado de Enjuiciamiento lo removió por mal desempeño el 29-oct-2026. Su subrogancia en el Juzgado Federal N° 1 de Santa Fe no cambia el stock: ese cargo ya figura vacante en el padrón."
     }
   ]
 }
