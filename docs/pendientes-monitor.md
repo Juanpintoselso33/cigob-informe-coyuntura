@@ -74,6 +74,8 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    61,5 puntos) y pesa 16,13 % del índice político (ADR-0374). Al moverla, definir el peso de
    la cobertura dentro de legislativo y qué pasa con el 16 % de la dimensión que desaparece
    (repartirlo entre las otras cinco o sumarlo a legislativo). ADR nuevo que reemplace a 0374.
+   **Juan (3-nov): darle más peso a la dimensión poder legislativo** (hoy 22,58 %). Falta
+   definir cuánto.
 
 ## 2. Para la reunión con Luis
 
