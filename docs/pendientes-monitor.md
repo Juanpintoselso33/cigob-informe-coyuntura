@@ -108,6 +108,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 18. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
     Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
     se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
+19. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). Idea: un objetivo
+    absoluto de monto de inversiones aprobadas en lugar de la tasa de aprobación con la escala
+    de las concesiones (ADR-0406). Va junto con el punto de Marcos de la sección 2 («qué queremos
+    medir»).
 
 ## 2. Para la reunión con Luis
 
