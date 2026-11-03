@@ -19,6 +19,34 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 
 ## 1. Abierto: decide Juan
 
+**Revisión de Luis (3-nov, Word «261103 Pendientes revisada por Luis», por WhatsApp):**
+«amarillos cambiar, verdes la próxima». Los números entre paréntesis son los de esta lista.
+
+- **Cambiar ahora (amarillo):**
+  - DNU por ley (7) pasa a poder legislativo.
+  - Cobertura judicial (8) pasa a legislativo, y legislativo suma el 16 % entero de la
+    dimensión que desaparece.
+  - Producción legislativa (1): sacarla, sin alternativa.
+  - Votos ajenos (5 y 6): sólo Diputados, con la escala 129/119/109. **En un mes sin votación
+    queda el puntaje de la última votación.**
+  - Transferencias no automáticas (2): revisar el dato y su historia previa.
+  - «Sector empresarial» (9).
+  - RIGI (18): cortes contra una meta esperada de inversiones.
+  - IVA + cheque (3) en cuentas fiscales: el peso y la escala con historia previa «lo calcula la IA».
+  - Ítem 10: Luis lo rotuló **«Alquileres»**, no el gráfico de impacto social. Pide pasarlo a
+    base oct-dic 2023 y revisar el empalme INDEC / Di Tella.
+  - Pobreza (11): verde con 15 % o menos, tomando a Uruguay como aspiración. Siguen faltando
+    los otros cortes.
+  - kg en el hover de carne (12).
+  - Mora (15) y carga de la deuda (16).
+  - Victimización (17): está en amarillo, pero el texto dice «para la próxima». Hay que
+    preguntárselo a Luis.
+- **Para la próxima (verde):**
+  - Los dos de carne puntuando igual (13).
+  - Presión de precios (14): falta salud, y la ponderación alimentos / servicios públicos
+    escribió «para la próxima publicación».
+- **Sin cambios:** alineamiento por provincia (4) «se deja como está». No se suma Diputados.
+
 1. **Producción legislativa: puede salir; buscar una alternativa** (Juan, 3-nov). Hoy: 31
    leyes sancionadas en 12 meses, 45,8 puntos, amarillo, 3,8 % del peso. Además cuenta leyes
    sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
