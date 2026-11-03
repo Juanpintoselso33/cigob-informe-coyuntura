@@ -69,6 +69,11 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    (el índice se renormaliza sin ella) y por eso aparece sin dimensión. El diario está bien.
    Arreglo probable: sumar `metodo` a `CAMPOS_CARD` en `scripts/archivo.py`, con un test, y
    rearmar la rama mensual. El índice político de octubre publicado va a cambiar.
+9. **La dimensión poder judicial se va; cobertura de cargos judiciales pasa a poder
+   legislativo** (Juan, 3-nov). Hoy poder judicial tiene sólo `cobertura_judicial` (73,61 %,
+   61,5 puntos) y pesa 16,13 % del índice político (ADR-0374). Al moverla, definir el peso de
+   la cobertura dentro de legislativo y qué pasa con el 16 % de la dimensión que desaparece
+   (repartirlo entre las otras cinco o sumarlo a legislativo). ADR nuevo que reemplace a 0374.
 
 ## 2. Para la reunión con Luis
 
