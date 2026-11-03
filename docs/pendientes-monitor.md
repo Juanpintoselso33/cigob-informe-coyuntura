@@ -105,6 +105,9 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 17. **Carga del servicio de la deuda: igual que la mora** (Juan, 3-nov). Cortes fijos basados
     en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
     crédito.
+18. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
+    Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
+    se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
 
 ## 2. Para la reunión con Luis
 
