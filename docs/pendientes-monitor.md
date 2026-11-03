@@ -46,6 +46,13 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    votaciones, Senado 29,3 % con 12), 8,1 % del peso (cohesión; ADR-0376). Con cerca de una
    votación de ley por mes y cámara, hay que definir qué muestra un mes sin votaciones (receso
    de enero y febrero incluido).
+7. **Votos ajenos: sólo Diputados, sin Senado, y revisar los límites** (Juan, 3-nov). Si la
+   ley se aprueba, siempre hace falta un mínimo de votos ajenos, y eso da verde casi seguro.
+   Con mayoría absoluta, el piso en el Senado es (37 − 21 de LLA) / 72 = 22,2 %, por encima del
+   corte del verde (18 %): el Senado da verde por construcción. En Diputados el piso es
+   (129 − 94) / 257 = 13,6 %. El origen del Ejecutivo sí está medido (ADR-0376): en el Senado
+   por el expediente (`PE`/`JGM`) y en Diputados cruzando el Orden del Día con el dictamen y el
+   catálogo de proyectos del Ejecutivo; hoy quedan 3 votaciones con origen sin confirmar.
 
 ## 2. Para la reunión con Luis
 
