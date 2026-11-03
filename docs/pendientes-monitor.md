@@ -37,6 +37,15 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    calculando oculta (`actividad_tributaria`), así que el dato está. Para hacerlo: ADR nuevo que
    reemplace a 0368, peso dentro de cuentas fiscales, y escala con cortes de la historia previa
    como el resto (ADR-0404; la de 0329 se había calibrado sobre 2017-2026, mandato incluido).
+5. **Alineamiento por provincia: sumar Diputados** (Juan, 3-nov). Hoy
+   `alineamiento_senadores_prov` mira sólo el Senado: 61,6 % de los votos de senadores que no
+   son de La Libertad Avanza alineados con ella, 80 puntos, 6,1 % del peso (alianzas
+   territoriales; ADR-0400 y 0402). Sumar los diputados por provincia.
+6. **Votos ajenos al aprobar leyes: promedio del mes, no de 12 meses** (Juan, 3-nov). Hoy
+   `votos_sobre_bancas` promedia 12 meses: 22,3 % de las bancas (Diputados 18,5 % con 12
+   votaciones, Senado 29,3 % con 12), 8,1 % del peso (cohesión; ADR-0376). Con cerca de una
+   votación de ley por mes y cámara, hay que definir qué muestra un mes sin votaciones (receso
+   de enero y febrero incluido).
 
 ## 2. Para la reunión con Luis
 
