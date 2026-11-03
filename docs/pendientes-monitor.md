@@ -77,6 +77,9 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    **Juan (3-nov): darle más peso a la dimensión poder legislativo** (hoy 22,58 %). Falta
    definir cuánto. Opción que planteó: que el 16,13 % de poder judicial pase entero a
    legislativo (22,58 + 16,13 = 38,71 %, las otras cuatro dimensiones sin cambios).
+10. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** (Juan, 3-nov). Sólo
+    el nombre: industria, comercio, campo y construcción siguen igual. Cambiar en el sitio,
+    fichas, textos y manuales.
 
 ## 2. Para la reunión con Luis
 
