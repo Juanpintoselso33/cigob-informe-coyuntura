@@ -87,6 +87,9 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 12. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
     los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
     verde). Faltan los cortes de amarillo, naranja y rojo.
+13. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** (Juan,
+    3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
+    valor del índice.
 
 ## 2. Para la reunión con Luis
 
