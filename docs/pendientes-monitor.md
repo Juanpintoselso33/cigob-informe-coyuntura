@@ -90,6 +90,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 13. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** (Juan,
     3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
     valor del índice.
+14. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual**
+    (Juan, 3-nov). Uno es aspiracional (la carne vacuna como bien deseado) y el otro es
+    material/nutricional (la proteína que efectivamente se come). Revisar cómo puntúa cada uno
+    (peso, escala, dimensión) y si tiene sentido que pesen lo mismo.
 
 ## 2. Para la reunión con Luis
 
