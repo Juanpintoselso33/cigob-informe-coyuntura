@@ -53,6 +53,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    (129 − 94) / 257 = 13,6 %. El origen del Ejecutivo sí está medido (ADR-0376): en el Senado
    por el expediente (`PE`/`JGM`) y en Diputados cruzando el Orden del Día con el dictamen y el
    catálogo de proyectos del Ejecutivo; hoy quedan 3 votaciones con origen sin confirmar.
+   **Escala propuesta por Juan (3-nov):** medir la cantidad de diputados que votaron a favor
+   de la ley (no los votos ajenos como % de la cámara). Más de 129 → verde · 119 a 129 →
+   amarillo · 109 a 119 → naranja · menos de 109 → rojo. Falta definir de qué lado cae el
+   borde exacto (129, 119, 109).
 
 ## 2. Para la reunión con Luis
 
