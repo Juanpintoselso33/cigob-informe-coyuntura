@@ -175,6 +175,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2024-01-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2023-12-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
+2026-11-02,tc_mayorista,1544.6507,ARS/USD,BCRA
 2026-10-30,tc_mayorista,1537.3487,ARS/USD,BCRA
 2026-10-29,tc_mayorista,1539.593,ARS/USD,BCRA
 2026-10-28,tc_mayorista,1538.4739,ARS/USD,BCRA
@@ -1282,26 +1283,27 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,100.3,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.1,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,100.2,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-10-28,prestamos_privados,151098226.0,M ARS,BCRA
-2026-10-27,prestamos_privados,150843296.0,M ARS,BCRA
-2026-10-26,prestamos_privados,150117204.0,M ARS,BCRA
-2026-10-23,prestamos_privados,149553476.0,M ARS,BCRA
-2026-10-22,prestamos_privados,149315616.0,M ARS,BCRA
-2026-10-21,prestamos_privados,149024672.0,M ARS,BCRA
-2026-10-20,prestamos_privados,148491727.0,M ARS,BCRA
-2026-10-19,prestamos_privados,147775264.0,M ARS,BCRA
-2026-10-16,prestamos_privados,147332749.0,M ARS,BCRA
-2026-10-15,prestamos_privados,146884357.0,M ARS,BCRA
-2026-10-14,prestamos_privados,147542787.0,M ARS,BCRA
-2026-10-13,prestamos_privados,147197578.0,M ARS,BCRA
-2026-10-09,prestamos_privados,146572061.0,M ARS,BCRA
-2026-10-08,prestamos_privados,147687213.0,M ARS,BCRA
+2026-10-29,prestamos_privados,151303504.0,M ARS,BCRA
+2026-10-28,prestamos_privados,151103639.0,M ARS,BCRA
+2026-10-27,prestamos_privados,150823391.0,M ARS,BCRA
+2026-10-26,prestamos_privados,150117203.0,M ARS,BCRA
+2026-10-23,prestamos_privados,149699302.0,M ARS,BCRA
+2026-10-22,prestamos_privados,149308543.0,M ARS,BCRA
+2026-10-21,prestamos_privados,149017686.0,M ARS,BCRA
+2026-10-20,prestamos_privados,148484741.0,M ARS,BCRA
+2026-10-19,prestamos_privados,147768278.0,M ARS,BCRA
+2026-10-16,prestamos_privados,147325763.0,M ARS,BCRA
+2026-10-15,prestamos_privados,146877371.0,M ARS,BCRA
+2026-10-14,prestamos_privados,147535801.0,M ARS,BCRA
+2026-10-13,prestamos_privados,147190592.0,M ARS,BCRA
+2026-10-09,prestamos_privados,146565075.0,M ARS,BCRA
+2026-10-08,prestamos_privados,147680227.0,M ARS,BCRA
 2026-10-07,prestamos_privados,147707199.0,M ARS,BCRA
-2026-10-06,prestamos_privados,148568018.0,M ARS,BCRA
-2026-10-05,prestamos_privados,148317303.0,M ARS,BCRA
-2026-10-02,prestamos_privados,148950109.0,M ARS,BCRA
-2026-10-01,prestamos_privados,148978351.0,M ARS,BCRA
-2026-09-30,prestamos_privados,149122928.0,M ARS,BCRA
+2026-10-06,prestamos_privados,148561032.0,M ARS,BCRA
+2026-10-05,prestamos_privados,148310317.0,M ARS,BCRA
+2026-10-02,prestamos_privados,148943123.0,M ARS,BCRA
+2026-10-01,prestamos_privados,148971365.0,M ARS,BCRA
+2026-09-30,prestamos_privados,149130690.0,M ARS,BCRA
 2026-09-29,prestamos_privados,148773040.0,M ARS,BCRA
 2026-09-28,prestamos_privados,147903161.0,M ARS,BCRA
 2026-09-25,prestamos_privados,147162565.0,M ARS,BCRA
@@ -2078,6 +2080,7 @@ fecha,indicador,valor,unidad,fuente
 2022-01-01,ipc_total,3.88,% mensual,INDEC (derivado del nivel del IPC)
 2021-12-01,ipc_total,3.84,% mensual,INDEC (derivado del nivel del IPC)
 2021-11-01,ipc_total,2.53,% mensual,INDEC (derivado del nivel del IPC)
+2026-09-01,ipc_nucleo,1.68,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2026-08-01,ipc_nucleo,1.81,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2026-07-01,ipc_nucleo,1.78,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2026-06-01,ipc_nucleo,1.57,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
@@ -2111,7 +2114,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ipc_nucleo,12.29,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2024-01-01,ipc_nucleo,20.22,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2023-12-01,ipc_nucleo,28.26,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
-2026-09-01,idm,1.82,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-09-01,idm,1.8,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-08-01,idm,2.15,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-07-01,idm,4.47,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-06-01,idm,6.05,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -2255,99 +2258,100 @@ fecha,indicador,valor,unidad,fuente
 2023-11-01,iai,-8.1,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-10-01,iai,0.75,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-09-01,iai,-3.82,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
-2026-07-01,emae_ia,-1.44,% i.a.,INDEC/datos.gob.ar
-2026-06-01,emae_ia,3.13,% i.a.,INDEC/datos.gob.ar
-2026-05-01,emae_ia,0.72,% i.a.,INDEC/datos.gob.ar
-2026-04-01,emae_ia,2.12,% i.a.,INDEC/datos.gob.ar
-2026-03-01,emae_ia,6.39,% i.a.,INDEC/datos.gob.ar
-2026-02-01,emae_ia,-1.46,% i.a.,INDEC/datos.gob.ar
-2026-01-01,emae_ia,2.04,% i.a.,INDEC/datos.gob.ar
-2025-12-01,emae_ia,3.48,% i.a.,INDEC/datos.gob.ar
-2025-11-01,emae_ia,-0.14,% i.a.,INDEC/datos.gob.ar
-2025-10-01,emae_ia,3.19,% i.a.,INDEC/datos.gob.ar
-2025-09-01,emae_ia,4.77,% i.a.,INDEC/datos.gob.ar
-2025-08-01,emae_ia,2.1,% i.a.,INDEC/datos.gob.ar
-2025-07-01,emae_ia,2.75,% i.a.,INDEC/datos.gob.ar
-2025-06-01,emae_ia,6.4,% i.a.,INDEC/datos.gob.ar
-2025-05-01,emae_ia,5.3,% i.a.,INDEC/datos.gob.ar
-2025-04-01,emae_ia,7.93,% i.a.,INDEC/datos.gob.ar
-2025-03-01,emae_ia,5.77,% i.a.,INDEC/datos.gob.ar
-2025-02-01,emae_ia,5.95,% i.a.,INDEC/datos.gob.ar
-2025-01-01,emae_ia,6.64,% i.a.,INDEC/datos.gob.ar
-2024-12-01,emae_ia,6.7,% i.a.,INDEC/datos.gob.ar
-2024-11-01,emae_ia,1.24,% i.a.,INDEC/datos.gob.ar
-2024-10-01,emae_ia,0.4,% i.a.,INDEC/datos.gob.ar
-2024-09-01,emae_ia,-2.44,% i.a.,INDEC/datos.gob.ar
-2024-08-01,emae_ia,-3.05,% i.a.,INDEC/datos.gob.ar
-2024-07-01,emae_ia,-0.37,% i.a.,INDEC/datos.gob.ar
-2024-06-01,emae_ia,-3.43,% i.a.,INDEC/datos.gob.ar
-2024-05-01,emae_ia,1.92,% i.a.,INDEC/datos.gob.ar
-2024-04-01,emae_ia,-1.87,% i.a.,INDEC/datos.gob.ar
-2024-03-01,emae_ia,-8.17,% i.a.,INDEC/datos.gob.ar
-2024-02-01,emae_ia,-2.77,% i.a.,INDEC/datos.gob.ar
-2024-01-01,emae_ia,-3.96,% i.a.,INDEC/datos.gob.ar
-2023-12-01,emae_ia,-4.68,% i.a.,INDEC/datos.gob.ar
-2023-11-01,emae_ia,-1.12,% i.a.,INDEC/datos.gob.ar
-2023-10-01,emae_ia,0.65,% i.a.,INDEC/datos.gob.ar
-2023-09-01,emae_ia,-0.51,% i.a.,INDEC/datos.gob.ar
-2023-08-01,emae_ia,0.3,% i.a.,INDEC/datos.gob.ar
-2023-07-01,emae_ia,-1.47,% i.a.,INDEC/datos.gob.ar
-2023-06-01,emae_ia,-5.49,% i.a.,INDEC/datos.gob.ar
-2023-05-01,emae_ia,-6.61,% i.a.,INDEC/datos.gob.ar
-2023-04-01,emae_ia,-4.82,% i.a.,INDEC/datos.gob.ar
-2023-03-01,emae_ia,0.74,% i.a.,INDEC/datos.gob.ar
-2023-02-01,emae_ia,-0.42,% i.a.,INDEC/datos.gob.ar
-2023-01-01,emae_ia,2.43,% i.a.,INDEC/datos.gob.ar
-2022-12-01,emae_ia,-0.71,% i.a.,INDEC/datos.gob.ar
-2022-11-01,emae_ia,2.98,% i.a.,INDEC/datos.gob.ar
-2022-10-01,emae_ia,5.05,% i.a.,INDEC/datos.gob.ar
-2022-09-01,emae_ia,5.58,% i.a.,INDEC/datos.gob.ar
-2022-08-01,emae_ia,7.44,% i.a.,INDEC/datos.gob.ar
-2022-07-01,emae_ia,7.03,% i.a.,INDEC/datos.gob.ar
-2022-06-01,emae_ia,8.37,% i.a.,INDEC/datos.gob.ar
-2022-05-01,emae_ia,8.94,% i.a.,INDEC/datos.gob.ar
-2022-04-01,emae_ia,7.05,% i.a.,INDEC/datos.gob.ar
-2022-03-01,emae_ia,5.46,% i.a.,INDEC/datos.gob.ar
-2022-02-01,emae_ia,9.2,% i.a.,INDEC/datos.gob.ar
-2022-01-01,emae_ia,6.17,% i.a.,INDEC/datos.gob.ar
-2021-12-01,emae_ia,9.99,% i.a.,INDEC/datos.gob.ar
-2021-11-01,emae_ia,8.85,% i.a.,INDEC/datos.gob.ar
-2021-10-01,emae_ia,6.22,% i.a.,INDEC/datos.gob.ar
-2021-09-01,emae_ia,11.1,% i.a.,INDEC/datos.gob.ar
-2021-08-01,emae_ia,12.61,% i.a.,INDEC/datos.gob.ar
-2026-07-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-06-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-05-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-04-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-03-01,emae_difusion,93.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-02-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-01-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-12-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-11-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-10-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-09-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-08-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-07-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-06-01,emae_difusion,80.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-05-01,emae_difusion,80.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-04-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-03-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-02-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2025-01-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-12-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-11-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-10-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-09-01,emae_difusion,26.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-08-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-07-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-06-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-05-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-04-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-03-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-02-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2024-01-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2023-12-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-09-01,desequilibrio_monetario,68.15,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-08-01,emae_ia,-1.74,% i.a.,INDEC (Catálogo API-INDEC)
+2026-07-01,emae_ia,-1.47,% i.a.,INDEC (Catálogo API-INDEC)
+2026-06-01,emae_ia,3.11,% i.a.,INDEC (Catálogo API-INDEC)
+2026-05-01,emae_ia,0.71,% i.a.,INDEC (Catálogo API-INDEC)
+2026-04-01,emae_ia,2.16,% i.a.,INDEC (Catálogo API-INDEC)
+2026-03-01,emae_ia,6.46,% i.a.,INDEC (Catálogo API-INDEC)
+2026-02-01,emae_ia,-1.48,% i.a.,INDEC (Catálogo API-INDEC)
+2026-01-01,emae_ia,2.0,% i.a.,INDEC (Catálogo API-INDEC)
+2025-12-01,emae_ia,3.48,% i.a.,INDEC (Catálogo API-INDEC)
+2025-11-01,emae_ia,-0.14,% i.a.,INDEC (Catálogo API-INDEC)
+2025-10-01,emae_ia,3.19,% i.a.,INDEC (Catálogo API-INDEC)
+2025-09-01,emae_ia,4.77,% i.a.,INDEC (Catálogo API-INDEC)
+2025-08-01,emae_ia,2.1,% i.a.,INDEC (Catálogo API-INDEC)
+2025-07-01,emae_ia,2.75,% i.a.,INDEC (Catálogo API-INDEC)
+2025-06-01,emae_ia,6.4,% i.a.,INDEC (Catálogo API-INDEC)
+2025-05-01,emae_ia,5.3,% i.a.,INDEC (Catálogo API-INDEC)
+2025-04-01,emae_ia,7.93,% i.a.,INDEC (Catálogo API-INDEC)
+2025-03-01,emae_ia,5.77,% i.a.,INDEC (Catálogo API-INDEC)
+2025-02-01,emae_ia,5.95,% i.a.,INDEC (Catálogo API-INDEC)
+2025-01-01,emae_ia,6.64,% i.a.,INDEC (Catálogo API-INDEC)
+2024-12-01,emae_ia,6.7,% i.a.,INDEC (Catálogo API-INDEC)
+2024-11-01,emae_ia,1.24,% i.a.,INDEC (Catálogo API-INDEC)
+2024-10-01,emae_ia,0.4,% i.a.,INDEC (Catálogo API-INDEC)
+2024-09-01,emae_ia,-2.44,% i.a.,INDEC (Catálogo API-INDEC)
+2024-08-01,emae_ia,-3.05,% i.a.,INDEC (Catálogo API-INDEC)
+2024-07-01,emae_ia,-0.37,% i.a.,INDEC (Catálogo API-INDEC)
+2024-06-01,emae_ia,-3.43,% i.a.,INDEC (Catálogo API-INDEC)
+2024-05-01,emae_ia,1.92,% i.a.,INDEC (Catálogo API-INDEC)
+2024-04-01,emae_ia,-1.87,% i.a.,INDEC (Catálogo API-INDEC)
+2024-03-01,emae_ia,-8.17,% i.a.,INDEC (Catálogo API-INDEC)
+2024-02-01,emae_ia,-2.77,% i.a.,INDEC (Catálogo API-INDEC)
+2024-01-01,emae_ia,-3.96,% i.a.,INDEC (Catálogo API-INDEC)
+2023-12-01,emae_ia,-4.68,% i.a.,INDEC (Catálogo API-INDEC)
+2023-11-01,emae_ia,-1.12,% i.a.,INDEC (Catálogo API-INDEC)
+2023-10-01,emae_ia,0.65,% i.a.,INDEC (Catálogo API-INDEC)
+2023-09-01,emae_ia,-0.51,% i.a.,INDEC (Catálogo API-INDEC)
+2023-08-01,emae_ia,0.3,% i.a.,INDEC (Catálogo API-INDEC)
+2023-07-01,emae_ia,-1.47,% i.a.,INDEC (Catálogo API-INDEC)
+2023-06-01,emae_ia,-5.49,% i.a.,INDEC (Catálogo API-INDEC)
+2023-05-01,emae_ia,-6.61,% i.a.,INDEC (Catálogo API-INDEC)
+2023-04-01,emae_ia,-4.82,% i.a.,INDEC (Catálogo API-INDEC)
+2023-03-01,emae_ia,0.74,% i.a.,INDEC (Catálogo API-INDEC)
+2023-02-01,emae_ia,-0.42,% i.a.,INDEC (Catálogo API-INDEC)
+2023-01-01,emae_ia,2.43,% i.a.,INDEC (Catálogo API-INDEC)
+2022-12-01,emae_ia,-0.71,% i.a.,INDEC (Catálogo API-INDEC)
+2022-11-01,emae_ia,2.98,% i.a.,INDEC (Catálogo API-INDEC)
+2022-10-01,emae_ia,5.05,% i.a.,INDEC (Catálogo API-INDEC)
+2022-09-01,emae_ia,5.58,% i.a.,INDEC (Catálogo API-INDEC)
+2022-08-01,emae_ia,7.44,% i.a.,INDEC (Catálogo API-INDEC)
+2022-07-01,emae_ia,7.03,% i.a.,INDEC (Catálogo API-INDEC)
+2022-06-01,emae_ia,8.37,% i.a.,INDEC (Catálogo API-INDEC)
+2022-05-01,emae_ia,8.94,% i.a.,INDEC (Catálogo API-INDEC)
+2022-04-01,emae_ia,7.05,% i.a.,INDEC (Catálogo API-INDEC)
+2022-03-01,emae_ia,5.46,% i.a.,INDEC (Catálogo API-INDEC)
+2022-02-01,emae_ia,9.2,% i.a.,INDEC (Catálogo API-INDEC)
+2022-01-01,emae_ia,6.17,% i.a.,INDEC (Catálogo API-INDEC)
+2021-12-01,emae_ia,9.99,% i.a.,INDEC (Catálogo API-INDEC)
+2021-11-01,emae_ia,8.85,% i.a.,INDEC (Catálogo API-INDEC)
+2021-10-01,emae_ia,6.22,% i.a.,INDEC (Catálogo API-INDEC)
+2021-09-01,emae_ia,11.1,% i.a.,INDEC (Catálogo API-INDEC)
+2026-08-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-07-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-06-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-05-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-04-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-03-01,emae_difusion,93.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-02-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-01-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-12-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-11-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-10-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-09-01,emae_difusion,86.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-08-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-07-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-06-01,emae_difusion,80.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-05-01,emae_difusion,80.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-04-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-03-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-02-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2025-01-01,emae_difusion,73.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-12-01,emae_difusion,66.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-11-01,emae_difusion,60.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-10-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-09-01,emae_difusion,26.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-08-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-07-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-06-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-05-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-04-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-03-01,emae_difusion,33.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-02-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2024-01-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2023-12-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (Catálogo API-INDEC)
+2026-09-01,desequilibrio_monetario,68.1,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-08-01,desequilibrio_monetario,64.02,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-07-01,desequilibrio_monetario,58.19,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-06-01,desequilibrio_monetario,37.97,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
@@ -2441,6 +2445,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-10-29,base_monetaria,46205273.0,M ARS,BCRA
 2026-10-28,base_monetaria,45680819.0,M ARS,BCRA
 2026-10-27,base_monetaria,45569923.0,M ARS,BCRA
 2026-10-26,base_monetaria,46804518.0,M ARS,BCRA
@@ -3145,6 +3150,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-05,base_monetaria,8913664.0,M ARS,BCRA
 2023-12-04,base_monetaria,8457920.0,M ARS,BCRA
 2023-12-01,base_monetaria,8510332.0,M ARS,BCRA
+2026-10-30,badlar,22.75,% anual,BCRA
 2026-10-29,badlar,23.125,% anual,BCRA
 2026-10-28,badlar,22.1875,% anual,BCRA
 2026-10-27,badlar,23.5,% anual,BCRA
@@ -3927,7 +3933,7 @@ fecha,indicador,valor,unidad,fuente
 2020-07-01,actividad_tributaria,-20.93,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2020-06-01,actividad_tributaria,-21.6,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2020-05-01,actividad_tributaria,-22.59,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
-2020-04-01,actividad_tributaria,-25.6,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
+2020-04-01,actividad_tributaria,-25.57,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2020-03-01,actividad_tributaria,-12.0,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2020-02-01,actividad_tributaria,-10.2,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2020-01-01,actividad_tributaria,-8.42,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
@@ -3939,7 +3945,7 @@ fecha,indicador,valor,unidad,fuente
 2019-07-01,actividad_tributaria,-0.5,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2019-06-01,actividad_tributaria,-9.96,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2019-05-01,actividad_tributaria,-4.89,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
-2019-04-01,actividad_tributaria,-0.47,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
+2019-04-01,actividad_tributaria,-0.51,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2019-03-01,actividad_tributaria,-9.97,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2019-02-01,actividad_tributaria,-4.23,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2019-01-01,actividad_tributaria,0.38,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"

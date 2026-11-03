@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 901,
+  "comunicados_vistos": 902,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-02",
+  "inventario_verificado": "2026-11-03",
   "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-02"
+  "ultima_corrida": "2026-11-03"
  },
  "pendientes": {
   "CAMARCO|49378": {
@@ -2804,6 +2804,11 @@
    "fecha": "2026-10-30",
    "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
    "titulo": "Mecánico/a Vial"
+  },
+  "CAMARCO|49502": {
+   "fecha": "2026-11-02",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "UOCRA Cultura | Cartelera noviembre"
   }
  }
 }

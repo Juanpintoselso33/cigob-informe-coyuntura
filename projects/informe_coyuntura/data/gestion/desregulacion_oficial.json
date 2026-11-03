@@ -135,6 +135,32 @@
    "normas_afectadas": 2104,
    "periodo": "2025-10"
   },
+  "informe_analisis_de_la_desregulacion_implementada_octubre_1.pdf": {
+   "articulos": 18001,
+   "articulos_recientes": {
+    "2026-08": 17115,
+    "2026-09": 17606,
+    "2026-10": 18001
+   },
+   "normas": 842,
+   "normas_afectadas": 2937,
+   "periodo": "2026-10",
+   "sectores": {
+    "Agroindustria": 133,
+    "Bienestar Ciudadano": 69,
+    "Comercio Exterior": 124,
+    "Cultura, Turismo y Deporte": 34,
+    "Empleo y Regulación Laboral": 30,
+    "Energía": 37,
+    "Finanzas y Mercado de Capitales": 137,
+    "Producción Nacional": 106,
+    "Salud": 46,
+    "Sector Inmobiliario": 18,
+    "Transporte": 108
+   },
+   "sha256": "40a9350db95d9bccfac5d4bff75335974f5584d342328ab1b721269846fe8008",
+   "url": "https://www.argentina.gob.ar/sites/default/files/2025/06/informe_analisis_de_la_desregulacion_implementada_octubre_1.pdf"
+  },
   "informe_analisis_de_la_desregulacion_implementada_septiembre.pdf": {
    "articulos": 9612,
    "normas": 437,

@@ -484,54 +484,54 @@ fecha,indicador,valor,unidad,fuente
 2025-02-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2025-01-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2024-12-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
-2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-06-01,indice_salarios_publico,7889.4,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-05-01,indice_salarios_publico,7628.3,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-03-01,indice_salarios_publico,7344.33,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-02-01,indice_salarios_publico,6991.42,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-01-01,indice_salarios_publico,6832.27,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-12-01,indice_salarios_publico,6710.79,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-11-01,indice_salarios_publico,6645.32,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-10-01,indice_salarios_publico,6569.76,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-09-01,indice_salarios_publico,6447.94,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-08-01,indice_salarios_publico,6375.31,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-07-01,indice_salarios_publico,6202.12,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-06-01,indice_salarios_publico,6063.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-05-01,indice_salarios_publico,5987.03,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-04-01,indice_salarios_publico,5797.13,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-03-01,indice_salarios_publico,5668.51,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-02-01,indice_salarios_publico,5488.58,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-01-01,indice_salarios_publico,5253.88,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-12-01,indice_salarios_publico,5205.72,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-11-01,indice_salarios_publico,5117.7,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-10-01,indice_salarios_publico,4982.02,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-09-01,indice_salarios_publico,4774.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-08-01,indice_salarios_publico,4594.73,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-07-01,indice_salarios_publico,4390.43,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-06-01,indice_salarios_publico,4113.99,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-05-01,indice_salarios_publico,3957.89,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-04-01,indice_salarios_publico,3656.07,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-03-01,indice_salarios_publico,3400.49,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-02-01,indice_salarios_publico,3062.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-01-01,indice_salarios_publico,2660.85,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-12-01,indice_salarios_publico,2374.02,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-11-01,indice_salarios_publico,2250.34,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-10-01,indice_salarios_publico,2086.82,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-09-01,indice_salarios_publico,1911.97,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-08-01,indice_salarios_publico,1723.25,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-07-01,indice_salarios_publico,1625.51,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-06-01,indice_salarios_publico,1434.49,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-05-01,indice_salarios_publico,1353.08,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-04-01,indice_salarios_publico,1247.39,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-03-01,indice_salarios_publico,1198.55,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-02-01,indice_salarios_publico,1030.47,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-01-01,indice_salarios_publico,992.3,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-12-01,indice_salarios_publico,955.04,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-11-01,indice_salarios_publico,874.76,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-08-01,indice_salarios_publico,724.84,indice base oct-2016=100,INDEC/datos.gob.ar
+2026-08-01,indice_salarios_publico,8307.48,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-06-01,indice_salarios_publico,7889.42,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-05-01,indice_salarios_publico,7628.25,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-03-01,indice_salarios_publico,7344.33,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-02-01,indice_salarios_publico,6991.42,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-01-01,indice_salarios_publico,6832.27,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-12-01,indice_salarios_publico,6710.79,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-11-01,indice_salarios_publico,6645.32,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-10-01,indice_salarios_publico,6569.76,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-09-01,indice_salarios_publico,6447.94,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-08-01,indice_salarios_publico,6375.31,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-07-01,indice_salarios_publico,6202.12,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-06-01,indice_salarios_publico,6063.83,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-05-01,indice_salarios_publico,5987.03,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-04-01,indice_salarios_publico,5797.13,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-03-01,indice_salarios_publico,5668.51,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-02-01,indice_salarios_publico,5488.58,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2025-01-01,indice_salarios_publico,5253.88,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-12-01,indice_salarios_publico,5205.72,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-11-01,indice_salarios_publico,5117.7,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-10-01,indice_salarios_publico,4982.02,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-09-01,indice_salarios_publico,4774.83,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-08-01,indice_salarios_publico,4594.73,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-07-01,indice_salarios_publico,4390.43,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-06-01,indice_salarios_publico,4113.99,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-05-01,indice_salarios_publico,3957.89,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-04-01,indice_salarios_publico,3656.07,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-03-01,indice_salarios_publico,3400.49,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-02-01,indice_salarios_publico,3062.83,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2024-01-01,indice_salarios_publico,2660.85,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-12-01,indice_salarios_publico,2374.02,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-11-01,indice_salarios_publico,2250.34,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-10-01,indice_salarios_publico,2086.82,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-09-01,indice_salarios_publico,1911.97,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-08-01,indice_salarios_publico,1723.25,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-07-01,indice_salarios_publico,1625.51,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-06-01,indice_salarios_publico,1434.49,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-05-01,indice_salarios_publico,1353.08,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-04-01,indice_salarios_publico,1247.39,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-03-01,indice_salarios_publico,1198.55,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-02-01,indice_salarios_publico,1030.47,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2023-01-01,indice_salarios_publico,992.3,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2022-12-01,indice_salarios_publico,955.04,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2022-11-01,indice_salarios_publico,874.76,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-08-01,gasto_funcionamiento,-28.0,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-07-01,gasto_funcionamiento,-27.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-06-01,gasto_funcionamiento,-27.1,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
@@ -600,6 +600,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
+2026-10-01,desregulacion_normativa,18001.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-09-01,desregulacion_normativa,17606.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-08-01,desregulacion_normativa,17115.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-07-01,desregulacion_normativa,16848.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
@@ -670,6 +671,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-11-01,cepo_mulc,7.37,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-10-01,cepo_mulc,6.82,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-09-01,cepo_mulc,5.62,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-08-01,cepo_mulc,5.73,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
