@@ -9011,7 +9011,16 @@ _VSB_FALLAS: list[str] = []
 
 
 def _vsb_incompleta() -> str:
-    return "lectura de actas incompleta: " + "; ".join(dict.fromkeys(_VSB_FALLAS) or ["sin motivo registrado"])
+    """El aviso de Slack calla un mensaje entero si suena a red: con una falla de
+    red y otra que no lo es en la misma lectura, se nombra sólo la segunda (y se
+    cuentan las de red sin sus palabras) para que no la tape."""
+    from aviso_slack import RUIDO_DE_RED
+    fallas = list(dict.fromkeys(_VSB_FALLAS)) or ["sin motivo registrado"]
+    propias = [f for f in fallas if not RUIDO_DE_RED.search(f)]
+    if propias and len(propias) < len(fallas):
+        n = len(fallas) - len(propias)
+        propias.append(f"y {n} descarga{'s' if n > 1 else ''} sin respuesta")
+    return "lectura de actas incompleta: " + "; ".join(propias or fallas)
 
 
 def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:

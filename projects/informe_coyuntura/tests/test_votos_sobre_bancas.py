@@ -285,6 +285,13 @@ def test_la_serie_incompleta_dice_por_que_y_un_timeout_no_suena_como_codigo(monk
     assert "Read timed out" not in str(e.value)
     linea = f"  [ERR] votos_sobre_bancas: {e.value} -- se conservan las filas anteriores  3s"
     assert list(aviso_slack._eventos(linea))
+    # y un timeout en la misma lectura no la tapa (revisión de Codex)
+    monkeypatch.setattr(politica, "_vsb_resolver_origen", origen_caido)
+    with pytest.raises(ValueError) as e:
+        politica.votos_sobre_bancas_serie()
+    assert "acta 6001" in str(e.value) and "1 descarga sin respuesta" in str(e.value)
+    linea = f"  [ERR] votos_sobre_bancas: {e.value} -- se conservan las filas anteriores  3s"
+    assert list(aviso_slack._eventos(linea))
 
 
 # ── el cache por acta se escribe de a una y retoma ───────────────────────────
