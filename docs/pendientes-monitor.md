@@ -94,6 +94,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     (Juan, 3-nov). Uno es aspiracional (la carne vacuna como bien deseado) y el otro es
     material/nutricional (la proteína que efectivamente se come). Revisar cómo puntúa cada uno
     (peso, escala, dimensión) y si tiene sentido que pesen lo mismo.
+15. **Presión de precios: falta salud, y revisar la ponderación de alimentos contra servicios
+    públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
+    salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
+    frente a la canasta de servicios públicos.
 
 ## 2. Para la reunión con Luis
 
