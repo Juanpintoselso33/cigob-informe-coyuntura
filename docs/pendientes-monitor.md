@@ -57,6 +57,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    de la ley (no los votos ajenos como % de la cámara). Más de 129 → verde · 119 a 129 →
    amarillo · 109 a 119 → naranja · menos de 109 → rojo. Falta definir de qué lado cae el
    borde exacto (129, 119, 109).
+8. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** (Juan,
+   3-nov). En el cálculo (`informe.json`) `ratio_dnu` ya figura en la dimensión
+   `poder_legislativo`; revisar dónde aparece en otro lado (página, ficha, agrupación de
+   tarjetas) y moverlo ahí.
 
 ## 2. Para la reunión con Luis
 
