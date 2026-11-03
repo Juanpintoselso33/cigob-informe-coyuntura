@@ -98,6 +98,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
     salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
     frente a la canasta de servicios públicos.
+16. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** (Juan, 3-nov).
+    Compararla con 2023 engaña porque entonces casi no había crédito, y la mora era baja por
+    eso. Fijar los cortes de color con niveles de referencia de otros países o de otros
+    períodos argentinos con crédito, declarados como convención.
 
 ## 2. Para la reunión con Luis
 
