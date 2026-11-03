@@ -31,6 +31,12 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 3. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
    mucho»). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
    0397). Revisar que esté bien construido y que correlacione con la historia previa.
+4. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** (Juan, 3-nov: «sumémoslo de
+   vuelta»; esta vez en la dimensión cuentas fiscales, no en actividad). Salió el 26-oct
+   (ADR-0368) a pedido de Luis por repetir al EMAE (r = 0,84) dentro de actividad. Se sigue
+   calculando oculta (`actividad_tributaria`), así que el dato está. Para hacerlo: ADR nuevo que
+   reemplace a 0368, peso dentro de cuentas fiscales, y escala con cortes de la historia previa
+   como el resto (ADR-0404; la de 0329 se había calibrado sobre 2017-2026, mandato incluido).
 
 ## 2. Para la reunión con Luis
 
