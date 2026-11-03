@@ -24,6 +24,13 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    mover; el resto de las escalas calibradas sobre el propio mandato ya pasó a historia
    previa). Fuente: auditoría del 28-oct, B2. Estado: decidir si se llevan a historia
    previa o se dejan declaradas.
+2. **Producción legislativa: puede salir; buscar una alternativa** (Juan, 3-nov). Hoy: 31
+   leyes sancionadas en 12 meses, 45,8 puntos, amarillo, 3,8 % del peso. Además cuenta leyes
+   sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
+   Estado: relevar alternativas antes de sacarla.
+3. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
+   mucho»). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
+   0397). Revisar que esté bien construido y que correlacione con la historia previa.
 
 ## 2. Para la reunión con Luis
 
