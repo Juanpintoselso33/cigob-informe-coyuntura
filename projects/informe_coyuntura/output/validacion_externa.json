@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-03T03:46:52.813934+00:00",
+    "generated_at": "2026-11-03T05:21:15.603541+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -928,7 +928,7 @@
     "n_pares": 75,
     "r_abs_medio": 0.552,
     "share_altos": 0.387,
-    "share_bajos": 0.2,
+    "share_bajos": 0.213,
     "matriz": {
       "apertura_comercial": {
         "asistencia_directa": 0.331,
@@ -959,13 +959,13 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.531,
-        "concesiones_infraestructura": 0.34,
+        "concesiones_infraestructura": 0.338,
         "desregulacion_normativa": 0.913,
-        "fal_modernizacion_laboral": 0.3,
+        "fal_modernizacion_laboral": 0.297,
         "gasto_funcionamiento": 0.849,
-        "juicios_trabajo_capital": -0.452,
+        "juicios_trabajo_capital": -0.447,
         "libertad_opcion_salud": 0.902,
-        "privatizaciones": 0.802,
+        "privatizaciones": 0.801,
         "protocolo_antipiquetes": 0.315,
         "reduccion_estado": 0.848,
         "siniestralidad_laboral": 0.414
@@ -973,7 +973,7 @@
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.162,
-        "cepo_mulc": 0.34,
+        "cepo_mulc": 0.338,
         "desregulacion_normativa": 0.536,
         "fal_modernizacion_laboral": 0.909,
         "gasto_funcionamiento": 0.336,
@@ -1001,7 +1001,7 @@
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.091,
         "asistencia_directa": 0.15,
-        "cepo_mulc": 0.3,
+        "cepo_mulc": 0.297,
         "concesiones_infraestructura": 0.909,
         "desregulacion_normativa": 0.508,
         "gasto_funcionamiento": 0.381,
@@ -1028,7 +1028,7 @@
       },
       "juicios_trabajo_capital": {
         "apertura_comercial": -0.299,
-        "cepo_mulc": -0.452,
+        "cepo_mulc": -0.447,
         "concesiones_infraestructura": -0.797,
         "desregulacion_normativa": -0.89,
         "fal_modernizacion_laboral": -0.733,
@@ -1055,7 +1055,7 @@
       "privatizaciones": {
         "apertura_comercial": 0.496,
         "asistencia_directa": 0.349,
-        "cepo_mulc": 0.802,
+        "cepo_mulc": 0.801,
         "concesiones_infraestructura": 0.635,
         "desregulacion_normativa": 0.944,
         "fal_modernizacion_laboral": 0.589,
@@ -1301,7 +1301,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.802,
+        "r": 0.801,
         "n": 36,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -1420,7 +1420,7 @@
         "apoyo_campo": 0.941,
         "apoyo_construccion": -0.271,
         "apoyo_empresario": -0.332,
-        "cobertura_judicial": -0.373,
+        "cobertura_judicial": -0.374,
         "cohesion_bloque": 0.576,
         "conflictividad_nacional": -0.227,
         "eficacia_legislativa": -0.593,
@@ -1493,20 +1493,20 @@
         "votos_sobre_bancas": 0.827
       },
       "cobertura_judicial": {
-        "adhesion_reformas_provincial": -0.373,
+        "adhesion_reformas_provincial": -0.374,
         "alineamiento_senadores_prov": 0.356,
         "apoyo_campo": 0.683,
         "apoyo_construccion": 0.406,
         "apoyo_empresario": 0.648,
         "cohesion_bloque": -0.183,
         "conflictividad_nacional": -0.456,
-        "eficacia_legislativa": -0.156,
+        "eficacia_legislativa": -0.158,
         "insistencias_vetos": 0.713,
         "jornadas_individuales_no_trabajadas_12m": -0.558,
         "produccion_legislativa": 0.517,
-        "ratio_dnu": 0.391,
-        "rechazos_decretos": 0.842,
-        "votos_sobre_bancas": 0.37
+        "ratio_dnu": 0.392,
+        "rechazos_decretos": 0.841,
+        "votos_sobre_bancas": 0.372
       },
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.576,
@@ -1546,7 +1546,7 @@
         "apoyo_campo": -0.698,
         "apoyo_construccion": 0.013,
         "apoyo_empresario": -0.436,
-        "cobertura_judicial": -0.156,
+        "cobertura_judicial": -0.158,
         "cohesion_bloque": 0.447,
         "conflictividad_nacional": 0.813,
         "insistencias_vetos": 0.283,
@@ -1609,7 +1609,7 @@
         "apoyo_campo": 0.457,
         "apoyo_construccion": 0.367,
         "apoyo_empresario": 0.579,
-        "cobertura_judicial": 0.842,
+        "cobertura_judicial": 0.841,
         "cohesion_bloque": -0.047,
         "conflictividad_nacional": -0.501,
         "eficacia_legislativa": -0.166,
@@ -1625,7 +1625,7 @@
         "apoyo_campo": -0.525,
         "apoyo_construccion": 0.573,
         "apoyo_empresario": 0.827,
-        "cobertura_judicial": 0.37,
+        "cobertura_judicial": 0.372,
         "cohesion_bloque": -0.507,
         "conflictividad_nacional": 0.041,
         "eficacia_legislativa": 0.246,
@@ -1638,7 +1638,7 @@
       "ratio_dnu": {
         "alineamiento_senadores_prov": 0.341,
         "apoyo_construccion": -0.187,
-        "cobertura_judicial": 0.391,
+        "cobertura_judicial": 0.392,
         "cohesion_bloque": 0.307,
         "conflictividad_nacional": -0.837,
         "insistencias_vetos": 0.296,
@@ -1702,7 +1702,7 @@
       {
         "a": "cobertura_judicial",
         "b": "rechazos_decretos",
-        "r": 0.842,
+        "r": 0.841,
         "n": 34,
         "dimension_a": "poder_judicial",
         "dimension_b": "poder_legislativo",
@@ -3559,7 +3559,7 @@
           "2026-07": 53.4,
           "2026-08": 52.4,
           "2026-09": 62.3,
-          "2026-10": 62.0
+          "2026-10": 61.8
         }
       },
       "sector_privado": {

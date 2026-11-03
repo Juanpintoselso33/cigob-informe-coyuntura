@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-03T03:47:16.828820+00:00",
+    "snapshot": "2026-11-03T05:21:41.270595+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -153,52 +153,52 @@
     }
   },
   "itcp": {
-    "valor_publicado": 67.8,
-    "valor_recomputado": 67.8,
+    "valor_publicado": 67.7,
+    "valor_recomputado": 67.7,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 67.8,
+        "media": 67.7,
         "p05": 66.3,
-        "p95": 69.3,
+        "p95": 69.2,
         "desvio": 0.9
       },
       "combinado": {
         "media": 67.6,
         "p05": 65.8,
-        "p95": 69.5,
+        "p95": 69.4,
         "desvio": 1.09
       },
       "insumos": {
         "media": 67.6,
         "p05": 66.6,
-        "p95": 68.7,
+        "p95": 68.6,
         "desvio": 0.62
       }
     },
     "leave_one_out": {
       "transferencias_no_automaticas": 74.0,
-      "ratio_dnu": 71.3,
-      "adhesion_reformas_provincial": 64.6,
-      "votos_sobre_bancas": 70.2,
-      "cohesion_bloque": 65.5,
-      "alineamiento_senadores_prov": 65.7,
-      "apoyo_comercio": 66.2,
-      "apoyo_empresario": 69.4,
-      "insistencias_vetos": 66.3,
-      "rechazos_decretos": 66.3,
+      "ratio_dnu": 71.2,
+      "adhesion_reformas_provincial": 64.5,
+      "votos_sobre_bancas": 70.1,
+      "cohesion_bloque": 65.4,
+      "alineamiento_senadores_prov": 65.6,
+      "apoyo_comercio": 66.1,
+      "apoyo_empresario": 69.3,
+      "insistencias_vetos": 66.2,
+      "rechazos_decretos": 66.2,
       "cobertura_judicial": 68.9,
       "eficacia_legislativa": 66.9,
       "produccion_legislativa": 68.5,
-      "apoyo_campo": 68.3,
-      "conflictividad_nacional": 67.4,
-      "apoyo_construccion": 67.4,
+      "apoyo_campo": 68.2,
+      "conflictividad_nacional": 67.3,
+      "apoyo_construccion": 67.3,
       "jornadas_individuales_no_trabajadas_12m": 68.1
     },
     "tension": {
       "base": 3.2,
       "rango_combinado": [
-        3.0,
+        3.1,
         3.4
       ]
     }

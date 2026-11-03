@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-11-03T03:12:37.249682",
+  "generated_at": "2026-11-03T04:45:49.857545",
   "score": 3.2,
   "itcp": {
-    "valor": 67.8,
+    "valor": 67.7,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -126,13 +126,13 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.1613,
-        "puntaje": 62.0,
+        "puntaje": 61.5,
         "indicadores": {
           "cobertura_judicial": {
             "peso": 0.4,
-            "puntaje_banda": 62.0,
-            "puntaje_aplicado": 62.0,
-            "valor": 73.82,
+            "puntaje_banda": 61.5,
+            "puntaje_aplicado": 61.5,
+            "valor": 73.61,
             "peso_efectivo": 0.1613
           }
         },
@@ -413,7 +413,7 @@
         }
       ],
       "detalle_txt": "37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 04/11/2025 y el 03/11/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley",
-      "obtenido_en": "2026-11-03T03:05:22",
+      "obtenido_en": "2026-11-03T04:38:23",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 10.0,
@@ -430,7 +430,7 @@
       "desactualizado": false,
       "variacion_12m": -0.8,
       "detalle_txt": "Brecha de -1,9 puntos porcentuales entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-09 a 2026-11; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-      "obtenido_en": "2026-11-03T03:05:24",
+      "obtenido_en": "2026-11-03T04:38:25",
       "en_indice": false
     },
     "apoyo_empresario": {
@@ -449,7 +449,7 @@
         "UIA": -0.4
       },
       "detalle_txt": "En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.",
-      "obtenido_en": "2026-11-03T03:05:24",
+      "obtenido_en": "2026-11-03T04:38:25",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 32.5,
@@ -468,7 +468,7 @@
       "criticas_ventana": 0,
       "pendientes_de_codificar": 0,
       "detalle_txt": "En los últimos doce meses la Cámara Argentina de Comercio y Servicios se pronunció 4 veces sobre medidas del Gobierno nacional: 4 de apoyo y 0 de crítica. Saldo 1,0 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-      "obtenido_en": "2026-11-03T03:05:24",
+      "obtenido_en": "2026-11-03T04:38:25",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 100.0,
@@ -492,7 +492,7 @@
         "SRA": 0.5
       },
       "detalle_txt": "En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.",
-      "obtenido_en": "2026-11-03T03:05:24",
+      "obtenido_en": "2026-11-03T04:38:25",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 55.5,
@@ -511,7 +511,7 @@
       "criticas_ventana": 2,
       "pendientes_de_codificar": 6,
       "detalle_txt": "En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 6 comunicados detectados sin codificar.",
-      "obtenido_en": "2026-11-03T03:05:24",
+      "obtenido_en": "2026-11-03T04:38:25",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 75.0,
@@ -528,7 +528,7 @@
       "cobertura_hasta": "2026-10-23",
       "referencia_temporal": "mes de inicio de las semanas ACLED",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:05:41",
+      "obtenido_en": "2026-11-03T04:38:41",
       "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
       "en_indice": true,
       "dimension": "conflicto_social",
@@ -543,7 +543,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-      "obtenido_en": "2026-11-03T03:05:43",
+      "obtenido_en": "2026-11-03T04:38:43",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 87.0,
@@ -559,7 +559,7 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
       "fecha_dato": "2026-08-23",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:05:53",
+      "obtenido_en": "2026-11-03T04:38:54",
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -574,7 +574,7 @@
       "detalle_txt": "12 meses a septiembre 2026: +32.2% nominal contra un deflactor de 33.0% ponderado por el flujo de cada mes → -0.6% real",
       "fecha_dato": "2026-09-30",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:05:57",
+      "obtenido_en": "2026-11-03T04:38:59",
       "en_indice": false
     },
     "transferencias_no_automaticas": {
@@ -589,7 +589,7 @@
       "detalle_txt": "12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor",
       "fecha_dato": "2026-09-30",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:06:34",
+      "obtenido_en": "2026-11-03T04:39:37",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 10.0,
@@ -607,7 +607,7 @@
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
       "fecha_dato": "2026-11-03",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:06:39",
+      "obtenido_en": "2026-11-03T04:39:43",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 70.5,
@@ -625,7 +625,7 @@
       "desactualizado": false,
       "ultima_reunion_registrada": "2026-10-21",
       "detalle_txt": "0 de 10 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. No cuentan 2 sesiones que pidió la oposición y no juntaron quórum: ahí el que gana es el oficialismo. Última reunión: 2026-10-21. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-      "obtenido_en": "2026-11-03T03:06:41",
+      "obtenido_en": "2026-11-03T04:39:45",
       "en_indice": false
     },
     "comisiones_caidas": {
@@ -638,7 +638,7 @@
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-11-03",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:06:44",
+      "obtenido_en": "2026-11-03T04:39:49",
       "en_indice": false
     },
     "adhesion_reformas_provincial": {
@@ -669,7 +669,7 @@
       ],
       "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:06:45",
+      "obtenido_en": "2026-11-03T04:39:50",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 92.5,
@@ -687,7 +687,7 @@
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
       "fecha_dato": "2026-11-03",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:07:20",
+      "obtenido_en": "2026-11-03T04:40:27",
       "en_indice": false
     },
     "rotacion_gabinete": {
@@ -700,7 +700,7 @@
       "salidas_estructurales": 2,
       "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
       "detalle_txt": "4 salidas en 12 meses = 2 políticas · 2 por bancas electorales — Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-      "obtenido_en": "2026-11-03T03:07:27",
+      "obtenido_en": "2026-11-03T04:40:34",
       "en_indice": false
     },
     "protestas_caba": {
@@ -711,7 +711,7 @@
       "cobertura_hasta": "2026-10-23",
       "referencia_temporal": "mes de inicio de las semanas ACLED",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:07:27",
+      "obtenido_en": "2026-11-03T04:40:34",
       "eventos_2023": 240,
       "var_vs_2023": 10.0,
       "detalle_txt": "264 eventos en 12 meses (grupos hasta 2026-09) frente a 240 en la base 2023 (+10,0%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -740,7 +740,7 @@
       "desactualizado": false,
       "detalle_txt": "Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.",
       "sin_origen_resuelto": 3,
-      "obtenido_en": "2026-11-03T03:09:40",
+      "obtenido_en": "2026-11-03T04:42:50",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 69.6,
@@ -766,11 +766,11 @@
           "valor": 99.3,
           "fecha_dato": "2026-10-29",
           "n_actas": 53,
-          "corrida_exitosa_en": "2026-11-02",
+          "corrida_exitosa_en": "2026-11-03",
           "desactualizado": false
         }
       },
-      "obtenido_en": "2026-11-03T03:10:22",
+      "obtenido_en": "2026-11-03T04:44:39",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 98.8,
@@ -815,7 +815,7 @@
       "eventos_12m": [],
       "total_mandato": 3,
       "que": "insistencias",
-      "obtenido_en": "2026-11-03T03:10:27",
+      "obtenido_en": "2026-11-03T04:44:43",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
@@ -832,7 +832,7 @@
       "eventos_12m": [],
       "total_mandato": 6,
       "que": "rechazos",
-      "obtenido_en": "2026-11-03T03:10:27",
+      "obtenido_en": "2026-11-03T04:44:43",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
@@ -849,7 +849,7 @@
       "ultima_sancion_registrada": "2026-09-24",
       "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
       "detalle_txt": "31 leyes distintas en los 12 meses completos hasta 2026-10, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-      "obtenido_en": "2026-11-03T03:10:29",
+      "obtenido_en": "2026-11-03T04:44:45",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 45.8,
@@ -863,7 +863,7 @@
       "fecha_dato": "2026-01-01",
       "desactualizado": false,
       "detalle_txt": "210 de 11679 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
-      "obtenido_en": "2026-11-03T03:10:49",
+      "obtenido_en": "2026-11-03T04:45:09",
       "en_indice": false
     },
     "velocidad_resolucion": {
@@ -873,7 +873,7 @@
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-      "obtenido_en": "2026-11-03T03:10:49",
+      "obtenido_en": "2026-11-03T04:45:09",
       "en_indice": false
     },
     "paralisis_denuncias": {
@@ -982,16 +982,16 @@
       ],
       "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
       "detalle_txt": "12 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 12 a 18, promedio 15.1).",
-      "obtenido_en": "2026-11-03T03:10:56",
+      "obtenido_en": "2026-11-03T04:45:17",
       "en_indice": false
     },
     "cobertura_judicial": {
-      "valor": 73.82,
+      "valor": 73.61,
       "unidad": "% estimado de cargos con juez designado",
       "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
-      "fecha_dato": "2026-10-01",
+      "fecha_dato": "2026-11-01",
       "desactualizado": false,
-      "obtenido_en": "2026-11-03T03:11:08",
+      "obtenido_en": "2026-11-03T04:45:28",
       "estimado": true,
       "limites_metodologicos": [
         "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
@@ -1001,26 +1001,27 @@
         "Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos.",
         "Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular.",
         "Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana.",
-        "Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas)."
+        "Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).",
+        "Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas)."
       ],
-      "cargos_con_juez": 705,
+      "cargos_con_juez": 703,
       "cargos_totales": 955,
-      "fecha_corte": "2026-10-20",
+      "fecha_corte": "2026-11-03",
       "fecha_padron": "2026-06-05",
       "padron_con_juez": 609,
       "padron_con_juez_original": 610,
       "correcciones_padron": 1,
-      "otras_bajas_desde_padron": 1,
+      "otras_bajas_desde_padron": 2,
       "padron_titular": 604,
       "padron_subrogante": 282,
       "padron_sin_cubrir": 69,
       "designaciones_desde_padron": 104,
-      "renuncias_desde_padron": 7,
-      "detalle_txt": "Cobertura estimada: 705 de 955 cargos al 2026-10-20. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −7 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).",
+      "renuncias_desde_padron": 8,
+      "detalle_txt": "Cobertura estimada: 703 de 955 cargos al 2026-11-03. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −8 renuncias y −2 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas). Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).",
       "en_indice": true,
       "dimension": "poder_judicial",
-      "puntaje_itcp": 62.0,
-      "puntaje_banda": 62.0,
+      "puntaje_itcp": 61.5,
+      "puntaje_banda": 61.5,
       "peso_efectivo": 0.1613
     },
     "alineamiento_senadores_prov": {

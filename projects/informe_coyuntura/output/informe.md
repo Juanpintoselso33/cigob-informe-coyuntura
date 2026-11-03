@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-03 03:47:16"
+generado: "2026-11-03 05:21:41"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -70,7 +70,7 @@ schema_version: "1.2.0"
 | insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-03 | fresco |
 | rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-11-03 | fresco |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-10-01 | fresco |
-| cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
+| cobertura_judicial | 73.61 | % estimado de cargos con juez designado | 2026-11-01 | fresco |
 | alineamiento_senadores_prov | 61.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-10-29 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -111,10 +111,10 @@ schema_version: "1.2.0"
 | gasto_funcionamiento | -28.0 | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | 2026-08-01 | fresco |
 | fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-03 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
-| juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | ⚠ cache |
+| juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 34.9 | % de inversión aprobada sobre el pipeline | 2026-11-03 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-03 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-03 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
@@ -132,7 +132,6 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion,bloqueo_sostenido`
-- `desactualizado:gestion:juicios_trabajo_capital`
 
 ---
-*Generado por CIGOB — 2026-11-03 03:47:16 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-03 05:21:41 — schema 1.2.0*

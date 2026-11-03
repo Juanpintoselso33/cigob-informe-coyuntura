@@ -1091,7 +1091,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-08) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-11) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1101,7 +1101,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la última consulta a CONTRAT.AR; si esa consulta no está disponible, la de la resolución más reciente registrada. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
-| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-11-03 |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-03 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1137,7 +1137,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-08).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-11).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0).
 

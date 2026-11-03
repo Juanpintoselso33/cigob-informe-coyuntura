@@ -1,5 +1,5 @@
 fecha,indicador,valor,unidad,fuente
-2026-11-02,votos_sobre_bancas,22.3,"% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-11-03,votos_sobre_bancas,22.3,"% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-10-31,votos_sobre_bancas,22.3,"% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-09-30,votos_sobre_bancas,22.3,"% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,votos_sobre_bancas,22.2,"% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -888,7 +888,8 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-01-31,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2023-12-31,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2026-10-01,cobertura_judicial,73.82,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-11-01,cobertura_judicial,73.61,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-10-01,cobertura_judicial,73.72,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
 2026-09-01,cobertura_judicial,73.93,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
 2026-08-01,cobertura_judicial,69.95,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
 2026-07-01,cobertura_judicial,70.37,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
