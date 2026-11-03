@@ -61,6 +61,14 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    3-nov). En el cálculo (`informe.json`) `ratio_dnu` ya figura en la dimensión
    `poder_legislativo`; revisar dónde aparece en otro lado (página, ficha, agrupación de
    tarjetas) y moverlo ahí.
+   **Causa encontrada (3-nov): es un error del informe mensual, no del diario.** Desde
+   ADR-0415, `ratio_dnu` sólo puntúa si trae la marca `metodo` del cálculo nuevo
+   (`politica._valor_itcp`). Al rearmar el mes, `archivo.cortar_indicadores` copia sólo
+   `CAMPOS_CARD` (valor, unidad, fuente, fecha, dimensión…) y la marca se pierde. Resultado en
+   informe.cigob.org (octubre): la tarjeta sale con 2,643, pero queda fuera del índice político
+   (el índice se renormaliza sin ella) y por eso aparece sin dimensión. El diario está bien.
+   Arreglo probable: sumar `metodo` a `CAMPOS_CARD` en `scripts/archivo.py`, con un test, y
+   rearmar la rama mensual. El índice político de octubre publicado va a cambiar.
 
 ## 2. Para la reunión con Luis
 
