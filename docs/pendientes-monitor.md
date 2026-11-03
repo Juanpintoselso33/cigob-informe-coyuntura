@@ -102,6 +102,9 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     Compararla con 2023 engaña porque entonces casi no había crédito, y la mora era baja por
     eso. Fijar los cortes de color con niveles de referencia de otros países o de otros
     períodos argentinos con crédito, declarados como convención.
+17. **Carga del servicio de la deuda: igual que la mora** (Juan, 3-nov). Cortes fijos basados
+    en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
+    crédito.
 
 ## 2. Para la reunión con Luis
 
