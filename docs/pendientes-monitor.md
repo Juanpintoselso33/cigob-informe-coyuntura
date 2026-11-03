@@ -84,6 +84,9 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     INDEC y Di Tella** (Juan, 3-nov). Revisar qué gráfico de la página del cinturón es, llevarlo
     a base oct-dic 2023 como el resto, y ver qué hacen ahí las series del INDEC y de la Di Tella:
     si sobran, sacarlas; si se quedan, que el gráfico diga qué son.
+12. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
+    los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
+    verde). Faltan los cortes de amarillo, naranja y rojo.
 
 ## 2. Para la reunión con Luis
 
