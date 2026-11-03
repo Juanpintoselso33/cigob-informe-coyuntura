@@ -19,34 +19,29 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 
 ## 1. Abierto: decide Juan
 
-1. **Piquetes: escala de convención.** Las bandas 0/25/50/75 % se fijaron mirando la caída
-   porteña de 2024-2025 y siguen así, declaradas como convención (ADR-0408 las deja sin
-   mover; el resto de las escalas calibradas sobre el propio mandato ya pasó a historia
-   previa). Fuente: auditoría del 28-oct, B2. Estado: decidir si se llevan a historia
-   previa o se dejan declaradas.
-2. **Producción legislativa: puede salir; buscar una alternativa** (Juan, 3-nov). Hoy: 31
+1. **Producción legislativa: puede salir; buscar una alternativa** (Juan, 3-nov). Hoy: 31
    leyes sancionadas en 12 meses, 45,8 puntos, amarillo, 3,8 % del peso. Además cuenta leyes
    sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
    Estado: relevar alternativas antes de sacarla.
-3. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
+2. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
    mucho»). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
    0397). Revisar que esté bien construido y que correlacione con la historia previa.
-4. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** (Juan, 3-nov: «sumémoslo de
+3. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** (Juan, 3-nov: «sumémoslo de
    vuelta»; esta vez en la dimensión cuentas fiscales, no en actividad). Salió el 26-oct
    (ADR-0368) a pedido de Luis por repetir al EMAE (r = 0,84) dentro de actividad. Se sigue
    calculando oculta (`actividad_tributaria`), así que el dato está. Para hacerlo: ADR nuevo que
    reemplace a 0368, peso dentro de cuentas fiscales, y escala con cortes de la historia previa
    como el resto (ADR-0404; la de 0329 se había calibrado sobre 2017-2026, mandato incluido).
-5. **Alineamiento por provincia: sumar Diputados** (Juan, 3-nov). Hoy
+4. **Alineamiento por provincia: sumar Diputados** (Juan, 3-nov). Hoy
    `alineamiento_senadores_prov` mira sólo el Senado: 61,6 % de los votos de senadores que no
    son de La Libertad Avanza alineados con ella, 80 puntos, 6,1 % del peso (alianzas
    territoriales; ADR-0400 y 0402). Sumar los diputados por provincia.
-6. **Votos ajenos al aprobar leyes: promedio del mes, no de 12 meses** (Juan, 3-nov). Hoy
+5. **Votos ajenos al aprobar leyes: promedio del mes, no de 12 meses** (Juan, 3-nov). Hoy
    `votos_sobre_bancas` promedia 12 meses: 22,3 % de las bancas (Diputados 18,5 % con 12
    votaciones, Senado 29,3 % con 12), 8,1 % del peso (cohesión; ADR-0376). Con cerca de una
    votación de ley por mes y cámara, hay que definir qué muestra un mes sin votaciones (receso
    de enero y febrero incluido).
-7. **Votos ajenos: sólo Diputados, sin Senado, y revisar los límites** (Juan, 3-nov). Si la
+6. **Votos ajenos: sólo Diputados, sin Senado, y revisar los límites** (Juan, 3-nov). Si la
    ley se aprueba, siempre hace falta un mínimo de votos ajenos, y eso da verde casi seguro.
    Con mayoría absoluta, el piso en el Senado es (37 − 21 de LLA) / 72 = 22,2 %, por encima del
    corte del verde (18 %): el Senado da verde por construcción. En Diputados el piso es
@@ -57,7 +52,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    de la ley (no los votos ajenos como % de la cámara). Más de 129 → verde · 119 a 129 →
    amarillo · 109 a 119 → naranja · menos de 109 → rojo. Falta definir de qué lado cae el
    borde exacto (129, 119, 109).
-8. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** (Juan,
+7. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** (Juan,
    3-nov). En el cálculo (`informe.json`) `ratio_dnu` ya figura en la dimensión
    `poder_legislativo`; revisar dónde aparece en otro lado (página, ficha, agrupación de
    tarjetas) y moverlo ahí.
@@ -69,7 +64,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    (el índice se renormaliza sin ella) y por eso aparece sin dimensión. El diario está bien.
    Arreglo probable: sumar `metodo` a `CAMPOS_CARD` en `scripts/archivo.py`, con un test, y
    rearmar la rama mensual. El índice político de octubre publicado va a cambiar.
-9. **La dimensión poder judicial se va; cobertura de cargos judiciales pasa a poder
+8. **La dimensión poder judicial se va; cobertura de cargos judiciales pasa a poder
    legislativo** (Juan, 3-nov). Hoy poder judicial tiene sólo `cobertura_judicial` (73,61 %,
    61,5 puntos) y pesa 16,13 % del índice político (ADR-0374). Al moverla, definir el peso de
    la cobertura dentro de legislativo y qué pasa con el 16 % de la dimensión que desaparece
@@ -77,86 +72,49 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    **Juan (3-nov): darle más peso a la dimensión poder legislativo** (hoy 22,58 %). Falta
    definir cuánto. Opción que planteó: que el 16,13 % de poder judicial pase entero a
    legislativo (22,58 + 16,13 = 38,71 %, las otras cuatro dimensiones sin cambios).
-10. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** (Juan, 3-nov). Sólo
+9. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** (Juan, 3-nov). Sólo
     el nombre: industria, comercio, campo y construcción siguen igual. Cambiar en el sitio,
     fichas, textos y manuales.
-11. **Impacto social: el gráfico no está en base al 4T-2023, y no se entiende por qué aparecen
+10. **Impacto social: el gráfico no está en base al 4T-2023, y no se entiende por qué aparecen
     INDEC y Di Tella** (Juan, 3-nov). Revisar qué gráfico de la página del cinturón es, llevarlo
     a base oct-dic 2023 como el resto, y ver qué hacen ahí las series del INDEC y de la Di Tella:
     si sobran, sacarlas; si se quedan, que el gráfico diga qué son.
-12. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
+11. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
     los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
     verde). Faltan los cortes de amarillo, naranja y rojo.
-13. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** (Juan,
+12. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** (Juan,
     3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
     valor del índice.
-14. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual**
+13. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual**
     (Juan, 3-nov). Uno es aspiracional (la carne vacuna como bien deseado) y el otro es
     material/nutricional (la proteína que efectivamente se come). Revisar cómo puntúa cada uno
     (peso, escala, dimensión) y si tiene sentido que pesen lo mismo.
-15. **Presión de precios: falta salud, y revisar la ponderación de alimentos contra servicios
+14. **Presión de precios: falta salud, y revisar la ponderación de alimentos contra servicios
     públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
     salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
     frente a la canasta de servicios públicos.
-16. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** (Juan, 3-nov).
+15. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** (Juan, 3-nov).
     Compararla con 2023 engaña porque entonces casi no había crédito, y la mora era baja por
     eso. Fijar los cortes de color con niveles de referencia de otros países o de otros
     períodos argentinos con crédito, declarados como convención.
-17. **Carga del servicio de la deuda: igual que la mora** (Juan, 3-nov). Cortes fijos basados
+16. **Carga del servicio de la deuda: igual que la mora** (Juan, 3-nov). Cortes fijos basados
     en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
     crédito.
-18. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
+17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
     Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
     se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
-19. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). Idea: un objetivo
+18. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). Idea: un objetivo
     absoluto de monto de inversiones aprobadas en lugar de la tasa de aprobación con la escala
-    de las concesiones (ADR-0406). Va junto con el punto de Marcos de la sección 2 («qué queremos
-    medir»).
+    de las concesiones (ADR-0406).
 
-## 2. Para la reunión con Luis
-
-Temas para la próxima revisión con Luis (la del 28-oct, 15 h, ya fue; lo que quedó esperando
-a Luis está en la sección 3).
-
-1. **RIGI: qué queremos medir** (Marcos, «261029 REVISION CINTURON DE GESTION», 30-oct:
-   «Hay que revisar que queremos medir la tasa de aprobación no me convence»). Conversación
-   pendiente con Luis; hoy el indicador es la tasa de aprobación con la escala de las
-   concesiones (ADR-0406).
-2. **Empleo: sumar el trabajo registrado total y la desocupación** (Juan, 29-oct; para
-   proponer en la próxima). Reemplaza al complemento del padrón de ARCA, que salió (ADR-0412).
-   - Trabajo registrado total del sistema previsional, con monotributistas y autónomos y sin
-     el monotributo social (Secretaría de Trabajo, «Situación y evolución del trabajo
-     registrado», mensual): 12.758 mil en nov-2023, 12.505 mil en jul-2026 (−2,0 %). No es el
-     «empleo registrado privado» que Luis descartó (sólo asalariados privados, −4,7 %).
-     Alternativa medida el 28-oct: −1,5 % contra −3,8 % de asalariados privados.
-   - Y además, no en lugar de: la desocupación de la Encuesta Permanente de Hogares, 5,7 % en
-     4T-2023 y 7,9 % en 2T-2026.
-   - **Superposición, para decirlo en la reunión:** ninguno repite a otro, pero se pisan en
-     parte. La desocupación se mueve en buena medida con la ocupación (misma encuesta; se
-     separan cuando mucha gente sale a buscar trabajo o cuando el que lo pierde deja de buscar).
-     El registrado total se pisa con la ocupación (los registrados son ~6 de cada 10 ocupados)
-     y con la informalidad (las dos miran si el trabajo es en blanco). Lo propio de cada uno: la
-     desocupación es el dato más citado; el registrado es registro oficial, mensual, y cuenta
-     al monotributista como trabajo en blanco. Si entran, con poco peso dentro de empleo para
-     no contar tres veces la misma caída.
-3. **¿Sacar el alquiler del INDEC?** (Juan, 29-oct: «me van a pedir que lo saque».) El
-   documento de Luis del 22-oct tenía un solo alquiler («COSTO REAL DEL ALQUILER (VER EL INDICE
-   DE SAN ANDRES…)»); la reunión del 26-oct no pidió sacar el del INDEC. Para que quede: es lo
-   que paga la mayoría de los inquilinos (contratos vigentes), es el dato oficial, y sacarlo deja
-   sólo el alquiler que favorece al Gobierno. Para sacarlo: buena parte de la suba es la puesta
-   al día de contratos atrasados por la ley de alquileres. Si sale, el de UdeSA queda con el 20 %.
-
-No quedan otros temas para Luis marcados como abiertos: decretos por ley (ADR-0415), producción legislativa, cohesión,
-transferencias y bandas ya los resolvió Juan con ADR (ver «Hecho»).
-
-## 3. Esperan a otro
+## 2. Esperan a otro
 
 1. **Victimización** (fuente: Universidad Torcuato Di Tella): no publicó desde el informe de
-   julio (subido el 5-ago). Ver sección 4.
+   julio (subido el 5-ago). Ver sección 3.
 2. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
    llegar al mínimo de comunicados (ADR-0391); entran si lo llegan.
 
-## 4. Con fecha y cargas mensuales
+## 3. Con fecha y cargas mensuales
 
 - **Antes de publicar cada lectura del mes de gestión** (Luis, revisión de gestión 26-oct, 3.8): mirar qué indicador explica el cambio antes de titular «la gestión mejora/empeora» (con reforma del Estado en 100, casi todo el movimiento viene de la brecha y la alícuota). Es una práctica editorial, no un cambio de código.
 
@@ -176,7 +134,7 @@ transferencias y bandas ya los resolvió Juan con ADR (ver «Hecho»).
   ADR-0412).
 - **Cuando aparezca:** convenios colectivos, todavía sin lista publicada.
 
-## 5. Adjudicaciones de Juan que no deciden puntaje, e ideas para más adelante
+## 4. Adjudicaciones de Juan que no deciden puntaje, e ideas para más adelante
 
 Adjudicaciones (no deciden ningún puntaje):
 - 69 desacuerdos del campo (los 13 que decidían el puntaje ya los adjudicó, ADR-0384).
@@ -199,7 +157,11 @@ Ideas (nada de esto se arranca solo):
 
 ---
 
-## 6. Hecho
+## 5. Hecho
+
+- Resueltos el 3-nov, quedan como están (Juan): escala de piquetes (convención declarada),
+  empleo sin sumar trabajo registrado total ni desocupación, alquiler del INDEC se queda, y el
+  planteo de Marcos sobre qué mide el RIGI (lo de hoy sobre sus cortes sigue abierto, punto 18).
 
 - Internos, 1-nov: los dos comentarios del bloque C (itcp.py «CAC y CAME»; procedencia_anclas.py,
   recaudación «en torno al cero») corregidos, y `verificacion_remediacion.py` al día (decretos con
