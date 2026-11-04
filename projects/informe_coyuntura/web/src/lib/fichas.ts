@@ -3299,7 +3299,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.",
-      "En el índice de impacto social puntúa contra cortes fijos, no contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso: hasta 5% es verde, hasta 8% amarillo, hasta 12% naranja y por encima, rojo. Los cortes salen de países comparables con crédito de consumo (Chile, México, Colombia, Perú y Uruguay rondan 2,5% a 5,5%; el récord de Brasil es 8,1%) y de la Argentina con crédito de 2011 a 2019 (2% a 4%). Entre cortes el componente se interpola en línea recta.",
+      "En el índice de impacto social puntúa contra cortes fijos, no contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso: hasta 5% es verde, hasta 8% amarillo, hasta 12% naranja y por encima, rojo. Los cortes salen de países comparables con crédito de consumo (en Chile, México, Colombia, Perú y Uruguay no pasa de 5,5%; el récord de Brasil es 8,1%) y de la Argentina con crédito de 2011 a 2019 (2% a 4%). Entre cortes el componente se interpola en línea recta.",
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [

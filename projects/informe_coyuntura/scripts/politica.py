@@ -9028,7 +9028,7 @@ def _vsb_detalle(valor: dict) -> str:
     anio, mes = valor["mes_votacion"].split("-")
     cuando = f"{_MESES_TXT[int(mes) - 1]} de {anio}"
     n = valor["n_actas"]
-    txt = (f"Promedio de diputados a favor en {n} votación{'es' if n != 1 else ''} de ley "
+    txt = (f"Promedio de diputados a favor en {n} {'votaciones' if n != 1 else 'votación'} de ley "
            f"de {cuando}. Mayoría absoluta: 129 de 257.")
     if valor["arrastrado"]:
         txt += (" Desde entonces no hubo votaciones de ley del Poder Ejecutivo en "
