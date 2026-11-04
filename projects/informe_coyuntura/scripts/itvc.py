@@ -29,6 +29,8 @@ Overrides del analista: data/vida/ajustes_itvc.json ({indicador: {puntaje,
 justificacion, vigente_hasta}}, mismo mecanismo que ITCM/ITCG — acá el
 "puntaje" pisa el índice base-100 del componente).
 """
+import math
+
 import parametrica
 
 INF = float("inf")
@@ -636,7 +638,10 @@ def indice_por_cortes(valor: float, cortes: tuple) -> float:
     else:
         t = 8.0 + 2.0 * (v - c3) / (c3 - c2)
     t = min(10.0, max(0.0, t))
-    return round(125.0 - 5.0 * t, 1)
+    # Se trunca hacia el color peor, no se redondea: con redondeo, una mora de
+    # 5,01 % daba 104,97 → 105,0 y quedaba verde (Codex, 4-nov-2026). El 1e-9
+    # evita que 105,0 calculado como 104,99999… caiga un décimo.
+    return math.floor((125.0 - 5.0 * t) * 10 + 1e-9) / 10
 
 
 def umbrales_cortes_fijos(indicador: str) -> list | None:

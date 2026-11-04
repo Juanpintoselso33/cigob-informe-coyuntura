@@ -45,7 +45,10 @@ def test_rotulos_de_base_de_vida_cotidiana():
     for k in ("tasa_homicidios", "tasa_robos"):
         assert "frente a la mediana de la serie 2000-2025" in f[k], f[k]
         assert "igual que la mediana histórica" in f[k] and "4º trimestre de 2023" not in f[k], f[k]
-    assert "frente al 2º semestre de 2023" in f["pobreza_nowcast"], f["pobreza_nowcast"]
+    # ADR-0425: pobreza, mora y carga se miden contra cortes fijos, no contra una fecha
+    for k in ("pobreza_nowcast", "mora_familias", "carga_servicio_deuda_hogares"):
+        assert "contra cortes fijos" in f[k] and "2023" not in f[k], f[k]
+    assert "verde hasta 20%" in f["pobreza_nowcast"], f["pobreza_nowcast"]
     # ADR-0393: la victimización usa el default (promedio del 4º trimestre de 2023)
     assert "frente a 4º trimestre de 2023" in f["inseguridad"] and "ene-2024" not in f["inseguridad"]
 

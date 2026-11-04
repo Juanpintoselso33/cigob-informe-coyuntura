@@ -2295,11 +2295,13 @@ def _scoring_vida_itvc(c, series):
                            f"{coma(info['puntaje_aplicado'])} (100 = igual que la mediana histórica; "
                            f"más = mejora); pesa "
                            f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
-            elif ikey == "pobreza_nowcast":
-                # ADR-0153: base = 2º semestre de 2023 (serie oficial del INDEC)
-                formula = (f"Índice base-100 frente al 2º semestre de 2023: "
-                           f"{coma(info['puntaje_aplicado'])} (100 = igual que en ese semestre, "
-                           f"antes del mandato; más = mejora); pesa "
+            elif ikey in itvc.CORTES_FIJOS_ITVC:
+                # ADR-0425: contra cortes fijos, no contra una fecha
+                c1, c2, c3 = (coma(int(c) if float(c).is_integer() else c)
+                              for c in itvc.CORTES_FIJOS_ITVC[ikey])
+                formula = (f"Componente de la escala común contra cortes fijos: "
+                           f"{coma(info['puntaje_aplicado'])} (verde hasta {c1}%, amarillo hasta "
+                           f"{c2}%, naranja hasta {c3}%, rojo por encima; más = mejora); pesa "
                            f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")

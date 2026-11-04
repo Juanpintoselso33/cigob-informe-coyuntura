@@ -55,3 +55,11 @@ def test_la_card_publica_los_tramos_en_su_unidad():
     tramos = itvc.umbrales_cortes_fijos("pobreza_nowcast")
     assert [t["color"] for t in tramos] == ["verde", "amarillo", "naranja", "rojo"]
     assert tramos[0]["hasta"] == 20.0 and tramos[-1]["desde"] == 40.0
+
+
+@pytest.mark.parametrize("valor,color", [(5.0, "verde"), (5.01, "amarillo"), (8.01, "naranja"),
+                                         (12.01, "rojo")])
+def test_apenas_pasado_el_corte_ya_es_el_color_siguiente(valor, color):
+    """Codex, 4-nov-2026: con redondeo, 5,01 % daba 105,0 y quedaba verde."""
+    idx = itvc.indice_por_cortes(valor, itvc.CORTES_FIJOS_ITVC["mora_familias"])
+    assert parametrica.color_de_indice_base100(idx) == color

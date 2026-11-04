@@ -55,7 +55,7 @@ la unidad del indicador. La pobreza deja de necesitar la base del INDEC ([[0424]
 
 ### Consecuencias
 
-- Con los datos del 4-nov-2026: pobreza 133,2 → 93,7 (verde → naranja); mora 17,1 → 78,5
+- Con los datos del 4-nov-2026: pobreza 133,2 → 93,7 (verde → naranja); mora 17,1 → 78,4
   (sigue roja); carga 42,3 → 90,9 (roja → naranja).
 - La carga es la más floja: sus referencias usan ingreso disponible y no masa salarial, y no
   hay serie argentina previa para contrastar.

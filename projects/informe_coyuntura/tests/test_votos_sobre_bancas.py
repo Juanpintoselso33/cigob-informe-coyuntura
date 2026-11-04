@@ -606,3 +606,12 @@ def test_sacar_los_tratados_cambia_el_promedio():
              "2": dip(fecha="2026-06-02", afirmativos=235, titulo="O.D. 17 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE CHILE. VOT. EN GRAL.")}
     r = politica.votos_a_favor_diputados(actas, date(2026, 7, 1))
     assert r["n_actas"] == 1 and r["valor"] == 131.0
+
+
+def test_si_falla_el_senado_diputados_igual_se_publica(monkeypatch):
+    """ADR-0423: el Senado no puntúa; su caída no puede frenar la card (Codex, 4-nov-2026)."""
+    monkeypatch.setattr(politica, "_vsb_cargar_cache", lambda: {"diputados": {}, "senado": {}})
+    monkeypatch.setattr(politica, "_vsb_actualizar_diputados", lambda c: True)
+    monkeypatch.setattr(politica, "_vsb_actualizar_senado", lambda c: False)
+    monkeypatch.setattr(politica, "_vsb_resolver_origen", lambda c: True)
+    assert politica.votos_sobre_bancas_actualizar()[1] is True

@@ -9015,9 +9015,11 @@ def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:
     _VSB_FALLAS.clear()
     cache = _vsb_cargar_cache()
     ok_dip = _vsb_actualizar_diputados(cache)
-    ok_sen = _vsb_actualizar_senado(cache)
+    # El Senado se sigue guardando como archivo, pero desde ADR-0423 no
+    # puntúa: si falla, no frena la lectura de Diputados (Codex, 4-nov-2026).
+    _vsb_actualizar_senado(cache)
     ok_ori = _vsb_resolver_origen(cache)
-    return cache, ok_dip and ok_sen and ok_ori
+    return cache, ok_dip and ok_ori
 
 
 _MESES_TXT = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
