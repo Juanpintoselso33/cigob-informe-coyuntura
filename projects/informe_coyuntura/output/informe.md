@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-03 22:42:13"
+generado: "2026-11-03 23:09:01"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-11-03 22:42:13 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-03 23:09:01 — schema 1.2.0*

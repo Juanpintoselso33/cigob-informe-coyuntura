@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-11-03T22:42:13.103659-03:00",
+  "generated_at": "2026-11-03T23:09:01.233501-03:00",
   "period": "2026-11",
   "score_global": 3.8,
   "ponderacion": {
@@ -387,6 +387,56 @@
             "por_que": "−2,04 % interanual (promedio de 3 meses) está en Naranja, a 1,04 del límite con Amarillo (−1,0)."
           }
         },
+        "actividad_tributaria": {
+          "valor": 0.86,
+          "unidad": "% interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)",
+          "fuente": "Secretaría de Hacienda — impuesto al valor agregado y créditos/débitos bancarios (vía datos.gob.ar) + Instituto Nacional de Estadística y Censos (INDEC: índice de precios al consumidor, deflactor)",
+          "fecha_dato": "2026-09-01",
+          "desactualizado": false,
+          "iva_var_ia_real": 1.6,
+          "cheque_var_ia_real": -0.3,
+          "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI 1,6%, cheque -0,3%, compuesto 0,9%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
+          "obtenido_en": "2026-11-03T04:35:06",
+          "en_indice": true,
+          "dimension": "cuentas_fiscales",
+          "puntaje_itcm": 56.6,
+          "puntaje_banda": 56.6,
+          "peso_efectivo": 0.0384,
+          "metodo_obtencion": "automatico",
+          "aporte_score": 4.3,
+          "aporte_formula": "Anclas del índice macroeconómico: >21,4 → 100 · 10,7–21,4 → 85 · 0–10,7 → 65 · -10,7 a 0 → 45 · -21,4 a -10,7 → 25 · ≤-21,4 → 10 (puntaje interpolado entre anclas: 56.6; pesa 3,8% del índice macroeconómico)",
+          "aporte_nota": null,
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
+          "aporte_input_txt": null,
+          "semaforo": {
+            "color": "amarillo",
+            "tension": 4.3,
+            "umbrales": [
+              {
+                "color": "rojo",
+                "desde": null,
+                "hasta": -17.83
+              },
+              {
+                "color": "naranja",
+                "desde": -17.83,
+                "hasta": -8.03
+              },
+              {
+                "color": "amarillo",
+                "desde": -8.03,
+                "hasta": 2.67
+              },
+              {
+                "color": "verde",
+                "desde": 2.67,
+                "hasta": null
+              }
+            ],
+            "unidad": "% interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)",
+            "por_que": "0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) está en Amarillo, a 1,81 del límite con Verde (2,67)."
+          }
+        },
         "saldo_comercial_12m": {
           "valor": 15.11,
           "unidad": "% del comercio (exportaciones + importaciones, acumulado de 12 meses)",
@@ -468,10 +518,10 @@
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 58.5,
           "puntaje_banda": 58.5,
-          "peso_efectivo": 0.072,
+          "peso_efectivo": 0.0576,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.2,
-          "aporte_formula": "Anclas del índice macroeconómico: >110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤80 → 10 (puntaje interpolado entre anclas: 58.5; pesa 7,2% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: >110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤80 → 10 (puntaje interpolado entre anclas: 58.5; pesa 5,8% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
@@ -901,10 +951,10 @@
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 65.2,
           "puntaje_banda": 65.2,
-          "peso_efectivo": 0.12,
+          "peso_efectivo": 0.096,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.5,
-          "aporte_formula": "Anclas del índice macroeconómico: >23,8 → 100 · 11,9–23,8 → 80 · 0–11,9 → 50 · -11,9 a 0 → 30 · ≤-11,9 → 10 (puntaje interpolado entre anclas: 65.2; pesa 12,0% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: >23,8 → 100 · 11,9–23,8 → 80 · 0–11,9 → 50 · -11,9 a 0 → 30 · ≤-11,9 → 10 (puntaje interpolado entre anclas: 65.2; pesa 9,6% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
@@ -940,7 +990,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 50.9,
+        "valor": 50.7,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -1129,21 +1179,28 @@
           "cuentas_fiscales": {
             "nombre": "Cuentas fiscales",
             "peso": 0.192,
-            "puntaje": 62.7,
+            "puntaje": 61.5,
             "indicadores": {
               "resultado_primario": {
-                "peso": 0.625,
+                "peso": 0.5,
                 "puntaje_banda": 65.2,
                 "puntaje_aplicado": 65.2,
                 "valor": 6.02,
-                "peso_efectivo": 0.12
+                "peso_efectivo": 0.096
               },
               "recaudacion": {
-                "peso": 0.375,
+                "peso": 0.3,
                 "puntaje_banda": 58.5,
                 "puntaje_aplicado": 58.5,
                 "valor": 94.4,
-                "peso_efectivo": 0.072
+                "peso_efectivo": 0.0576
+              },
+              "actividad_tributaria": {
+                "peso": 0.2,
+                "puntaje_banda": 56.6,
+                "puntaje_aplicado": 56.6,
+                "valor": 0.86,
+                "peso_efectivo": 0.0384
               }
             },
             "peso_efectivo": 0.192,
@@ -1151,147 +1208,147 @@
             "serie": [
               [
                 "2023-12",
-                40.7
+                40.1
               ],
               [
                 "2024-01",
-                43.4
+                39.9
               ],
               [
                 "2024-02",
-                51.1
+                49.1
               ],
               [
                 "2024-03",
-                54.4
+                48.7
               ],
               [
                 "2024-04",
-                53.2
+                48.6
               ],
               [
                 "2024-05",
-                74.1
-              ],
-              [
-                "2024-06",
-                63.9
-              ],
-              [
-                "2024-07",
-                60.5
-              ],
-              [
-                "2024-08",
-                63.9
-              ],
-              [
-                "2024-09",
-                70.1
-              ],
-              [
-                "2024-10",
-                62.9
-              ],
-              [
-                "2024-11",
-                68.9
-              ],
-              [
-                "2024-12",
-                63.5
-              ],
-              [
-                "2025-01",
-                68.6
-              ],
-              [
-                "2025-02",
-                66.5
-              ],
-              [
-                "2025-03",
-                63.1
-              ],
-              [
-                "2025-04",
-                64.8
-              ],
-              [
-                "2025-05",
-                58.7
-              ],
-              [
-                "2025-06",
-                61.4
-              ],
-              [
-                "2025-07",
                 63.0
               ],
               [
-                "2025-08",
-                62.6
+                "2024-06",
+                59.6
               ],
               [
-                "2025-09",
-                58.9
+                "2024-07",
+                55.6
               ],
               [
-                "2025-10",
-                61.2
+                "2024-08",
+                61.0
               ],
               [
-                "2025-11",
+                "2024-09",
                 62.4
               ],
               [
+                "2024-10",
+                60.2
+              ],
+              [
+                "2024-11",
+                65.4
+              ],
+              [
+                "2024-12",
+                64.0
+              ],
+              [
+                "2025-01",
+                74.9
+              ],
+              [
+                "2025-02",
+                66.1
+              ],
+              [
+                "2025-03",
+                62.9
+              ],
+              [
+                "2025-04",
+                66.2
+              ],
+              [
+                "2025-05",
+                62.3
+              ],
+              [
+                "2025-06",
+                60.6
+              ],
+              [
+                "2025-07",
+                63.5
+              ],
+              [
+                "2025-08",
+                61.6
+              ],
+              [
+                "2025-09",
+                59.0
+              ],
+              [
+                "2025-10",
+                61.8
+              ],
+              [
+                "2025-11",
+                58.9
+              ],
+              [
                 "2025-12",
-                64.5
+                62.0
               ],
               [
                 "2026-01",
-                67.3
+                64.1
               ],
               [
                 "2026-02",
-                64.9
+                61.0
               ],
               [
                 "2026-03",
-                62.1
+                61.3
               ],
               [
                 "2026-04",
-                64.3
+                62.5
               ],
               [
                 "2026-05",
-                66.4
+                62.9
               ],
               [
                 "2026-06",
-                56.1
+                54.9
               ],
               [
                 "2026-07",
-                69.8
+                66.4
               ],
               [
                 "2026-08",
-                59.8
+                56.8
               ],
               [
                 "2026-09",
-                58.5
+                57.7
               ]
             ],
             "semaforo": {
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 62,7/100, está en verde (sin tensión relevante) en la escala del informe.",
-              "tension": 3.7
+              "por_que": "El puntaje de la dimensión, 61,5/100, está en verde (sin tensión relevante) en la escala del informe.",
+              "tension": 3.9
             }
           },
           "sector_externo": {
@@ -1826,118 +1883,118 @@
         "ajustes_aplicados": [],
         "robustez": {
           "p05": 49.2,
-          "p95": 52.6,
+          "p95": 52.2,
           "tension_rango": [
-            4.7,
+            4.8,
             5.1
           ],
           "dominante": {
             "indicador": "tcrm",
-            "indice_sin": 53.8
+            "indice_sin": 53.6
           },
           "n_draws": 1000,
           "hist": [
-            2,
-            0,
             1,
-            6,
-            5,
-            8,
-            9,
-            11,
-            18,
-            28,
-            25,
-            22,
-            38,
-            51,
-            51,
-            55,
-            72,
-            64,
-            76,
-            68,
-            56,
-            50,
-            39,
-            45,
-            46,
-            26,
-            32,
-            25,
-            21,
-            17,
-            16,
-            8,
             4,
             3,
+            4,
+            2,
+            13,
+            7,
+            20,
+            26,
+            38,
+            32,
+            43,
+            49,
+            48,
+            53,
+            59,
+            66,
+            70,
+            65,
+            66,
+            66,
+            71,
+            48,
+            39,
+            30,
+            24,
+            14,
+            16,
+            8,
+            5,
+            4,
+            3,
+            1,
+            1,
             0,
-            2
+            1
           ],
-          "hist_min": 47.87,
-          "hist_max": 53.75,
+          "hist_min": 47.92,
+          "hist_max": 53.79,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
           [
             "2023-12",
-            26.5
+            26.4
           ],
           [
             "2024-01",
-            26.8
-          ],
-          [
-            "2024-02",
-            29.7
-          ],
-          [
-            "2024-03",
             26.1
           ],
           [
+            "2024-02",
+            29.3
+          ],
+          [
+            "2024-03",
+            25.0
+          ],
+          [
             "2024-04",
-            29.9
+            29.0
           ],
           [
             "2024-05",
-            36.2
+            34.1
           ],
           [
             "2024-06",
-            31.6
+            30.8
           ],
           [
             "2024-07",
-            35.9
+            35.0
           ],
           [
             "2024-08",
-            34.0
+            33.5
           ],
           [
             "2024-09",
-            35.5
+            34.1
           ],
           [
             "2024-10",
-            40.3
+            39.8
           ],
           [
             "2024-11",
-            47.2
+            46.5
           ],
           [
             "2024-12",
-            52.7
+            52.8
           ],
           [
             "2025-01",
-            58.0
+            59.2
           ],
           [
             "2025-02",
-            57.3
+            57.2
           ],
           [
             "2025-03",
@@ -1945,23 +2002,23 @@
           ],
           [
             "2025-04",
-            61.5
+            61.8
           ],
           [
             "2025-05",
-            63.2
+            63.9
           ],
           [
             "2025-06",
-            66.4
+            66.3
           ],
           [
             "2025-07",
-            58.3
+            58.4
           ],
           [
             "2025-08",
-            57.8
+            57.6
           ],
           [
             "2025-09",
@@ -1969,51 +2026,51 @@
           ],
           [
             "2025-10",
-            51.6
+            51.7
           ],
           [
             "2025-11",
-            49.3
+            48.6
           ],
           [
             "2025-12",
-            53.9
+            53.4
           ],
           [
             "2026-01",
-            46.6
+            45.9
           ],
           [
             "2026-02",
-            43.4
+            42.7
           ],
           [
             "2026-03",
-            52.2
+            52.1
           ],
           [
             "2026-04",
-            49.9
+            49.6
           ],
           [
             "2026-05",
-            53.1
+            52.4
           ],
           [
             "2026-06",
-            56.7
+            56.4
           ],
           [
             "2026-07",
-            53.3
+            52.6
           ],
           [
             "2026-08",
-            52.0
+            51.4
           ],
           [
             "2026-09",
-            53.4
+            53.2
           ]
         ],
         "dimensiones_serie": {
@@ -2028,83 +2085,83 @@
           "nota": "El índice es el promedio ponderado de estas dimensiones, y su valor agregado puede quedarse quieto porque nada se mueve o porque dos cosas grandes se mueven en direcciones opuestas. Estas series separan los dos casos: cada una es la misma dimensión que se lee arriba, mes a mes, en la misma escala (puntaje 0-100 de las bandas del índice). Se calculan con el motor del índice y no con una cuenta aparte: el promedio ponderado de los componentes de la dimensión, renormalizando por el peso que efectivamente tiene dato ese mes, es el mismo paso que el índice ya da para llegar a su propio número. Vienen de la reconstrucción histórica —las series de cada componente pasadas por el motor, sin ajustes del analista—, así que llegan hasta el último mes con cobertura suficiente y ese mes puede ser anterior al de la card. Un mes en el que ninguna componente de la dimensión tiene dato no deja punto: el hueco se muestra como hueco, no se arrastra ni se interpola."
         },
         "validacion": {
-          "r_niveles": 0.704,
-          "r_diferencias": 0.363,
+          "r_niveles": 0.711,
+          "r_diferencias": 0.35,
           "n": 34,
           "pares": [
             [
               "2023-12",
-              26.5,
+              26.4,
               126.2
             ],
             [
               "2024-01",
-              26.8,
+              26.1,
               124.0
             ],
             [
               "2024-02",
-              29.7,
+              29.3,
               115.5
             ],
             [
               "2024-03",
-              26.1,
+              25.0,
               111.7
             ],
             [
               "2024-04",
-              29.9,
+              29.0,
               116.2
             ],
             [
               "2024-05",
-              36.2,
+              34.1,
               122.4
             ],
             [
               "2024-06",
-              31.6,
+              30.8,
               117.7
             ],
             [
               "2024-07",
-              35.9,
+              35.0,
               120.6
             ],
             [
               "2024-08",
-              34.0,
+              33.5,
               122.4
             ],
             [
               "2024-09",
-              35.5,
+              34.1,
               123.6
             ],
             [
               "2024-10",
-              40.3,
+              39.8,
               124.7
             ],
             [
               "2024-11",
-              47.2,
+              46.5,
               126.0
             ],
             [
               "2024-12",
-              52.7,
+              52.8,
               127.0
             ],
             [
               "2025-01",
-              58.0,
+              59.2,
               129.0
             ],
             [
               "2025-02",
-              57.3,
+              57.2,
               131.7
             ],
             [
@@ -2114,27 +2171,27 @@
             ],
             [
               "2025-04",
-              61.5,
+              61.8,
               131.3
             ],
             [
               "2025-05",
-              63.2,
+              63.9,
               129.3
             ],
             [
               "2025-06",
-              66.4,
+              66.3,
               127.0
             ],
             [
               "2025-07",
-              58.3,
+              58.4,
               128.3
             ],
             [
               "2025-08",
-              57.8,
+              57.6,
               123.7
             ],
             [
@@ -2144,87 +2201,87 @@
             ],
             [
               "2025-10",
-              51.6,
+              51.7,
               129.0
             ],
             [
               "2025-11",
-              49.3,
+              48.6,
               124.9
             ],
             [
               "2025-12",
-              53.9,
+              53.4,
               126.6
             ],
             [
               "2026-01",
-              46.6,
+              45.9,
               124.2
             ],
             [
               "2026-02",
-              43.4,
+              42.7,
               123.6
             ],
             [
               "2026-03",
-              52.2,
+              52.1,
               127.1
             ],
             [
               "2026-04",
-              49.9,
+              49.6,
               124.6
             ],
             [
               "2026-05",
-              53.1,
+              52.4,
               125.3
             ],
             [
               "2026-06",
-              56.7,
+              56.4,
               124.9
             ],
             [
               "2026-07",
-              53.3,
+              52.6,
               122.9
             ],
             [
               "2026-08",
-              52.0,
+              51.4,
               123.2
             ],
             [
               "2026-09",
-              53.4,
+              53.2,
               122.9
             ]
           ],
           "plot": "minmax",
           "titulo": "¿El índice macroeconómico se mueve con la marcha de la actividad?",
-          "sub": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice. El índice macroeconómico se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad.",
+          "sub": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice. El índice macroeconómico se reconstruye mes a mes desde las series de 17 de sus 17 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad.",
           "serie_label": "Índice macroeconómico (reconstrucción mensual)",
           "externa_label": "Índice Líder (Di Tella)",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,704 en niveles y 0,363 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 36% de los 25 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 5,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice acumula 1; de sus 15 componentes medidos, 10 se equivocan más, 3 empatan y 2 lo superan.",
-          "resumen": "Correlación 0,704 en niveles y 0,363 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período.",
-          "detalle_texto": "Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 36% de los 25 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 5,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice acumula 1; de sus 15 componentes medidos, 10 se equivocan más, 3 empatan y 2 lo superan.",
+          "conclusion": "Correlación 0,711 en niveles y 0,35 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 36% de los 25 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 5,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice acumula 1; de sus 16 componentes medidos, 11 se equivocan más, 3 empatan y 2 lo superan.",
+          "resumen": "Correlación 0,711 en niveles y 0,35 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período.",
+          "detalle_texto": "Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 36% de los 25 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 5,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice acumula 1; de sus 16 componentes medidos, 11 se equivocan más, 3 empatan y 2 lo superan.",
           "sub_resumen": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice.",
-          "sub_detalle": "El índice macroeconómico se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad."
+          "sub_detalle": "El índice macroeconómico se reconstruye mes a mes desde las series de 17 de sus 17 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad."
         },
         "redundancia": {
-          "n_indicadores": 16,
-          "n_pares": 120,
-          "r_abs_medio": 0.412,
-          "share_altos": 0.2,
-          "share_bajos": 0.4,
+          "n_indicadores": 17,
+          "n_pares": 136,
+          "r_abs_medio": 0.423,
+          "share_altos": 0.221,
+          "share_bajos": 0.382,
           "umbral": 0.7,
-          "pares_cruzados": 15,
+          "pares_cruzados": 21,
           "diferencias": {
-            "n_pares": 120,
+            "n_pares": 136,
             "r_abs_medio": 0.172,
             "share_altos": 0.0
           },
@@ -2273,15 +2330,15 @@
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
-          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 16 componentes que tienen serie histórica, 120 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,412: ni componentes independientes ni una sola señal repetida. Un 20% de los pares se mueve muy junto (por encima de 0,7) y un 40% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,172 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 24 pares que superan el umbral en niveles, 15 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
-          "resumen": "La correlación media entre pares es 0,412: ni componentes independientes ni una sola señal repetida. Un 20% de los pares se mueve muy junto (por encima de 0,7) y un 40% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,172 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 24 pares que superan el umbral en niveles, 15 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 17 componentes que tienen serie histórica, 136 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,423: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 38% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,172 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 30 pares que superan el umbral en niveles, 21 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
+          "resumen": "La correlación media entre pares es 0,423: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 38% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,172 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 30 pares que superan el umbral en niveles, 21 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "linea_base": {
           "periodo": "2023-12",
-          "valor": 26.5,
-          "brecha": 24.4,
+          "valor": 26.4,
+          "brecha": 24.3,
           "cobertura": 0.894,
           "sin_dato": [
             "desequilibrio_monetario",
@@ -2289,14 +2346,14 @@
           ],
           "titulo": "¿Cuánto se avanzó desde el punto de partida?",
           "sub": "El índice mide la situación de cada mes contra una tabla fija, de modo que un mes del traspaso y uno de hoy se evalúan con la misma vara. Eso responde qué tan tensa está la macroeconomía hoy, pero no cuánto se movió desde lo que se recibió. Reconstruido con el mismo método, el índice del mes del traspaso funciona como referencia permanente.",
-          "conclusion": "En diciembre de 2023 el índice marcaba 26,5. Hoy marca 50,9: 24,4 puntos arriba del punto de partida. La base se calcula sobre el 89% del peso del índice —el resto de los componentes todavía no tenía serie en esa fecha—, de modo que es una referencia de orden de magnitud y no una medición exacta.",
-          "resumen": "En diciembre de 2023 el índice marcaba 26,5. Hoy marca 50,9: 24,4 puntos arriba del punto de partida.",
+          "conclusion": "En diciembre de 2023 el índice marcaba 26,4. Hoy marca 50,7: 24,3 puntos arriba del punto de partida. La base se calcula sobre el 89% del peso del índice —el resto de los componentes todavía no tenía serie en esa fecha—, de modo que es una referencia de orden de magnitud y no una medición exacta.",
+          "resumen": "En diciembre de 2023 el índice marcaba 26,4. Hoy marca 50,7: 24,3 puntos arriba del punto de partida.",
           "detalle_texto": "La base se calcula sobre el 89% del peso del índice —el resto de los componentes todavía no tenía serie en esa fecha—, de modo que es una referencia de orden de magnitud y no una medición exacta.",
           "sub_resumen": "El índice mide la situación de cada mes contra una tabla fija, de modo que un mes del traspaso y uno de hoy se evalúan con la misma vara.",
           "sub_detalle": "Eso responde qué tan tensa está la macroeconomía hoy, pero no cuánto se movió desde lo que se recibió. Reconstruido con el mismo método, el índice del mes del traspaso funciona como referencia permanente."
         },
         "vintages": {
-          "dias_promedio": 79,
+          "dias_promedio": 78,
           "meses_promedio": 2.6,
           "fecha_mas_vieja": "1 de abril de 2026",
           "fecha_mas_nueva": "30 de septiembre de 2026",
@@ -4352,7 +4409,7 @@
             }
           },
           "sector_privado": {
-            "nombre": "Sector privado",
+            "nombre": "Sector empresarial",
             "peso": 0.1398,
             "puntaje": 65.8,
             "indicadores": {
@@ -4890,7 +4947,7 @@
           "externa_label": "Incertidumbre de política en la prensa (EPU, invertido)",
           "trans_label": "series normalizadas al rango del período; la incertidumbre de política se muestra invertida",
           "r_sin_sector_privado": -0.459,
-          "conclusion": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,363 en niveles y −0,034 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
+          "conclusion": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,363 en niveles y −0,034 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
           "panel": {
             "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,363 y con las 12 ajenas es 0,277. En los cambios mes a mes la separación no se sostiene: 0,034 con lo propio contra 0,119 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
@@ -5027,7 +5084,7 @@
             "n_ajenas": 12
           },
           "resumen": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,363 en niveles y −0,034 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión.",
-          "detalle_texto": "Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
+          "detalle_texto": "Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
           "sub_resumen": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas.",
           "sub_detalle": "Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo y la protesta social — límite que se declara, no se esconde."
         },
@@ -5247,7 +5304,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 6 dimensiones: poder legislativo 23%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, poder judicial 16%, sector privado 14%. La tensión del cinturón es (100 − índice) / 10."
+      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 6 dimensiones: poder legislativo 23%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, poder judicial 16%, sector empresarial 14%. La tensión del cinturón es (100 − índice) / 10."
     },
     "vida_cotidiana": {
       "score": 5.3,
@@ -5400,6 +5457,44 @@
             "porcina": 10.75,
             "total": -2.66
           },
+          "kg_por_mes": {
+            "2023-10": 53.8,
+            "2023-11": 53.94,
+            "2023-12": 52.72,
+            "2024-01": 52.41,
+            "2024-02": 51.85,
+            "2024-03": 50.36,
+            "2024-04": 49.79,
+            "2024-05": 49.62,
+            "2024-06": 48.03,
+            "2024-07": 48.29,
+            "2024-08": 48.27,
+            "2024-09": 47.93,
+            "2024-10": 48.14,
+            "2024-11": 47.52,
+            "2024-12": 48.48,
+            "2025-01": 48.88,
+            "2025-02": 49.49,
+            "2025-03": 50.08,
+            "2025-04": 50.67,
+            "2025-05": 50.63,
+            "2025-06": 51.21,
+            "2025-07": 51.06,
+            "2025-08": 50.86,
+            "2025-09": 50.81,
+            "2025-10": 50.55,
+            "2025-11": 50.28,
+            "2025-12": 49.93,
+            "2026-01": 49.28,
+            "2026-02": 48.87,
+            "2026-03": 48.55,
+            "2026-04": 47.94,
+            "2026-05": 47.36,
+            "2026-06": 47.23,
+            "2026-07": 46.74,
+            "2026-08": 46.19,
+            "2026-09": 45.81
+          },
           "obtenido_en": "2026-11-03T04:50:25.843662",
           "metodo_obtencion": "automatico",
           "en_indice": true,
@@ -5433,6 +5528,44 @@
           },
           "otras_kg": 67.79,
           "ratio_bovina": 40.33,
+          "kg_por_mes": {
+            "2023-10": 117.41,
+            "2023-11": 117.45,
+            "2023-12": 116.0,
+            "2024-01": 115.95,
+            "2024-02": 115.49,
+            "2024-03": 113.34,
+            "2024-04": 112.86,
+            "2024-05": 112.72,
+            "2024-06": 110.5,
+            "2024-07": 111.48,
+            "2024-08": 111.21,
+            "2024-09": 110.87,
+            "2024-10": 111.19,
+            "2024-11": 110.46,
+            "2024-12": 111.99,
+            "2025-01": 112.55,
+            "2025-02": 113.81,
+            "2025-03": 114.73,
+            "2025-04": 115.59,
+            "2025-05": 115.53,
+            "2025-06": 116.42,
+            "2025-07": 116.29,
+            "2025-08": 116.08,
+            "2025-09": 116.7,
+            "2025-10": 116.99,
+            "2025-11": 116.74,
+            "2025-12": 116.53,
+            "2026-01": 115.39,
+            "2026-02": 114.76,
+            "2026-03": 115.14,
+            "2026-04": 114.49,
+            "2026-05": 113.64,
+            "2026-06": 114.39,
+            "2026-07": 113.89,
+            "2026-08": 113.62,
+            "2026-09": 113.6
+          },
           "obtenido_en": "2026-11-03T04:50:25.843662",
           "metodo_obtencion": "automatico",
           "en_indice": true,
@@ -10806,19 +10939,19 @@
         "nombre": "Índice macroeconómico",
         "propio": "lider",
         "lider": {
-          "r": 0.7,
+          "r": 0.71,
           "n": 34,
-          "rd": 0.36
+          "rd": 0.35
         },
         "volumen_hogar": {
-          "r": 0.19,
+          "r": 0.17,
           "n": 31,
-          "rd": 0.49
+          "rd": 0.43
         },
         "epu": {
           "r": 0.29,
           "n": 31,
-          "rd": 0.06
+          "rd": 0.09
         }
       },
       {
@@ -10878,9 +11011,9 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,7 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "resumen": "Los tres pares propios dan el signo esperado.",
-    "detalle_texto": "Índice macroeconómico +0,7 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "detalle_texto": "Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "sub_resumen": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez.",
     "sub_detalle": "Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
   }

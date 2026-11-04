@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Macroeconomía — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 50,9** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 5 en verde · 7 en amarillo · 3 en naranja · 1 en rojo |
-Componentes que puntúan en este corte: 16 de 16 publicados.
+| **ITCM: 50,7** | **AMARILLO** | Moderadamente apretado | 17 indicadores: 5 en verde · 8 en amarillo · 3 en naranja · 1 en rojo |
+Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 44,6 | AMARILLO | 31,4 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 38,8 | NARANJA | 23,0 % |
-| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 62,7 | VERDE | 19,2 % |
+| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 61,5 | VERDE | 19,2 % |
 | Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 57,8 | AMARILLO | 15,8 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 64,1 | VERDE | 10,6 % |
 
@@ -71,8 +71,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Producción industrial (frente a un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % interanual (promedio de 3 meses) | NARANJA | 3,2 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % interanual ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
-| Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4º trimestre de 2023) | AMARILLO | 7,2 % |
-| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acumulado de 12 meses) | VERDE | 12,0 % |
+| Actividad tributaria (impuesto al valor agregado + impuesto al cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | 0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) | AMARILLO | 3,8 % |
+| Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4º trimestre de 2023) | AMARILLO | 5,8 % |
+| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acumulado de 12 meses) | VERDE | 9,6 % |
 | **DIMENSIÓN: Sector externo** | | | | |
 | Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) | VERDE | 4,8 % |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base diciembre de 2015 = 100) | AMARILLO | 5,5 % |
@@ -666,6 +667,96 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
+# Actividad tributaria (impuesto al valor agregado + impuesto al cheque)
+
+Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)** (2026-09) | **AMARILLO** | Peso efectivo 3,8 % del ITCM | Cinturón Macroeconomía |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | actividad_tributaria | **CINTURÓN** | Macroeconomía |
+| **DIMENSIÓN EN EL ITCM** | Cuentas fiscales | **UNIDAD DE MEDIDA** | % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) |
+| **SERIE DISPONIBLE** | 2017-12 → 2026-09 (106 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura fiscal más fresca: Hacienda informa el impuesto al valor agregado (IVA) y el impuesto al cheque de un mes dentro del mes siguiente. |
+| **PRODUCTOR DEL DATO** | Secretaría de Hacienda / Agencia de Recaudación y Control Aduanero (ARCA), con el índice de precios al consumidor del Instituto Nacional de Estadística y Censos (INDEC) como deflactor | **OPERACIÓN ESTADÍSTICA** | Impuesto al valor agregado que cobra la Dirección General Impositiva e impuesto a los créditos y débitos bancarios (impuesto al cheque), dos componentes de la recaudación, llevados a pesos constantes |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-03 |
+
+## Definición — qué mide y por qué importa
+
+Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
+
+Junto al resultado primario y a la recaudación, mide la base de la que vive el fisco: el impuesto al valor agregado (IVA) sigue de cerca el consumo interno y el cheque toda transacción bancaria, así que además de actividad capta bancarización. Hacienda los informa antes de que cierre el mes siguiente, por eso es la lectura fiscal más fresca.
+
+**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados por la Nación (total, incluida la seguridad social y lo coparticipado), cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
+
+## Método de cómputo
+
+- Cada serie se lleva a variación interanual real: el monto nominal contra el mismo mes del año anterior, deflactado por el índice de precios del mismo período.
+- Las dos variaciones se promedian con 0,6 para el impuesto al valor agregado y 0,4 para el cheque. El impuesto al valor agregado pesa más porque sigue de cerca el consumo interno; el cheque grava toda transacción bancaria y además capta bancarización.
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (% interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)) | Color |
+|---|---|
+| ≥ 2,67 | VERDE |
+| −8,03 – 2,67 | AMARILLO |
+| −17,83 – −8,03 | NARANJA |
+| ≤ −17,83 | ROJO |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI 1,6%, cheque -0,3%, compuesto 0,9%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.
+
+## Color vigente y por qué
+
+Dato vigente: 0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) (2026-09).
+
+0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) está en Amarillo, a 1,81 del límite con Verde (2,67).
+
+**Color vigente: AMARILLO**
+
+Ponderación vigente en el ITCM: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+- **Participación en otros indicadores.** Comparte materia prima con la recaudación de la misma dimensión: el impuesto al valor agregado y el cheque son entre el 30% y el 62% del agregado de la Dirección General Impositiva que ahí puntúa. El solapamiento es menor de lo que sugiere ese porcentaje, porque la recaudación puntúa un nivel desestacionalizado y no la variación interanual: la correlación entre las dos lecturas es de 0,28 en 45 meses. Por eso pesa menos que la recaudación dentro de la dimensión.
+
+## Transparencia — limitaciones declaradas
+
+- Ninguna de las dos series mide actividad de forma directa: la recaudación responde también a evasión, cambios de alícuota, anticipos y vencimientos trasladados, y el cheque a cuántos pagos pasan por los bancos.
+- Los cortes salen de la historia anterior al Gobierno, de diciembre de 2017 a noviembre de 2023 (72 meses): centro en cero y uno y dos desvíos (10,7 puntos). Antes de 2017 no hay índice de precios nacional comparable para deflactar.
+- Un cambio impositivo puro (alícuota, moratoria) puede moverla junto con la recaudación sin que haya cambiado la actividad.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si falta cualquiera de las dos series o el índice de precios del mes, ese mes no se calcula y el indicador conserva el último valor disponible, señalado como desactualizado.
+
+- **Política de revisiones:** Las dos fuentes pueden revisar meses ya publicados; la serie se recalcula completa en cada actualización.
+
+## Historial — cambios metodológicos documentados
+
+**2026-11-03** — Vuelve al índice macroeconómico, esta vez en la dimensión de cuentas fiscales y no en la de actividad: pesa 20% de la dimensión, con el resultado primario en 50% y la recaudación en 30%. Los cortes pasan a salir de la historia anterior al Gobierno (centro en cero, uno y dos desvíos de 10,7 puntos); los anteriores (±5 y ±10) se habían fijado sobre 2017-2026, mandato incluido.
+
+**2026-10-26** — Sale del índice por repetir la lectura del estimador mensual de actividad económica dentro de la dimensión de actividad. Se sigue calculando.
+
+**2026-09-16** — Alta del indicador en la dimensión de actividad, como la lectura de actividad que se publica antes.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
+
 # Saldo comercial (últimos 12 meses)
 
 El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el comercio de esos meses (exportaciones más importaciones). El monto en dólares se ve en el detalle.
@@ -785,7 +876,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 94,4 índice (100 = 4º trimestre de 2023)** (2026-09) | **AMARILLO** | Peso efectivo 7,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 94,4 índice (100 = 4º trimestre de 2023)** (2026-09) | **AMARILLO** | Peso efectivo 5,8 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -841,7 +932,7 @@ Dato vigente: 94,4 índice (100 = 4º trimestre de 2023) (2026-09).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 5,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** El impuesto al valor agregado y los créditos/débitos bancarios (impuesto al cheque) son dos componentes de este agregado y la tarjeta publica su descomposición. Hasta octubre de 2026 puntuaban además por separado en la dimensión de actividad; salieron del índice por repetir la lectura del estimador mensual de actividad económica (EMAE).
 
@@ -1608,7 +1699,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,02 % de la recaudación (acumulado de 12 meses)** (2026-08) | **VERDE** | Peso efectivo 12 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 6,02 % de la recaudación (acumulado de 12 meses)** (2026-08) | **VERDE** | Peso efectivo 9,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1662,7 +1753,7 @@ Dato vigente: 6,02 % de la recaudación (acumulado de 12 meses) (2026-08).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 9,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

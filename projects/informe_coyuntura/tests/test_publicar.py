@@ -561,7 +561,9 @@ def test_macro_itcm_reconcilia():
     # **15 desde 2026-10-26** (ADR-0368): vuelve a salir, repetía al EMAE.
     # **16 desde 2026-10-27** (ADR-0375): el compuesto de competitividad pasa a
     # dos tarjetas, tipo de cambio real y términos del intercambio.
-    assert len(en_indice) == 16, f"esperaba 16 indicadores en el índice, hay {len(en_indice)}"
+    # **17 desde 2026-11-03** (ADR-0421): vuelve `actividad_tributaria`, ahora
+    # en cuentas fiscales.
+    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los monetarios nominales quedan OCULTOS del snapshot (siguen en
     # pipeline como insumos de IdC/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
