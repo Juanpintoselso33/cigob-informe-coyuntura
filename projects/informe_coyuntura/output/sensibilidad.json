@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-03T23:09:01.233501-03:00",
+    "snapshot": "2026-11-04T03:50:26.430779+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -19,7 +19,7 @@
         "desvio": 0.58
       },
       "combinado": {
-        "media": 50.6,
+        "media": 50.7,
         "p05": 49.1,
         "p95": 52.1,
         "desvio": 0.94
@@ -34,14 +34,14 @@
     "leave_one_out": {
       "tcrm": 53.6,
       "terminos_intercambio": 53.6,
-      "iai": 48.7,
+      "iai": 48.8,
       "costo_financiamiento_tesoro": 49.2,
       "saldo_comercial_12m": 49.4,
       "reservas_bcra": 49.5,
       "ipc_total": 51.7,
+      "desequilibrio_monetario": 51.5,
       "idc": 51.5,
       "resultado_primario": 49.9,
-      "desequilibrio_monetario": 51.4,
       "emae_ia": 51.4,
       "emae_difusion": 51.4,
       "credito_privado": 51.1,
