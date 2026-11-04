@@ -1,13 +1,15 @@
 ---
 madr: 4
 id: '0368'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0421'
 fecha: 2026-10-26
 cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [actividad_tributaria]
 archivos: ['scripts/itcm.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
 relacionado: ['0329', '0367']
+superado_por: ['0421']
 ambito: 'Cinturón macro · ITCM · dimensión actividad e inversión'
 origen: 'Revisión de Luis Babino del 26-oct-2026 (punto 1.2) y decisión de Juan del mismo día.'
 ---

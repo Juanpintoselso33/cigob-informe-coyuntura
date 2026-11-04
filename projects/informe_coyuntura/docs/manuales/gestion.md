@@ -170,7 +170,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
-**Lo gobiernan**: [ADR-0086](../adr/0086-serie-y-banda-tienen-que-medir-lo-mismo.md) La serie de un indicador tiene que medir lo mismo que puntúa su banda · [ADR-0102](../adr/0102-rigi-denominador-movil.md) El RIGI avisa cuando su porcentaje baja por el denominador · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0406](../adr/0406-el-rigi-usa-la-escala-de-las-concesiones.md) El RIGI usa la escala de las concesiones
+**Lo gobiernan**: [ADR-0086](../adr/0086-serie-y-banda-tienen-que-medir-lo-mismo.md) La serie de un indicador tiene que medir lo mismo que puntúa su banda · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0406](../adr/0406-el-rigi-usa-la-escala-de-las-concesiones.md) El RIGI usa la escala de las concesiones · [ADR-0419](../adr/0419-el-rigi-se-mide-contra-la-promesa-de-100000-millones.md) El RIGI se mide contra la promesa de US$ 100.000 millones
 
 #### Concesiones viales
 
@@ -277,7 +277,6 @@ histórica.
 - [0098](../adr/0098-fal-en-tres-etapas.md) — El FAL se mide en tres etapas: construcción, vigencia y adopción
 - [0100](../adr/0100-promesa-cumplida-no-es-contexto.md) — Una promesa cumplida no es un indicador de contexto
 - [0101](../adr/0101-privatizaciones-publica-la-norma-de-cada-etapa.md) — Privatizaciones publica la norma que respalda cada etapa
-- [0102](../adr/0102-rigi-denominador-movil.md) — El RIGI avisa cuando su porcentaje baja por el denominador
 - [0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) — La desregulación pasa a medirse con la fuente oficial
 - [0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) — Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión
 - [0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) — Privatizaciones: se automatiza la detección, no la clasificación
@@ -317,3 +316,4 @@ histórica.
 - [0407](../adr/0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) — Corredores Viales sale de la cartera de privatizaciones
 - [0408](../adr/0408-los-piquetes-vuelven-a-la-ciudad.md) — Los piquetes vuelven a la Ciudad de Buenos Aires
 - [0414](../adr/0414-el-gasto-de-funcionamiento-se-compara-con-todo-2023.md) — El gasto de funcionamiento se compara con todo 2023
+- [0419](../adr/0419-el-rigi-se-mide-contra-la-promesa-de-100000-millones.md) — El RIGI se mide contra la promesa de US$ 100.000 millones

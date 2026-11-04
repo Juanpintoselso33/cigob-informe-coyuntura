@@ -59,6 +59,7 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "iai": None,
         "desequilibrio_monetario": -2.0,
         "recaudacion": None,
+        "actividad_tributaria": None,   # ADR-0421
         "reservas_bcra": None,
         "idc": None,
         "credito_privado": None,

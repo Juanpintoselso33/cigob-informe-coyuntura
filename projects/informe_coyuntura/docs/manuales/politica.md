@@ -370,7 +370,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-109 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+110 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -481,3 +481,4 @@ histórica.
 - [0402](../adr/0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) — El alineamiento de senadores se compara con la historia
 - [0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) — El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
 - [0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) — Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
+- [0420](../adr/0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) — La dimensión «Sector privado» pasa a llamarse «Sector empresarial»

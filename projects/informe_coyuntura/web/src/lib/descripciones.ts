@@ -79,7 +79,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   actividad_tributaria: {
     que: "Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.",
-    aporta: "La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.",
+    aporta: "Junto al resultado primario y a la recaudación, mide la base de la que vive el fisco: el impuesto al valor agregado (IVA) sigue de cerca el consumo interno y el cheque toda transacción bancaria, así que además de actividad capta bancarización. Hacienda los informa antes de que cierre el mes siguiente, por eso es la lectura fiscal más fresca.",
     frecuencia: "Mensual", tipo: "Variación interanual real (compuesto)",
   },
   saldo_comercial_12m: {

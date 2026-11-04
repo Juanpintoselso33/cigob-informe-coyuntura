@@ -353,6 +353,16 @@ BANDAS_ITCM = {
         # 28,9 → 100.
         (28.9, INF, 100), (14.5, 28.9, 85), (0.0, 14.5, 65), (-14.5, 0.0, 45), (-28.9, -14.5, 25), (-INF, -28.9, 10),
     ],
+    "actividad_tributaria": [           # % i.a. real, 0,6 IVA-DGI + 0,4 cheque (ADR-0421)
+        # Misma construcción que el crédito privado (ADR-0404): centro en 0 (la
+        # recaudación real ni crece ni cae) y cortes en uno y dos desvíos de la
+        # historia ANTERIOR al mandato, dic-2017 a nov-2023 (72 meses, la
+        # ventana que permite el IPC nacional como deflactor): desvío 10,7 pp,
+        # media 1,5 %. La escala de ADR-0329 (±5/±10) se había fijado sobre
+        # 2017-2026, mandato incluido. Anclas: −21,4 → 10 · −16,05 → 25 ·
+        # −5,35 → 45 · 5,35 → 65 · 16,05 → 85 · 21,4 → 100.
+        (21.4, INF, 100), (10.7, 21.4, 85), (0.0, 10.7, 65), (-10.7, 0.0, 45), (-21.4, -10.7, 25), (-INF, -21.4, 10),
+    ],
 }
 
 ANCLAS_ITCM = {
@@ -434,9 +444,15 @@ DIMENSIONES_ITCM = {
         # se lee como lo que es —actividad y formalidad de la base imponible—,
         # no como la medida de la viabilidad fiscal. Proporción 50/30 de la
         # auditoría de consistencia (ahí con el saldo comercial en 20%).
+        # ADR-0421 (2026-11-03): vuelve `actividad_tributaria` (IVA-DGI +
+        # cheque), esta vez acá y no en actividad. El resultado primario sigue
+        # liderando con la mitad; las dos lecturas de la base imponible se
+        # reparten el resto, y la recaudación pesa más porque IVA y cheque son
+        # 30-62 % de su propio agregado DGI (comparten materia prima).
         "indicadores": {
-            "resultado_primario": 0.625,
-            "recaudacion": 0.375,
+            "resultado_primario": 0.50,
+            "recaudacion": 0.30,
+            "actividad_tributaria": 0.20,
         },
     },
     "sector_externo": {
@@ -589,8 +605,8 @@ INTERPRETACION_LEGIBLE = {
 #     con el mismo, así que ninguna dimensión lo arregla.
 # Ver los dos ADR: no alcanzaba con moverlos ni con recalibrarlos.
 INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista",
-                        "idm", "icip", "tcr_terminos_intercambio",
-                        "actividad_tributaria"]   # ADR-0368: sale del índice, se sigue calculando
+                        "idm", "icip", "tcr_terminos_intercambio"]
+# `actividad_tributaria` estuvo acá de ADR-0368 a ADR-0421, que la devuelve al índice en cuentas fiscales.
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

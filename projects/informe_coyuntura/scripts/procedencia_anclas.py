@@ -217,6 +217,7 @@ PROCEDENCIA = {
     # los rotulaba como los rotulaba la prensa, no para fijarla.
     "costo_financiamiento_tesoro": ("conceptual", "umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes"),
     "iai": ("historia_larga", "uno y dos desvíos robustos (rango intercuartil / 1,349 = 18,9) de la variación interanual de ene-2004 a nov-2023, con el ISAC empalmado; centro en el crecimiento de la población del INDEC, +0,17 (ADR-0341, ADR-0404)"),
+    "actividad_tributaria": ("historia_larga", "centro en 0 y uno y dos desvíos (10,7 / 21,4 pp) de la variación real del compuesto IVA-DGI + cheque de dic-2017 a nov-2023, anterior al mandato (ADR-0421)"),
     "credito_privado": ("historia_larga", "centro en 0 y uno y dos desvíos (14,5 / 28,9 pp) de la variación real de ene-2004 a nov-2023; el mandato está fuera de todo ese rango y sigue tocando los extremos (ADR-0404)"),
 
     # ── ITCG ────────────────────────────────────────────────────────────────

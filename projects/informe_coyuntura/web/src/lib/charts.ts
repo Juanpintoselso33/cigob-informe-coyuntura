@@ -63,7 +63,9 @@ function esMensual(serie: Punto[]): boolean {
 }
 
 // Gráfico de línea/área para una serie temporal, con tooltip en hover.
-export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; indicador?: string } = {}) {
+// `extra`: una segunda línea por punto en el tooltip (ej. los kg de carne
+// debajo del índice base 100).
+export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; indicador?: string; extra?: (fecha: string) => string | null } = {}) {
   const color = opts.color ?? "#3D9AD1";
   const vals = serie.map(p => p.valor);
   const cruzaCero = Math.min(...vals) < 0 && Math.max(...vals) > 0;
@@ -129,7 +131,12 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
              labels: { formatter: (v: number) => NF.format(v), style: { colors: COL.muted, fontSize: "11px" } } },
     grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } }, padding: { left: 8, right: 12, top: 0 } },
     tooltip: { theme: "light", x: { format: xfmt },
-               y: { formatter: (v: number) => `${NF.format(v)}${opts.unidad ? ` ${opts.unidad}` : ""}` } },
+               y: { formatter: (v: number, o?: { dataPointIndex?: number }) => {
+                 const base = `${NF.format(v)}${opts.unidad ? ` ${opts.unidad}` : ""}`;
+                 const p = o?.dataPointIndex != null ? serie[o.dataPointIndex] : undefined;
+                 const mas = p && opts.extra ? opts.extra(p.fecha) : null;
+                 return mas ? `${base} · ${mas}` : base;
+               } } },
     annotations: cruzaCero ? { yaxis: [{ y: 0, borderColor: COL.zero, strokeDashArray: 3 }] } : {},
   } as any);
   chart.render();

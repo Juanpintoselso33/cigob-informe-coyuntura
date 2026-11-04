@@ -15,7 +15,7 @@ al ADR.
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
 | `estabilidad_monetaria` | 31% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario`, `reservas_bcra` |
-| `cuentas_fiscales` | 19% | `resultado_primario`, `recaudacion` |
+| `cuentas_fiscales` | 19% | `resultado_primario`, `recaudacion`, `actividad_tributaria` |
 | `sector_externo` | 16% | `saldo_comercial_12m`, `tcrm`, `terminos_intercambio` |
 | `financiamiento` | 11% | `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `iai` |
@@ -90,8 +90,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 62% |
-| Peso efectivo en el índice | **12.0%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **9.6%** |
 | Procedencia del ancla | `convencion` — referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072) |
 
 **Bandas**: > 23.8 → 100 · 11.9–23.8 → 80 · 0–11.9 → 50 · -11.9–0 → 30 · ≤ -11.9 → 10
@@ -104,13 +104,27 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 38% |
-| Peso efectivo en el índice | **7.2%** |
+| Peso dentro de la dimensión | 30% |
+| Peso efectivo en el índice | **5.8%** |
 | Procedencia del ancla | `conceptual` — bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120) |
 
 **Bandas**: > 110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤ 80 → 10
 
 **Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) Recaudación actualiza las gacetillas COMARB · [ADR-0318](../adr/0318-iva-cheque-entran-como-control-no-como-card.md) IVA-DGI y cheque entran como control de `recaudacion`, no como card · [ADR-0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) El control tributario usa el mismo deflactor y compara el mismo sentido · [ADR-0321](../adr/0321-descomposicion-no-control-independiente.md) Es una descomposición del agregado, no un control independiente · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+
+#### Actividad tributaria (impuesto al valor agregado + impuesto al cheque)
+
+`actividad_tributaria`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **3.8%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 21.4 → 100 · 10.7–21.4 → 85 · 0–10.7 → 65 · -10.7–0 → 45 · -21.4–-10.7 → 25 · ≤ -21.4 → 10
+
+**Lo gobiernan**: [ADR-0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal · [ADR-0421](../adr/0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) La recaudación de IVA y cheque vuelve, en cuentas fiscales
 
 ### Dimensión `sector_externo` (16%)
 
@@ -264,7 +278,6 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
-- `actividad_tributaria` — Actividad tributaria (impuesto al valor agregado + impuesto al cheque) (declarado como contexto)
 - `badlar` — Tasa de plazo fijo de bancos privados grandes (declarado como contexto)
 - `base_monetaria` — Base monetaria (declarado como contexto)
 - `icip` — Pagos de servicios digitales y productividad (declarado como contexto)
@@ -354,9 +367,9 @@ histórica.
 - [0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) — La inversión física se mide contra el crecimiento de la población
 - [0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) — La competitividad externa cruza el tipo de cambio real con los términos del intercambio
 - [0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) — La inflación se pinta con los cortes de Luis
-- [0368](../adr/0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) — La recaudación de IVA y cheque sale del índice
 - [0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) — Competitividad: el cruce pasa a la dimensión
 - [0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) — Las cuentas fiscales y el sector externo se separan
 - [0403](../adr/0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) — El resultado primario se puntúa por desvíos de su historia
 - [0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) — Inversión, crédito y saldo comercial con cortes de la historia previa
 - [0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) — Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
+- [0421](../adr/0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) — La recaudación de IVA y cheque vuelve, en cuentas fiscales

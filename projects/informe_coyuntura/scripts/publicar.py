@@ -112,6 +112,25 @@ def agregar_icg(enriquecido, series):
                       "disponible para sostener el rumbo."))
 
 
+
+def _kg_carne_por_mes() -> tuple[dict, dict]:
+    """({AAAA-MM: kg vacuna}, {AAAA-MM: kg de las tres carnes}) desde el 4T-2023,
+    con el mismo store y el mismo ancla que el índice que puntúa."""
+    import importlib.util
+    ruta = ROOT / "scripts" / "vida_cotidiana" / "collectors" / "consumo_carnes.py"
+    spec = importlib.util.spec_from_file_location("consumo_carnes_publicar", ruta)
+    mod = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(mod)
+        series = mod.series_por_carne()
+    except Exception as e:   # sin store, el gráfico muestra sólo el índice
+        print(f"  [WARN] kg de carne por mes: {e}")
+        return {}, {}
+    vacuna = {m: round(v, 2) for m, v in series["vacuna"].items() if m >= "2023-10"}
+    comunes = set.intersection(*(set(series[c]) for c in mod.CARNES))
+    total = {m: round(sum(series[c][m] for c in mod.CARNES), 2) for m in sorted(comunes) if m >= "2023-10"}
+    return dict(sorted(vacuna.items())), total
+
 def build_vida(raw):
     """Mapea el JSON crudo (por fuente) a indicadores estilo informe.json."""
     indec = raw.get("indec", {}); bcra = raw.get("bcra", {})
@@ -208,6 +227,12 @@ def build_vida(raw):
     out["consumo_carnes_total"]["variaciones"] = variaciones
     out["consumo_carnes_total"]["otras_kg"] = otras
     out["consumo_carnes_total"]["ratio_bovina"] = carnes.get("ratio_bovina")
+    # Los kilos por habitante de cada mes, para el tooltip del gráfico: la serie
+    # es el índice base 100 = 4T-2023 y Juan pidió ver también los kg
+    # (3-nov-2026). Salen del mismo store de SAGYP que arma el índice (ADR-0392).
+    kg_vacuna, kg_total = _kg_carne_por_mes()
+    out["consumo_carne_vacuna"]["kg_por_mes"] = kg_vacuna
+    out["consumo_carnes_total"]["kg_por_mes"] = kg_total
     inf = indec.get("informalidad_trimestral", {})   # ADR-0413: sin aportes propios; el respaldo anual medía otra cosa
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)", inf.get("fecha"))
@@ -2071,7 +2096,7 @@ def _validacion_itcp(bloque):
             f"del panel desde octubre de 2026— la correlación es {coma(r_niv)} en niveles y "
             f"{coma(r_dif)} en los cambios mes a mes: el signo negativo es el esperado, más "
             f"moderado que en macro o gestión."
-            + (f" Sin la dimensión de sector privado —incorporada en julio de 2026— la "
+            + (f" Sin la dimensión de sector empresarial —incorporada en julio de 2026— la "
                f"correlación sería {coma(r_sin_priv)}, y conviene explicar la diferencia en "
                f"lugar de omitirla. "
                if r_sin_priv is not None else " ")

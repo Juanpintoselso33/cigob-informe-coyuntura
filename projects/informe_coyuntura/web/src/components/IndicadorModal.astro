@@ -142,6 +142,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       // caer porque crece el denominador aunque el capital aprobado suba
       // (ADR-0102). Aparece únicamente el mes en que el caso se da.
       notaDenominador: ind.nota_denominador ?? null,
+      // Carne: kg por habitante de cada mes, para el tooltip del índice (3-nov-2026).
+      kgPorMes: (ind as any).kg_por_mes ?? null,
       aporteLectura: ind.aporte_lectura ?? null,
       aporteInputTxt: ind.aporte_input_txt ?? null,
       scoreCint: c.score, scoreExpl: c.score_explicacion ?? "",
@@ -455,7 +457,8 @@ const dimsJson = JSON.stringify(dims);
         multi.series.map(([k, nombre]) => ({ nombre, puntos: SERIES[k] })),
         { color, unidad: multi.unidad ?? d.unidad, refY: multi.refY, refLabel: multi.refLabel });
     }
-    else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidadSerie ?? d.unidad, indicador: baseKey });
+    else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidadSerie ?? d.unidad, indicador: baseKey,
+      extra: d.kgPorMes ? (fecha) => { const kg = d.kgPorMes[fecha.slice(0, 7)]; return kg == null ? null : `${nf.format(kg)} kg por habitante`; } : undefined });
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
     else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
                centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });

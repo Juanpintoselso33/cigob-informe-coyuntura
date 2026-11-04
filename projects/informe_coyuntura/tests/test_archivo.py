@@ -151,3 +151,18 @@ def test_el_control_del_corte_unico_atrapa_cada_archivo_de_otro_mes(tmp_path):
     raiz = _arbol_del_corte(tmp_path / "ficha")
     (raiz / "output/fichas/fichas-gestion.md").write_text("*Datos al 2026-10-24.*\n", encoding="utf-8")
     assert archivo.verificar_corte(raiz, "2026-09"), "no vio una ficha de octubre"
+
+
+def test_el_dnu_del_mes_rehecho_lleva_la_marca_del_metodo_y_puntua():
+    """Octubre-2026 salió con los decretos por ley en 2,643 (la serie de hoy)
+    pero fuera del índice político y sin dimensión: la caché de cierre era
+    anterior a ADR-0415 y no traía la marca `metodo`, sin la cual no puntúa."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+    import politica
+    cards = {"ratio_dnu": {"valor": 1.156, "unidad": "x", "fecha_dato": "2026-10-31",
+                           "dimension": "poder_legislativo", "en_indice": True}}
+    salida = archivo.cortar_indicadores(cards, {"ratio_dnu": ("2026-10-01", 2.643)}, "2026-10")
+    assert salida["ratio_dnu"]["valor"] == 2.643
+    assert politica._valor_itcp("ratio_dnu", salida["ratio_dnu"]) == 2.643

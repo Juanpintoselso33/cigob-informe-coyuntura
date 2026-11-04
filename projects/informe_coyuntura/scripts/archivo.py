@@ -152,6 +152,17 @@ CAMPOS_MISMO_DATO = ("derivados", "usuarios_prepagas", "fecha_numerador", "fecha
 CACHES = ("macro", "politica", "gestion", "vida_cotidiana", "espiritu_epoca")
 
 
+# Cards que sólo puntúan con la marca del método con que se calcularon. La
+# serie de hoy está calculada con el método vigente, así que cuando la card
+# toma su valor de ella lleva esa marca, y no la de la caché de cierre del mes
+# (que puede ser anterior). Sin esto, octubre-2026 publicaba los decretos por ley
+# con el 2,643 de hoy pero sin la marca de ADR-0415: fuera del índice político y
+# sin dimensión (3-nov-2026).
+def _metodos_vigentes() -> dict:
+    from politica import METODO_RATIO_DNU
+    return {"ratio_dnu": METODO_RATIO_DNU}
+
+
 def _fin_de_mes(mes: str) -> str:
     import calendar
     a, m = map(int, mes.split("-"))
@@ -280,6 +291,7 @@ def _meses_posteriores(obj, mes: str, ruta: str = "") -> list[str]:
 def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
     """Lleva cada indicador a su último punto hasta `mes` (ver arriba)."""
     salida = {}
+    metodos = _metodos_vigentes()
     for k, ind in inds.items():
         if not isinstance(ind, dict):
             continue
@@ -298,6 +310,8 @@ def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
                 if all(str(ind.get(c))[:7] <= mes for c in CAMPOS_MISMO_DATO if c.startswith("fecha_") and ind.get(c)):
                     nuevo.update({c: ind[c] for c in CAMPOS_MISMO_DATO if c in ind})
             nuevo["valor"], nuevo["fecha_dato"] = valor, fecha
+            if k in metodos:
+                nuevo["metodo"] = metodos[k]
         elif not str(ind.get("fecha_dato") or "9")[:7] <= mes:
             continue
         nuevo["desactualizado"] = False

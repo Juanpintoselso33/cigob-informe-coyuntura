@@ -19,7 +19,8 @@ D = itcm.DIMENSIONES_ITCM
 # ADR-0409 movió las reservas a estabilidad y estos siguen siendo los mismos.
 EFECTIVOS = {
     "ipc_total": 0.156, "rem_ipc_12m": 0.052, "desequilibrio_monetario": 0.052,
-    "resultado_primario": 0.12, "recaudacion": 0.072, "saldo_comercial_12m": 0.048,
+    "resultado_primario": 0.096, "recaudacion": 0.0576, "actividad_tributaria": 0.0384,   # ADR-0421
+    "saldo_comercial_12m": 0.048,
     "reservas_bcra": 0.0544, "idc": 0.0336, "costo_financiamiento_tesoro": 0.04,
     "credito_privado": 0.032,
     "emae_ia": 0.0966, "emae_difusion": 0.0322, "ipi_manufacturero": 0.0322, "iai": 0.069,
@@ -31,7 +32,7 @@ def test_composicion_de_las_dimensiones():
     assert list(D) == ["estabilidad_monetaria", "cuentas_fiscales", "sector_externo",
                        "financiamiento", "actividad"]
     assert "viabilidad_fiscal_comercial" not in D and "competitividad_externa" not in D
-    assert set(D["cuentas_fiscales"]["indicadores"]) == {"resultado_primario", "recaudacion"}
+    assert set(D["cuentas_fiscales"]["indicadores"]) == {"resultado_primario", "recaudacion", "actividad_tributaria"}
     # ADR-0409: las reservas netas pasan a estabilidad monetaria-inflacionaria.
     assert set(D["sector_externo"]["indicadores"]) == {
         "saldo_comercial_12m", "tcrm", "terminos_intercambio"}

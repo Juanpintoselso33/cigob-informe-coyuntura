@@ -816,7 +816,7 @@ DIMENSIONES_ITCP = {
                         "paralisis_denuncias": 0.20},
     },
     "sector_privado": {
-        "nombre": "Sector privado",
+        "nombre": "Sector empresarial",   # «Sector privado» hasta el 3-nov-2026 (ADR-0420)
         "peso": 0.1398,   # 0.15 → 0.13 (ADR-0126) → 0.1398 (ADR-0344)
         # Dimensión nueva 2026-07-19 (ADR-0088). Cierra el hueco que la
         # auditoría externa marcó como prioridad 1: el cinturón medía en

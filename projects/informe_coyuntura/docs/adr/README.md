@@ -123,12 +123,13 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0341](0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) | La inversión física se mide contra el crecimiento de la población | `iai` | vigente |
 | [0360](0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) | La competitividad externa cruza el tipo de cambio real con los términos del intercambio | `tcrm`, `tcr_terminos_intercambio` | vigente |
 | [0367](0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) | La inflación se pinta con los cortes de Luis | `ipc_total`, `rem_ipc_12m` | vigente |
-| [0368](0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) | La recaudación de IVA y cheque sale del índice | `actividad_tributaria` | vigente |
+| [0368](0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) | La recaudación de IVA y cheque sale del índice | `actividad_tributaria` | superado por [0421](0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) |
 | [0375](0375-competitividad-el-cruce-pasa-a-la-dimension.md) | Competitividad: el cruce pasa a la dimensión | `tcrm`, `terminos_intercambio`, `tcr_terminos_intercambio` | vigente |
 | [0387](0387-cuentas-fiscales-y-sector-externo-se-separan.md) | Las cuentas fiscales y el sector externo se separan | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` | vigente |
 | [0403](0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) | El resultado primario se puntúa por desvíos de su historia | `resultado_primario` | vigente |
 | [0404](0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) | Inversión, crédito y saldo comercial con cortes de la historia previa | `iai`, `credito_privado`, `saldo_comercial_12m` | vigente |
 | [0409](0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) | Las reservas netas pasan a «Estabilidad monetaria-inflacionaria» | `reservas_bcra`, `rem_ipc_12m`, `saldo_comercial_12m` | vigente |
+| [0421](0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) | La recaudación de IVA y cheque vuelve, en cuentas fiscales | `actividad_tributaria` | vigente |
 
 ### Política (ITCP)
 
@@ -250,6 +251,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0402](0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) | El alineamiento de senadores se compara con la historia | `alineamiento_senadores_prov` | vigente |
 | [0410](0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) | El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara | `ratio_dnu`, `insistencias_vetos`, `rechazos_decretos` | vigente |
 | [0415](0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) | Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas | `ratio_dnu` | vigente |
+| [0420](0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) | La dimensión «Sector privado» pasa a llamarse «Sector empresarial» |  | vigente |
 
 ### Gestión (ITCG)
 

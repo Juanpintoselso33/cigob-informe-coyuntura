@@ -76,12 +76,19 @@ def test_fetch_actividad_tributaria_publica_los_dos_componentes(monkeypatch):
     assert resultado["fecha_dato"] == "2025-08-01"
 
 
-# ── Bandas (ADR-0329): cero como frontera conceptual, cortes de 5 puntos ────
+# ── ADR-0421: vuelve en cuentas fiscales, con cortes de la historia previa ──
 
-def test_salio_del_indice_y_no_conserva_banda():
-    """ADR-0368: sale del índice y queda calculada pero oculta, sin banda."""
-    assert "actividad_tributaria" not in itcm.BANDAS_ITCM
-    assert "actividad_tributaria" in itcm.INDICADORES_CONTEXTO
+def test_vuelve_en_cuentas_fiscales_con_cortes_de_la_historia_previa():
+    """ADR-0368 la había sacado (repetía al EMAE dentro de actividad); ADR-0421
+    la devuelve como lectura fiscal, con 20 % de la dimensión y cortes en uno y
+    dos desvíos (10,7 pp) de dic-2017 a nov-2023."""
+    assert "actividad_tributaria" not in itcm.INDICADORES_CONTEXTO
+    fiscal = itcm.DIMENSIONES_ITCM["cuentas_fiscales"]["indicadores"]
+    assert fiscal["actividad_tributaria"] == 0.20
+    assert "actividad_tributaria" not in itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
+    cortes = sorted({c for lo, hi, _ in itcm.BANDAS_ITCM["actividad_tributaria"] for c in (lo, hi)
+                     if abs(c) != float("inf")})
+    assert cortes == [-21.4, -10.7, 0.0, 10.7, 21.4]
 
 
 def test_peso_de_la_dimension_actividad_suma_uno():

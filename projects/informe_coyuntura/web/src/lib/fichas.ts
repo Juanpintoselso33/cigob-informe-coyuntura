@@ -831,6 +831,49 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  actividad_tributaria: {
+    tipo: "indicador",
+    id: "actividad_tributaria",
+    cinturon: "macro",
+    rezago: "Es la lectura fiscal más fresca: Hacienda informa el impuesto al valor agregado (IVA) y el impuesto al cheque de un mes dentro del mes siguiente.",
+    fuente: {
+      organismo: "Secretaría de Hacienda / Agencia de Recaudación y Control Aduanero (ARCA), con el índice de precios al consumidor del Instituto Nacional de Estadística y Censos (INDEC) como deflactor",
+      operacion: "Impuesto al valor agregado que cobra la Dirección General Impositiva e impuesto a los créditos y débitos bancarios (impuesto al cheque), dos componentes de la recaudación, llevados a pesos constantes",
+      serie: "142.3_IVA_D_2001_M_7 (impuesto al valor agregado) y 142.3_CREDI_2001_M_24 (impuesto al cheque), vía datos.gob.ar; índice de precios al consumidor nacional como deflactor",
+      url: "https://www.afip.gob.ar/institucional/estudios/",
+      acceso: "Automático: API pública de series de tiempo de datos.gob.ar.",
+    },
+    transformaciones: [
+      "Cada serie se lleva a variación interanual real: el monto nominal contra el mismo mes del año anterior, deflactado por el índice de precios del mismo período.",
+      "Las dos variaciones se promedian con 0,6 para el impuesto al valor agregado y 0,4 para el cheque. El impuesto al valor agregado pesa más porque sigue de cerca el consumo interno; el cheque grava toda transacción bancaria y además capta bancarización.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 21,4", puntaje: 100 },
+        { banda: "10,7 – 21,4", puntaje: 85 },
+        { banda: "0 – 10,7", puntaje: 65 },
+        { banda: "−10,7 – 0", puntaje: 45 },
+        { banda: "−21,4 – −10,7", puntaje: 25 },
+        { banda: "≤ −21,4", puntaje: 10 },
+      ],
+      puntos: [[-21.4, 10], [-16.05, 25], [-5.35, 45], [5.35, 65], [16.05, 85], [21.4, 100]],
+      unidadCorta: "% i.a. real",
+    },
+    dobleUso: "Comparte materia prima con la recaudación de la misma dimensión: el impuesto al valor agregado y el cheque son entre el 30% y el 62% del agregado de la Dirección General Impositiva que ahí puntúa. El solapamiento es menor de lo que sugiere ese porcentaje, porque la recaudación puntúa un nivel desestacionalizado y no la variación interanual: la correlación entre las dos lecturas es de 0,28 en 45 meses. Por eso pesa menos que la recaudación dentro de la dimensión.",
+    limitaciones: [
+      "Ninguna de las dos series mide actividad de forma directa: la recaudación responde también a evasión, cambios de alícuota, anticipos y vencimientos trasladados, y el cheque a cuántos pagos pasan por los bancos.",
+      "Los cortes salen de la historia anterior al Gobierno, de diciembre de 2017 a noviembre de 2023 (72 meses): centro en cero y uno y dos desvíos (10,7 puntos). Antes de 2017 no hay índice de precios nacional comparable para deflactar.",
+      "Un cambio impositivo puro (alícuota, moratoria) puede moverla junto con la recaudación sin que haya cambiado la actividad.",
+    ],
+    faltantes: "Si falta cualquiera de las dos series o el índice de precios del mes, ese mes no se calcula y el indicador conserva el último valor disponible, señalado como desactualizado.",
+    revisiones: "Las dos fuentes pueden revisar meses ya publicados; la serie se recalcula completa en cada actualización.",
+    cambios: [
+      { fecha: "2026-11-03", cambio: "Vuelve al índice macroeconómico, esta vez en la dimensión de cuentas fiscales y no en la de actividad: pesa 20% de la dimensión, con el resultado primario en 50% y la recaudación en 30%. Los cortes pasan a salir de la historia anterior al Gobierno (centro en cero, uno y dos desvíos de 10,7 puntos); los anteriores (±5 y ±10) se habían fijado sobre 2017-2026, mandato incluido.", adr: "0421" },
+      { fecha: "2026-10-26", cambio: "Sale del índice por repetir la lectura del estimador mensual de actividad económica dentro de la dimensión de actividad. Se sigue calculando.", adr: "0368" },
+      { fecha: "2026-09-16", cambio: "Alta del indicador en la dimensión de actividad, como la lectura de actividad que se publica antes.", adr: "0329" },
+    ],
+  },
+
   recaudacion: {
     tipo: "indicador",
     id: "recaudacion",
@@ -1465,8 +1508,8 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula significa igualdad de los saldos de expectativas de los dos grupos; no ausencia de incertidumbre ni de efectos de la política pública.",
-      "Desde octubre de 2026 no integra el índice y las bandas de arriba ya no se aplican: se conservan para leer la serie histórica. Mide las expectativas de un solo sector, el de la construcción, y no la relación del empresariado con el Gobierno; la dimensión de sector privado queda con la postura pública de la Unión Industrial.",
-      "Hasta septiembre de 2026 integró la dimensión de sector privado, incorporada en julio de 2026. De agosto a septiembre, mientras la postura de la Unión Industrial estuvo suspendida, absorbió la dimensión entera.",
+      "Desde octubre de 2026 no integra el índice y las bandas de arriba ya no se aplican: se conservan para leer la serie histórica. Mide las expectativas de un solo sector, el de la construcción, y no la relación del empresariado con el Gobierno; la dimensión de sector empresarial queda con la postura pública de la Unión Industrial.",
+      "Hasta septiembre de 2026 integró la dimensión de sector empresarial, incorporada en julio de 2026. De agosto a septiembre, mientras la postura de la Unión Industrial estuvo suspendida, absorbió la dimensión entera.",
     ],
     limitaciones: [
       "Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.",
@@ -1478,7 +1521,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La encuesta releva grandes empresas constructoras; las pequeñas y las regionales están subrepresentadas.",
       "La fecha de referencia del horizonte no acredita disponibilidad pública en ese mes. La historia se reconstruye retrospectivamente; medir anticipación en tiempo real exige conservar las fechas de publicación de cada edición.",
     ],
-    faltantes: "Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, la serie no se calcula. Desde octubre de 2026 no integra el índice, así que su falta no afecta a la dimensión de sector privado.",
+    faltantes: "Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, la serie no se calcula. Desde octubre de 2026 no integra el índice, así que su falta no afecta a la dimensión de sector empresarial.",
     revisiones: "El INDEC puede revisar los porcentajes de meses anteriores al ampliarse la muestra respondente. Cada actualización recalcula la serie completa desde el origen, de modo que las revisiones se incorporan solas.",
     cambios: [
       { fecha: "2026-10-26", cambio: "Sale del índice político. Compara las expectativas de las constructoras que trabajan para el Estado con las de las que trabajan para privados: es la lectura de un solo sector, no la relación del empresariado con el Gobierno. Se sigue calculando y su serie se conserva; la dimensión de sector privado queda con la postura pública de la Unión Industrial hasta que se sumen otras cámaras. Con los datos del 26 de octubre de 2026 la brecha puntuaba 71,2 y la postura de la Unión Industrial 40,0: la dimensión pasa de 55,6 a 40,0 y el índice político de 73,8 a 71,6.", adr: "0372" },
@@ -1509,7 +1552,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, interpolado entre anclas: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos del empresariado organizado.",
-      "Integra la dimensión de sector privado, con el comercio, el campo y la construcción, sumados el 27 de octubre de 2026. Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. El peso vigente está en la composición del índice, arriba.",
+      "Integra la dimensión de sector empresarial, con el comercio, el campo y la construcción, sumados el 27 de octubre de 2026. Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. El peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
@@ -1557,7 +1600,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y del comercio y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
-      "Integra la dimensión de sector privado, junto a la industria, el comercio y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
+      "Integra la dimensión de sector empresarial, junto a la industria, el comercio y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que tres asociaciones decidieron declarar en público, no el humor de los productores ni la opinión de sus asociados.",
@@ -1596,7 +1639,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos de la cámara.",
-      "Integra la dimensión de sector privado, con la industria, el campo y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
+      "Integra la dimensión de sector empresarial, con la industria, el campo y la construcción. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor de los comerciantes ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
@@ -1636,7 +1679,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria, el comercio y el campo, fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
-      "Integra la dimensión de sector privado, junto a la industria, el comercio y el campo. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
+      "Integra la dimensión de sector empresarial, junto a la industria, el comercio y el campo. Se incorporó el 27 de octubre de 2026; el peso vigente está en la composición del índice, arriba.",
     ],
     limitaciones: [
       "Mide lo que una cámara decidió declarar en público, no el humor de las constructoras ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
