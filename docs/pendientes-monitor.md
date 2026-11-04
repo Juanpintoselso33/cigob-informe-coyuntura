@@ -79,7 +79,8 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    **Escala propuesta por Juan (3-nov):** medir la cantidad de diputados que votaron a favor
    de la ley (no los votos ajenos como % de la cámara). Más de 129 → verde · 119 a 129 →
    amarillo · 109 a 119 → naranja · menos de 109 → rojo. Falta definir de qué lado cae el
-   borde exacto (129, 119, 109).
+   borde exacto (129, 119, 109). **Juan (4-nov): va tal cual la propuesta de Luis** (sólo
+   Diputados, promedio del mes, sin votación queda el puntaje de la última).
 7. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** — **Hecho el 3-nov:** el mes rehecho marca el método vigente y octubre ya lo puntúa en legislativo. (Juan,
    3-nov). En el cálculo (`informe.json`) `ratio_dnu` ya figura en la dimensión
    `poder_legislativo`; revisar dónde aparece en otro lado (página, ficha, agrupación de
@@ -104,12 +105,14 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     el nombre: industria, comercio, campo y construcción siguen igual. Cambiar en el sitio,
     fichas, textos y manuales.
 10. **Impacto social: el gráfico no está en base al 4T-2023; revisar cómo se empalman las series
-    del INDEC y de la Di Tella** (Juan, 3-nov). Llevarlo a base oct-dic 2023 como el resto. Las
+    del INDEC y de la Di Tella** (Juan, 3-nov). **Juan (4-nov): es el gráfico de pobreza**
+    (la tasa semestral del INDEC y el nowcast mensual de la Di Tella). Llevarlo a base oct-dic 2023 como el resto. Las
     series del INDEC y de la Di Tella se quedan (corrección de Juan): ver cómo se empalman y si
     necesitan algún ajuste para ser comparables.
 11. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
     los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
-    verde). Faltan los cortes de amarillo, naranja y rojo.
+    verde). Faltan los cortes de amarillo, naranja y rojo. **Juan (4-nov): los definimos
+    nosotros**, no se esperan de Luis.
 12. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** — **Hecho el 3-nov.** (Juan,
     3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
     valor del índice.
@@ -122,6 +125,8 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
     frente a la canasta de servicios públicos.
 15. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** (Juan, 3-nov).
+    **Juan (4-nov): investigar países similares y comparables** (vale también para la carga
+    del servicio de la deuda, 16).
     Compararla con 2023 engaña porque entonces casi no había crédito, y la mora era baja por
     eso. Fijar los cortes de color con niveles de referencia de otros países o de otros
     períodos argentinos con crédito, declarados como convención.
@@ -129,6 +134,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
     crédito.
 17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
+    **Juan (4-nov): para la próxima, no ahora.**
     Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
     se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
 18. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). **Hecho el 3-nov
