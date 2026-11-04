@@ -1092,7 +1092,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-08) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-11) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1138,7 +1138,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-08).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-11).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0).
 
