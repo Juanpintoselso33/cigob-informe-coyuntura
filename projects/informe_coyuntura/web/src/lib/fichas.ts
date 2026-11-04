@@ -3299,7 +3299,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.",
-      "En el índice de impacto social puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.",
+      "En el índice de impacto social puntúa contra cortes fijos, no contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso: hasta 5% es verde, hasta 8% amarillo, hasta 12% naranja y por encima, rojo. Los cortes salen de países comparables con crédito de consumo (Chile, México, Colombia, Perú y Uruguay rondan 2,5% a 5,5%; el récord de Brasil es 8,1%) y de la Argentina con crédito de 2011 a 2019 (2% a 4%). Entre cortes el componente se interpola en línea recta.",
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [
@@ -3307,13 +3307,14 @@ export const FICHAS: Record<string, Ficha> = {
       "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
-      "La mora de las familias se multiplicó por varias veces desde la base 4º trimestre de 2023: el componente concentra buena parte del arrastre del índice, y así se publica.",
+      "Las definiciones de mora no son idénticas entre países: la Argentina cuenta las situaciones 3 a 6 (más de 90 días), como Brasil, Chile y México; Colombia cuenta más de 30 días y Uruguay más de 60.",
       "Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.",
       "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
     ],
     faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Si faltara sólo la mora, la dimensión renormaliza temporalmente sobre la carga del servicio de deuda.",
     revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
+      { fecha: "2026-11-04", cambio: "Deja de compararse contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso, y pasa a cortes fijos de países comparables: hasta 5% verde, hasta 8% amarillo, hasta 12% naranja y por encima rojo. Con el 14,61% de agosto de 2026 sigue en rojo, pero el componente pasa de 17,1 a 78,5: antes se leía como una mora siete veces la de la base, ahora como una mora 2,6 puntos por encima del corte del rojo.", adr: "0425" },
       { fecha: "2026-07-15", cambio: "Entra al índice de impacto social como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
       { fecha: "2026-08-21", cambio: "Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento.", adr: "0231" },
       { fecha: "2026-09-08", cambio: "Se corrige el enlace del anexo: el archivo anterior respondía HTTP 200 con datos atrasados. Se conserva la ponderación por saldo y se incorpora junio de 2026.", adr: "0272" },
@@ -3367,7 +3368,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Toma la carga de capital e intereses sobre la masa salarial registrada de los sectores público y privado.",
       "El BCRA usa promedios de tres meses tanto para la carga como para la masa salarial.",
-      "En el índice de impacto social se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.",
+      "En el índice de impacto social puntúa contra cortes fijos, no contra el 4º trimestre de 2023, cuando casi no había crédito: hasta 15% es verde, hasta 20% amarillo, hasta 30% naranja y por encima, rojo. 20% es el mínimo reciente de Brasil y 30% el umbral de sobreendeudamiento de la literatura, casi el récord brasileño (29,7%). Entre cortes el componente se interpola en línea recta.",
     ],
     incidenciaTexto: [
       "Es el componente secundario de vulnerabilidad financiera; la mora conserva el mayor peso porque es directa, mensual y más fresca.",
@@ -3377,10 +3378,12 @@ export const FICHAS: Record<string, Ficha> = {
       "El denominador cubre masa salarial registrada: no representa directamente a hogares informales o sin ingresos salariales.",
       "Es una estimación de carga agregada; no muestra cómo se distribuye entre hogares ni cuántos concentran el esfuerzo.",
       "La publicación semestral introduce más rezago que la mora aunque los puntos internos sean mensuales.",
+      "Los cortes se apoyan en referencias que usan otro denominador —el ingreso disponible y no la masa salarial registrada, que es más chica—, así que contra ellas la vara argentina es más exigente. No se consiguió la serie argentina previa a 2023 para calibrarlos contra la propia historia.",
     ],
     faltantes: "Si una edición del informe no está disponible, la serie conserva sus puntos previos. Si faltara este componente, vulnerabilidad renormaliza temporalmente sobre la mora.",
     revisiones: "Cada nueva planilla reemplaza el histórico completo y puede revisar meses anteriores.",
     cambios: [
+      { fecha: "2026-11-04", cambio: "Deja de compararse contra el 4º trimestre de 2023, cuando casi no había crédito, y pasa a cortes fijos: hasta 15% verde, hasta 20% amarillo, hasta 30% naranja y por encima rojo. Con el 24,1% de abril de 2026 pasa de rojo a naranja: el componente sube de 42,3 a 90,9.", adr: "0425" },
       { fecha: "2026-08-21", cambio: "Incorporado como señal previa al incumplimiento con 30% de vulnerabilidad; la mora conserva 70%." },
     ],
   },
@@ -3618,29 +3621,29 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     rezago: "El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del Instituto Nacional de Estadística y Censos (INDEC) llega dos veces al año y con más demora.",
     fuente: {
-      organismo: "Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial)",
-      operacion: "Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste",
+      organismo: "Universidad Torcuato Di Tella (estimación mensual) e INDEC (referencia oficial)",
+      operacion: "Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para el contraste",
       serie: "Informes mensuales del nowcast desde enero de 2025 + serie semestral oficial del INDEC desde 2003",
       url: "https://www.utdt.edu/profesores/mrozada/pobreza",
       acceso: "Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo.",
     },
     transformaciones: [
-      "Se rebasea a 100 = la pobreza del segundo semestre de 2023, que es el semestre que contiene al cuarto trimestre, igual que el resto de los componentes del cinturón.",
-      "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
+      "Puntúa contra cortes fijos, como la inflación, y no contra el segundo semestre de 2023, cuya pobreza (41,7%) era de crisis: hasta 20% es verde, el nivel de la región (Uruguay, Paraguay y Chile rondan 16% a 17%); hasta 30% amarillo, lo mejor de la Argentina reciente (25,7% en 2017, 28,2% a fines de 2025); hasta 40% naranja, lo que rondó entre 2019 y 2023; y por encima, rojo. Entre cortes el componente se interpola en línea recta.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos.",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
-      "La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual (semestre móvil que cierra en junio o diciembre) coincide con la oficial en el primero, queda 2,4 puntos por ENCIMA en el segundo y 0,7 puntos por debajo en el tercero: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 41,7 puntos eso implica hasta un 5,8% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.",
-      "El indicador se lee contra la transición, no contra un óptimo: la pobreza del segundo semestre de 2023 fue muy alta, así que superar 100 no significa una situación buena sino mejor que ese punto de partida.",
+      "La estimación mensual y la medición oficial no coinciden en nivel: en los tres semestres en que se superponen, la mensual (semestre móvil que cierra en junio o diciembre) coincide con la oficial en el primero, queda 2,4 puntos por encima en el segundo y 0,7 por debajo en el tercero, sin un signo constante que se pueda corregir. Puntúa la mensual; la oficial se muestra al lado como referencia.",
+      "El verde de 20% es una aspiración regional, no un piso histórico argentino: la serie confiable del INDEC nunca bajó de 25,7%.",
       "Es una estimación, no una medición: proyecta la pobreza a partir de ingresos y precios entre encuesta y encuesta. La referencia autorizada sigue siendo la del INDEC.",
       "No distingue intensidad: dos hogares apenas por debajo de la línea y dos muy por debajo cuentan igual.",
     ],
     faltantes: "Si un mes no publica informe, el componente mantiene el último valor disponible y el cinturón renormaliza los pesos de su dimensión.",
     revisiones: "La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.",
     cambios: [
+      { fecha: "2026-11-04", cambio: "Deja de compararse contra el segundo semestre de 2023 (41,7%, una base de crisis que pintaba de verde cualquier mejora) y pasa a cortes fijos: hasta 20% verde, hasta 30% amarillo, hasta 40% naranja y por encima rojo. Con el 31,3% de agosto de 2026 pasa de verde a naranja: el componente baja de 133,2 a 93,7. Ya no hace falta empalmar la base del INDEC con la estimación mensual.", adr: "0425" },
       { fecha: "2026-11-04", cambio: "El gráfico arranca en el segundo semestre de 2023, la base contra la que se lee el indicador, como el resto de los gráficos; antes la serie oficial del INDEC se mostraba desde 2003. Se revisó el empalme con la estimación mensual de la Di Tella: en los tres semestres que se solapan la diferencia es de 0,0, +2,4 y −0,7 puntos, sin un signo constante que permita corregirla, así que las dos series se muestran sin ajuste. No cambia el valor ni el puntaje.", adr: "0424" },
       { fecha: "2026-10-28", cambio: "La serie oficial del INDEC se fechaba seis meses tarde y la base tomaba el primer semestre de 2023 (40,1%) en vez del segundo (41,7%). Se fecha cada semestre en su inicio; el componente sube de unos 128,1 a unos 133,2 y el contraste con la estimación mensual se recalcula (0,0 · +2,4 · −0,7 puntos).", adr: "0394" },
       { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto al salario. Su peso interno pasa de 25,37% a 35,31%; su peso en el índice no cambia (7,12%).", adr: "0373" },

@@ -2720,7 +2720,9 @@ def _semaforos(informe):
                 # itvc.tension_de_itvc ya hace exactamente ese corte.
                 tension = itvc.tension_de_itvc(float(idx100))
                 color = parametrica.color_de_indice_base100(float(idx100))
-                umbrales, unidad = None, None
+                # ADR-0425: los de cortes fijos publican sus tramos en la unidad
+                umbrales = itvc.umbrales_cortes_fijos(ikey)
+                unidad = ind.get("unidad") if umbrales else None
             elif ind.get("aporte_score") is not None:
                 tension = float(ind["aporte_score"])
                 color = parametrica.color_de_tension(tension)

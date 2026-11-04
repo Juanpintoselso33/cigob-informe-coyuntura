@@ -598,6 +598,60 @@ def indice_asequibilidad_tarifas(carga_salario: float,
     return round(125.0 - 5.0 * max(t_ae, t_transporte), 1)
 
 
+# ── Cortes fijos en lugar de la base 4T-2023 (ADR-0425) ────────────────────
+# Tres componentes dejan de compararse contra fines de 2023, que engaña en los
+# tres: en 2023 casi no había crédito (la mora y la carga eran bajas por eso) y
+# la pobreza de la base (41,7 %) era de crisis. Se puntúan contra niveles fijos,
+# como la inflación con los cortes de Luis (ADR-0367). Menos es mejor en los
+# tres. (verde hasta, amarillo hasta, naranja hasta); arriba del último, rojo.
+CORTES_FIJOS_ITVC = {
+    # Verde = el nivel de la región (Uruguay, Paraguay, Chile 16-17 %); amarillo
+    # hasta 30 (lo mejor de la Argentina: 25,7 % en 2017, 28,2 % a fines de
+    # 2025); naranja hasta 40 (2019-2023); rojo, crisis. Juan, 4-nov-2026.
+    "pobreza_nowcast": (20.0, 30.0, 40.0),
+    # Comparables con 90 días de mora en consumo: 2,5-5,5 % (Chile, México,
+    # Colombia, Perú, Uruguay); 8,1 % es el récord de Brasil.
+    "mora_familias": (5.0, 8.0, 12.0),
+    # 20 % es el mínimo reciente de Brasil (comprometimento de renda); 30 %, el
+    # umbral de sobreendeudamiento de la literatura y casi su récord (29,7 %).
+    "carga_servicio_deuda_hogares": (15.0, 20.0, 30.0),
+}
+
+
+def indice_por_cortes(valor: float, cortes: tuple) -> float:
+    """Valor → índice de la escala común del ITCIS con los cortes de color en
+    su lugar: el verde termina en tensión 4 (índice 105), el amarillo en 6
+    (95) y el naranja en 8 (85). Lineal entre cortes; por debajo del primero
+    sigue la pendiente del primer tramo hasta tensión 0 (125) y por encima del
+    último, la del último hasta tensión 10 (75). El borde va con el color
+    mejor: un valor igual al corte del verde es verde."""
+    c1, c2, c3 = (float(c) for c in cortes)
+    v = float(valor)
+    if v <= c1:
+        t = 4.0 - 4.0 * (c1 - v) / (2.0 * (c2 - c1))
+    elif v <= c2:
+        t = 4.0 + 2.0 * (v - c1) / (c2 - c1)
+    elif v <= c3:
+        t = 6.0 + 2.0 * (v - c2) / (c3 - c2)
+    else:
+        t = 8.0 + 2.0 * (v - c3) / (c3 - c2)
+    t = min(10.0, max(0.0, t))
+    return round(125.0 - 5.0 * t, 1)
+
+
+def umbrales_cortes_fijos(indicador: str) -> list | None:
+    """Tramos de color en la unidad del valor, para la card (mismo formato
+    que parametrica.umbrales_en_unidad)."""
+    cortes = CORTES_FIJOS_ITVC.get(indicador)
+    if not cortes:
+        return None
+    c1, c2, c3 = cortes
+    return [{"color": "verde", "desde": None, "hasta": c1},
+            {"color": "amarillo", "desde": c1, "hasta": c2},
+            {"color": "naranja", "desde": c2, "hasta": c3},
+            {"color": "rojo", "desde": c3, "hasta": None}]
+
+
 def cargar_ajustes(path, periodo: str) -> dict:
     """Overrides del analista vigentes para `periodo` (ver parametrica)."""
     return parametrica.cargar_ajustes(path, periodo)
@@ -774,6 +828,14 @@ def rebase_movil12(series, skey):
     return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
 
 
+def indice_de_cortes_fijos(series, skey):
+    """Índice del ÚLTIMO punto de la serie con los cortes fijos (ADR-0425)."""
+    serie = [p for p in (series.get(skey) or []) if p.get("valor") is not None]
+    if not serie:
+        return None
+    return indice_por_cortes(serie[-1]["valor"], CORTES_FIJOS_ITVC[skey])
+
+
 def rebase_de_serie(series, skey, invertido=False, base_meses=None, base_valor=None):
     """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
     En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
@@ -891,11 +953,12 @@ def indices_desde_series(vida_ind, series, baselines=None):
     idx["brecha_salario_cbt"] = rebase_de_serie(series, "brecha_salario_cbt")
     # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
     # (más mora = peor).
-    idx["mora_familias"] = rebase_de_serie(series, "mora_familias", invertido=True)
+    # Desde ADR-0425, contra cortes fijos y no contra 4T-2023.
+    idx["mora_familias"] = indice_de_cortes_fijos(series, "mora_familias")
     # Carga del servicio de deuda sobre la masa salarial registrada (ADR-0231):
     # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
-    idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
-        series, "carga_servicio_deuda_hogares", invertido=True)
+    idx["carga_servicio_deuda_hogares"] = indice_de_cortes_fijos(
+        series, "carga_servicio_deuda_hogares")
     # Confianza en el Gobierno de la UTDT (ADR-0345): escala 0-5, NO invertida
     # (más confianza es mejor), rebaseada a 4T-2023 como todos los componentes.
     idx["icg_utdt"] = rebase_de_serie(series, "icg_utdt")

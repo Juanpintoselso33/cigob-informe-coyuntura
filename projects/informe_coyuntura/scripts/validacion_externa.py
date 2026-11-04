@@ -291,6 +291,10 @@ def _indices_itvc_por_componente() -> dict:
         if comp == "ocupacion_eph":
             idx = {ym: itvc.indice_de_ocupacion(v) for ym, v in vals.items()
                    if v is not None and ym >= "2023-10"}
+        elif comp in itvc.CORTES_FIJOS_ITVC and not ya_rebaseada:
+            # ADR-0425: contra cortes fijos, como la card (itvc.indice_de_cortes_fijos)
+            idx = {ym: itvc.indice_por_cortes(v, itvc.CORTES_FIJOS_ITVC[comp])
+                   for ym, v in vals.items() if v is not None}
         else:
             idx = (vals if ya_rebaseada
                    else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))

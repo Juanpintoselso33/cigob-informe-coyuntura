@@ -38,8 +38,9 @@ def test_fecha_semestral_inesperada_falla():
         ds._inicio_de_su_semestre("2024-03-01")
 
 
-def test_base_de_itvc_pobreza_es_el_2s_2023(monkeypatch):
+def test_itvc_pobreza_usa_los_cortes_fijos_y_no_la_base(monkeypatch):
+    """ADR-0425: la pobreza ya no se rebasea contra el 2º semestre de 2023."""
     monkeypatch.setattr(ds, "fetch_pobreza_nowcast_serie",
-                        lambda: [["2025-01-01", 41.7], ["2025-02-01", 20.85]])
+                        lambda: [["2025-01-01", 20.0], ["2025-02-01", 30.0], ["2025-03-01", 40.0]])
     out = ds.fetch_itvc_pobreza()
-    assert out == [["2025-01-01", 100.0], ["2025-02-01", 200.0]]
+    assert out == [["2025-01-01", 105.0], ["2025-02-01", 95.0], ["2025-03-01", 85.0]]

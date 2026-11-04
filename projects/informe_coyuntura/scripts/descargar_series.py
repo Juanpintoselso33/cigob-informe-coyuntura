@@ -685,32 +685,15 @@ def fetch_pobreza_indec_serie() -> list:
 
 
 def fetch_itvc_pobreza() -> list:
-    """I_PO: pobreza rebaseada a 4T-2023, INVERTIDA. 100 = la pobreza de la
-    transición; por encima de 100 hay MENOS pobreza que entonces, que es mejora.
-
-    Se invierte como los otros componentes «al revés» del ITVC (mora,
-    informalidad, subocupación): más pobreza = peor, así que el cociente pone la
-    base arriba.
-
-    **El empalme y su costo, declarados.** El nivel sale del nowcast mensual de
-    la UTDT, que sólo publica desde ene-2025 y por eso NO tiene 4T-2023. La base
-    sale de la serie oficial del INDEC, que sí llega: 2º semestre de 2023, el que
-    contiene al 4T. Las dos miden lo mismo pero **no coinciden en nivel, y la
-    diferencia no tiene signo constante**: en los tres semestres que se solapan
-    el nowcast (semestre móvil que cierra en junio o diciembre) coincide con el
-    INDEC en el 1S-2025 (0,0 puntos), queda 2,4 puntos por ENCIMA en el 2S-2025
-    y 0,7 por debajo en el 1S-2026. No es un sesgo corregible. Sobre una
-    base de 41,7 puntos eso es hasta un 5,8% de error, que se propaga a todos los
-    puntos del componente. Se acepta porque la alternativa —usar el semestral
-    para todo— tira a la basura la resolución mensual, y la regla del proyecto es
-    que teniendo el dato mensual gana el mensual. Pero va en la ficha.
+    """I_PO: la pobreza del nowcast mensual de la UTDT en la escala común del
+    ITCIS, con los cortes fijos de ADR-0425 (verde hasta 20 %, amarillo hasta
+    30 %, naranja hasta 40 %). Hasta el 4-nov-2026 se rebaseaba contra el 2º
+    semestre de 2023 del INDEC (41,7 %), una base de crisis que pintaba de
+    verde cualquier mejora y obligaba a empalmar dos fuentes.
 
     [[YYYY-MM-01, índice]]."""
-    indec = dict(fetch_pobreza_indec_serie())
-    base = indec.get("2023-07-01")            # 2º semestre 2023 (contiene el 4T); fechado a su inicio, ADR-0394
-    if not base:
-        raise ValueError("itvc_pobreza: sin base del INDEC para el 2º semestre de 2023")
-    return [[f, round(100.0 * base / v, 1)]
+    cortes = itvc.CORTES_FIJOS_ITVC["pobreza_nowcast"]
+    return [[f, itvc.indice_por_cortes(v, cortes)]
             for f, v in fetch_pobreza_nowcast_serie() if v]
 
 
@@ -2058,8 +2041,8 @@ VIDA_DERIVADAS.append(
 # Componente del ITVC: pobreza rebaseada a 4T-2023 e invertida. Va DESPUES de los
 # dos fetchers de pobreza porque los usa a los dos (nivel del nowcast, base del INDEC).
 VIDA_DERIVADAS.append(
-    ("itvc_pobreza", "índice (100 = 4T-2023)",
-     "UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)", fetch_itvc_pobreza)
+    ("itvc_pobreza", "índice de la escala común (cortes fijos, ADR-0425)",
+     "UTDT — Nowcast de Pobreza", fetch_itvc_pobreza)
 )
 
 

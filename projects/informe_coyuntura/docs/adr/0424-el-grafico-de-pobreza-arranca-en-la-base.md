@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITVC'
 indicadores: [pobreza_nowcast]
 archivos: ['web/src/lib/datos.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0114', '0153', '0394']
+relacionado: ['0114', '0153', '0394', '0425']
 ambito: 'Impacto social · gráfico de `pobreza_nowcast` (con `pobreza_indec`)'
 origen: 'Revisión de Luis del 3-nov-2026 («no está en base a fines de 2023; revisar cómo se empalman las series del INDEC y de la Di Tella»). Juan, 4-nov: es el gráfico de pobreza.'
 ---

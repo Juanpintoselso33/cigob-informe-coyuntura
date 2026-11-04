@@ -52,7 +52,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
    Estado: relevar alternativas antes de sacarla.
 2. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
-   mucho»). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
+   mucho»). **Verificado el 4-nov:** reconstruido desde Presupuesto Abierto, coincide con IARAF (−81 %). Falta que Juan decida si sale de la base 2023 el Fondo de Fortalecimiento Fiscal de PBA (1,52 billones reales, 19 % de la base; sin él da −76 %, sigue rojo). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
    0397). Revisar que esté bien construido y que correlacione con la historia previa.
 3. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** — **Hecho el 3-nov (ADR-0421):** 20 % de cuentas fiscales (50/30/20), cortes ±10,7/±21,4 de dic-2017 a nov-2023. (Juan, 3-nov: «sumémoslo de
    vuelta»; esta vez en la dimensión cuentas fiscales, no en actividad). Salió el 26-oct
@@ -64,12 +64,12 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    `alineamiento_senadores_prov` mira sólo el Senado: 61,6 % de los votos de senadores que no
    son de La Libertad Avanza alineados con ella, 80 puntos, 6,1 % del peso (alianzas
    territoriales; ADR-0400 y 0402). Sumar los diputados por provincia.
-5. **Votos ajenos al aprobar leyes: promedio del mes, no de 12 meses** (Juan, 3-nov). Hoy
+5. **Votos ajenos al aprobar leyes: promedio del mes, no de 12 meses** — **Hecho el 4-nov (ADR-0423).** (Juan, 3-nov). Hoy
    `votos_sobre_bancas` promedia 12 meses: 22,3 % de las bancas (Diputados 18,5 % con 12
    votaciones, Senado 29,3 % con 12), 8,1 % del peso (cohesión; ADR-0376). Con cerca de una
    votación de ley por mes y cámara, hay que definir qué muestra un mes sin votaciones (receso
    de enero y febrero incluido).
-6. **Votos ajenos: sólo Diputados, sin Senado, y revisar los límites** (Juan, 3-nov). Si la
+6. **Votos ajenos: sólo Diputados, sin Senado, y revisar los límites** — **Hecho el 4-nov (ADR-0423):** diputados a favor, >129 verde · 119-129 amarillo · 109-<119 naranja · <109 rojo. (Juan, 3-nov). Si la
    ley se aprueba, siempre hace falta un mínimo de votos ajenos, y eso da verde casi seguro.
    Con mayoría absoluta, el piso en el Senado es (37 − 21 de LLA) / 72 = 22,2 %, por encima del
    corte del verde (18 %): el Senado da verde por construcción. En Diputados el piso es
@@ -104,12 +104,12 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 9. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** — **Hecho el 3-nov (ADR-0420).** (Juan, 3-nov). Sólo
     el nombre: industria, comercio, campo y construcción siguen igual. Cambiar en el sitio,
     fichas, textos y manuales.
-10. **Impacto social: el gráfico no está en base al 4T-2023; revisar cómo se empalman las series
+10. — **Hecho el 4-nov (ADR-0424):** el gráfico arranca en el 2S-2023; el empalme no tiene sesgo fijo y queda sin ajuste. **Impacto social: el gráfico no está en base al 4T-2023; revisar cómo se empalman las series
     del INDEC y de la Di Tella** (Juan, 3-nov). **Juan (4-nov): es el gráfico de pobreza**
     (la tasa semestral del INDEC y el nowcast mensual de la Di Tella). Llevarlo a base oct-dic 2023 como el resto. Las
     series del INDEC y de la Di Tella se quedan (corrección de Juan): ver cómo se empalman y si
     necesitan algún ajuste para ser comparables.
-11. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
+11. — **Hecho el 4-nov (ADR-0425):** verde ≤20 · amarillo ≤30 · naranja ≤40 · rojo. **Para Luis: Juan corrió su verde de 15 a 20.** **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
     los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
     verde). Faltan los cortes de amarillo, naranja y rojo. **Juan (4-nov): los definimos
     nosotros**, no se esperan de Luis.
@@ -124,13 +124,13 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
     salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
     frente a la canasta de servicios públicos.
-15. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** (Juan, 3-nov).
+15. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** — **Hecho el 4-nov (ADR-0425):** 5 · 8 · 12 %. (Juan, 3-nov).
     **Juan (4-nov): investigar países similares y comparables** (vale también para la carga
     del servicio de la deuda, 16).
     Compararla con 2023 engaña porque entonces casi no había crédito, y la mora era baja por
     eso. Fijar los cortes de color con niveles de referencia de otros países o de otros
     períodos argentinos con crédito, declarados como convención.
-16. **Carga del servicio de la deuda: igual que la mora** (Juan, 3-nov). Cortes fijos basados
+16. **Carga del servicio de la deuda: igual que la mora** — **Hecho el 4-nov (ADR-0425):** 15 · 20 · 30 %. (Juan, 3-nov). Cortes fijos basados
     en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
     crédito.
 17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).

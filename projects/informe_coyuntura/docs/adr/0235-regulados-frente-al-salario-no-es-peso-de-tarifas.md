@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [peso_tarifas]
 archivos: ['scripts/vida_cotidiana/collectors/iiep_tarifas.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
 modifica: ['0012', '0018']
-relacionado: ['0033', '0109', '0182']
+relacionado: ['0033', '0109', '0182', '0425']
 ambito: 'Canasta efectiva de servicios sobre ingreso · anclas internacionales de asequibilidad · reemplazo de IPC Regulados/RIPTE'
 origen: 'Revisión editorial del rojo 10/10: el indicador afirmaba medir tarifas pero puntuaba un agregado de precios contra una base subsidiada'
 ---

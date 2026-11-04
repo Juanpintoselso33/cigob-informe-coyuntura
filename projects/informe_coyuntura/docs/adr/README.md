@@ -403,6 +403,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0412](0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) | El padrón de ARCA se guarda y no se publica | `ocupacion_eph` | vigente |
 | [0413](0413-informalidad-mide-asalariados-sin-aportes-propios.md) | La informalidad cuenta sólo al asalariado sin aportes propios | `informalidad` | vigente |
 | [0424](0424-el-grafico-de-pobreza-arranca-en-la-base.md) | El gráfico de pobreza arranca en la base | `pobreza_nowcast` | vigente |
+| [0425](0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) | Pobreza, mora y carga de la deuda con cortes fijos | `pobreza_nowcast`, `mora_familias`, `carga_servicio_deuda_hogares` | vigente |
 
 ### Espíritu de época
 
