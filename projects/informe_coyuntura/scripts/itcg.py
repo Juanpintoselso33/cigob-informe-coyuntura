@@ -190,7 +190,7 @@ BANDAS_ITCG = {
         # 3 licitación/adjudicación · 4 cerrada. Cartera jun-2026 ≈ 2,06/4 = 51%.
         (75.0, INF, 100), (55.0, 75.0, 85), (35.0, 55.0, 65), (15.0, 35.0, 40), (-INF, 15.0, 10),
     ],
-    "rigi_inversiones": [               # % de inversión aprobada sobre el pipeline (ADR-0011)
+    "rigi_inversiones": [               # % de la promesa de US$ 100.000 M aprobado (ADR-0419)
         # ADR-0406: misma escala que concesiones_infraestructura y
         # privatizaciones (cortes 15/35/55/75 → anclas 15→10 · 25→40 · 45→65 ·
         # 65→85 · 75→100), declarada como CONVENCIÓN de medidor de avance 0-100.

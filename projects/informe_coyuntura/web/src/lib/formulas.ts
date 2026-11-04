@@ -154,8 +154,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cada empresa de la Ley Bases se puntúa por etapa verificable en el Boletín Oficial: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación · 4 cerrada. Separa el anuncio del hecho.",
   },
   rigi_inversiones: {
-    latex: String.raw`\frac{\text{inversi\'on aprobada}}{\text{inversi\'on aprobada}+\text{inversi\'on en evaluaci\'on}}\times 100`,
-    leyenda: "Montos en dólares de la plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI): cuánto de la cartera ya tiene luz verde.",
+    latex: String.raw`\frac{\text{inversi\'on aprobada}}{\text{US\$ 100.000 millones}}\times 100`,
+    leyenda: "Montos en dólares de la plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI): cuánto de la promesa de US$ 100.000 millones ya tiene luz verde.",
   },
   concesiones_infraestructura: {
     latex: String.raw`\frac{\text{km de rutas adjudicados}}{\text{km del plan}}\times 100`,

@@ -1,10 +1,12 @@
 ---
 madr: 4
 id: '0102'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'SUPERSEDIDO por el [ADR-0419](0419-el-rigi-se-mide-contra-la-promesa-de-100000-millones.md) el 2026-11-03: el denominador pasa a ser la promesa fija de US$ 100.000 M y el porcentaje ya no baja por lo que entra en evaluación'
 fecha: 2026-07-20
 cinturon: 'gestion'
 indicadores: [rigi_inversiones]
+superado_por: ['0419']
 ambito: 'ITCG · `rigi_inversiones` · modal del indicador'
 origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.6'
 ---

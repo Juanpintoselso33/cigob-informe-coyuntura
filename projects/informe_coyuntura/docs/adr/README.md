@@ -277,7 +277,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0098](0098-fal-en-tres-etapas.md) | El FAL se mide en tres etapas: construcción, vigencia y adopción | `fal_modernizacion_laboral` | vigente |
 | [0100](0100-promesa-cumplida-no-es-contexto.md) | Una promesa cumplida no es un indicador de contexto | `asistencia_directa`, `social_orden`, `cumplido` | vigente |
 | [0101](0101-privatizaciones-publica-la-norma-de-cada-etapa.md) | Privatizaciones publica la norma que respalda cada etapa | `privatizaciones` | vigente |
-| [0102](0102-rigi-denominador-movil.md) | El RIGI avisa cuando su porcentaje baja por el denominador | `rigi_inversiones` | vigente |
+| [0102](0102-rigi-denominador-movil.md) | El RIGI avisa cuando su porcentaje baja por el denominador | `rigi_inversiones` | superado por [0419](0419-el-rigi-se-mide-contra-la-promesa-de-100000-millones.md) |
 | [0125](0125-la-desregulacion-pasa-a-la-fuente-oficial.md) | La desregulación pasa a medirse con la fuente oficial | `desregulacion_normativa` | vigente |
 | [0128](0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) | Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión | `reduccion_estado`, `reforma_laboral` | vigente |
 | [0129](0129-detector-de-novedades-de-privatizaciones.md) | Privatizaciones: se automatiza la detección, no la clasificación | `privatizaciones` | vigente |
@@ -322,6 +322,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0407](0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) | Corredores Viales sale de la cartera de privatizaciones | `privatizaciones`, `concesiones_infraestructura` | vigente |
 | [0408](0408-los-piquetes-vuelven-a-la-ciudad.md) | Los piquetes vuelven a la Ciudad de Buenos Aires | `protocolo_antipiquetes` | vigente |
 | [0414](0414-el-gasto-de-funcionamiento-se-compara-con-todo-2023.md) | El gasto de funcionamiento se compara con todo 2023 | `gasto_funcionamiento` | vigente |
+| [0419](0419-el-rigi-se-mide-contra-la-promesa-de-100000-millones.md) | El RIGI se mide contra la promesa de US$ 100.000 millones | `rigi_inversiones` | vigente |
 
 ### Vida cotidiana (ITVC)
 

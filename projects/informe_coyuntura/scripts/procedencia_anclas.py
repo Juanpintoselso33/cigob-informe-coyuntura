@@ -231,7 +231,7 @@ PROCEDENCIA = {
     "reestructuracion_organismos": ("conceptual", "medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121)"),
     "fal_modernizacion_laboral": ("conceptual", "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"),
     "privatizaciones": ("documento", "etapas 0-4 definidas en el documento de diseño"),
-    "rigi_inversiones": ("convencion", "anclas declaradas por convención —la escala de medidor de avance de concesiones y privatizaciones: 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100—, sin calibrar contra el rango observado; reemplaza a la que referenciaba el 22,1% de jun-2026 (ADR-0406)"),
+    "rigi_inversiones": ("convencion", "anclas declaradas por convención —la escala de medidor de avance de concesiones y privatizaciones: 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100—, sin calibrar contra el rango observado; reemplaza a la que referenciaba el 22,1% de jun-2026 (ADR-0406). Desde ADR-0419 se aplica a lo aprobado sobre la promesa de US$ 100.000 M"),
     "concesiones_infraestructura": ("conceptual", "tasa de adjudicación km/plan; el 100 (plan adjudicado) es el ancla (ADR-0121)"),
     # asistencia_directa pasó a ser un hito binario (ADR-0362): el problema de
     # calibración que señalaba ADR-0189 (la TDPS ya era 98,3% en 2023) se fue

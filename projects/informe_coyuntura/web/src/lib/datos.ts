@@ -558,7 +558,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   empleo_registrado: "miles",
   desregulacion_normativa: "artículos", reestructuracion_organismos: "%",
   gasto_funcionamiento: "% real", masa_salarial: "% real",
-  rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
+  rigi_inversiones: "% de la promesa", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "de avance", asistencia_directa: "de 100",
   protocolo_antipiquetes: "% menos que en 2023", libertad_opcion_salud: "de avance",
   litigiosidad_laboral: "% interanual", siniestralidad_laboral: "% frente al año anterior", juicios_trabajo_capital: "% frente a un año atrás", alertas_manifestacion: "alertas por mes",
@@ -640,7 +640,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km de las etapas licitadas con adjudicación publicada (no toma de posesión)", reduccion_estado: "% de variación frente a diciembre de 2023",
-  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la inversión de la cartera del régimen de grandes inversiones ya aprobada",
+  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la promesa de US$ 100.000 millones de inversión ya aprobado",
   cobertura_judicial: "% de cargos de juez habilitados con juez designado",
   produccion_legislativa: "leyes sancionadas en los últimos 12 meses, sin las vetadas en su totalidad",
   judicializacion: "sumarios con medida cautelar sobre el total, jurisdicción Federal + Nacional",
@@ -663,7 +663,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
 // Sin entrada, el gráfico usa la unidad corta de la card.
 export const UNIDADES_SERIE: Record<string, string> = {
   protestas_caba: "eventos por mes",      // card = acumulado 12m; serie = eventos por mes
-  rigi_inversiones: "millones de dólares aprobados", // card = % del pipeline; serie = inversión aprobada acumulada
+  rigi_inversiones: "millones de dólares aprobados", // card = % de la promesa (ADR-0419); serie = inversión aprobada acumulada
   // ADR-0217/ADR-0322/ADR-0392: la card publica el nivel per cápita de SAGYP
   // (kg/hab) y la serie es ese mismo consumo en índice base-100 = 4T-2023,
   // que es lo que puntúa. Sin esta

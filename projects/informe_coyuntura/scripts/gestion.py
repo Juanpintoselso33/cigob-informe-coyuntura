@@ -97,6 +97,9 @@ RIGI_PORTAL_URL     = "https://www.argentina.gob.ar/economia/rigi"
 # Pestañas: "dataset" (proyectos aprobados, fila por proyecto) · "evaluacion" (agregados).
 RIGI_SHEET_ID       = "1eytHJrzUjIFOXI-P1Hx_wbmZiSqPxVle059Djdos6u8"
 RIGI_SHEET_GVIZ     = "https://docs.google.com/spreadsheets/d/{sid}/gviz/tq?tqx=out:csv&sheet={tab}"
+# ADR-0419: la vara del RIGI es la promesa de US$ 100.000 millones de inversión
+# (Marcos, 3-nov-2026), no la cartera presentada. Se declara como convención.
+RIGI_PROMESA_MUSD   = 100_000
 
 # datos.gob.ar — series verificadas 2026-07-02 (último dato may-2026 salvo IPC)
 IPC_ID              = "148.3_INIVELNAL_DICI_M_26"   # IPC nivel nacional (deflactor)
@@ -2727,58 +2730,30 @@ def rigi_proyectos_aprobados() -> list:
     return sorted((store[n], n, d["inv"]) for n, d in proy.items() if n in store)
 
 
-def _rigi_nota_denominador(avance: float, inv_aprobada: float,
-                          pct_ant: float | None = None,
-                          usd_ant: float | None = None) -> str | None:
-    """Aviso cuando el porcentaje baja por el denominador y no por retroceso.
-
-    El indicador es inversión aprobada sobre el pipeline total (aprobada + en
-    evaluación). Cada proyecto grande que entra "en evaluación" agranda el
-    denominador, así que el porcentaje puede caer aunque el capital aprobado
-    haya crecido. Es un artefacto aritmético, no un retroceso de gestión, y la
-    revisión externa pidió explicarlo cada vez que ocurre en vez de dejarlo a
-    cargo del lector (ADR-0102).
-
-    Devuelve None si el caso no se da: la nota aparece sólo cuando hace falta.
-    Los valores previos se pueden pasar explícitamente (para poder probarla sin
-    depender del estado del caché); si no, salen del snapshot anterior.
-    """
-    if pct_ant is None or usd_ant is None:
-        anterior = (load_cache().get("indicadores") or {}).get("rigi_inversiones") or {}
-        pct_ant = anterior.get("valor")
-        usd_ant = anterior.get("inversion_aprobada_musd")
-    if not isinstance(pct_ant, (int, float)) or not isinstance(usd_ant, (int, float)):
-        return None
-    if avance >= pct_ant or inv_aprobada <= usd_ant:
-        return None
-    miles = lambda x: f"{x:,.0f}".replace(",", ".")
-    coma = lambda x: str(round(x, 1)).replace(".", ",")
-    return (f"El porcentaje bajó de {coma(pct_ant)}% a {coma(avance)}% y aun así la "
-            f"inversión aprobada CRECIÓ, de US$ {miles(usd_ant)}M a US$ {miles(inv_aprobada)}M. "
-            f"No es un retroceso: el indicador mide la porción aprobada del total, y ese total "
-            f"se agranda cada vez que se presenta un proyecto nuevo. Entraron US$ "
-            f"{miles(inv_aprobada - usd_ant)}M de inversión aprobada y, al mismo tiempo, más "
-            f"proyectos a la cola de evaluación.")
+def rigi_sobre_promesa(inv_aprobada_musd: float) -> float:
+    """% de la promesa de US$ 100.000 M ya aprobado (ADR-0419). Lo usan la card
+    y el mes rehecho (archivo.py), que lo saca del acumulado de la serie."""
+    return round(100.0 * inv_aprobada_musd / RIGI_PROMESA_MUSD, 1)
 
 
 def fetch_rigi_inversiones() -> dict | None:
     """Avance del RIGI desde la PLATAFORMA OFICIAL del Ministerio de Economía
-    (jun-2026, ADR-0011): puntúa la **inversión aprobada sobre el total del
-    pipeline** (aprobada + en evaluación); la ficha expone el conteo de
-    proyectos y los montos. No existe fuente estructurada de inversión
-    EJECUTADA/desembolsada (verificado 2026-07): el pipeline aprobado es lo
-    más cercano al hecho. Fallback: proxy histórico InfoLeg ('VPU')."""
+    (jun-2026, ADR-0011): puntúa la **inversión aprobada sobre la promesa de
+    US$ 100.000 M** (ADR-0419; hasta el 3-nov-2026, sobre la cartera aprobada +
+    en evaluación). Lo que está en evaluación queda en la card como dato, sin
+    puntuar. No existe fuente estructurada de inversión EJECUTADA/desembolsada
+    (verificado 2026-07): lo aprobado es lo más cercano al hecho. Fallback:
+    proxy histórico InfoLeg ('VPU')."""
     try:
         n_ap, inv_ap = _rigi_aprobados()
         n_ev, inv_ev = _rigi_evaluacion()
-        inv_total = inv_ap + inv_ev
-        if inv_total <= 0:
-            raise ValueError("inversión total del pipeline = 0")
-        avance = round(100.0 * inv_ap / inv_total, 1)
+        if inv_ap <= 0:
+            raise ValueError("inversión aprobada = 0")
+        avance = rigi_sobre_promesa(inv_ap)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
             "valor":          avance,
-            "unidad":         "% de inversión aprobada sobre el pipeline",
+            "unidad":         "% de la promesa de US$ 100.000 M aprobado",
             "fuente":         "Ministerio de Economía — Plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI)",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
@@ -2786,10 +2761,9 @@ def fetch_rigi_inversiones() -> dict | None:
             "inversion_aprobada_musd":    round(inv_ap),
             "proyectos_evaluacion":       n_ev,
             "inversion_evaluacion_musd":  round(inv_ev),
-            "nota_denominador": _rigi_nota_denominador(avance, inv_ap),
-            "detalle_txt": (f"{n_ap} proyectos aprobados (US$ {miles(inv_ap)}M) / "
-                            f"{n_ev} en evaluación (US$ {miles(inv_ev)}M) → "
-                            f"{str(avance).replace('.', ',')}% de la inversión total ya aprobada"),
+            "detalle_txt": (f"{n_ap} proyectos aprobados por US$ {miles(inv_ap)}M → "
+                            f"{str(avance).replace('.', ',')}% de la promesa de US$ "
+                            f"{miles(RIGI_PROMESA_MUSD)}M"),
         }
     except Exception as e:
         _warn("rigi_inversiones (plataforma oficial, cae a InfoLeg VPU)", e)

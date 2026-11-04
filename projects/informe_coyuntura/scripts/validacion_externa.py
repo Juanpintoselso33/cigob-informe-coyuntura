@@ -832,8 +832,8 @@ def construir_serie_itcg(dimensiones: dict | None = None) -> dict:
 # (ADR-0086). No es lo mismo que "no tienen serie": la tienen, pero mide otra
 # cosa y puntuarla contra las bandas del indicador da un número sin sentido.
 ITCG_SERIE_NO_COMPARABLE = {
-    # La card puntúa el % de inversión aprobada sobre el pipeline (bandas
-    # 0-60+); la serie guarda el MONTO del pipeline en millones de dólares.
+    # La card puntúa el % de la promesa de US$ 100.000 M aprobado (ADR-0419;
+    # bandas de porcentaje); la serie guarda el MONTO del pipeline en millones de dólares.
     # Puntuar 31.192 contra bandas de porcentaje daba 100 en todos los meses
     # desde ene-2025 y 10 antes: un escalón binario que no existió.
     "rigi_inversiones": "serie en M USD vs banda en % (ADR-0086)",

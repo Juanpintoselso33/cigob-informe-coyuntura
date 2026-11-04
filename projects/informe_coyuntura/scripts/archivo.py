@@ -200,8 +200,8 @@ def _cortar(proyecto: Path, mes: str) -> None:
 
 
 # Las cards exentas de G3 (gate_calidad.G3_EXCEPCIONES) miden otra cosa que su
-# serie: RIGI publica el % de la cartera aprobada y su serie guarda el MONTO en
-# M USD; carne y motorización publican el nivel y su serie es un índice base
+# serie: RIGI publica un % y su serie guarda el MONTO en M USD (se convierte,
+# ver DE_LA_SERIE); carne y motorización publican el nivel y su serie es un índice base
 # 100. Darles el último punto de la serie publicaba septiembre-2026 con RIGI en
 # «49.766 %» (los US$ M aprobados), puntuado 100 contra bandas de porcentaje, e
 # inflaba el ITCG ~3 puntos. Su valor del mes sólo puede salir de la card que
@@ -230,10 +230,25 @@ def _exentas_de_la_foto(mes: str) -> tuple[set, dict]:
     return set(G3_EXCEPCIONES), foto
 
 
+# Exentas cuya card SÍ se deduce del último punto de su serie con una cuenta
+# fija: el RIGI publica lo aprobado sobre la promesa de US$ 100.000 M (ADR-0419)
+# y su serie es lo aprobado acumulado a cada mes, así que el mes rehecho toma
+# «lo aprobado al fin de mes» de la serie y no la card de la foto, que con un
+# cambio de método guardaría el porcentaje viejo (sobre la cartera).
+def _rigi_de_la_serie(monto: float) -> float:
+    from gestion import rigi_sobre_promesa
+    return rigi_sobre_promesa(monto)
+
+
+DE_LA_SERIE = {"rigi_inversiones": _rigi_de_la_serie}
+
+
 def con_cards_exentas(ultimo: dict, exentas: set, foto: dict) -> dict:
-    """`ultimo` sin el último punto de serie de las exentas, y con su card de la foto."""
+    """`ultimo` sin el último punto de serie de las exentas, y con su card de la
+    foto; las de DE_LA_SERIE, con la cuenta sobre su último punto."""
     salida = {k: v for k, v in ultimo.items() if k not in exentas}
     salida.update({k: v for k, v in foto.items() if k in exentas})
+    salida.update({k: (ultimo[k][0], f(ultimo[k][1])) for k, f in DE_LA_SERIE.items() if k in ultimo})
     return salida
 
 

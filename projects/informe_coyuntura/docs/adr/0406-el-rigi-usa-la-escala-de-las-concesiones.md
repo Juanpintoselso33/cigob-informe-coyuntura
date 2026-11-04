@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [rigi_inversiones]
 archivos: ['scripts/itcg.py', 'scripts/procedencia_anclas.py', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'tests/test_itcg.py', 'tests/test_gestion_adr0405_0407.py']
-relacionado: ['0011', '0105', '0121', '0361', '0366', '0405', '0407']
+relacionado: ['0011', '0105', '0121', '0361', '0366', '0405', '0407', '0419']
 ambito: 'ITCG · dimensión Privatizaciones e inversión · escala de `rigi_inversiones`'
 origen: 'Revisión del 28-oct-2026, a pedido de Juan, de las escalas del cinturón de gestión calibradas sobre el propio mandato.'
 ---

@@ -37,10 +37,11 @@ def test_la_foto_es_autocontenida_y_sin_muro():
 
 
 def test_las_cards_exentas_de_g3_no_salen_del_ultimo_punto_de_su_serie():
-    """RIGI publica el % de la cartera y su serie guarda el monto en M USD: el
-    septiembre-2026 rehecho salió con «49.766 %» (los US$ M aprobados), puntuado
-    100, porque cada card tomaba el último punto de su serie. Las exentas de G3
-    toman la card de la foto del mes, y sin foto no se inventan."""
+    """El septiembre-2026 rehecho salió con RIGI en «49.766 %» (los US$ M
+    aprobados), puntuado 100, porque cada card tomaba el último punto de su
+    serie tal cual. Las exentas de G3 toman la card de la foto del mes, y sin
+    foto no se inventan. El RIGI, desde ADR-0419, se deduce de su serie: lo
+    aprobado al fin de mes sobre la promesa de US$ 100.000 M, con o sin foto."""
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
     import archivo
@@ -52,11 +53,15 @@ def test_las_cards_exentas_de_g3_no_salen_del_ultimo_punto_de_su_serie():
              "privatizaciones": {"valor": 60.0, "unidad": "%", "fecha_dato": "2026-10-20"}}
 
     con_foto = archivo.cortar_indicadores(cards, archivo.con_cards_exentas(ultimo, set(G3_EXCEPCIONES), foto), "2026-09")
-    assert con_foto["rigi_inversiones"]["valor"] == 23.8
+    assert con_foto["rigi_inversiones"]["valor"] == 49.8, "la foto guarda el % viejo sobre la cartera"
     assert con_foto["privatizaciones"]["valor"] == 55.6
 
     sin_foto = archivo.cortar_indicadores(cards, archivo.con_cards_exentas(ultimo, set(G3_EXCEPCIONES), {}), "2026-09")
-    assert "rigi_inversiones" not in sin_foto, "sin foto, una card de octubre no puede entrar a septiembre"
+    assert sin_foto["rigi_inversiones"]["valor"] == 49.8
+
+    exenta = {"consumo_carne_vacuna": ("2026-09-01", 98.0)}
+    sin_foto = archivo.con_cards_exentas(exenta, set(G3_EXCEPCIONES), {})
+    assert "consumo_carne_vacuna" not in sin_foto, "sin foto, una exenta no se inventa"
 
 
 def test_un_dato_anual_conserva_su_fecha_en_el_mes_rehecho():
