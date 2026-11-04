@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-03T05:21:41.270595+00:00",
+    "snapshot": "2026-11-03T22:42:13.103659-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,50 +58,50 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.8,
-    "valor_recomputado": 79.8,
+    "valor_publicado": 82.9,
+    "valor_recomputado": 82.9,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.8,
-        "p05": 78.6,
-        "p95": 81.2,
-        "desvio": 0.8
+        "media": 83.0,
+        "p05": 81.6,
+        "p95": 84.3,
+        "desvio": 0.81
       },
       "combinado": {
-        "media": 79.7,
-        "p05": 77.9,
-        "p95": 81.4,
-        "desvio": 1.07
+        "media": 82.8,
+        "p05": 81.0,
+        "p95": 84.6,
+        "desvio": 1.09
       },
       "insumos": {
-        "media": 79.7,
-        "p05": 78.6,
-        "p95": 80.7,
-        "desvio": 0.66
+        "media": 82.8,
+        "p05": 81.7,
+        "p95": 83.9,
+        "desvio": 0.67
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 83.7,
-      "cepo_mulc": 76.6,
-      "fal_modernizacion_laboral": 76.6,
-      "juicios_trabajo_capital": 81.8,
-      "rigi_inversiones": 81.6,
-      "reduccion_estado": 81.5,
-      "gasto_funcionamiento": 78.6,
-      "concesiones_infraestructura": 78.7,
-      "desregulacion_normativa": 79.3,
-      "privatizaciones": 79.5,
-      "siniestralidad_laboral": 80.0,
-      "protocolo_antipiquetes": 79.9,
-      "asistencia_directa": 79.8,
-      "libertad_opcion_salud": 79.8
+      "apertura_comercial": 87.0,
+      "cepo_mulc": 79.4,
+      "fal_modernizacion_laboral": 79.7,
+      "juicios_trabajo_capital": 84.8,
+      "reduccion_estado": 84.6,
+      "privatizaciones": 84.5,
+      "gasto_funcionamiento": 81.7,
+      "rigi_inversiones": 81.8,
+      "desregulacion_normativa": 82.4,
+      "concesiones_infraestructura": 82.5,
+      "siniestralidad_laboral": 83.1,
+      "protocolo_antipiquetes": 83.0,
+      "asistencia_directa": 82.9,
+      "libertad_opcion_salud": 82.9
     },
     "tension": {
-      "base": 2.0,
+      "base": 1.7,
       "rango_combinado": [
-        1.9,
-        2.2
+        1.5,
+        1.9
       ]
     }
   },

@@ -131,9 +131,10 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
     Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
     se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
-18. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). Idea: un objetivo
-    absoluto de monto de inversiones aprobadas en lugar de la tasa de aprobación con la escala
-    de las concesiones (ADR-0406).
+18. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). **Hecho el 3-nov
+    (ADR-0419)**: Marcos definió la vara, lo aprobado contra la promesa de US$ 100.000 M (76,2 %,
+    verde). La escala de ADR-0406 sigue igual; falta que Juan o Marcos confirmen si los cortes
+    sirven para la promesa.
 
 ## 2. Esperan a otro
 

@@ -35,17 +35,17 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 79,8** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
+| **ITCG: 82,9** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 2 en amarillo |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,1 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,8 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 93,3 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
-| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,2 | VERDE | 15,0 % |
+| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande. | 89,2 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre… | 99,6 | VERDE | 10,0 % |
 
 ```{=openxml}
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,06 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,6 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -73,7 +73,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 53,1 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
-| Grandes inversiones aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 34,9 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
+| Grandes inversiones aprobadas | Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes… | 76,2 % de la promesa de US$ 100.000 M aprobado | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 8,06 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 7,6 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -140,13 +140,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Contado con liquidación venta 1670.00 (2026-11-02T17:58:00-03:00) / mayorista venta 1545.50 (2026-11-02T13:01:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- Contado con liquidación venta 1668.80 (2026-11-03T17:57:00-03:00) / mayorista venta 1551.00 (2026-11-03T12:46:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 8,06 % de brecha entre el contado con liquidación y el mayorista (2026-11).
+Dato vigente: 7,6 % de brecha entre el contado con liquidación y el mayorista (2026-11).
 
-8,06 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 5,94 del límite con Amarillo (14,0).
+7,6 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 6,4 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -645,7 +645,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-11-03; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-11-03; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026
 
 ## Color vigente y por qué
 
@@ -916,7 +916,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 
 Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Corredores Viales no integra la cartera: la concesión de la red vial la mide el indicador de concesiones de infraestructura. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, inversión aprobada en el Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
@@ -990,33 +990,33 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 # Grandes inversiones aprobadas
 
-Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
+Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes Inversiones (RIGI): el monto aprobado por resolución sobre esa promesa.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 34,9 % de inversión aprobada sobre el pipeline** (2026-11) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 76,2 % de la promesa de US$ 100.000 M aprobado** (2026-11) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | rigi_inversiones | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de inversión aprobada sobre el pipeline |
+| **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de la promesa de US$ 100.000 M aprobado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (29 puntos) | **REZAGO DE PUBLICACIÓN** | Sin rezago: foto de la plataforma oficial al día de la actualización. |
-| **PRODUCTOR DEL DATO** | Ministerio de Economía — plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI) | **OPERACIÓN ESTADÍSTICA** | Cartera del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total de la cartera (aprobada + en evaluación) |
+| **PRODUCTOR DEL DATO** | Ministerio de Economía — plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI) | **OPERACIÓN ESTADÍSTICA** | Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre la promesa de US$ 100.000 millones |
 | **MODO DE ACCESO** | Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-03 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
+Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes Inversiones (RIGI): el monto aprobado por resolución sobre esa promesa.
 
-Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno; y como casi todo lo presentado termina aprobado, mide sobre todo la demora en aprobar. La evolución histórica grafica la inversión aprobada acumulada en dólares.
+Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. La promesa de US$ 100.000 millones es la vara que toma el equipo; los proyectos en evaluación no cuentan hasta que se aprueban. La evolución histórica grafica la inversión aprobada acumulada en dólares.
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, inversión aprobada en el Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
-- Avance = inversión aprobada / (aprobada + en evaluación), en porcentaje.
+- Avance = inversión aprobada / US$ 100.000 millones (la promesa de inversión que toma el equipo), en porcentaje. Lo que está en evaluación se informa pero no puntúa.
 - Los proyectos multi-provincia cuentan una sola vez (mismo criterio que el sitio oficial).
 - La serie histórica es la inversión aprobada acumulada, fechada por la norma de aprobación de cada proyecto.
 
@@ -1026,7 +1026,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de inversión aprobada sobre el pipeline) | Color |
+| Rango (% de la promesa de US$ 100.000 M aprobado) | Color |
 |---|---|
 | ≥ 41 | VERDE |
 | 25 – 41 | AMARILLO |
@@ -1037,24 +1037,23 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 27 proyectos aprobados (US$ 76.173M) / 22 en evaluación (US$ 141.949M) → 34,9% de la inversión total ya aprobada
+- 27 proyectos aprobados por US$ 76.173M → 76,2% de la promesa de US$ 100.000M
 
 ## Color vigente y por qué
 
-Dato vigente: 34,9 % de inversión aprobada sobre el pipeline (2026-11).
+Dato vigente: 76,2 % de la promesa de US$ 100.000 M aprobado (2026-11).
 
-34,9 % de inversión aprobada sobre el pipeline está en Amarillo, a 6,1 del límite con Verde (41,0).
+76,2 % de la promesa de US$ 100.000 M aprobado está en Verde, a 35,2 del límite con Amarillo (41,0).
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Como casi todo lo que se presenta al régimen termina aprobado, el porcentaje mide sobre todo la demora en aprobar: un valor bajo indica proyectos todavía en evaluación, no proyectos rechazados.
+- La promesa de US$ 100.000 millones es una convención del equipo, no una meta oficial publicada con fecha.
 - La escala es una convención declarada: la misma de medidor de avance que usan las concesiones y las privatizaciones, no una calibración sobre el dato.
 - No existe fuente estructurada de inversión efectivamente desembolsada: la inversión aprobada es lo más cercano al hecho, y se declara como tal.
-- El denominador salta con cada anuncio grande en evaluación: el avance puede bajar sin que nada empeore.
 - Depende de que la planilla oficial siga pública y con el mismo esquema (ya cambió una vez y la lectura se adaptó).
 
 ## Si falta el dato / Política de revisiones
@@ -1064,6 +1063,8 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** La plataforma se actualiza sin registro de cambios; las fechas de aprobación quedan fijadas con su norma.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-03** — Pasa a medir la inversión aprobada sobre la promesa de US$ 100.000 millones, en lugar de sobre la cartera (aprobada + en evaluación): el denominador ya no se mueve con lo que se presenta. La escala no cambia. Con US$ 76.173 millones aprobados, el valor pasa de 34,9% a 76,2% y el puntaje de 52,4 a 100. El mes publicado toma lo aprobado al último día del mes.
 
 **2026-10-28** — Pasa a la escala de las concesiones y las privatizaciones (anclas 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100), declarada como convención. La anterior (10 → 10 · 60 → 100) se había fijado mirando el 22,1% de junio de 2026. Con el 36,4% de octubre de 2026 el puntaje pasa de 69,5 a 54,2. Se agrega que el porcentaje mide sobre todo la demora en aprobar.
 
@@ -1109,7 +1110,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa). El 100% quiere decir que todo lo licitado está adjudicado, no que la red esté concesionada ni operando: las cuatro etapas suman cerca del 23% de la red vial nacional, y a octubre de 2026 la toma de posesión consta en 7.843 de sus 9.091 km (la de dos tramos de la Etapa II-B, Puntano y Portuario Norte, no pudo confirmarse en fuente oficial).
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, inversión aprobada en el Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 

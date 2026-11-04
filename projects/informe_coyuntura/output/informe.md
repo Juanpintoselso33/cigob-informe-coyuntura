@@ -1,7 +1,7 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-03 05:21:41"
-score_global: 3.9
+generado: "2026-11-03 22:42:13"
+score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-11
 
-**Score global:** 3.9/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.3/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.3/10)
 
 ## Cinturones
 
@@ -99,12 +99,12 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.0/10 (estable)
+### 🟢 Gestion — score 1.7/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 8.06 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-02 | fresco |
+| cepo_mulc | 7.6 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-03 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 18001.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-10-01 | fresco |
 | reduccion_estado | -22.44 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-09-01 | fresco |
@@ -113,7 +113,7 @@ schema_version: "1.2.0"
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
-| rigi_inversiones | 34.9 | % de inversión aprobada sobre el pipeline | 2026-11-03 | fresco |
+| rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-03 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-03 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-03 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-11-03 05:21:41 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-03 22:42:13 — schema 1.2.0*
