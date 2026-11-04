@@ -52,7 +52,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
    Estado: relevar alternativas antes de sacarla.
 2. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
-   mucho»). **Verificado el 4-nov:** reconstruido desde Presupuesto Abierto, coincide con IARAF (−81 %). Falta que Juan decida si sale de la base 2023 el Fondo de Fortalecimiento Fiscal de PBA (1,52 billones reales, 19 % de la base; sin él da −76 %, sigue rojo). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
+   mucho»). **Verificado el 4-nov:** reconstruido desde Presupuesto Abierto, coincide con IARAF (−81 %). El Fondo de Fortalecimiento Fiscal de PBA (19 % de la base; sin él −76 %, sigue rojo) se deja en la base (Juan, 4-nov). **Cerrado:** anotado en ADR-0397. Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
    0397). Revisar que esté bien construido y que correlacione con la historia previa.
 3. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** — **Hecho el 3-nov (ADR-0421):** 20 % de cuentas fiscales (50/30/20), cortes ±10,7/±21,4 de dic-2017 a nov-2023. (Juan, 3-nov: «sumémoslo de
    vuelta»; esta vez en la dimensión cuentas fiscales, no en actividad). Salió el 26-oct

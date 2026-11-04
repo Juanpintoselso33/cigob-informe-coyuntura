@@ -86,3 +86,24 @@ y los puntajes en el nivel de 2023, el de septiembre de 2026 y los extremos.
   recuperación contra una base hundida.
 - Promedio 2018-2023: base más ancha, mismo resultado (−83,9 %, 10) y otra base que la
   del resto del índice.
+
+## Más información
+
+### Verificación externa del dato (4-nov-2026)
+
+A pedido de Juan y de Luis (3-nov: «no me convence mucho», «revisar el dato y su historia
+previa»), el dato se reconstruyó de nuevo desde Presupuesto Abierto y se lo comparó con un
+cálculo independiente:
+
+- **IARAF** (Instituto Argentino de Análisis Fiscal), 9 meses de 2026: las transferencias no
+  automáticas a provincias y CABA cayeron **81,1 % real contra 2023** (y 19,3 % contra el
+  mismo período de 2025), según lo publicado el 29-oct-2026 en
+  <https://www.eldestapeweb.com/economia/milei-profundiza-ajuste-transferencias-provincias-cayeron-81-20261029125651>.
+  El Monitor da **−82,1 %** con el dato de septiembre. La base no es idéntica (ellos 9 meses
+  acumulados, nosotros 12 meses móviles contra 2023 completo) y aun así la diferencia es de un
+  punto: el dato está bien construido.
+- La base 2023 incluye el Fondo de Fortalecimiento Fiscal de la Provincia de Buenos Aires
+  (1,52 billones a precios de septiembre de 2026, 19 % de la base), que desaparece en 2024.
+  Sin él la caída sería −76 %, también por debajo de −72 %, así que el puntaje (10, rojo) no
+  cambia. Se deja en la base: es una transferencia no automática como las demás. Decisión de
+  Juan del 4-nov-2026.
