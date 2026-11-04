@@ -1,7 +1,7 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-04 02:21:25"
-score_global: 3.6
+generado: "2026-11-04 20:34:46"
+score_global: 3.7
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-11
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** tecnocrático (macro, 4.9/10)
+**Score global:** 3.7/10  |  **Riesgo dominante:** tecnocrático (macro, 4.9/10)
 
 ## Cinturones
 
@@ -38,7 +38,7 @@ schema_version: "1.2.0"
 | iai | -1.74 | % interanual ponderado | 2026-08-01 | fresco |
 | icip | 13.67 | % interanual ponderado | 2026-07-01 | fresco |
 | credito_privado | -0.4 | % interanual real (crédito en pesos) | 2026-09-01 | fresco |
-| costo_financiamiento_tesoro | 6.22 | % real anual (tasa efectiva anual frente a la inflación esperada) | 2026-09-01 | fresco |
+| costo_financiamiento_tesoro | 6.22 | % real anual (tasa efectiva anual frente a la inflación esperada) | 2026-09-01 | ⚠ cache |
 | resultado_primario | 6.02 | % de la recaudación (acumulado de 12 meses) | 2026-08-01 | fresco |
 | prestamos_privados | 1.68 | % mensual nominal | 2026-10-29 | fresco |
 | base_monetaria | 2.87 | % mensual nominal | 2026-10-30 | fresco |
@@ -99,12 +99,12 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 1.7/10 (estable)
+### 🟢 Gestion — score 1.8/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 7.6 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-03 | fresco |
+| cepo_mulc | 8.55 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-04 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 18001.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-10-01 | fresco |
 | reduccion_estado | -22.44 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-09-01 | fresco |
@@ -131,8 +131,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:macro:desequilibrio_monetario`
+- `desactualizado:macro:desequilibrio_monetario,costo_financiamiento_tesoro`
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-11-04 02:21:25 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-04 20:34:46 — schema 1.2.0*

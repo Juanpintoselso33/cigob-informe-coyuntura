@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 1,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
@@ -248,6 +248,11 @@
   },
   "CAC|en-octubre-la-venta-ilegal-callejera-en-caba-cayo-58-2-en-relacion-al-mes-anterior": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-septiembre-la-venta-ilegal-callejera-en-caba-bajo-32-3-interanual": {
+   "fecha": "2026-10-27",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "en septiembre la venta ilegal callejera en caba bajo 32 3 interanual"
   },
   "CAC|en-septiembre-la-venta-ilegal-callejera-en-caba-bajo-un-3-1-en-relacion-al-mes-anterior": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"

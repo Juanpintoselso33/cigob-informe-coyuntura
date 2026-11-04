@@ -8,7 +8,7 @@
    "SRA": "https://www.sra.ar/comunicacion/"
   },
   "inventario_verificado": "2026-11-04",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-11-04"
  },
  "pendientes": {
@@ -33,6 +33,17 @@
    "texto": "En la previa de la China International Import Expo (CIIE), la última gran feria del año en la que el IPCVA participará junto a 14 empresas exportadoras, el Instituto profundiza su estrategia de promoción. \n A pedido de la industria frigorífica y de los productores exportadores, el Instituto de Promoción de la Carne Vacuna Argentina (IPCVA) continúa ampliando su estrategia de promoción en China, realizando acciones en importantes ciudades del interior del país, como Chongqing en el primer semestre del año, y ahora también Nanjing, antigua capital de China y uno de los principales centros económicos, culturales y educativos del país.\n El objetivo es ampliar el conocimiento de la carne vacuna argentina, incentivar su consumo y generar nuevas oportunidades comerciales en un mercado estratégico para las exportaciones.\n “Esta visita a Nanjing los días previos a la CIIE también nos permitió recorrer el mercado de abasto más importante de la ciudad y charlar con algunos comerciantes que venden carne argentina”, comentó Georges Breitschmitt, presidente del IPCVA. “Pudimos ver cajas de distintos frigoríficos argentinos y para mí, como productor, es un orgullo ver hasta donde llegan nuestros animales, en particular las vacas, que hasta hace no muchos años prácticamente no tenían precio”.\n La carne argentina, protagonista en Nanjing \n Una de las acciones se desarrolla en el Marriott Nanjing South Hotel, mediante una campaña gastronómica de dos meses. La promoción tiene como escenario el restaurante Nanjing Kitchen, donde se ofrece una experiencia especialmente diseñada para posicionar la carne argentina en el segmento gastronómico de alta gama.\n La propuesta incluye una estación de asado argentino con cortes premium, como bife ancho, bife angosto y asado.\n La experiencia se complementa con una ambientación inspirada en la cultura argentina.\n Formando futuros chefs \n En paralelo, el IPCVA puso en marcha una iniciativa conjunta con el Nanjing Institute of Tourism and Hospitality (NITH), una prestigiosa institución pública de formación gastronómica fundada en 1978.\n El programa contempla clases magistrales sobre las características de la carne vacuna argentina, los sistemas productivos, los cortes de exportación y las técnicas de desposte y cocción.\n También se realizará una competencia gastronómica en la que los estudiantes deberán desarrollar platos innovadores que combinen cortes argentinos con sabores tradicionales de la región china de Jiangnan.\n La iniciativa apunta a que las nuevas generaciones de chefs chinos conozcan, valoren e incorporen la carne argentina a sus futuras propuestas gastronómicas.\n Una estrategia que se expande por toda China \n Estas actividades forman parte de una estrategia de promoción que, durante 2025 y 2026, combinó campañas digitales de alcance nacional con acciones presenciales en distintas regiones de China.\n Además de Beijing y Shanghái, el IPCVA desarrolló actividades de promoción en Hefei (Anhui), Wuhan (Hubei), Qingdao (Shandong), Shenyang (Liaoning), Fuzhou (Fujian), Chongqing, Xi’an (Shaanxi), Nanjing (Jiangsu) y Shenzhen (Guangdong).",
    "titulo": "La carne argentina conquista el interior de China con nuevas acciones de promoción",
    "url": "https://www.coninagro.org.ar/la-carne-argentina-conquista-el-interior-de-china-con-nuevas-acciones-de-promocion/"
+  },
+  "CONINAGRO|72364": {
+   "camara": "CONINAGRO",
+   "destinatario": null,
+   "fecha": "2026-11-04",
+   "id": "72364",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco de la habitual reunión mensual de preconsejo de la entidad, el Presidente Lucas Magnano junto al Consejo de Administración,dirigentes y productores de distintas regiones del país mantuvieron un encuentro de trabajo con la Senadora Nacional Patricia Bullrich . Durante la jornada, se analizó el panorama actual del sector agroindustrial, se trazó un diagnóstico sobre la realidad de las economías regionales y se presentaron los principales reclamos e inquietudes que atraviesa la producción agropecuaria.\n La reunión permitió intercambiar visiones sobre la competitividad, los costos operativos y la necesidad de establecer un marco normativo que brinde previsibilidad a largo plazo para las inversiones productivas. Se le presentaron las problemáticas que atraviesa el campo hoy respecto a la infraestructura, acceso a financiamiento productivo y sostenimiento para el productor debido a las emergencias climáticas , entre otras. Además, se dialogó sobre el rumbo del Instituto Nacional de Tecnología Agropecuaria y el SENASA, la situación de las leyes de biocombustibles, semillas y uso de jugos naturales. \n Finalizado el encuentro, la Senadora realizó un balance final del mismo, detallando los compromisos asumidos, las inquietudes recibidas por parte de los dirigentes cooperativos y la visión parlamentaria sobre los temas prioritarios presentados por la entidad. Además, se refirió a los anuncios realizados por el Ministro de Economía para aliviar la presión financiera sobre las pymes y las empresas « Me parece importante, toda empresa necesita crédito para el capital de trabajo, esperemos que esto pueda ayudar a la mejora del sector «.\n Posteriormente, el Presidente de la entidad Lucas Magnano , se refirió a la trascendencia institucional de la visita y remarcó la importancia de mantener una agenda de trabajo abierta y continua con la Senadora para traducir las necesidades de los productores en proyectos de ley concretos « Iniciamos un hilo de trabajo con la Senadora Bullrich que seguró será fructífero a lo largo del tiempo». \n Por su parte, e l Vicepresidente de CONINAGRO, Marcelo Federici destacó la receptividad de los distintos temas planteados y remarcó la importancia de la defensa de la institucionalidad productiva de organismos claves para el desarrollo de distintos sectores, como lo son la Corporación Vitivinícola Argentina (COVIAR) y el Instituto de Promoción de la Carne Vacuna Argentina (IPCVA) .\n Por último, cabe mencionar que el Consejo de Administración de la entidad, continuó hoy con su agenda y se llevó a cabo la tradicional reunión de Consejo directivo en la cual los distintos representantes de las Federaciones expresaron las realidades que atraviesan las economías regionales en los diferentes puntos de nuestro país.",
+   "titulo": "“En CONINAGRO hay preocupación por leyes que todavía no han salido”",
+   "url": "https://www.coninagro.org.ar/en-coninagro-hay-preocupacion-por-leyes-que-todavia-no-han-salido/"
   }
  },
  "revisadas": {
@@ -835,6 +846,10 @@
   "CONINAGRO|72359": {
    "fecha": "2026-10-30",
    "titulo": "La carne argentina conquista el interior de China con nuevas acciones de promoción"
+  },
+  "CONINAGRO|72364": {
+   "fecha": "2026-11-04",
+   "titulo": "“En CONINAGRO hay preocupación por leyes que todavía no han salido”"
   },
   "CRA|28552": {
    "origen": "codificacion ADR-0384"

@@ -1,12 +1,12 @@
 {
  "_meta": {
-  "comunicados_vistos": 904,
+  "comunicados_vistos": 905,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
   "inventario_verificado": "2026-11-04",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-11-04"
  },
  "pendientes": {
@@ -75,6 +75,17 @@
    "texto": "La Embajada de la República Oriental del Uruguay en la República Argentina invita a participar del I Foro Empresarial MERCOSUR–Unión Europea , que se realizará el próximo 2 de diciembre de 2026 en el Centro de Convenciones de Punta del Este, Uruguay .\n El encuentro es organizado por el Gobierno del Uruguay, en el marco de la Presidencia Pro Tempore del MERCOSUR, junto con la Unión Europea, y cuenta con el apoyo del Banco Interamericano de Desarrollo (BID), CAF (Banco de Desarrollo de América Latina y el Caribe), el Banco Europeo de Inversiones y Uruguay XXI.\n La iniciativa reunirá a autoridades y representantes del sector empresarial de ambos bloques con el objetivo de promover oportunidades de comercio, inversión y cooperación. Entre los principales temas de agenda se destacan la agroindustria sostenible, la innovación y competitividad digital, el financiamiento para proyectos productivos, la infraestructura, la logística, la energía y las energías renovables, así como el desarrollo de materias primas críticas.\n Además de los paneles temáticos, el Foro contará con espacios de networking y reuniones de negocios B2B orientadas a fomentar nuevos vínculos comerciales y proyectos de cooperación entre empresas de ambas regiones.\n Las empresas y entidades interesadas en participar pueden consultar el programa completo e inscribirse a través del sitio oficial del evento: https://foroempresarialmercosurue.com/",
    "titulo": "I Foro Empresarial MERCOSUR–Unión Europea",
    "url": "https://www.camarco.org.ar/2026/10/30/i-foro-empresarial-mercosur-union-europea/"
+  },
+  "CAMARCO|49516": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-04",
+   "id": "49516",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La abogada y exjueza iraní Shirin Ebadi, Premio Nobel de la Paz 2003, mantuvo esta tarde una reunión institucional en la sede central de CAMARCO, organizada por el J6 —espacio que nuclea a una nueva generación de dirigentes, referentes de las principales cámaras empresariales del país—. Ebadi fue invitada a la Argentina por la Fundación Civitas, Et Lex y la Universidad Laica Presidente Domingo Faustino Sarmiento.\n Abogada, exjueza y pionera en la magistratura iraní —fue la primera mujer en ejercer como jueza en su país antes de la revolución de 1979—, Ebadi consagró su vida a la justicia social y fundó el Centro de Defensores de los Derechos Humanos. Durante el encuentro, los asistentes conversaron con ella acerca de su activismo, la consolidación democrática y la defensa de las mujeres, la infancia y los refugiados.\n En ese marco, la Premio Nobel señaló: “Hacer justicia no es algo que cae bien a las personas que no creen en la democracia. La muestra de que la sociedad es democrática es la independencia del poder judicial”, y añadió que “la sociedad redefine un sentido de justicia”, destacando también que “una sociedad progresa cuando le da verdadera importancia a la educación”.\n Por su parte, Vicente Gutiérrez, presidente del J6 y de ADEBA Joven, remarcó la importancia de tender puentes generacionales, consensuar una visión a largo plazo entre sectores diversos para superar barreras estructurales y diseñar desde el sector privado el futuro de la Argentina.\n Como cierre, la Premio Nobel dejó un mensaje dirigido a los jóvenes: “Como consejo, preserven la democracia y no sean indiferentes a la política de su país. La indiferencia hace que los corruptos avancen”.\n El J6 reúne a las nuevas generaciones de dirigentes de las seis entidades empresariales que conforman el G6: la Asociación de Bancos Argentinos (ADEBA), la Bolsa de Comercio de Buenos Aires (BCBA), la Cámara Argentina de Comercio y Servicios (CAC), la Cámara Argentina de la Construcción (CAMARCO), la Sociedad Rural Argentina (SRA) y la Unión Industrial Argentina (UIA). Es un espacio de articulación que impulsa el desarrollo federal, la innovación y la formación de dirigentes comprometidos con el futuro del sector productivo.",
+   "titulo": "El J6 se reunió con la Premio Nobel de la Paz Shirin Ebadi",
+   "url": "https://www.camarco.org.ar/2026/11/04/el-j6-se-reunio-con-la-premio-nobel-de-la-paz-shirin-ebadi/"
   }
  },
  "revisadas": {
@@ -2819,6 +2830,10 @@
    "fecha": "2026-11-02",
    "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
    "titulo": "La logística también define la rentabilidad de los proyectos mineros"
+  },
+  "CAMARCO|49516": {
+   "fecha": "2026-11-04",
+   "titulo": "El J6 se reunió con la Premio Nobel de la Paz Shirin Ebadi"
   }
  }
 }
