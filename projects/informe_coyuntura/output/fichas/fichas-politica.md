@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,17 +35,16 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 67,7** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 2 en amarillo · 1 en naranja · 2 en rojo |
-Componentes que puntúan en este corte: 17 de 17 publicados.
+| **ITCP: 67,6** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 1 en amarillo · 1 en naranja · 2 en rojo |
+Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 61,2 | VERDE | 22,6 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 61,0 | VERDE | 38,7 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 55,8 | AMARILLO | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,2 | VERDE | 16,1 % |
-| Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 61,5 | VERDE | 16,1 % |
 | Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | VERDE | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
 
@@ -62,11 +61,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | ROJO | 5,2 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
-| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
-| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
-| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | ROJO | 9,7 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 11,6 % |
+| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
+| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | VERDE | 7,7 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real frente a 2023 | ROJO | 8,2 % |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
@@ -74,8 +73,6 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
 | Votos ajenos al aprobar leyes | Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó… | 22,3 % de las bancas de la cámara | VERDE | 8,1 % |
 | Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo… | 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | VERDE | 8,1 % |
-| **DIMENSIÓN: Poder judicial** | | | | |
-| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | VERDE | 16,1 % |
 | **DIMENSIÓN: Sector empresarial** | | | | |
 | Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,45 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
 | Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
@@ -97,11 +94,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 # Decretos de necesidad y urgencia por ley
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-11) | **ROJO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-11) | **ROJO** | Peso efectivo 9,7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -115,15 +112,15 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 ## Definición — qué mide y por qué importa
 
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. La gran mayoría de los decretos de necesidad y urgencia nunca llega a votarse en el recinto y sigue vigente, pero el Congreso puede derogarlos con el rechazo de las dos cámaras, como hizo con el de los fondos reservados de inteligencia en 2024 y el de la marina mercante en 2025. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: qué porción de la agenda del Ejecutivo se aprueba, cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso.
 
 ## Método de cómputo
 
-- Ratio = decretos de necesidad y urgencia publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
+- Ratio = decretos de necesidad y urgencia publicados / leyes publicadas (no sancionadas) en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
 - Del denominador salen las leyes que aprueban o ratifican un tratado, convenio, acuerdo, protocolo o enmienda con otro país o con un organismo internacional. La Constitución reserva esa aprobación al Congreso (artículos 75, inciso 22, y 99, inciso 11): el Poder Ejecutivo no puede hacerlo por decreto, así que contar esas leyes mediría cuántos tratados llegaron al Congreso y no cuánto se legisla por decreto en lugar de por ley. Los convenios de la Nación con las provincias o con la Ciudad de Buenos Aires no son tratados internacionales y siguen contando, igual que las leyes que aprueban operaciones con una contraparte extranjera que no son un instrumento internacional a ratificar: el acuerdo de conciliación con una empresa, el programa con el Fondo Monetario Internacional (una operación de crédito público) o el convenio con Repsol por la expropiación de YPF. La clasificación sale del resumen que publica InfoLeg; si con el resumen completo no se puede saber con quién es el acuerdo, el indicador se corta en vez de suponer.
 - Un decreto cuenta como de necesidad y urgencia por el TIPO JURÍDICO con el que se firmó, que encabeza su texto original publicado en el Boletín (el identificador empieza con «DNU-», frente a «DECTO-» de un decreto común), no por la frase. La búsqueda por «necesidad y urgencia» es sólo un filtro previo que arma la lista de candidatos: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por uno de necesidad y urgencia, los reglamentarios, los vetos que la citan al fundarse y los decretos comunes que modifican una norma dictada en su momento así. Y hay decretos de necesidad y urgencia que no la dicen, así que a los candidatos se suman los que la grilla de InfoLeg rotula «Decreto DNU». Ese rótulo no decide: es un dato de catálogo y se equivoca en las dos direcciones. Si el texto original se leyó y no trae identificador, decide el rótulo; si no se pudo leer, el indicador se corta. Los decretos con número anterior a 1994 no cuentan: son decretos secretos de antes de la reforma constitucional que creó esta figura, publicados décadas después.
 - Cuentan todos los decretos de necesidad y urgencia, también los de rutina: los que autorizan la salida o el ingreso de tropas para ejercicios militares y los que tratan los viajes del Presidente. Hasta 2023 esas autorizaciones las daba una ley; que desde entonces salgan por decreto es justamente el reemplazo de la ley que el indicador quiere ver. Los decretos delegados no se suman: se dictan con una autorización previa del Congreso, que fija la materia y el plazo, así que no reemplazan a una ley sino que la ejecutan.
@@ -157,7 +154,7 @@ Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 9,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -176,6 +173,8 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-04** — Pasa de 23% a 25% de poder legislativo, que suma la cobertura de cargos de juez y deja la producción legislativa: junto con la eficacia legislativa es lo que dice si se gobierna por ley o por decreto. En el índice político sube de 5,2% a 9,7%.
 
 **2026-10-29** — Las leyes que aprueban tratados, convenios o protocolos con otros países u organismos internacionales dejan de contar en el denominador: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que reemplace a esa ley. Se suman los decretos de necesidad y urgencia que no dicen esa frase y que la búsqueda de texto no encontraba (26 entre 2011 y 2019, ninguno desde septiembre de 2019). Los cortes del puntaje se escalan a la referencia 2011-2023 medida con la misma regla (313 decretos sobre 872 leyes, 0,36): pasan de 0,3 · 0,7 · 1,2 · 2 a 0,33 · 0,77 · 1,32 · 2,21. Con la ventana del 29 de octubre de 2026 el cociente pasa de 1,16 (37 decretos sobre 32 leyes) a 2,64 (37 sobre 14: de 31 leyes publicadas, 17 aprueban tratados) y el puntaje del componente, de 57 a 10.
 
@@ -892,7 +891,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de proyectos** (2026-11) | **VERDE** | Peso efectivo 6,8 % del ITCP | Cinturón Política |
+| **Hoy: 27,3 % de proyectos** (2026-11) | **VERDE** | Peso efectivo 11,6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -910,7 +909,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 Mide la aprobación de una cohorte de proyectos maduros. Las iniciativas publicadas hace menos de un año quedan fuera: no resume la aprobación de la agenda actual ni pondera la importancia política de cada proyecto.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: qué porción de la agenda del Ejecutivo se aprueba, cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso.
 
 ## Método de cómputo
 
@@ -947,7 +946,7 @@ Dato vigente: 27,3 % de proyectos (2026-11).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 11,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -964,6 +963,8 @@ Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La serie completa se regenera desde la fuente. Las cargas tardías o rectificaciones pueden modificar puntos anteriores; una sanción posterior al corte histórico no cuenta en ese punto.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-04** — Sigue siendo el componente que más pesa en poder legislativo (30%), que suma la cobertura de cargos de juez y deja la producción legislativa. Como la dimensión pasa de 22,58% a 38,71% del índice, en el índice político sube de 6,8% a 11,6%.
 
 **2026-09-10** — Nombre público precisado como eficacia legislativa de proyectos maduros; la ficha muestra conteo y fechas de cohorte. Se explicita la exclusión de agenda reciente y la limitación de comparabilidad de las bandas históricas, sin cambiar umbrales.
 
@@ -1298,7 +1299,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
+| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1316,7 +1317,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 
 Es la derrota legislativa más dura que puede sufrir el Ejecutivo: exige dos tercios en las dos cámaras. Cuenta sólo lo consumado; una insistencia que se vota y no alcanza los dos tercios, o que aprueba una sola cámara, no suma. Cero es la lectura más favorable para el Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: qué porción de la agenda del Ejecutivo se aprueba, cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso.
 
 ## Método de cómputo
 
@@ -1350,7 +1351,7 @@ Dato vigente: 0 vetos insistidos por las dos cámaras, últimos 12 meses (2026-1
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1365,6 +1366,8 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro se revisa en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-04** — Pasa de 15% a 12,5% de poder legislativo, que suma la cobertura de cargos de juez y deja la producción legislativa: casi nunca hay eventos y la tarjeta pasa casi todos los meses en 100, así que no conviene que pese más. Como la dimensión pasa de 22,58% a 38,71% del índice, en el índice político sube de 3,4% a 4,8%.
 
 **2026-10-28** — Se fecha siempre en el voto de la segunda cámara, también cuando la corrida detecta la insistencia por la publicación de la ley; antes, un caso nuevo habría quedado fechado en la publicación. Cotejado contra el Boletín Oficial: desde octubre de 2025 no hubo vetos nuevos ni leyes promulgadas por insistencia. No cambia ningún conteo publicado.
 
@@ -1384,7 +1387,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
+| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1402,7 +1405,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 
 El rechazo de una sola cámara no deroga el decreto; el de las dos, sí. Cuenta sólo los derogados, fechados en el rechazo de la segunda cámara. Cero es la lectura más favorable para el Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: qué porción de la agenda del Ejecutivo se aprueba, cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso.
 
 ## Método de cómputo
 
@@ -1436,7 +1439,7 @@ Dato vigente: 0 decretos derogados por las dos cámaras, últimos 12 meses (2026
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1452,108 +1455,11 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-11-04** — Pasa de 15% a 12,5% de poder legislativo, que suma la cobertura de cargos de juez y deja la producción legislativa: casi nunca hay eventos y la tarjeta pasa casi todos los meses en 100, así que no conviene que pese más. Como la dimensión pasa de 22,58% a 38,71% del índice, en el índice político sube de 3,4% a 4,8%.
+
 **2026-10-28** — Cotejado contra las resoluciones de las dos cámaras publicadas en el Boletín Oficial: las últimas que rechazan decretos son las del 25 de agosto de 2025, así que la ventana de doce meses da cero de verdad. Los nombres de los decretos se escriben sin siglas. No cambia el conteo.
 
 **2026-10-27** — Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo los decretos derogados por las dos cámaras. En todo el mandato hubo seis: los fondos reservados de inteligencia (12 de septiembre de 2024) y cinco el 21 de agosto de 2025 (marina mercante, Cultura, Datos Genéticos, Vialidad, y el de los institutos de tecnología agropecuaria e industrial). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
-# Producción legislativa del Congreso
-
-Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó: no cuentan las que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido; las vetadas en parte sí, porque se promulgaron. No distingue de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 31 leyes sancionadas (12m)** (2026-10) | **AMARILLO** | Peso efectivo 3,8 % del ITCP | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | produccion_legislativa | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | leyes sancionadas (12m) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La carga del catálogo tiene un rezago no garantizado. Se informa la última sanción registrada y se excluye el mes en curso; un mes calendario cerrado no asegura que todas sus leyes ya estén cargadas. |
-| **PRODUCTOR DEL DATO** | Cámaras de Diputados y Senadores | **OPERACIÓN ESTADÍSTICA** | Catálogo de leyes sancionadas más sanciones omitidas cotejadas en el Boletín Oficial, diarios de sesiones y boletines parlamentarios |
-| **MODO DE ACCESO** | Catálogo automático por API; complementos curados con enlace al original y fecha de revisión manual. No se garantiza actualización automática del registro complementario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-04 |
-
-## Definición — qué mide y por qué importa
-
-Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó: no cuentan las que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido; las vetadas en parte sí, porque se promulgaron. No distingue de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
-
-Responde si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión entre los poderes. Una ley vetada entera no es producción compartida sino un desacuerdo, y ese desacuerdo ya lo registran los vetos insistidos. No equipara el total a victorias del Ejecutivo: ni el origen ni el contenido de cada ley se deducen del conteo.
-
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
-
-## Método de cómputo
-
-- Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.
-- Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.
-- Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8 de septiembre de 2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
-- No cuentan las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido con dos tercios: la pregunta es si el Congreso sanciona leyes que el Gobierno acepta, y una ley vetada entera es un desacuerdo, no producción compartida. Las vetadas en parte sí cuentan, porque se promulgaron. Los vetos salen del mismo registro que usan los vetos insistidos del índice; sin ese registro, el indicador no se actualiza.
-- Más leyes significa menos tensión entre el Congreso y el Gobierno. El desacuerdo abierto lo miden otros dos componentes de la misma dimensión: los vetos insistidos y los decretos derogados.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (leyes sancionadas (12m)) | Color |
-|---|---|
-| ≥ 39,5 | VERDE |
-| 27,5 – 39,5 | AMARILLO |
-| 22,5 – 27,5 | NARANJA |
-| ≤ 22,5 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- 31 leyes distintas en los 12 meses completos hasta 2026-10, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.
-
-## Color vigente y por qué
-
-Dato vigente: 31 leyes sancionadas (12m) (2026-10).
-
-31,0 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5).
-
-**Color vigente: AMARILLO**
-
-Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.
-- El umbral de diseño se conserva en 74. El cotejo del 8 de septiembre de 2026 contó 1.320 leyes distintas de 2008-2025, un promedio de 73,3 por año; 74 no es ese promedio exacto ni un óptimo normativo. La referencia abarca mayorías distintas y depende de la exhaustividad del catálogo.
-- La ventana móvil de doce meses suaviza pero también demora: un cambio de ritmo tarda meses en verse completo.
-- Una ley sancionada hace poco cuenta mientras no se la vete; si el veto llega después, sale del conteo y la serie se revisa hacia atrás.
-- La referencia de 74 leyes por año no descuenta los vetos totales de los gobiernos anteriores: compara un conteo sin vetadas contra un promedio que sí las incluye.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si el portal no responde, se mantiene el último valor disponible, señalado como desactualizado.
-
-- **Política de revisiones:** La carga tardía, la eliminación de duplicados y las correcciones de fechas pueden revisar la historia en ambas direcciones. Una descarga exitosa no certifica exhaustividad.
-
-## Historial — cambios metodológicos documentados
-
-**2026-10-28** — En la tarjeta de rezago del índice político pasa de 6 a 6,5 meses: a la mitad de la ventana se le suma la demora de la carga del catálogo. No cambia el valor ni el puntaje.
-
-**2026-10-28** — Deja de contar las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso haya insistido, y la pregunta pasa a ser si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión. Las bandas no cambian. En septiembre de 2026 no había leyes vetadas en la ventana y el dato sigue en 31; en la ventana a agosto de 2025 llegó a haber ocho, y la de entonces pasa de 40 a 32 leyes.
-
-**2026-10-28** — El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo.
-
-**2026-09-08** — Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse al catálogo de datos abiertos (CKAN).
-
-**2026-09-08** — Doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.
-
-**2026-07-31** — Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1569,14 +1475,14 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **VERDE** | Peso efectivo 16,1 % del ITCP | Cinturón Política |
+| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **VERDE** | Peso efectivo 7,7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | cobertura_judicial | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
+| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Actualización irregular. La serie sólo avanza hasta la fecha revisada de los registros complementarios; ejecutar el colector no extiende esa fecha. Un nuevo padrón requiere volver a conciliar los ajustes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados, designaciones y renuncias, conciliados con normas y bajas documentadas |
 | **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-04 |
@@ -1587,7 +1493,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 Describe la capacidad de integrar el Poder Judicial mediante un proceso que requiere designación del Ejecutivo y acuerdo del Senado. El acuerdo sobre un pliego no equivale a una toma de posesión. La reconstrucción conserva un universo fijo de órganos habilitados y requiere conciliar altas, promociones, traslados y bajas; sus revisiones no deben interpretarse como cambios ocurridos en el mes.
 
-**Dimensión que integra — Poder judicial.** Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. Desde octubre de 2026 la tasa de resolución de la Corte y la actividad de las comisiones de control del Consejo quedan fuera: miden a la Justicia, no al Ejecutivo. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares del Sistema Argentino de Información Jurídica permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: qué porción de la agenda del Ejecutivo se aprueba, cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso.
 
 ## Método de cómputo
 
@@ -1624,7 +1530,7 @@ Dato vigente: 73,61 % estimado de cargos con juez designado (2026-11).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 16,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 7,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1636,11 +1542,13 @@ Ponderación vigente en el ITCP: 16,1 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si los archivos no se pueden leer o el padrón requiere una nueva conciliación, se mantiene el último valor disponible, señalado como desactualizado. Sin valor previo, la dimensión del Poder Judicial queda sin dato —es su único componente desde octubre de 2026— y su peso se redistribuye entre las demás dimensiones.
+- **Si falta el dato:** Si los archivos no se pueden leer o el padrón requiere una nueva conciliación, se mantiene el último valor disponible, señalado como desactualizado. Sin valor previo, su peso se redistribuye entre los demás componentes de poder legislativo.
 
 - **Política de revisiones:** Un padrón nuevo obliga a revisar los ajustes antes de reanclar. La corrección de flujos y bajas puede revisar toda la historia; un salto entre versiones no es necesariamente un cambio ocurrido ese mes. La actividad de concursos sirve como contraste institucional de la reactivación, pero no demuestra por sí sola cuántos cargos se cubrieron.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-04** — Pasa a la dimensión de poder legislativo, porque cada pliego necesita el acuerdo del Senado, y la dimensión del Poder Judicial se disuelve. Pesa el 20% de poder legislativo, que queda con el 38,71% del índice: el 7,7% del índice político, contra el 16,13% que pesaba como único componente del Poder Judicial. Con los datos del 4 de noviembre de 2026 poder legislativo pasa de 61,2 a 61,0 y el índice político de 67,7 a 67,6.
 
 **2026-10-27** — Pasa a ser el único componente de la dimensión del Poder Judicial: salen la tasa de resolución de la Corte y la actividad de las comisiones de control del Consejo, que miden a la Justicia y no al Poder Ejecutivo. La cobertura se mantiene porque el Ejecutivo eleva los pliegos. Con los datos del 27 de octubre de 2026 la dimensión pasa de 57,1 a 62,0 y el índice político de 71,6 a 72,4.
 

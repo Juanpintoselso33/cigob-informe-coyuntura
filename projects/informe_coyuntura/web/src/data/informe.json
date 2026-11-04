@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-11-04T03:50:26.430779+00:00",
+  "generated_at": "2026-11-04T01:26:31.660556-03:00",
   "period": "2026-11",
   "score_global": 3.8,
   "ponderacion": {
@@ -2646,15 +2646,15 @@
             }
           ],
           "detalle_txt": "37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 05/11/2025 y el 04/11/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley",
-          "obtenido_en": "2026-11-04T03:05:39",
+          "obtenido_en": "2026-11-04T01:20:21",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 10.0,
           "puntaje_banda": 10.0,
-          "peso_efectivo": 0.0519,
+          "peso_efectivo": 0.0968,
           "metodo_obtencion": "automatico",
           "aporte_score": 9.0,
-          "aporte_formula": "Anclas del índice político: ≤0,33 → 100 · 0,33–0,77 → 85 · 0,77–1,32 → 65 · 1,32–2,21 → 40 · >2,21 → 10 (puntaje interpolado entre anclas: 10.0; pesa 5,2% del índice político)",
+          "aporte_formula": "Anclas del índice político: ≤0,33 → 100 · 0,33–0,77 → 85 · 0,77–1,32 → 65 · 1,32–2,21 → 40 · >2,21 → 10 (puntaje interpolado entre anclas: 10.0; pesa 9,7% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en rojo (tensión crítica): puntaje mínimo — este frente concentra la tensión del cinturón.",
           "aporte_input_txt": "37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 05/11/2025 y el 04/11/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley",
@@ -2703,7 +2703,7 @@
             "UIA": -0.4
           },
           "detalle_txt": "En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.",
-          "obtenido_en": "2026-11-04T03:05:41",
+          "obtenido_en": "2026-11-04T01:20:21",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 32.5,
@@ -2756,7 +2756,7 @@
           "criticas_ventana": 0,
           "pendientes_de_codificar": 0,
           "detalle_txt": "En los últimos doce meses la Cámara Argentina de Comercio y Servicios se pronunció 4 veces sobre medidas del Gobierno nacional: 4 de apoyo y 0 de crítica. Saldo 1,0 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-          "obtenido_en": "2026-11-04T03:05:41",
+          "obtenido_en": "2026-11-04T01:20:21",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 100.0,
@@ -2814,7 +2814,7 @@
             "SRA": 0.5
           },
           "detalle_txt": "En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.",
-          "obtenido_en": "2026-11-04T03:05:41",
+          "obtenido_en": "2026-11-04T01:20:21",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 55.5,
@@ -2867,7 +2867,7 @@
           "criticas_ventana": 2,
           "pendientes_de_codificar": 6,
           "detalle_txt": "En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 6 comunicados detectados sin codificar.",
-          "obtenido_en": "2026-11-04T03:05:41",
+          "obtenido_en": "2026-11-04T01:20:21",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 75.0,
@@ -2918,7 +2918,7 @@
           "cobertura_hasta": "2026-10-30",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-11-04T03:05:59",
+          "obtenido_en": "2026-11-04T01:20:31",
           "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12 meses (grupos hasta 2026-09) frente a 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
@@ -2967,7 +2967,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-11-04T03:06:02",
+          "obtenido_en": "2026-11-04T01:20:32",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 87.0,
@@ -3020,7 +3020,7 @@
           "detalle_txt": "12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor",
           "fecha_dato": "2026-09-30",
           "desactualizado": false,
-          "obtenido_en": "2026-11-04T03:07:08",
+          "obtenido_en": "2026-11-04T01:21:15",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 10.0,
@@ -3065,22 +3065,22 @@
           "valor": 27.3,
           "aprobados_n": 3,
           "enviados_n": 11,
-          "cohorte_desde": "2024-11-03",
-          "cohorte_hasta": "2025-11-03",
+          "cohorte_desde": "2024-11-04",
+          "cohorte_hasta": "2025-11-04",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-          "fecha_dato": "2026-11-03",
-          "desactualizado": true,
-          "obtenido_en": "2026-11-03T04:39:43",
+          "fecha_dato": "2026-11-04",
+          "desactualizado": false,
+          "obtenido_en": "2026-11-04T01:21:16",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 70.5,
           "puntaje_banda": 70.5,
-          "peso_efectivo": 0.0677,
+          "peso_efectivo": 0.1161,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.0,
-          "aporte_formula": "Anclas del índice político: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 70.5; pesa 6,8% del índice político)",
+          "aporte_formula": "Anclas del índice político: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 70.5; pesa 11,6% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
@@ -3141,7 +3141,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-11-04T03:07:12",
+          "obtenido_en": "2026-11-04T01:21:19",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -3186,7 +3186,7 @@
           "valor": 22.3,
           "unidad": "% de las bancas de la cámara",
           "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
-          "fecha_dato": "2026-11-03",
+          "fecha_dato": "2026-11-04",
           "ultima_votacion_incluida": "2026-09-24",
           "n_actas": 24,
           "componentes": {
@@ -3201,11 +3201,11 @@
               "fecha_dato": "2026-09-24"
             }
           },
-          "corrida_exitosa_en": "2026-11-03",
-          "desactualizado": true,
+          "corrida_exitosa_en": "2026-11-04",
+          "desactualizado": false,
           "detalle_txt": "Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.",
           "sin_origen_resuelto": 3,
-          "obtenido_en": "2026-11-03T04:42:50",
+          "obtenido_en": "2026-11-04T01:24:39",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 69.6,
@@ -3258,7 +3258,7 @@
               "valor": 100.0,
               "fecha_dato": "2026-10-22",
               "n_actas": 26,
-              "corrida_exitosa_en": "2026-11-01",
+              "corrida_exitosa_en": "2026-11-04",
               "desactualizado": false
             },
             "senado": {
@@ -3269,7 +3269,7 @@
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-11-04T03:11:43",
+          "obtenido_en": "2026-11-04T01:25:34",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 98.8,
@@ -3320,15 +3320,15 @@
           "eventos_12m": [],
           "total_mandato": 3,
           "que": "insistencias",
-          "obtenido_en": "2026-11-04T03:12:03",
+          "obtenido_en": "2026-11-04T01:25:36",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.0339,
+          "peso_efectivo": 0.0484,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas del índice político: ≤0 → 100 · 0–2 → 60 · 2–4 → 35 · >4 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,4% del índice político)",
+          "aporte_formula": "Anclas del índice político: ≤0 → 100 · 0–2 → 60 · 2–4 → 35 · >4 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,8% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión. Da 100 porque el valor (0,0) llega al punto desde el que la escala da el máximo (0,0 o menos); más allá de ese punto la escala ya no distingue.",
           "aporte_input_txt": "Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue ley 27.796 (Emergencia sanitaria pediátrica del Hospital Garrahan y residencias), el 02/10/2025.",
@@ -3371,15 +3371,15 @@
           "eventos_12m": [],
           "total_mandato": 6,
           "que": "rechazos",
-          "obtenido_en": "2026-11-04T03:12:03",
+          "obtenido_en": "2026-11-04T01:25:36",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.0339,
+          "peso_efectivo": 0.0484,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas del índice político: ≤0 → 100 · 0–2 → 60 · 2–4 → 35 · >4 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,4% del índice político)",
+          "aporte_formula": "Anclas del índice político: ≤0 → 100 · 0–2 → 60 · 2–4 → 35 · >4 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,8% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión. Da 100 porque el valor (0,0) llega al punto desde el que la escala da el máximo (0,0 o menos); más allá de ese punto la escala ya no distingue.",
           "aporte_input_txt": "Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue Decreto delegado 462/2025 (Transformación de los institutos nacionales de Tecnología Agropecuaria, de Tecnología Industrial, de Vitivinicultura y de la Propiedad Industrial; disolución de otros tres organismos), el 21/08/2025.",
@@ -3412,64 +3412,13 @@
             "por_que": "0,0 decretos derogados por las dos cámaras, últimos 12 meses está en Verde, a 1,0 del límite con Amarillo (1,0)."
           }
         },
-        "produccion_legislativa": {
-          "valor": 31,
-          "vetadas_excluidas_12m": 0,
-          "unidad": "leyes sancionadas (12m)",
-          "fuente": "Cámaras de Diputados y Senadores — catálogos, boletines parlamentarios y Boletín Oficial",
-          "fecha_dato": "2026-10-01",
-          "desactualizado": true,
-          "ultima_sancion_registrada": "2026-09-24",
-          "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
-          "detalle_txt": "31 leyes distintas en los 12 meses completos hasta 2026-10, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-11-03T04:44:45",
-          "en_indice": true,
-          "dimension": "poder_legislativo",
-          "puntaje_itcp": 45.8,
-          "puntaje_banda": 45.8,
-          "peso_efectivo": 0.0384,
-          "metodo_obtencion": "automatico",
-          "aporte_score": 5.4,
-          "aporte_formula": "Anclas del índice político: >74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 45.8; pesa 3,8% del índice político)",
-          "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "31 leyes distintas en los 12 meses completos hasta 2026-10, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "semaforo": {
-            "color": "amarillo",
-            "tension": 5.4,
-            "umbrales": [
-              {
-                "color": "rojo",
-                "desde": null,
-                "hasta": 22.5
-              },
-              {
-                "color": "naranja",
-                "desde": 22.5,
-                "hasta": 27.5
-              },
-              {
-                "color": "amarillo",
-                "desde": 27.5,
-                "hasta": 39.5
-              },
-              {
-                "color": "verde",
-                "desde": 39.5,
-                "hasta": null
-              }
-            ],
-            "unidad": "leyes sancionadas (12m)",
-            "por_que": "31,0 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5)."
-          }
-        },
         "cobertura_judicial": {
           "valor": 73.61,
           "unidad": "% estimado de cargos con juez designado",
           "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
           "fecha_dato": "2026-11-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-04T03:12:47",
+          "obtenido_en": "2026-11-04T01:25:42",
           "estimado": true,
           "limites_metodologicos": [
             "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
@@ -3497,13 +3446,13 @@
           "renuncias_desde_padron": 8,
           "detalle_txt": "Cobertura estimada: 703 de 955 cargos al 2026-11-03. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −8 renuncias y −2 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas). Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).",
           "en_indice": true,
-          "dimension": "poder_judicial",
+          "dimension": "poder_legislativo",
           "puntaje_itcp": 61.5,
           "puntaje_banda": 61.5,
-          "peso_efectivo": 0.1613,
+          "peso_efectivo": 0.0774,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 3.9,
-          "aporte_formula": "Anclas del índice político: >90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤60 → 10 (puntaje interpolado entre anclas: 61.5; pesa 16,1% del índice político)",
+          "aporte_formula": "Anclas del índice político: >90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤60 → 10 (puntaje interpolado entre anclas: 61.5; pesa 7,7% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "Cobertura estimada: 703 de 955 cargos al 2026-11-03. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −8 renuncias y −2 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas). Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).",
@@ -3542,7 +3491,7 @@
           "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
           "fecha_dato": "2026-10-29",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-11-03",
+          "corrida_exitosa_en": "2026-11-04",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -3587,169 +3536,169 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 67.7,
+        "valor": 67.6,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
-            "peso": 0.2258,
-            "puntaje": 61.2,
+            "peso": 0.3871,
+            "puntaje": 61.0,
             "indicadores": {
-              "ratio_dnu": {
-                "peso": 0.23,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": 2.643,
-                "peso_efectivo": 0.0519
-              },
               "eficacia_legislativa": {
                 "peso": 0.3,
                 "puntaje_banda": 70.5,
                 "puntaje_aplicado": 70.5,
                 "valor": 27.3,
-                "peso_efectivo": 0.0677
+                "peso_efectivo": 0.1161
+              },
+              "ratio_dnu": {
+                "peso": 0.25,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
+                "valor": 2.643,
+                "peso_efectivo": 0.0968
+              },
+              "cobertura_judicial": {
+                "peso": 0.2,
+                "puntaje_banda": 61.5,
+                "puntaje_aplicado": 61.5,
+                "valor": 73.61,
+                "peso_efectivo": 0.0774
               },
               "insistencias_vetos": {
-                "peso": 0.15,
+                "peso": 0.125,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 0.0,
-                "peso_efectivo": 0.0339
+                "peso_efectivo": 0.0484
               },
               "rechazos_decretos": {
-                "peso": 0.15,
+                "peso": 0.125,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 0.0,
-                "peso_efectivo": 0.0339
-              },
-              "produccion_legislativa": {
-                "peso": 0.17,
-                "puntaje_banda": 45.8,
-                "puntaje_aplicado": 45.8,
-                "valor": 31.0,
-                "peso_efectivo": 0.0384
+                "peso_efectivo": 0.0484
               }
             },
-            "peso_efectivo": 0.2258,
+            "peso_efectivo": 0.3871,
             "critica": false,
             "serie": [
               [
                 "2024-03",
-                72.5
+                72.7
               ],
               [
                 "2024-04",
-                65.1
+                70.9
               ],
               [
                 "2024-05",
-                54.0
+                58.8
               ],
               [
                 "2024-06",
-                53.4
+                55.7
               ],
               [
                 "2024-07",
-                49.5
+                55.7
               ],
               [
                 "2024-08",
-                57.7
+                55.5
               ],
               [
                 "2024-09",
-                41.9
+                48.3
               ],
               [
                 "2024-10",
-                53.2
+                48.2
               ],
               [
                 "2024-11",
-                53.2
+                48.1
               ],
               [
                 "2024-12",
-                53.2
+                48.0
               ],
               [
                 "2025-01",
-                53.2
+                47.8
               ],
               [
                 "2025-02",
-                54.2
+                47.5
               ],
               [
                 "2025-03",
-                54.0
+                47.3
               ],
               [
                 "2025-04",
-                53.5
+                46.9
               ],
               [
                 "2025-05",
-                54.2
+                46.7
               ],
               [
                 "2025-06",
-                53.7
+                46.5
               ],
               [
                 "2025-07",
-                53.5
+                46.4
               ],
               [
                 "2025-08",
-                38.4
+                37.2
               ],
               [
                 "2025-09",
-                29.4
+                29.5
               ],
               [
                 "2025-10",
-                15.4
+                24.6
               ],
               [
                 "2025-11",
-                15.4
+                23.9
               ],
               [
                 "2025-12",
-                31.1
+                36.6
               ],
               [
                 "2026-01",
-                31.1
+                36.6
               ],
               [
                 "2026-02",
-                32.1
+                37.4
               ],
               [
                 "2026-03",
-                33.1
+                37.6
               ],
               [
                 "2026-04",
-                28.1
+                32.4
               ],
               [
                 "2026-05",
-                26.2
+                30.4
               ],
               [
                 "2026-06",
-                31.4
+                37.4
               ],
               [
                 "2026-07",
-                26.7
+                33.4
               ],
               [
                 "2026-08",
@@ -3757,18 +3706,18 @@
               ],
               [
                 "2026-09",
-                50.2
+                51.4
               ],
               [
                 "2026-10",
-                61.2
+                61.0
               ]
             ],
             "semaforo": {
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 61,2/100, está en verde (sin tensión relevante) en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 61,0/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 3.9
             }
           },
@@ -4255,159 +4204,6 @@
               "tension": 0.9
             }
           },
-          "poder_judicial": {
-            "nombre": "Poder judicial",
-            "peso": 0.1613,
-            "puntaje": 61.5,
-            "indicadores": {
-              "cobertura_judicial": {
-                "peso": 0.4,
-                "puntaje_banda": 61.5,
-                "puntaje_aplicado": 61.5,
-                "valor": 73.61,
-                "peso_efectivo": 0.1613
-              }
-            },
-            "peso_efectivo": 0.1613,
-            "critica": false,
-            "serie": [
-              [
-                "2024-03",
-                58.9
-              ],
-              [
-                "2024-04",
-                58.6
-              ],
-              [
-                "2024-05",
-                58.4
-              ],
-              [
-                "2024-06",
-                57.6
-              ],
-              [
-                "2024-07",
-                57.6
-              ],
-              [
-                "2024-08",
-                56.6
-              ],
-              [
-                "2024-09",
-                56.6
-              ],
-              [
-                "2024-10",
-                56.3
-              ],
-              [
-                "2024-11",
-                56.0
-              ],
-              [
-                "2024-12",
-                55.5
-              ],
-              [
-                "2025-01",
-                54.7
-              ],
-              [
-                "2025-02",
-                53.9
-              ],
-              [
-                "2025-03",
-                53.2
-              ],
-              [
-                "2025-04",
-                51.6
-              ],
-              [
-                "2025-05",
-                50.8
-              ],
-              [
-                "2025-06",
-                50.3
-              ],
-              [
-                "2025-07",
-                49.8
-              ],
-              [
-                "2025-08",
-                49.0
-              ],
-              [
-                "2025-09",
-                47.1
-              ],
-              [
-                "2025-10",
-                45.6
-              ],
-              [
-                "2025-11",
-                43.0
-              ],
-              [
-                "2025-12",
-                40.6
-              ],
-              [
-                "2026-01",
-                40.3
-              ],
-              [
-                "2026-02",
-                39.5
-              ],
-              [
-                "2026-03",
-                35.7
-              ],
-              [
-                "2026-04",
-                34.5
-              ],
-              [
-                "2026-05",
-                33.9
-              ],
-              [
-                "2026-06",
-                50.0
-              ],
-              [
-                "2026-07",
-                53.4
-              ],
-              [
-                "2026-08",
-                52.4
-              ],
-              [
-                "2026-09",
-                62.3
-              ],
-              [
-                "2026-10",
-                61.8
-              ]
-            ],
-            "semaforo": {
-              "color": "verde",
-              "umbrales": null,
-              "unidad": null,
-              "por_que": "El puntaje de la dimensión, 61,5/100, está en verde (sin tensión relevante) en la escala del informe.",
-              "tension": 3.9
-            }
-          },
           "sector_privado": {
             "nombre": "Sector empresarial",
             "peso": 0.1398,
@@ -4585,187 +4381,187 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 65.6,
+          "p05": 65.4,
           "p95": 69.4,
           "tension_rango": [
             3.1,
-            3.4
+            3.5
           ],
           "dominante": {
-            "indicador": "transferencias_no_automaticas",
-            "indice_sin": 74.0
+            "indicador": "ratio_dnu",
+            "indice_sin": 74.2
           },
           "n_draws": 1000,
           "hist": [
-            2,
+            1,
             0,
-            0,
-            0,
-            2,
-            2,
+            1,
+            1,
             6,
-            14,
-            10,
-            16,
-            16,
+            3,
+            11,
+            11,
+            20,
+            20,
             23,
+            25,
+            32,
             35,
-            32,
-            48,
-            60,
-            46,
+            44,
+            50,
+            66,
+            52,
             55,
-            48,
-            71,
-            53,
-            72,
-            56,
+            50,
+            74,
+            52,
             63,
-            46,
-            47,
-            40,
-            33,
-            32,
-            18,
-            11,
-            21,
-            11,
-            6,
-            2,
-            3
+            59,
+            53,
+            39,
+            39,
+            27,
+            19,
+            19,
+            14,
+            15,
+            5,
+            9,
+            5,
+            2
           ],
-          "hist_min": 63.82,
-          "hist_max": 70.51,
+          "hist_min": 63.73,
+          "hist_max": 70.44,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
           [
             "2024-03",
-            80.0
+            82.3
           ],
           [
             "2024-04",
-            80.1
+            83.4
           ],
           [
             "2024-05",
-            75.9
+            77.1
           ],
           [
             "2024-06",
-            72.0
+            72.2
           ],
           [
             "2024-07",
-            65.4
+            66.5
           ],
           [
             "2024-08",
-            65.4
+            64.8
           ],
           [
             "2024-09",
-            65.7
+            65.8
           ],
           [
             "2024-10",
-            69.3
-          ],
-          [
-            "2024-11",
-            67.0
-          ],
-          [
-            "2024-12",
-            67.8
-          ],
-          [
-            "2025-01",
-            70.0
-          ],
-          [
-            "2025-02",
-            67.4
-          ],
-          [
-            "2025-03",
-            65.9
-          ],
-          [
-            "2025-04",
             66.9
           ],
           [
+            "2024-11",
+            64.6
+          ],
+          [
+            "2024-12",
+            65.4
+          ],
+          [
+            "2025-01",
+            67.6
+          ],
+          [
+            "2025-02",
+            64.9
+          ],
+          [
+            "2025-03",
+            63.4
+          ],
+          [
+            "2025-04",
+            64.7
+          ],
+          [
             "2025-05",
-            70.1
+            67.7
           ],
           [
             "2025-06",
-            70.0
+            67.7
           ],
           [
             "2025-07",
-            68.1
+            66.0
           ],
           [
             "2025-08",
-            59.1
+            56.9
           ],
           [
             "2025-09",
-            57.2
+            54.4
           ],
           [
             "2025-10",
-            55.1
+            53.8
           ],
           [
             "2025-11",
-            56.4
+            55.2
           ],
           [
             "2025-12",
-            56.0
+            56.6
           ],
           [
             "2026-01",
-            55.3
+            55.9
           ],
           [
             "2026-02",
-            53.7
-          ],
-          [
-            "2026-03",
-            53.6
-          ],
-          [
-            "2026-04",
-            51.7
-          ],
-          [
-            "2026-05",
-            52.1
-          ],
-          [
-            "2026-06",
             54.6
           ],
           [
+            "2026-03",
+            54.9
+          ],
+          [
+            "2026-04",
+            52.3
+          ],
+          [
+            "2026-05",
+            52.4
+          ],
+          [
+            "2026-06",
+            54.0
+          ],
+          [
             "2026-07",
-            57.3
+            55.6
           ],
           [
             "2026-08",
-            61.5
+            60.2
           ],
           [
             "2026-09",
-            65.6
+            64.1
           ],
           [
             "2026-10",
-            77.3
+            77.1
           ]
         ],
         "dimensiones_serie": {
@@ -4776,180 +4572,180 @@
           "desde": "2024-03",
           "hasta": "2026-10",
           "n": 32,
-          "n_dimensiones": 6,
+          "n_dimensiones": 5,
           "nota": "El índice es el promedio ponderado de estas dimensiones, y su valor agregado puede quedarse quieto porque nada se mueve o porque dos cosas grandes se mueven en direcciones opuestas. Estas series separan los dos casos: cada una es la misma dimensión que se lee arriba, mes a mes, en la misma escala (puntaje 0-100 de las bandas del índice). Se calculan con el motor del índice y no con una cuenta aparte: el promedio ponderado de los componentes de la dimensión, renormalizando por el peso que efectivamente tiene dato ese mes, es el mismo paso que el índice ya da para llegar a su propio número. Vienen de la reconstrucción histórica —las series de cada componente pasadas por el motor, sin ajustes del analista—, así que llegan hasta el último mes con cobertura suficiente y ese mes puede ser anterior al de la card. Un mes en el que ninguna componente de la dimensión tiene dato no deja punto: el hueco se muestra como hueco, no se arrastra ni se interpola."
         },
         "validacion": {
-          "r_niveles": -0.363,
-          "r_diferencias": -0.034,
+          "r_niveles": -0.4,
+          "r_diferencias": -0.06,
           "n": 31,
           "pares": [
             [
               "2024-03",
-              80.0,
+              82.3,
               78.5
             ],
             [
               "2024-04",
-              80.1,
+              83.4,
               90.7
             ],
             [
               "2024-05",
-              75.9,
+              77.1,
               72.7
             ],
             [
               "2024-06",
-              72.0,
+              72.2,
               109.4
             ],
             [
               "2024-07",
-              65.4,
+              66.5,
               97.5
             ],
             [
               "2024-08",
-              65.4,
+              64.8,
               77.7
             ],
             [
               "2024-09",
-              65.7,
+              65.8,
               73.0
             ],
             [
               "2024-10",
-              69.3,
+              66.9,
               85.0
             ],
             [
               "2024-11",
-              67.0,
+              64.6,
               82.5
             ],
             [
               "2024-12",
-              67.8,
+              65.4,
               85.5
             ],
             [
               "2025-01",
-              70.0,
+              67.6,
               78.6
             ],
             [
               "2025-02",
-              67.4,
+              64.9,
               81.1
             ],
             [
               "2025-03",
-              65.9,
+              63.4,
               92.7
             ],
             [
               "2025-04",
-              66.9,
+              64.7,
               113.7
             ],
             [
               "2025-05",
-              70.1,
+              67.7,
               79.2
             ],
             [
               "2025-06",
-              70.0,
+              67.7,
               91.8
             ],
             [
               "2025-07",
-              68.1,
+              66.0,
               101.9
             ],
             [
               "2025-08",
-              59.1,
+              56.9,
               101.2
             ],
             [
               "2025-09",
-              57.2,
+              54.4,
               182.8
             ],
             [
               "2025-10",
-              55.1,
+              53.8,
               145.8
             ],
             [
               "2025-11",
-              56.4,
+              55.2,
               116.4
             ],
             [
               "2025-12",
-              56.0,
+              56.6,
               118.5
             ],
             [
               "2026-01",
-              55.3,
+              55.9,
               76.8
             ],
             [
               "2026-02",
-              53.7,
+              54.6,
               84.2
             ],
             [
               "2026-03",
-              53.6,
+              54.9,
               89.0
             ],
             [
               "2026-04",
-              51.7,
+              52.3,
               95.5
             ],
             [
               "2026-05",
-              52.1,
+              52.4,
               95.2
             ],
             [
               "2026-06",
-              54.6,
+              54.0,
               105.3
             ],
             [
               "2026-07",
-              57.3,
+              55.6,
               89.7
             ],
             [
               "2026-08",
-              61.5,
+              60.2,
               122.4
             ],
             [
               "2026-09",
-              65.6,
+              64.1,
               118.1
             ]
           ],
           "plot": "minmax_inv",
           "titulo": "¿El capital político se refleja en menos incertidumbre de política percibida?",
-          "sub": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo y la protesta social — límite que se declara, no se esconde.",
+          "sub": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 16 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo y la protesta social — límite que se declara, no se esconde.",
           "serie_label": "Índice político (reconstrucción mensual)",
           "externa_label": "Incertidumbre de política en la prensa (EPU, invertido)",
           "trans_label": "series normalizadas al rango del período; la incertidumbre de política se muestra invertida",
-          "r_sin_sector_privado": -0.459,
-          "conclusion": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,363 en niveles y −0,034 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
+          "r_sin_sector_privado": -0.469,
+          "conclusion": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,4 en niveles y −0,06 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,469, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
           "panel": {
-            "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,363 y con las 12 ajenas es 0,277. En los cambios mes a mes la separación no se sostiene: 0,034 con lo propio contra 0,119 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
+            "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,4 y con las 12 ajenas es 0,323. En los cambios mes a mes la separación no se sostiene: 0,06 con lo propio contra 0,14 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
             "perfil": [
               {
@@ -4957,8 +4753,8 @@
                 "etiqueta": "Ventas en autoservicios mayoristas",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": 0.601,
-                "r_diferencias": -0.149,
+                "r_niveles": 0.621,
+                "r_diferencias": -0.171,
                 "n": 29
               },
               {
@@ -4966,8 +4762,8 @@
                 "etiqueta": "Ventas en centros de compras",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": -0.271,
-                "r_diferencias": -0.308,
+                "r_niveles": -0.353,
+                "r_diferencias": -0.367,
                 "n": 29
               },
               {
@@ -4975,8 +4771,8 @@
                 "etiqueta": "Demanda eléctrica residencial",
                 "fuente": "CAMMESA",
                 "propia": false,
-                "r_niveles": -0.076,
-                "r_diferencias": 0.017,
+                "r_niveles": -0.034,
+                "r_diferencias": 0.023,
                 "n": 30
               },
               {
@@ -4984,8 +4780,8 @@
                 "etiqueta": "Incertidumbre de política (EPU)",
                 "fuente": "Banco de España / SECMCA",
                 "propia": true,
-                "r_niveles": -0.363,
-                "r_diferencias": -0.034,
+                "r_niveles": -0.4,
+                "r_diferencias": -0.06,
                 "n": 31
               },
               {
@@ -4993,8 +4789,8 @@
                 "etiqueta": "Financiamiento externo a empresas",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": -0.357,
-                "r_diferencias": 0.118,
+                "r_niveles": -0.37,
+                "r_diferencias": 0.142,
                 "n": 30
               },
               {
@@ -5002,8 +4798,8 @@
                 "etiqueta": "Consumo residencial de gas",
                 "fuente": "Sec. de Energía",
                 "propia": false,
-                "r_niveles": 0.036,
-                "r_diferencias": -0.178,
+                "r_niveles": 0.095,
+                "r_diferencias": -0.145,
                 "n": 28
               },
               {
@@ -5011,8 +4807,8 @@
                 "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
                 "fuente": "UTDT",
                 "propia": false,
-                "r_niveles": -0.092,
-                "r_diferencias": 0.321,
+                "r_niveles": -0.192,
+                "r_diferencias": 0.267,
                 "n": 31
               },
               {
@@ -5020,8 +4816,8 @@
                 "etiqueta": "Índice Líder de actividad",
                 "fuente": "UTDT",
                 "propia": false,
-                "r_niveles": -0.321,
-                "r_diferencias": 0.008,
+                "r_niveles": -0.44,
+                "r_diferencias": 0.073,
                 "n": 31
               },
               {
@@ -5029,7 +4825,7 @@
                 "etiqueta": "Inversión directa de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": 0.02,
+                "r_niveles": 0.083,
                 "r_diferencias": 0.012,
                 "n": 30
               },
@@ -5038,8 +4834,8 @@
                 "etiqueta": "Inversión de cartera de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": -0.231,
-                "r_diferencias": -0.15,
+                "r_niveles": -0.243,
+                "r_diferencias": -0.156,
                 "n": 30
               },
               {
@@ -5047,8 +4843,8 @@
                 "etiqueta": "Merval en dólares",
                 "fuente": "BYMA / CCL",
                 "propia": false,
-                "r_niveles": -0.498,
-                "r_diferencias": 0.115,
+                "r_niveles": -0.545,
+                "r_diferencias": 0.117,
                 "n": 32
               },
               {
@@ -5056,8 +4852,8 @@
                 "etiqueta": "Pasajeros en transporte público",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": 0.542,
-                "r_diferencias": 0.017,
+                "r_niveles": 0.536,
+                "r_diferencias": 0.109,
                 "n": 29
               },
               {
@@ -5065,40 +4861,40 @@
                 "etiqueta": "Ventas de naftas",
                 "fuente": "Sec. de Energía",
                 "propia": false,
-                "r_niveles": -0.276,
-                "r_diferencias": -0.037,
+                "r_niveles": -0.367,
+                "r_diferencias": -0.104,
                 "n": 30
               }
             ],
             "niveles": {
-              "convergente": 0.363,
-              "discriminante": 0.277,
-              "brecha": 0.086
+              "convergente": 0.4,
+              "discriminante": 0.323,
+              "brecha": 0.077
             },
             "diferencias": {
-              "convergente": 0.034,
-              "discriminante": 0.119,
-              "brecha": -0.085
+              "convergente": 0.06,
+              "discriminante": 0.14,
+              "brecha": -0.08
             },
             "n_propias": 1,
             "n_ajenas": 12
           },
-          "resumen": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,363 en niveles y −0,034 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión.",
-          "detalle_texto": "Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,459, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
+          "resumen": "Contra la incertidumbre de política en la prensa —la única estadística propia del panel desde octubre de 2026— la correlación es −0,4 en niveles y −0,06 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión.",
+          "detalle_texto": "Sin la dimensión de sector empresarial —incorporada en julio de 2026— la correlación sería −0,469, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide.",
           "sub_resumen": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas.",
-          "sub_detalle": "Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo y la protesta social — límite que se declara, no se esconde."
+          "sub_detalle": "Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 16 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo y la protesta social — límite que se declara, no se esconde."
         },
         "redundancia": {
-          "n_indicadores": 17,
-          "n_pares": 101,
-          "r_abs_medio": 0.425,
-          "share_altos": 0.149,
-          "share_bajos": 0.317,
+          "n_indicadores": 16,
+          "n_pares": 87,
+          "r_abs_medio": 0.429,
+          "share_altos": 0.138,
+          "share_bajos": 0.299,
           "umbral": 0.7,
-          "pares_cruzados": 13,
+          "pares_cruzados": 9,
           "diferencias": {
-            "n_pares": 101,
-            "r_abs_medio": 0.175,
+            "n_pares": 87,
+            "r_abs_medio": 0.173,
             "share_altos": 0.0
           },
           "top": [
@@ -5113,13 +4909,6 @@
               "a": "apoyo_empresario",
               "b": "insistencias_vetos",
               "r": 0.934,
-              "cruzado": true,
-              "por_diseno": null
-            },
-            {
-              "a": "apoyo_empresario",
-              "b": "produccion_legislativa",
-              "r": 0.876,
               "cruzado": true,
               "por_diseno": null
             },
@@ -5141,20 +4930,27 @@
               "a": "cobertura_judicial",
               "b": "rechazos_decretos",
               "r": 0.841,
+              "cruzado": false,
+              "por_diseno": null
+            },
+            {
+              "a": "conflictividad_nacional",
+              "b": "ratio_dnu",
+              "r": -0.837,
               "cruzado": true,
               "por_diseno": null
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
-          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 17 componentes que tienen serie histórica, 101 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,425: ni componentes independientes ni una sola señal repetida. Un 15% de los pares se mueve muy junto (por encima de 0,7) y un 32% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,175 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 15 pares que superan el umbral en niveles, 13 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
-          "resumen": "La correlación media entre pares es 0,425: ni componentes independientes ni una sola señal repetida. Un 15% de los pares se mueve muy junto (por encima de 0,7) y un 32% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,175 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 15 pares que superan el umbral en niveles, 13 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 16 componentes que tienen serie histórica, 87 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,429: ni componentes independientes ni una sola señal repetida. Un 14% de los pares se mueve muy junto (por encima de 0,7) y un 30% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,173 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 12 pares que superan el umbral en niveles, 9 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
+          "resumen": "La correlación media entre pares es 0,429: ni componentes independientes ni una sola señal repetida. Un 14% de los pares se mueve muy junto (por encima de 0,7) y un 30% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,173 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 12 pares que superan el umbral en niveles, 9 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "rezago": {
-          "promedio_meses": 5.3,
-          "share_pulso": 0.364,
-          "share_estructural": 0.068,
+          "promedio_meses": 6.3,
+          "share_pulso": 0.281,
+          "share_estructural": 0.116,
           "umbral_pulso": 2.0,
           "umbral_estructural": 12.0,
           "mas_rezagados": [
@@ -5165,8 +4961,8 @@
           ],
           "titulo": "¿De cuándo es la foto que describe el índice?",
           "sub": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, más lo que tarda su fuente en publicar: si el último dato llega con tres meses de demora, la foto es de hace nueve. Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa.",
-          "conclusion": "El índice describe, en promedio ponderado, la situación de hace 5,3 meses. Un 36% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
-          "resumen": "El índice describe, en promedio ponderado, la situación de hace 5,3 meses. Un 36% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 7% a indicadores que describen el año anterior.",
+          "conclusion": "El índice describe, en promedio ponderado, la situación de hace 6,3 meses. Un 28% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 12% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
+          "resumen": "El índice describe, en promedio ponderado, la situación de hace 6,3 meses. Un 28% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 12% a indicadores que describen el año anterior.",
           "detalle_texto": "La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez.",
           "sub_resumen": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, más lo que tarda su fuente en publicar: si el último dato llega con tres meses de demora, la foto es de hace nueve.",
           "sub_detalle": "Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa."
@@ -5190,8 +4986,8 @@
               "clave": "capacidad",
               "nombre": "Capacidad propia",
               "glosa": "lo que el Gobierno consigue, o cuánto sostiene",
-              "puntaje": 65.1,
-              "share": 0.442,
+              "puntaje": 60.9,
+              "share": 0.452,
               "componentes": [
                 {
                   "indicador": "ratio_dnu",
@@ -5219,16 +5015,12 @@
               "clave": "tension",
               "nombre": "Tensión externa",
               "glosa": "lo que otros actores le hacen al Gobierno",
-              "puntaje": 80.1,
-              "share": 0.476,
+              "puntaje": 84.1,
+              "share": 0.467,
               "componentes": [
                 {
                   "indicador": "apoyo_empresario",
                   "puntaje": 32.5
-                },
-                {
-                  "indicador": "produccion_legislativa",
-                  "puntaje": 45.8
                 },
                 {
                   "indicador": "apoyo_campo",
@@ -5271,14 +5063,14 @@
           ],
           "titulo": "¿Qué tipo de cosa está midiendo el índice?",
           "sub": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar. El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian. Cada familia muestra qué porción del índice carga, porque ese reparto se mueve cuando entran o salen indicadores y explica parte de lo que cambia entre lecturas.",
-          "conclusion": "Leído por partes, lo más flojo del cinturón es «recursos de negociación» (10,0) y lo más sólido, «tensión externa» (80,1): una diferencia de 70,1 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
-          "resumen": "Leído por partes, lo más flojo del cinturón es «recursos de negociación» (10,0) y lo más sólido, «tensión externa» (80,1): una diferencia de 70,1 puntos.",
+          "conclusion": "Leído por partes, lo más flojo del cinturón es «recursos de negociación» (10,0) y lo más sólido, «tensión externa» (84,1): una diferencia de 74,1 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
+          "resumen": "Leído por partes, lo más flojo del cinturón es «recursos de negociación» (10,0) y lo más sólido, «tensión externa» (84,1): una diferencia de 74,1 puntos.",
           "detalle_texto": "Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
           "sub_resumen": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar.",
           "sub_detalle": "El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian. Cada familia muestra qué porción del índice carga, porque ese reparto se mueve cuando entran o salen indicadores y explica parte de lo que cambia entre lecturas."
         },
         "vintages": {
-          "dias_promedio": 22,
+          "dias_promedio": 20,
           "meses_promedio": 0.7,
           "fecha_mas_vieja": "1 de julio de 2026",
           "fecha_mas_nueva": "4 de noviembre de 2026",
@@ -5304,7 +5096,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 6 dimensiones: poder legislativo 23%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, poder judicial 16%, sector empresarial 14%. La tensión del cinturón es (100 − índice) / 10."
+      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 39%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, sector empresarial 14%. La tensión del cinturón es (100 − índice) / 10."
     },
     "vida_cotidiana": {
       "score": 5.3,
@@ -10864,7 +10656,7 @@
           "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,13 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 29 pares que superan el umbral en niveles, 26 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
-          "dias_promedio": 62,
+          "dias_promedio": 60,
           "meses_promedio": 2.0,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "4 de noviembre de 2026",
@@ -10893,8 +10685,8 @@
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 4 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 308 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
-          "resumen": "El dato más reciente es del 4 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 308 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses.",
+          "conclusion": "El dato más reciente es del 3 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 307 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
+          "resumen": "El dato más reciente es del 3 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 307 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses.",
           "detalle_texto": "Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         },
         "semaforo": {
@@ -10912,8 +10704,7 @@
   "cinturon_dominante": "vida_cotidiana",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:macro:desequilibrio_monetario",
-    "desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion,eficacia_legislativa,comisiones_caidas,votos_sobre_bancas,bloqueo_sostenido,produccion_legislativa"
+    "desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion"
   ],
   "semaforo_cortes": [
     {
@@ -10980,19 +10771,19 @@
         "nombre": "Índice político",
         "propio": "epu",
         "lider": {
-          "r": -0.32,
+          "r": -0.44,
           "n": 31,
-          "rd": 0.01
+          "rd": 0.07
         },
         "volumen_hogar": {
-          "r": -0.15,
+          "r": -0.13,
           "n": 28,
-          "rd": -0.04
+          "rd": -0.05
         },
         "epu": {
-          "r": -0.36,
+          "r": -0.4,
           "n": 31,
-          "rd": -0.03
+          "rd": -0.06
         }
       }
     ],
@@ -11012,9 +10803,9 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,4 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par; el índice político correlaciona -0,44 con la actividad contra -0,4 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "resumen": "Los tres pares propios dan el signo esperado.",
-    "detalle_texto": "Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,36 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "detalle_texto": "Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,04 con el volumen que consume el hogar, índice político -0,4 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,4 con la incertidumbre de política contra -0,04 con su propio par; el índice político correlaciona -0,44 con la actividad contra -0,4 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "sub_resumen": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez.",
     "sub_detalle": "Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
   }
