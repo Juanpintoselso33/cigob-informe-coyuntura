@@ -8,7 +8,7 @@ indice: 'ITCIS'
 indicadores: [pobreza_nowcast, pobreza_indec]
 archivos: ['scripts/descargar_series.py', 'web/src/lib/fichas.ts', 'tests/test_pobreza_indec_fechado.py']
 modifica: ['0114', '0153']
-relacionado: ['0114', '0153', '0393']
+relacionado: ['0114', '0153', '0393', '0424']
 ambito: 'ITCIS · dimensión Ingresos · `pobreza_nowcast` y la serie `pobreza_indec`'
 origen: 'Verificación del 28-oct-2026: la serie oficial de pobreza estaba fechada seis meses tarde y la base del componente tomaba el semestre equivocado.'
 ---

@@ -174,7 +174,10 @@ TECHOS = {
     # desvíos del bloque PRO 2016-2018 y `alineamiento_senadores_prov` la
     # mediana de los tres gobiernos anteriores como ancla superior; los dos
     # dejan de calibrarse contra la serie del mandato. Medido: 8,1%.
-    "ITCP": {"circular": 0.09, "sin_declarar": 0.01},
+    # BAJA a 0,01 el 2026-11-04 (ADR-0423): `votos_sobre_bancas`, el único que
+    # quedaba con anclas de convención, pasa a la escala de Luis sobre la
+    # mayoría absoluta de Diputados (conceptual). Medido: 0,0%.
+    "ITCP": {"circular": 0.01, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
     # ADR-0235, diecisiete componentes usan fecha fija y tarifas usa un rango
     # externo; ninguno se calibra contra el período. Techo en 0,01: si
@@ -258,7 +261,7 @@ PROCEDENCIA = {
     "alineamiento_senadores_prov": ("historia_larga", "anclas mixtas: 25 → 10 y 50 → 65 son conceptuales (un cuarto y la mitad de los votos ajenos coinciden con el oficialismo); 77 → 100 es la mediana de los tres gobiernos anteriores medidos igual (Fernández de Kirchner 2012-2015, Macri 2015-2019, Fernández 2019-2023: 134 meses). Antes, 40/50/60/70 calibradas con la serie propia del mandato (ADR-0038, ADR-0402)"),
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("historia_larga", "media y desvíos de la cohesión del bloque PRO de Macri, dic-2015 a dic-2018, medida igual (65/35, 90 días, sólo votaciones divididas): 89,8 → 10 · 93,4 → 40 · 97,0 → 65 · 99,9 → 100. Antes, calibrada contra la serie propia del mandato (ADR-0042/0048, ADR-0401)"),
-    "votos_sobre_bancas": ("convencion", "anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376)"),
+    "votos_sobre_bancas": ("conceptual", "cortes de Luis en diputados a favor: 129 es la mayoría absoluta de 257 (verde por encima), 119 y 109 escalones de diez votos; puntas en 172 (dos tercios) y 99 (ADR-0423)"),
     "conflictividad_nacional": ("historia_larga", "uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390)"),
     "jornadas_individuales_no_trabajadas_12m": (
         "historia_larga",

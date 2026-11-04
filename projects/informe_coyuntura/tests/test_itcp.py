@@ -407,8 +407,9 @@ def test_rezago_de_doce_meses_suma_la_demora_de_publicacion():
     assert r["transferencias_no_automaticas"] == 7.5             # ~1,5 del IPC
     assert r["conflictividad_nacional"] == 7.0                   # mes en curso afuera
     for k in ("apoyo_empresario", "apoyo_comercio", "apoyo_campo", "apoyo_construccion",
-              "ratio_dnu", "insistencias_vetos", "rechazos_decretos", "votos_sobre_bancas"):
+              "ratio_dnu", "insistencias_vetos", "rechazos_decretos"):
         assert r[k] == 6.0, k
+    assert r["votos_sobre_bancas"] == 0.5   # promedio del mes (ADR-0423)
     assert all((2 * v) == int(2 * v) for v in r.values()), "redondeo a 0,5"
 
 

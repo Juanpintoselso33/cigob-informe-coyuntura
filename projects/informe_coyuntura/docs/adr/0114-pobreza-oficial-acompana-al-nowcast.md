@@ -6,7 +6,7 @@ fecha: 2026-07-20
 cinturon: 'vida'
 indicadores: [pobreza_nowcast, pobreza_indec]
 continua: ['0113']
-relacionado: ['0394']
+relacionado: ['0394', '0424']
 modificado_por: ['0394']
 ambito: 'ITVC · `pobreza_nowcast` · serie acompañante `pobreza_indec`'
 ---

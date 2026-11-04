@@ -22,10 +22,9 @@ Indicadores:
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
                                2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
                                + Senado 35% (scrape senado.gob.ar), renormalizado si falta una cámara
-  votos_sobre_bancas        — votos ajenos con que se aprueban las leyes: (afirmativos − bancas
-                               propias de LLA) / bancas de la cámara, votaciones en general de
-                               leyes aprobadas con el bloque LLA a favor, 12m; compuesto bicameral
-                               65/35 (actas de ambas cámaras, auto; ADR-0376)
+  votos_sobre_bancas        — diputados que votan a favor las leyes del Ejecutivo aprobadas con
+                               el bloque LLA a favor, promedio del mes; sin votaciones, el último
+                               (actas de Diputados, auto; ADR-0376/0423)
   rotacion_gabinete         — salidas de rango ministerial (JGM + ministros) acumuladas 12m
                                (registro curado data/politica/gabinete_salidas.json + detector
                                de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG).
@@ -8381,9 +8380,13 @@ COHESION_PESOS_CAMARAS = {"diputados": 0.65, "senado": 0.35}
 #                 / bancas de la cámara × 100
 #
 # O sea: cuántos votos de otros bloques hicieron falta para aprobar, medidos
-# como % de la cámara. Por cámara es el promedio simple de las votaciones de
-# los últimos 12 meses calendario (misma ventana que veto_quorum); el
-# indicador es 65% Diputados + 35% Senado (COHESION_PESOS_CAMARAS).
+# como % de la cámara. Así puntuó hasta el 3-nov-2026 (12 meses, 65% Diputados
+# + 35% Senado).
+#
+# Desde ADR-0423 (revisión de Luis del 3-nov) puntúa otra cosa sobre el mismo
+# universo: cuántos DIPUTADOS votaron a favor, promedio de las votaciones del
+# mes; un mes sin votaciones conserva el último. El Senado sale porque con
+# mayoría absoluta el piso de votos ajenos ya caía en verde.
 #
 # "Bancas del bloque LLA" = todos los legisladores LISTADOS en el acta con
 # bloque LLA, voten o estén ausentes. En Diputados el acta no lista a quien
@@ -8395,7 +8398,6 @@ VSB_ACTAS_PATH = PROJECT_DIR / "data" / "politica" / "votos_sobre_bancas_actas.j
 # Diputados y ninguna en el Senado, y "el bloque propio" no era el oficialismo.
 VSB_INICIO = date(2023, 12, 10)
 VSB_BANCAS_CAMARA = {"diputados": 257, "senado": 72}
-VSB_MESES_VENTANA = 12
 # Cuántos ids consecutivos sin acta se toleran caminando hacia atrás antes de
 # dar por agotado el sitio de Diputados (la numeración tiene huecos de hasta 202).
 VSB_MARGEN_HUECOS_DIPUTADOS = 450
@@ -8558,76 +8560,60 @@ def _vsb_es_tratado(titulo: str) -> bool:
     return _vsb_instrumento_internacional(t) and not _VSB_ACUERDO_ECONOMICO.search(t)
 
 
-def _vsb_excedente(entrada: dict, camara: str) -> float | None:
-    """Excedente de UNA votación, o None si no entra al universo: no es una
-    votación en general de una ley, no se aprobó, el bloque LLA no votó
-    mayoritariamente a favor, o el acta no trae los conteos."""
+def _vsb_en_universo(entrada: dict, camara: str) -> bool:
+    """¿La votación entra al universo? No entra si no es una votación en
+    general de una ley, no se aprobó, el bloque LLA no votó mayoritariamente a
+    favor, o el acta no trae los conteos."""
     if entrada.get("resultado") != "AFIRMATIVO":
-        return None
+        return False
     if entrada.get("afirmativos") is None or entrada.get("bancas_lla") is None:
-        return None
+        return False
     if camara == "diputados":
         if not _vsb_titulo_diputados_es_ley_general(entrada.get("titulo", "")):
-            return None
+            return False
     elif not _vsb_entrada_senado_es_ley_general(entrada):
-        return None
+        return False
     if _vsb_es_tratado(entrada.get("titulo", "")):
-        return None   # tratados y convenios internacionales: fuera del indicador
+        return False   # tratados y convenios internacionales: fuera del indicador
     if entrada.get("origen_pe") is not True:
-        return None   # sólo cuentan las leyes cuyo proyecto mandó el Poder Ejecutivo (ADR-0376)
-    if not entrada["lla_afirm"] > entrada["lla_neg"]:
+        return False   # sólo cuentan las leyes cuyo proyecto mandó el Poder Ejecutivo (ADR-0376)
+    return entrada["lla_afirm"] > entrada["lla_neg"]
+
+
+def _vsb_excedente(entrada: dict, camara: str) -> float | None:
+    """Excedente de UNA votación (votos ajenos como % de la cámara), o None si
+    no entra al universo. Ya no puntúa (ADR-0423); se conserva como lectura
+    de la votación."""
+    if not _vsb_en_universo(entrada, camara):
         return None
     bancas = entrada.get("bancas_camara") or VSB_BANCAS_CAMARA[camara]
     return (entrada["afirmativos"] - entrada["bancas_lla"]) / bancas * 100.0
 
 
-def _vsb_desde(referencia: date) -> date:
-    """Primer día de la ventana: los 12 meses calendario que terminan en el mes
-    de `referencia` (misma ventana que _veto_quorum_tasa_12m, ADR-0091), sin
-    pasar de la instalación del Congreso."""
-    meses = referencia.year * 12 + (referencia.month - 1) - (VSB_MESES_VENTANA - 1)
-    return max(date(meses // 12, meses % 12 + 1, 1), VSB_INICIO)
-
-
-def votos_sobre_bancas_camara(actas: dict, camara: str, referencia: date) -> dict | None:
-    """Promedio simple del excedente de las votaciones del universo de la
-    cámara en la ventana de 12 meses que termina en `referencia`. `actas` es
-    el dict id → entrada de esa cámara. None si no hay ninguna votación."""
-    desde = _vsb_desde(referencia).isoformat()
+def votos_a_favor_diputados(actas: dict, referencia: date) -> dict | None:
+    """Diputados que votaron a favor, promedio de las votaciones del universo
+    del último mes con votaciones hasta `referencia` (ADR-0423, revisión de
+    Luis del 3-nov-2026). Un mes sin votaciones —el receso incluido— conserva
+    el valor del último mes que las tuvo. `actas` = id → entrada de Diputados.
+    None si no hubo ninguna votación desde la instalación del Congreso."""
+    desde = VSB_INICIO.isoformat()
     hasta = referencia.isoformat()
-    excedentes = []
+    por_mes: dict[str, list] = {}
     for entrada in actas.values():
         fecha = entrada.get("fecha") or ""
-        if not desde <= fecha <= hasta:
+        if not desde <= fecha <= hasta or not _vsb_en_universo(entrada, "diputados"):
             continue
-        ex = _vsb_excedente(entrada, camara)
-        if ex is not None:
-            excedentes.append((fecha, ex))
-    if not excedentes:
+        por_mes.setdefault(fecha[:7], []).append((fecha, entrada["afirmativos"]))
+    if not por_mes:
         return None
+    mes = max(por_mes)
+    votos = por_mes[mes]
     return {
-        "valor": sum(e for _, e in excedentes) / len(excedentes),
-        "n_actas": len(excedentes),
-        "fecha_dato": max(f for f, _ in excedentes),
-    }
-
-
-def componer_votos_sobre_bancas(por_camara: dict) -> dict | None:
-    """Compuesto bicameral 65/35 renormalizado sobre las cámaras con dato (si
-    una cámara no tuvo votaciones en la ventana, el indicador es la otra
-    sola). `por_camara` = {camara: salida de votos_sobre_bancas_camara | None}."""
-    con_dato = {c: e for c, e in por_camara.items() if e is not None}
-    if not con_dato:
-        return None
-    peso_total = sum(COHESION_PESOS_CAMARAS[c] for c in con_dato)
-    valor = sum(e["valor"] * COHESION_PESOS_CAMARAS[c] for c, e in con_dato.items()) / peso_total
-    return {
-        "valor": round(valor, 1),
-        "n_actas": sum(e["n_actas"] for e in con_dato.values()),
-        "fecha_dato": max(e["fecha_dato"] for e in con_dato.values()),
-        "componentes": {c: {"valor": round(e["valor"], 1), "n_actas": e["n_actas"],
-                            "fecha_dato": e["fecha_dato"]} for c, e in con_dato.items()},
-        "camaras_sin_dato": [c for c in COHESION_PESOS_CAMARAS if c not in con_dato],
+        "valor": round(sum(v for _, v in votos) / len(votos), 1),
+        "n_actas": len(votos),
+        "mes_votacion": mes,
+        "fecha_dato": max(f for f, _ in votos),
+        "arrastrado": mes != hasta[:7],
     }
 
 
@@ -8635,10 +8621,9 @@ def votos_sobre_bancas_valor(cache: dict, referencia: date) -> dict | None:
     """Valor del indicador a la fecha `referencia` desde el caché de actas.
     Es la ÚNICA implementación del cálculo: la card es esto evaluado hoy y la
     serie mensual es esto evaluado en cada fin de mes (card y serie no pueden
-    divergir, ADR-0088)."""
-    return componer_votos_sobre_bancas({
-        c: votos_sobre_bancas_camara(cache.get(c, {}), c, referencia)
-        for c in COHESION_PESOS_CAMARAS})
+    divergir, ADR-0088). Sólo Diputados desde ADR-0423: en el Senado, aprobar
+    una ley ya exige un piso de votos ajenos por encima del verde."""
+    return votos_a_favor_diputados(cache.get("diputados", {}), referencia)
 
 
 # -- origen de la ley: sólo cuentan los proyectos del Poder Ejecutivo --------
@@ -9035,16 +9020,19 @@ def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:
     return cache, ok_dip and ok_sen and ok_ori
 
 
+_MESES_TXT = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+              "septiembre", "octubre", "noviembre", "diciembre")
+
+
 def _vsb_detalle(valor: dict) -> str:
-    c = valor["componentes"]
-    partes = [f"{'Diputados' if cam == 'diputados' else 'Senado'}: "
-              f"{c[cam]['valor']:.1f}".replace(".", ",") + f" % ({c[cam]['n_actas']} votaciones)"
-              for cam in ("diputados", "senado") if cam in c]
-    txt = "Promedio de los últimos 12 meses, " + " · ".join(partes) + "."
-    if valor["camaras_sin_dato"]:
-        sin = " y ".join("Diputados" if x == "diputados" else "el Senado"
-                         for x in valor["camaras_sin_dato"])
-        txt += f" Sin votaciones del universo en {sin} en la ventana: el indicador usa sólo la otra cámara."
+    anio, mes = valor["mes_votacion"].split("-")
+    cuando = f"{_MESES_TXT[int(mes) - 1]} de {anio}"
+    n = valor["n_actas"]
+    txt = (f"Promedio de diputados a favor en {n} votación{'es' if n != 1 else ''} de ley "
+           f"de {cuando}. Mayoría absoluta: 129 de 257.")
+    if valor["arrastrado"]:
+        txt += (" Desde entonces no hubo votaciones de ley del Poder Ejecutivo en "
+                "Diputados: se conserva el valor de la última.")
     return txt
 
 
@@ -9059,33 +9047,32 @@ def fetch_votos_sobre_bancas() -> dict | None:
             return None
         valor = votos_sobre_bancas_valor(cache, date.today())
         if valor is None:
-            raise ValueError("sin votaciones del universo en la ventana de 12 meses")
+            raise ValueError("sin votaciones del universo en Diputados desde la instalación del Congreso")
         # Codex, 27-oct-2026: una ley aprobada cuyo origen todavía no se pudo
         # resolver (el dictamen de Diputados se carga con rezago) no entra al
         # promedio, pero tampoco se esconde: la tarjeta dice cuántas faltan.
         desde = (date.today() - timedelta(days=365)).isoformat()
         sin_origen = sorted(
-            e.get("fecha", "") for camara in ("diputados", "senado")
-            for e in cache.get(camara, {}).values()
+            e.get("fecha", "") for e in cache.get("diputados", {}).values()
             if isinstance(e, dict) and e.get("resultado") == "AFIRMATIVO"
             and "origen_pe" in e and e["origen_pe"] is None and e.get("fecha", "") >= desde)
         detalle = _vsb_detalle(valor)
         if sin_origen:
             detalle += (f" Hay {len(sin_origen)} votaciones de ley de los últimos 12 meses "
-                        "(la más reciente del " + _fecha_dmy(sin_origen[-1]) + ") cuyo origen "
+                        "en Diputados (la más reciente del " + _fecha_dmy(sin_origen[-1]) + ") cuyo origen "
                         "todavía no se pudo confirmar; no entran al promedio hasta que se "
                         "confirme, y entonces el valor puede cambiar.")
         return {
             "valor": valor["valor"],
-            "unidad": "% de las bancas de la cámara",
-            "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
-            # Ventana de 12 meses evaluada HOY con la lectura de actas completa:
-            # el dato está al día aunque la última ley votada sea de hace meses
-            # (receso); esa fecha va aparte, para el que quiera verla.
+            "unidad": "diputados a favor",
+            "fuente": "Votaciones nominales de Diputados — elaboración CIGOB",
+            # Evaluado HOY con la lectura de actas completa: un mes sin
+            # votaciones conserva el último valor por regla (ADR-0423), así
+            # que el dato está al día; la fecha de la votación va aparte.
             "fecha_dato": date.today().isoformat(),
             "ultima_votacion_incluida": valor["fecha_dato"],
+            "mes_votacion": valor["mes_votacion"],
             "n_actas": valor["n_actas"],
-            "componentes": valor["componentes"],
             "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
             "desactualizado": False,
             "detalle_txt": detalle,
@@ -9097,8 +9084,8 @@ def fetch_votos_sobre_bancas() -> dict | None:
 
 
 def votos_sobre_bancas_serie() -> list:
-    """Serie mensual [[YYYY-MM-DD, %]] desde dic-2023: el compuesto evaluado en
-    cada fin de mes (y hoy). Es el mismo cálculo que la card."""
+    """Serie mensual [[YYYY-MM-DD, diputados]] desde dic-2023: el valor
+    evaluado en cada fin de mes (y hoy). Es el mismo cálculo que la card."""
     cache, completo = votos_sobre_bancas_actualizar()
     if not completo:
         raise ValueError(_vsb_incompleta())

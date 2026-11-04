@@ -1,4 +1,4 @@
-"""votos_sobre_bancas (ADR-0376): votos ajenos con que se aprueban las leyes.
+"""votos_sobre_bancas (ADR-0376, ADR-0423): diputados a favor de las leyes del Ejecutivo.
 
 Todo sin red: actas sintéticas con los conteos que guarda el caché. Lo que se
 cuida acá es la definición — qué votaciones entran, cómo se calcula el
@@ -149,77 +149,58 @@ def test_senado_sin_expediente_pide_orden_del_dia_y_descarta_designaciones_y_moc
             ods=["O.D. 102/2026"]), "senado") is not None
 
 
-# ── la ventana de 12 meses ───────────────────────────────────────────────────
+# ── diputados a favor, promedio del mes (ADR-0423) ──────────────────────────
 
-def test_ventana_de_doce_meses_calendario():
-    ref = date(2026, 10, 15)
-    assert politica._vsb_desde(ref) == date(2025, 11, 1)
-    actas = {
-        "a": dip(fecha="2025-10-31", afirmativos=200),   # un día antes de la ventana
-        "b": dip(fecha="2025-11-01", afirmativos=131),   # primer día de la ventana
-        "c": dip(fecha="2026-10-15", afirmativos=131),   # el día de la referencia
-        "d": dip(fecha="2026-10-16", afirmativos=250),   # posterior: no existía todavía
-    }
-    r = politica.votos_sobre_bancas_camara(actas, "diputados", ref)
-    assert r["n_actas"] == 2
-    assert r["valor"] == pytest.approx(37 / 257 * 100)
-    assert r["fecha_dato"] == "2026-10-15"
+def test_promedia_los_diputados_a_favor_del_mes():
+    actas = {"1": dip(fecha="2026-06-03", afirmativos=131),
+             "2": dip(fecha="2026-06-24", afirmativos=140),
+             "3": dip(fecha="2026-05-10", afirmativos=200)}   # otro mes: no entra
+    r = politica.votos_a_favor_diputados(actas, date(2026, 6, 30))
+    assert r["valor"] == 135.5
+    assert r["n_actas"] == 2 and r["mes_votacion"] == "2026-06"
+    assert r["fecha_dato"] == "2026-06-24" and r["arrastrado"] is False
 
 
-def test_la_ventana_no_cruza_la_instalacion_del_congreso():
-    # antes del 10-dic-2023 LLA tenía 3 bancas: no es «el bloque propio»
-    assert politica._vsb_desde(date(2024, 3, 31)) == date(2023, 12, 10)
-    actas = {"a": dip(fecha="2023-12-01", afirmativos=200), "b": dip(fecha="2024-02-02", afirmativos=131)}
-    assert politica.votos_sobre_bancas_camara(actas, "diputados", date(2024, 3, 31))["n_actas"] == 1
+def test_un_mes_sin_votaciones_conserva_el_ultimo():
+    """Luis, 3-nov-2026: «si no hay votación asume el puntaje de la última»."""
+    actas = {"1": dip(fecha="2025-12-17", afirmativos=125)}
+    r = politica.votos_a_favor_diputados(actas, date(2026, 2, 28))
+    assert r["valor"] == 125.0 and r["mes_votacion"] == "2025-12" and r["arrastrado"] is True
 
 
-def test_promedio_simple_por_votacion_no_por_ley():
-    actas = {"1": dip(fecha="2026-06-01", afirmativos=131),
-             "2": dip(fecha="2026-06-02", afirmativos=131),
-             "3": dip(fecha="2026-06-03", afirmativos=200)}
-    r = politica.votos_sobre_bancas_camara(actas, "diputados", date(2026, 7, 1))
-    esperado = (2 * 37 + 106) / 3 / 257 * 100
-    assert r["valor"] == pytest.approx(esperado)
+def test_lo_posterior_a_la_referencia_no_existia_todavia():
+    actas = {"1": dip(fecha="2026-06-10", afirmativos=131), "2": dip(fecha="2026-07-02", afirmativos=170)}
+    assert politica.votos_a_favor_diputados(actas, date(2026, 6, 30))["valor"] == 131.0
 
 
-def test_sin_votaciones_en_la_ventana_no_hay_valor():
-    assert politica.votos_sobre_bancas_camara({}, "diputados", date(2026, 7, 1)) is None
-    assert politica.votos_sobre_bancas_camara(
-        {"x": dip(fecha="2024-01-10")}, "diputados", date(2026, 7, 1)) is None
+def test_no_cruza_la_instalacion_del_congreso():
+    actas = {"a": dip(fecha="2023-12-01", afirmativos=200)}
+    assert politica.votos_a_favor_diputados(actas, date(2024, 3, 31)) is None
 
 
-# ── el compuesto 65/35 ───────────────────────────────────────────────────────
-
-def test_compuesto_65_35():
-    r = politica.componer_votos_sobre_bancas({
-        "diputados": {"valor": 20.0, "n_actas": 10, "fecha_dato": "2026-10-01"},
-        "senado": {"valor": 40.0, "n_actas": 5, "fecha_dato": "2026-09-01"},
-    })
-    assert r["valor"] == pytest.approx(0.65 * 20 + 0.35 * 40)   # 27,0
-    assert r["n_actas"] == 15
-    assert r["fecha_dato"] == "2026-10-01"
-    assert r["camaras_sin_dato"] == []
-    assert r["componentes"]["senado"]["valor"] == 40.0
+def test_lo_que_no_entra_al_universo_no_cuenta():
+    actas = {"1": dip(fecha="2026-06-10", afirmativos=131),
+             "2": dip(fecha="2026-06-11", afirmativos=250, origen_pe=False),
+             "3": dip(fecha="2026-06-12", afirmativos=250, lla_afirm=10, lla_neg=80)}
+    assert politica.votos_a_favor_diputados(actas, date(2026, 6, 30))["valor"] == 131.0
 
 
-def test_si_falta_una_camara_se_usa_la_otra_sola_y_se_dice():
-    r = politica.componer_votos_sobre_bancas({
-        "diputados": None, "senado": {"valor": 40.0, "n_actas": 5, "fecha_dato": "2026-09-01"}})
-    assert r["valor"] == 40.0
-    assert r["camaras_sin_dato"] == ["diputados"]
-    r2 = politica.componer_votos_sobre_bancas({
-        "diputados": {"valor": 20.0, "n_actas": 3, "fecha_dato": "2026-09-01"}, "senado": None})
-    assert r2["valor"] == 20.0 and r2["camaras_sin_dato"] == ["senado"]
-    assert politica.componer_votos_sobre_bancas({"diputados": None, "senado": None}) is None
-
-
-def test_el_valor_de_extremo_a_extremo_usa_el_cache_de_las_dos_camaras():
-    cache = {"diputados": {"1": dip(fecha="2026-06-24")},
+def test_el_senado_ya_no_cuenta():
+    cache = {"diputados": {"1": dip(fecha="2026-06-24", afirmativos=131)},
              "senado": {"9": sen(fecha="2026-09-17")}}
     r = politica.votos_sobre_bancas_valor(cache, date(2026, 10, 15))
-    esperado = 0.65 * (37 / 257 * 100) + 0.35 * (23 / 72 * 100)
-    assert r["valor"] == pytest.approx(round(esperado, 1))
-    assert r["componentes"]["diputados"]["n_actas"] == 1
+    assert r["valor"] == 131.0 and r["mes_votacion"] == "2026-06"
+    assert politica.votos_sobre_bancas_valor({"senado": cache["senado"]}, date(2026, 10, 15)) is None
+
+
+@pytest.mark.parametrize("valor,color", [
+    (172, "verde"), (130, "verde"), (129.1, "verde"), (129, "amarillo"), (119, "amarillo"),
+    (118.9, "naranja"), (109, "naranja"), (108.9, "rojo"), (95, "rojo"),
+])
+def test_los_cortes_de_luis(valor, color):
+    """Más de 129 verde · 119 a 129 amarillo · 109 a 119 naranja · menos de 109 rojo."""
+    puntaje = parametrica.puntaje_desde_anclas(valor, itcp.ANCLAS_ITCP["votos_sobre_bancas"])
+    assert parametrica.color_de_puntaje(puntaje) == color
 
 
 # ── card y serie son el mismo cálculo ────────────────────────────────────────
@@ -231,16 +212,15 @@ def test_la_card_es_el_ultimo_punto_de_la_serie(monkeypatch):
     card = politica.fetch_votos_sobre_bancas()
     serie = politica.votos_sobre_bancas_serie()
     assert serie[-1][0] == date.today().isoformat()
-    assert card["valor"] == serie[-1][1]
-    assert card["unidad"] == "% de las bancas de la cámara"
-    assert card["componentes"]["senado"]["n_actas"] == 1
+    assert card["valor"] == serie[-1][1] == 131.0
+    assert card["unidad"] == "diputados a favor"
     assert card["fecha_dato"] == date.today().isoformat()
-    assert "Diputados: 16,1 % (2 votaciones)" in card["detalle_txt"]   # coma decimal, como el resto del sitio
-    assert card["ultima_votacion_incluida"] == "2026-09-17"
-    # los puntos son [fecha, valor] ascendentes y arrancan cuando hay primera votación
+    assert card["ultima_votacion_incluida"] == "2026-06-24"
+    assert "junio de 2026" in card["detalle_txt"] and "se conserva" in card["detalle_txt"]
     fechas = [f for f, _ in serie]
     assert fechas == sorted(fechas)
     assert fechas[0] == "2026-02-28"
+    assert dict(serie)["2026-03-31"] == 140.0   # marzo a mayo arrastran febrero
 
 
 def test_lectura_incompleta_no_se_publica_como_actualizacion(monkeypatch):
@@ -444,26 +424,22 @@ def test_la_dimension_se_reparte_mitad_y_mitad():
 def test_votos_sobre_bancas_es_capacidad_tiene_banda_y_rezago():
     assert itcp.FAMILIAS_ITCP["votos_sobre_bancas"] == "capacidad"
     assert "votos_sobre_bancas" in itcp.BANDAS_ITCP
-    assert itcp.REZAGO_MESES_ITCP["votos_sobre_bancas"] == 6.0
+    assert itcp.REZAGO_MESES_ITCP["votos_sobre_bancas"] == 0.5   # un mes (ADR-0423)
 
 
-def test_anclas_convencion_40_30_20_10_5():
-    bandas = itcp.BANDAS_ITCP["votos_sobre_bancas"]
-    f = parametrica.puntaje_interpolado
-    assert f(60.0, bandas) == 100.0 and f(40.0, bandas) == 100.0
-    assert f(30.0, bandas) == 85.0
-    assert f(20.0, bandas) == 65.0
-    assert f(10.0, bandas) == 40.0
-    assert f(5.0, bandas) == 10.0 and f(0.0, bandas) == 10.0 and f(-3.0, bandas) == 10.0
-    # entre anclas, lineal: 25 % está a mitad de camino entre 65 y 85
-    assert f(25.0, bandas) == 75.0
+def test_anclas_de_la_escala_de_luis():
+    anclas = itcp.ANCLAS_ITCP["votos_sobre_bancas"]
+    f = parametrica.puntaje_desde_anclas
+    assert f(172, anclas) == 100.0 and f(200, anclas) == 100.0
+    assert f(109, anclas) == 20.0 and f(119, anclas) == 40.0
+    assert f(99, anclas) == 10.0 and f(50, anclas) == 10.0
     # más alto = mejor: monótona
-    valores = [f(x / 2, bandas) for x in range(0, 100)]
+    valores = [f(x, anclas) for x in range(90, 180)]
     assert valores == sorted(valores)
 
 
 def test_el_indicador_pesa_igual_que_la_cohesion_en_el_itcp():
-    r = itcp.calcular_itcp({"cohesion_bloque": 97.0, "votos_sobre_bancas": 20.0, "ratio_dnu": 0.5})
+    r = itcp.calcular_itcp({"cohesion_bloque": 97.0, "votos_sobre_bancas": 125.0, "ratio_dnu": 0.5})
     dim = r["dimensiones"]["cohesion_interna"]
     ind = dim["indicadores"]
     assert ind["cohesion_bloque"]["peso_efectivo"] == pytest.approx(ind["votos_sobre_bancas"]["peso_efectivo"])
@@ -492,8 +468,8 @@ def test_una_ley_de_origen_legislativo_no_cuenta():
 def test_el_promedio_ignora_las_leyes_de_consenso_de_origen_legislativo():
     actas = {"1": dip(fecha="2026-06-01", afirmativos=131),
              "2": dip(fecha="2026-06-02", afirmativos=240, origen_pe=False)}   # capital nacional, 240 votos
-    r = politica.votos_sobre_bancas_camara(actas, "diputados", date(2026, 7, 1))
-    assert r["n_actas"] == 1 and r["valor"] == pytest.approx(37 / 257 * 100)
+    r = politica.votos_a_favor_diputados(actas, date(2026, 7, 1))
+    assert r["n_actas"] == 1 and r["valor"] == 131.0
 
 
 INDICE = {"ids": {"HCDN1"}, "claves": {("CD", 33, 2025)},
@@ -628,5 +604,5 @@ def test_los_convenios_internos_y_las_leyes_comunes_no_se_toman_por_tratados(tit
 def test_sacar_los_tratados_cambia_el_promedio():
     actas = {"1": dip(fecha="2026-06-01", afirmativos=131),
              "2": dip(fecha="2026-06-02", afirmativos=235, titulo="O.D. 17 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE CHILE. VOT. EN GRAL.")}
-    r = politica.votos_sobre_bancas_camara(actas, "diputados", date(2026, 7, 1))
-    assert r["n_actas"] == 1 and r["valor"] == pytest.approx(37 / 257 * 100)
+    r = politica.votos_a_favor_diputados(actas, date(2026, 7, 1))
+    assert r["n_actas"] == 1 and r["valor"] == 131.0

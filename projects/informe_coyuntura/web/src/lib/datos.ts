@@ -194,16 +194,21 @@ export const informe = informeRaw as unknown as Informe;
 // sumas móviles, validaciones) usan la historia completa de series.json.
 // Excepción documentada: protestas_caba muestra 2018→hoy porque su razón de
 // ser es comparar el nivel de protesta contra la era pre-mandato. pobreza_indec
-// va por lo mismo (ADR-0114): es semestral, y con el recorte perdía el punto de
-// julio de 2023 —la última lectura previa al traspaso— que es justamente la
-// referencia contra la que se lee la serie.
+// arranca en el 2º semestre de 2023 (fechado 2023-07-01, ADR-0394): es
+// semestral, y el recorte general le sacaría la lectura de la base contra la
+// que se lee la serie (ADR-0114). Hasta el 4-nov-2026 se mostraba desde 2003 y
+// el gráfico de pobreza era el único que no arrancaba en la base (ADR-0424).
 const SERIE_DESDE = "2023-12-01";
-const SERIE_COMPLETA = new Set(["protestas_caba", "pobreza_indec"]);
+const SERIE_DESDE_PROPIA: Record<string, string | null> = {
+  protestas_caba: null,           // completa
+  pobreza_indec: "2023-07-01",    // desde la base, 2º semestre de 2023
+};
 const seriesTodas = seriesRaw as Record<string, { fecha: string; valor: number }[]>;
 export const series = Object.fromEntries(
-  Object.entries(seriesTodas).map(([k, pts]) => [
-    k, SERIE_COMPLETA.has(k) ? pts : pts.filter(p => p.fecha >= SERIE_DESDE),
-  ]),
+  Object.entries(seriesTodas).map(([k, pts]) => {
+    const desde = k in SERIE_DESDE_PROPIA ? SERIE_DESDE_PROPIA[k] : SERIE_DESDE;
+    return [k, desde === null ? pts : pts.filter(p => p.fecha >= desde)];
+  }),
 ) as Record<string, { fecha: string; valor: number }[]>;
 
 // Orden y metadatos de presentación de los cinturones (mapeo a clases .cg-cint--*)
@@ -436,7 +441,7 @@ export const LABELS: Record<string, string> = {
   transferencias_no_automaticas: "Transferencias no automáticas a provincias",
   eficacia_legislativa: "Eficacia legislativa de proyectos maduros", cohesion_bloque: "Cohesión del bloque oficialista (ambas cámaras)",
   cohesion_bloque_senado: "Cohesión del bloque de La Libertad Avanza (Senado, fusionado)",
-  votos_sobre_bancas: "Votos ajenos al aprobar leyes",
+  votos_sobre_bancas: "Diputados a favor de las leyes del Ejecutivo",
   rotacion_gabinete: "Rotación del gabinete",
   gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por falta de quórum",
   alineamiento_senadores_prov: "Alineamiento de senadores por provincia",
@@ -531,7 +536,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   conflictividad_nacional: "% frente a 2023",
   jornadas_individuales_no_trabajadas_12m: "jornadas en 12 meses",
   iaf_transferencias: "% real", transferencias_no_automaticas: "% real frente a 2023", eficacia_legislativa: "%", cohesion_bloque: "%",
-  cohesion_bloque_senado: "%", votos_sobre_bancas: "% de la cámara", rotacion_gabinete: "salidas en 12 meses",
+  cohesion_bloque_senado: "%", votos_sobre_bancas: "diputados", rotacion_gabinete: "salidas en 12 meses",
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
   alineamiento_senadores_prov: "%", adhesion_reformas_provincial: "%",
   derrotas_legislativas: "derrotas en 12 meses",
@@ -609,7 +614,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   eficacia_legislativa: "% de proyectos",
   cohesion_bloque: "% de votos (Rice bicameral: Diputados 65% + Senado 35%)",
   cohesion_bloque_senado: "% de votos (Senado — fusionado en el compuesto bicameral)",
-  votos_sobre_bancas: "% de las bancas de la cámara que votan a favor sin ser del bloque oficialista (leyes aprobadas; Diputados 65% + Senado 35%)",
+  votos_sobre_bancas: "diputados que votaron a favor, promedio de las votaciones de ley del Ejecutivo del mes (sin votaciones, el último mes que las tuvo)",
   rotacion_gabinete: "Salidas de rango ministerial (acumulado de 12 meses)",
   gobernadores_alineamiento: "% de gobernadores (retirado)", veto_quorum: "% de sesiones",
   alineamiento_senadores_prov: "% de votos de senadores de otros bloques que acompañan al oficialismo (promedio entre provincias)",

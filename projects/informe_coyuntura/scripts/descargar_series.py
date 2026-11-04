@@ -1867,10 +1867,10 @@ POLITICA_DERIVADAS = [
     ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",
      "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
      fetch_cohesion_bloque_compuesta_mensual),
-    # La card es el último punto de esta lista (mismo cálculo, ADR-0376): el
-    # compuesto 65/35 del excedente de votos ajenos sobre las bancas de LLA.
-    ("votos_sobre_bancas", "% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",
-     "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+    # La card es el último punto de esta lista (mismo cálculo): diputados a
+    # favor, promedio del mes; un mes sin votaciones conserva el último (ADR-0423).
+    ("votos_sobre_bancas", "diputados a favor (promedio del mes; sin votaciones, el último)",
+     "Votaciones nominales de Diputados — elaboración CIGOB",
      politica.votos_sobre_bancas_serie),
     ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",

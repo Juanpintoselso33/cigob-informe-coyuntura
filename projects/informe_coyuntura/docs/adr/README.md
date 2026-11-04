@@ -253,6 +253,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0415](0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) | Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas | `ratio_dnu` | vigente |
 | [0420](0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) | La dimensión «Sector privado» pasa a llamarse «Sector empresarial» |  | vigente |
 | [0422](0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) | El Poder judicial se disuelve en poder legislativo | `cobertura_judicial`, `produccion_legislativa`, `ratio_dnu` | vigente |
+| [0423](0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) | Votos ajenos pasa a diputados a favor, por mes | `votos_sobre_bancas` | vigente |
 
 ### Gestión (ITCG)
 
@@ -401,6 +402,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0411](0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) | Los dos alquileres se leen como nivel real contra el 4T-2023 | `alquiler_real`, `alquiler_udesa_real` | vigente |
 | [0412](0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) | El padrón de ARCA se guarda y no se publica | `ocupacion_eph` | vigente |
 | [0413](0413-informalidad-mide-asalariados-sin-aportes-propios.md) | La informalidad cuenta sólo al asalariado sin aportes propios | `informalidad` | vigente |
+| [0424](0424-el-grafico-de-pobreza-arranca-en-la-base.md) | El gráfico de pobreza arranca en la base | `pobreza_nowcast` | vigente |
 
 ### Espíritu de época
 

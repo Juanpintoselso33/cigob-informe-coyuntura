@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [cohesion_bloque, alineamiento_senadores_prov, votos_sobre_bancas]
 archivos: ['data/politica/pases_senadores.json', 'scripts/politica.py', 'scripts/descargar_series.py', 'tests/test_pases_senadores.py', 'tests/test_descargar_series_cohesion.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts']
-relacionado: ['0376', '0401', '0402']
+relacionado: ['0376', '0401', '0402', '0423']
 ambito: 'ITCP · votaciones del Senado · bloque de cada senador en cada acta'
 origen: 'Auditoría del cinturón político del 28-oct-2026; decisión de Juan del mismo día.'
 ---

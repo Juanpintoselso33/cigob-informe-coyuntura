@@ -503,19 +503,14 @@ BANDAS_ITCP = {
         (-INF, 89.8, 10),
     ],
     "votos_sobre_bancas": [
-        # ADR-0376 (2026-10-27). CONVENCIÓN declarada, no calibrada contra el
-        # rango observado: más alto = mejor, en % de las bancas de la cámara.
-        # Anclas de interpolación (valor → puntaje): 40 o más → 100 · 30 → 85 ·
-        # 20 → 65 · 10 → 40 · 5 o menos → 10. Las tablas de bandas de este
-        # motor interpolan en el punto medio de cada banda finita y en el borde
-        # de las abiertas, así que para que las anclas caigan EXACTAMENTE en
-        # 10/20/30/40 las bandas son (5,15) (15,25) (25,35) (35,45) y la
-        # abierta (45,+inf) repite el 100: el techo es el 40, no el 45.
-        # Si se prefiere la lectura por cortes (≥40 · 30-40 · 20-30 · 10-20 ·
-        # ≤10), se cambia esta tabla y la ficha, y el puntaje de un 20% pasa
-        # de 65 a ~52.
-        (45.0, INF, 100), (35.0, 45.0, 100), (25.0, 35.0, 85), (15.0, 25.0, 65),
-        (5.0, 15.0, 40), (-INF, 5.0, 10),
+        # ADR-0423 (2026-11-04), escala de Luis: diputados que votaron a favor,
+        # promedio del mes. Más de 129 (mayoría absoluta de 257) verde · 119 a
+        # 129 amarillo · 109 a menos de 119 naranja · menos de 109 rojo. El
+        # puntaje sale de ANCLAS_ITCP; esta tabla repite los cortes con el
+        # puntaje de su ancla inferior, para el color y la ficha.
+        # Antes (ADR-0376): votos ajenos como % de la cámara, 12 meses, 65/35.
+        (172.0, INF, 100), (129.1, 172.0, 60), (119.0, 129.1, 40),
+        (109.0, 119.0, 20), (-INF, 109.0, 10),
     ],
     "cohesion_bloque_senado": [
         # RETIRADO como indicador propio 2026-07-10 (ADR-0048): absorbido por
@@ -669,6 +664,11 @@ ANCLAS_ITCP = {
     "cohesion_bloque": ((89.8, 10), (93.4, 40), (97.0, 65), (99.9, 100)),
     # ADR-0402: 25 y 50 conceptuales, 77 = mediana de los gobiernos anteriores.
     "alineamiento_senadores_prov": ((25.0, 10), (50.0, 65), (77.0, 100)),
+    # ADR-0423: los cortes de color de Luis caen justo en los puntajes 60/40/20
+    # (verde ≥ 60 · amarillo ≥ 40 · naranja ≥ 20). 129,1 y no 129 porque «más
+    # de 129» deja la mayoría justa en amarillo y el valor es un promedio con un
+    # decimal. 172 = dos tercios de la cámara; 99, diez menos que el rojo.
+    "votos_sobre_bancas": ((99.0, 10), (109.0, 20), (119.0, 40), (129.1, 60), (172.0, 100)),
 }
 
 DIMENSIONES_ITCP = {
@@ -760,6 +760,8 @@ DIMENSIONES_ITCP = {
         # hacen falta para aprobar una ley) y la dimensión se reparte 50/50
         # con la cohesión del bloque. La cohesión baja a ~8% del índice, que
         # es lo que pidió Luis; el peso de la dimensión no se toca.
+        # ADR-0423 (2026-11-04): pasa a medir diputados a favor por mes; el
+        # 50/50 no cambia.
         "indicadores": {"cohesion_bloque": 0.5, "votos_sobre_bancas": 0.5},
     },
     "conflicto_social": {
@@ -1015,7 +1017,7 @@ FAMILIAS_ITCP = {
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
     "ratio_dnu": "capacidad",                  # cuánto depende del decreto
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
-    "votos_sobre_bancas": "capacidad",         # cuántos votos ajenos suma para aprobar una ley
+    "votos_sobre_bancas": "capacidad",         # cuántos diputados acompañan sus leyes (ADR-0423)
     # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
     # tercero sino resultado de lo que el Gobierno consigue negociar (ADR-0126).
     "cobertura_judicial": "capacidad",
@@ -1089,9 +1091,10 @@ REZAGO_MESES_ITCP = {
     # Ventanas de 90 días.
     "alineamiento_senadores_prov": 1.5,
     "cohesion_bloque": 1.5,
-    # Ventana móvil de 12 meses sobre actas de votación nominal, que se publican
-    # a los pocos días: queda el centroide de la ventana (ADR-0376).
-    "votos_sobre_bancas": 6.0,
+    # Promedio de las votaciones del mes (ADR-0423), con actas que se publican a
+    # los pocos días: el centroide de un mes. Si el mes no tuvo votaciones, la
+    # tarjeta conserva la última y el rezago real es mayor; se declara en ella.
+    "votos_sobre_bancas": 0.5,
     # Stock acumulado de adhesiones: describe el estado vigente, no un promedio.
     "adhesion_reformas_provincial": 0.0,
 }

@@ -9,7 +9,7 @@ indicadores: [jornadas_individuales_no_trabajadas_12m, produccion_legislativa, c
 parametros: ['REZAGO_MESES_ITCP']
 archivos: ['scripts/itcp.py', 'scripts/publicar.py', 'tests/test_itcp.py', 'web/src/lib/fichas.ts', 'docs/adr/0092-el-informe-declara-su-propio-rezago.md']
 modifica: ['0092']
-relacionado: ['0092', '0353', '0372', '0397']
+relacionado: ['0092', '0353', '0372', '0397', '0423']
 ambito: 'ITCP · tarjeta «Rezago del índice» · regla de REZAGO_MESES_ITCP'
 origen: 'Auditoría del cinturón político del 28-oct-2026; decisión de Juan del mismo día.'
 ---
