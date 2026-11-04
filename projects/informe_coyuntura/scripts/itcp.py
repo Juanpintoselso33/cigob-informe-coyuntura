@@ -683,7 +683,10 @@ DIMENSIONES_ITCP = {
         # el documento". El orden relativo de las cinco se conserva intacto.
         # 0.25 → 0.21 (ADR-0126) → 0.2258 (ADR-0344: sale imagen_voto y las
         # seis restantes absorben su 0.07 proporcionalmente, ÷0.93).
-        "peso": 0.2258,
+        # 0.2258 → 0.3871 (ADR-0422, 4-nov-2026): se disuelve la dimensión
+        # Poder judicial y su 0.1613 entero pasa acá con la cobertura de cargos,
+        # que depende del acuerdo del Senado (revisión de Luis del 3-nov).
+        "peso": 0.3871,
         # Pesos internos redistribuidos 2026-07-16 al entrar bloqueo_sostenido
         # (ADR-0069): cada indicador cede 0.05 y el nuevo toma 0.20 — la
         # dimensión gana la cara ganada del bloqueo (derrotas solo cuenta la
@@ -723,9 +726,17 @@ DIMENSIONES_ITCP = {
         # REEMPLAZADOS y no sólo suspendidos, salen de la tabla (mismo criterio
         # que la brecha de obra pública, ADR-0372). Antes:
         # 0,23/0,30/0,15 (veto_quorum)/0,15 (desafios)/0,17.
-        "indicadores": {"ratio_dnu": 0.23, "eficacia_legislativa": 0.30,
-                        "insistencias_vetos": 0.15, "rechazos_decretos": 0.15,
-                        "produccion_legislativa": 0.17},
+        # 2026-11-04 (ADR-0422): entra `cobertura_judicial` y sale
+        # `produccion_legislativa` (suspendida). Reparto nuevo, no proporcional:
+        # eficacia y decretos por ley arriba porque muestran si se gobierna por
+        # ley o por decreto; la cobertura en 0,20, la mitad de lo que pesaba en
+        # el índice, porque es un solo dato que depende tanto del Ejecutivo
+        # como del Senado; vetos insistidos y decretos derogados abajo porque
+        # casi nunca ocurren y pasan casi todos los meses en 100. Antes:
+        # 0,23/0,30/0,15/0,15/0,17 (producción legislativa).
+        "indicadores": {"eficacia_legislativa": 0.30, "ratio_dnu": 0.25,
+                        "cobertura_judicial": 0.20,
+                        "insistencias_vetos": 0.125, "rechazos_decretos": 0.125},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
@@ -771,50 +782,10 @@ DIMENSIONES_ITCP = {
     # (ADR-0344): el Votómetro deja el Monitor y pasa a ser otro producto. Su
     # peso se repartió entre las seis restantes en proporción (÷0.93), el mismo
     # procedimiento inverso que ADR-0330 usó dentro del poder legislativo.
-    "poder_judicial": {
-        "nombre": "Poder judicial",
-        "peso": 0.1613,   # 0.15 → 0.1613 (ADR-0344)
-        # Dimensión nueva 2026-07-25 (ADR-0126), a partir del aporte externo
-        # sobre el cinturón político. Cierra el mismo tipo de hueco que ADR-0088
-        # cerró con el sector privado: el índice medía en detalle al Congreso y
-        # a los gobernadores y no medía en absoluto al Poder Judicial, que es un
-        # actor de veto de primer orden sobre la agenda del Gobierno.
-        #
-        # Entra con 0,15 —igual que sector_privado— y las seis dimensiones
-        # existentes ceden PROPORCIONALMENTE (×0,85), de modo que el orden
-        # relativo entre ellas no se toca. Es el segundo cambio de pesos entre
-        # dimensiones desde ADR-0036 y sigue el precedente de ADR-0088.
-        #
-        # Arranca con un solo indicador y eso es una limitación real, no un
-        # diseño terminado: la cobertura de cargos mide la CAPACIDAD de integrar
-        # el Poder Judicial, no su comportamiento (cautelares contra el Estado,
-        # velocidad de resolución, criterio jurisprudencial). El aporte externo
-        # propone cinco indicadores más para este bloque; todos dependen de un
-        # protocolo de codificación de contenido que todavía no existe.
-        # 2026-07-31 (ADR-0168): la dimensión deja de tener un solo indicador.
-        # ADR-0126 había dejado escrito que uno solo "es una limitación real, no
-        # un diseño terminado": la cobertura mide la CAPACIDAD de integrar el
-        # Poder Judicial, no su COMPORTAMIENTO. Entran los tres que ADR-0135 y
-        # ADR-0139 dejaron construibles y ADR-0166 desbloqueó al fijar la
-        # orientación.
-        #
-        # cobertura_judicial conserva el peso mayor (0.40) por ser el único
-        # mensual y el de menor rezago (1 mes contra 6-18 de los otros tres);
-        # los tres nuevos entran parejos en 0.20, sin razón para ordenarlos
-        # entre sí — mismo criterio que ADR-0074 usó al repartir la dimensión
-        # de financiamiento.
-        #
-        # ADR-0374 (2026-10-27): `velocidad_resolucion` y `paralisis_denuncias`
-        # pasan a INDICADORES_SUSPENDIDOS (reunión del 26-oct): miden la
-        # eficiencia de la Justicia y la actividad del Consejo, no al Poder
-        # Ejecutivo. Con `judicializacion` también suspendida (ADR-0255), la
-        # cobertura de cargos toma la dimensión entera. Los pesos de diseño se
-        # conservan (ADR-0245).
-        "indicadores": {"cobertura_judicial": 0.40,
-                        "judicializacion": 0.20,
-                        "velocidad_resolucion": 0.20,
-                        "paralisis_denuncias": 0.20},
-    },
+    # «Poder judicial» (0.1613) se disolvió el 4-nov-2026 (ADR-0422): le
+    # quedaba un solo indicador vivo, la cobertura de cargos, que pasó a poder
+    # legislativo con el peso entero de la dimensión. Sus tres suspendidos
+    # conservan `"dimension": "poder_judicial"` como archivo de dónde pesaban.
     "sector_privado": {
         "nombre": "Sector empresarial",   # «Sector privado» hasta el 3-nov-2026 (ADR-0420)
         "peso": 0.1398,   # 0.15 → 0.13 (ADR-0126) → 0.1398 (ADR-0344)
@@ -957,6 +928,21 @@ INDICADORES_SUSPENDIDOS = {
         "condicion_reingreso": "Ninguna prevista: sus dos componentes "
                                "consumados ya puntúan por separado.",
     },
+    "produccion_legislativa": {
+        "dimension": "poder_legislativo",
+        "desde": "2026-11",
+        "desde_txt": "noviembre de 2026",
+        "adr": "0422",
+        "por_que": "Cuenta cuántas leyes sanciona el Congreso en 12 meses: es "
+                   "la actividad de las cámaras, no algo que diga si el "
+                   "Gobierno consigue lo que necesita. Además cuenta leyes "
+                   "sancionadas mientras decretos por ley cuenta leyes "
+                   "publicadas, así que los dos números no se cruzan.",
+        "condicion_reingreso": "Una medida alternativa del volumen legislativo "
+                               "que se lea contra la agenda del Ejecutivo y "
+                               "use el mismo universo de leyes que decretos "
+                               "por ley.",
+    },
     "velocidad_resolucion": {
         "dimension": "poder_judicial",
         "desde": "2026-10",
@@ -1024,13 +1010,6 @@ FAMILIAS_ITCP = {
     "apoyo_construccion": "tension",           # lo que la cámara de la construcción dice del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
-    # ADR-0168: los cuatro entran por la regla de ADR-0166 — responden "cuánto
-    # lo confrontan las otras instituciones", no "cuánta actividad despliega el
-    # Gobierno", y de ahí sale el signo.
-    "produccion_legislativa": "tension",       # ¿el Congreso sanciona leyes que el Gobierno acepta? (ADR-0398)
-    "judicializacion": "tension",              # cuánto se le frena la agenda por vía judicial
-    "velocidad_resolucion": "tension",         # cuán rápido resuelve el sistema judicial
-    "paralisis_denuncias": "tension",          # si el control disciplinario está activo
 
     # Capacidad propia: resultado de la acción del gobierno.
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
@@ -1077,19 +1056,6 @@ FAMILIAS_ITCP_META = {
 # la consulta. Las ventanas que llegan hasta el día de hoy (comunicados,
 # decretos, actas) no tienen demora y quedan en 6.
 REZAGO_MESES_ITCP = {
-    # ADR-0168. Los dos judiciales anuales son, por lejos, los más rezagados
-    # del índice: la Corte publica su anuario con el año cerrado y SAIJ indexa
-    # con demora. Se declara alto a propósito — la card de rezago (ADR-0092)
-    # tiene que mostrar que este bloque describe otro año, no el pulso de hoy.
-    "velocidad_resolucion": 12.0,
-    "judicializacion": 9.0,
-    # Ventana móvil de 12 meses sobre sesiones ya publicadas en el archivo del
-    # Consejo: el rezago es el de la publicación de la nota, no el de la ventana.
-    "paralisis_denuncias": 2.0,
-    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN,
-    # en meses calendario completos (el mes en curso no entra): 6 + ~0,5 de
-    # demora media (ADR-0399).
-    "produccion_legislativa": 6.5,
     # Cohorte MADURA: sólo entran los proyectos publicados hace 12-24 meses,
     # porque antes no hubo tiempo material de sancionarlos (ADR-0061). Es el
     # más rezagado del índice por construcción, y no hay forma de acelerarlo

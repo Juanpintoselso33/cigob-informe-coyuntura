@@ -14,34 +14,17 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 23% | `ratio_dnu`, `eficacia_legislativa`, `insistencias_vetos`, `rechazos_decretos`, `produccion_legislativa` |
+| `poder_legislativo` | 39% | `eficacia_legislativa`, `ratio_dnu`, `cobertura_judicial`, `insistencias_vetos`, `rechazos_decretos` |
 | `alianzas_territoriales` | 20% | `transferencias_no_automaticas`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 16% | `cohesion_bloque`, `votos_sobre_bancas` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
-| `poder_judicial` | 16% | `cobertura_judicial` |
 | `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio`, `apoyo_campo`, `apoyo_construccion` |
 
 Suma de pesos: 100%.
 
 ## Qué mide cada indicador
 
-### Dimensión `poder_legislativo` (23%)
-
-#### Decretos de necesidad y urgencia por ley
-
-`ratio_dnu`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 23% |
-| Peso efectivo en el índice | **5.2%** |
-| Familia de lectura | capacidad propia |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
-
-**Bandas**: ≤ 0.33 → 100 · 0.33–0.77 → 85 · 0.77–1.32 → 65 · 1.32–2.21 → 40 · > 2.21 → 10
-
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
+### Dimensión `poder_legislativo` (39%)
 
 #### Eficacia legislativa de proyectos maduros
 
@@ -50,14 +33,46 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **6.8%** |
+| Peso efectivo en el índice | **11.6%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
 
 **Bandas**: > 50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤ 5 → 10
 
-**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP
+**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
+
+#### Decretos de necesidad y urgencia por ley
+
+`ratio_dnu`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **9.7%** |
+| Familia de lectura | capacidad propia |
+| Rezago declarado | 6 meses |
+| Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
+
+**Bandas**: ≤ 0.33 → 100 · 0.33–0.77 → 85 · 0.77–1.32 → 65 · 1.32–2.21 → 40 · > 2.21 → 10
+
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
+
+#### Cobertura de cargos judiciales
+
+`cobertura_judicial`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **7.7%** |
+| Familia de lectura | capacidad propia |
+| Rezago declarado | 1 meses |
+| Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
+
+**Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
+
+**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha · [ADR-0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) Cobertura excluye Corte Suprema y renovaciones · [ADR-0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) Cobertura concilia movimientos netos y bajas · [ADR-0374](../adr/0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) La tasa de la Corte y las comisiones del Consejo salen del índice político · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
 
 #### Vetos que el Congreso dio vuelta
 
@@ -65,15 +80,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.4%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **4.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
-**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
 
 #### Decretos derogados por el Congreso
 
@@ -81,31 +96,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.4%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **4.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
-**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
-
-#### Producción legislativa del Congreso
-
-`produccion_legislativa`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 17% |
-| Peso efectivo en el índice | **3.8%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 6.5 meses |
-| Procedencia del ancla | `externa` — umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306) |
-
-**Bandas**: > 74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤ 20 → 10
-
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0306](../adr/0306-produccion-legislativa-meses-completos.md) Producción legislativa: doce meses completos y leyes distintas · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo · [ADR-0398](../adr/0398-la-produccion-legislativa-no-cuenta-leyes-vetadas.md) La producción legislativa no cuenta las leyes vetadas · [ADR-0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) El rezago suma la demora de publicación
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
 
 ### Dimensión `alianzas_territoriales` (20%)
 
@@ -225,24 +224,6 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario · [ADR-0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) Jornadas no trabajadas con una escala que se mueve · [ADR-0399](../adr/0399-el-rezago-suma-la-demora-de-publicacion.md) El rezago suma la demora de publicación
 
-### Dimensión `poder_judicial` (16%)
-
-#### Cobertura de cargos judiciales
-
-`cobertura_judicial`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **16.1%** |
-| Familia de lectura | capacidad propia |
-| Rezago declarado | 1 meses |
-| Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
-
-**Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
-
-**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha · [ADR-0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) Cobertura excluye Corte Suprema y renovaciones · [ADR-0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) Cobertura concilia movimientos netos y bajas · [ADR-0374](../adr/0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) La tasa de la Corte y las comisiones del Consejo salen del índice político
-
 ### Dimensión `sector_privado` (14%)
 
 #### Postura pública de la industria
@@ -326,6 +307,7 @@ histórica.
 - `judicializacion` — Densidad de menciones cautelares en sumarios del Sistema Argentino de Información Jurídica
 - `movilizacion_cepa` — Tensión social (Centro de Economía Política Argentina) (declarado como contexto)
 - `paralisis_denuncias` — Actividad de las comisiones de control
+- `produccion_legislativa` — Producción legislativa del Congreso
 - `protestas_caba` — Protestas en la Ciudad de Buenos Aires (Proyecto de Datos de Ubicación y Eventos de Conflictos Armados) (declarado como contexto)
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
 - `velocidad_resolucion` — Tasa de resolución de la Corte
@@ -370,7 +352,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-110 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+111 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -482,3 +464,4 @@ histórica.
 - [0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) — El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara
 - [0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) — Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
 - [0420](../adr/0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) — La dimensión «Sector privado» pasa a llamarse «Sector empresarial»
+- [0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) — El Poder judicial se disuelve en poder legislativo

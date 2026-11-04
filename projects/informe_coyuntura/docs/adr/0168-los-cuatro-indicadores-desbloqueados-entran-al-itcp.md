@@ -9,7 +9,7 @@ indicadores: [produccion_legislativa, judicializacion, velocidad_resolucion, par
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts']
 corrige: ['0166']
 cierra: ['0134', '0135', '0137', '0139']
-relacionado: ['0045', '0048', '0090', '0094', '0105', '0126', '0147', '0171', '0191', '0230', '0255', '0268', '0374', '0398']
+relacionado: ['0045', '0048', '0090', '0094', '0105', '0126', '0147', '0171', '0191', '0230', '0255', '0268', '0374', '0398', '0422']
 corregido_por: ['0306']
 modificado_por: ['0398']
 continuado_por: ['0169', '0170']

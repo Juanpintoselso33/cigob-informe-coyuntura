@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [votometro_ventaja_lla]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'scripts/panel_validacion.py', 'scripts/validacion_externa.py', 'scripts/gate_calidad.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
-relacionado: ['0126', '0312', '0330', '0345']
+relacionado: ['0126', '0312', '0330', '0345', '0422']
 ambito: 'Cinturón política · ITCP · sale `votometro_ventaja_lla` y con él la dimensión «imagen y voto»'
 origen: 'Reunión del 6-oct-2026 sobre el Monitor (punto 5 de docs/261006_reunion_pendientes.md): «sacar el Votómetro de todos los cinturones». Juan, 7-oct: el Votómetro es otro producto.'
 ---

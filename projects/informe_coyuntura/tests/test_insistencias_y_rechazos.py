@@ -75,7 +75,8 @@ def test_cero_es_senal_y_no_falta_de_dato():
 
 def test_reemplazan_a_quorum_y_desafios_en_la_dimension():
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]["indicadores"]
-    assert dim["insistencias_vetos"] == dim["rechazos_decretos"] == 0.15
+    # ADR-0422: 0,15 → 0,125 al entrar la cobertura de cargos de juez.
+    assert dim["insistencias_vetos"] == dim["rechazos_decretos"] == 0.125
     assert {"veto_quorum", "desafios_legislativos"} <= set(itcp.INDICADORES_SUSPENDIDOS)
     assert "veto_quorum" not in dim and "desafios_legislativos" not in dim
     assert abs(sum(dim.values()) - 1.0) < 1e-9

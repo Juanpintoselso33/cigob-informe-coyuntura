@@ -43,8 +43,12 @@ import publicar
 # entera, que es un caso distinto (la dimensión desaparece de `dimensiones`,
 # no se renormaliza) y ya lo cubre
 # test_itvc.py::test_itvc_reproduce_ejemplo.
+#
+# El caso (itcp, judicializacion, poder_judicial) se sacó el 2026-11-04
+# (ADR-0422): la dimensión se disolvió y la cobertura de cargos pasó a poder
+# legislativo. Ningún suspendido del ITCP conserva hoy peso de diseño en una
+# tabla: los demás fueron reemplazados y salieron de la suya (ADR-0377).
 CASOS = [
-    (itcp, "judicializacion", "poder_judicial"),
     (itcg, "reestructuracion_organismos", "reforma_estado"),
 ]
 

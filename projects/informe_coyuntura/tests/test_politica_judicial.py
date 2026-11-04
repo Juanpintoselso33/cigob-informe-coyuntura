@@ -15,21 +15,15 @@ BANDAS = itcp.BANDAS_ITCP["cobertura_judicial"]
 
 # ── Dimensión y pesos ───────────────────────────────────────────────────────
 
-def test_la_dimension_existe_con_sus_indicadores():
-    """ADR-0126 abrió la dimensión con un solo indicador y dejó escrito que eso
-    era «una limitación real, no un diseño terminado»: la cobertura mide la
-    CAPACIDAD de integrar el Poder Judicial, no su COMPORTAMIENTO. ADR-0168 la
-    cierra sumando los tres que medían comportamiento."""
-    d = itcp.DIMENSIONES_ITCP["poder_judicial"]
-    assert d["peso"] == 0.1613   # 0.15 → 0.1613 (ADR-0344)
-    assert d["indicadores"] == {
-        "cobertura_judicial": 0.40, "judicializacion": 0.20,
-        "velocidad_resolucion": 0.20, "paralisis_denuncias": 0.20,
-    }
-    assert abs(sum(d["indicadores"].values()) - 1.0) < 1e-9
-    assert d["indicadores"]["cobertura_judicial"] > 0.20, (
-        "cobertura_judicial lleva el peso mayor por ser el único mensual y el "
-        "de menor rezago (1 mes contra 2-12 de los otros tres)")
+def test_la_cobertura_pesa_dentro_de_poder_legislativo():
+    """ADR-0422: la dimensión Poder judicial se disolvió (le quedaba sólo la
+    cobertura) y la cobertura pasó a poder legislativo, que suma el 16,13 %.
+    Pesa 0,20 de la dimensión: un solo dato no puede ser el eje del legislativo."""
+    assert "poder_judicial" not in itcp.DIMENSIONES_ITCP
+    d = itcp.DIMENSIONES_ITCP["poder_legislativo"]
+    assert d["peso"] == 0.3871
+    assert d["indicadores"]["cobertura_judicial"] == 0.20
+    assert max(d["indicadores"], key=d["indicadores"].get) == "eficacia_legislativa"
 
 
 def test_los_pesos_entre_dimensiones_suman_uno():

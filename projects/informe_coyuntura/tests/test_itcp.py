@@ -197,10 +197,14 @@ def test_pesos_internos_poder_legislativo_sin_bloqueo():
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     # 2026-10-27 (ADR-0377): veto_quorum y desafios_legislativos los
     # reemplazan las insistencias sobre vetos y los decretos derogados.
+    # 2026-11-04 (ADR-0422): entra la cobertura de cargos de juez (se disuelve
+    # Poder judicial) y sale produccion_legislativa.
+    assert dim["peso"] == 0.3871
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.23, "eficacia_legislativa": 0.30, "insistencias_vetos": 0.15,
-        "rechazos_decretos": 0.15, "produccion_legislativa": 0.17,
+        "eficacia_legislativa": 0.30, "ratio_dnu": 0.25, "cobertura_judicial": 0.20,
+        "insistencias_vetos": 0.125, "rechazos_decretos": 0.125,
     }
+    assert "produccion_legislativa" in itcp.INDICADORES_SUSPENDIDOS
     assert "bloqueo_sostenido" not in dim["indicadores"]
     assert dim["indicadores"]["eficacia_legislativa"] > dim["indicadores"]["ratio_dnu"], (
         "eficacia tiene que seguir primera: es la medida más abarcativa (ADR-0061)")
@@ -402,7 +406,6 @@ def test_rezago_de_doce_meses_suma_la_demora_de_publicacion():
     assert r["jornadas_individuales_no_trabajadas_12m"] == 9.0   # ~3 meses de planilla
     assert r["transferencias_no_automaticas"] == 7.5             # ~1,5 del IPC
     assert r["conflictividad_nacional"] == 7.0                   # mes en curso afuera
-    assert r["produccion_legislativa"] == 6.5                    # meses completos
     for k in ("apoyo_empresario", "apoyo_comercio", "apoyo_campo", "apoyo_construccion",
               "ratio_dnu", "insistencias_vetos", "rechazos_decretos", "votos_sobre_bancas"):
         assert r[k] == 6.0, k

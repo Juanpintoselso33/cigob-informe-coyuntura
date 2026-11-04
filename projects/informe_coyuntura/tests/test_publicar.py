@@ -487,13 +487,16 @@ def test_politica_itcp_reconcilia():
     # (ADR-0376); vetos/decretos (ADR-0377) y transferencias (ADR-0378) son 1 a 1.
     # 15 → 16 (ADR-0384): entra `apoyo_campo` a sector privado (tercer sector).
     # 16 → 17 (ADR-0391): entra `apoyo_construccion` a sector privado (cuarto sector).
-    assert len(c["indicadores"]) == 17
+    # 17 → 16 (ADR-0422): sale `produccion_legislativa`; la cobertura de cargos
+    # sólo cambia de dimensión.
+    assert len(c["indicadores"]) == 16
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
-    assert len(en_indice) == 17
+    assert "produccion_legislativa" not in c["indicadores"]
+    assert len(en_indice) == 16
     assert "apoyo_comercio" in en_indice and "apoyo_campo" in en_indice
     assert "apoyo_construccion" in en_indice
-    assert "produccion_legislativa" in en_indice, "tendría que puntuar (ADR-0168)"
+    assert "produccion_legislativa" not in en_indice, "suspendida (ADR-0422)"
     # ADR-0374: la tasa de la Corte y las comisiones del Consejo salen.
     assert "velocidad_resolucion" not in en_indice and "paralisis_denuncias" not in en_indice
     # ADR-0255: `judicializacion` sale del índice — el corpus de SAIJ no
@@ -531,9 +534,10 @@ def test_politica_itcp_reconcilia():
     pesos = {k: d["peso"] for k, d in c["itcp"]["dimensiones"].items()}
     # ADR-0344: sale imagen_voto (0,07) y las seis restantes la absorben en
     # proporción (÷0,93); el orden relativo no cambia.
-    assert pesos == {"poder_legislativo": 0.2258, "alianzas_territoriales": 0.2043,
+    # ADR-0422: se disuelve poder_judicial y su 0,1613 pasa a poder legislativo.
+    assert pesos == {"poder_legislativo": 0.3871, "alianzas_territoriales": 0.2043,
                      "cohesion_interna": 0.1613, "conflicto_social": 0.1075,
-                     "sector_privado": 0.1398, "poder_judicial": 0.1613}
+                     "sector_privado": 0.1398}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():

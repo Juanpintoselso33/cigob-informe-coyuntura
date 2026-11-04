@@ -158,17 +158,6 @@ def test_judicializacion_no_puntua():
     assert "judicializacion" in publicar.POLITICA_OCULTOS
 
 
-def test_su_peso_lo_absorben_los_otros_tres_del_poder_judicial():
-    tabla = itcp.DIMENSIONES_ITCP["poder_judicial"]["indicadores"]
-    assert "judicializacion" in tabla, "el peso de diseño no se borra (ADR-0245)"
-    r = itcp.calcular_itcp({k: 50.0 for k in itcp.BANDAS_ITCP})
-    d = r["dimensiones"]["poder_judicial"]
-    vivos = {k: p for k, p in tabla.items() if k not in itcp.INDICADORES_SUSPENDIDOS}
-    resto = sum(vivos.values())
-    for k, info in d["indicadores"].items():
-        assert abs(info["peso_efectivo"] / d["peso_efectivo"] - vivos[k] / resto) < 1e-3
-
-
 def test_su_rotulo_ya_no_dice_que_mide_la_agenda_del_ejecutivo():
     """El corpus de SAIJ no identifica causas contra el PEN: una cautelar entre
     privados cuenta igual."""

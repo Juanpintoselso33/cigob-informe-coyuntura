@@ -47,7 +47,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
     escribió «para la próxima publicación».
 - **Sin cambios:** alineamiento por provincia (4) «se deja como está». No se suma Diputados.
 
-1. **Producción legislativa: puede salir; buscar una alternativa** (Juan, 3-nov). Hoy: 31
+1. **Producción legislativa: puede salir; buscar una alternativa** — **Hecho el 4-nov (ADR-0422):** suspendida, se sigue calculando; la alternativa queda abierta. (Juan, 3-nov). Hoy: 31
    leyes sancionadas en 12 meses, 45,8 puntos, amarillo, 3,8 % del peso. Además cuenta leyes
    sancionadas mientras decretos por ley cuenta leyes publicadas (lo marcó Luis el 26-oct).
    Estado: relevar alternativas antes de sacarla.
@@ -93,7 +93,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    Arreglo probable: sumar `metodo` a `CAMPOS_CARD` en `scripts/archivo.py`, con un test, y
    rearmar la rama mensual. El índice político de octubre publicado va a cambiar.
 8. **La dimensión poder judicial se va; cobertura de cargos judiciales pasa a poder
-   legislativo** (Juan, 3-nov). Hoy poder judicial tiene sólo `cobertura_judicial` (73,61 %,
+   legislativo** — **Hecho el 4-nov (ADR-0422):** legislativo 38,71 %, adentro eficacia 30 · DNU 25 · cobertura 20 · vetos 12,5 · derogados 12,5. (Juan, 3-nov). Hoy poder judicial tiene sólo `cobertura_judicial` (73,61 %,
    61,5 puntos) y pesa 16,13 % del índice político (ADR-0374). Al moverla, definir el peso de
    la cobertura dentro de legislativo y qué pasa con el 16 % de la dimensión que desaparece
    (repartirlo entre las otras cinco o sumarlo a legislativo). ADR nuevo que reemplace a 0374.

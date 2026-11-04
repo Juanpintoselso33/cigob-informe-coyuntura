@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [velocidad_resolucion, paralisis_denuncias, cobertura_judicial]
 archivos: ['scripts/itcp.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
-relacionado: ['0126', '0168', '0255', '0281', '0359']
+relacionado: ['0126', '0168', '0255', '0281', '0359', '0422']
 ambito: 'Cinturón político · ITCP · dimensión Poder judicial'
 origen: 'Reunión de Juan y Luis Babino del 26-oct-2026 (acuerdos enviados por Luis ese día) y pedido de Juan del 27-oct.'
 ---
