@@ -54,7 +54,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 2. **Transferencias no automáticas: verificar el dato** (Juan, 3-nov: «no me convence
    mucho»). Hoy: −82,1 % real frente a 2023, 10 puntos, rojo, 8,2 % del peso (ADR-0378 y
    0397). Revisar que esté bien construido y que correlacione con la historia previa.
-3. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** (Juan, 3-nov: «sumémoslo de
+3. **Recaudación de IVA y cheque vuelve, en cuentas fiscales** — **Hecho el 3-nov (ADR-0421):** 20 % de cuentas fiscales (50/30/20), cortes ±10,7/±21,4 de dic-2017 a nov-2023. (Juan, 3-nov: «sumémoslo de
    vuelta»; esta vez en la dimensión cuentas fiscales, no en actividad). Salió el 26-oct
    (ADR-0368) a pedido de Luis por repetir al EMAE (r = 0,84) dentro de actividad. Se sigue
    calculando oculta (`actividad_tributaria`), así que el dato está. Para hacerlo: ADR nuevo que
@@ -80,7 +80,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    de la ley (no los votos ajenos como % de la cámara). Más de 129 → verde · 119 a 129 →
    amarillo · 109 a 119 → naranja · menos de 109 → rojo. Falta definir de qué lado cae el
    borde exacto (129, 119, 109).
-7. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** (Juan,
+7. **Decretos de necesidad y urgencia por ley: tiene que ir en poder legislativo** — **Hecho el 3-nov:** el mes rehecho marca el método vigente y octubre ya lo puntúa en legislativo. (Juan,
    3-nov). En el cálculo (`informe.json`) `ratio_dnu` ya figura en la dimensión
    `poder_legislativo`; revisar dónde aparece en otro lado (página, ficha, agrupación de
    tarjetas) y moverlo ahí.
@@ -100,7 +100,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
    **Juan (3-nov): darle más peso a la dimensión poder legislativo** (hoy 22,58 %). Falta
    definir cuánto. Opción que planteó: que el 16,13 % de poder judicial pase entero a
    legislativo (22,58 + 16,13 = 38,71 %, las otras cuatro dimensiones sin cambios).
-9. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** (Juan, 3-nov). Sólo
+9. **La dimensión «Sector privado» pasa a llamarse «Sector empresarial»** — **Hecho el 3-nov (ADR-0420).** (Juan, 3-nov). Sólo
     el nombre: industria, comercio, campo y construcción siguen igual. Cambiar en el sitio,
     fichas, textos y manuales.
 10. **Impacto social: el gráfico no está en base al 4T-2023; revisar cómo se empalman las series
@@ -110,7 +110,7 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 11. **Pobreza: colores con cortes fijos, como la inflación** (Juan, 3-nov; igual que ADR-0367,
     los cortes de Luis para la inflación). Juan: «15 sería verde» (pobreza de 15 % o menos en
     verde). Faltan los cortes de amarillo, naranja y rojo.
-12. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** (Juan,
+12. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** — **Hecho el 3-nov.** (Juan,
     3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
     valor del índice.
 13. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual**
