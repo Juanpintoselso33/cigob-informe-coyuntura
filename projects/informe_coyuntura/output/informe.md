@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-04 02:16:37"
+generado: "2026-11-04 02:21:25"
 score_global: 3.6
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -135,4 +135,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-11-04 02:16:37 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-04 02:21:25 — schema 1.2.0*

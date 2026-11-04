@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-11-04T02:16:37.029787-03:00",
+  "generated_at": "2026-11-04T02:21:25.989691-03:00",
   "period": "2026-11",
   "score_global": 3.6,
   "ponderacion": {
@@ -5394,7 +5394,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0712,
           "aporte_score": 6.3,
-          "aporte_formula": "Índice base-100 frente al 2º semestre de 2023: 93,7 (100 = igual que en ese semestre, antes del mandato; más = mejora); pesa 7,1% del índice de impacto social.",
+          "aporte_formula": "Componente de la escala común contra cortes fijos: 93,7 (verde hasta 20%, amarillo hasta 30%, naranja hasta 40%, rojo por encima; más = mejora); pesa 7,1% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5525,11 +5525,11 @@
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "vulnerabilidad",
-          "indice_itvc": 78.5,
+          "indice_itvc": 78.4,
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.07,
           "aporte_score": 9.3,
-          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 78,5 (100 = igual que antes del mandato; más = mejora); pesa 7,0% del índice de impacto social.",
+          "aporte_formula": "Componente de la escala común contra cortes fijos: 78,4 (verde hasta 5%, amarillo hasta 8%, naranja hasta 12%, rojo por encima; más = mejora); pesa 7,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en rojo (tensión crítica).",
           "semaforo": {
@@ -5575,7 +5575,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.03,
           "aporte_score": 6.8,
-          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 90,9 (100 = igual que antes del mandato; más = mejora); pesa 3,0% del índice de impacto social.",
+          "aporte_formula": "Componente de la escala común contra cortes fijos: 90,9 (verde hasta 15%, amarillo hasta 20%, naranja hasta 30%, rojo por encima; más = mejora); pesa 3,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -6186,8 +6186,8 @@
             "indicadores": {
               "mora_familias": {
                 "peso": 0.7,
-                "puntaje_banda": 78.5,
-                "puntaje_aplicado": 78.5,
+                "puntaje_banda": 78.4,
+                "puntaje_aplicado": 78.4,
                 "peso_efectivo": 0.07
               },
               "carga_servicio_deuda_hogares": {
@@ -6218,7 +6218,7 @@
               ],
               [
                 "2024-04",
-                114.2
+                114.1
               ],
               [
                 "2024-05",
@@ -6242,7 +6242,7 @@
               ],
               [
                 "2024-10",
-                112.7
+                112.6
               ],
               [
                 "2024-11",
@@ -6254,7 +6254,7 @@
               ],
               [
                 "2025-01",
-                110.4
+                110.3
               ],
               [
                 "2025-02",
@@ -6262,7 +6262,7 @@
               ],
               [
                 "2025-03",
-                107.5
+                107.4
               ],
               [
                 "2025-04",
@@ -6274,7 +6274,7 @@
               ],
               [
                 "2025-06",
-                100.4
+                100.3
               ],
               [
                 "2025-07",
@@ -6282,7 +6282,7 @@
               ],
               [
                 "2025-08",
-                95.9
+                95.8
               ],
               [
                 "2025-09",
@@ -6290,31 +6290,31 @@
               ],
               [
                 "2025-10",
-                92.8
+                92.7
               ],
               [
                 "2025-11",
-                90.3
+                90.2
               ],
               [
                 "2025-12",
-                89.3
+                89.2
               ],
               [
                 "2026-01",
-                86.7
+                86.6
               ],
               [
                 "2026-02",
-                85.6
+                85.5
               ],
               [
                 "2026-03",
-                84.9
+                84.8
               ],
               [
                 "2026-04",
-                83.9
+                83.8
               ],
               [
                 "2026-05",
@@ -6322,7 +6322,7 @@
               ],
               [
                 "2026-06",
-                82.6
+                82.5
               ],
               [
                 "2026-07",
@@ -6878,40 +6878,40 @@
             2,
             0,
             2,
-            3,
-            9,
+            2,
             10,
-            16,
+            10,
+            15,
+            22,
             21,
-            21,
-            30,
-            26,
-            35,
-            55,
-            58,
-            70,
-            66,
-            63,
-            61,
-            60,
-            62,
+            36,
+            18,
+            40,
             53,
-            41,
-            43,
-            34,
-            28,
+            56,
+            76,
+            62,
+            63,
+            63,
+            58,
+            60,
+            56,
+            39,
+            44,
             35,
-            25,
-            20,
-            17,
-            8,
+            27,
+            36,
+            24,
+            23,
+            15,
+            6,
             13,
             7,
             2,
             1,
             2
           ],
-          "hist_min": 100.3,
+          "hist_min": 100.29,
           "hist_max": 102.68,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
@@ -7731,14 +7731,14 @@
         "redundancia": {
           "n_indicadores": 19,
           "n_pares": 166,
-          "r_abs_medio": 0.448,
-          "share_altos": 0.223,
+          "r_abs_medio": 0.446,
+          "share_altos": 0.217,
           "share_bajos": 0.355,
           "umbral": 0.7,
-          "pares_cruzados": 34,
+          "pares_cruzados": 33,
           "diferencias": {
             "n_pares": 166,
-            "r_abs_medio": 0.189,
+            "r_abs_medio": 0.188,
             "share_altos": 0.006
           },
           "top": [
@@ -7752,7 +7752,7 @@
             {
               "a": "carga_servicio_deuda_hogares",
               "b": "motorizacion_total",
-              "r": -0.951,
+              "r": -0.95,
               "cruzado": true,
               "por_diseno": null
             },
@@ -7773,7 +7773,7 @@
             {
               "a": "carga_servicio_deuda_hogares",
               "b": "tasa_homicidios",
-              "r": -0.915,
+              "r": -0.916,
               "cruzado": true,
               "por_diseno": null
             },
@@ -7787,9 +7787,9 @@
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 19 componentes que tienen serie histórica, 166 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,448: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,189 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 37 pares que superan el umbral en niveles, 34 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 50,0 a 148,6, un rango de 98,6. El índice, en cambio, se movió 1,6 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio.",
-          "resumen": "La correlación media entre pares es 0,448: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,189 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 37 pares que superan el umbral en niveles, 34 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 50,0 a 148,6, un rango de 98,6. El índice, en cambio, se movió 1,6 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio."
+          "conclusion": "La correlación media entre pares es 0,446: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 36 pares que superan el umbral en niveles, 33 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 50,0 a 148,6, un rango de 98,6. El índice, en cambio, se movió 1,6 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio.",
+          "resumen": "La correlación media entre pares es 0,446: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 36 pares que superan el umbral en niveles, 33 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 50,0 a 148,6, un rango de 98,6. El índice, en cambio, se movió 1,6 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio."
         },
         "dispersion": {
           "serie": {

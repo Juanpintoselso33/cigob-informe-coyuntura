@@ -1702,7 +1702,7 @@ Ponderación vigente en el ITCIS: 7 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-11-04** — Deja de compararse contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso, y pasa a cortes fijos de países comparables: hasta 5% verde, hasta 8% amarillo, hasta 12% naranja y por encima rojo. Con el 14,61% de agosto de 2026 sigue en rojo, pero el componente pasa de 17,1 a 78,5: antes se leía como una mora siete veces la de la base, ahora como una mora 2,6 puntos por encima del corte del rojo.
+**2026-11-04** — Deja de compararse contra el 4º trimestre de 2023, cuando casi no había crédito y la mora era baja por eso, y pasa a cortes fijos de países comparables: hasta 5% verde, hasta 8% amarillo, hasta 12% naranja y por encima rojo. Con el 14,61% de agosto de 2026 sigue en rojo, pero el componente pasa de 17,1 a 78,4: antes se leía como una mora siete veces la de la base, ahora como una mora 2,6 puntos por encima del corte del rojo.
 
 **2026-07-15** — Entra al índice de impacto social como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
 
