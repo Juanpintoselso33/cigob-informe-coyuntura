@@ -174,7 +174,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) La cohesión mide las votaciones divididas, contra la historia
 
-#### Votos ajenos al aprobar leyes
+#### Diputados a favor de las leyes del Ejecutivo
 
 `votos_sobre_bancas`
 
@@ -183,12 +183,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 50% |
 | Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
-| Rezago declarado | 6 meses |
+| Rezago declarado | 0.5 meses |
 | Procedencia del ancla | `convencion` — anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376) |
 
-**Bandas**: > 45 → 100 · 35–45 → 100 · 25–35 → 85 · 15–25 → 65 · 5–15 → 40 · ≤ 5 → 10
+**Bandas**: > 172 → 100 · 129.1–172 → 60 · 119–129.1 → 40 · 109–119 → 20 · ≤ 109 → 10
 
-**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación
+**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) Votos ajenos pasa a diputados a favor, por mes
 
 ### Dimensión `conflicto_social` (11%)
 
@@ -352,7 +352,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-111 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+112 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -465,3 +465,4 @@ histórica.
 - [0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) — Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas
 - [0420](../adr/0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) — La dimensión «Sector privado» pasa a llamarse «Sector empresarial»
 - [0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) — El Poder judicial se disuelve en poder legislativo
+- [0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) — Votos ajenos pasa a diputados a favor, por mes

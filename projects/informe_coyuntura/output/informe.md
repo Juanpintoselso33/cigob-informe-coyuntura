@@ -1,16 +1,16 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-04 01:26:31"
-score_global: 3.8
-barbarismo_activo: "político"
-cinturon_dominante: "vida_cotidiana"
+generado: "2026-11-04 02:16:37"
+score_global: 3.6
+barbarismo_activo: "tecnocrático"
+cinturon_dominante: "macro"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-11
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.3/10)
+**Score global:** 3.6/10  |  **Riesgo dominante:** tecnocrático (macro, 4.9/10)
 
 ## Cinturones
 
@@ -64,7 +64,7 @@ schema_version: "1.2.0"
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-04 | fresco |
 | rotacion_gabinete | 4 | salidas de rango ministerial (acumulado de 12 meses) | 2026-11-04 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
-| votos_sobre_bancas | 22.3 | % de las bancas de la cámara | 2026-11-04 | fresco |
+| votos_sobre_bancas | 141.5 | diputados a favor | 2026-11-04 | fresco |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | 2026-10-29 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-11-04 | fresco |
 | insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-04 | fresco |
@@ -85,7 +85,7 @@ schema_version: "1.2.0"
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | octubre de 2026 (ADR-0374) | Mide cuántos expedientes resuelve la Corte Suprema sobre los que le entran: la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. |
 | paralisis_denuncias | 12 | sesiones de las comisiones de control (12m) | 2026-11-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
 
-### 🟡 Vida Cotidiana — score 5.3/10 (en_tension)
+### 🟡 Vida Cotidiana — score 4.7/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -114,7 +114,7 @@ schema_version: "1.2.0"
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-04 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-04 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-04 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
@@ -131,7 +131,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
+- `desactualizado:macro:desequilibrio_monetario`
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-11-04 01:26:31 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-04 02:16:37 — schema 1.2.0*

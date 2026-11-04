@@ -65,7 +65,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones · [ADR-0394](../adr/0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) La pobreza del INDEC se fecha al inicio de su semestre
+**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones · [ADR-0394](../adr/0394-la-pobreza-del-indec-se-fecha-al-inicio-de-su-semestre.md) La pobreza del INDEC se fecha al inicio de su semestre · [ADR-0424](../adr/0424-el-grafico-de-pobreza-arranca-en-la-base.md) El gráfico de pobreza arranca en la base · [ADR-0425](../adr/0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) Pobreza, mora y carga de la deuda con cortes fijos
 
 ### Dimensión `consumo` (8%)
 
@@ -211,7 +211,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC · [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora · [ADR-0272](../adr/0272-el-anexo-bancario-con-http-200-puede-estar-viejo.md) Un anexo bancario con HTTP 200 puede estar viejo
+**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC · [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora · [ADR-0272](../adr/0272-el-anexo-bancario-con-http-200-puede-estar-viejo.md) Un anexo bancario con HTTP 200 puede estar viejo · [ADR-0425](../adr/0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) Pobreza, mora y carga de la deuda con cortes fijos
 
 #### Carga del servicio de deuda
 
@@ -225,7 +225,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora
+**Lo gobiernan**: [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora · [ADR-0425](../adr/0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) Pobreza, mora y carga de la deuda con cortes fijos
 
 ### Dimensión `empleo` (24%)
 
@@ -358,7 +358,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-64 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+66 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -424,3 +424,5 @@ histórica.
 - [0411](../adr/0411-los-dos-alquileres-se-leen-como-nivel-real-contra-el-4t-2023.md) — Los dos alquileres se leen como nivel real contra el 4T-2023
 - [0412](../adr/0412-el-padron-de-arca-se-guarda-y-no-se-publica.md) — El padrón de ARCA se guarda y no se publica
 - [0413](../adr/0413-informalidad-mide-asalariados-sin-aportes-propios.md) — La informalidad cuenta sólo al asalariado sin aportes propios
+- [0424](../adr/0424-el-grafico-de-pobreza-arranca-en-la-base.md) — El gráfico de pobreza arranca en la base
+- [0425](../adr/0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) — Pobreza, mora y carga de la deuda con cortes fijos

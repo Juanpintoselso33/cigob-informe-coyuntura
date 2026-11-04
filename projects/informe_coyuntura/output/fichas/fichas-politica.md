@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 67,6** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 1 en amarillo · 1 en naranja · 2 en rojo |
+| **ITCP: 67,8** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 1 en amarillo · 1 en naranja · 2 en rojo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 61,0 | VERDE | 38,7 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 55,8 | AMARILLO | 20,4 % |
-| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,2 | VERDE | 16,1 % |
+| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 85,2 | VERDE | 16,1 % |
 | Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | VERDE | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
 
@@ -71,7 +71,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 61,6 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
-| Votos ajenos al aprobar leyes | Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó… | 22,3 % de las bancas de la cámara | VERDE | 8,1 % |
+| Diputados a favor de las leyes del Ejecutivo | Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. | 141,5 diputados a favor | VERDE | 8,1 % |
 | Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo… | 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | VERDE | 8,1 % |
 | **DIMENSIÓN: Sector empresarial** | | | | |
 | Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,45 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
@@ -1083,29 +1083,29 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Votos ajenos al aprobar leyes
+# Diputados a favor de las leyes del Ejecutivo
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de La Libertad Avanza a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. En cada ley del Poder Ejecutivo aprobada en la votación en general en Diputados (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se cuentan los votos afirmativos de todos los bloques. Es el promedio de las votaciones del mes; un mes sin votaciones conserva el del último mes que las tuvo.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 22,3 % de las bancas de la cámara** (2026-11) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
+| **Hoy: 141,5 diputados a favor** (2026-11) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | votos_sobre_bancas | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % de las bancas de la cámara |
-| **SERIE DISPONIBLE** | 2024-03 → 2026-11 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia los últimos 12 meses, así que describe en promedio la situación de hace unos seis meses aunque su último dato sea de la semana pasada. |
-| **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (título, resultado, voto de cada legislador y su bloque), cruzadas con el catálogo de proyectos parlamentarios y los dictámenes de comisión de la Cámara de Diputados para saber quién mandó cada proyecto |
+| **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | diputados a favor |
+| **SERIE DISPONIBLE** | 2025-02 → 2026-11 (22 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia las votaciones del último mes que las tuvo: en un mes sin votaciones, como el receso de enero y febrero, la tarjeta conserva el valor de la última y dice de qué mes es. |
+| **PRODUCTOR DEL DATO** | Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de Diputados (título, resultado, voto de cada diputado y su bloque), cruzadas con el catálogo de proyectos parlamentarios y los dictámenes de comisión de la Cámara de Diputados para saber quién mandó cada proyecto |
 | **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-04 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de La Libertad Avanza a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. En cada ley del Poder Ejecutivo aprobada en la votación en general en Diputados (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se cuentan los votos afirmativos de todos los bloques. Es el promedio de las votaciones del mes; un mes sin votaciones conserva el del último mes que las tuvo.
 
-Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un bloque propio grande hacen falta pocos votos de otros bloques, con uno chico hacen falta muchos. Complementa a la cohesión del bloque: un oficialismo unido puede igual necesitar más votos de los que tiene. Una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos, y cuando el bloque oficialista crece (como en diciembre de 2025) el excedente baja aunque el Gobierno apruebe lo mismo.
+Mide con cuánto respaldo aprueba el Ejecutivo sus leyes en Diputados, contra la mayoría absoluta de 129 votos sobre 257. Complementa a la cohesión del bloque: un oficialismo unido puede igual quedarse corto de votos. No dice quién puso los votos ni registra las leyes que no llegaron al recinto o se rechazaron.
 
 **Dimensión que integra — Cohesión interna del oficialismo.** Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás: la disciplina de voto del bloque propio de La Libertad Avanza, medida con dos indicadores bicamerales (Diputados 65%, Senado 35%) que pesan lo mismo: qué tan parejo vota el bloque propio de La Libertad Avanza, y cuántos votos de otros bloques hacen falta para aprobar una ley una vez descontadas sus propias bancas.
 
@@ -1115,9 +1115,10 @@ Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un blo
 - En el Senado el acta declara la etapa (en general, en particular, en general y en particular) y la clave del expediente, y se acepta el sufijo de proyecto de ley. En Diputados el acta no dice qué tipo de proyecto es: se decide por el título de la votación, y una votación única de un Orden del Día cuenta como votación en general.
 - El origen se resuelve así. En el Senado, el expediente del acta: una clave `PE` o `JGM` es del Ejecutivo; una `CD` (viene de Diputados) se cruza con el catálogo de proyectos parlamentarios, que registra cómo numera cada cámara el mismo proyecto; las claves `S`, `PR`, `PD` o `AC` no cuentan, y un acta sin clave usa la de su Orden del Día. En Diputados el acta no trae expediente: se cruza el número de Orden del Día con el dataset de dictámenes (el más reciente del último año) y los expedientes del dictamen con el catálogo. Una ley del Ejecutivo que pasa por las dos cámaras cuenta en cada una donde se votó en general.
 - Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, Fondo Monetario Internacional, Banco Interamericano de Desarrollo, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.
-- Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes; en el Senado, con el bloque que cada senador tenía el día de la votación (el portal muestra el actual en todas las actas y los pases se corrigen con un registro versionado). El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.
-- Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. Diputados pesa más que el Senado, con el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.
-- La ventana no cruza la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y ninguna en el Senado, y no era el bloque oficialista.
+- Para cada votación se cuentan los diputados que votaron a favor, de cualquier bloque. El acta no lista a quien preside la cámara, que no vota salvo empate.
+- El valor es el promedio simple de las votaciones del mes, contando cada votación una vez. Un mes sin votaciones del universo conserva el valor del último mes que las tuvo.
+- Sólo cuenta Diputados. En el Senado, aprobar una ley exige un piso de votos ajenos que ya caía en el tramo más alto de la escala anterior, así que no discriminaba.
+- No cuentan las votaciones anteriores a la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y no era el bloque oficialista.
 
 ## Semáforo — valores que determinan el color
 
@@ -1125,24 +1126,24 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de las bancas de la cámara) | Color |
+| Rango (diputados a favor) | Color |
 |---|---|
-| ≥ 18 | VERDE |
-| 10 – 18 | AMARILLO |
-| 6,7 – 10 | NARANJA |
-| ≤ 6,7 | ROJO |
+| ≥ 129,1 | VERDE |
+| 119 – 129,1 | AMARILLO |
+| 109 – 119 | NARANJA |
+| ≤ 109 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
+- Promedio de diputados a favor en 2 votaciones de ley de agosto de 2026. Mayoría absoluta: 129 de 257. Desde entonces no hubo votaciones de ley del Poder Ejecutivo en Diputados: se conserva el valor de la última. Hay 3 votaciones de ley de los últimos 12 meses en Diputados (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
 
 ## Color vigente y por qué
 
-Dato vigente: 22,3 % de las bancas de la cámara (2026-11).
+Dato vigente: 141,5 diputados a favor (2026-11).
 
-22,3 % de las bancas de la cámara está en Verde, a 4,3 del límite con Amarillo (18,0).
+141,5 diputados a favor está en Verde, a 12,4 del límite con Amarillo (129,1).
 
 **Color vigente: VERDE**
 
@@ -1150,21 +1151,23 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Mide cuántos votos ajenos hicieron falta, no quién los puso: una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos. Tampoco distingue a un aliado estable de uno que vota caso por caso.
-- El excedente depende del tamaño del bloque propio. Las bancas de LLA en las actas pasan de 36 a 39 a 94 en Diputados y, en el Senado, de 6 o 7 a 20 con la renovación de diciembre de 2025 y a 21 en febrero de 2026: con el mismo respaldo total, el excedente baja porque ahora hay más votos propios. El indicador mide la necesidad de votos ajenos, no el éxito de la negociación, y ese salto no es una pérdida de capacidad.
-- Con los tratados afuera, el promedio queda en las leyes que el Gobierno necesita negociar, pero la muestra es chica: unas doce votaciones por cámara en el año, y una sola mueve varios puntos. El acuerdo con acreedores de títulos de deuda, que es una ley de agenda económica, sigue contando.
+- Mide cuántos diputados acompañaron, no quién: una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos. Tampoco distingue a un aliado estable de uno que vota caso por caso.
+- Mide sólo leyes que se aprobaron: una ley del Ejecutivo que no llega al recinto, o que se rechaza, no baja el valor. Esa derrota la registran otros componentes del índice.
+- La muestra es chica: alrededor de una votación de ley del Ejecutivo por mes, y un mes con una sola votación toma su valor entero. El acuerdo con acreedores de títulos de deuda, que es una ley de agenda económica, sigue contando.
 - El origen de las leyes en Diputados depende del dataset de dictámenes, que se carga con rezago: una votación cuyo Orden del Día todavía no figura queda sin origen, no cuenta y se reintenta en cada actualización (a fines de octubre de 2026 eran tres, entre ellas la inviolabilidad de la propiedad privada). El número de Orden del Día se reinicia cada período: se toma el dictamen más reciente del último año con ese número. Las actas sin número de Orden del Día no se pueden cruzar y no cuentan.
 - El universo de Diputados se decide por el título del acta, que no dice qué clase de proyecto es: una resolución con título de orden del día podría contarse y una ley con un título atípico, quedar afuera. En el Senado, un acta sin clave de expediente se acepta si es un Orden del Día que no es designación ni moción.
-- El portal de Diputados publica sólo las actas desde el 6 de febrero de 2025 (en la lectura de octubre de 2026 las anteriores devolvían error). La serie de Diputados arranca ahí; antes de febrero de 2026 la ventana de 12 meses de esa cámara está incompleta, y entre diciembre de 2023 y enero de 2025 el indicador es sólo el Senado. Las actas ya descargadas se conservan en el repositorio.
+- El portal de Diputados publica sólo las actas desde el 6 de febrero de 2025 (en la lectura de octubre de 2026 las anteriores devolvían error): la serie arranca ahí. Las actas ya descargadas se conservan en el repositorio.
 - Depende de que los portales públicos mantengan su estructura: un cambio de diseño interrumpe la lectura hasta que se ajuste el colector.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la lectura de alguna acta falla, no se publica un promedio parcial: se conserva el último valor, señalado como desactualizado, y las actas ya leídas no se descargan de nuevo. Sin ningún valor previo, el indicador queda fuera y la dimensión queda con la cohesión del bloque. Una cámara sin votaciones en la ventana (receso) se omite y el indicador usa la otra.
+- **Si falta el dato:** Si la lectura de alguna acta falla, no se publica un promedio parcial: se conserva el último valor, señalado como desactualizado, y las actas ya leídas no se descargan de nuevo. Sin ningún valor previo, el indicador queda fuera y la dimensión queda con la cohesión del bloque. Un mes sin votaciones no es un faltante: conserva el último valor por regla.
 
 - **Política de revisiones:** Un acta publicada no cambia, así que la serie es reproducible. El criterio de qué título cuenta como ley puede ajustarse: el caché guarda título y conteos de cada acta, y un cambio de criterio recalcula toda la historia sin volver a descargar.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-04** — Revisión de Luis del 3 de noviembre: pasa a medir cuántos diputados votaron a favor las leyes del Ejecutivo, promedio de las votaciones del mes, en lugar de los votos ajenos como porcentaje de la cámara promediados en 12 meses. Sale el Senado, donde aprobar una ley ya daba el tramo más alto por construcción. Un mes sin votaciones conserva el puntaje de la última. Cortes: más de 129 verde, de 119 a 129 amarillo, de 109 a menos de 119 naranja y menos de 109 rojo. El universo de votaciones no cambia.
 
 **2026-10-28** — Corrección de datos en el Senado: las bancas del bloque LLA de cada acta se cuentan con el bloque que cada senador tenía ese día, desde un registro de pases con fuente. El portal asignaba a cada senador su bloque actual en todas las actas, así que Luis Juez y Carmen Álvarez Rivero figuraban en LLA antes de su pase y Francisco Paoltroni mientras estuvo expulsado: las bancas propias quedaban infladas y el excedente, bajo.
 
