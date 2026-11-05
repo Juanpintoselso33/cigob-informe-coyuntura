@@ -45,6 +45,21 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="stylesheet" href={`${base}/marca.css`} />
     <link rel="stylesheet" href={`${base}/dashboard.css`} />
     <link rel="stylesheet" href={`${base}/overrides.css`} />
+    <!-- Semáforo más nítido (nov-2026). dashboard.css no se puede tocar desde
+         acá, así que los cuatro colores se pisan después de cargarlo. El
+         amarillo dorado (#E8C547) se confundía con el naranja y el rojo
+         (#DC2626) se veía desteñido: amarillo limón, naranja franco y rojo
+         puro más oscuro, separados en tono y en luz. -->
+    <style is:global>
+      :root {
+        --amarillo:      #FFD60A;
+        --amarillo-soft: #FEF9C3;
+        --naranja:       #F76B15;
+        --naranja-soft:  #FFE4CC;
+        --rojo:          #D00000;
+        --rojo-soft:     #FECACA;
+      }
+    </style>
     {muro && (
       <script is:inline define:vars={{ modoMuro }}>
         // Antes de pintar: quien ya pasó el muro no lo ve; en modo inmediato,

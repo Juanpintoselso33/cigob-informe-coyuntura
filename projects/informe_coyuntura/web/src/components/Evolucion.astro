@@ -34,8 +34,8 @@ function ejeSemaforo(rango: [number, number], cortes: [number, number, number]) 
         naranja = pos((c2 + c3) / 2), rojo = pos((c3 + lo) / 2);
   // Los mismos cuatro colores que la aguja y los puntos (--verde, --amarillo,
   // --naranja, --rojo de dashboard.css): había dos paletas en el sitio.
-  return `linear-gradient(to bottom, #16A34A 0%, #16A34A ${p(verde)}, #E8C547 ${p(amarillo)}, `
-       + `#FB8C00 ${p(naranja)}, #DC2626 ${p(rojo)}, #DC2626 100%)`;
+  return `linear-gradient(to bottom, var(--verde) 0%, var(--verde) ${p(verde)}, var(--amarillo) ${p(amarillo)}, `
+       + `var(--naranja) ${p(naranja)}, var(--rojo) ${p(rojo)}, var(--rojo) 100%)`;
 }
 
 const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
