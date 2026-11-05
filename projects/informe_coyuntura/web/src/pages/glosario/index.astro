@@ -1,0 +1,123 @@
+---
+// Glosario del Monitor (pedido del 5-nov-2026): 54 términos, en el orden
+// alfabético del documento original, agrupados por letra.
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const TERMINOS: { t: string; d: string }[] = [
+  { t: "Agenda de gobierno", d: "Conjunto de prioridades, objetivos y acciones que un gobierno se propone llevar adelante durante su mandato." },
+  { t: "Análisis de sensibilidad", d: "Prueba que permite conocer cuánto cambiaría una evaluación si se modificaran algunos criterios, valores o ponderaciones utilizados en su cálculo." },
+  { t: "Brecha", d: "Diferencia entre dos valores, situaciones o resultados que se comparan. Permite identificar distancias respecto de una referencia." },
+  { t: "Capacidad de gestión", d: "Aptitud del gobierno para transformar sus decisiones y compromisos en acciones y realizaciones concretas." },
+  { t: "Cinturón", d: "Cada uno de los cuatro grandes ámbitos que utiliza el Monitor para observar las tensiones que enfrenta el proyecto de gobierno." },
+  { t: "Cinturón de Gestión", d: "Mide cuánto cumple el gobierno de lo que dijo que iba a hacer. Un puntaje alto no significa que esas medidas sean buenas o malas: significa que el gobierno hace lo que anuncia y que su palabra es creíble." },
+  { t: "Cinturón de Impacto Social", d: "Mide cómo le llega la economía a la gente en su día a día: lo que gana, si tiene trabajo, lo que le cuesta vivir y lo que puede consumir, comparado con el momento en que asumió el gobierno. Un puntaje alto significa que la vida diaria de la gente mejora. No mide lo que la gente opina, sino lo que le pasa." },
+  { t: "Cinturón Macro", d: "Mide el estado de las principales variables de la economía: los precios, la actividad, las cuentas públicas, el dólar y las reservas. Un puntaje alto significa que la economía está ordenada y estable. No significa que la gente lo sienta en el bolsillo: eso lo mide el Cinturón de Impacto Social." },
+  { t: "Cinturón Político", d: "Mide la capacidad del gobierno para sostener su programa frente a quienes pueden apoyarlo o frenarlo: el Congreso, los gobernadores, los empresarios, los sindicatos y la Justicia. Un puntaje alto significa que el gobierno tiene espalda para hacer lo que se propone. No significa que tenga razón ni que sea popular." },
+  { t: "Compromiso de gobierno", d: "Objetivo, medida o resultado que un gobernante anunció públicamente y cuyo cumplimiento puede ser objeto de seguimiento." },
+  { t: "Conflicto político", d: "Enfrentamiento entre actores con intereses, posiciones u objetivos diferentes que puede afectar el desarrollo de la acción gubernamental." },
+  { t: "Consistencia metodológica", d: "Coherencia entre lo que se pretende medir, los indicadores elegidos y los procedimientos utilizados para evaluarlos." },
+  { t: "Cumplimiento", d: "Grado en que una acción, decisión o resultado responde a un compromiso previamente establecido." },
+  { t: "Dato", d: "Información concreta que permite describir o medir un hecho o una situación." },
+  { t: "Decisión gubernamental", d: "Medida adoptada por una autoridad pública para impulsar, modificar o ejecutar una política de gobierno." },
+  { t: "Dimensión", d: "Aspecto específico de un cinturón que se analiza mediante uno o varios indicadores." },
+  { t: "Ejecución", d: "Puesta en práctica de una decisión, programa o medida de gobierno." },
+  { t: "Escala de puntuación", d: "Sistema que convierte los valores de los indicadores en puntajes comparables, generalmente dentro de un rango previamente definido." },
+  { t: "Estado de tensión", d: "Situación que presenta un cinturón o dimensión según la intensidad de las dificultades que enfrenta el gobierno para avanzar en sus objetivos." },
+  { t: "Evaluación", d: "Análisis sistemático de información para establecer el estado, avance o resultado de una acción o política." },
+  { t: "Evidencia verificable", d: "Información respaldada por fuentes identificables que permite comprobar la existencia de un hecho, decisión o resultado." },
+  { t: "Ficha del indicador", d: "Documento que explica qué mide un indicador, cómo se calcula, qué fuentes utiliza y cómo debe interpretarse." },
+  { t: "Fuente de información", d: "Organismo, documento, registro o base de datos de donde se obtiene la información utilizada en el Monitor." },
+  { t: "Gestión gubernamental", d: "Conjunto de decisiones, acciones y recursos que moviliza un gobierno para llevar adelante sus objetivos." },
+  { t: "Gobernabilidad", d: "Capacidad de un gobierno para conducir su proyecto, procesar conflictos y sostener las condiciones necesarias para actuar." },
+  { t: "Hito de cumplimiento", d: "Acontecimiento o resultado concreto que permite verificar un avance significativo hacia un compromiso de gobierno." },
+  { t: "Impacto", d: "Cambio producido en la sociedad, la economía o las instituciones como consecuencia de una política o intervención gubernamental." },
+  { t: "Implementación", d: "Proceso mediante el cual una decisión gubernamental se convierte en acciones efectivas." },
+  { t: "Indicador", d: "Dato o medida que permite observar y evaluar un aspecto específico de la realidad que se desea analizar." },
+  { t: "Indicador indirecto (proxy)", d: "Medida que se utiliza para aproximarse a un fenómeno cuando no es posible medirlo directamente." },
+  { t: "Índice", d: "Valor sintético que reúne los resultados de varios indicadores para expresar una evaluación de conjunto." },
+  { t: "Línea de base", d: "Situación inicial que se toma como referencia para medir los cambios producidos a lo largo del tiempo." },
+  { t: "Meta", d: "Valor o resultado que se pretende alcanzar en un plazo determinado." },
+  { t: "Metodología", d: "Conjunto de criterios, procedimientos y reglas utilizados para seleccionar, medir y evaluar la información del Monitor." },
+  { t: "Monitor de Gobierno", d: "Instrumento de seguimiento que reúne y analiza indicadores para observar la evolución del proyecto gubernamental y las tensiones que enfrenta." },
+  { t: "Normalización", d: "Procedimiento que transforma datos expresados en distintas unidades en valores comparables mediante una escala común." },
+  { t: "Objetivo de gobierno", d: "Situación o resultado que las autoridades se proponen alcanzar mediante sus decisiones y políticas." },
+  { t: "Política pública", d: "Conjunto de decisiones y acciones del Estado orientadas a atender un problema o alcanzar un objetivo de interés público." },
+  { t: "Ponderación", d: "Peso o importancia relativa que se asigna a cada indicador o dimensión al calcular un resultado conjunto." },
+  { t: "Promedio ponderado", d: "Cálculo que combina varios valores teniendo en cuenta la importancia relativa asignada a cada uno." },
+  { t: "Proyecto de gobierno", d: "Conjunto de ideas, objetivos, compromisos y políticas que orientan la acción de un gobierno durante su mandato." },
+  { t: "Puntaje", d: "Valor numérico que expresa la evaluación de un indicador, dimensión o cinturón según las reglas establecidas por el Monitor." },
+  { t: "Reforma del Estado", d: "Proceso de modificación de la organización, las funciones, las normas o los procedimientos estatales para adecuarlos a determinados objetivos." },
+  { t: "Resultado", d: "Cambio o logro verificable que se obtiene como consecuencia de una acción o política gubernamental." },
+  { t: "Riesgo", d: "Posibilidad de que un acontecimiento o situación dificulte el cumplimiento de los objetivos del gobierno." },
+  { t: "Seguimiento", d: "Observación periódica de indicadores, acciones y resultados para conocer su evolución y detectar cambios relevantes." },
+  { t: "Semáforo", d: "Sistema de colores que facilita la interpretación del estado de un indicador, dimensión o cinturón según rangos previamente definidos." },
+  { t: "Serie temporal", d: "Conjunto de datos registrados en distintos momentos que permite observar la evolución de una variable." },
+  { t: "Tendencia", d: "Dirección predominante que muestra la evolución de un indicador a lo largo del tiempo." },
+  { t: "Tensión", d: "Presión o dificultad que surge de la relación entre las demandas que enfrenta un gobierno y los recursos o capacidades disponibles para responder." },
+  { t: "Umbral", d: "Valor de referencia que permite establecer cuándo un indicador pasa de una categoría de evaluación a otra." },
+  { t: "Validación", d: "Proceso de revisión que permite comprobar si los datos, procedimientos y conclusiones utilizados son adecuados y están suficientemente fundamentados." },
+  { t: "Variable", d: "Característica de una situación o fenómeno que puede adoptar distintos valores y ser observada o medida." },
+  { t: "Variación porcentual", d: "Medida que expresa cuánto aumentó o disminuyó un valor respecto de otro, tomando este último como referencia." },
+];
+
+const sinTilde = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const ancla = (s: string) => sinTilde(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const letra = (s: string) => sinTilde(s).charAt(0).toUpperCase();
+const grupos: { l: string; items: typeof TERMINOS }[] = [];
+for (const x of TERMINOS) {
+  const l = letra(x.t);
+  const g = grupos.find(g => g.l === l);
+  if (g) g.items.push(x); else grupos.push({ l, items: [x] });
+}
+---
+<Layout title="Glosario · Monitor del Plan de Gobierno · CiGob">
+  <Nav />
+  <main class="cg-main">
+    <section class="cg-section gl">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Términos del Monitor</p>
+        <h1 class="cg-h2">Glosario</h1>
+        <p class="cg-h2-sub">Las palabras que usa el Monitor del Plan de Gobierno, explicadas en llano.</p>
+      </div>
+
+      <nav class="gl-letras" aria-label="Letras del glosario">
+        {grupos.map(g => <a href={`#letra-${g.l.toLowerCase()}`}>{g.l}</a>)}
+      </nav>
+
+      {grupos.map(g => (
+        <div class="gl-grupo" id={`letra-${g.l.toLowerCase()}`}>
+          <h2 class="gl-letra">{g.l}</h2>
+          <dl class="gl-lista">
+            {g.items.map(x => (
+              <div class="gl-item" id={ancla(x.t)}>
+                <dt>{x.t}</dt>
+                <dd>{x.d}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .gl-letras { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 28px; }
+  .gl-letras a {
+    min-width: 34px; padding: 6px 8px; text-align: center; border-radius: 4px;
+    font-family: var(--ff-ui); font-weight: 600; font-size: 14px;
+    color: var(--dark); background: var(--bg-tint); text-decoration: none;
+  }
+  .gl-letras a:hover { background: var(--bd); }
+  .gl-grupo { border-top: 2px solid var(--dark); padding-top: 8px; margin-bottom: 28px; scroll-margin-top: 90px; }
+  .gl-letra { margin: 0 0 6px; font-family: var(--ff-titulo); font-size: 26px; color: var(--dark); }
+  .gl-lista { margin: 0; }
+  .gl-item { padding: 12px 0; border-bottom: 1px solid var(--bd); scroll-margin-top: 90px; }
+  .gl-item:last-child { border-bottom: none; }
+  .gl-item:target { background: var(--bg-tint); }
+  .gl-item dt { font-family: var(--ff-titulo); font-weight: 700; font-size: 17px; color: var(--dark); margin-bottom: 4px; }
+  .gl-item dd { margin: 0; font-size: 15px; line-height: 1.6; color: var(--dark); max-width: 72ch; }
+</style>

@@ -16,6 +16,7 @@ const links = [
   // como deuda; ADR-0201 la cierra). La sección de la portada sigue existiendo
   // con su propio CTA al diccionario: lo que cambia es a dónde manda el Nav.
   { href: `${base}/metodologia/`, label: "Metodología", seg: "metodologia" },
+  { href: `${base}/glosario/`, label: "Glosario", seg: "glosario" },
 ];
 function isActive(seg: string): boolean {
   if (seg === "") return path === base;
