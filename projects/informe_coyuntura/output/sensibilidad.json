@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-04T20:34:46.864968+00:00",
+    "snapshot": "2026-10-31T23:00:00+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -59,50 +59,50 @@
     }
   },
   "itcg": {
-    "valor_publicado": 82.4,
-    "valor_recomputado": 82.4,
+    "valor_publicado": 82.7,
+    "valor_recomputado": 82.7,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 82.4,
-        "p05": 81.1,
-        "p95": 83.8,
-        "desvio": 0.83
+        "media": 82.7,
+        "p05": 81.4,
+        "p95": 84.0,
+        "desvio": 0.82
       },
       "combinado": {
-        "media": 82.2,
-        "p05": 80.4,
-        "p95": 84.0,
+        "media": 82.5,
+        "p05": 80.7,
+        "p95": 84.3,
         "desvio": 1.07
       },
       "insumos": {
-        "media": 82.2,
-        "p05": 81.1,
-        "p95": 83.2,
-        "desvio": 0.63
+        "media": 82.5,
+        "p05": 81.4,
+        "p95": 83.6,
+        "desvio": 0.65
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 86.1,
-      "fal_modernizacion_laboral": 79.2,
+      "apertura_comercial": 86.6,
       "cepo_mulc": 79.4,
-      "juicios_trabajo_capital": 84.3,
-      "reduccion_estado": 84.1,
-      "privatizaciones": 84.0,
-      "gasto_funcionamiento": 81.2,
-      "rigi_inversiones": 81.3,
-      "desregulacion_normativa": 81.8,
-      "concesiones_infraestructura": 82.0,
-      "siniestralidad_laboral": 82.6,
-      "asistencia_directa": 82.4,
-      "protocolo_antipiquetes": 82.4,
-      "libertad_opcion_salud": 82.4
+      "fal_modernizacion_laboral": 79.5,
+      "juicios_trabajo_capital": 84.6,
+      "reduccion_estado": 84.4,
+      "privatizaciones": 84.3,
+      "gasto_funcionamiento": 81.5,
+      "rigi_inversiones": 81.6,
+      "desregulacion_normativa": 82.2,
+      "concesiones_infraestructura": 82.3,
+      "siniestralidad_laboral": 82.9,
+      "asistencia_directa": 82.7,
+      "protocolo_antipiquetes": 82.7,
+      "libertad_opcion_salud": 82.7
     },
     "tension": {
-      "base": 1.8,
+      "base": 1.7,
       "rango_combinado": [
         1.6,
-        2.0
+        1.9
       ]
     }
   },
@@ -178,7 +178,7 @@
       }
     },
     "leave_one_out": {
-      "ratio_dnu": 74.3,
+      "ratio_dnu": 74.4,
       "transferencias_no_automaticas": 74.0,
       "adhesion_reformas_provincial": 64.6,
       "votos_sobre_bancas": 70.0,
