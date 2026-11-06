@@ -1,0 +1,64 @@
+name: Rescate de pedidos trabados
+
+# Un pedido de claude.ai (rama `claude/…`) que no se pudo mergear por un error
+# de GitHub queda abierto para siempre: nadie vuelve a correr «Cambios desde
+# Claude». Pasó con el #95 el 5-nov-2026: GitHub estuvo caído una hora, el
+# merge reintentó 70 s y Luis vio «no entró». Esto lo reintenta solo.
+#
+# Cada 20 minutos busca PR abiertos de `claude/…` cuyo comentario de estado
+# dice merge=fallo por algo que NO es la guarda de archivos («bloqueado: …»), y
+# vuelve a correr los jobs fallidos de su última ejecución. Con eso corre de
+# nuevo `publicar` entero (merge, estado, avisos), sin duplicar nada de su
+# lógica. Tope: 5 intentos por ejecución (unas dos horas de caída).
+#
+# No ejecuta código del repo: sólo `gh`. No tiene secretos.
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+  pull-requests: read
+  contents: read
+
+concurrency:
+  group: rescate-pedidos
+  cancel-in-progress: false
+
+jobs:
+  rescatar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Reintentar los pedidos trabados
+        run: |
+          prs=$(gh pr list -R "$REPO" --state open --base main --limit 50 \
+                  --json number,headRefName \
+                  -q '.[] | select(.headRefName | startswith("claude/")) | "\(.number) \(.headRefName)"')
+          [ -n "$prs" ] || { echo "no hay pedidos abiertos"; exit 0; }
+          echo "$prs" | while read -r pr rama; do
+            estado=$(gh api "repos/$REPO/issues/$pr/comments?per_page=100" \
+              -q '[.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- estado-pedido -->")))] | last | .body // ""' \
+              | sed -n '/^```json/,/^```/p' | sed '1d;$d')
+            merge=$(printf '%s' "$estado" | jq -r '.merge // empty' 2>/dev/null)
+            motivo=$(printf '%s' "$estado" | jq -r '.motivo // ""' 2>/dev/null)
+            if [ "$merge" != fallo ]; then echo "#$pr: merge=${merge:-sin estado}, nada que hacer"; continue; fi
+            case "$motivo" in bloqueado*) echo "#$pr: frenado por la guarda, no se reintenta"; continue;; esac
+            # La última ejecución del PR. Si hay una corriendo, ella se ocupa.
+            ultima=$(gh run list -R "$REPO" --workflow cambios-desde-claude.yml --branch "$rama" \
+                       --limit 10 --json databaseId,status,conclusion,attempt \
+                       -q '[.[] | select(.conclusion != "cancelled")] | first')
+            [ -n "$ultima" ] && [ "$ultima" != null ] || { echo "#$pr: sin ejecuciones"; continue; }
+            id=$(jq -r .databaseId <<< "$ultima"); st=$(jq -r .status <<< "$ultima")
+            concl=$(jq -r .conclusion <<< "$ultima"); intento=$(jq -r .attempt <<< "$ultima")
+            if [ "$st" != completed ]; then echo "#$pr: la ejecución $id sigue en curso"; continue; fi
+            if [ "$concl" != failure ]; then echo "#$pr: la ejecución $id terminó en $concl"; continue; fi
+            if [ "$intento" -ge 5 ]; then echo "::warning::#$pr: ya se reintentó $intento veces, queda para revisar a mano"; continue; fi
+            echo "#$pr: merge trabado («$motivo»), se reintenta la ejecución $id (intento $((intento + 1)))"
+            gh run rerun "$id" -R "$REPO" --failed || echo "::warning::#$pr: no se pudo relanzar $id"
+          done

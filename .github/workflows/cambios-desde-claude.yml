@@ -106,7 +106,8 @@ jobs:
     # canceló, que es cuando llegó un commit nuevo y hay otra corrida en curso.
     if: ${{ !cancelled() && (needs.validar.result == 'success' || needs.validar.result == 'failure') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 45: el merge puede reintentar ~12 min y después se espera el deploy.
+    timeout-minutes: 45
     # Global, no por PR: dos pedidos seguidos leían y escribían a la vez el
     # artifact `estado-avisos-cambios` y el segundo pisaba al primero. Ojo: con
     # cancel-in-progress: false GitHub deja UN solo job esperando; si llega un
@@ -128,6 +129,7 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       SHA: ${{ github.event.pull_request.head.sha }}
       BASE: ${{ github.event.pull_request.base.sha }}
+      RAMA: ${{ github.event.pull_request.head.ref }}
       REPO: ${{ github.repository }}
       TESTS: ${{ needs.validar.result }}
       SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -190,25 +192,36 @@ jobs:
             echo "[aviso] no hay estado previo: se compara contra nada"
           fi
 
-      # --match-head-commit: si alguien empujó otra cosa en el medio, el merge
-      # falla en vez de publicar algo distinto de lo pedido. GitHub calcula si
-      # un PR se puede mergear en diferido, así que se reintenta. Si no sale,
-      # el motivo queda en el comentario de estado (merge=fallo).
+      # --match-head-commit (y `sha` en la API REST): si alguien empujó otra
+      # cosa en el medio, el merge falla en vez de publicar algo distinto de lo
+      # pedido. GitHub calcula si un PR se puede mergear en diferido, así que se
+      # reintenta. Cada intento prueba primero `gh pr merge` (GraphQL) y, si
+      # falla, la API REST: el 5-nov-2026 GraphQL devolvió «Something went
+      # wrong» durante una caída de GitHub y el #95 quedó trabado porque los 6
+      # intentos duraban 70 s. Ahora la espera crece hasta ~12 min; si GitHub
+      # sigue caído más que eso, `rescate-pedidos.yml` lo reintenta solo cada
+      # 20 minutos. Si no sale, el motivo queda en el estado (merge=fallo).
       - name: Mergear
         id: mergear
         run: |
-          for intento in 1 2 3 4 5 6; do
-            if gh pr merge "$PR" --squash --delete-branch --match-head-commit "$SHA" 2> "$RUNNER_TEMP/merge.err"; then
+          esperas="10 20 30 60 60 90 120 120 120 120"
+          intento=0
+          for espera in $esperas fin; do
+            intento=$((intento + 1))
+            if gh pr merge "$PR" --squash --delete-branch --match-head-commit "$SHA" 2> "$RUNNER_TEMP/merge.err" \
+               || { gh api -X PUT "repos/$REPO/pulls/$PR/merge" -f merge_method=squash -f sha="$SHA" \
+                      >/dev/null 2>> "$RUNNER_TEMP/merge.err" \
+                    && { gh api -X DELETE "repos/$REPO/git/refs/heads/$RAMA" >/dev/null 2>&1 || true; }; }; then
               [ -s "$RUNNER_TEMP/aviso/aviso.py" ] && python3 "$RUNNER_TEMP/aviso/aviso.py" estado --pr "$PR" --repo "$REPO" --merge ok --motivo "" || true
               exit 0
             fi
             cat "$RUNNER_TEMP/merge.err" >&2
-            [ "$intento" = 6 ] && break
-            sleep 10
+            [ "$espera" = fin ] && break
+            sleep "$espera"
           done
           error=$(tr '\n' ' ' < "$RUNNER_TEMP/merge.err" | cut -c1-300)
           [ -s "$RUNNER_TEMP/aviso/aviso.py" ] && python3 "$RUNNER_TEMP/aviso/aviso.py" estado --pr "$PR" --repo "$REPO" --merge fallo \
-            --motivo "GitHub no dejó mergear después de 6 intentos: ${error:-sin detalle}" || true
+            --motivo "GitHub no dejó mergear después de $intento intentos: ${error:-sin detalle}" || true
           exit 1
 
       # El input `pedido` («PR.run») le pone el pedido y este run al nombre de la corrida
