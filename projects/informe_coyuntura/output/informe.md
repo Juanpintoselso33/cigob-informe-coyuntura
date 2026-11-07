@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-07 16:52:48"
+generado: "2026-11-07 17:54:26"
 score_global: 3.6
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -34,7 +34,7 @@ schema_version: "1.2.0"
 | tcr_terminos_intercambio | 49.8 | puntaje (0-100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.8 | % anual esperado | 2026-10-31 | fresco |
 | idm | 1.62 | puntos porcentuales (brecha interanual real) | 2026-09-01 | fresco |
-| desequilibrio_monetario | 68.1 | puntos de tensión (0-100) | 2026-09-01 | ⚠ cache |
+| desequilibrio_monetario | 67.51 | puntos de tensión (0-100) | 2026-09-01 | fresco |
 | iai | -0.33 | % interanual ponderado | 2026-09-01 | fresco |
 | icip | 13.63 | % interanual ponderado | 2026-07-01 | fresco |
 | credito_privado | -0.5 | % interanual real (crédito en pesos) | 2026-09-01 | fresco |
@@ -54,16 +54,16 @@ schema_version: "1.2.0"
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_construccion | 0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| conflictividad_nacional | -27.2 | % frente a 2023 | 2026-09-01 | fresco |
+| conflictividad_nacional | -27.2 | % frente a 2023 | 2026-09-01 | ⚠ cache |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | ⚠ cache |
 | transferencias_no_automaticas | -82.1 | % real frente a 2023 | 2026-09-30 | fresco |
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-11-04 | ⚠ cache |
 | comisiones_caidas | 96.5 | % de proyectos | 2026-11-04 | ⚠ cache |
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-11-07 | fresco |
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-07 | fresco |
 | rotacion_gabinete | 4 | salidas de rango ministerial (acumulado de 12 meses) | 2026-11-07 | fresco |
-| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
+| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | ⚠ cache |
 | votos_sobre_bancas | 141.5 | diputados a favor | 2026-11-04 | ⚠ cache |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | 2026-10-29 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-11-04 | ⚠ cache |
@@ -112,14 +112,14 @@ schema_version: "1.2.0"
 | fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-07 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | ⚠ cache |
-| privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
+| privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-11-07 | fresco |
 | rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-07 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-07 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-07 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-07 | fresco |
-| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
+| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | ⚠ cache |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
 
@@ -131,9 +131,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:macro:desequilibrio_monetario`
-- `desactualizado:politica:apoyo_empresario,apoyo_comercio,apoyo_campo,apoyo_construccion,eficacia_legislativa,comisiones_caidas,votos_sobre_bancas,bloqueo_sostenido`
-- `desactualizado:gestion:juicios_trabajo_capital`
+- `desactualizado:politica:apoyo_empresario,apoyo_comercio,apoyo_campo,apoyo_construccion,conflictividad_nacional,movilizacion_cepa,eficacia_legislativa,comisiones_caidas,protestas_caba,votos_sobre_bancas,bloqueo_sostenido`
+- `desactualizado:gestion:juicios_trabajo_capital,protestas_caba`
 
 ---
-*Generado por CIGOB — 2026-11-07 16:52:48 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-07 17:54:26 — schema 1.2.0*

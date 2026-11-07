@@ -898,7 +898,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 53,1 % de avance (etapas 0-4, cartera Ley Bases)** (2026-09) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 53,1 % de avance (etapas 0-4, cartera Ley Bases)** (2026-11) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -908,7 +908,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de avance (etapas 0-4, cartera Ley Bases) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial y Comisión Nacional de Valores (CNV) (hechos) + Fundación CIGOB (curaduría del registro) | **OPERACIÓN ESTADÍSTICA** | Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), ocho empresas. Corredores Viales queda fuera: su privatización es la concesión de la red vial, que mide el indicador de concesiones de infraestructura |
-| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-07 |
+| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-07 |
 
 ## Definición — qué mide y por qué importa
 
@@ -940,11 +940,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener · 5 norma(s) nueva(s) del Boletín Oficial sin revisar
+- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener
 
 ## Color vigente y por qué
 
-Dato vigente: 53,1 % de avance (etapas 0-4, cartera Ley Bases) (2026-09).
+Dato vigente: 53,1 % de avance (etapas 0-4, cartera Ley Bases) (2026-11).
 
 53,1 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 12,1 del límite con Amarillo (41,0).
 
@@ -1092,7 +1092,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-11) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-08) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1102,7 +1102,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la última consulta a CONTRAT.AR; si esa consulta no está disponible, la de la resolución más reciente registrada. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
-| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-07 |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-11-07 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1138,7 +1138,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-11).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-08).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0).
 

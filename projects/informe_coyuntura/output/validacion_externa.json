@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-07T16:52:33.173238+00:00",
+    "generated_at": "2026-11-07T17:54:13.634139+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -85,7 +85,7 @@
     "2026-06": 56.4,
     "2026-07": 52.6,
     "2026-08": 51.4,
-    "2026-09": 51.9
+    "2026-09": 52.0
   },
   "componentes_historia_itcm": [
     "actividad_tributaria",
@@ -187,7 +187,7 @@
       "n": 33
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.542,
+      "r": 0.541,
       "n": 34
     },
     "líder adelantado 3 meses vs ITCM": {
@@ -427,7 +427,7 @@
       "costo_financiamiento_tesoro": {
         "actividad_tributaria": 0.25,
         "credito_privado": 0.1,
-        "desequilibrio_monetario": 0.328,
+        "desequilibrio_monetario": 0.33,
         "emae_difusion": 0.121,
         "emae_ia": 0.138,
         "iai": 0.105,
@@ -445,7 +445,7 @@
       "credito_privado": {
         "actividad_tributaria": 0.781,
         "costo_financiamiento_tesoro": 0.1,
-        "desequilibrio_monetario": 0.159,
+        "desequilibrio_monetario": 0.156,
         "emae_difusion": 0.686,
         "emae_ia": 0.784,
         "iai": 0.838,
@@ -462,21 +462,21 @@
       },
       "desequilibrio_monetario": {
         "actividad_tributaria": 0.092,
-        "costo_financiamiento_tesoro": 0.328,
-        "credito_privado": 0.159,
+        "costo_financiamiento_tesoro": 0.33,
+        "credito_privado": 0.156,
         "emae_difusion": 0.133,
         "emae_ia": 0.283,
-        "iai": 0.383,
-        "idc": 0.171,
-        "ipc_total": -0.177,
-        "ipi_manufacturero": 0.288,
+        "iai": 0.382,
+        "idc": 0.169,
+        "ipc_total": -0.176,
+        "ipi_manufacturero": 0.287,
         "recaudacion": 0.016,
-        "rem_ipc_12m": -0.306,
-        "reservas_bcra": -0.075,
+        "rem_ipc_12m": -0.305,
+        "reservas_bcra": -0.072,
         "resultado_primario": -0.082,
-        "saldo_comercial_12m": -0.112,
-        "tcrm": -0.388,
-        "terminos_intercambio": 0.125
+        "saldo_comercial_12m": -0.107,
+        "tcrm": -0.39,
+        "terminos_intercambio": 0.126
       },
       "emae_difusion": {
         "actividad_tributaria": 0.672,
@@ -518,7 +518,7 @@
         "actividad_tributaria": 0.748,
         "costo_financiamiento_tesoro": 0.105,
         "credito_privado": 0.838,
-        "desequilibrio_monetario": 0.383,
+        "desequilibrio_monetario": 0.382,
         "emae_difusion": 0.734,
         "emae_ia": 0.827,
         "idc": 0.82,
@@ -536,7 +536,7 @@
         "actividad_tributaria": 0.749,
         "costo_financiamiento_tesoro": 0.107,
         "credito_privado": 0.923,
-        "desequilibrio_monetario": 0.171,
+        "desequilibrio_monetario": 0.169,
         "emae_difusion": 0.603,
         "emae_ia": 0.808,
         "iai": 0.82,
@@ -554,7 +554,7 @@
         "actividad_tributaria": 0.585,
         "costo_financiamiento_tesoro": 0.148,
         "credito_privado": 0.606,
-        "desequilibrio_monetario": -0.177,
+        "desequilibrio_monetario": -0.176,
         "emae_difusion": 0.464,
         "emae_ia": 0.486,
         "iai": 0.595,
@@ -572,7 +572,7 @@
         "actividad_tributaria": 0.761,
         "costo_financiamiento_tesoro": 0.041,
         "credito_privado": 0.658,
-        "desequilibrio_monetario": 0.288,
+        "desequilibrio_monetario": 0.287,
         "emae_difusion": 0.508,
         "emae_ia": 0.756,
         "iai": 0.817,
@@ -608,7 +608,7 @@
         "actividad_tributaria": 0.709,
         "costo_financiamiento_tesoro": 0.287,
         "credito_privado": 0.862,
-        "desequilibrio_monetario": -0.306,
+        "desequilibrio_monetario": -0.305,
         "emae_difusion": 0.674,
         "emae_ia": 0.689,
         "iai": 0.768,
@@ -626,7 +626,7 @@
         "actividad_tributaria": 0.057,
         "costo_financiamiento_tesoro": -0.035,
         "credito_privado": -0.069,
-        "desequilibrio_monetario": -0.075,
+        "desequilibrio_monetario": -0.072,
         "emae_difusion": -0.033,
         "emae_ia": 0.016,
         "iai": 0.271,
@@ -662,7 +662,7 @@
         "actividad_tributaria": 0.445,
         "costo_financiamiento_tesoro": 0.646,
         "credito_privado": 0.413,
-        "desequilibrio_monetario": -0.112,
+        "desequilibrio_monetario": -0.107,
         "emae_difusion": 0.155,
         "emae_ia": 0.391,
         "iai": 0.294,
@@ -680,7 +680,7 @@
         "actividad_tributaria": -0.572,
         "costo_financiamiento_tesoro": -0.623,
         "credito_privado": -0.545,
-        "desequilibrio_monetario": -0.388,
+        "desequilibrio_monetario": -0.39,
         "emae_difusion": -0.251,
         "emae_ia": -0.602,
         "iai": -0.457,
@@ -698,7 +698,7 @@
         "actividad_tributaria": 0.077,
         "costo_financiamiento_tesoro": 0.011,
         "credito_privado": 0.05,
-        "desequilibrio_monetario": 0.125,
+        "desequilibrio_monetario": 0.126,
         "emae_difusion": 0.094,
         "emae_ia": 0.126,
         "iai": 0.275,
@@ -2672,7 +2672,7 @@
     "2026-07": 55.2,
     "2026-08": 60.4,
     "2026-09": 64.2,
-    "2026-10": 77.2
+    "2026-10": 73.0
   },
   "series_dimensiones": {
     "itvc": {
@@ -3002,7 +3002,7 @@
           "2026-06": 45.7,
           "2026-07": 45.2,
           "2026-08": 49.3,
-          "2026-09": 44.6
+          "2026-09": 44.7
         }
       },
       "cuentas_fiscales": {
@@ -3534,8 +3534,7 @@
           "2026-06": 34.0,
           "2026-07": 55.0,
           "2026-08": 62.0,
-          "2026-09": 65.8,
-          "2026-10": 100.0
+          "2026-09": 65.8
         }
       }
     }
@@ -3843,7 +3842,7 @@
       "n": 26
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.282,
+      "r": -0.321,
       "n": 28
     },
     "niveles, sin la dimensión de sector privado": {
@@ -5332,8 +5331,8 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": 0.183,
-          "r_diferencias": 0.319,
+          "r_niveles": 0.21,
+          "r_diferencias": 0.362,
           "n": 28
         },
         {
@@ -5368,8 +5367,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.209,
-          "r_diferencias": 0.099,
+          "r_niveles": -0.217,
+          "r_diferencias": 0.121,
           "n": 28
         },
         {
@@ -5395,15 +5394,15 @@
       "n_ajenas": 12,
       "niveles": {
         "convergente": 0.448,
-        "discriminante": 0.239,
-        "brecha": 0.209
+        "discriminante": 0.242,
+        "brecha": 0.206
       },
       "diferencias": {
         "convergente": 0.086,
-        "discriminante": 0.149,
-        "brecha": -0.063
+        "discriminante": 0.154,
+        "brecha": -0.068
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,448 y con las 12 ajenas es 0,239. En los cambios mes a mes la separación no se sostiene: 0,086 con lo propio contra 0,149 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,448 y con las 12 ajenas es 0,242. En los cambios mes a mes la separación no se sostiene: 0,086 con lo propio contra 0,154 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

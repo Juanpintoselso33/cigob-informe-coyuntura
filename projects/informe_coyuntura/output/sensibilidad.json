@@ -4,48 +4,48 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-07T16:52:48.854108+00:00",
+    "snapshot": "2026-11-07T17:54:26.916549+00:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 50.6,
-    "valor_recomputado": 50.6,
+    "valor_publicado": 50.7,
+    "valor_recomputado": 50.7,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 50.6,
+        "media": 50.7,
         "p05": 49.6,
-        "p95": 51.6,
-        "desvio": 0.62
+        "p95": 51.7,
+        "desvio": 0.61
       },
       "combinado": {
         "media": 50.6,
         "p05": 49.0,
-        "p95": 52.1,
+        "p95": 52.2,
         "desvio": 0.96
       },
       "insumos": {
         "media": 50.6,
         "p05": 49.4,
-        "p95": 51.8,
+        "p95": 51.9,
         "desvio": 0.75
       }
     },
     "leave_one_out": {
-      "tcrm": 53.5,
-      "terminos_intercambio": 53.5,
+      "tcrm": 53.6,
+      "terminos_intercambio": 53.6,
       "iai": 48.5,
       "costo_financiamiento_tesoro": 49.0,
       "reservas_bcra": 49.4,
       "saldo_comercial_12m": 49.4,
       "ipc_total": 51.6,
       "idc": 51.6,
+      "resultado_primario": 49.9,
       "desequilibrio_monetario": 51.4,
       "emae_difusion": 51.4,
-      "resultado_primario": 49.9,
+      "emae_ia": 51.3,
+      "ipi_manufacturero": 51.3,
       "credito_privado": 51.2,
-      "emae_ia": 51.2,
-      "ipi_manufacturero": 51.2,
       "recaudacion": 50.9,
       "actividad_tributaria": 50.9,
       "rem_ipc_12m": 50.5

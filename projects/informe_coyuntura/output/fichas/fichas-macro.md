@@ -35,14 +35,14 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 50,6** | **AMARILLO** | Moderadamente apretado | 17 indicadores: 5 en verde · 8 en amarillo · 3 en naranja · 1 en rojo |
+| **ITCM: 50,7** | **AMARILLO** | Moderadamente apretado | 17 indicadores: 5 en verde · 8 en amarillo · 3 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 44,5 | AMARILLO | 31,4 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 44,6 | AMARILLO | 31,4 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 37,8 | NARANJA | 23,0 % |
 | Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 61,5 | VERDE | 19,2 % |
 | Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 57,8 | AMARILLO | 15,8 % |
@@ -64,7 +64,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | AMARILLO | 15,6 % |
 | Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de dólares | VERDE | 5,4 % |
 | Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,8 % anual esperado | AMARILLO | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 68,1 puntos de tensión (0-100) | NARANJA | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 67,51 puntos de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
 | Actividad económica (frente a un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,74 % interanual | NARANJA | 9,7 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 33,33 % de sectores en crecimiento interanual | ROJO | 3,2 % |
@@ -1292,7 +1292,7 @@ Mira dos cosas a la vez: si la gente sigue usando pesos y cuántos dólares comp
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 68,1 puntos de tensión (0-100)** (2026-09) | **NARANJA** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 67,51 puntos de tensión (0-100)** (2026-09) | **NARANJA** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1340,13 +1340,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- tensión 68,1 pts = liquidez privada en pesos transaccionales 31,57% × compra neta de divisas del sector privado US$ 2538,3 M — menos pesos transaccionales y presión compradora alta, medidos contra el régimen abierto
+- tensión 67,51 pts = liquidez privada en pesos transaccionales 31,64% × compra neta de divisas del sector privado US$ 2538,3 M — menos pesos transaccionales y presión compradora alta, medidos contra el régimen abierto
 
 ## Color vigente y por qué
 
-Dato vigente: 68,1 puntos de tensión (0-100) (2026-09).
+Dato vigente: 67,51 puntos de tensión (0-100) (2026-09).
 
-68,1 puntos de tensión (0-100) está en Naranja, a 8,1 del límite con Amarillo (60,0).
+67,51 puntos de tensión (0-100) está en Naranja, a 7,51 del límite con Amarillo (60,0).
 
 **Color vigente: NARANJA**
 
