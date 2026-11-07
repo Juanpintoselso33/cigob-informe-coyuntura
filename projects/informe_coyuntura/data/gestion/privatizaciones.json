@@ -1,9 +1,9 @@
 {
   "_meta": {
     "descripcion": "Índice de avance de privatizaciones por ETAPAS (doc 260702). Cada empresa de la cartera Ley Bases se puntúa 0-4: 0 sin definir · 1 preparatoria (marco habilitante) · 2 pliegos/estructuración · 3 licitación abierta o adjudicación en curso · 4 operación cerrada. avance_pct = promedio(etapa)/4 × 100. No hay fuente única automatizable (la Agencia de Transformación de Empresas Públicas no publica dashboard; la Bicameral tampoco): mantener con seguimiento quincenal del Boletín Oficial.",
-    "fuente": "Boletín Oficial y CNV — hitos por empresa, revisión parcial al 8-sep-2026",
-    "actualizado": "2026-09-08",
-    "alcance_revision": "Actualizados Belgrano Cargas, AySA, Intercargo y el detalle operativo de Corredores Viales. Se revisaron los 27 avisos de la cola existente. Las etapas restantes conservan la evaluación previa; esta fecha no certifica una nueva revisión integral de toda la cartera. Transener: cierre corroborado en CNV el 28-ago; se corrige la transición histórica que lo anticipaba a junio. Se precisan los actos de Enarsa y YCRT sin certificar exhaustividad ni cambiar sus etapas; los importes contextuales quedan explícitamente pendientes de verificación contable. SOFSE: se retira la afirmación no acreditada de pausa y se precisan transformación y servicio específico. Nucleoeléctrica: se distingue el plazo normativo de su cumplimiento.",
+    "fuente": "Boletín Oficial y CNV — hitos por empresa, Boletín Oficial revisado al 7-nov-2026",
+    "actualizado": "2026-11-07",
+    "alcance_revision": "7-nov-2026: se revisaron las 5 normas de octubre que el detector dejó pendientes (AySA ×2, Belgrano Cargas ×2, SOFSE); ninguna cambia una etapa. AySA y Belgrano Cargas actualizan su hito; SOFSE registra el traspaso del corredor Cipolletti–Neuquén a Río Negro, que no es un paso de la privatización. Las otras empresas no tuvieron normas nuevas en el Boletín Oficial (detección sin fallos al 4-nov). CNV no se revisó de forma integral. Revisión anterior (8-sep-2026): Actualizados Belgrano Cargas, AySA, Intercargo y el detalle operativo de Corredores Viales. Se revisaron los 27 avisos de la cola existente. Las etapas restantes conservan la evaluación previa; esta fecha no certifica una nueva revisión integral de toda la cartera. Transener: cierre corroborado en CNV el 28-ago; se corrige la transición histórica que lo anticipaba a junio. Se precisan los actos de Enarsa y YCRT sin certificar exhaustividad ni cambiar sus etapas; los importes contextuales quedan explícitamente pendientes de verificación contable. SOFSE: se retira la afirmación no acreditada de pausa y se precisan transformación y servicio específico. Nucleoeléctrica: se distingue el plazo normativo de su cumplimiento.",
     "contexto": {
       "nota": "No hay recaudación efectiva conciliada en este registro. El antecedente periodístico conserva las cifras heredadas como afirmaciones históricas, sin intervenir en el puntaje. Distinguir ofertas, precios adjudicados, contratos y cobros; evitar duplicar Enarsa/Citelec/Transener.",
       "estado_verificacion": "pendiente_cotejo_contable",
@@ -24,9 +24,9 @@
     "AySA": {
       "etapa": 3,
       "mecanismo": "Venta del 90% del paquete accionario estatal a un operador estratégico",
-      "hito": "Licitación 504/2-0003-LPU26 con pliegos aprobados; la Resolución ME 1386/2026 (BO 26-ago) incorpora la Circular Modificatoria 9 y prorroga los plazos. No hay cierre acreditado.",
-      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346399/20260826",
-      "verificado_en": "2026-09-08"
+      "hito": "Licitación 504/2-0003-LPU26 de etapa múltiple: la Resolución ME 1722/2026 (BO 6-oct) aprobó lo actuado en la etapa 1 y la ME 1818/2026 (BO 22-oct), la etapa 2. Antes, la ME 1386/2026 (BO 26-ago) prorrogó los plazos. No hay adjudicación ni cierre acreditados.",
+      "fuente_url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431495",
+      "verificado_en": "2026-11-07"
     },
     "Transener": {
       "etapa": 4,
@@ -54,9 +54,9 @@
     "Belgrano Cargas": {
       "etapa": 3,
       "mecanismo": "Fragmentación en 7 concesiones + venta de material rodante",
-      "hito": "Resolución ME 1350/2026 (BO 20-ago): llamado a licitación 504/2-0004-LPU26 y aprobación de pliegos para las líneas Belgrano, San Martín y Urquiza. Etapa 3 por llamado formal; no equivale a operación cerrada.",
+      "hito": "Resolución ME 1350/2026 (BO 20-ago): llamado a licitación 504/2-0004-LPU26 y aprobación de pliegos para las líneas Belgrano, San Martín y Urquiza. El Decreto 1216/2026 (BO 19-oct) aprobó la cláusula de arbitraje del modelo de contrato de concesión. Etapa 3 por llamado formal; no equivale a operación cerrada.",
       "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346112/20260820",
-      "verificado_en": "2026-09-08"
+      "verificado_en": "2026-11-07"
     },
     "Nucleoeléctrica": {
       "etapa": 1,
@@ -77,9 +77,9 @@
     "SOFSE": {
       "etapa": 0.5,
       "mecanismo": "Modalidad de privatización/concesión pendiente de acreditación; denominación actual SOFSA",
-      "hito": "La ST 34/2026 identifica la transformación de SOFSE en SOFSA y su inscripción societaria. La ME 150/2026 encomienda a ADIFSA procedimientos para el servicio Garupá–Encarnación y mantiene a SOFSA operándolo mientras tanto. Ninguno de estos actos acredita la adjudicación o venta de toda la operadora.",
+      "hito": "La ST 34/2026 identifica la transformación de SOFSE en SOFSA y su inscripción societaria. La ME 150/2026 encomienda a ADIFSA procedimientos para el servicio Garupá–Encarnación y mantiene a SOFSA operándolo mientras tanto. Ninguno de estos actos acredita la adjudicación o venta de toda la operadora. La ME 1853/2026 (BO 26-oct) dispone que Río Negro, por Tren Patagónico, opere el corredor Cipolletti–Neuquén: es un traspaso de servicio a una provincia, no un paso de la privatización.",
       "fuente_url": "https://www.boletinoficial.gov.ar/detalleAviso/primera/343329/20260619",
-      "verificado_en": "2026-09-08",
+      "verificado_en": "2026-11-07",
       "alcance_revision": "Cotejo de transformación societaria y un servicio específico. No se certifica una suspensión formal de todo el proceso ni la ausencia de actos posteriores."
     }
   },

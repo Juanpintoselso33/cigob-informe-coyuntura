@@ -10,61 +10,10 @@
   },
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
-  "revision_manual_en": "2026-10-24",
+  "revision_manual_en": "2026-11-07",
   "ultima_corrida": "2026-11-07"
  },
- "pendientes": {
-  "430922": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "AySA",
-   "empresas_mencionadas": [
-    "AySA"
-   ],
-   "periodo": "2026-10",
-   "titulo": "Resolución 1722 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430922"
-  },
-  "430979": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Belgrano Cargas",
-   "empresas_mencionadas": [
-    "Belgrano Cargas"
-   ],
-   "periodo": "2026-10",
-   "titulo": "Resolución 1761 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430979"
-  },
-  "431313": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Belgrano Cargas",
-   "empresas_mencionadas": [
-    "Belgrano Cargas"
-   ],
-   "periodo": "2026-10",
-   "titulo": "Decreto 1216 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431313"
-  },
-  "431495": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "AySA",
-   "empresas_mencionadas": [
-    "AySA"
-   ],
-   "periodo": "2026-10",
-   "titulo": "Resolución 1818 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431495"
-  },
-  "431601": {
-   "coincidencia": "adjudica",
-   "empresa": "SOFSE",
-   "empresas_mencionadas": [
-    "SOFSE"
-   ],
-   "periodo": "2026-10",
-   "titulo": "Resolución 1853 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431601"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "425373": {
    "del_proceso": true,
@@ -4040,6 +3989,71 @@
    "sha256_texto": "d5936f4ef143326a6d4cb8eadfbae62baf1389c16f710f555944e37281b49d72",
    "titulo": "Decreto 1107 / 2026",
    "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430589"
+  },
+  "430922": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "AySA",
+   "empresas_mencionadas": [
+    "AySA"
+   ],
+   "periodo": "2026-10",
+   "resolucion": "Aprueba lo actuado en la etapa 1 de la licitación de etapa múltiple 504/2-0003-LPU26 para vender el 90 % de AySA a un operador estratégico. Sigue la licitación abierta: no hay adjudicación, AySA sigue en 3.",
+   "revisado_en": "2026-11-07",
+   "titulo": "Resolución 1722 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430922"
+  },
+  "430979": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-10",
+   "resolucion": "Asigna a Belgrano Cargas inmuebles de ADIFSA en San Cristóbal, Tafí Viejo y Monte Caseros. Es una asignación de bienes, no un paso de la venta. No cambia la etapa.",
+   "revisado_en": "2026-11-07",
+   "titulo": "Resolución 1761 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430979"
+  },
+  "431313": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-10",
+   "resolucion": "Aprueba la cláusula de arbitraje (sede Montevideo) del modelo de contrato de concesión de las líneas Belgrano, San Martín y Urquiza, del pliego de la Res. ME 1350/2026. Es parte de la licitación abierta: Belgrano Cargas sigue en 3.",
+   "revisado_en": "2026-11-07",
+   "titulo": "Decreto 1216 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431313"
+  },
+  "431495": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "AySA",
+   "empresas_mencionadas": [
+    "AySA"
+   ],
+   "periodo": "2026-10",
+   "resolucion": "Aprueba lo actuado en la etapa 2 de la misma licitación 504/2-0003-LPU26 de AySA. Sigue sin adjudicación: AySA sigue en 3.",
+   "revisado_en": "2026-11-07",
+   "titulo": "Resolución 1818 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431495"
+  },
+  "431601": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "adjudica",
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [
+    "SOFSE"
+   ],
+   "periodo": "2026-10",
+   "resolucion": "Dispone que Río Negro, por Tren Patagónico, opere los servicios de pasajeros del corredor Cipolletti–Neuquén y sus ramales. Es un traspaso de servicio a una provincia, no un paso de la privatización de SOFSE, que sigue en 0,5.",
+   "revisado_en": "2026-11-07",
+   "titulo": "Resolución 1853 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=431601"
   }
  }
 }

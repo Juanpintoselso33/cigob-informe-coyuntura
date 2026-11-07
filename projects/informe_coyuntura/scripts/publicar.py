@@ -37,6 +37,18 @@ import parametrica                                    # motor de puntaje y semá
 import terminos_intercambio                           # matriz de competitividad (ADR-0375)
 
 
+def pct_peso(peso) -> str:
+    """Un peso (0-1) como «11,3»: medio para arriba, como lo redondea la web
+    (Intl.NumberFormat). round() redondea al par y 11,25 salía 11,2 en la
+    fórmula y 11,3 en la tarjeta (revisión de Luis, 7-nov-2026)."""
+    from decimal import Decimal, ROUND_HALF_UP
+    # Intl redondea la forma decimal MÁS CORTA del double (la de repr), no un
+    # valor redondeado antes: 0,0705 × 100 = 7,049999999999999 sale 7 y
+    # 0,0115 × 100 = 1,15 sale 1,2, en los dos lados (Codex, 7-nov-2026).
+    d = Decimal(repr(float(peso) * 100)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    return coma(float(d))
+
+
 def coma(x) -> str:
     """Número para texto PÚBLICO: coma decimal es-AR y menos tipográfico (U+2212).
 
@@ -975,7 +987,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
                            f"{_lectura_tension(tension_cruda)}.")
             peso = ind.get("peso_efectivo")
-            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {nombre}" if peso else ""
+            peso_txt = f"; pesa {pct_peso(peso)}% del {nombre}" if peso else ""
             formula = (f"Anclas del {nombre}: {mod.texto_bandas(ikey)} "
                        f"(puntaje interpolado entre anclas: {p}{peso_txt})")
             if clave == "itcm" and ikey in ("tcrm", "terminos_intercambio"):
@@ -2285,16 +2297,18 @@ def _scoring_vida_itvc(c, series):
             # (ene-2024) se sacó con ADR-0393: ahora es el promedio del 4T-2023.
             base_lbl = {"ocupacion_eph": "el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1"} \
                 .get(ikey, "4º trimestre de 2023")
-            formula = (f"Índice base-100 frente a {base_lbl}: {coma(info['puntaje_aplicado'])} "
+            frente = "frente al" if base_lbl.startswith("el ") else "frente a"
+            base_txt = base_lbl[3:] if base_lbl.startswith("el ") else base_lbl
+            formula = (f"Índice base-100 {frente} {base_txt}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = igual que antes del mandato; más = mejora); pesa "
-                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+                       f"{pct_peso(info['peso_efectivo'])}% del índice de impacto social.")
             # Anclas que NO son el 4T-2023: el rótulo dice contra qué se mide de verdad.
             if ikey in ("tasa_homicidios", "tasa_robos"):
                 # ADR-0327: base = mediana de toda la serie del SNIC (2000-2025)
                 formula = (f"Índice base-100 frente a la mediana de la serie 2000-2025: "
                            f"{coma(info['puntaje_aplicado'])} (100 = igual que la mediana histórica; "
                            f"más = mejora); pesa "
-                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+                           f"{pct_peso(info['peso_efectivo'])}% del índice de impacto social.")
             elif ikey in itvc.CORTES_FIJOS_ITVC:
                 # ADR-0425: contra cortes fijos, no contra una fecha
                 c1, c2, c3 = (coma(int(c) if float(c).is_integer() else c)
@@ -2302,7 +2316,7 @@ def _scoring_vida_itvc(c, series):
                 formula = (f"Componente de la escala común contra cortes fijos: "
                            f"{coma(info['puntaje_aplicado'])} (verde hasta {c1}%, amarillo hasta "
                            f"{c2}%, naranja hasta {c3}%, rojo por encima; más = mejora); pesa "
-                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+                           f"{pct_peso(info['peso_efectivo'])}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")
                 proporcion_t = ind.get("transporte_pct_canasta")
@@ -2312,16 +2326,16 @@ def _scoring_vida_itvc(c, series):
                     formula = (f"Canasta de servicios públicos del Instituto Interdisciplinario de Economía "
                                f"Política sobre el salario registrado promedio: {coma(carga)}% = agua+energía "
                                f"{coma(round(carga_ae, 1))}% + transporte {coma(round(carga_t, 1))}%. "
-                               f"Se toma la mayor tensión contra sus límites (10% y 5%): "
-                               f"índice {coma(info['puntaje_aplicado'])}. "
-                               f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+                               f"Cada rubro se mide por separado: {_cortes_tarifas_txt()}. "
+                               f"Manda el peor de los dos: índice {coma(info['puntaje_aplicado'])}. "
+                               f"Pesa {pct_peso(info['peso_efectivo'])}% del índice de impacto social.")
                     lectura = (f"Agua y energía representan {coma(round(carga_ae, 1))}% del salario; "
                                f"transporte, {coma(round(carga_t, 1))}%. La mayor de las dos "
                                f"señales fija el color: {_lectura_tension(tension_exacta)}.")
                 else:
                     formula = (f"Índice de asequibilidad por rubro: "
                                f"{coma(info['puntaje_aplicado'])}; pesa "
-                               f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+                               f"{pct_peso(info['peso_efectivo'])}% del índice de impacto social.")
             if ikey in winsorizados:
                 nota = (f"Winsorizado (tratamiento de outliers): índice crudo "
                         f"{coma(winsorizados[ikey])} acotado al techo de {coma(ITVC_WINSOR_TOPE)} "
@@ -2524,6 +2538,64 @@ def _lectura_tension(tension) -> str:
     """«amarillo (tensión moderada)» para una tensión 0-10."""
     color = parametrica.color_de_tension(float(tension))
     return f"{color} ({_LECTURA_COLOR[color]})"
+
+
+# Bordes de color de la escala base-100 del índice de impacto social, los
+# mismos de parametrica.color_de_indice_base100 (verde desde 105; rojo, debajo
+# de 85) y de la leyenda del cinturón.
+_TRAMOS_BASE100 = [{"color": "rojo", "desde": None, "hasta": 85},
+                   {"color": "naranja", "desde": 85, "hasta": 95},
+                   {"color": "amarillo", "desde": 95, "hasta": 105},
+                   {"color": "verde", "desde": 105, "hasta": None}]
+
+
+def _por_que_indice_base100(color, indice):
+    """`por_que` de un componente del índice de impacto social que puntúa como
+    índice base-100 y no tiene tramos en su propia unidad. Revisión de Luis
+    (7-nov-2026): la ocupación salía en amarillo sin decir por qué, y lo mismo
+    13 de las 19 tarjetas del cinturón. La frase ata el índice del componente
+    al corte de color más cercano, con la misma aritmética que el color."""
+    # Sin redondear antes de comparar: 104,99 redondeado a 105,0 se leía
+    # «105,0 está en Amarillo» (Codex, 7-nov-2026).
+    indice = float(indice)
+    frase = _por_que(color, round(indice, 2),
+                     "en la escala del cinturón (100 = referencia)", _TRAMOS_BASE100)
+    # Fuera de [75, 125] la tensión queda acotada y el color deja de moverse con
+    # el dato: la frase lo dice (lo decía la ficha y se perdía al sumar esta).
+    if indice >= itvc.WINSOR_TOPE:
+        frase += (f" Está en el techo de winsorización ({coma(int(itvc.WINSOR_TOPE))}): el índice "
+                  "se recorta ahí, así que el valor real es mejor que el que entra al cálculo.")
+    elif indice > 125:
+        frase += " Pasó el punto donde la tensión toca 0: el color ya no distingue mejoras adicionales."
+    elif indice < 75:
+        frase += " Está debajo del punto donde la tensión toca 10: el color ya no distingue deterioros adicionales."
+    return frase
+
+
+def _cortes_tarifas_txt() -> str:
+    """«agua y energía, verde hasta 12%, …; transporte, verde hasta 7%, …»."""
+    partes = []
+    for rubro, nombre in (("agua_energia", "agua y energía"), ("transporte", "transporte")):
+        v, a, n = (coma(int(c) if float(c).is_integer() else c) for c in itvc.cortes_color_tarifas(rubro))
+        partes.append(f"{nombre}, verde hasta {v}%, amarillo hasta {a}%, naranja hasta {n}% y rojo arriba")
+    return "; ".join(partes)
+
+
+def _por_que_tarifas(color, carga, transporte_pct):
+    """El color de la canasta lo fija el rubro con más tensión: la frase dice
+    cuál, en % del salario y contra sus propios cortes de color."""
+    if carga is None or transporte_pct is None:
+        return None
+    rubros = {"transporte": carga * transporte_pct / 100.0}
+    rubros["agua_energia"] = carga - rubros["transporte"]
+    tension = {r: 2.0 * (x - itvc.REFERENCIA_TARIFAS[r]) for r, x in rubros.items()}
+    peor = max(tension, key=tension.get)
+    v, a, n = itvc.cortes_color_tarifas(peor)
+    tramos = [{"color": "verde", "desde": None, "hasta": v}, {"color": "amarillo", "desde": v, "hasta": a},
+              {"color": "naranja", "desde": a, "hasta": n}, {"color": "rojo", "desde": n, "hasta": None}]
+    nombre = {"transporte": "El transporte", "agua_energia": "Agua y energía"}[peor]
+    frase = _por_que(color, round(rubros[peor], 2), "% del salario", tramos)
+    return f"{nombre}, el rubro que fija el color: {frase}"
 
 
 def _por_que_dimension(puntaje, tension, base100):
@@ -2733,6 +2805,9 @@ def _semaforos(informe):
                 continue
             ind["semaforo"] = _semaforo_de(color, tension, umbrales, unidad,
                                            ind.get("valor"))
+            if (isinstance(idx100, (int, float)) and not ind["semaforo"].get("por_que")
+                    and not (isinstance(p, (int, float)) and ind.get("en_indice"))):
+                ind["semaforo"]["por_que"] = _por_que_indice_base100(color, idx100)
             # El consumo aparente y su composición dan contexto agregado.
             # El texto distingue ese contexto del color, que compara contra 4T-2023.
             # ADR-0339: las dos cards que puntúan (el total y la vacuna) leen
@@ -2747,6 +2822,10 @@ def _semaforos(informe):
             # Lo mismo para la motorización (ADR-0224): el color dice "subió
             # contra el arranque" y nada más, que es justo la lectura ambigua
             # que el editorial discutía. La matriz A×B no lo cambia: lo explica.
+            if ikey == "peso_tarifas":
+                por_que = _por_que_tarifas(color, ind.get("valor"), ind.get("transporte_pct_canasta"))
+                if por_que:
+                    ind["semaforo"]["por_que"] = por_que
             if ikey == "motorizacion_total":
                 por_que = _por_que_motorizacion(ind.get("composicion"))
                 if por_que:

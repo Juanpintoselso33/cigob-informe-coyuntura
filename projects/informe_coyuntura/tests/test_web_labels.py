@@ -113,7 +113,7 @@ def test_tarifas_usa_canasta_real_y_ancla_internacional():
     """IPC Regulados/RIPTE no es una factura ni una participación del gasto."""
     assert 'peso_tarifas: "Canasta de servicios públicos / salario"' in DATOS_TS
     assert "2(E-10)" in FORMULAS_TS and "2(P-5)" in FORMULAS_TS
-    assert "entra la mayor tensión" in DESCRIPCIONES_TS
+    assert "Entra la mayor tensión" in DESCRIPCIONES_TS
     assert "no puntúa hasta" not in DESCRIPCIONES_TS
 
 
@@ -133,8 +133,11 @@ def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
     hoy = coma(card["valor"])
     assert f"**Hoy: {hoy} % del salario registrado promedio** ({card['fecha_dato'][:7]})" in bloque
     assert "**Color vigente: VERDE**" in bloque
-    assert "100 equivale a tensión 5" in bloque
-    assert "no al nivel tarifario del 4º trimestre de 2023" in bloque
+    # Desde el 7-nov-2026 el «por qué» lo arma publicar._por_que_tarifas: dice
+    # qué rubro fija el color y contra qué corte, no la base temporal.
+    assert "el rubro que fija el color" in bloque
+    por_que = bloque.split("## Color vigente y por qué", 1)[1].split("**Color vigente", 1)[0]
+    assert "4º trimestre de 2023" not in por_que
     assert "2,13 % m/m regulados" not in bloque
 
 

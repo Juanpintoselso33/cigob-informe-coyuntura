@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 19 de 19 publicados.
 | Empleo | Cuánta gente trabaja y en qué condiciones. | 100,0 | AMARILLO | 24,2 % |
 | Ingresos | Si el ingreso alcanza. | 102,5 | AMARILLO | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 82,2 | ROJO | 10,0 % |
-| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,2 % |
+| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,3 % |
 | Consumo | Lo que efectivamente se compra. | 94,7 | NARANJA | 7,9 % |
 | Seguridad | Combina tres medidas. | 122,3 | VERDE | 4,5 % |
 
@@ -64,9 +64,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 2 % mensual | VERDE | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,2 % |
-| Alquiler real (INDEC) | Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y… | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
-| Alquiler real (Universidad de San Andrés – Mercado Libre) | Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre… | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,3 % |
+| Alquiler real, contratos vigentes (INDEC) | Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
+| Alquiler real, avisos (Universidad de San Andrés – Mercado Libre) | Cuánto se pide a quien busca alquilar. | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral (asalariados sin ningún aporte) | Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en… | 31,9 % | NARANJA | 9,7 % |
 | Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
@@ -77,7 +77,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,61 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | NARANJA | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
-| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | VERDE | 8,2 % |
+| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | VERDE | 8,3 % |
 | **DIMENSIÓN: Consumo** | | | | |
 | Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg por habitante por año | NARANJA | 0,4 % |
 | Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg por habitante por año | AMARILLO | 0,4 % |
@@ -86,7 +86,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | VERDE | 2,7 % |
-| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 habitantes | VERDE | 1,1 % |
+| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 habitantes | VERDE | 1,2 % |
 | Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (sin los agravados) cada 100.000 habitantes | VERDE | 0,7 % |
 
 *Datos al 2026-11-07.*
@@ -155,7 +155,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 3,69 canastas básicas totales (2026-08).
 
-El componente está en 107,3 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+107,3 en la escala del cinturón (100 = referencia) está en Verde, a 2,3 del límite con Amarillo (105).
 
 **Color vigente: VERDE**
 
@@ -248,7 +248,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 2 % mensual (2026-09).
 
-El componente está en 107,5 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+107,5 en la escala del cinturón (100 = referencia) está en Verde, a 2,5 del límite con Amarillo (105).
 
 **Color vigente: VERDE**
 
@@ -287,7 +287,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 13 % del salario registrado promedio** (2026-10) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 13 % del salario registrado promedio** (2026-10) | **VERDE** | Peso efectivo 11,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -303,7 +303,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).
 
-Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
+Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se miden por separado contra referencias internacionales de 10% y 5% del ingreso: desde ahí empieza a contar la tensión, pero no es el borde del verde (el transporte sigue en verde hasta 7% y agua+energía hasta 12%). Entra la mayor tensión de las dos, para que un rubro caro no quede oculto por otro barato.
 
 **Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
@@ -338,11 +338,11 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 13 % del salario registrado promedio (2026-10).
 
-Agua y energía representan 6,6% del salario; transporte, 6,4%. La mayor de las dos señales fija el color: verde (sin tensión relevante). El índice de asequibilidad resultante es 111,3 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
+El transporte, el rubro que fija el color: 6,37 % del salario está en Verde, a 0,63 del límite con Amarillo (7,0).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 11,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -371,9 +371,9 @@ Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adici
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler real (INDEC)
+# Alquiler real, contratos vigentes (INDEC)
 
-Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
+Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. Lo que se pide a quien busca alquilar lo mide otra tarjeta, la de los avisos (Universidad de San Andrés – Mercado Libre), y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento del resto de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
 
 | | | | |
 |---|---|---|---|
@@ -391,7 +391,7 @@ Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
+Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. Lo que se pide a quien busca alquilar lo mide otra tarjeta, la de los avisos (Universidad de San Andrés – Mercado Libre), y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento del resto de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
@@ -428,7 +428,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 199,87 índice (fines de 2023 = 100) (2026-09).
 
-El componente está en 50 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+50,0 en la escala del cinturón (100 = referencia) está en Rojo, a 35,0 del límite con Naranja (85). Está debajo del punto donde la tensión toca 10: el color ya no distingue deterioros adicionales.
 
 **Color vigente: ROJO**
 
@@ -456,6 +456,8 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 **2026-10-29** — La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler real (INDEC)». El puntaje no cambia.
 
+**2026-11-07** — Se rotula «Alquiler real, contratos vigentes (INDEC)» y la explicación arranca por la diferencia entre las dos tarjetas de alquiler —contratos vigentes contra avisos—, que antes quedaba escondida en el detalle (pedido de Luis Babino). El cálculo no cambia.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -464,9 +466,9 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Alquiler real (Universidad de San Andrés – Mercado Libre)
+# Alquiler real, avisos (Universidad de San Andrés – Mercado Libre)
 
-Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
+Cuánto se pide a quien busca alquilar: el precio de los avisos de departamentos en el Área Metropolitana de Buenos Aires en Mercado Libre. Lo que pagan los inquilinos que ya alquilan, con contratos que se ajustan con rezago, lo mide otra tarjeta, la del INDEC, y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
 
 | | | | |
 |---|---|---|---|
@@ -484,9 +486,9 @@ Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aire
 
 ## Definición — qué mide y por qué importa
 
-Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
+Cuánto se pide a quien busca alquilar: el precio de los avisos de departamentos en el Área Metropolitana de Buenos Aires en Mercado Libre. Lo que pagan los inquilinos que ya alquilan, con contratos que se ajustan con rezago, lo mide otra tarjeta, la del INDEC, y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.
 
-El índice de precios al consumidor mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
+Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
 
 **Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
@@ -522,7 +524,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 57,57 índice (fines de 2023 = 100) (2026-09).
 
-El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
+140,0 en la escala del cinturón (100 = referencia) está en Verde, a 35,0 del límite con Amarillo (105). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo.
 
 **Color vigente: VERDE**
 
@@ -551,6 +553,8 @@ Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicio
 **2026-10-27** — Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.
 
 **2026-10-29** — Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler real (Universidad de San Andrés – Mercado Libre)». El peso no cambia.
+
+**2026-11-07** — Se rotula «Alquiler real, avisos (Universidad de San Andrés – Mercado Libre)» y la explicación arranca por la diferencia entre las dos tarjetas de alquiler —contratos vigentes contra avisos—, que antes quedaba escondida en el detalle (pedido de Luis Babino). El cálculo no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -821,7 +825,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 31,9 % (2026-04).
 
-El componente está en 94 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+94,0 en la escala del cinturón (100 = referencia) está en Naranja, a 1,0 del límite con Amarillo (95).
 
 **Color vigente: NARANJA**
 
@@ -915,7 +919,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0,4 puntos porcentuales frente a 2023 (2026-04).
 
-El componente está en 104 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+104,0 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,0 del límite con Verde (105).
 
 **Color vigente: AMARILLO**
 
@@ -1007,7 +1011,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 27,3 % de hogares víctimas (últimos 12 meses) (2026-07).
 
-El componente está en 115,6 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+115,6 en la escala del cinturón (100 = referencia) está en Verde, a 10,6 del límite con Amarillo (105).
 
 **Color vigente: VERDE**
 
@@ -1058,7 +1062,7 @@ Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nac
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,48 homicidios dolosos cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 1,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,48 homicidios dolosos cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 1,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1108,11 +1112,11 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 3,48 homicidios dolosos cada 100.000 habitantes (2025-12).
 
-El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
+140,0 en la escala del cinturón (100 = referencia) está en Verde, a 35,0 del límite con Amarillo (105). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1200,7 +1204,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 778,1 robos (sin los agravados) cada 100.000 habitantes (2025-12).
 
-El componente está en 118,9 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+118,9 en la escala del cinturón (100 = referencia) está en Verde, a 13,9 del límite con Amarillo (105).
 
 **Color vigente: VERDE**
 
@@ -1496,7 +1500,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,61 motos por cada auto patentado (móvil de 12 meses) (2026-10).
 
-El componente está en 83,1 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO.
+83,1 en la escala del cinturón (100 = referencia) está en Rojo, a 1,9 del límite con Naranja (85).
 
 **Color vigente: ROJO**
 
@@ -1590,7 +1594,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 80,5 índice (2017 = 100, desestacionalizado) (2026-08).
 
-El componente está en 88,2 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+88,2 en la escala del cinturón (100 = referencia) está en Naranja, a 3,2 del límite con Rojo (85).
 
 **Color vigente: NARANJA**
 
@@ -1812,7 +1816,7 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,96 índice 0-5** (2026-10) | **VERDE** | Peso efectivo 8,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,96 índice 0-5** (2026-10) | **VERDE** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1862,11 +1866,11 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,96 índice 0-5 (2026-10).
 
-El componente está en 106,7 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+106,7 en la escala del cinturón (100 = referencia) está en Verde, a 1,7 del límite con Amarillo (105).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

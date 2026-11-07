@@ -314,3 +314,15 @@ def test_obtener_serie_falla_si_una_fuente_viene_vacia():
 
     with pytest.raises(ValueError, match="sin datos"):
         dm.obtener_serie(fetch_bcra_fin_mes=sin_datos, fetch_fuga=lambda: {"2026-06": 1.0})
+
+
+def test_parseo_acepta_el_nombre_nuevo_del_concepto_03():
+    """El 3-nov-2026 el BCRA renombró el concepto («… y transferencia de
+    divisas …»). Con el nombre viejo solo, el colector no encontraba filas y la
+    card quedaba congelada en caché sin que nada fallara."""
+    nuevo = "03- Compra-venta de billetes y transferencia de divisas sin fines específicos"
+    contenido = _anexo([
+        ("2026-08", "Personas Humanas", -1_000_000_000.0, CONCEPTO),
+        ("2026-09", "Personas Humanas", -2_538_333_384.0, nuevo),
+    ])
+    assert dm.parsear_fuga_spnf(contenido) == {"2026-08": 1000.0, "2026-09": 2538.333384}

@@ -95,6 +95,14 @@ HOJA_MERCADO_CAMBIOS = "Datos Mercado de Cambios"
 CONCEPTO_SIN_FINES_ESPECIFICOS = (
     "03- Compra-venta de billetes y divisas sin fines específicos"
 )
+# El 3-nov-2026 el BCRA renombró el concepto en el anexo («… y transferencia de
+# divisas …»). Es el mismo: septiembre da US$ 2.538,3 M con los dos nombres.
+# Sin el nombre nuevo, el colector no encontraba ninguna fila y la card se
+# congelaba en caché sin que nada fallara.
+CONCEPTOS_SIN_FINES_ESPECIFICOS = (
+    CONCEPTO_SIN_FINES_ESPECIFICOS,
+    "03- Compra-venta de billetes y transferencia de divisas sin fines específicos",
+)
 # El concepto 03 incluye al sector publico entre sus sectores; el componente es
 # del sector privado NO financiero, asi que se excluye explicitamente.
 SECTOR_EXCLUIDO = "Sector Público"
@@ -265,11 +273,11 @@ def parsear_fuga_spnf(contenido: bytes) -> dict:
             raise ValueError(
                 "Faltan columnas en el anexo cambiario: " + ", ".join(sorted(faltantes))
             )
-        concepto_objetivo = CONCEPTO_SIN_FINES_ESPECIFICOS.casefold()
+        conceptos_objetivo = {c.casefold() for c in CONCEPTOS_SIN_FINES_ESPECIFICOS}
         sector_excluido = SECTOR_EXCLUIDO.casefold()
         acumulado = defaultdict(float)
         for fila in filas:
-            if _texto_normalizado(fila[columnas["B"]]).casefold() != concepto_objetivo:
+            if _texto_normalizado(fila[columnas["B"]]).casefold() not in conceptos_objetivo:
                 continue
             if _texto_normalizado(fila[columnas["Sector"]]).casefold() == sector_excluido:
                 continue

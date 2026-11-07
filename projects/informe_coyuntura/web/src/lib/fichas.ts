@@ -3422,6 +3422,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4º trimestre de 2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.", adr: "0291" },
       { fecha: "2026-10-27", cambio: "Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.", adr: "0386" },
       { fecha: "2026-10-29", cambio: "La tarjeta y su serie dejan de mostrar la variación mensual nominal y pasan a mostrar el alquiler real contra el 4º trimestre de 2023 (= 100), para que se lea cuánto se encareció desde entonces. Se rotula «Alquiler real (INDEC)». El puntaje no cambia.", adr: "0411" },
+      { fecha: "2026-11-07", cambio: "Se rotula «Alquiler real, contratos vigentes (INDEC)» y la explicación arranca por la diferencia entre las dos tarjetas de alquiler —contratos vigentes contra avisos—, que antes quedaba escondida en el detalle (pedido de Luis Babino). El cálculo no cambia." },
     ],
   },
   alquiler_udesa_real: {
@@ -3461,6 +3462,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-10-27", cambio: "Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.", adr: "0386" },
       { fecha: "2026-10-29", cambio: "Pasa de la variación real interanual a un nivel real contra el 4º trimestre de 2023 (= 100), como los demás componentes de precios. La fuente no publica niveles: se reconstruyen con la interanual publicada y, donde falta, con la intermensual; los meses sin dato no se rellenan. Se carga la cifra de abril de 2024, que el informe da junta para departamentos y casas. Se rotula «Alquiler real (Universidad de San Andrés – Mercado Libre)». El peso no cambia.", adr: "0411" },
+      { fecha: "2026-11-07", cambio: "Se rotula «Alquiler real, avisos (Universidad de San Andrés – Mercado Libre)» y la explicación arranca por la diferencia entre las dos tarjetas de alquiler —contratos vigentes contra avisos—, que antes quedaba escondida en el detalle (pedido de Luis Babino). El cálculo no cambia." },
     ],
   },
   peso_tarifas: {

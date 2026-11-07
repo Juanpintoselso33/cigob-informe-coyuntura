@@ -136,8 +136,8 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 | Rango (decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales) | Color |
 |---|---|
 | ≤ 1,19 | VERDE |
-| 1,19 – 1,76 | AMARILLO |
-| 1,76 – 2,06 | NARANJA |
+| 1,19 – 1,77 | AMARILLO |
+| 1,77 – 2,06 | NARANJA |
 | ≥ 2,06 | ROJO |
 
 ## Datos concretos detrás del valor

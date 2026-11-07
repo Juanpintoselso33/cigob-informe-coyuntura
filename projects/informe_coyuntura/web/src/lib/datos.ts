@@ -149,7 +149,7 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
     fichaId: "itvc",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
     nombre: "Índice de Tensión del Cinturón de Impacto Social",
-    descripcion: "100 = el arranque del mandato para la mayoría de los componentes; servicios públicos usa una escala construida con umbrales internacionales por rubro. Más de 100 es mejora; menos, deterioro.",
+    descripcion: "100 = la referencia: fines de 2023 para la mayoría de los componentes; niveles fijos para la pobreza, la mora de las familias y la carga de la deuda; umbrales internacionales por rubro para los servicios públicos. Más de 100 es mejor; menos, peor.",
     data: c.itvc,
   };
   if (c.itcp) return {
@@ -454,7 +454,7 @@ export const LABELS: Record<string, string> = {
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
   carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   icg_utdt: "Confianza en el Gobierno",
-  peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Alquiler real (INDEC)", alquiler_udesa_real: "Alquiler real (Universidad de San Andrés – Mercado Libre)", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
+  peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Alquiler real, contratos vigentes (INDEC)", alquiler_udesa_real: "Alquiler real, avisos (Universidad de San Andrés – Mercado Libre)", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne_vacuna: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral (asalariados sin ningún aporte)", ocupacion_eph: "Ocupación (Encuesta Permanente de Hogares)",
   mortalidad_pymes: "Empleadores activos de pequeñas y medianas empresas", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción",
@@ -514,7 +514,7 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 // entera desborda la card. Sólo para indicadores con valor numérico.
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
-  ipc_total: "%", reservas_bcra: "millones de dólares", idc: "frente a un mes normal (0)", badlar: "%", emae_ia: "% frente a un año atrás",
+  ipc_total: "%", reservas_bcra: "millones de dólares netos", idc: "frente a un mes normal (0)", badlar: "%", emae_ia: "% frente a un año atrás",
   emae_difusion: "% sectores",
   ipi_manufacturero: "% frente a un año atrás (promedio de 3 meses)", actividad_tributaria: "% interanual real",
   ipc_nucleo: "%", cuenta_corriente: "millones de dólares", pobreza_indec: "%",
@@ -575,7 +575,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
 // SOLO la unidad de medida; la metodología vive en "Cómo se calcula".
 export const UNIDADES_LARGAS: Record<string, string> = {
   // macro
-  ipc_total: "% mensual", reservas_bcra: "Millones de dólares",
+  ipc_total: "% mensual", reservas_bcra: "Millones de dólares (reservas netas)",
   idc: "Desvíos estándar frente a su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
   emae_difusion: "% de los 15 sectores del estimador mensual de actividad que crecen interanualmente",

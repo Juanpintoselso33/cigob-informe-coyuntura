@@ -4994,7 +4994,7 @@
             "tension": 3.5,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "107,3 en la escala del cinturón (100 = referencia) está en Verde, a 2,3 del límite con Amarillo (105)."
           }
         },
         "ipc_alimentos": {
@@ -5019,7 +5019,7 @@
             "tension": 3.5,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "107,5 en la escala del cinturón (100 = referencia) está en Verde, a 2,5 del límite con Amarillo (105)."
           }
         },
         "peso_tarifas": {
@@ -5040,7 +5040,7 @@
           "fecha_indice_itvc": "2026-10-01",
           "peso_efectivo": 0.1125,
           "aporte_score": 2.7,
-          "aporte_formula": "Canasta de servicios públicos del Instituto Interdisciplinario de Economía Política sobre el salario registrado promedio: 13,0% = agua+energía 6,6% + transporte 6,4%. Se toma la mayor tensión contra sus límites (10% y 5%): índice 111,3. Pesa 11,2% del índice de impacto social.",
+          "aporte_formula": "Canasta de servicios públicos del Instituto Interdisciplinario de Economía Política sobre el salario registrado promedio: 13,0% = agua+energía 6,6% + transporte 6,4%. Cada rubro se mide por separado: agua y energía, verde hasta 12%, amarillo hasta 13%, naranja hasta 14% y rojo arriba; transporte, verde hasta 7%, amarillo hasta 8%, naranja hasta 9% y rojo arriba. Manda el peor de los dos: índice 111,3. Pesa 11,3% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Agua y energía representan 6,6% del salario; transporte, 6,4%. La mayor de las dos señales fija el color: verde (sin tensión relevante).",
           "semaforo": {
@@ -5048,7 +5048,7 @@
             "tension": 2.7,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "El transporte, el rubro que fija el color: 6,37 % del salario está en Verde, a 0,63 del límite con Amarillo (7,0)."
           }
         },
         "alquiler_real": {
@@ -5074,7 +5074,7 @@
             "tension": 10.0,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "50,0 en la escala del cinturón (100 = referencia) está en Rojo, a 35,0 del límite con Naranja (85). Está debajo del punto donde la tensión toca 10: el color ya no distingue deterioros adicionales."
           }
         },
         "alquiler_udesa_real": {
@@ -5102,7 +5102,7 @@
             "tension": 0.0,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "140,0 en la escala del cinturón (100 = referencia) está en Verde, a 35,0 del límite con Amarillo (105). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo."
           }
         },
         "consumo_carne_vacuna": {
@@ -5267,7 +5267,7 @@
             "tension": 6.2,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "94,0 en la escala del cinturón (100 = referencia) está en Naranja, a 1,0 del límite con Amarillo (95)."
           }
         },
         "ocupacion_eph": {
@@ -5285,7 +5285,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.1451,
           "aporte_score": 4.2,
-          "aporte_formula": "Índice base-100 frente a el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1: 104,0 (100 = igual que antes del mandato; más = mejora); pesa 14,5% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente al mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1: 104,0 (100 = igual que antes del mandato; más = mejora); pesa 14,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
@@ -5293,7 +5293,7 @@
             "tension": 4.2,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "104,0 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,0 del límite con Verde (105)."
           }
         },
         "inseguridad": {
@@ -5319,7 +5319,7 @@
             "tension": 1.9,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "115,6 en la escala del cinturón (100 = referencia) está en Verde, a 10,6 del límite con Amarillo (105)."
           }
         },
         "tasa_homicidios": {
@@ -5338,7 +5338,7 @@
           "indice_itvc_crudo": 165.6,
           "recorte_itvc": 25.6,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 frente a la mediana de la serie 2000-2025: 140,0 (100 = igual que la mediana histórica; más = mejora); pesa 1,1% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a la mediana de la serie 2000-2025: 140,0 (100 = igual que la mediana histórica; más = mejora); pesa 1,2% del índice de impacto social.",
           "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 165,6 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
           "aporte_lectura": "Este componente está en 140,0 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5346,7 +5346,7 @@
             "tension": 0.0,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "140,0 en la escala del cinturón (100 = referencia) está en Verde, a 35,0 del límite con Amarillo (105). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo."
           }
         },
         "tasa_robos": {
@@ -5372,7 +5372,7 @@
             "tension": 1.2,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "118,9 en la escala del cinturón (100 = referencia) está en Verde, a 13,9 del límite con Amarillo (105)."
           }
         },
         "pobreza_nowcast": {
@@ -5482,7 +5482,7 @@
             "tension": 8.4,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "83,1 en la escala del cinturón (100 = referencia) está en Rojo, a 1,9 del límite con Naranja (85)."
           }
         },
         "consumo_supermercados": {
@@ -5507,7 +5507,7 @@
             "tension": 7.4,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "88,2 en la escala del cinturón (100 = referencia) está en Naranja, a 3,2 del límite con Rojo (85)."
           }
         },
         "mora_familias": {
@@ -5616,7 +5616,7 @@
           "fecha_indice_itvc": "2026-10-01",
           "peso_efectivo": 0.0825,
           "aporte_score": 3.7,
-          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 106,7 (100 = igual que antes del mandato; más = mejora); pesa 8,2% del índice de impacto social.",
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 106,7 (100 = igual que antes del mandato; más = mejora); pesa 8,3% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5624,7 +5624,7 @@
             "tension": 3.7,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "106,7 en la escala del cinturón (100 = referencia) está en Verde, a 1,7 del límite con Amarillo (105)."
           }
         }
       },

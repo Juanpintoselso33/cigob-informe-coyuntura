@@ -128,7 +128,7 @@ const pesosDims = dimsDelIndice.map((d, i, a) =>
 const COMO_SE_CALCULA: Record<string, string> = {
   macro: `Cada indicador se convierte en un puntaje de 0 a 100 según referencias definidas en su ficha. Los puntajes se combinan dentro de cada dimensión y luego se obtiene un promedio ponderado para el índice macroeconómico. Cuanto más alto el índice, menor la tensión. Las ${cantDims} dimensiones y sus pesos son: ${pesosDims}.`,
   politica: `Cada indicador se transforma en un puntaje de 0 a 100 según referencias previamente definidas. Los resultados se agrupan en ${cantDims} dimensiones: ${pesosDims}. El promedio ponderado da el índice político. Los puntajes más altos indican menor tensión; los colores resumen cuatro rangos comunes del Monitor.`,
-  vida_cotidiana: `Cada indicador se lleva a una escala comparable, tomando en general fines de 2023 como referencia igual a 100. Las excepciones —como servicios públicos y comparaciones de precios relativos— se detallan en sus fichas. Se combinan los indicadores en ${cantDims} dimensiones y luego se ponderan: ${pesosDims}. En esta escala, el verde comienza en 105; el amarillo va de 95 a menos de 105; el naranja, de 85 a menos de 95; y el rojo, por debajo de 85.`,
+  vida_cotidiana: `Cada indicador se lleva a una escala común en la que 100 es la referencia. La mayoría se compara con fines de 2023; la pobreza, la mora de las familias y la carga del servicio de la deuda, con niveles fijos de referencia (en 2023 la pobreza era de crisis y casi no había crédito); los servicios públicos, con umbrales internacionales por rubro. Cada ficha detalla su referencia. Se combinan los indicadores en ${cantDims} dimensiones y luego se ponderan: ${pesosDims}. Esta escala no va de 0 a 100: el verde comienza en 105; el amarillo va de 95 a menos de 105; el naranja, de 85 a menos de 95; y el rojo, por debajo de 85.`,
   gestion: `Cada indicador se puntúa de 0 a 100 mediante umbrales o hitos definidos en su ficha. Algunos registran etapas de implementación y otras variaciones cuantitativas vinculadas con los compromisos. Los puntajes se combinan en ${cantDims} dimensiones: ${pesosDims}. Su promedio ponderado produce el índice de gestión. El resultado mide sólo los aspectos incluidos y debe leerse junto con los límites de cada indicador.`,
 };
 // La lectura del color del cinturón, en texto, junto al valor del índice: el
@@ -353,7 +353,7 @@ const robChartData = rob?.hist && indice ? {
       <div class="cg-detalle-nivel">
         <NivelTension tension={c.score} titulo={`Tensión del cinturón ${tituloCinturon}`} tamano="grande"
           ocultarLectura
-          tip={indice ? `${num(indice.data.valor as number)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[colorCinturon as keyof typeof LECTURA_SEMAFORO] ?? ""}` : undefined} />
+          tip={indice ? `${num(indice.data.valor as number)}${indice.base100 ? " (100 = referencia)" : "/100"} · ${LECTURA_SEMAFORO[colorCinturon as keyof typeof LECTURA_SEMAFORO] ?? ""}` : undefined} />
         {indice && !QUE_EXPRESA[meta.key] && (indice.base100 ? (
           <p class="cg-nivel-pie">
             El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
@@ -423,7 +423,7 @@ const robChartData = rob?.hist && indice ? {
         <div class="cg-section-head">
           <p class="cg-eyebrow">Dimensiones</p>
           <h2 class="cg-h2 cg-titulo-n2">Estado de tensión de cada dimensión del cinturón</h2>
-          <p class="cg-h2-sub"><strong>{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (100 = fines de 2023)" : "/100"}.</strong> {indice.descripcion}</p>
+          <p class="cg-h2-sub"><strong>{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (100 = referencia)" : "/100"}.</strong> {indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
           {Object.entries(indice.data.dimensiones).map(([dkey, dim]) => (
@@ -439,7 +439,7 @@ const robChartData = rob?.hist && indice ? {
                 color={dim.semaforo?.color ?? null}
                 titulo={dim.nombre}
                 ocultarTitulo
-                tip={`${num(dim.puntaje)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO] ?? ""}`}
+                tip={`${num(dim.puntaje)}${indice.base100 ? " (100 = referencia)" : "/100"} · ${LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO] ?? ""}`}
               />
             </div>
           ))}
@@ -600,7 +600,7 @@ const robChartData = rob?.hist && indice ? {
             <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{num(indice.data.valor)}</span>
             <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{num(rob.p95)}</span>
             {robSvg.x100 !== null && (
-              <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = fines de 2023</span>
+              <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = referencia</span>
             )}
           </div>
           </div>

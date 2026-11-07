@@ -310,7 +310,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   peso_tarifas: {
     que: "Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).",
-    aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.",
+    aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se miden por separado contra referencias internacionales de 10% y 5% del ingreso: desde ahí empieza a contar la tensión, pero no es el borde del verde (el transporte sigue en verde hasta 7% y agua+energía hasta 12%). Entra la mayor tensión de las dos, para que un rubro caro no quede oculto por otro barato.",
     frecuencia: "Mensual", tipo: "Canasta de servicios / salario · ancla internacional",
   },
   pobreza_nowcast: {
@@ -324,13 +324,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
   },
   alquiler_real: {
-    que: "Cuánto cuesta el alquiler de la vivienda en los contratos vigentes, descontado el aumento del resto de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.",
+    que: "Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. Lo que se pide a quien busca alquilar lo mide otra tarjeta, la de los avisos (Universidad de San Andrés – Mercado Libre), y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento del resto de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por encima de 100, el alquiler se encareció en términos reales desde entonces; por debajo, se abarató. En el índice de impacto social puntúa con la misma cuenta al revés, de modo que más de 100 es alivio.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
     frecuencia: "Mensual", tipo: "Nivel real (índice, fines de 2023 = 100)",
   },
   alquiler_udesa_real: {
-    que: "Cuánto cuesta alquilar un departamento en el Área Metropolitana de Buenos Aires según los avisos de Mercado Libre, descontado el aumento de los precios y comparado con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.",
-    aporta: "El índice de precios al consumidor mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.",
+    que: "Cuánto se pide a quien busca alquilar: el precio de los avisos de departamentos en el Área Metropolitana de Buenos Aires en Mercado Libre. Lo que pagan los inquilinos que ya alquilan, con contratos que se ajustan con rezago, lo mide otra tarjeta, la del INDEC, y por eso las dos pueden ir en sentidos opuestos. Se descuenta el aumento de los precios y se compara con fines de 2023. La tarjeta es un índice donde 100 es el cuarto trimestre de 2023: por debajo de 100, el alquiler pedido es más barato en términos reales que entonces. La fuente no publica niveles: es una reconstrucción de CIGOB a partir de las variaciones que informa. En el índice de impacto social puntúa al revés, de modo que más de 100 es alivio.",
+    aporta: "Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.",
     frecuencia: "Mensual (carga manual)", tipo: "Nivel real reconstruido (índice, fines de 2023 = 100)",
   },
   consumo_carne_vacuna: {

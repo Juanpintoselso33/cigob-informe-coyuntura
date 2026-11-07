@@ -579,6 +579,22 @@ def tension_de_itvc(itvc: float) -> float:
     return round(min(10.0, max(0.0, 5.0 - (itvc - 100.0) * 0.2)), 1)
 
 
+# Desde dónde cuenta la tensión de cada rubro de la canasta IIEP (% del
+# salario, referencias internacionales de ADR-0235). NO son el borde del verde:
+# cada punto arriba suma 2 de tensión, y el verde llega hasta tensión 4.
+REFERENCIA_TARIFAS = {"agua_energia": 10.0, "transporte": 5.0}
+
+
+def cortes_color_tarifas(rubro: str) -> tuple:
+    """(verde hasta, amarillo hasta, naranja hasta) en % del salario para un
+    rubro, con la misma cuenta que indice_asequibilidad_tarifas: tensión
+    2·(x − referencia), color por tensión 4 · 6 · 8. Revisión de Luis
+    (7-nov-2026): la card nombraba la referencia como «límite» y el transporte
+    en 6,4% parecía pasado de un límite de 5% estando en verde."""
+    ref = REFERENCIA_TARIFAS[rubro]
+    return tuple(ref + t / 2.0 for t in (4.0, 6.0, 8.0))
+
+
 def indice_asequibilidad_tarifas(carga_salario: float,
                                   transporte_pct_canasta: float) -> float:
     """Canasta IIEP → escala común del ITCIS (ADR-0235).
@@ -595,8 +611,8 @@ def indice_asequibilidad_tarifas(carga_salario: float,
         raise ValueError(f"participación del transporte fuera de rango: {participacion}")
     transporte = carga * participacion / 100.0
     agua_energia = carga - transporte
-    t_ae = min(10.0, max(0.0, 2.0 * (agua_energia - 10.0)))
-    t_transporte = min(10.0, max(0.0, 2.0 * (transporte - 5.0)))
+    t_ae = min(10.0, max(0.0, 2.0 * (agua_energia - REFERENCIA_TARIFAS["agua_energia"])))
+    t_transporte = min(10.0, max(0.0, 2.0 * (transporte - REFERENCIA_TARIFAS["transporte"])))
     return round(125.0 - 5.0 * max(t_ae, t_transporte), 1)
 
 

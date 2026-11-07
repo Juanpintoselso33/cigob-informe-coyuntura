@@ -47,7 +47,11 @@ def coma(x, dec=2, recortar=True):
     "71" al lado de "67,1" y la columna se lee torcida."""
     if x is None:
         return "—"
-    s = f"{float(x):,.{dec}f}".replace(",", "@").replace(".", ",").replace("@", ".")
+    # Medio para arriba, como la web (Intl.NumberFormat): con el formato de
+    # Python un peso de 11,25 % salía 11,2 en la ficha y 11,3 en la tarjeta.
+    from decimal import Decimal, ROUND_HALF_UP
+    q = Decimal(repr(float(x))).quantize(Decimal(1).scaleb(-dec), rounding=ROUND_HALF_UP)
+    s = f"{q:,.{dec}f}".replace(",", "@").replace(".", ",").replace("@", ".")
     if recortar and "," in s:
         s = s.rstrip("0").rstrip(",")
     return s.replace("-", "−")  # menos tipográfico, no guión
