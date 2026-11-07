@@ -9497,19 +9497,31 @@ def main() -> None:
     # que es un chequeo de staleness genérico, no específico de cohesión).
     resultado_alineamiento = fetch_alineamiento_senadores_prov()
     anterior_alineamiento = indicadores_anteriores.get("alineamiento_senadores_prov")
+    # Sello `obtenido_en` (ADR-0191) como el resto de las cards: el 5 y el
+    # 7-nov-2026 el Senado cortó la conexión a los runners, la card salió con el
+    # valor de la víspera SIN sello, el gate la tomó por fresca y su diferencia
+    # con la serie (que recalcula la ventana de 90 días desde el caché de actas)
+    # cortó la publicación de todo el Monitor. Llegar al sitio sin votos en la
+    # ventana sí cuenta como descarga (receso, no fuente caída).
     if resultado_alineamiento is not None and resultado_alineamiento.get("valor") is not None:
-        frescos["alineamiento_senadores_prov"] = resultado_alineamiento
+        frescos["alineamiento_senadores_prov"] = _sellar(resultado_alineamiento)
         frescos_count += 1
     elif resultado_alineamiento is not None and anterior_alineamiento is not None:
-        frescos["alineamiento_senadores_prov"] = {
+        frescos["alineamiento_senadores_prov"] = _sellar({
             **anterior_alineamiento,
             "desactualizado": False,
             "corrida_exitosa_en": resultado_alineamiento["corrida_exitosa_en"],
-        }
+        })
         frescos_count += 1
     elif anterior_alineamiento is not None:
+        # Carry-forward: conserva el sello viejo. Las cards de antes de este
+        # arreglo no lo tienen; su última llegada al sitio es corrida_exitosa_en.
+        sello_previo = (anterior_alineamiento.get("obtenido_en")
+                        or (f"{anterior_alineamiento['corrida_exitosa_en']}T00:00:00"
+                            if anterior_alineamiento.get("corrida_exitosa_en") else None))
         frescos["alineamiento_senadores_prov"] = {
             **anterior_alineamiento,
+            "obtenido_en": sello_previo,
             "desactualizado": _cohesion_desactualizada(anterior_alineamiento, resultado_alineamiento),
         }
 

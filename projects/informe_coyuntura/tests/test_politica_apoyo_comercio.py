@@ -174,13 +174,19 @@ def test_el_saldo_replicado_a_mano_coincide_con_el_ultimo_punto():
 
 def test_repuesta_en_el_perimetro_came_suma_a_la_cuenta(monkeypatch):
     """El reingreso es de verdad una línea: con CAME nombrada, la serie y la card
-    cuentan sus comunicados (la ventana de 12 meses calendario pasa de 4
-    comunicados a 5: 4 apoyos y 1 crítica)."""
+    cuentan sus comunicados. Lo esperado se cuenta en el registro y no se
+    escribe a mano: la ventana es de 12 meses móviles y se mueve sola. Con «4 y
+    5» fijos, la corrida del 6-nov-2026 vio 6 y frenó todo el Monitor."""
     solo_cac = politica.fetch_apoyo_comercio()
     monkeypatch.setattr(politica, "APOYO_COMERCIO_CAMARAS", ("CAC", "CAME"))
     con_came = politica.fetch_apoyo_comercio()
-    assert solo_cac["comunicados_ventana"] == 4 and con_came["comunicados_ventana"] == 5
-    assert con_came["criticas_ventana"] == 1
+    fin = con_came["fecha_dato"][:7]
+    came = [c for c in CASOS if c["camara"] == "CAME" and politica._apoyo_computable(c)
+            and politica._apoyo_inicio_ventana(fin) <= c["fecha"] <= f"{fin}-31"]
+    assert came, "la ventana no tiene comunicados de la CAME: la prueba no prueba nada"
+    assert con_came["comunicados_ventana"] == solo_cac["comunicados_ventana"] + len(came)
+    assert con_came["criticas_ventana"] == (solo_cac["criticas_ventana"]
+                                            + sum(c["postura"] != "apoyo" for c in came))
     assert [con_came["fecha_dato"], con_came["valor"]] == politica.apoyo_comercio_serie()[-1]
 
 

@@ -227,3 +227,38 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     assert resumen["indicadores"] == 67
     assert resumen["indicadores_observados_en_calculo"] == 66   # 67 → 66 (ADR-0422) | 66 → 67 (ADR-0421) | 65 → 66 (ADR-0391) | 64 → 65 (ADR-0386) | ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1
+
+
+@pytest.mark.parametrize("senado", ["caido", "fresco"])
+def test_alineamiento_senadores_lleva_sello_de_descarga(monkeypatch, registro_vacio, senado):
+    """El 5 y el 7-nov-2026 el Senado cortó la conexión a los runners: la card
+    de alineamiento_senadores_prov salió con el valor de la víspera y SIN
+    `obtenido_en`, así que el gate la tomó por fresca, la comparó con la serie
+    (que recalcula la ventana de 90 días desde el caché de actas) y cortó la
+    publicación de todo el Monitor. Con el sello, una card que no se bajó en
+    esta corrida se reconoce como carry-forward, como las demás."""
+    for nombre in dir(politica):
+        if nombre.startswith("fetch_"):
+            monkeypatch.setattr(politica, nombre, lambda *a, **kw: None)
+    for nombre in [n for n in dir(politica) if n.startswith("detectar_novedades")]:
+        monkeypatch.setattr(politica, nombre, lambda: {})
+    fresco = {"valor": 64.9, "fecha_dato": "2026-11-06", "n_provincias": 24,
+              "corrida_exitosa_en": date.today().isoformat(), "desactualizado": False}
+    monkeypatch.setattr(politica, "fetch_alineamiento_senadores_prov",
+                        lambda *a, **kw: dict(fresco) if senado == "fresco" else None)
+    # La card de la víspera, tal como quedó en el snapshot del 4-nov: sin sello.
+    monkeypatch.setattr(politica, "load_cache", lambda: {"indicadores": {
+        "alineamiento_senadores_prov": {"valor": 61.6, "fecha_dato": "2026-10-29",
+                                        "corrida_exitosa_en": "2026-11-04",
+                                        "desactualizado": False}}})
+    guardados = []
+    monkeypatch.setattr(politica, "save_cache", guardados.append)
+    with pytest.raises(SystemExit):
+        politica.main()
+    card = guardados[0]["indicadores"]["alineamiento_senadores_prov"]
+    if senado == "fresco":
+        assert card["valor"] == 64.9
+        assert card["obtenido_en"].startswith(date.today().isoformat())
+    else:
+        assert card["valor"] == 61.6
+        assert card["obtenido_en"].startswith("2026-11-04")
