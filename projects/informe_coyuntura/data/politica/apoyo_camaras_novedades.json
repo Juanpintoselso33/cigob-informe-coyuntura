@@ -5,11 +5,23 @@
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
   },
-  "inventario_verificado": "2026-11-04",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-04"
+  "inventario_verificado": "2026-11-07",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-11-07"
  },
- "pendientes": {},
+ "pendientes": {
+  "CAC|visita-de-leon-xiv-la-cac-llama-a-hacer-esfuerzos-en-pos-de-la-concordia-y-el-dialogo": {
+   "camara": "CAC",
+   "destinatario": null,
+   "fecha": "2026-10-06",
+   "id": "visita-de-leon-xiv-la-cac-llama-a-hacer-esfuerzos-en-pos-de-la-concordia-y-el-dialogo",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Entidad celebra la próxima llegada del Pontífice, a la par que invita a trabajar por la amistad cívica, la valorización de lo humano y la renovación de la esperanza.\nLa Cámara Argentina de Comercio y Servicios (CAC) manifiesta su satisfacción y alegría ante el inminente arribo al país del Papa León XIV y aboga por que su viaje sea una ocasión para que el pueblo argentino renueve la esperanza.\n La presencia de un líder de tal envergadura representa un acontecimiento de enorme significatividad, no solo para la grey católica, sino también para tantísimos hombres y mujeres que sin profesar esa fe encuentran en él una guía para transitar un momento histórico harto complejo, signado por enfrentamientos de diversa índole y cambios tecnológicos acelerados.\n Vivimos un tiempo en el que, lamentablemente, el conflicto ha ganado protagonismo. Al contemplar el panorama internacional, resulta evidente que las guerras parecieran multiplicarse; y, a la vez, las posiciones antagónicas y aparentemente irreconciliables ganan espacio al interior de las naciones. \n Simultáneamente, los vertiginosos avances de la tecnología, con la inteligencia artificial como protagonista, generan preocupación por sus implicancias en el mundo del trabajo, el funcionamiento de las democracias y muchos otros aspectos de la vida social.\n En este escenario, el viaje de León XIV constituye una excepcional invitación para que los argentinos salgamos al encuentro del otro, sin que eso implique renunciar a las propias convicciones, pero sí asumir una actitud de escucha sincera en pos de la amistad cívica, en el convencimiento de que “el acuerdo engendra la belleza y el orden de las cosas; por el contrario, de la persistencia de la lucha tiene que derivarse necesariamente la confusión juntamente con un bárbaro salvajismo” (cf. Rerum Novarum); y de que “el todo es más que las partes, y también es más que la mera suma de ellas” (cf. Evangelii Gaudium).\n La visita del Papa representa también una oportunidad única para reflexionar acerca del valor de lo humano. Esto en modo alguno implica rechazar el enorme aporte del progreso tecnológico, pero sí exige reconocer que el hombre no puede equipararse a la máquina, y que aquel no puede quedar sometido a los dictados de la técnica. “En la era de la inteligencia artificial, en la que la dignidad humana corre el riesgo de verse eclipsada por nuevas formas de deshumanización, tenemos el deber urgente de permanecer profundamente humanos” (cf. Magnifica Humanitas).\n En vista de todo lo anterior, la CAC celebra la próxima llegada de León XIV y convoca a cada argentino a hacer propicia la ocasión para, en un clima de unidad y de revalorización de lo humano, renovar la esperanza en un porvenir de encuentro y prosperidad compartida, asumiendo desde la hora presente la responsabilidad que a cada uno le cabe para alcanzar tan noble fin.\n Seguir leyendo\n 6 de octubre de 2026",
+   "titulo": "Visita de León XIV: la CAC llama a hacer esfuerzos en pos de la concordia y el diálogo",
+   "url": "https://www.cac.com.ar/noticias/visita-de-leon-xiv-la-cac-llama-a-hacer-esfuerzos-en-pos-de-la-concordia-y-el-dialogo"
+  }
+ },
  "revisadas": {
   "CAC|acuerdo-con-el-fmi-y-liberalizacion-cambiaria-satisfaccion-de-la-cac": {
    "origen": "codificacion ADR-0380"
@@ -576,6 +588,10 @@
   },
   "CAC|violencia-dentro-y-fuera-del-congreso-la-cac-repudia-la-barbarie": {
    "origen": "codificacion ADR-0380"
+  },
+  "CAC|visita-de-leon-xiv-la-cac-llama-a-hacer-esfuerzos-en-pos-de-la-concordia-y-el-dialogo": {
+   "fecha": "2026-10-06",
+   "titulo": "Visita de León XIV: la CAC llama a hacer esfuerzos en pos de la concordia y el diálogo"
   },
   "CAC|volvio-a-caer-el-consumo-de-los-hogares-en-bienes-y-servicios": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"

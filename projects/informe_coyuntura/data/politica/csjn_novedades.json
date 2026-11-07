@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 1,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-11-04"
+  "ultima_corrida": "2026-11-07"
  },
  "pendientes": {
   "825492": {
@@ -48,6 +48,20 @@
    "sentencia_arbitraria": false,
    "titulo": "Derogación de la Ley de Tierras Rurales: devolución de las actuaciones y suspensión interina de la norma",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=833926"
+  },
+  "834699": {
+   "caratula": "OLIVA ARMANDO JULIO c/ ANSES s/REAJUSTES VARIOS",
+   "expediente": "CSS 077168/2014/CS001",
+   "fecha": "05/11/2026",
+   "fuero": "CSS",
+   "inconstitucional": false,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Topes jubilatorios y cómputo de mayores aportes",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=834699"
   }
  },
  "revisadas": {
@@ -581,6 +595,11 @@
    "marcado": false,
    "termino": "inconstitucionalidad"
   },
+  "833812": {
+   "fecha": "05/11/2026",
+   "marcado": false,
+   "termino": "estado nacional"
+  },
   "833926": {
    "fecha": "09/10/2026",
    "marcado": true,
@@ -600,6 +619,31 @@
    "fecha": "29/10/2026",
    "marcado": false,
    "termino": "inconstitucionalidad"
+  },
+  "834699": {
+   "fecha": "05/11/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "835348": {
+   "fecha": "05/11/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "835355": {
+   "fecha": "05/11/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "835363": {
+   "fecha": "05/11/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "835584": {
+   "fecha": "05/11/2026",
+   "marcado": false,
+   "termino": "estado nacional"
   }
  }
 }

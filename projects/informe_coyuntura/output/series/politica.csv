@@ -285,7 +285,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-23,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.82,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.83,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.72,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.97,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.52,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
@@ -699,7 +699,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
-2026-11-04,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-11-07,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-10-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-09-30,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-08-31,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -735,7 +735,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-11-04,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-11-07,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-10-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-09-30,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-08-31,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -841,7 +841,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
-2026-11-04,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-11-07,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-10-31,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-09-30,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,cohesion_bloque,99.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -913,6 +913,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,cobertura_judicial,72.88,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
 2024-01-01,cobertura_judicial,73.3,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
 2023-12-01,cobertura_judicial,73.4,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-10-01,brecha_obra_publica,-2.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-09-01,brecha_obra_publica,-1.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-08-01,brecha_obra_publica,-1.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-07-01,brecha_obra_publica,-1.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
@@ -1108,8 +1109,6 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,apoyo_construccion,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
 2024-03-01,apoyo_construccion,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
 2024-02-01,apoyo_construccion,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
-2026-11-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
-2026-10-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
 2026-09-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
 2026-08-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
 2026-07-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
@@ -1149,8 +1148,8 @@ fecha,indicador,valor,unidad,fuente
 2026-03-01,apoyo_campo,-0.455,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-02-01,apoyo_campo,-0.475,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-01-01,apoyo_campo,-0.537,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
-2026-11-04,alineamiento_senadores_prov,61.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
-2026-10-31,alineamiento_senadores_prov,61.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-11-07,alineamiento_senadores_prov,64.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-10-31,alineamiento_senadores_prov,61.1,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-09-30,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-08-31,alineamiento_senadores_prov,62.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-07-31,alineamiento_senadores_prov,70.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

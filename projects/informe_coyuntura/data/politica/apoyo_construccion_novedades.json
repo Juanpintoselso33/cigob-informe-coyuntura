@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 905,
+  "comunicados_vistos": 909,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-04",
-  "nuevos_en_la_corrida": 1,
-  "ultima_corrida": "2026-11-04"
+  "inventario_verificado": "2026-11-07",
+  "nuevos_en_la_corrida": 4,
+  "ultima_corrida": "2026-11-07"
  },
  "pendientes": {
   "CAMARCO|49378": {
@@ -86,6 +86,50 @@
    "texto": "La abogada y exjueza iraní Shirin Ebadi, Premio Nobel de la Paz 2003, mantuvo esta tarde una reunión institucional en la sede central de CAMARCO, organizada por el J6 —espacio que nuclea a una nueva generación de dirigentes, referentes de las principales cámaras empresariales del país—. Ebadi fue invitada a la Argentina por la Fundación Civitas, Et Lex y la Universidad Laica Presidente Domingo Faustino Sarmiento.\n Abogada, exjueza y pionera en la magistratura iraní —fue la primera mujer en ejercer como jueza en su país antes de la revolución de 1979—, Ebadi consagró su vida a la justicia social y fundó el Centro de Defensores de los Derechos Humanos. Durante el encuentro, los asistentes conversaron con ella acerca de su activismo, la consolidación democrática y la defensa de las mujeres, la infancia y los refugiados.\n En ese marco, la Premio Nobel señaló: “Hacer justicia no es algo que cae bien a las personas que no creen en la democracia. La muestra de que la sociedad es democrática es la independencia del poder judicial”, y añadió que “la sociedad redefine un sentido de justicia”, destacando también que “una sociedad progresa cuando le da verdadera importancia a la educación”.\n Por su parte, Vicente Gutiérrez, presidente del J6 y de ADEBA Joven, remarcó la importancia de tender puentes generacionales, consensuar una visión a largo plazo entre sectores diversos para superar barreras estructurales y diseñar desde el sector privado el futuro de la Argentina.\n Como cierre, la Premio Nobel dejó un mensaje dirigido a los jóvenes: “Como consejo, preserven la democracia y no sean indiferentes a la política de su país. La indiferencia hace que los corruptos avancen”.\n El J6 reúne a las nuevas generaciones de dirigentes de las seis entidades empresariales que conforman el G6: la Asociación de Bancos Argentinos (ADEBA), la Bolsa de Comercio de Buenos Aires (BCBA), la Cámara Argentina de Comercio y Servicios (CAC), la Cámara Argentina de la Construcción (CAMARCO), la Sociedad Rural Argentina (SRA) y la Unión Industrial Argentina (UIA). Es un espacio de articulación que impulsa el desarrollo federal, la innovación y la formación de dirigentes comprometidos con el futuro del sector productivo.",
    "titulo": "El J6 se reunió con la Premio Nobel de la Paz Shirin Ebadi",
    "url": "https://www.camarco.org.ar/2026/11/04/el-j6-se-reunio-con-la-premio-nobel-de-la-paz-shirin-ebadi/"
+  },
+  "CAMARCO|49530": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-06",
+   "id": "49530",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Cámara Argentina de la Construcción (CAMARCO) recibió en su Sede Central a representantes de Hatch, empresa canadiense de ingeniería y consultoría para los sectores de minería, energía e infraestructura, en un encuentro destinado a intercambiar perspectivas sobre las oportunidades de desarrollo e inversión en la Argentina.\n La reunión estuvo encabezada por el Presidente de CAMARCO, Ing. Gustavo Weiss, y contó con la participación de Kezer Almeida, Argentina Country Manager de Hatch. También asistieron Alejandro D’Agostino, Delegado Comercial de la Embajada de Canadá para Argentina y Paraguay; Laura Yorghanjian, Directora de la Cámara de Comercio Argentino-Canadiense; y Violeta Manoukian, Consultora de Comercio Internacional de Canadá. Por parte de CAMARCO participaron además Carlos Folatti, Vicepresidente 1°; Miguel Marconi, Tesorero; Gustavo Burgwardt, Presidente de la Comisión Obras para la Minería; entre otros representantes de la institución.\n Durante el encuentro se analizaron las perspectivas que presentan los sectores de infraestructura, energía y minería, así como las oportunidades para fortalecer los vínculos entre empresas argentinas y canadienses. Los participantes coincidieron en la importancia de promover espacios de diálogo y cooperación que contribuyan al desarrollo de proyectos estratégicos y al fortalecimiento de las capacidades del sector de la construcción.",
+   "titulo": "CAMARCO recibió a directivos de Hatch y representantes de instituciones vinculadas a Canadá",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-recibio-a-directivos-de-hatch-y-representantes-de-instituciones-vinculadas-a-canada/"
+  },
+  "CAMARCO|49543": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-06",
+   "id": "49543",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Cámara Argentina de la Construcción y el Ministerio de Capital Humano suscribieron un acuerdo de colaboración orientado a ampliar la oferta de capacitaciones del futuro Centro de Formación Capital Humano que funcionará en la ciudad de Mar del Plata. El convenio fue firmado por el Presidente de CAMARCO, Ing. Gustavo Weiss, y la Ministra de Capital Humano, Lic. Sandra Pettovello. En el marco de esta iniciativa, CAMARCO realizó una donación de materiales destinados al reacondicionamiento y puesta en valor del Palacio Unzué, edificio donde funcionará la nueva sede del centro. El aporte incluyó cemento, pintura, sellador y otros insumos necesarios para las tareas de adecuación del espacio.\n La articulación entre el sector público y el privado busca contribuir a la generación de más y mejores oportunidades de empleo a través de acciones de capacitación y formación profesional. Video publicado por el Ministerio de Capital Humano",
+   "titulo": "CAMARCO y el Ministerio de Capital Humano firmaron un acuerdo para ampliar la capacitación laboral",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-y-el-ministerio-de-capital-humano-firmaron-un-acuerdo-para-ampliar-la-capacitacion-laboral/"
+  },
+  "CAMARCO|49556": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-06",
+   "id": "49556",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Embajada de Francia en Argentina realizó un encuentro en honor a las organizaciones distinguidas en la 11ª edición de los Premios FLOR a la Diversidad. La celebración contó con la presencia del Embajador de Francia, Romain Nadal, y referentes de distintas cámaras, entre ellas CAMARCO.\n Entre las personas destacadas que asistieron se encontraban Nancy Hornus, Presidenta de CAMARCO Equidad; Facundo Gómez Minujín, CEO y Senior Country Officer de JPMorgan Chase & Co. para Argentina, Uruguay, Bolivia y Paraguay; Mariana Schoua, ex CEO de Aconcagua Energía y ex Presidenta de AmCham Argentina; Natalia Facciolo, Presidenta de Mujeres Empresarias de la Federación Económica de la Provincia de Buenos Aires (FEBA) y el consultor Fabián Perechodnik y la periodista Débora Plager.\n El Embajador Romain Nadal destacó el trabajo de las organizaciones reconocidas por su compromiso con la diversidad, la inclusión y los liderazgos responsables. “La diversidad no se decreta: se construye día a día a través de decisiones políticas, prácticas y, sobre todo, de una voluntad colectiva de no dejar a nadie al margen”, afirmó. También subrayó la importancia de tender puentes entre las empresas, las instituciones públicas y las organizaciones de la sociedad civil.",
+   "titulo": "CAMARCO Equidad participó de un encuentro de honor de la Embajada de Francia",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-equidad-participo-de-un-encuentro-de-honor-de-la-embajada-de-francia/"
+  },
+  "CAMARCO|49564": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-07",
+   "id": "49564",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El Grupo de los Seis recibe con gran entusiasmo la próxima visita del papa León XIV a nuestro país.\n Su presencia tendrá un enorme significado espiritual y humano para todos los argentinos y será una oportunidad para renovar la esperanza, fortalecer los valores que nos unen y promover una cultura del encuentro, el diálogo y la solidaridad.\n En un momento de grandes desafíos, su mensaje de paz, fraternidad y unidad contribuirá a construir una Argentina con mayor entendimiento, respeto y compromiso con el bien común.",
+   "titulo": "G6 – Visita del papa León XIV a la Argentina",
+   "url": "https://www.camarco.org.ar/2026/11/07/g6-visita-del-papa-leon-xiv-a-la-argentina/"
   }
  },
  "revisadas": {
@@ -2834,6 +2878,22 @@
   "CAMARCO|49516": {
    "fecha": "2026-11-04",
    "titulo": "El J6 se reunió con la Premio Nobel de la Paz Shirin Ebadi"
+  },
+  "CAMARCO|49530": {
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO recibió a directivos de Hatch y representantes de instituciones vinculadas a Canadá"
+  },
+  "CAMARCO|49543": {
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO y el Ministerio de Capital Humano firmaron un acuerdo para ampliar la capacitación laboral"
+  },
+  "CAMARCO|49556": {
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO Equidad participó de un encuentro de honor de la Embajada de Francia"
+  },
+  "CAMARCO|49564": {
+   "fecha": "2026-11-07",
+   "titulo": "G6 – Visita del papa León XIV a la Argentina"
   }
  }
 }

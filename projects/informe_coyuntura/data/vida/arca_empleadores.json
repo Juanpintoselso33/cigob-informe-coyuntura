@@ -60,6 +60,15 @@
       "monotributistas": 44145,
       "blanco": 48274,
       "cuit_total": 6190311
+    },
+    "2026-11": {
+      "fecha_archivo": "2026-11-07",
+      "empleadores": 511351,
+      "juridicas": 290904,
+      "humanas": 220447,
+      "monotributistas": 44458,
+      "blanco": 48150,
+      "cuit_total": 6206844
     }
   }
 }
