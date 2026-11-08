@@ -26,9 +26,9 @@ const MAP: Record<Key, { id: string; part: string; line: string }> = {
 };
 
 // Semáforo del informe (dashboard.css :root) — mismos hex que el resto del tablero
-const C:    Record<string, string> = { verde: "#16A34A", amarillo: "#CA8A04", rojo: "#DC2626" };
+const C:    Record<string, string> = { verde: "var(--verde)", amarillo: "var(--amarillo)", rojo: "var(--rojo)" };
 const INK:  Record<string, string> = { verde: "#0F7A38", amarillo: "#8A5D04", rojo: "#B01B1B" };
-const SOFT: Record<string, string> = { verde: "#DCFCE7", amarillo: "#FEF3C7", rojo: "#FEE2E2" };
+const SOFT: Record<string, string> = { verde: "var(--verde-soft)", amarillo: "var(--amarillo-soft)", rojo: "var(--rojo-soft)" };
 const LABEL:Record<string, string> = { verde: "Saludable", amarillo: "Alerta", rojo: "En crisis" };
 
 const SYS = ORDEN.map((key) => {
@@ -297,9 +297,9 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
 
 <script define:vars={{ SYS, DEFAULT }}>
   (function () {
-    var C = { verde: "#16A34A", amarillo: "#CA8A04", rojo: "#DC2626" };
+    var C = { verde: "var(--verde)", amarillo: "var(--amarillo)", rojo: "var(--rojo)" };
     var INK = { verde: "#0F7A38", amarillo: "#8A5D04", rojo: "#B01B1B" };
-    var SOFT = { verde: "#DCFCE7", amarillo: "#FEF3C7", rojo: "#FEE2E2" };
+    var SOFT = { verde: "var(--verde-soft)", amarillo: "var(--amarillo-soft)", rojo: "var(--rojo-soft)" };
     var LABEL = { verde: "Saludable", amarillo: "Alerta", rojo: "En crisis" };
     var byId = {}; SYS.forEach(function (s) { byId[s.id] = s; });
     var clinic = document.getElementById("clinic");

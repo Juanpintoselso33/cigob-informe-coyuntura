@@ -81,14 +81,8 @@ const peor = peorDimension(cinturon);
     <a href={href} class="cg-cint-ver">Ver {filas.length} indicadores →</a>
   </div>
 </article>
-<style is:global>
-  /* Fondo negro detrás del semáforo en la card del cinturón (pedido 5-nov-2026):
-     verde, amarillo, naranja y rojo resaltan más sobre negro. Sólo en las cards;
-     el hero y el modal siguen igual. La pista neutra, las marcas de corte y el
-     marcador se ajustan para seguir leyéndose sobre el fondo oscuro. */
-  .cg-cint .cg-nivel .cg-nivel-pista { background: #000; border-radius: 8px; padding: 4px 8px; }
-  .cg-cint .cg-nivel .cg-nivel-base { stroke: #2a2a2a; }
-  .cg-cint .cg-nivel .cg-nivel-tick { stroke: #000; }
-  .cg-cint .cg-nivel .cg-nivel-marca { stroke: #fff; }
-  .cg-cint .cg-genoma { background: #000; border-radius: 6px; padding: 5px; }
-</style>
+{/* El fondo negro detrás del semáforo (pedido #96, 5-nov-2026) se quitó el
+    8-nov-2026: cubría todo el alto del SVG y no sólo la banda, y era el único
+    lugar del sitio con el semáforo sobre negro, así que los mismos colores se
+    percibían distintos que en el resto. La nitidez la da ahora la paleta única
+    de Layout.astro. */}
