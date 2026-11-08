@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-07 17:54:26"
+generado: "2026-11-08 03:43:44"
 score_global: 3.6
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -49,26 +49,26 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-11-07 | fresco |
+| ratio_dnu | 2.643 | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | 2026-11-07 | ⚠ cache |
 | apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_construccion | 0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| conflictividad_nacional | -27.2 | % frente a 2023 | 2026-09-01 | ⚠ cache |
+| conflictividad_nacional | -27.2 | % frente a 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | ⚠ cache |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | transferencias_no_automaticas | -82.1 | % real frente a 2023 | 2026-09-30 | fresco |
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-11-04 | ⚠ cache |
 | comisiones_caidas | 96.5 | % de proyectos | 2026-11-04 | ⚠ cache |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-11-07 | fresco |
-| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-07 | fresco |
-| rotacion_gabinete | 4 | salidas de rango ministerial (acumulado de 12 meses) | 2026-11-07 | fresco |
-| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | ⚠ cache |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-11-08 | fresco |
+| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-11-07 | ⚠ cache |
+| rotacion_gabinete | 4 | salidas de rango ministerial (acumulado de 12 meses) | 2026-11-08 | fresco |
+| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 | votos_sobre_bancas | 141.5 | diputados a favor | 2026-11-04 | ⚠ cache |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | 2026-10-29 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-11-04 | ⚠ cache |
-| insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-07 | fresco |
-| rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-11-07 | fresco |
+| insistencias_vetos | 0.0 | vetos insistidos por las dos cámaras, últimos 12 meses | 2026-11-08 | ⚠ cache |
+| rechazos_decretos | 0.0 | decretos derogados por las dos cámaras, últimos 12 meses | 2026-11-08 | ⚠ cache |
 | cobertura_judicial | 73.61 | % estimado de cargos con juez designado | 2026-11-01 | fresco |
 | alineamiento_senadores_prov | 64.9 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-10-29 | fresco |
 
@@ -78,7 +78,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|---|
 | brecha_obra_publica | -2.7 | puntos porcentuales de brecha (obra pública − privada, 12 meses) | 2026-10-01 | octubre de 2026 (ADR-0372) | Compara las expectativas de las constructoras que trabajan para el Estado con las de las que trabajan para privados: es la lectura de un solo sector y de expectativas, no de la relación del empresariado con el Gobierno. La dimensión se rearma con la postura pública de las cámaras. |
 | iaf_transferencias | -0.6 | % interanual real | 2026-09-30 | octubre de 2026 (ADR-0378) | Medía la variación real de las transferencias automáticas (coparticipación y fondos de ley del RON): lo que a las provincias les corresponde, no lo que la Nación decide girarles. Lo reemplaza la medida de transferencias no automáticas, con el mismo peso en la dimensión. |
-| veto_quorum | 0.0 | % de sesiones | 2026-11-07 | octubre de 2026 (ADR-0377) | Las sesiones que caen por falta de quórum miden si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo; se reemplaza por las insistencias sobre vetos y los rechazos de decretos. |
+| veto_quorum | 0.0 | % de sesiones | 2026-11-08 | octubre de 2026 (ADR-0377) | Las sesiones que caen por falta de quórum miden si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo; se reemplaza por las insistencias sobre vetos y los rechazos de decretos. |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-11-04 | octubre de 2026 (ADR-0377) | Contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera: mezclaba el intento con la derrota. Se reemplaza por lo consumado en las dos cámaras: vetos insistidos y decretos derogados. |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-10-01 | noviembre de 2026 (ADR-0422) | Cuenta cuántas leyes sanciona el Congreso en 12 meses: es la actividad de las cámaras, no algo que diga si el Gobierno consigue lo que necesita. Además cuenta leyes sancionadas mientras decretos por ley cuenta leyes publicadas, así que los dos números no se cruzan. |
 | judicializacion | 1.83 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
@@ -109,17 +109,17 @@ schema_version: "1.2.0"
 | desregulacion_normativa | 18001.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-10-01 | fresco |
 | reduccion_estado | -22.44 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-09-01 | fresco |
 | gasto_funcionamiento | -28.0 | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | 2026-08-01 | fresco |
-| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-07 | fresco |
+| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-08 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | ⚠ cache |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-11-07 | fresco |
-| rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-07 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
-| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-07 | fresco |
+| rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-08 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-08 | fresco |
+| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-08 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-07 | fresco |
-| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | ⚠ cache |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-08 | fresco |
+| protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
 
@@ -131,8 +131,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,apoyo_comercio,apoyo_campo,apoyo_construccion,conflictividad_nacional,movilizacion_cepa,eficacia_legislativa,comisiones_caidas,protestas_caba,votos_sobre_bancas,bloqueo_sostenido`
-- `desactualizado:gestion:juicios_trabajo_capital,protestas_caba`
+- `desactualizado:politica:ratio_dnu,apoyo_empresario,apoyo_comercio,apoyo_campo,apoyo_construccion,eficacia_legislativa,comisiones_caidas,derrotas_legislativas,votos_sobre_bancas,bloqueo_sostenido,insistencias_vetos,rechazos_decretos`
+- `desactualizado:gestion:juicios_trabajo_capital`
 
 ---
-*Generado por CIGOB — 2026-11-07 17:54:26 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-08 03:43:44 — schema 1.2.0*
