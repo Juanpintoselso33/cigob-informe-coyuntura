@@ -45,20 +45,51 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="stylesheet" href={`${base}/marca.css`} />
     <link rel="stylesheet" href={`${base}/dashboard.css`} />
     <link rel="stylesheet" href={`${base}/overrides.css`} />
-    <!-- Semáforo más nítido (nov-2026). dashboard.css no se puede tocar desde
-         acá, así que los cuatro colores se pisan después de cargarlo. El
-         amarillo dorado (#E8C547) se confundía con el naranja y el rojo
-         (#DC2626) se veía desteñido: amarillo limón, naranja franco y rojo
-         puro más oscuro, separados en tono y en luz. -->
+    <!-- SEMÁFORO — ÚNICA FUENTE DE VERDAD (nov-2026).
+         dashboard.css no se puede tocar desde acá, así que los cuatro colores
+         se definen ACÁ y pisan a los de esa hoja. `html:root` (y `html` delante
+         de cada regla) les da más especificidad que la hoja original, así que
+         ganan sin depender del orden en que se carguen.
+         Reglas: (1) ningún componente escribe un hex del semáforo: usa
+         var(--verde|--amarillo|--naranja|--rojo); (2) los tonos pálidos y la
+         trama roja se DERIVAN del color base con color-mix, así que si cambia
+         un color se mueven solos; (3) el semáforo no lleva transparencia: el
+         mismo color se tiene que ver igual en la barra, el genoma y los puntos.
+         El verde pasó de #16A34A a uno de la misma intensidad que el amarillo
+         limón, el naranja franco y el rojo puro (pedido del 8-nov-2026). -->
     <style is:global>
-      :root {
+      html:root {
+        --verde:         #1FAE4B;
         --amarillo:      #FFD60A;
-        --amarillo-soft: #FEF9C3;
         --naranja:       #F76B15;
-        --naranja-soft:  #FFE4CC;
         --rojo:          #D00000;
-        --rojo-soft:     #FECACA;
+        --verde-soft:    color-mix(in srgb, var(--verde) 20%, #fff);
+        --amarillo-soft: color-mix(in srgb, var(--amarillo) 20%, #fff);
+        --naranja-soft:  color-mix(in srgb, var(--naranja) 20%, #fff);
+        --rojo-soft:     color-mix(in srgb, var(--rojo) 20%, #fff);
+        --rojo-trama:    color-mix(in srgb, var(--rojo) 75%, #000);
       }
+      /* Genoma: sin transparencia (se mezclaba con el fondo y cambiaba el tono)
+         y trama roja derivada del rojo del semáforo. */
+      html .cg-genoma-seg { opacity: 1; }
+      html .cg-genoma-seg.sem-rojo {
+        background: repeating-linear-gradient(45deg,
+          var(--rojo), var(--rojo) 4px, var(--rojo-trama) 4px, var(--rojo-trama) 7px);
+      }
+      /* Barra de puntaje del modal: tenía el amarillo y el rojo viejos escritos. */
+      html .cg-score-fill {
+        background: linear-gradient(90deg, var(--verde) 0%, var(--amarillo) 50%, var(--rojo) 100%);
+      }
+      /* Variación de los mini-gráficos: tintes pálidos de la misma paleta. */
+      html .cg-chart-mini-delta.up,
+      html .cg-chart-mini-delta.empeora { background: var(--rojo-soft); }
+      html .cg-chart-mini-delta.down,
+      html .cg-chart-mini-delta.mejora  { background: var(--verde-soft); }
+      /* Chip «suspendido» y píldora de estado: tenían mostaza y amarillo viejos.
+         El texto va en tinta oscura (el amarillo limón no se lee como texto). */
+      html .cg-suspendido-chip { border-color: var(--amarillo); color: #713F12; }
+      html .cg-status-pill.is-signed .cg-status-dot { box-shadow: 0 0 0 3px color-mix(in srgb, var(--verde) 18%, transparent); }
+      html .cg-status-pill.is-draft  .cg-status-dot { box-shadow: 0 0 0 3px color-mix(in srgb, var(--amarillo) 25%, transparent); }
     </style>
     {muro && (
       <script is:inline define:vars={{ modoMuro }}>

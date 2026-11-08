@@ -51,8 +51,16 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   // ídem para las no automáticas (ATN y giros por programa): más giro, más verde
   transferencias_no_automaticas: 1,
 };
-const VERDE_AREA = "#16A34A";
-const ROJO_AREA = "#DC2626";
+// Los colores del área salen de las variables del semáforo (Layout.astro), no
+// de un hex escrito acá: así siguen a la paleta si cambia. El segundo valor es
+// el respaldo para cuando no hay documento (build) o la variable falta.
+function colorSemaforo(variable: string, respaldo: string): string {
+  if (typeof document === "undefined") return respaldo;
+  const v = getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
+  return v || respaldo;
+}
+const VERDE_AREA = colorSemaforo("--verde", "#1FAE4B");
+const ROJO_AREA = colorSemaforo("--rojo", "#D00000");
 
 function aTimestamp(fecha: string): number {
   const p = fecha.split("-");
