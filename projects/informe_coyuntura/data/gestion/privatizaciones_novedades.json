@@ -3,22 +3,10 @@
   "cobertura": {
    "consultas_fallidas": [
     "AySA|2026-10",
-    "Transener|2026-09",
-    "Enarsa|2026-11",
-    "Enarsa|2026-10",
-    "Enarsa|2026-09",
-    "Intercargo|2026-11",
-    "Intercargo|2026-10",
-    "Intercargo|2026-09",
-    "Belgrano Cargas|2026-11",
-    "Belgrano Cargas|2026-10",
-    "Belgrano Cargas|2026-09",
-    "YCRT|2026-10",
-    "YCRT|2026-09",
-    "SOFSE|2026-11"
+    "AySA|2026-09"
    ],
    "consultas_previstas": 24,
-   "consultas_sin_error": 10,
+   "consultas_sin_error": 22,
    "estado": "incompleta",
    "relectura_pendiente": [],
    "textos_fallidos": []
@@ -26,7 +14,7 @@
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
   "revision_manual_en": "2026-11-07",
-  "ultima_corrida": "2026-11-08"
+  "ultima_corrida": "2026-11-09"
  },
  "pendientes": {},
  "revisadas": {

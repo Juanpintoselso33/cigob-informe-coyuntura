@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-08T03:43:17.178936+00:00",
+    "generated_at": "2026-11-09T03:43:31.090092+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -2608,38 +2608,6 @@
     "2026-09": 79.2
   },
   "merval_usd_mensual": {
-    "2023-12": 964.7,
-    "2024-01": 1055.4,
-    "2024-02": 864.5,
-    "2024-03": 1138.3,
-    "2024-04": 1253.4,
-    "2024-05": 1443.2,
-    "2024-06": 1240.2,
-    "2024-07": 1090.6,
-    "2024-08": 1322.5,
-    "2024-09": 1361.4,
-    "2024-10": 1555.2,
-    "2024-11": 1984.1,
-    "2024-12": 2242.3,
-    "2025-01": 2163.3,
-    "2025-02": 1829.1,
-    "2025-03": 1850.1,
-    "2025-04": 1670.2,
-    "2025-05": 1941.1,
-    "2025-06": 1673.1,
-    "2025-07": 1815.2,
-    "2025-08": 1489.0,
-    "2025-09": 1220.4,
-    "2025-10": 1975.4,
-    "2025-11": 2024.9,
-    "2025-12": 2003.1,
-    "2026-01": 2105.6,
-    "2026-02": 1795.8,
-    "2026-03": 2039.2,
-    "2026-04": 1916.1,
-    "2026-05": 2131.0,
-    "2026-06": 2087.8,
-    "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
     "2026-10": 1748.9
@@ -4752,7 +4720,7 @@
     },
     "merval_usd": {
       "ultimo": "2026-10",
-      "n": 35,
+      "n": 3,
       "avanzo": "2026-10-04"
     },
     "inversion_directa_externa": {
@@ -4881,15 +4849,6 @@
           "n": 33
         },
         {
-          "estadistica": "merval_usd",
-          "etiqueta": "Merval en dólares",
-          "fuente": "BYMA / CCL",
-          "propia": false,
-          "r_niveles": 0.129,
-          "r_diferencias": 0.159,
-          "n": 35
-        },
-        {
           "estadistica": "transporte_pasajeros",
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
@@ -4909,16 +4868,16 @@
         }
       ],
       "n_propias": 7,
-      "n_ajenas": 6,
+      "n_ajenas": 5,
       "niveles": {
         "convergente": 0.189,
-        "discriminante": 0.192,
-        "brecha": -0.003
+        "discriminante": 0.204,
+        "brecha": -0.015
       },
       "diferencias": {
         "convergente": 0.207,
-        "discriminante": 0.1,
-        "brecha": 0.107
+        "discriminante": 0.088,
+        "brecha": 0.119
       },
       "factor": {
         "cargas": {
@@ -5267,7 +5226,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,189 y con las 6 ajenas es 0,192. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,207 con lo propio contra 0,1 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,189 y con las 5 ajenas es 0,204. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,207 con lo propio contra 0,088 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
@@ -5363,15 +5322,6 @@
           "n": 26
         },
         {
-          "estadistica": "merval_usd",
-          "etiqueta": "Merval en dólares",
-          "fuente": "BYMA / CCL",
-          "propia": false,
-          "r_niveles": -0.217,
-          "r_diferencias": 0.121,
-          "n": 28
-        },
-        {
           "estadistica": "transporte_pasajeros",
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
@@ -5391,18 +5341,18 @@
         }
       ],
       "n_propias": 1,
-      "n_ajenas": 12,
+      "n_ajenas": 11,
       "niveles": {
         "convergente": 0.448,
-        "discriminante": 0.242,
-        "brecha": 0.206
+        "discriminante": 0.244,
+        "brecha": 0.204
       },
       "diferencias": {
         "convergente": 0.086,
-        "discriminante": 0.154,
-        "brecha": -0.068
+        "discriminante": 0.157,
+        "brecha": -0.071
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,448 y con las 12 ajenas es 0,242. En los cambios mes a mes la separación no se sostiene: 0,086 con lo propio contra 0,154 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,448 y con las 11 ajenas es 0,244. En los cambios mes a mes la separación no se sostiene: 0,086 con lo propio contra 0,157 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }
