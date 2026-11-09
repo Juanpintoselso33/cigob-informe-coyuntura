@@ -298,6 +298,26 @@ def test_parsear_acta_diputados_pdf_extrae_filas_reales():
     assert por_nombre["DEL PLA, ROMINA"]["provincia"] == "Buenos Aires"
 
 
+def test_parsear_acta_diputados_pdf_lee_la_pagina_con_solo_bloques_largos():
+    # Acta 5894 (8-abr-2026): el PDF agrupa por voto y cada grupo arranca en
+    # página nueva. Las cuatro abstenciones de la izquierda quedan solas en una
+    # página y sus bloques son largos: ninguna fila de esa página separa bien
+    # las cuatro columnas. Antes se salteaba la página entera y se perdían los
+    # cuatro votos (pasó en 9 actas de 2026). Encabezado oficial: 121 afirmativos,
+    # 117 negativos, 4 abstenciones y 14 ausentes.
+    pdf = (Path(__file__).parent / "fixtures" / "acta_diputados_5894.pdf").read_bytes()
+    filas = politica._parsear_acta_diputados_pdf(pdf)
+    from collections import Counter
+    assert Counter(f["voto"] for f in filas) == {
+        "AFIRMATIVO": 121, "NEGATIVO": 117, "ABSTENCION": 4, "AUSENTE": 14,
+    }
+    por_nombre = {f["nombre"]: f for f in filas}
+    assert por_nombre["PITROLA, NESTOR"] == {
+        "nombre": "PITROLA, NESTOR", "bloque": "Partido Obrero En El Fte De Izquierda Y De",
+        "provincia": "Buenos Aires", "voto": "ABSTENCION"}
+    assert por_nombre["BREGMAN, MYRIAM"]["bloque"] == "Pts-frente De Izquierda Y De Trabajadores"
+
+
 def test_diputados_acta_fecha_extrae_del_encabezado_real():
     assert politica._diputados_acta_fecha(FIXTURE_ACTA_DIPUTADOS_PDF) == datetime(2026, 6, 24)
 

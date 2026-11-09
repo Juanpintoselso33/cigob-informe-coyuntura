@@ -5522,6 +5522,7 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
     from statistics import median
 
     filas = []
+    paginas = []          # (renglones, inicios) de cada página
     with pdfplumber.open(io.BytesIO(contenido)) as pdf:
         for pagina in pdf.pages:
             por_fila = {}
@@ -5545,22 +5546,31 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
                 columnas.append(" ".join(actual))
                 if len(columnas) == 4 and columnas[-1].upper() in _DIPUTADOS_VOTOS_VALIDOS:
                     inicios.append(posiciones)
-            if not inicios:
-                continue
-            limites = [median(p[i] for p in inicios) - 0.5 for i in (1, 2, 3)]
+            paginas.append((renglones, inicios))
+    # Una página sin ninguna fila de cuatro columnas limpias (p. ej. sólo las
+    # abstenciones de bloques de nombre largo, que el acta agrupa en página
+    # propia) toma las columnas del resto del acta, que son las mismas en todas
+    # las páginas. Antes se salteaba entera y se perdían esos votos (acta 5894).
+    todos = [p for _, inicios in paginas for p in inicios]
+    if todos:
+        limites_acta = [median(p[i] for p in todos) - 0.5 for i in (1, 2, 3)]
+        for renglones, inicios in paginas:
+            limites = ([median(p[i] for p in inicios) - 0.5 for i in (1, 2, 3)]
+                       if inicios else limites_acta)
             for palabras in renglones:
                 if palabras[-1]["text"].upper() not in _DIPUTADOS_VOTOS_VALIDOS:
                     continue
-                columnas = [[], [], [], []]
-                for palabra in palabras:
-                    columna = sum(palabra["x0"] >= limite for limite in limites)
+                # El voto es siempre la última palabra: su columna va centrada,
+                # así que dónde empieza depende del largo de la palabra
+                # (ABSTENCION arranca antes que NEGATIVO) y no sirve de límite.
+                columnas = [[], [], []]
+                for palabra in palabras[:-1]:
+                    columna = sum(palabra["x0"] >= limite for limite in limites[:2])
                     columnas[columna].append(palabra["text"])
                 if not all(columnas):
                     continue
-                nombre, bloque, provincia, voto = (" ".join(c) for c in columnas)
-                voto = voto.upper()
-                if voto not in _DIPUTADOS_VOTOS_VALIDOS:
-                    continue
+                nombre, bloque, provincia = (" ".join(c) for c in columnas)
+                voto = palabras[-1]["text"].upper()
                 filas.append({"nombre": nombre, "bloque": bloque, "provincia": provincia, "voto": voto})
     return filas
 
