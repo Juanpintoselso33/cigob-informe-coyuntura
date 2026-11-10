@@ -1,20 +1,17 @@
 {
  "_meta": {
   "cobertura": {
-   "consultas_fallidas": [
-    "AySA|2026-10",
-    "AySA|2026-09"
-   ],
+   "consultas_fallidas": [],
    "consultas_previstas": 24,
-   "consultas_sin_error": 22,
-   "estado": "incompleta",
+   "consultas_sin_error": 24,
+   "estado": "sin_fallos_detectados",
    "relectura_pendiente": [],
    "textos_fallidos": []
   },
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
   "revision_manual_en": "2026-11-07",
-  "ultima_corrida": "2026-11-09"
+  "ultima_corrida": "2026-11-10"
  },
  "pendientes": {},
  "revisadas": {

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-09 03:43:53"
+generado: "2026-11-10 03:46:08"
 score_global: 3.6
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -109,16 +109,16 @@ schema_version: "1.2.0"
 | desregulacion_normativa | 18001.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-10-01 | fresco |
 | reduccion_estado | -22.44 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-09-01 | fresco |
 | gasto_funcionamiento | -28.0 | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | 2026-08-01 | fresco |
-| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-09 | fresco |
+| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-10 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | ⚠ cache |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-11-07 | fresco |
-| rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-09 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-09 | fresco |
-| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-09 | fresco |
+| rigi_inversiones | 76.2 | % de la promesa de US$ 100.000 M aprobado | 2026-11-10 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-10 | fresco |
+| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-10 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-09 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-10 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -126,7 +126,7 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -32.65 | % de variación real frente a 2023-08 (remuneraciones del sector público nacional) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-07 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-10 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 | litigiosidad_laboral | 0.1 | % variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos) | 2026-07-01 | octubre de 2026 (ADR-0385) | Contaba los juicios que llegan al sistema de riesgos del trabajo, no los accidentes y enfermedades que el sistema registra, que es lo que pidió medir la dirección de CiGob. Lo reemplaza la siniestralidad registrada, con el mismo peso en la dimensión. El dato se sigue calculando. |
 
 ## Advertencias
@@ -135,4 +135,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:juicios_trabajo_capital`
 
 ---
-*Generado por CIGOB — 2026-11-09 03:43:53 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-10 03:46:08 — schema 1.2.0*
