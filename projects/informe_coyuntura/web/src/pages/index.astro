@@ -16,7 +16,9 @@ import { informe, CINTURONES } from "../lib/datos.ts";
   <Hero />
   <main class="cg-main">
     <Bluf />
-    <MarcoTension />
+    {/* Orden de la portada (pedido del 8-nov-2026): la lectura del mes, el
+        estado de cada cinturón, su evolución y, al final, el marco conceptual.
+        El estado va primero; la explicación del sentido del proyecto, después. */}
     <section class="cg-section">
       <div class="cg-section-head">
         <h2 class="cg-h2">Los cinturones, hoy</h2>
@@ -30,6 +32,7 @@ import { informe, CINTURONES } from "../lib/datos.ts";
       </div>
     </section>
     <Evolucion />
+    <MarcoTension />
     {/* «Lectura cruzada · Tensión sistémica» (TensionPanel + Recomendaciones)
         retirada de la portada (ADR-0343, pedido de Juan del 7-oct-2026). Los componentes se
         borraron con ella; si alguna vez vuelve, sale de `git show`. */}
