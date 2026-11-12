@@ -1399,7 +1399,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "vetos (12 meses)",
     },
     incidenciaTexto: [
-      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la relación entre decretos y leyes, la cobertura de cargos de juez y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la cobertura de cargos de juez y el otro conteo de derrotas consumadas. Menos es mejor.",
       "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
@@ -1442,7 +1442,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "decretos (12 meses)",
     },
     incidenciaTexto: [
-      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la relación entre decretos y leyes, la cobertura de cargos de juez y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Integra la dimensión de poder legislativo del índice político, junto a la eficacia legislativa, la cobertura de cargos de juez y el otro conteo de derrotas consumadas. Menos es mejor.",
       "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Los valores de la tabla son anclas, no tramos: entre una y otra el puntaje se interpola en línea recta (con 2 da 47,5) y con 4 o más queda en 10. Un cero no es ausencia de dato: es la lectura más favorable.",
     ],
     limitaciones: [
@@ -1913,9 +1913,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.",
     ],
     incidenciaTexto: [
+      "ESTA ESCALA YA NO SE APLICA. Desde noviembre de 2026 el indicador no integra el índice político: se retiró para revisar su formulación. Su valor no se convierte en puntaje ni pesa en la dimensión de alianzas territoriales. Se sigue calculando y su serie se conserva; la escala de abajo es la que se aplicó hasta octubre de 2026.",
       "El puntaje del índice se asigna por bandas de la variación real contra 2023, interpolado entre anclas: más de +72% → el más alto; entre +36% y +72% → alto; entre −36% y +36% → moderado (un año normal); entre −72% y −36% → bajo; −72% o menos → el más bajo. Más giro discrecional se lee como más recurso de negociación puesto en juego.",
       "Los cortes salen de la historia previa al mandato: la variación interanual real de las 61 ventanas de doce meses de noviembre de 2018 a noviembre de 2023 tiene un desvío de 35,9 puntos, así que ±36% es un desvío y ±72% son dos. No se miró el período de la gestión para elegirlos.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón, junto al alineamiento de senadores por provincia y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
+      "Hasta octubre de 2026 integró la dimensión de alianzas territoriales del índice del cinturón, junto al alineamiento de senadores por provincia y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI), con un peso de diseño del 40% de la dimensión, el mismo que tenía la medida de transferencias automáticas a la que reemplazó. Mientras está fuera, ese peso lo reparten los otros dos.",
     ],
     limitaciones: [
       "Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.",
@@ -1928,6 +1929,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Presupuesto Abierto puede ajustar el devengado de meses anteriores (registros tardíos, correcciones de imputación). Se recalcula completo desde la fuente en cada actualización, de modo que las revisiones se absorben solas.",
     cambios: [
+      { fecha: "2026-11-12", cambio: "Sale del índice político para revisar su formulación, por decisión de la dirección del Monitor. Se sigue calculando y su serie y su escala se conservan. Su 40% de alianzas territoriales pasa a repartirse entre el alineamiento de senadores y la adhesión provincial a las reformas. Con el dato de septiembre de 2026 puntuaba 10, el piso de la escala, así que su salida sube el índice político.", adr: "0426" },
       { fecha: "2026-10-28", cambio: "Pasa de la variación contra los 12 meses previos al nivel real de los últimos 12 meses contra el total real de 2023, como la conflictividad social: la variación interanual leía la base y no el nivel, y después del hundimiento de 2024 una recuperación parcial daba +30%. Los cortes pasan de −50 · −20 · +5 · +30%, puestos mirando el rango de la gestión, a ±36 y ±72%, uno y dos desvíos de la historia de 2017-2023. Con el dato de septiembre de 2026 (−82,1% contra 2023) el componente pasa de 75,8 a 10.", adr: "0397" },
       { fecha: "2026-10-27", cambio: "Entra al índice político en lugar de la medida de transferencias automáticas, con el mismo peso (40% de alianzas territoriales). La reunión del 26 de octubre decidió medir lo que la Nación gira por decisión —ATN y transferencias corrientes y de capital por programa— y no lo que corresponde por coparticipación. La ventana a septiembre de 2026 da +6,0% real (1,25 billones de pesos contra 0,91 de los 12 meses previos, a valores corrientes).", adr: "0378" },
     ],
