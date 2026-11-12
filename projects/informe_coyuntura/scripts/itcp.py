@@ -987,6 +987,31 @@ INDICADORES_SUSPENDIDOS = {
                                "—no sumario—, deduplicación, estado procesal y "
                                "corte temporal declarado.",
     },
+    "ratio_dnu": {
+        "dimension": "poder_legislativo",
+        "desde": "2026-11",
+        "desde_txt": "noviembre de 2026",
+        "adr": "0426",
+        "por_que": "Se retira del índice por decisión de la dirección del "
+                   "Monitor, para revisar su formulación. Mientras tanto la "
+                   "dimensión se lee con la eficacia legislativa, la cobertura "
+                   "de cargos judiciales, los vetos insistidos y los decretos "
+                   "derogados.",
+        "condicion_reingreso": "Que la revisión de su formulación termine y "
+                               "la dirección decida reponerlo.",
+    },
+    "transferencias_no_automaticas": {
+        "dimension": "alianzas_territoriales",
+        "desde": "2026-11",
+        "desde_txt": "noviembre de 2026",
+        "adr": "0426",
+        "por_que": "Se retira del índice por decisión de la dirección del "
+                   "Monitor, para revisar su formulación. Mientras tanto la "
+                   "dimensión se lee con el alineamiento de los senadores y la "
+                   "adhesión de las provincias a las reformas.",
+        "condicion_reingreso": "Que la revisión de su formulación termine y "
+                               "la dirección decida reponerlo.",
+    },
 }
 
 # ── Qué tipo de cosa mide cada indicador (ADR-0094) ──────────────────────────
