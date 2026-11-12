@@ -66,6 +66,21 @@ _RE_RESULTADO_CALENDARIO = re.compile(
 
 _MESES_NORM = {m.lower(): i for m, i in _MESES.items()}
 
+# Layout de sept-2026 (informe del 24-oct-2026): el enunciado de la tasa rotula el
+# semestre abreviado y sin espacios, «para el semestre Abr26Sep26», y el título
+# trae el año una sola vez, «Semestre Abril - Septiembre 2026». Ninguna de las
+# dos formas matcheaba los regex de arriba, que piden «Mes AAAA - Mes AAAA», y el
+# informe quedaba ilegible: la card se congeló en el valor de agosto y el gate de
+# frescura trabó la corrida nocturna.
+_RE_RESULTADO_ABREVIADO = re.compile(
+    r"tasa de pobreza de\s+([\d.,]+)\s*por\s+ciento\s+para el semestre\s+"
+    r"([A-Za-zñ]{3})(\d{2})\s*([A-Za-zñ]{3})(\d{2})", re.IGNORECASE)
+_RE_SEMESTRE_ANIO_FINAL = re.compile(
+    r"Semestre\s+([^\s\d]+)\s*-\s*([^\s\d]+)\s+(\d{4})")
+_ABREV = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+          "jul": 7, "ago": 8, "sep": 9, "set": 9, "oct": 10, "nov": 11, "dic": 12}
+_MES_POR_NUM = {i: m for m, i in _MESES.items()}
+
 
 def _listar_informes() -> list:
     """fnames de los PDF publicados, del más viejo al más nuevo."""
@@ -119,6 +134,24 @@ def _resultado(texto: str) -> tuple[float, str, str] | None:
                            f"{'Enero' if mes_fin == 6 else 'Julio'} {anio} - "
                            f"{'Junio' if mes_fin == 6 else 'Diciembre'} {anio}"))
         tasa = c
+    a = _RE_RESULTADO_ABREVIADO.search(texto)
+    if a:
+        n_ini, n_fin = _ABREV.get(a.group(2).lower()), _ABREV.get(a.group(4).lower())
+        if n_ini and n_fin:
+            sem = _semestre(_MES_POR_NUM[n_ini], f"20{a.group(3)}",
+                            _MES_POR_NUM[n_fin], f"20{a.group(5)}")
+            candidatos.append(sem)
+            tasa = a
+    f = _RE_SEMESTRE_ANIO_FINAL.search(texto)
+    if f and f.group(1).lower() in _MESES_NORM and f.group(2).lower() in _MESES_NORM:
+        # el año de arranque no está escrito: es el del cierre, o el anterior si
+        # el semestre cruza el año
+        anio_fin = int(f.group(3))
+        anio_ini = anio_fin - (1 if _MESES_NORM[f.group(1).lower()]
+                               > _MESES_NORM[f.group(2).lower()] else 0)
+        sem = _semestre(f.group(1), str(anio_ini), f.group(2), str(anio_fin))
+        if sem:
+            candidatos.append(sem)
     t = _RE_SEMESTRE.search(texto)
     if t:
         sem = _semestre(t.group(1), t.group(2), t.group(3), t.group(4))

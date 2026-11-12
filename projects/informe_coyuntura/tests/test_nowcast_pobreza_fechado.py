@@ -148,3 +148,42 @@ def test_un_hueco_en_la_serie_delata_un_informe_mal_fechado():
     assert _huecos({"2025-12": 30.6, "2026-01": 30.2}) == []
     # con un punto o ninguno no hay nada que comparar, y no es un hallazgo
     assert _huecos({"2025-01": 35.8}) == [] and _huecos({}) == []
+
+
+# Informe del 24-oct-2026 (semestre abril-septiembre 2026). Cambió el layout: el
+# título trae el año una sola vez y el enunciado rotula el semestre abreviado y
+# pegado, «Abr26Sep26». Los regex de «Mes AAAA - Mes AAAA» no lo leían, el colector
+# fallaba con «no se pudo parsear el informe más reciente» y el gate de frescura
+# trabó la corrida nocturna desde el 27-oct.
+ABREVIADO = (
+    "RESULTADOS Semestre Abril - Septiembre 2026 El nowcast estima una tasa de "
+    "pobreza de 32.6 por ciento para el semestre Abr26Sep26 con un intervalo del "
+    "95 por ciento de confianza entre [31.1%, 34.1%]."
+)
+
+
+def test_semestre_abreviado_sin_espacios():
+    tasa, periodo, semestre = _resultado(ABREVIADO)
+    assert (tasa, periodo) == (32.6, "2026-09")
+    assert semestre == "Abril 2026 - Septiembre 2026"
+
+
+def test_abreviado_que_cruza_el_anio_y_titulo_con_anio_final():
+    texto = ("Semestre Octubre - Marzo 2026 ... una tasa de pobreza de 29.0 por "
+             "ciento para el semestre Oct25Mar26 con")
+    assert _resultado(texto) == (29.0, "2026-03", "Octubre 2025 - Marzo 2026")
+    # solo el título, sin enunciado legible: igual fecha bien
+    assert _resultado("Semestre Octubre - Marzo 2026 tasa de pobreza de 29.0 por "
+                      "ciento")[:2] == (29.0, "2026-03")
+
+
+def test_pdf_real_del_informe_de_octubre_2026():
+    """El PDF publicado, entero, por la misma ruta que usa el colector."""
+    import pytest
+    pdfplumber = pytest.importorskip("pdfplumber")
+    ruta = Path(__file__).resolve().parent / "fixtures" / "utdt_nowcast_pobreza_2026-09.pdf"
+    with pdfplumber.open(ruta) as pdf:
+        texto = "\n".join((p.extract_text() or "") for p in pdf.pages[:3])
+    assert _resultado(texto) == (32.6, "2026-09", "Abril 2026 - Septiembre 2026")
+    ic = _COLECTOR._RE_IC.search(texto)
+    assert (ic.group(1), ic.group(2)) == ("31.1", "34.1")
