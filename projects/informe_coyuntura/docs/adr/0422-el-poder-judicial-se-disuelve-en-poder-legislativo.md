@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [cobertura_judicial, produccion_legislativa, ratio_dnu, eficacia_legislativa, insistencias_vetos, rechazos_decretos]
 archivos: ['scripts/itcp.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
-relacionado: ['0126', '0168', '0374', '0377', '0344', '0245']
+relacionado: ['0126', '0168', '0245', '0344', '0374', '0377', '0426']
 ambito: 'ITCP · dimensiones Poder legislativo y Poder judicial · `cobertura_judicial`, `produccion_legislativa`'
 origen: 'Revisión de Luis del 3-nov-2026: «DNU y cobertura judicial → legislativo, con el 16 % completo» y «sacar producción legislativa». Juan fijó el reparto interno el 4-nov-2026.'
 ---

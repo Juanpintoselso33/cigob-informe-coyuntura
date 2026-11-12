@@ -19,6 +19,127 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 
 ## 1. Abierto: decide Juan
 
+**Documento de Luis del 11-nov («Monitor CiGob: temas a resolver antes del lanzamiento»,
+`docs/pedidos/originales/2026-11-11_Luis_…`).** Se repasa punto por punto con Juan antes de
+tocar nada.
+
+- **(1) Indicadores políticos «desactualizados». A resolver.** No son datos viejos: desde el
+  5-nov votaciones.hcdn.gob.ar y datos.hcdn.gob.ar no contestan desde los runners de GitHub
+  (ni desde la Mac; desde la torre sí, parece bloqueo a IP de afuera, sin confirmar). Los
+  timeouts agotan los 10 min del colector político y lo que viene después (DNU, insistencias,
+  rechazos) tampoco corre. Quedan en caché desde el 4-5-nov: eficacia legislativa, votos sobre
+  bancas, desafíos, producción legislativa, comisiones caídas, más esos tres. Los apoyos
+  sectoriales son otra cosa (comunicados sin codificar) y juicios laborales es rezago de la
+  fuente. Para Luis: «no son datos viejos; desde el 5-nov los sitios de Diputados no responden
+  a la corrida y eso frena al resto del cinturón; los apoyos esperan la codificación».
+- **(2) Advertencias que nombran indicadores retirados. A solucionar.** El campo `flags`
+  (`generar_informe.py`, ~l. 389) lista comisiones_caidas, derrotas_legislativas y
+  bloqueo_sostenido porque el colector los sigue calculando; no filtra retirados como sí filtra
+  suspendidos. No se ve en el sitio (sólo snapshot, `output/informe.md` y BigQuery). Para Luis:
+  «es una lista interna, no se publica; se corrige para que no nombre los retirados».
+- **(3) Control de calidad en rojo. A solucionar.** Lo que corta la corrida (11-nov falló
+  por eso) es G2b sobre `pobreza_nowcast`: 15 días sin un fetch exitoso > tope 14. El
+  colector `utdt_nowcast_pobreza` no puede parsear el último informe de Di Tella
+  (`_179312591551796600.pdf`; probable cambio de formato) desde el 27-oct. El «ipc_total» del
+  test es sólo el indicador de ejemplo que toma `test_una_demora_sola_no_bloquea`; falla porque
+  el gate ya estaba bloqueado. Lo político (9/16) es DEMORA, no bloquea. Para Luis: «el
+  control no lo frena el IPC sino el nowcast de pobreza de Di Tella, que cambió el formato del
+  informe; se arregla el lector y vuelve a publicar».
+- **(4) informe.cigob.org sin los últimos cambios. No es así; a solucionar el conector.**
+  Verificado en vivo el 11-nov: título (#98), orden de portada (#100) y paleta con verde
+  #1FAE4B (#97) están en informe.cigob.org; la rama `mensual` se rearmó a las 13:24, 2 min
+  después del #100. La confusión la crea el conector de claude.ai (repo `cigob-landing`,
+  `src/lib/monitor-reglas.ts`), que le dice que el sitio mensual toma los cambios «en la próxima
+  publicación mensual»: eso vale sólo para datos; diseño, texto y método se ven en los dos al
+  entrar (ADR-0359). Corregir esa regla. **Fecha fija de publicación mensual: para el equipo**
+  (nunca se fijó; hoy informe.cigob.org muestra octubre). Para Luis: «los cambios de diseño y
+  texto ya están en informe.cigob.org; lo que espera a la publicación del mes son sólo los
+  datos. El asistente te explicó mal y lo corregimos».
+- **(5) El verde global depende de gestión. Decide el equipo.** Verificado: la portada
+  muestra «Tensión general» 3,6 (verde ≤ 4), promedio simple 25 % c/u de la fase temprana
+  (`config.py`, `FASE_TEMPRANA_ANIOS = 4`: rige hasta dic-2027, después 29/29/24/18). Sin
+  gestión daría 4,3, amarillo. Opciones: publicarlo así, mostrarlo junto a los dos cinturones
+  en amarillo, o no publicar un número global.
+- **(6) Gestión mide la agenda propia y tiene techos. Decide el equipo.** Verificado: 6 de 14
+  en 100 (gasto de funcionamiento, FAL, RIGI, concesiones, asistencia directa, libertad de
+  opción en salud) + antipiquetes 99; los seis pesan ~33 % del ITCG. Tres son hitos sí/no que no
+  pueden bajar (FAL, asistencia, salud), concesiones es plan completo (100 % km), gasto (−28 %
+  real) y RIGI (76 % de la promesa) pasaron el corte. Dos frentes: revisar techos e hitos, y el
+  texto que explica que menos tensión = la agenda se ejecuta, no que el país esté mejor.
+- **(7) Reservas en verde por fórmula propia. Decide el equipo.** Verificado: 10.725 = SDDS
+  estricto 7.465 + Tesoro 1.125 + tramo II.1 3m–1a 2.136 (sep-2026), 725 sobre el corte de
+  10.000; SDDS solo = 7.465, amarillo. Fórmula decidida en ADR-0005 y explicitada en ADR-0286;
+  la ficha ya la justifica y la contrasta (BCRA ~11.700, Criteria −1.940, FMI ~−7.000), pero la
+  card muestra sólo 10.725. Decidir: mostrar también la medición estricta en la card, o cambiar
+  la fórmula que fija el color.
+- **(8) Dos alquileres con colores opuestos. Ya decidido, no se reabre.** Se discutió en la
+  reunión del 26-oct y quedan los dos (ADR-0386): INDEC mide contratos vigentes, UdeSA–ML los
+  avisos nuevos; las cards lo dicen desde el 7-nov. Para Luis: «ya decidido en la reunión del
+  26-oct: quedan los dos porque miden cosas distintas, contratos vigentes y avisos nuevos. Las
+  tarjetas lo dicen desde el 7-nov».
+- **(9) Mismo IPC, distinto color. A solucionar (presentación).** Macro: `ipc_total` 1,93 %
+  mensual con cortes fijos 1/2/3 % → amarillo. Impacto social: la card de `ipc_alimentos`
+  muestra «2,0 % mensual» pero el color sale de `itvc_alimentos` (ADR-0033: comida contra IPC
+  general, base 4T-2023 = 107,5 → verde). La card muestra un dato y pinta otro. Arreglo: que la
+  card muestre el dato que define el color (precio relativo de la comida) o lo explique al lado
+  del 2 %. Para Luis: «no miden lo mismo: macro mide la inflación del mes; impacto social, si la
+  comida se encareció más o menos que el resto desde fines de 2023. La tarjeta no lo mostraba y
+  se corrige».
+- **(10) Base del índice social y amarillo con 101,5. Para ver; a Juan le parece razonable como
+  está.** Verificado: 5 − (101,5 − 100) × 0,2 = 4,7, amarillo. La base oct-dic 2023 la pidió
+  Luis el 3-nov para todo el cinturón; pobreza, mora y carga de deuda van con niveles fijos
+  (ADR-0425). «Igual que al inicio del mandato» = tensión moderada a propósito; el verde
+  empieza en 105 y la página lo explica desde el 7-nov. Para Luis: «la base fines de 2023 es
+  la que pediste el 3-nov para todo el cinturón; pobreza, mora y carga de deuda ya van con
+  niveles fijos. Quedar igual que al inicio del mandato es tensión moderada a propósito, y la
+  página lo explica».
+- **(11) Rojos en un cinturón estable. A solucionar (texto).** Verificado: político 3,2 verde
+  (ITCP 68,0) con `ratio_dnu` (9,7 % del peso) y `transferencias_no_automaticas` (8,2 %) en
+  rojo, ambos en 10/100; el resto (82 %) promedia ~80, sin los rojos el ITCP rondaría 80. Tres
+  que suben el promedio están en caché por el punto 1 (insistencias y rechazos en 100,
+  eficacia 70,5). Arreglo: una línea en la card del cinturón que nombre los rojos y cuánto
+  restan. Para Luis: «es un promedio ponderado: los dos rojos pesan 18 % y bajan el índice de
+  ~80 a 68, pero no alcanzan para sacarlo del verde; la tarjeta lo va a decir».
+- **(12) Dimensión crítica sin alerta. A solucionar.** Verificado: `vulnerabilidad` 82,2 < 85
+  (`critica: true`), mora 14,61 % rojo, carga 24,1 % naranja. Sin alerta a propósito (la única
+  alerta automática es la multicinturón), pero ADR-0020 manda señalarla: borde y barra en rojo
+  + chip «Dimensión crítica: el promedio del índice no la compensa». El chip no existe en el
+  código ni en el sitio; sólo queda un contorno rojo de 1,5 px en el genoma de la portada
+  (`dashboard.css` `.is-critica`). Reponer el aviso en la card del cinturón y en la de la
+  dimensión. Para Luis: «la regla existe: una dimensión crítica no cambia el color del
+  cinturón, pero se tiene que avisar en la tarjeta. Ese aviso se había perdido y se repone».
+- **(13) El índice social no se corrobora afuera. Ya decidido.** La validación externa no se
+  muestra en la página desde el 10-oct (ADR-0351, Juan); sigue sólo en el snapshot como control
+  interno, y de ahí la leyó el conector de Luis. Para Luis: «la validación externa no se publica
+  desde el 10-oct; queda como control interno. Lo que leíste es del archivo de datos, no de la
+  página».
+- **Conector de claude.ai — hecho el 11-nov (cigob-landing b18b410).** Dos reglas generales en
+  sus instrucciones: lo publicado es sólo lo que se ve en la página (comprobar en el seguimiento
+  diario antes de afirmarlo) y antes de marcar un problema o proponer un cambio se buscan los
+  ADR (si hay, se cita y se explica; reabrir no es un error). Corregidas además las tres frases
+  que decían que informe.cigob.org toma los cambios recién en la publicación del mes (cierra la
+  parte del conector del punto 4).
+- **(14) Fechas muy dispares bajo «noviembre 2026». A solucionar.** Verificado: homicidios,
+  robos y antipiquetes a dic-2025; informalidad, ocupación EPH, carga de deuda y términos de
+  intercambio a abr-2026 (rezago propio de fuentes anuales/trimestrales). En la página del
+  cinturón las cards van `compacto` (`IndicadorTile.astro`, rediseño de ago-2026) y no muestran
+  la fecha: sólo el modal. Arreglo: el mes del dato en chico junto al valor en la card compacta.
+  Mencionar las fechas en la lectura del mes: sugerencia para Luis (el texto es suyo).
+- **(15) Apoyos sectoriales por codificación de prensa. A solucionar (muestra).** El método ya
+  está publicado en cada descripción; la codificación es manual doble ciega (no la hace una
+  máquina). Falta mostrar el tamaño de muestra: el snapshot trae `comunicados_ventana`,
+  `apoyos_ventana` y `criticas_ventana` y la web no los usa. Hoy (12 meses): industria 14
+  (4/10, −0,45), comercio 4 (4/0, +1,0), campo 54 (13/41, −0,15), construcción 5 (3/2, +0,2).
+  Arreglo: mostrar N, apoyos y críticas en la card o el modal. Comercio +1,0 ya se le explicó a
+  Luis el 7-nov (punto 18): los 4 respaldan al Ejecutivo; sus críticas fueron a Congreso,
+  provincias y Justicia.
+- **(16) Nombre en la pestaña y al compartir.** El título de la portada dice «Monitor del
+  gobierno del presidente Milei.» (#98); la pestaña, el pie y cada página de cinturón dicen
+  «Monitor del Plan de Gobierno · CiGob» (`Layout.astro` `<title>`). **Nombre: decide el
+  equipo.** **A solucionar:** el sitio no tiene etiquetas Open Graph/Twitter (sin imagen,
+  descripción ni título para la vista previa de un link en WhatsApp, LinkedIn o X); armarlas
+  con el nombre que se elija.
+
 **Revisión de Luis (3-nov, Word «261103 Pendientes revisada por Luis», por WhatsApp):**
 «amarillos cambiar, verdes la próxima». Los números entre paréntesis son los de esta lista.
 

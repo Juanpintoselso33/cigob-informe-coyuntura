@@ -423,6 +423,9 @@ def test_el_arrastre_del_metodo_anterior_queda_sin_dato(capsys):
 
 def test_el_indice_renormaliza_sin_el_valor_viejo(monkeypatch):
     monkeypatch.setattr(politica.itcp, "cargar_ajustes", lambda *a, **k: {})
+    # ADR-0426 lo suspendió (nov-2026): el mecanismo se prueba con el indicador repuesto
+    monkeypatch.setattr(politica.itcp, "INDICADORES_SUSPENDIDOS",
+                        {k: v for k, v in politica.itcp.INDICADORES_SUSPENDIDOS.items() if k != "ratio_dnu"})
     base = {"eficacia_legislativa": {"valor": 27.3}, "insistencias_vetos": {"valor": 0}}
     con_viejo = politica.calcular_itcp_cinturon({**base, "ratio_dnu": {"valor": 1.156}})
     sin = politica.calcular_itcp_cinturon(base)
@@ -440,3 +443,13 @@ def test_la_card_fresca_lleva_la_marca(monkeypatch, _infoleg_fake):
 
     monkeypatch.setattr(politica, "date", Hoy)
     assert politica.fetch_ratio_dnu()["metodo"] == politica.METODO_RATIO_DNU
+
+
+def test_suspendido_desde_noviembre_de_2026(monkeypatch):
+    """ADR-0426: con el método nuevo y todo, hoy no mueve el índice."""
+    monkeypatch.setattr(politica.itcp, "cargar_ajustes", lambda *a, **k: {})
+    assert politica.itcp.INDICADORES_SUSPENDIDOS["ratio_dnu"]["adr"] == "0426"
+    base = {"eficacia_legislativa": {"valor": 27.3}, "insistencias_vetos": {"valor": 0}}
+    con = politica.calcular_itcp_cinturon(
+        {**base, "ratio_dnu": {"valor": 2.643, "metodo": politica.METODO_RATIO_DNU}})
+    assert con["valor"] == politica.calcular_itcp_cinturon(base)["valor"]

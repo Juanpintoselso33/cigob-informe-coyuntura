@@ -10,7 +10,7 @@ import generar_informe
 @pytest.mark.parametrize('cinturon,clave,indicador,valor', [
     ('macro', 'itcm', 'costo_financiamiento_tesoro', 7.25),
     ('gestion', 'itcg', 'cepo_mulc', 5.35),
-    ('politica', 'itcp', 'ratio_dnu', 2.19),
+    ('politica', 'itcp', 'eficacia_legislativa', 27.3),   # ratio_dnu, suspendido (ADR-0426)
 ])
 def test_recalculo_reemplaza_aporte_obsoleto(cinturon, clave, indicador, valor):
     datos = {indicador: {'valor': valor, 'en_indice': False,

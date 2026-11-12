@@ -14,8 +14,8 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 39% | `eficacia_legislativa`, `ratio_dnu`, `cobertura_judicial`, `insistencias_vetos`, `rechazos_decretos` |
-| `alianzas_territoriales` | 20% | `transferencias_no_automaticas`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
+| `poder_legislativo` | 39% | `eficacia_legislativa`, `cobertura_judicial`, `insistencias_vetos`, `rechazos_decretos` |
+| `alianzas_territoriales` | 20% | `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 16% | `cohesion_bloque`, `votos_sobre_bancas` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio`, `apoyo_campo`, `apoyo_construccion` |
@@ -32,8 +32,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **11.6%** |
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **15.5%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
@@ -42,30 +42,14 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
 
-#### Decretos de necesidad y urgencia por ley
-
-`ratio_dnu`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **9.7%** |
-| Familia de lectura | capacidad propia |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
-
-**Bandas**: ≤ 0.33 → 100 · 0.33–0.77 → 85 · 0.77–1.32 → 65 · 1.32–2.21 → 40 · > 2.21 → 10
-
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas · [ADR-0410](../adr/0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara · [ADR-0415](../adr/0415-ratio-dnu-sin-tratados-y-con-todos-los-dnu.md) Decretos de necesidad y urgencia por ley: sin tratados, con todos los decretos y bandas recalibradas · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
-
 #### Cobertura de cargos judiciales
 
 `cobertura_judicial`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **7.7%** |
+| Peso dentro de la dimensión | 27% |
+| Peso efectivo en el índice | **10.3%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 | Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
@@ -80,8 +64,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **4.8%** |
+| Peso dentro de la dimensión | 17% |
+| Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
@@ -96,8 +80,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **4.8%** |
+| Peso dentro de la dimensión | 17% |
+| Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
@@ -108,30 +92,14 @@ Suma de pesos: 100%.
 
 ### Dimensión `alianzas_territoriales` (20%)
 
-#### Transferencias no automáticas a provincias
-
-`transferencias_no_automaticas`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **8.2%** |
-| Familia de lectura | recursos |
-| Rezago declarado | 7.5 meses |
-| Procedencia del ancla | `convencion` — cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378) |
-
-**Bandas**: > 72 → 100 · 36–72 → 85 · -36–36 → 65 · -72–-36 → 40 · ≤ -72 → 10
-
-**Lo gobiernan**: [ADR-0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) Las transferencias no automáticas reemplazan a las automáticas · [ADR-0397](../adr/0397-las-transferencias-no-automaticas-se-miden-contra-2023.md) Las transferencias no automáticas se miden contra 2023
-
 #### Alineamiento de senadores por provincia
 
 `alineamiento_senadores_prov`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **6.1%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **10.2%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038) |
@@ -146,8 +114,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **6.1%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **10.2%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 0 meses |
 | Procedencia del ancla | `conceptual` — anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044) |
@@ -309,7 +277,9 @@ histórica.
 - `paralisis_denuncias` — Actividad de las comisiones de control
 - `produccion_legislativa` — Producción legislativa del Congreso
 - `protestas_caba` — Protestas en la Ciudad de Buenos Aires (Proyecto de Datos de Ubicación y Eventos de Conflictos Armados) (declarado como contexto)
+- `ratio_dnu` — Decretos de necesidad y urgencia por ley
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
+- `transferencias_no_automaticas` — Transferencias no automáticas a provincias
 - `velocidad_resolucion` — Tasa de resolución de la Corte
 - `veto_quorum` — Sesiones caídas por falta de quórum
 
@@ -352,7 +322,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-112 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+113 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -466,3 +436,4 @@ histórica.
 - [0420](../adr/0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) — La dimensión «Sector privado» pasa a llamarse «Sector empresarial»
 - [0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) — El Poder judicial se disuelve en poder legislativo
 - [0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) — Votos ajenos pasa a diputados a favor, por mes
+- [0426](../adr/0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) — Decretos por ley y transferencias no automáticas salen del índice

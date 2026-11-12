@@ -489,11 +489,12 @@ def test_politica_itcp_reconcilia():
     # 16 → 17 (ADR-0391): entra `apoyo_construccion` a sector privado (cuarto sector).
     # 17 → 16 (ADR-0422): sale `produccion_legislativa`; la cobertura de cargos
     # sólo cambia de dimensión.
-    assert len(c["indicadores"]) == 16
+    # 16 → 14 desde el 12-nov-2026 (ADR-0426): salen ratio_dnu y transferencias_no_automaticas.
+    assert len(c["indicadores"]) == 14
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
     assert "produccion_legislativa" not in c["indicadores"]
-    assert len(en_indice) == 16
+    assert len(en_indice) == 14
     assert "apoyo_comercio" in en_indice and "apoyo_campo" in en_indice
     assert "apoyo_construccion" in en_indice
     assert "produccion_legislativa" not in en_indice, "suspendida (ADR-0422)"
@@ -509,8 +510,10 @@ def test_politica_itcp_reconcilia():
     # ADR-0377: desafíos y quórum salen; entran vetos insistidos y decretos derogados.
     assert "desafios_legislativos" not in en_indice and "veto_quorum" not in en_indice
     assert "derrotas_legislativas" not in en_indice
-    faltantes = {"ratio_dnu", "eficacia_legislativa", "insistencias_vetos",
-                 "transferencias_no_automaticas", "alineamiento_senadores_prov",
+    # ADR-0426: decretos por ley y transferencias no automáticas, suspendidos.
+    assert "ratio_dnu" not in en_indice and "transferencias_no_automaticas" not in en_indice
+    faltantes = {"eficacia_legislativa", "insistencias_vetos",
+                 "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
                  "jornadas_individuales_no_trabajadas_12m", "votos_sobre_bancas",
                  "rechazos_decretos", "apoyo_comercio"} - set(en_indice)

@@ -178,7 +178,24 @@ def test_reemplaza_a_iaf_con_el_mismo_peso():
     assert "iaf_transferencias" not in itcp.REZAGO_MESES_ITCP
 
 
-def test_iaf_ya_no_puntua_y_la_nueva_si():
+
+@pytest.fixture
+def transferencias_repuesto(monkeypatch):
+    """ADR-0426 suspendió el indicador (nov-2026). Las pruebas del mecanismo lo
+    reponen, que es lo que pasaría al reingresar (borrar su entrada)."""
+    tabla = {k: v for k, v in itcp.INDICADORES_SUSPENDIDOS.items() if k != "transferencias_no_automaticas"}
+    monkeypatch.setattr(itcp, "INDICADORES_SUSPENDIDOS", tabla)
+
+
+def test_suspendido_desde_noviembre_de_2026():
+    s = itcp.INDICADORES_SUSPENDIDOS["transferencias_no_automaticas"]
+    assert s["adr"] == "0426" and s["dimension"] == "alianzas_territoriales"
+    r = itcp.calcular_itcp({"alineamiento_senadores_prov": 70.0, "adhesion_reformas_provincial": 90.0,
+                            "transferencias_no_automaticas": 80.0})
+    assert "transferencias_no_automaticas" not in r["dimensiones"]["alianzas_territoriales"]["indicadores"]
+
+
+def test_iaf_ya_no_puntua_y_la_nueva_si(transferencias_repuesto):
     base = {"alineamiento_senadores_prov": 70.0, "adhesion_reformas_provincial": 90.0}
     sin = itcp.calcular_itcp({**base, "iaf_transferencias": 50.0})
     con = itcp.calcular_itcp({**base, "transferencias_no_automaticas": 80.0})
@@ -201,7 +218,7 @@ def test_cortes_de_uno_y_dos_desvios_previos():
     (-82.1, 10.0),     # el nivel a sep-2026: 82 % por debajo de 2023
     (-85.0, 10.0),
 ])
-def test_la_banda_puntua_el_nivel_contra_2023(valor, puntaje):
+def test_la_banda_puntua_el_nivel_contra_2023(valor, puntaje, transferencias_repuesto):
     r = itcp.calcular_itcp({"transferencias_no_automaticas": valor})
     d = r["dimensiones"]["alianzas_territoriales"]["indicadores"]
     assert d["transferencias_no_automaticas"]["puntaje_aplicado"] == pytest.approx(puntaje, abs=0.1)

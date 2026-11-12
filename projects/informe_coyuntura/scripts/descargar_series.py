@@ -768,17 +768,26 @@ def fetch_pobreza_nowcast_serie() -> list:
                     # así no queda ciego a cambios futuros para siempre.
                     previo["content_length"] = largo
                     tocado = True
-                if largo is None or previo.get("content_length") is None \
-                        or largo == previo["content_length"]:
+                # Un informe que no se pudo leer (valor None) se reintenta en cada
+                # corrida: si no, un arreglo del parser nunca llega a la serie
+                # (12-nov-2026: el informe de octubre quedó None en el store y la
+                # serie siguió en 31,3 aunque el parser ya leía 32,6).
+                ilegible = previo.get("valor") is None
+                if not ilegible and (largo is None or previo.get("content_length") is None
+                                     or largo == previo["content_length"]):
                     cache += 1
                     continue
-                print(f"  [ALERTA] Nowcast pobreza: {fname} cambió de tamaño "
-                      f"({previo['content_length']} -> {largo} bytes) -- mismo URL, "
-                      "contenido distinto; se vuelve a leer")
+                if not ilegible:
+                    print(f"  [ALERTA] Nowcast pobreza: {fname} cambió de tamaño "
+                          f"({previo['content_length']} -> {largo} bytes) -- mismo URL, "
+                          "contenido distinto; se vuelve a leer")
             try:
                 d = _leer_informe(fname)
             except Exception as e:
                 print(f"  [WARN] Nowcast pobreza: informe no procesado ({fname[-24:]}): {str(e)[:60]}")
+                continue
+            if previo is not None and previo.get("valor") is None and not d:
+                cache += 1          # sigue ilegible: nada que guardar
                 continue
             store["informes"][fname] = {
                 "periodo": d["periodo"] if d else None,
@@ -1121,11 +1130,11 @@ def fetch_veto_quorum_serie() -> list:
     misma ventana y la misma regla que la card (`politica._veto_quorum_tasa_12m`),
     con una sola descarga de sesiones para todos los meses.
     [[YYYY-MM-DD, %]]."""
-    try:
-        sesiones = politica._hcdn_sesiones_legislativas()
-    except Exception as e:
-        print(f"  [WARN] veto_quorum serie: {e} -- serie omitida")
-        return []
+    # Si la Cámara no responde, el error sube tal cual: así el aviso lo lee como
+    # fuente caída (timeout, conexión) y no como «el fetcher no devolvió puntos»,
+    # que parece un error de código (12-nov-2026: hcdn.gob.ar no responde a los
+    # runners de GitHub desde el 5-nov y el aviso decía «casi seguro es del código»).
+    sesiones = politica._hcdn_sesiones_legislativas()
     out = []
     for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today(), incluir_hoy=True):
         tasa = politica._veto_quorum_tasa_12m(sesiones, fin_mes)

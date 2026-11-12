@@ -254,6 +254,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0420](0420-sector-privado-pasa-a-llamarse-sector-empresarial.md) | La dimensión «Sector privado» pasa a llamarse «Sector empresarial» |  | vigente |
 | [0422](0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) | El Poder judicial se disuelve en poder legislativo | `cobertura_judicial`, `produccion_legislativa`, `ratio_dnu` | vigente |
 | [0423](0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) | Votos ajenos pasa a diputados a favor, por mes | `votos_sobre_bancas` | vigente |
+| [0426](0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) | Decretos por ley y transferencias no automáticas salen del índice | `ratio_dnu`, `transferencias_no_automaticas` | vigente |
 
 ### Gestión (ITCG)
 
