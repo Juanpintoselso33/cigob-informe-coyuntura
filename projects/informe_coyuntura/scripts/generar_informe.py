@@ -386,10 +386,20 @@ def construir_informe(caches: dict) -> dict:
         # que ya nadie usa. `judicializacion` es el caso vivo — SAIJ bloquea a
         # los runners casi todas las noches (ADR-0175) y el indicador está
         # suspendido desde ADR-0255.
+        #
+        # Los de contexto (`INDICADORES_CONTEXTO` del módulo del índice) y los
+        # retirados tampoco entran, por la misma razón: se siguen relevando
+        # como seguimiento interno pero no puntúan ni son card. Antes llenaban
+        # el aviso de atrasos con `comisiones_caidas`, `derrotas_legislativas`
+        # y `bloqueo_sostenido` (pedido del 12-nov-2026).
+        contexto = set(getattr(_MODULOS_INDICE.get(nombre),
+                               "INDICADORES_CONTEXTO", None) or [])
         desactualizados = [
             ind for ind, vals in indicadores.items()
             if vals.get("desactualizado", False)
             and ind not in suspendidos
+            and ind not in contexto
+            and not vals.get("retirado_del_indice", False)
             and not cache_es_esperable(ind, _dias_sin_fetch(vals))
         ]
         if desactualizados:
