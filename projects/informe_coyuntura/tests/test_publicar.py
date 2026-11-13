@@ -570,7 +570,9 @@ def test_macro_itcm_reconcilia():
     # dos tarjetas, tipo de cambio real y términos del intercambio.
     # **17 desde 2026-11-03** (ADR-0421): vuelve `actividad_tributaria`, ahora
     # en cuentas fiscales.
-    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
+    # **19 desde 2026-11-13** (ADR-0428): las reservas pasan a tres tarjetas
+    # (entran `reservas_brutas` y `meta_reservas_fmi`).
+    assert len(en_indice) == 19, f"esperaba 19 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los monetarios nominales quedan OCULTOS del snapshot (siguen en
     # pipeline como insumos de IdC/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"

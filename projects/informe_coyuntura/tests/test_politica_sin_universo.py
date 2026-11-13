@@ -225,8 +225,9 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 67 → 68: vuelve `actividad_tributaria`, en cuentas fiscales (ADR-0421).
     # 68 → 67: sale `produccion_legislativa` del ITCP (ADR-0422).
     # 67 → 65: salen `ratio_dnu` y `transferencias_no_automaticas` del ITCP (ADR-0426).
-    assert resumen["indicadores"] == 65
-    assert resumen["indicadores_observados_en_calculo"] == 64   # 66 → 64 (ADR-0426) | 67 → 66 (ADR-0422) | 66 → 67 (ADR-0421) | 65 → 66 (ADR-0391) | 64 → 65 (ADR-0386) | ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
+    # 65 → 67: entran `reservas_brutas` y `meta_reservas_fmi` al ITCM (ADR-0428).
+    assert resumen["indicadores"] == 67
+    assert resumen["indicadores_observados_en_calculo"] == 66   # 64 → 66 (ADR-0428) | 66 → 64 (ADR-0426) | 67 → 66 (ADR-0422) | 66 → 67 (ADR-0421) | 65 → 66 (ADR-0391) | 64 → 65 (ADR-0386) | ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1
 
 
