@@ -8,6 +8,7 @@ indicadores: [reservas_bcra]
 archivos: ['scripts/macro.py', 'scripts/descargar_series.py', 'web/src/lib/fichas.ts']
 corrige: ['0005']
 continua: ['0286']
+modificado_por: ['0428']
 ambito: 'Estimaciones completas de reservas y conservación de caché'
 ---
 

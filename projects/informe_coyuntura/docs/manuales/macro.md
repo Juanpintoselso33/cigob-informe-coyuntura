@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `estabilidad_monetaria` | 31% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario`, `reservas_bcra` |
+| `estabilidad_monetaria` | 31% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario`, `reservas_brutas`, `reservas_bcra`, `meta_reservas_fmi` |
 | `cuentas_fiscales` | 19% | `resultado_primario`, `recaudacion`, `actividad_tributaria` |
 | `sector_externo` | 16% | `saldo_comercial_12m`, `tcrm`, `terminos_intercambio` |
 | `financiamiento` | 11% | `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
@@ -68,19 +68,47 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) La compra de divisas no dice adónde fue el dinero · [ADR-0257](../adr/0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) Los dos componentes, el mismo régimen y el mismo peso · [ADR-0264](../adr/0264-renombrar-no-borra-la-lectura-refutada.md) Renombrar no borra la lectura refutada
 
+#### Reservas brutas
+
+`reservas_brutas`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 6% |
+| Peso efectivo en el índice | **1.8%** |
+| Procedencia del ancla | `historia_larga` — media y uno y dos desvíos (45.373 / 11.375 millones de dólares) de las reservas brutas a fin de mes de dic-2017 a nov-2023, anterior al mandato; puntajes de tramo del crédito privado (ADR-0428, método de ADR-0404) |
+
+**Bandas**: > 68123 → 100 · 56748–68123 → 85 · 45373–56748 → 65 · 33998–45373 → 45 · 22623–33998 → 25 · ≤ 22623 → 10
+
+**Lo gobiernan**: [ADR-0428](../adr/0428-las-reservas-se-miden-con-tres-indicadores.md) Las reservas se miden con tres indicadores
+
 #### Reservas netas
 
 `reservas_bcra`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 17% |
-| Peso efectivo en el índice | **5.4%** |
-| Procedencia del ancla | `conceptual` — bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120) |
+| Peso dentro de la dimensión | 6% |
+| Peso efectivo en el índice | **1.8%** |
+| Procedencia del ancla | `conceptual` — bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120); desde ADR-0428 sobre la medición estricta, donde el cero es «el BCRA sin dólares propios», sin recalibrar (no hay historia previa: el BCRA borró las planillas anteriores a jun-2024) |
 
 **Bandas**: > 20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤ 0 → 10
 
-**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
+**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria» · [ADR-0428](../adr/0428-las-reservas-se-miden-con-tres-indicadores.md) Las reservas se miden con tres indicadores
+
+#### Meta de reservas con el Fondo Monetario Internacional (avance)
+
+`meta_reservas_fmi`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 6% |
+| Peso efectivo en el índice | **1.8%** |
+| Procedencia del ancla | `externa` — meta de acumulación de reservas netas del programa con el FMI (segunda revisión, mayo de 2026: +8.000 millones en 2026), prorrateada al mes; cumplirla (100 %) es el borde del verde y 75 % / 50 % los del amarillo y el naranja (ADR-0428) |
+
+**Bandas**: > 150 → 100 · 100–150 → 75.0 · 75–100 → 50.0 · 50–75 → 25.0 · ≤ 50 → 10
+
+**Lo gobiernan**: [ADR-0428](../adr/0428-las-reservas-se-miden-con-tres-indicadores.md) Las reservas se miden con tres indicadores
 
 ### Dimensión `cuentas_fiscales` (19%)
 
@@ -92,7 +120,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 50% |
 | Peso efectivo en el índice | **9.6%** |
-| Procedencia del ancla | `convencion` — referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072) |
+| Procedencia del ancla | `historia_larga` — equilibrio = 50 y uno y dos desvíos (11,9 pp) del resultado sobre la recaudación de ene-2004 a nov-2023 (−23,8 → 10 · −11,9 → 30 · 0 → 50 · 11,9 → 80 · 23,8 → 100); antes de 2015 la serie incluye rentas del BCRA y del FGS (ADR-0403) |
 
 **Bandas**: > 23.8 → 100 · 11.9–23.8 → 80 · 0–11.9 → 50 · -11.9–0 → 30 · ≤ -11.9 → 10
 
@@ -106,7 +134,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **5.8%** |
-| Procedencia del ancla | `conceptual` — bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120) |
+| Procedencia del ancla | `conceptual` — anclas sobre el nivel real desestacionalizado de la base imponible (100 = 4T-2023, ADR-0152): pasos de 10 puntos de esa base (80/90/100/110), fijados sobre la grilla y no sobre la distribución observada |
 
 **Bandas**: > 110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤ 80 → 10
 
@@ -120,7 +148,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `historia_larga` — centro en 0 y uno y dos desvíos (10,7 / 21,4 pp) de la variación real del compuesto IVA-DGI + cheque de dic-2017 a nov-2023, anterior al mandato (ADR-0421) |
 
 **Bandas**: > 21.4 → 100 · 10.7–21.4 → 85 · 0–10.7 → 65 · -10.7–0 → 45 · -21.4–-10.7 → 25 · ≤ -21.4 → 10
 
@@ -136,7 +164,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **4.8%** |
-| Procedencia del ancla | `conceptual` — bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120) |
+| Procedencia del ancla | `historia_larga` — en % del comercio, centro en el equilibrio (0 → 50) y cortes en 1, 1,5 y 2 desvíos (8,48 pp) de ene-2004 a nov-2023; techo institucional 85 (ADR-0120, ADR-0404) |
 
 **Bandas**: > 17 → 85 · 12.7–17 → 75 · 8.5–12.7 → 60 · -8.5–8.5 → 50 · -17–-8.5 → 30 · ≤ -17 → 10
 
@@ -208,7 +236,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **3.2%** |
-| Procedencia del ancla | `convencion` — «calibradas a la remonetización 2024-2026» (ADR-0022) |
+| Procedencia del ancla | `historia_larga` — centro en 0 y uno y dos desvíos (14,5 / 28,9 pp) de la variación real de ene-2004 a nov-2023; el mandato está fuera de todo ese rango y sigue tocando los extremos (ADR-0404) |
 
 **Bandas**: > 28.9 → 100 · 14.5–28.9 → 85 · 0–14.5 → 65 · -14.5–0 → 45 · -28.9–-14.5 → 25 · ≤ -28.9 → 10
 
@@ -266,7 +294,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **6.9%** |
-| Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026, corridas +0,17 al crecimiento de la población del INDEC (ADR-0341) |
+| Procedencia del ancla | `historia_larga` — uno y dos desvíos robustos (rango intercuartil / 1,349 = 18,9) de la variación interanual de ene-2004 a nov-2023, con el ISAC empalmado; centro en el crecimiento de la población del INDEC, +0,17 (ADR-0341, ADR-0404) |
 
 **Bandas**: > 37.97 → 100 · 19.07–37.97 → 80 · -18.73–19.07 → 60 · -37.63–-18.73 → 35 · ≤ -37.63 → 10
 
@@ -306,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-65 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+66 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -373,3 +401,4 @@ histórica.
 - [0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) — Inversión, crédito y saldo comercial con cortes de la historia previa
 - [0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) — Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 - [0421](../adr/0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) — La recaudación de IVA y cheque vuelve, en cuentas fiscales
+- [0428](../adr/0428-las-reservas-se-miden-con-tres-indicadores.md) — Las reservas se miden con tres indicadores

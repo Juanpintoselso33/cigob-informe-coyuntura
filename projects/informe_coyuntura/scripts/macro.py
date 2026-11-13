@@ -142,7 +142,7 @@ logging.basicConfig(level=logging.WARNING, format="%(message)s")
 
 CINTURON = "macro"
 INDICADORES_ESPERADOS = [
-    "ipc_total", "reservas_bcra", "idc", "badlar",
+    "ipc_total", "reservas_bcra", "reservas_brutas", "meta_reservas_fmi", "idc", "badlar",
     "emae_ia", "emae_difusion", "ipi_manufacturero", "actividad_tributaria",
     "saldo_comercial_12m", "recaudacion", "tcrm", "terminos_intercambio", "tcr_terminos_intercambio",
     "rem_ipc_12m", "idm", "desequilibrio_monetario", "iai", "icip",
@@ -376,8 +376,9 @@ def fetch_ipc() -> dict | None:
         return None
 
 
-# Estimación de reservas según el diseño CIGOB (ADR-0286):
-# I.A + II.1 + II.2 + II.3 + depósitos del Tesoro + abs(tramo II.1 >3m–1a).
+# Reservas netas ESTRICTAS de la planilla SDDS (ADR-0428): I.A + II.1 + II.2 + II.3.
+# Hasta ADR-0428 la card sumaba además depósitos del Tesoro + abs(tramo II.1
+# >3m–1a) (diseño CIGOB, ADR-0286); esos términos quedan como componentes.
 # El tramo no identifica instrumento: `bopreal_12m` es una clave heredada,
 # no una afirmación de que todos sus flujos sean BOPREAL o de libre disponibilidad.
 SDDS_URL_BASE = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/{}.pdf"
@@ -483,45 +484,120 @@ def _reservas_netas_sdds() -> dict:
 
 
 def fetch_reservas_netas() -> dict | None:
-    """Estimación CIGOB con los tres sumandos completos del mismo mes.
-    Si falta SDDS o Tesoro, devuelve None para que el colector conserve su
-    último resultado completo marcado como desactualizado. No sustituye la
-    fórmula por reservas brutas recientes y pasivos incompletos de un config.
+    """Reservas netas ESTRICTAS de la planilla SDDS (ADR-0428): activos de
+    reserva I.A más los drenajes de la Sección II (II.1 préstamos y depósitos
+    —incluye los encajes de los depósitos en dólares—, II.2 swaps y forwards,
+    II.3 repos). Es la medición que publican las consultoras.
+
+    Hasta ADR-0428 la card sumaba además los depósitos del Tesoro y el tramo de
+    II.1 de más de tres meses a un año (fórmula CIGOB, ADR-0286). Esos dos
+    términos se siguen calculando y quedan en el snapshot como componentes
+    (`estimacion_cigob`), pero ya no fijan el valor: si el balance del Tesoro no
+    está, el valor estricto se publica igual y los componentes quedan en None.
+    Sin planilla SDDS no hay valor (ADR-0287: no se sustituye por otra fórmula).
     """
     try:
         s = _reservas_netas_sdds()
         fecha_sdds = datetime.strptime(s["fecha"], "%d/%m/%y")
-        try:
-            tesoro = _tesoro_deposits_usd(fecha_sdds.strftime("%Y-%m"))
-        except Exception as e:
-            _warn("reservas_bcra (Tesoro del mes SDDS)", e)
-            return None
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        # Exclusiones del diseño CIGOB; la clave histórica no identifica
-        # BOPREAL. La ficha declara literalmente el tramo de vencimientos.
-        bopreal = abs(s.get("bopreal_12m", 0.0))
-        netas = s["netas"] + tesoro + bopreal
+        netas = s["netas"]
         if not -40000 < netas < 40000:
             raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
+        try:
+            tesoro = _tesoro_deposits_usd(fecha_sdds.strftime("%Y-%m"))
+        except Exception as e:
+            _warn("reservas_bcra (Tesoro del mes SDDS, sólo componente)", e)
+            tesoro = None
+        bopreal = abs(s.get("bopreal_12m", 0.0))
         return {
             "valor": round(netas, 0),
             "unidad": "Millones de dólares",
-            "fuente": "Banco Central de la República Argentina (BCRA) — Planilla de reservas internacionales y Balance Consolidado",
+            "fuente": "Banco Central de la República Argentina (BCRA) — Planilla de reservas internacionales y liquidez en moneda extranjera",
             "fecha_dato": fecha_sdds.date().isoformat(),
-            "netas_sdds_estricto": round(s["netas"], 0),
-            "depositos_tesoro": round(tesoro, 0),
-            "bopreal_12m": round(bopreal, 0),
+            "netas_sdds_estricto": round(netas, 0),
             "reservas_brutas": round(s["brutas"], 0),
             "drenaje_prestamos_dep": round(s["prestamos_dep"], 0),
             "drenaje_swaps": round(s["swaps"], 0),
             "drenaje_repos": round(s["repos"], 0),
-            "metodo": "sdds+tesoro+bopreal",
+            # Componentes de la fórmula CIGOB anterior (ADR-0286), sólo registro.
+            "depositos_tesoro": None if tesoro is None else round(tesoro, 0),
+            "bopreal_12m": round(bopreal, 0),
+            "estimacion_cigob": None if tesoro is None else round(netas + tesoro + bopreal, 0),
+            "metodo": "sdds_estricto",
             "desactualizado": False,
         }
     except Exception as e:
-        _warn("reservas_bcra (sin estimación completa)", e)
+        _warn("reservas_bcra (sin planilla SDDS)", e)
+        return None
+
+
+def fetch_reservas_brutas() -> dict | None:
+    """Reservas internacionales BRUTAS del BCRA (API, variable 1), último dato
+    diario (ADR-0428). La serie mensual toma el último dato de cada mes, igual
+    que las netas de la planilla SDDS, que son a cierre de mes."""
+    try:
+        ultimo = _bcra_ultimo(BCRA_RESERVAS_ID)
+        valor = float(ultimo["valor"])
+        if not 5000 < valor < 200000:
+            raise ValueError(f"brutas fuera de rango plausible: {valor:.0f}")
+        return {
+            "valor": round(valor, 0),
+            "unidad": "Millones de dólares",
+            "fuente": "Banco Central de la República Argentina (BCRA) — reservas internacionales (API de estadísticas monetarias)",
+            "fecha_dato": ultimo["fecha"],
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("reservas_brutas", e)
+        return None
+
+
+def _netas_estrictas_del_mes(ym: str) -> float:
+    """Netas estrictas de la planilla SDDS de un mes dado ('YYYY-MM'): la
+    planilla temp{MM}{AA} trae el cierre de ese mes."""
+    nombre = f"temp{ym[5:7]}{ym[2:4]}"
+    r = requests.get(SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS, timeout=60, verify=False)
+    r.raise_for_status()
+    s = _parse_sdds_content(r.content)
+    if not s:
+        raise ValueError(f"SDDS {nombre}: planilla no parseable")
+    if s.get("fecha") and datetime.strptime(s["fecha"], "%d/%m/%y").strftime("%Y-%m") != ym:
+        raise ValueError(f"SDDS {nombre}: la planilla es de {s['fecha']}, no de {ym}")
+    return float(s["netas"])
+
+
+def fetch_meta_reservas_fmi() -> dict | None:
+    """Avance de la acumulación de reservas netas contra la meta del programa
+    con el FMI, prorrateada al mes (ADR-0428, `meta_reservas_fmi.py`). Estima
+    la variación de la RIN con las netas estrictas de la planilla SDDS: la del
+    último mes publicado contra la de la base de la meta vigente."""
+    import meta_reservas_fmi as mrf
+    try:
+        metas = mrf.cargar_metas()
+        s = _reservas_netas_sdds()
+        fecha = datetime.strptime(s["fecha"], "%d/%m/%y")
+        ym = fecha.strftime("%Y-%m")
+        meta = mrf.meta_vigente(metas, ym)
+        if meta is None:
+            raise ValueError(f"sin meta del FMI cargada para {ym} (data/macro/metas_reservas_fmi.json)")
+        base_ym = meta["base"][:7]
+        netas = {ym: float(s["netas"]), base_ym: _netas_estrictas_del_mes(base_ym)}
+        r = mrf.avance(metas, ym, netas)
+        if r is None:
+            raise ValueError(f"sin dato para medir {ym} contra la base {base_ym}")
+        return {
+            **r,
+            "unidad": "% de la meta prorrateada",
+            "fuente": "Banco Central de la República Argentina (BCRA) — Planilla de reservas internacionales y liquidez en moneda extranjera; meta: Fondo Monetario Internacional (FMI)",
+            "fecha_dato": fecha.date().isoformat(),
+            "netas_mes": round(netas[ym], 0),
+            "netas_base": round(netas[base_ym], 0),
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("meta_reservas_fmi", e)
         return None
 
 
@@ -2290,6 +2366,8 @@ def main() -> None:
     for nombre, fetcher in [
         ("ipc_total",          fetch_ipc),
         ("reservas_bcra",      fetch_reservas_netas),
+        ("reservas_brutas",    fetch_reservas_brutas),
+        ("meta_reservas_fmi",  fetch_meta_reservas_fmi),
         ("idc",                fetch_idc),
         ("badlar",             fetch_badlar),
         ("emae_ia",            fetch_emae_ia),

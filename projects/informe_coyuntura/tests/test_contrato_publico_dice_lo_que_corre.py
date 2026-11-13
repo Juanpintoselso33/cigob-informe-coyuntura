@@ -314,13 +314,16 @@ def test_el_rem_declara_solo_los_componentes_que_renormalizan_si_falta():
         set(itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"])
         - {"rem_ipc_12m"}
     )
-    assert pares_vigentes == {"ipc_total", "desequilibrio_monetario", "reservas_bcra"}, (
+    # ADR-0428: las reservas son tres (brutas, netas y meta del FMI).
+    assert pares_vigentes == {"ipc_total", "desequilibrio_monetario", "reservas_bcra",
+                              "reservas_brutas", "meta_reservas_fmi"}, (
         "cambió la composición de estabilidad monetaria: actualizá también la "
         "política de faltantes del REM")
     m = re.search(r'faltantes:\s*"([^"]+)"', ficha)
     assert m, "la ficha del REM no declara qué hace ante faltantes"
     texto = m.group(1).lower()
     assert "ipc" in texto and "desequilibrio monetario" in texto and "reservas netas" in texto
+    assert "reservas brutas" in texto and "meta de reservas" in texto
     assert "idm" not in texto and "presión de dolarización" not in texto, (
         "la ficha del REM conserva componentes que ya no integran estabilidad monetaria")
 

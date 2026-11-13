@@ -1,0 +1,25 @@
+{
+  "_descripcion": "Metas de acumulación de reservas internacionales netas (RIN) del programa con el FMI (Servicio Ampliado, abril de 2025). ADR-0428. Cada meta es la VARIACIÓN que la RIN tiene que tener entre `base` y `fecha_meta`, en millones de dólares. `meta_tmu` es la misma meta en los términos del memorando técnico (acumulado desde fin de 2024, miles de millones), sólo como registro. `oficial` queda en null hasta que el FMI publique el resultado de esa fecha de prueba; entonces se carga a mano {acumulacion, fuente, fecha_publicacion} y gana sobre la estimación propia en el mes de la fecha de prueba.",
+  "metas": [
+    {
+      "base": "2025-12-31",
+      "fecha_meta": "2026-12-31",
+      "acumulacion_meta": 8000,
+      "meta_tmu": "−12,1 → −4,1 miles de millones acumulados desde fin de 2024",
+      "tipo": "criterio de desempeño",
+      "fuente": "FMI, informe del staff de la segunda revisión del Servicio Ampliado (mayo de 2026), Memorando de Políticas Económicas y Financieras, párrafo 19",
+      "revision": "segunda revisión (mayo de 2026)",
+      "oficial": null
+    },
+    {
+      "base": "2026-12-31",
+      "fecha_meta": "2027-06-30",
+      "acumulacion_meta": 4500,
+      "meta_tmu": "−4,1 → +0,4 miles de millones acumulados desde fin de 2024",
+      "tipo": "indicativa",
+      "fuente": "FMI, informe del staff de la segunda revisión del Servicio Ampliado (mayo de 2026), cuadro de criterios de desempeño y metas indicativas",
+      "revision": "segunda revisión (mayo de 2026)",
+      "oficial": null
+    }
+  ]
+}

@@ -404,6 +404,8 @@ export function indicadoresOrdenados(c: Cinturon): { key: string; ind: Indicador
 export const LABELS: Record<string, string> = {
   // macro
   ipc_total: "Inflación del mes", reservas_bcra: "Reservas netas",
+  reservas_brutas: "Reservas brutas",
+  meta_reservas_fmi: "Meta de reservas con el Fondo Monetario Internacional (avance)",
   idc: "Capacidad prestable", badlar: "Tasa de plazo fijo de bancos privados grandes",
   emae_ia: "Actividad económica (frente a un año atrás)",
   emae_difusion: "Amplitud del crecimiento (sectores en alza)",
@@ -514,7 +516,8 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 // entera desborda la card. Sólo para indicadores con valor numérico.
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
-  ipc_total: "%", reservas_bcra: "millones de dólares netos", idc: "frente a un mes normal (0)", badlar: "%", emae_ia: "% frente a un año atrás",
+  ipc_total: "%", reservas_bcra: "millones de dólares netos",
+  reservas_brutas: "millones de dólares", meta_reservas_fmi: "% de la meta", idc: "frente a un mes normal (0)", badlar: "%", emae_ia: "% frente a un año atrás",
   emae_difusion: "% sectores",
   ipi_manufacturero: "% frente a un año atrás (promedio de 3 meses)", actividad_tributaria: "% interanual real",
   ipc_nucleo: "%", cuenta_corriente: "millones de dólares", pobreza_indec: "%",
@@ -576,6 +579,8 @@ export const UNIDADES_CORTAS: Record<string, string> = {
 export const UNIDADES_LARGAS: Record<string, string> = {
   // macro
   ipc_total: "% mensual", reservas_bcra: "Millones de dólares (reservas netas)",
+  reservas_brutas: "Millones de dólares (reservas internacionales brutas)",
+  meta_reservas_fmi: "% de la meta de acumulación de reservas netas, prorrateada al mes",
   idc: "Desvíos estándar frente a su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
   emae_difusion: "% de los 15 sectores del estimador mensual de actividad que crecen interanualmente",

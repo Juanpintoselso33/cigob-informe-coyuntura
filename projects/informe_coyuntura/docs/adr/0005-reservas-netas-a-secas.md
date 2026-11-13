@@ -6,6 +6,7 @@ fecha: 2026-06-26
 cinturon: 'macro'
 indicadores: [reservas_bcra]
 corregido_por: ['0287']
+modificado_por: ['0428']
 ambito: 'Dimensión Capacidad de financiamiento · indicador `reservas_bcra`'
 commit: '`3f17e5a` (final; saga: `9204e86` → `1b7d1b9` → `59af7db` → `6e28f83` → `3f17e5a`)'
 ---

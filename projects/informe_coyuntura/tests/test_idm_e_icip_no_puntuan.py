@@ -99,7 +99,10 @@ def test_estabilidad_monetaria_conserva_el_ancla_nominal_del_desequilibrio():
     assert round(dim["peso"] * dim["indicadores"]["rem_ipc_12m"], 4) == 0.052
     assert round(dim["peso"] * dim["indicadores"]["desequilibrio_monetario"], 4) == 0.052
     nominal_deseq = dim["peso"] * dim["indicadores"]["desequilibrio_monetario"]
-    nominal_reservas = dim["peso"] * dim["indicadores"]["reservas_bcra"]
+    # ADR-0428: las reservas son tres y se reparten el peso de las netas; el
+    # ancla se lee contra las tres juntas.
+    nominal_reservas = dim["peso"] * sum(
+        dim["indicadores"][k] for k in ("reservas_bcra", "reservas_brutas", "meta_reservas_fmi"))
     assert abs(nominal_deseq - nominal_reservas) < 0.005
 
 

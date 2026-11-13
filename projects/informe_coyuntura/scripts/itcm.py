@@ -114,6 +114,13 @@ DESVIO_RESULTADO_PRIMARIO = 11.878
 DESVIO_ROBUSTO_IAI = 18.925
 DESVIO_CREDITO_PRIVADO = 14.471
 DESVIO_SALDO_COMERCIAL = 8.48
+# ADR-0428: reservas BRUTAS (API del BCRA, variable 1), último dato de cada mes
+# de dic-2017 a nov-2023 (72 cierres, la ventana de actividad_tributaria):
+# media 45.373,1 y desvío muestral 11.374,9 millones de dólares. Congelados.
+MEDIA_RESERVAS_BRUTAS = 45373.1
+DESVIO_RESERVAS_BRUTAS = 11374.9
+_BRUTAS_M2S, _BRUTAS_M1S, _BRUTAS_0, _BRUTAS_1S, _BRUTAS_2S = (
+    round(MEDIA_RESERVAS_BRUTAS + k * DESVIO_RESERVAS_BRUTAS) for k in (-2, -1, 0, 1, 2))
 
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 # Puntajes de los bordes del semáforo, para las escalas con cortes de color
@@ -205,7 +212,7 @@ BANDAS_ITCM = {
         (17.0, INF, 85), (12.7, 17.0, 75), (8.5, 12.7, 60),
         (-8.5, 8.5, 50), (-17.0, -8.5, 30), (-INF, -17.0, 10),
     ],
-    "reservas_bcra": [                  # millones USD — RESERVAS NETAS (no brutas)
+    "reservas_bcra": [                  # millones USD — RESERVAS NETAS estrictas (ADR-0428)
         # Bandas en torno al CERO de reservas netas (ADR-0120): el cero —el BCRA
         # ni acumula ni quema reservas propias— es el umbral con significado, y
         # los cortes son colchones de USD en miles de millones redondos (>20 mil =
@@ -214,8 +221,30 @@ BANDAS_ITCM = {
         # hay dato pre-mandato comparable): el criterio es el nivel de cobertura,
         # no la distribución observada. Sería más robusto en MESES DE
         # IMPORTACIONES —revisión pendiente, ADR-0084 rechazó una primera versión.
+        # ADR-0428: el valor pasa a la medición estricta (sin depósitos del
+        # Tesoro ni el tramo de II.1). Las bandas NO se recalibran: el método de
+        # ADR-0404 pide historia previa y el BCRA borró las planillas anteriores
+        # a jun-2024; calibrar sobre el mandato sería circular (ADR-0105). Y el
+        # cero de la escala significa «el BCRA no tiene dólares propios» recién
+        # con la medición estricta: con el Tesoro sumado, no.
         (20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
         (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10),
+    ],
+    "reservas_brutas": [                # millones USD — reservas internacionales brutas, fin de mes
+        # ADR-0428, método de ADR-0404: cortes en la media y en uno y dos
+        # desvíos de la historia previa (dic-2017 a nov-2023), con los puntajes
+        # de tramo del crédito privado (10 · 25 · 45 · 65 · 85 · 100). Las
+        # brutas no tienen un cero con significado, por eso el centro es la
+        # media y no un valor conceptual. Dólares corrientes: la ventana corta
+        # (seis años) limita la deriva por inflación del dólar.
+        (_BRUTAS_2S, INF, 100), (_BRUTAS_1S, _BRUTAS_2S, 85), (_BRUTAS_0, _BRUTAS_1S, 65),
+        (_BRUTAS_M1S, _BRUTAS_0, 45), (_BRUTAS_M2S, _BRUTAS_M1S, 25), (-INF, _BRUTAS_M2S, 10),
+    ],
+    "meta_reservas_fmi": [              # % de la meta del FMI prorrateada al mes
+        # ADR-0428. El puntaje sale de ANCLAS_ITCM; esta tabla repite los cortes
+        # de color con el puntaje de su ancla inferior, para la ficha.
+        (150.0, INF, 100), (100.0, 150.0, _P_VERDE), (75.0, 100.0, _P_AMARILLO),
+        (50.0, 75.0, _P_NARANJA), (-INF, 50.0, 10),
     ],
     "idc": [                            # IdC en z-scores (σ vs. su historia, ADR-0028).
         # Anclas en desvíos estándar = percentiles conocidos de la muestra:
@@ -392,6 +421,14 @@ ANCLAS_ITCM = {
     # percentiles se corrían doce.
     "resultado_primario": ((-23.8, 10.0), (-11.9, 30.0), (0.0, 50.0),
                            (11.9, 80.0), (23.8, 100.0)),
+    # ADR-0428: avance contra la meta de reservas del FMI prorrateada al mes.
+    # Los cortes de color están decididos en la unidad del indicador —cumplir
+    # la meta (100 %) es verde, 75 % amarillo, 50 % naranja— y caen en los
+    # bordes del semáforo (parametrica.PUNTAJES_DE_CORTE, no escritos a mano).
+    # 0 % (no acumular nada) es el piso de 10; 150 % (sobrecumplir por la
+    # mitad) es el techo de 100.
+    "meta_reservas_fmi": ((0.0, 10.0), (50.0, _P_NARANJA), (75.0, _P_AMARILLO),
+                          (100.0, _P_VERDE), (150.0, 100.0)),
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -435,7 +472,14 @@ DIMENSIONES_ITCM = {
             "ipc_total": 0.156 / 0.3144,
             "rem_ipc_12m": 0.052 / 0.3144,
             "desequilibrio_monetario": 0.052 / 0.3144,
-            "reservas_bcra": 0.0544 / 0.3144,
+            # ADR-0428 (13-nov-2026, pedido de la dirección): las reservas se
+            # miden con tres indicadores que se reparten en partes iguales el
+            # 0,0544 de las netas, así que ni la dimensión ni el resto del índice
+            # se mueven. Reparto PROVISORIO, a confirmar con la dirección.
+            # El ancla de ADR-0193 pasa a leerse contra las tres juntas.
+            "reservas_brutas": 0.0544 / 3 / 0.3144,
+            "reservas_bcra": 0.0544 / 3 / 0.3144,
+            "meta_reservas_fmi": 0.0544 / 3 / 0.3144,
         },
     },
     "cuentas_fiscales": {

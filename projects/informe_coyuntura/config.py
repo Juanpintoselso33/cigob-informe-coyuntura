@@ -252,6 +252,18 @@ MAX_DIAS = {
     # recordatorio llega antes: a los 45 días sin carga el colector manda un
     # [COTEJO_MANUAL] (alquiler_udesa.DIAS_SIN_CARGA_AVISO).
     "alquiler_udesa_real": 105,
+    # ADR-0428. Planilla SDDS del BCRA (netas estrictas y meta del FMI): fecha
+    # del dato = cierre del mes. MEDIDO con la fecha de modificación de las
+    # nueve planillas de 2026 (ene a sep): salen entre 20 y 23 días después del
+    # cierre. El último punto nace con ~23 días y llega a ~54 (31 + 23) la
+    # víspera de la planilla siguiente; 70 deja margen y un mes salteado lo
+    # lleva a ~85, que avisa. El default de 110 dejaba pasar dos salteados.
+    "reservas_bcra": 70, "meta_reservas_fmi": 70,
+    # Reservas brutas, API diaria del BCRA. El dato es provisorio y sale con
+    # rezago: el 13-nov-2026 el último era del 5-nov (8 días corridos). 20
+    # cubre ese rezago más un fin de semana largo y avisa si la serie se
+    # congela dos semanas.
+    "reservas_brutas": 20,
 }
 
 

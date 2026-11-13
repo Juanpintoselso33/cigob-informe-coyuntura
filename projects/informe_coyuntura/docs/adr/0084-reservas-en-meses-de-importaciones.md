@@ -5,6 +5,7 @@ estado: 'rechazado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [reservas_bcra]
+relacionado: ['0428']
 ambito: 'Cinturón macro · ITCM · `reservas_bcra`'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 13 — marcada por la propia auditoría como no urgente'
 ---

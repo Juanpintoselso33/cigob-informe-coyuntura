@@ -130,6 +130,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0404](0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) | Inversión, crédito y saldo comercial con cortes de la historia previa | `iai`, `credito_privado`, `saldo_comercial_12m` | vigente |
 | [0409](0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) | Las reservas netas pasan a «Estabilidad monetaria-inflacionaria» | `reservas_bcra`, `rem_ipc_12m`, `saldo_comercial_12m` | vigente |
 | [0421](0421-iva-y-cheque-vuelven-en-cuentas-fiscales.md) | La recaudación de IVA y cheque vuelve, en cuentas fiscales | `actividad_tributaria` | vigente |
+| [0428](0428-las-reservas-se-miden-con-tres-indicadores.md) | Las reservas se miden con tres indicadores | `reservas_bcra`, `reservas_brutas`, `meta_reservas_fmi` | vigente |
 
 ### Política (ITCP)
 

@@ -1169,34 +1169,70 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,resultado_primario,-2.78,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2024-01-01,resultado_primario,-6.09,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2023-12-01,resultado_primario,-12.02,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
-2026-09-01,reservas_bcra,10725.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-08-01,reservas_bcra,12661.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-07-01,reservas_bcra,11962.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-06-01,reservas_bcra,4885.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-05-01,reservas_bcra,4122.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-04-01,reservas_bcra,590.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-03-01,reservas_bcra,-1719.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-02-01,reservas_bcra,-1194.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2026-01-01,reservas_bcra,-2626.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-12-01,reservas_bcra,551.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-11-01,reservas_bcra,-1802.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-10-01,reservas_bcra,265.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-09-01,reservas_bcra,6117.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-08-01,reservas_bcra,5992.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-07-01,reservas_bcra,5718.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-06-01,reservas_bcra,7972.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-05-01,reservas_bcra,4472.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-04-01,reservas_bcra,4932.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-03-01,reservas_bcra,-7090.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-02-01,reservas_bcra,-4981.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2025-01-01,reservas_bcra,-5340.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-12-01,reservas_bcra,-3204.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-11-01,reservas_bcra,-4067.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-10-01,reservas_bcra,-4848.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-09-01,reservas_bcra,-4786.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-08-01,reservas_bcra,-3992.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-07-01,reservas_bcra,-3917.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
-2024-06-01,reservas_bcra,181.0,millones de dólares netos,BCRA Planilla SDDS + Balance (a secas)
+2026-11-01,reservas_brutas,49586.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-10-01,reservas_brutas,48565.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-09-01,reservas_brutas,46092.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-08-01,reservas_brutas,48259.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-07-01,reservas_brutas,47599.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-06-01,reservas_brutas,44870.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-05-01,reservas_brutas,48193.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-04-01,reservas_brutas,44516.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-03-01,reservas_brutas,42052.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-02-01,reservas_brutas,45566.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-01-01,reservas_brutas,44503.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-12-01,reservas_brutas,41095.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-11-01,reservas_brutas,40335.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-10-01,reservas_brutas,39382.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-09-01,reservas_brutas,40374.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-08-01,reservas_brutas,39986.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-07-01,reservas_brutas,38866.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-06-01,reservas_brutas,39973.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-05-01,reservas_brutas,36919.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-04-01,reservas_brutas,38928.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-03-01,reservas_brutas,24986.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-02-01,reservas_brutas,28117.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2025-01-01,reservas_brutas,28310.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-12-01,reservas_brutas,29640.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-11-01,reservas_brutas,30214.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-10-01,reservas_brutas,28618.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-09-01,reservas_brutas,27172.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-08-01,reservas_brutas,26719.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-07-01,reservas_brutas,26402.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-06-01,reservas_brutas,29022.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-05-01,reservas_brutas,28664.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-04-01,reservas_brutas,27578.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-03-01,reservas_brutas,27127.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-02-01,reservas_brutas,26690.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2024-01-01,reservas_brutas,27642.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2023-12-01,reservas_brutas,23073.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
+2026-09-01,reservas_bcra,7465.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-08-01,reservas_bcra,7745.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-07-01,reservas_bcra,5820.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-06-01,reservas_bcra,-1704.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-05-01,reservas_bcra,-1605.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-04-01,reservas_bcra,-3445.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-03-01,reservas_bcra,-2337.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-02-01,reservas_bcra,-2888.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2026-01-01,reservas_bcra,-4313.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-12-01,reservas_bcra,-2712.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-11-01,reservas_bcra,-3308.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-10-01,reservas_bcra,-2126.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-09-01,reservas_bcra,1624.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-08-01,reservas_bcra,2140.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-07-01,reservas_bcra,-169.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-06-01,reservas_bcra,-18.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-05-01,reservas_bcra,-1884.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-04-01,reservas_bcra,-12805.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-03-01,reservas_bcra,-11206.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-02-01,reservas_bcra,-10073.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2025-01-01,reservas_bcra,-10042.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-12-01,reservas_bcra,-11006.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-11-01,reservas_bcra,-9601.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-10-01,reservas_bcra,-7274.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-09-01,reservas_bcra,-7374.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-08-01,reservas_bcra,-5994.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-07-01,reservas_bcra,-6493.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
+2024-06-01,reservas_bcra,-2472.0,millones de dólares netos,BCRA Planilla SDDS (netas estrictas)
 2026-10-31,rem_ipc_12m,21.8,% anual,BCRA
 2026-09-30,rem_ipc_12m,21.1,% anual,BCRA
 2026-08-31,rem_ipc_12m,21.0,% anual,BCRA
@@ -1999,6 +2035,15 @@ fecha,indicador,valor,unidad,fuente
 2023-12-05,prestamos_privados,17028704.0,M ARS,BCRA
 2023-12-04,prestamos_privados,17123779.0,M ARS,BCRA
 2023-12-01,prestamos_privados,17180712.0,M ARS,BCRA
+2026-09-01,meta_reservas_fmi,169.6,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-08-01,meta_reservas_fmi,196.1,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-07-01,meta_reservas_fmi,182.8,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-06-01,meta_reservas_fmi,25.2,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-05-01,meta_reservas_fmi,33.2,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-04-01,meta_reservas_fmi,-27.5,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-03-01,meta_reservas_fmi,18.8,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-02-01,meta_reservas_fmi,-13.2,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
+2026-01-01,meta_reservas_fmi,-240.1,% de la meta prorrateada,BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI
 2026-09-01,ipi_manufacturero,-3.3,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-08-01,ipi_manufacturero,-2.04,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-07-01,ipi_manufacturero,-2.91,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)

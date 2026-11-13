@@ -36,8 +36,16 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Saldo del intercambio de bienes acumulado en 12 meses, como porcentaje del comercio total de esos mismos meses, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos. El saldo en millones de dólares se muestra en el detalle. La escala se centra en el equilibrio y corta en desvíos de la historia de 2004 a 2023.",
   },
   reservas_bcra: {
-    latex: String.raw`\text{estimación CIGOB}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}+\text{Tesoro}+|\text{II.1}_{>3\ \text{meses},\leq1\ \text{año}}|`,
-    leyenda: "Flujos de la planilla de reservas internacionales que publica el Banco Central, con sus signos, más depósitos del Tesoro y el valor absoluto del tramo de más de tres meses y hasta un año de los vencimientos en moneda extranjera (el rubro II.1 de la fórmula). Este tramo no identifica por sí solo a los bonos del Banco Central para importadores (BOPREAL). Las exclusiones responden al diseño de CiGob y no certifican libre disponibilidad.",
+    latex: String.raw`\text{reservas netas}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}`,
+    leyenda: "Activos de reserva (I.A) más los drenajes de corto plazo de la Sección II de la planilla de reservas internacionales y liquidez en moneda extranjera del Banco Central, que ya vienen con signo negativo: préstamos y depósitos en moneda extranjera, que incluyen los encajes de los depósitos en dólares (II.1); swaps y futuros (II.2), y pases con bancos (II.3). Es la medición estricta, la misma para todos los meses de la serie.",
+  },
+  reservas_brutas: {
+    latex: String.raw`\text{reservas brutas}_{\text{mes}}=\text{reservas internacionales del Banco Central}_{\text{\'ultimo d\'ia con dato}}`,
+    leyenda: "Reservas internacionales del Banco Central de la República Argentina, tal como las publica en su serie diaria. La tarjeta muestra el último dato y el gráfico el último dato de cada mes. La escala corta en la media y en uno y dos desvíos de los cierres de mes de diciembre de 2017 a noviembre de 2023, antes del mandato.",
+  },
+  meta_reservas_fmi: {
+    latex: String.raw`\frac{\text{netas}_{\text{mes}}-\text{netas}_{\text{base}}}{\text{meta}\times\dfrac{\text{meses transcurridos}}{\text{meses de la meta}}}\times 100`,
+    leyenda: "Variación de las reservas netas estrictas desde la base de la meta vigente del programa con el Fondo Monetario Internacional, dividida por la meta repartida en partes iguales por mes. Las metas y sus fuentes están en la ficha. Cuando el Fondo publica el resultado oficial de una fecha de prueba, ese dato reemplaza a la estimación en ese mes.",
   },
   idc: {
     latex: String.raw`\begin{gathered}0{,}30\cdot\underbrace{z_{\text{tasa real}}}_{\text{precio}}\;+\;0{,}40\cdot\underbrace{z_{\text{dep\'ositos}}}_{\text{volumen}}\;+\;0{,}30\cdot\underbrace{z_{\text{holgura}}}_{\text{asignaci\'on}}\\[4pt] z=\frac{\text{nivel de hoy}-\text{promedio hist\'orico}}{\text{desv\'io hist\'orico}}\end{gathered}`,

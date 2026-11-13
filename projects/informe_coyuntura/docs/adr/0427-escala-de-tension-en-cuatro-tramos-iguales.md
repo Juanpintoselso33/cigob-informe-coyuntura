@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-11-12
 cinturon: 'transversal'
 archivos: ['config.py', 'scripts/parametrica.py', 'scripts/itcm.py', 'scripts/itcg.py', 'scripts/itcp.py']
-relacionado: ['0181', '0195', '0333']
+relacionado: ['0181', '0195', '0333', '0428']
 ambito: 'Semáforo, estado de cada cinturón y alertas: cortes de tensión 2,5 / 5 / 7,5'
 origen: 'Pedido de la dirección del Monitor, 12-nov-2026'
 ---

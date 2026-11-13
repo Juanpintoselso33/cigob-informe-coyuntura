@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'macro'
 indicadores: [reservas_bcra]
 archivos: ['scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'web/src/lib/descripciones.ts', 'web/src/pages/[slug].astro']
+modificado_por: ['0428']
 continuado_por: ['0287']
 ambito: 'Alcance de la estimación de reservas'
 origen: 'Auditoría integral solicitada por Juan'

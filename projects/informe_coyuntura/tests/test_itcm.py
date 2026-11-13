@@ -72,6 +72,11 @@ EJEMPLO = {
     "resultado_primario": 16.6,    # superávit sobre recaudación 12m: 87,9 (ADR-0403)
     "saldo_comercial_12m": 17.5,   # % del comercio, más allá de la última ancla → 85 plano
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
+    # ADR-0428: las reservas son tres y se reparten el 0,0544 de las netas. Las
+    # dos nuevas puntúan 25,0 en el fixture, como las netas, para que los
+    # números del índice de abajo sigan valiendo.
+    "reservas_brutas": 28310.5,    # ancla (media − 1,5 desvíos) → 25,0
+    "meta_reservas_fmi": 50.0,     # % de la meta prorrateada: borde naranja/rojo → 25,0
     "idc": -0.31,                  # z compuesto (σ): 49,7 (banda 60)
     "credito_privado": 18.09,      # % i.a. real: 80,0 (banda 85, ADR-0404)
     "costo_financiamiento_tesoro": 8.07,  # tasa real: 78,9 (U invertida, tramo 6-12)
@@ -186,8 +191,10 @@ def test_estabilidad_monetaria_usa_pesos_60_20_20():
     d = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
     assert d["peso"] == 0.3144
     efectivo = {k: round(d["peso"] * w, 4) for k, w in d["indicadores"].items()}
+    # ADR-0428: las reservas son tres y se reparten el 0,0544 en partes iguales.
     assert efectivo == {"ipc_total": 0.156, "rem_ipc_12m": 0.052,
-                        "desequilibrio_monetario": 0.052, "reservas_bcra": 0.0544}
+                        "desequilibrio_monetario": 0.052, "reservas_bcra": 0.0181,
+                        "reservas_brutas": 0.0181, "meta_reservas_fmi": 0.0181}
     i = d["indicadores"]
     assert i["ipc_total"] == pytest.approx(3 * i["rem_ipc_12m"])
     assert i["rem_ipc_12m"] == pytest.approx(i["desequilibrio_monetario"])
@@ -203,7 +210,10 @@ def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
         return D[dim]["peso"] * D[dim]["indicadores"][ind]
 
     desequilibrio = nominal("estabilidad_monetaria", "desequilibrio_monetario")
-    reservas = nominal("estabilidad_monetaria", "reservas_bcra")   # ADR-0409
+    # ADR-0428: las reservas pasan a ser tres indicadores que se reparten el
+    # peso de las netas; el ancla se lee contra las tres juntas.
+    reservas = sum(nominal("estabilidad_monetaria", k)
+                   for k in ("reservas_bcra", "reservas_brutas", "meta_reservas_fmi"))
     assert abs(desequilibrio - reservas) < 0.005, (
         f"desequilibrio {desequilibrio:.2%} debería estar cerca de "
         f"reservas {reservas:.2%}")

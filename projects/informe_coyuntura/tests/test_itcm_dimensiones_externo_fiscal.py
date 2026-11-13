@@ -21,7 +21,9 @@ EFECTIVOS = {
     "ipc_total": 0.156, "rem_ipc_12m": 0.052, "desequilibrio_monetario": 0.052,
     "resultado_primario": 0.096, "recaudacion": 0.0576, "actividad_tributaria": 0.0384,   # ADR-0421
     "saldo_comercial_12m": 0.048,
-    "reservas_bcra": 0.0544, "idc": 0.0336, "costo_financiamiento_tesoro": 0.04,
+    # ADR-0428: las reservas son tres y se reparten el 0,0544 en partes iguales.
+    "reservas_bcra": 0.0544 / 3, "reservas_brutas": 0.0544 / 3, "meta_reservas_fmi": 0.0544 / 3,
+    "idc": 0.0336, "costo_financiamiento_tesoro": 0.04,
     "credito_privado": 0.032,
     "emae_ia": 0.0966, "emae_difusion": 0.0322, "ipi_manufacturero": 0.0322, "iai": 0.069,
     "tcrm": 0.055, "terminos_intercambio": 0.055,
@@ -37,7 +39,8 @@ def test_composicion_de_las_dimensiones():
     assert set(D["sector_externo"]["indicadores"]) == {
         "saldo_comercial_12m", "tcrm", "terminos_intercambio"}
     assert set(D["estabilidad_monetaria"]["indicadores"]) == {
-        "ipc_total", "rem_ipc_12m", "desequilibrio_monetario", "reservas_bcra"}
+        "ipc_total", "rem_ipc_12m", "desequilibrio_monetario", "reservas_bcra",
+        "reservas_brutas", "meta_reservas_fmi"}   # ADR-0428
     assert D["estabilidad_monetaria"]["peso"] == 0.3144 and D["sector_externo"]["peso"] == 0.158
     assert set(D["financiamiento"]["indicadores"]) == {
         "idc", "costo_financiamiento_tesoro", "credito_privado"}

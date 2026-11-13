@@ -9,6 +9,7 @@ indicadores: [reservas_bcra, rem_ipc_12m, saldo_comercial_12m, tcrm, terminos_in
 archivos: ['scripts/itcm.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'tests/test_itcm.py', 'tests/test_itcm_dimensiones_externo_fiscal.py', 'tests/test_idm_e_icip_no_puntuan.py', 'tests/test_terminos_intercambio.py', 'tests/test_contrato_publico_dice_lo_que_corre.py']
 modifica: ['0387']
 relacionado: ['0193', '0261', '0359']
+modificado_por: ['0428']
 ambito: 'Cinturón macro · ITCM · dimensiones Estabilidad monetaria-inflacionaria y Sector externo'
 origen: 'Decisión de Juan del 28-oct-2026 (`docs/pendientes-monitor.md`): las reservas netas van a «Estabilidad monetaria-inflacionaria», conservando su peso en el índice.'
 ---

@@ -8,7 +8,7 @@ indice: 'ITCM'
 indicadores: [iai, credito_privado, saldo_comercial_12m]
 archivos: ['scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/components/IndicadorModal.astro', 'tests/test_itcm.py', 'tests/test_itcm_anclas_historia.py']
 modifica: ['0022', '0056', '0120', '0341']
-relacionado: ['0021', '0022', '0056', '0080', '0081', '0105', '0120', '0341', '0359', '0390', '0403', '0416', '0421']
+relacionado: ['0021', '0022', '0056', '0080', '0081', '0105', '0120', '0341', '0359', '0390', '0403', '0416', '0421', '0428']
 ambito: 'ITCM · Actividad e inversión, Financiamiento y Sector externo · escalas de inversión física, crédito privado y saldo comercial'
 origen: 'Revisión del 28-oct-2026, a pedido de Juan, de las escalas del cinturón macro calibradas sobre el propio mandato.'
 ---

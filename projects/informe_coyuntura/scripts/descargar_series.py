@@ -334,34 +334,15 @@ def fetch_impo_12m_serie(limit: int = 60) -> list:
     return [[f, round(im, 1)] for f, ex, im in _ica_12m(limit)]
 
 
-def _tesoro_por_mes() -> dict:
-    """Mapa {YYYY-MM: dep. Tesoro en USD (M)} del Balance Consolidado del BCRA,
-    para componer la serie histórica de reservas netas."""
-    import xlrd
-    r = requests.get(macro.BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
-    sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
+@functools.lru_cache(maxsize=None)
+def _sdds_por_mes(meses: int) -> dict:
+    """{YYYY-MM: componentes SDDS} de las últimas `meses` planillas (por el mes
+    de cierre que declara cada una). Memoizada: la leen la serie de reservas
+    netas y la de la meta del FMI, y son ~35 PDF. LÍMITE DE LA FUENTE: el BCRA
+    borra las planillas viejas (404 antes de jun-2024) y no están en Wayback
+    (verificado jul-2026 y otra vez el 13-nov-2026) → la serie arranca en
+    jun-2024; los meses sin planilla parseable se saltean."""
     out = {}
-    for row in range(27, sh.nrows):
-        ym = sh.cell_value(row, 0)
-        dep = sh.cell_value(row, macro.BAL_COL_DEP_GOB_ME)
-        tc  = sh.cell_value(row, macro.BAL_COL_TC)
-        if all(isinstance(x, (int, float)) for x in (ym, dep, tc)) and tc > 0:
-            anio = int(ym); mes = round((ym - anio) * 100)
-            if 1 <= mes <= 12:
-                out[f"{anio}-{mes:02d}"] = dep / tc / 1000.0
-    return out
-
-
-def fetch_reservas_netas_serie(meses: int | None = None) -> list:
-    """Serie mensual de estimación CIGOB = SDDS estricto + dep. Tesoro +
-    valor absoluto del tramo II.1 de más de tres meses a un año (la misma fórmula que el indicador en macro.py), parseando las
-    últimas `meses` planillas SDDS (por defecto, desde dic-2023). LÍMITE DE LA
-    FUENTE: el BCRA borra las planillas viejas (404 antes de jun-2024) y no
-    están en Wayback (verificado jul-2026) → la serie arranca en jun-2024;
-    los meses sin planilla parseable se saltean."""
-    meses = meses or _meses_desde_asuncion()
-    tesoro = _tesoro_por_mes()
-    out = []
     y, m = datetime.today().year, datetime.today().month
     for _ in range(meses):
         nombre = f"temp{m:02d}{y % 100:02d}"
@@ -372,15 +353,40 @@ def fetch_reservas_netas_serie(meses: int | None = None) -> list:
                 s = macro._parse_sdds_content(r.content)
                 if s and s["fecha"]:
                     _, mm, yy = s["fecha"].split("/")
-                    ym = f"20{yy}-{mm}"
-                    if ym in tesoro:
-                        netas = s["netas"] + tesoro[ym] + abs(s["bopreal_12m"])
-                        out.append([f"20{yy}-{mm}-01", round(netas, 0)])
+                    out[f"20{yy}-{mm}"] = s
         except Exception:
             pass
         m -= 1
         if m == 0: m = 12; y -= 1
     return out
+
+
+def fetch_reservas_netas_serie(meses: int | None = None) -> list:
+    """Serie mensual de reservas netas ESTRICTAS (I.A + II.1 + II.2 + II.3 de la
+    planilla SDDS), la misma medición que la card desde ADR-0428 y la misma
+    fórmula para todos los meses. Hasta ADR-0428 sumaba los depósitos del
+    Tesoro y el tramo de II.1 de más de tres meses a un año (fórmula CIGOB)."""
+    sdds = _sdds_por_mes(meses or _meses_desde_asuncion())
+    return [[f"{ym}-01", round(s["netas"], 0)] for ym, s in sorted(sdds.items(), reverse=True)]
+
+
+def fetch_reservas_brutas_serie(meses: int | None = None) -> list:
+    """Reservas internacionales brutas del BCRA (variable 1), último dato de
+    cada mes (ADR-0428): el mes en curso lleva el último dato publicado, que es
+    el valor de la card. Los últimos `meses` meses, ascendente."""
+    meses = meses or _meses_desde_asuncion()
+    por_mes = macro._bcra_fin_de_mes(macro.BCRA_RESERVAS_ID, meses + 1)
+    return [[f"{ym}-01", round(v, 0)] for ym, v in sorted(por_mes.items())][-meses:]
+
+
+def fetch_meta_reservas_fmi_serie(meses: int | None = None) -> list:
+    """Avance contra la meta de reservas del FMI prorrateada, mes a mes
+    (ADR-0428). Arranca en el primer mes con meta cargada (ene-2026): antes no
+    hay meta en la tabla, no un dato faltante."""
+    import meta_reservas_fmi as mrf
+    sdds = _sdds_por_mes(meses or _meses_desde_asuncion())
+    netas = {ym: s["netas"] for ym, s in sdds.items()}
+    return [[f"{ym}-01", r["valor"]] for ym, r in mrf.serie(mrf.cargar_metas(), netas)]
 
 
 def fetch_tcrm_serie(meses: int | None = None) -> list:
@@ -981,7 +987,9 @@ MACRO_DERIVADAS = [
     ("saldo_comercial_impo_12m", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_impo_12m_serie),
     # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
-    ("reservas_bcra", "millones de dólares netos", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
+    ("reservas_bcra", "millones de dólares netos", "BCRA Planilla SDDS (netas estrictas)", fetch_reservas_netas_serie),
+    ("reservas_brutas", "millones de dólares", "BCRA — reservas internacionales (API, variable 1), fin de mes", fetch_reservas_brutas_serie),
+    ("meta_reservas_fmi", "% de la meta prorrateada", "BCRA Planilla SDDS (netas estrictas) + metas del programa con el FMI", fetch_meta_reservas_fmi_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     ("tcr_terminos_intercambio", "puntaje (0-100)",
      "BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)",

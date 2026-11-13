@@ -8,7 +8,7 @@ indice: 'ITCM'
 indicadores: [actividad_tributaria]
 archivos: ['scripts/itcm.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
 supersede: ['0368']
-relacionado: ['0329', '0404', '0072', '0387']
+relacionado: ['0072', '0329', '0387', '0404', '0428']
 ambito: 'ITCM · dimensión Cuentas fiscales · `actividad_tributaria`'
 origen: 'Juan, 3-nov-2026: «sumémoslo de vuelta, esta vez en cuentas fiscales». Luis, revisión del mismo día: «su peso y una escala con cortes de la historia anterior al Gobierno lo calcula la IA».'
 ---

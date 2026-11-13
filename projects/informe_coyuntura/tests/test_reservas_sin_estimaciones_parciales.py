@@ -20,14 +20,19 @@ def test_sin_sdds_no_sustituye_formula_aunque_config_sea_del_mismo_mes(monkeypat
     assert macro.fetch_reservas_netas() is None
 
 
-@pytest.mark.parametrize('tesoro,esperado', [({}, []), ({'2026-07':0}, [['2026-07-01',1200]])])
-def test_historia_distingue_tesoro_ausente_de_cero(monkeypatch, tesoro, esperado):
-    monkeypatch.setattr(descargar_series, '_tesoro_por_mes', lambda: tesoro)
+def test_historia_no_depende_del_tesoro_desde_la_medicion_estricta(monkeypatch):
+    """ADR-0428: la serie es la medición estricta de la planilla (I.A + II), la
+    misma para todos los meses; el Tesoro ya no entra, así que su ausencia no
+    saltea meses y el tramo de II.1 no se suma."""
+    descargar_series._sdds_por_mes.cache_clear()
     monkeypatch.setattr(descargar_series.requests, 'get', lambda *a, **kw:
                         SimpleNamespace(status_code=200,content=b'x'*50001))
     monkeypatch.setattr(macro, '_parse_sdds_content', lambda _: {
         'fecha':'31/07/26','netas':1000,'bopreal_12m':-200})
-    assert descargar_series.fetch_reservas_netas_serie(meses=1) == esperado
+    try:
+        assert descargar_series.fetch_reservas_netas_serie(meses=1) == [['2026-07-01',1000]]
+    finally:
+        descargar_series._sdds_por_mes.cache_clear()
 
 
 @pytest.mark.parametrize('tramos,esperado', [('',None), (' -80,00 -20,00 0,00',0)])

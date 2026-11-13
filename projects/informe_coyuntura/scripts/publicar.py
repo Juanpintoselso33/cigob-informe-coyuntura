@@ -1007,16 +1007,30 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
         ind["aporte_input_txt"] = input_txt_fn(ikey, ind)
 
 
+def _signo(x) -> str:
+    """«−» para un drenaje negativo, «+» para uno positivo (texto público)."""
+    return "−" if x < 0 else "+"
+
+
 def _macro_input_txt(ikey, ind):
     """'Valor usado' que muestra el modal: la descomposición del número que
     realmente se puntúa (no siempre coincide con el valor mostrado)."""
     if ikey == "rem_ipc_12m" and ind.get("equivalente_mensual") is not None:
         return (f"equivalente mensual {coma(ind['equivalente_mensual'])}% "
                 f"(raíz-12 del {coma(ind.get('valor'))}% anual)")
-    if ikey == "reservas_bcra" and ind.get("netas_sdds_estricto") is not None:
-        return (f"netas {int(ind.get('valor', 0))} = estándar estricto de divulgación {int(ind['netas_sdds_estricto'])} "
-                f"+ Tesoro {int(ind.get('depositos_tesoro', 0))} "
-                f"+ tramo II.1 >3 meses–1 año {int(ind.get('bopreal_12m', 0))} (millones de dólares; fórmula CIGOB)")
+    if ikey == "reservas_bcra" and ind.get("drenaje_prestamos_dep") is not None:
+        # ADR-0428: la medición estricta, descompuesta en sus cuatro términos.
+        return (f"netas {coma(int(ind.get('valor', 0)))} = activos de reserva {coma(int(ind['reservas_brutas']))} "
+                f"{_signo(ind['drenaje_prestamos_dep'])} préstamos y depósitos en dólares {coma(abs(int(ind['drenaje_prestamos_dep'])))} "
+                f"{_signo(ind['drenaje_swaps'])} swaps y futuros {coma(abs(int(ind['drenaje_swaps'])))} "
+                f"{_signo(ind['drenaje_repos'])} pases con bancos {coma(abs(int(ind['drenaje_repos'])))} (millones de dólares)")
+    if ikey == "meta_reservas_fmi" and ind.get("meta_prorrateada"):
+        origen = ("dato oficial del Fondo Monetario Internacional" if ind.get("origen") == "oficial"
+                  else "estimación con las reservas netas")
+        return (f"avance {coma(ind.get('valor'))} % = acumulado {coma(int(ind['acumulado']))} desde "
+                f"{ind['base']} / meta prorrateada {coma(int(ind['meta_prorrateada']))} "
+                f"({coma(int(ind['meta_total']))} × {ind['meses_transcurridos']}/{ind['meses_ventana']} meses; "
+                f"millones de dólares; {origen})")
     if ikey == "idc" and ind.get("componentes"):
         c, n = ind["componentes"], ind.get("niveles") or {}
         # `banda_idc` es el semáforo de 3 colores propio del IdC (por

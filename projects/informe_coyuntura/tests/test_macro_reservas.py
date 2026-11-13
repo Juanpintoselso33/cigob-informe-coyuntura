@@ -40,10 +40,16 @@ def test_reservas_usa_depositos_del_tesoro_del_mes_de_la_planilla_sdds(monkeypat
 
     assert meses_solicitados == ["2026-05"]
     assert resultado["depositos_tesoro"] == 300.0
-    assert resultado["valor"] == -500.0
+    # ADR-0428: el valor es la medición estricta; la fórmula CIGOB (con el
+    # Tesoro y el tramo de II.1) queda como componente.
+    assert resultado["valor"] == -1_000.0
+    assert resultado["estimacion_cigob"] == -500.0
 
 
-def test_reservas_no_publica_como_fresco_si_falta_tesoro(monkeypatch):
+def test_reservas_sin_tesoro_publica_la_estricta_sin_componentes_cigob(monkeypatch):
+    """ADR-0428: el Tesoro ya no es insumo del valor (era la fórmula CIGOB,
+    ADR-0286/0287). Sin balance, la card publica la medición estricta y deja
+    vacíos los componentes que dependen de él, sin inventarlos."""
     monkeypatch.setattr(
         macro,
         "_reservas_netas_sdds",
@@ -68,7 +74,9 @@ def test_reservas_no_publica_como_fresco_si_falta_tesoro(monkeypatch):
         lambda _mes=None: (_ for _ in ()).throw(ValueError("mes no disponible")),
     )
 
-    assert macro.fetch_reservas_netas() is None
+    r = macro.fetch_reservas_netas()
+    assert r["valor"] == -1_000.0
+    assert r["depositos_tesoro"] is None and r["estimacion_cigob"] is None
 
 
 def test_reservas_no_cae_a_otro_mes_si_falta_tesoro_del_sdds(
@@ -109,7 +117,10 @@ def test_reservas_no_cae_a_otro_mes_si_falta_tesoro_del_sdds(
 
     monkeypatch.setattr(macro, "_tesoro_deposits_usd", tesoro)
 
-    assert macro.fetch_reservas_netas() is None
+    # ADR-0428: sin el Tesoro del mes de la planilla no se toma el de otro mes;
+    # el componente queda vacío y el valor estricto sale igual.
+    r = macro.fetch_reservas_netas()
+    assert r["depositos_tesoro"] is None and r["valor"] == -1_000.0
     assert meses_solicitados == ["2026-05"]
 
 
