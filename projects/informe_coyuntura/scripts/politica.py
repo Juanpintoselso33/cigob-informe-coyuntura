@@ -157,6 +157,47 @@ STALE_IAF_DAYS       = 365  # sin uso desde ADR-0353 (el dato dejó de ser anual
 HTTP_TIMEOUT = 20
 HTTP_HEADERS = {"User-Agent": "CIGOB-InformeCoyuntura/1.0"}
 
+# ── Corte por sitio caído de la Cámara de Diputados ──────────────────────────
+# Del 10 al 12-nov-2026 datos.hcdn.gob.ar y votaciones.hcdn.gob.ar no
+# respondían a nadie (verificado desde la Mac y la torre, no sólo desde los
+# runners). Desde GitHub cada pedido esperaba los 20 s del timeout; con decenas
+# de pedidos (CKAN por año, catálogo, actas) politica.py se pasaba de su
+# presupuesto de 10 min, el runner lo cortaba y el cinturón ENTERO salía de
+# caché — también conflictividad, cohesión o cobertura judicial, que no
+# dependen de la Cámara. Tras CORTE_HCDN_FALLAS fallas de red seguidas contra un
+# mismo host *.hcdn.gob.ar, el resto de la corrida no le pide más: cada pedido
+# falla al instante con ConnectionError y su indicador sigue por el camino de
+# caché que ya tiene. Sólo en la corrida real (`__main__`), no en las pruebas.
+CORTE_HCDN_FALLAS = 2
+_hcdn_fallas: dict[str, int] = {}
+
+
+def _instalar_corte_hcdn() -> None:
+    original = requests.Session.request
+    if getattr(original, "_corte_hcdn", False):
+        return
+
+    def request(self, method, url, *args, **kwargs):
+        host = urlparse(str(url)).hostname or ""
+        if not host.endswith("hcdn.gob.ar"):
+            return original(self, method, url, *args, **kwargs)
+        if _hcdn_fallas.get(host, 0) >= CORTE_HCDN_FALLAS:
+            raise requests.ConnectionError(
+                f"{host} cortado en esta corrida tras {CORTE_HCDN_FALLAS} fallas de red seguidas")
+        try:
+            r = original(self, method, url, *args, **kwargs)
+        except (requests.ConnectionError, requests.Timeout):
+            _hcdn_fallas[host] = _hcdn_fallas.get(host, 0) + 1
+            if _hcdn_fallas[host] == CORTE_HCDN_FALLAS:
+                print(f"[WARN] {CINTURON}: {host} no responde ({CORTE_HCDN_FALLAS} fallas de red "
+                      f"seguidas) — se deja de consultar en esta corrida", file=sys.stderr, flush=True)
+            raise
+        _hcdn_fallas[host] = 0
+        return r
+
+    request._corte_hcdn = True
+    requests.Session.request = request
+
 CEPA_INFORMES_URL       = "https://centrocepa.com.ar/documentos/informes"
 CEPA_MAX_CASOS_MES      = 80.0
 CEPA_MAX_CONFLICTOS_TOT = 200.0
@@ -9578,4 +9619,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    _instalar_corte_hcdn()
     main()

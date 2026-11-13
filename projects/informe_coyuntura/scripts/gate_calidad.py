@@ -162,6 +162,13 @@ G7_MAX_DIAS = {
     # porque un congelamiento real lo agarra igual G7_MAX_SIN_AVANZAR, que
     # descuenta el atraso estructural.
     "transporte_pasajeros": 200,
+    # ENARGAS (vía datos.gob.ar) publica el gas residencial con ~3-4 meses:
+    # junio-2026 llegó el 23-sep (114 días desde el mes) y entre un mes y el
+    # siguiente pasan ~50 días, así que el último punto llega a ~165 días de
+    # edad antes de que salga el próximo. Medido el 12-nov-2026: el último dato
+    # de la fuente era el mismo que el nuestro (2026-06). El congelamiento real
+    # lo sigue agarrando G7_MAX_SIN_AVANZAR.
+    "gas_residencial": 200,
 }
 
 # Prefijos que NO bloquean la publicación: son fuentes demoradas, no
