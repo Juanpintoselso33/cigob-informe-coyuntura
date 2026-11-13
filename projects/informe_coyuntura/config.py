@@ -95,9 +95,14 @@ def nombre_publico(clave: str, mayuscula: bool = False) -> str:
 # justificarlo— y hacía que el estado fuera MÁS estricto que el método que
 # resume: con ITCM 63,1 el propio informe leía "moderadamente aflojado" y el
 # semáforo lo pintaba verde, mientras el estado decía "en tensión".
+#
+# 12-nov-2026 (ADR-0427): pasan a 2,5 y 5, cuatro tramos iguales de la escala
+# 0-10 (índice 75 / 50 / 25). Se movieron junto con el tercer corte del
+# semáforo y las BANDAS_INTERPRETACION de los índices 0-100, para que color,
+# estado y lectura sigan atados.
 UMBRALES = {
-    "ESTABLE_MAX": 4,
-    "EN_TENSION_MAX": 6,
+    "ESTABLE_MAX": 2.5,
+    "EN_TENSION_MAX": 5,
 }
 
 

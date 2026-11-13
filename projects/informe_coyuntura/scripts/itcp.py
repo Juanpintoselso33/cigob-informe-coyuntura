@@ -1129,12 +1129,13 @@ REZAGO_PULSO = 2.0          # hasta acá, "pulso inmediato"
 REZAGO_ESTRUCTURAL = 12.0   # desde acá, describe otro año
 
 
+# Bordes alineados con el semáforo de cuatro tramos iguales (ADR-0427).
 BANDAS_INTERPRETACION = [
-    (-INF, 20.0, "severamente_apretado"),
-    (20.0, 40.0, "apretado"),
-    (40.0, 60.0, "moderadamente_apretado"),
-    (60.0, 80.0, "moderadamente_aflojado"),
-    (80.0, INF, "aflojado"),
+    (-INF, 25.0, "severamente_apretado"),
+    (25.0, 50.0, "apretado"),
+    (50.0, 75.0, "moderadamente_apretado"),
+    (75.0, 87.5, "moderadamente_aflojado"),
+    (87.5, INF, "aflojado"),
 ]
 
 INTERPRETACION_LEGIBLE = {
