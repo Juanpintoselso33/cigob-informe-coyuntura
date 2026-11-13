@@ -58,10 +58,18 @@ coincide con los encajes de la API del BCRA (variable 1243: 16.729).
   difieren en 3.000 millones sin que el lector sepa por qué.
 
 **Escala de las netas**
-- **Conservar las anclas conceptuales en torno al cero (elegida).**
-- Recalibrar con el método de [[0404]]: no hay historia previa. El BCRA borra las
-  planillas anteriores a jun-2024 (`temp1123` y `temp0524` dan 404, verificado el
-  13-nov-2026) y no están en Wayback.
+- **Recalibrar con el método de [[0404]] sobre la historia previa recuperada
+  (elegida, 13-nov-2026).** El BCRA borró las planillas anteriores a jun-2024
+  (`temp1123` y `temp0524` dan 404), pero el Internet Archive guardó copias de casi
+  todas: 60 de los 72 cierres de dic-2017 a nov-2023 (faltan may-nov 2023, que no se
+  archivaron, y cinco meses sueltos). Media 9.834,9 y desvío 9.197,0 millones; cortes
+  en −8.559 · 638 · 9.835 · 19.032 · 28.229 con los puntajes de tramo de las brutas.
+  Las planillas viejas traen los números en formato inglés y el swap de China en II.3
+  hasta 2022 (en II.2 desde dic-2022): la suma I.A + II.1 + II.2 + II.3 es la misma
+  medición en los dos formatos. Los datos y la copia de cada mes quedan en
+  `data/macro/reservas_netas_historia_previa.json`.
+- Conservar las anclas conceptuales en torno al cero: la escala no tenía respaldo en la
+  historia, y Juan pidió buscarla (13-nov-2026).
 - Recalibrar sobre jun-2024 a hoy: circular ([[0105]]).
 
 **Reservas brutas**
@@ -116,12 +124,13 @@ insumo del valor: si el balance no está, se publica la estricta y los component
 CIGOB quedan en `None` (el criterio de [[0287]] —no sustituir un insumo faltante por
 otra fórmula— sigue valiendo para la planilla SDDS).
 
-Las anclas no cambian (>20.000 → 100, 15-20 mil → 85, 10-15 mil → 70, 5-10 mil → 50,
-0-5 mil → 30, ≤0 → 10). Fundamento: el método de [[0404]] necesita historia previa y no
-la hay; calibrar sobre el mandato sería circular. Y el cero de la escala ([[0120]],
-«el BCRA ni acumula ni quema reservas propias») significa eso recién con la medición
-estricta: con el Tesoro sumado, la tarjeta podía estar en positivo con el BCRA en
-posición vendida.
+Escala recalibrada (13-nov-2026) con el método de [[0404]], igual que las brutas:
+media 9.834,9 y desvío 9.197,0 millones de las netas estrictas de dic-2017 a nov-2023
+(60 cierres recuperados del Internet Archive, `data/macro/reservas_netas_historia_previa.json`).
+Cortes −8.559 · 638 · 9.835 · 19.032 · 28.229 con puntajes 10 · 25 · 45 · 65 · 85 · 100.
+Antes eran anclas conceptuales en torno al cero ([[0120]]: >20.000 → 100 … ≤0 → 10).
+Con septiembre de 2026 (7.465) el puntaje queda en 49,8, naranja por dos décimas.
+`procedencia_anclas`: `historia_larga`.
 
 ### 3. Cumplimiento de la meta de reservas del FMI (`meta_reservas_fmi`, nuevo, puntúa)
 
@@ -232,8 +241,10 @@ los pesos efectivos; `tests/test_macro_reservas.py`, que el Tesoro ya no es insu
 
 - Estricta en la tarjeta: es el número del debate público y el que usa el mercado;
   la caída de 10.725 a 7.465 en septiembre es método, no dato, y queda en la ficha.
-- Anclas sin recalibrar: sin circularidad, pero la escala sigue siendo conceptual y la
-  revisión en meses de importaciones ([[0084]]) sigue pendiente.
+- Netas recalibradas con la historia previa: misma vara que las brutas; la historia tiene
+  huecos (60 de 72 meses, sin may-nov 2023, un tramo de netas bajas), así que la media
+  puede estar algo arriba de la real. La revisión en meses de importaciones ([[0084]])
+  sigue pendiente.
 - Meta estimada con la planilla: mensual y automática, pero la RIN del memorando
   técnico tiene otra definición (tipos de cambio del programa, crédito neto del FMI,
   otros pasivos) y la variación puede diferir en cientos o miles de millones. El

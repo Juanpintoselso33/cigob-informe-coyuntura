@@ -262,3 +262,24 @@ def test_las_tres_reservas_se_reparten_el_peso_de_las_netas():
     for k in ("ipc_total", "rem_ipc_12m", "desequilibrio_monetario"):   # el resto, igual
         assert dim["peso"] * dim["indicadores"][k] == pytest.approx(
             {"ipc_total": 0.156, "rem_ipc_12m": 0.052, "desequilibrio_monetario": 0.052}[k])
+
+
+# ── Prueba oficial intermedia (junio de 2026): gana sobre la estimación ──────
+def test_la_prueba_oficial_de_junio_gana_sobre_la_estimacion():
+    metas = mrf.cargar_metas()
+    r = mrf.avance(metas, "2026-06", {"2025-12": -2712, "2026-06": -1704})
+    assert r["origen"] == "oficial"
+    assert r["acumulado"] == 7500 and r["valor"] == 187.5
+    # el mes siguiente vuelve a la estimación propia
+    r7 = mrf.avance(metas, "2026-07", {"2025-12": -2712, "2026-07": 5820})
+    assert r7["origen"] == "estimacion"
+
+
+def test_una_prueba_oficial_sin_fuente_no_se_carga(tmp_path):
+    import json
+    d = json.loads(mrf.METAS_PATH.read_text(encoding="utf-8"))
+    d["metas"][0]["pruebas_oficiales"] = [{"fecha": "2026-06-30", "acumulacion": 1}]
+    p = tmp_path / "metas.json"
+    p.write_text(json.dumps(d), encoding="utf-8")
+    with pytest.raises(ValueError):
+        mrf.cargar_metas(p)

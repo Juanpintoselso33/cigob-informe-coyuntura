@@ -1,5 +1,5 @@
 {
-  "_descripcion": "Metas de acumulación de reservas internacionales netas (RIN) del programa con el FMI (Servicio Ampliado, abril de 2025). ADR-0428. Cada meta es la VARIACIÓN que la RIN tiene que tener entre `base` y `fecha_meta`, en millones de dólares. `meta_tmu` es la misma meta en los términos del memorando técnico (acumulado desde fin de 2024, miles de millones), sólo como registro. `oficial` queda en null hasta que el FMI publique el resultado de esa fecha de prueba; entonces se carga a mano {acumulacion, fuente, fecha_publicacion} y gana sobre la estimación propia en el mes de la fecha de prueba.",
+  "_descripcion": "Metas de acumulación de reservas internacionales netas (RIN) del programa con el FMI (Servicio Ampliado, abril de 2025). ADR-0428. Cada meta es la VARIACIÓN que la RIN tiene que tener entre `base` y `fecha_meta`, en millones de dólares. `meta_tmu` es la misma meta en los términos del memorando técnico (acumulado desde fin de 2024, miles de millones), sólo como registro. `oficial` queda en null hasta que el FMI publique el resultado de esa fecha de prueba; entonces se carga a mano {acumulacion, fuente, fecha_publicacion} y gana sobre la estimación propia en el mes de la fecha de prueba. `pruebas_oficiales` lista resultados que el FMI informó en fechas de prueba intermedias de la ventana (acumulación desde `base`, en millones): ganan sobre la estimación en ese mes.",
   "metas": [
     {
       "base": "2025-12-31",
@@ -9,7 +9,16 @@
       "tipo": "criterio de desempeño",
       "fuente": "FMI, informe del staff de la segunda revisión del Servicio Ampliado (mayo de 2026), Memorando de Políticas Económicas y Financieras, párrafo 19",
       "revision": "segunda revisión (mayo de 2026)",
-      "oficial": null
+      "oficial": null,
+      "pruebas_oficiales": [
+        {
+          "fecha": "2026-06-30",
+          "acumulacion": 7500,
+          "fuente": "FMI, acuerdo a nivel técnico de la tercera revisión (27-oct-2026): la meta de RIN de fin de junio de 2026 (−8,6 mil M acumulados desde fin de 2024) se superó en unos US$ 4.000 M. Con la RIN de fin de 2025 en −12,1 mil M (segunda revisión), la acumulación del semestre es ≈ 3.500 + 4.000 = 7.500 M.",
+          "aproximado": true,
+          "nota": "Cifra redondeada del comunicado; se reemplaza por la del informe del staff de la tercera revisión cuando se publique."
+        }
+      ]
     },
     {
       "base": "2026-12-31",

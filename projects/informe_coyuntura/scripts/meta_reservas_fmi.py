@@ -56,6 +56,11 @@ def cargar_metas(path: Path = METAS_PATH) -> list[dict]:
             raise ValueError(f"meta {m['fecha_meta']}: la acumulación tiene que ser positiva")
         if meses_entre(_ym(m["base"]), _ym(m["fecha_meta"])) <= 0:
             raise ValueError(f"meta {m['fecha_meta']}: la base no es anterior a la fecha de la meta")
+        for p in m.setdefault("pruebas_oficiales", []):
+            if not p.get("fecha") or p.get("acumulacion") is None or not p.get("fuente"):
+                raise ValueError(f"meta {m['fecha_meta']}: cada prueba oficial necesita `fecha`, `acumulacion` y `fuente`")
+            if not _ym(m["base"]) < _ym(p["fecha"]) < _ym(m["fecha_meta"]):
+                raise ValueError(f"meta {m['fecha_meta']}: la prueba oficial {p['fecha']} cae fuera de la ventana")
         oficial = m.setdefault("oficial", None)
         if oficial is not None:
             if not isinstance(oficial, dict) or oficial.get("acumulacion") is None or not oficial.get("fuente"):
@@ -90,8 +95,15 @@ def avance(metas: list[dict], ym: str, netas_por_mes: dict) -> dict | None:
     if meta is None:
         return None
     oficial = meta.get("oficial")
+    intermedia = next((p for p in meta.get("pruebas_oficiales") or []
+                       if _ym(p["fecha"]) == ym), None)
     if oficial and ym == _ym(meta["fecha_meta"]):
         acumulado, origen = float(oficial["acumulacion"]), "oficial"
+    elif intermedia:
+        # Fecha de prueba intermedia del programa (p. ej. junio de 2026) con
+        # resultado informado por el FMI: gana sobre la estimación propia, para
+        # que la serie no contradiga al FMI (Juan, 13-nov-2026).
+        acumulado, origen = float(intermedia["acumulacion"]), "oficial"
     else:
         base_ym = _ym(meta["base"])
         if ym not in netas_por_mes or base_ym not in netas_por_mes:

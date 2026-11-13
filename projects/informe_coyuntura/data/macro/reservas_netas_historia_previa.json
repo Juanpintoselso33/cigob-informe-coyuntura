@@ -1,0 +1,503 @@
+{
+ "_descripcion": "Reservas netas estrictas (I.A + II.1 + II.2 + II.3 de la planilla SDDS/NEDD del BCRA, fin de mes) de la historia previa al mandato, dic-2017 a nov-2023, leídas de las copias del Internet Archive (el BCRA borró las planillas anteriores a jun-2024). ADR-0428. Faltan los meses que el Archive no guardó o no devolvió como PDF. Millones de USD. Congelado: no se recalcula.",
+ "fuente": "https://web.archive.org/web/<snapshot>id_/https://www.bcra.gob.ar/Pdfs/PublicacionesEstadisticas/tempMMAA.pdf",
+ "faltan": [
+  "2018-06",
+  "2018-12",
+  "2019-03",
+  "2022-07",
+  "2022-09",
+  "2023-05",
+  "2023-06",
+  "2023-07",
+  "2023-08",
+  "2023-09",
+  "2023-10",
+  "2023-11"
+ ],
+ "media": 9834.9,
+ "desvio": 9197.0,
+ "n": 60,
+ "meses": {
+  "2017-12": {
+   "netas": 27937.5,
+   "brutas": 55055.1,
+   "prestamos_dep": -15018.3,
+   "swaps": 0.0,
+   "repos": -12099.4,
+   "snapshot": "20230402045012"
+  },
+  "2018-01": {
+   "netas": 31561.5,
+   "brutas": 62023.8,
+   "prestamos_dep": -18049.5,
+   "swaps": 0.0,
+   "repos": -12412.8,
+   "snapshot": "20220817171558"
+  },
+  "2018-02": {
+   "netas": 36472.6,
+   "brutas": 61508.5,
+   "prestamos_dep": -12821.4,
+   "swaps": 0.0,
+   "repos": -12214.5,
+   "snapshot": "20240213120834"
+  },
+  "2018-03": {
+   "netas": 34369.7,
+   "brutas": 61725.9,
+   "prestamos_dep": -15051.7,
+   "swaps": 0.0,
+   "repos": -12304.5,
+   "snapshot": "20231007153507"
+  },
+  "2018-04": {
+   "netas": 30084.5,
+   "brutas": 56623.0,
+   "prestamos_dep": -14287.5,
+   "swaps": 0.0,
+   "repos": -12251.0,
+   "snapshot": "20250828235545"
+  },
+  "2018-05": {
+   "netas": 24050.6,
+   "brutas": 50098.1,
+   "prestamos_dep": -14031.8,
+   "swaps": 0.0,
+   "repos": -12015.8,
+   "snapshot": "20250828192312"
+  },
+  "2018-07": {
+   "netas": 21464.1,
+   "brutas": 57996.2,
+   "prestamos_dep": -25152.5,
+   "swaps": 0.0,
+   "repos": -11379.6,
+   "snapshot": "20220819101221"
+  },
+  "2018-08": {
+   "netas": 17406.4,
+   "brutas": 52657.7,
+   "prestamos_dep": -23847.4,
+   "swaps": 0.0,
+   "repos": -11403.9,
+   "snapshot": "20230402044905"
+  },
+  "2018-09": {
+   "netas": 14443.1,
+   "brutas": 49003.4,
+   "prestamos_dep": -23280.6,
+   "swaps": 0.0,
+   "repos": -11279.7,
+   "snapshot": "20231007134358"
+  },
+  "2018-10": {
+   "netas": 13353.3,
+   "brutas": 53955.1,
+   "prestamos_dep": -29467.3,
+   "swaps": 0.0,
+   "repos": -11134.5,
+   "snapshot": "20230402044854"
+  },
+  "2018-11": {
+   "netas": 13664.6,
+   "brutas": 51193.2,
+   "prestamos_dep": -26338.1,
+   "swaps": 0.0,
+   "repos": -11190.5,
+   "snapshot": "20220819101207"
+  },
+  "2019-01": {
+   "netas": 16373.0,
+   "brutas": 66811.2,
+   "prestamos_dep": -29950.8,
+   "swaps": 0.0,
+   "repos": -20487.4,
+   "snapshot": "20250828192301"
+  },
+  "2019-02": {
+   "netas": 17008.9,
+   "brutas": 68014.9,
+   "prestamos_dep": -30450.5,
+   "swaps": 0.0,
+   "repos": -20555.5,
+   "snapshot": "20220817171519"
+  },
+  "2019-04": {
+   "netas": 17034.0,
+   "brutas": 71662.5,
+   "prestamos_dep": -34167.5,
+   "swaps": 0.0,
+   "repos": -20460.9,
+   "snapshot": "20240213120801"
+  },
+  "2019-05": {
+   "netas": 16852.1,
+   "brutas": 64779.4,
+   "prestamos_dep": -28014.2,
+   "swaps": 0.0,
+   "repos": -19913.0,
+   "snapshot": "20240213132238"
+  },
+  "2019-06": {
+   "netas": 15882.1,
+   "brutas": 64278.0,
+   "prestamos_dep": -28378.1,
+   "swaps": 0.0,
+   "repos": -20017.8,
+   "snapshot": "20220817171507"
+  },
+  "2019-07": {
+   "netas": 18034.2,
+   "brutas": 67899.4,
+   "prestamos_dep": -29878.6,
+   "swaps": 0.0,
+   "repos": -19986.7,
+   "snapshot": "20240213132233"
+  },
+  "2019-08": {
+   "netas": 13766.8,
+   "brutas": 54100.4,
+   "prestamos_dep": -21014.5,
+   "swaps": 0.0,
+   "repos": -19319.2,
+   "snapshot": "20250828190816"
+  },
+  "2019-09": {
+   "netas": 13775.7,
+   "brutas": 48703.3,
+   "prestamos_dep": -15640.7,
+   "swaps": 0.0,
+   "repos": -19286.9,
+   "snapshot": "20231007150148"
+  },
+  "2019-10": {
+   "netas": 9818.1,
+   "brutas": 43260.3,
+   "prestamos_dep": -13857.5,
+   "swaps": 0.0,
+   "repos": -19584.7,
+   "snapshot": "20250828192246"
+  },
+  "2019-11": {
+   "netas": 11928.7,
+   "brutas": 43772.3,
+   "prestamos_dep": -12232.1,
+   "swaps": 0.0,
+   "repos": -19611.5,
+   "snapshot": "20250828191528"
+  },
+  "2019-12": {
+   "netas": 12084.5,
+   "brutas": 44848.3,
+   "prestamos_dep": -12901.1,
+   "swaps": 0.0,
+   "repos": -19862.8,
+   "snapshot": "20250828190812"
+  },
+  "2020-01": {
+   "netas": 11686.2,
+   "brutas": 44917.1,
+   "prestamos_dep": -13195.6,
+   "swaps": 0.0,
+   "repos": -20035.2,
+   "snapshot": "20250828192242"
+  },
+  "2020-02": {
+   "netas": 10885.0,
+   "brutas": 44790.7,
+   "prestamos_dep": -13812.2,
+   "swaps": 0.0,
+   "repos": -20093.5,
+   "snapshot": "20250828192238"
+  },
+  "2020-03": {
+   "netas": 10436.6,
+   "brutas": 43561.2,
+   "prestamos_dep": -13147.2,
+   "swaps": 0.0,
+   "repos": -19977.4,
+   "snapshot": "20231007135209"
+  },
+  "2020-04": {
+   "netas": 9739.6,
+   "brutas": 43568.4,
+   "prestamos_dep": -14008.3,
+   "swaps": 0.0,
+   "repos": -19820.5,
+   "snapshot": "20250828192234"
+  },
+  "2020-05": {
+   "netas": 8730.5,
+   "brutas": 42588.5,
+   "prestamos_dep": -14025.2,
+   "swaps": 0.0,
+   "repos": -19832.8,
+   "snapshot": "20230402044545"
+  },
+  "2020-06": {
+   "netas": 9368.0,
+   "brutas": 43241.5,
+   "prestamos_dep": -13801.9,
+   "swaps": 0.0,
+   "repos": -20071.6,
+   "snapshot": "20240213120731"
+  },
+  "2020-07": {
+   "netas": 9116.7,
+   "brutas": 43386.3,
+   "prestamos_dep": -13955.8,
+   "swaps": 0.0,
+   "repos": -20313.7,
+   "snapshot": "20231007163255"
+  },
+  "2020-08": {
+   "netas": 7440.2,
+   "brutas": 42842.1,
+   "prestamos_dep": -14608.6,
+   "swaps": 0.0,
+   "repos": -20793.2,
+   "snapshot": "20220817171425"
+  },
+  "2020-09": {
+   "netas": 5297.8,
+   "brutas": 41378.8,
+   "prestamos_dep": -15164.6,
+   "swaps": 0.0,
+   "repos": -20916.3,
+   "snapshot": "20230402044516"
+  },
+  "2020-10": {
+   "netas": 3978.2,
+   "brutas": 39856.3,
+   "prestamos_dep": -14668.7,
+   "swaps": 0.0,
+   "repos": -21209.4,
+   "snapshot": "20220819101058"
+  },
+  "2020-11": {
+   "netas": 2714.6,
+   "brutas": 38651.9,
+   "prestamos_dep": -14391.3,
+   "swaps": 0.0,
+   "repos": -21546.1,
+   "snapshot": "20220819101055"
+  },
+  "2020-12": {
+   "netas": 3177.0,
+   "brutas": 39387.1,
+   "prestamos_dep": -14507.1,
+   "swaps": 0.0,
+   "repos": -21703.0,
+   "snapshot": "20250828191521"
+  },
+  "2021-01": {
+   "netas": 2896.4,
+   "brutas": 39515.2,
+   "prestamos_dep": -14630.8,
+   "swaps": 0.0,
+   "repos": -21988.0,
+   "snapshot": "20250828192219"
+  },
+  "2021-02": {
+   "netas": 2653.5,
+   "brutas": 39518.1,
+   "prestamos_dep": -14992.7,
+   "swaps": 0.0,
+   "repos": -21871.9,
+   "snapshot": "20250828191811"
+  },
+  "2021-03": {
+   "netas": 3519.1,
+   "brutas": 39593.3,
+   "prestamos_dep": -14444.9,
+   "swaps": 0.0,
+   "repos": -21629.3,
+   "snapshot": "20231007150133"
+  },
+  "2021-04": {
+   "netas": 4710.9,
+   "brutas": 40262.8,
+   "prestamos_dep": -13680.8,
+   "swaps": 0.0,
+   "repos": -21871.1,
+   "snapshot": "20240213123920"
+  },
+  "2021-05": {
+   "netas": 6453.9,
+   "brutas": 41871.8,
+   "prestamos_dep": -13247.1,
+   "swaps": 0.0,
+   "repos": -22170.8,
+   "snapshot": "20250828192213"
+  },
+  "2021-06": {
+   "netas": 6665.9,
+   "brutas": 42436.9,
+   "prestamos_dep": -13864.4,
+   "swaps": 0.0,
+   "repos": -21906.7,
+   "snapshot": "20250828191805"
+  },
+  "2021-07": {
+   "netas": 6099.1,
+   "brutas": 42581.7,
+   "prestamos_dep": -14585.0,
+   "swaps": 0.0,
+   "repos": -21897.7,
+   "snapshot": "20230402044350"
+  },
+  "2021-08": {
+   "netas": 9575.3,
+   "brutas": 46180.3,
+   "prestamos_dep": -14686.9,
+   "swaps": 0.0,
+   "repos": -21918.1,
+   "snapshot": "20240213121404"
+  },
+  "2021-09": {
+   "netas": 5826.0,
+   "brutas": 42911.2,
+   "prestamos_dep": -15142.0,
+   "swaps": 0.0,
+   "repos": -21943.2,
+   "snapshot": "20240213132121"
+  },
+  "2021-10": {
+   "netas": 5491.3,
+   "brutas": 42817.1,
+   "prestamos_dep": -15254.8,
+   "swaps": 0.0,
+   "repos": -22071.0,
+   "snapshot": "20230402044317"
+  },
+  "2021-11": {
+   "netas": 3756.7,
+   "brutas": 41529.5,
+   "prestamos_dep": -15568.4,
+   "swaps": 0.0,
+   "repos": -22204.4,
+   "snapshot": "20230402044309"
+  },
+  "2021-12": {
+   "netas": 1429.3,
+   "brutas": 39662.4,
+   "prestamos_dep": -15995.9,
+   "swaps": 0.0,
+   "repos": -22237.2,
+   "snapshot": "20230320023649"
+  },
+  "2022-01": {
+   "netas": -680.6,
+   "brutas": 37589.0,
+   "prestamos_dep": -16072.2,
+   "swaps": 0.0,
+   "repos": -22197.3,
+   "snapshot": "20250828192201"
+  },
+  "2022-02": {
+   "netas": -760.4,
+   "brutas": 37017.5,
+   "prestamos_dep": -15431.9,
+   "swaps": 0.0,
+   "repos": -22345.9,
+   "snapshot": "20231007163204"
+  },
+  "2022-03": {
+   "netas": -712.0,
+   "brutas": 43137.4,
+   "prestamos_dep": -21564.8,
+   "swaps": 0.0,
+   "repos": -22284.5,
+   "snapshot": "20250828191802"
+  },
+  "2022-04": {
+   "netas": -796.6,
+   "brutas": 42006.6,
+   "prestamos_dep": -21346.4,
+   "swaps": 0.0,
+   "repos": -21456.8,
+   "snapshot": "20241010205700"
+  },
+  "2022-05": {
+   "netas": 2189.7,
+   "brutas": 41561.1,
+   "prestamos_dep": -18123.9,
+   "swaps": 0.0,
+   "repos": -21247.5,
+   "snapshot": "20240213120710"
+  },
+  "2022-06": {
+   "netas": 2770.7,
+   "brutas": 42786.8,
+   "prestamos_dep": -18844.0,
+   "swaps": 0.0,
+   "repos": -21172.1,
+   "snapshot": "20240213121352"
+  },
+  "2022-08": {
+   "netas": -519.3,
+   "brutas": 36734.4,
+   "prestamos_dep": -16601.3,
+   "swaps": 0.0,
+   "repos": -20652.4,
+   "snapshot": "20250828191759"
+  },
+  "2022-10": {
+   "netas": 1219.4,
+   "brutas": 38675.9,
+   "prestamos_dep": -17852.8,
+   "swaps": 0.0,
+   "repos": -19603.7,
+   "snapshot": "20240213132055"
+  },
+  "2022-11": {
+   "netas": 620.4,
+   "brutas": 38008.9,
+   "prestamos_dep": -17237.9,
+   "swaps": 0.0,
+   "repos": -20150.6,
+   "snapshot": "20230402043919"
+  },
+  "2022-12": {
+   "netas": 3802.3,
+   "brutas": 44598.4,
+   "prestamos_dep": -20094.8,
+   "swaps": -18848.4,
+   "repos": -1853.0,
+   "snapshot": "20250828190752"
+  },
+  "2023-01": {
+   "netas": 3093.8,
+   "brutas": 41417.3,
+   "prestamos_dep": -17280.0,
+   "swaps": -19254.2,
+   "repos": -1789.3,
+   "snapshot": "20240213123857"
+  },
+  "2023-02": {
+   "netas": 1721.4,
+   "brutas": 38709.4,
+   "prestamos_dep": -16413.6,
+   "swaps": -18760.4,
+   "repos": -1814.0,
+   "snapshot": "20240213124150"
+  },
+  "2023-03": {
+   "netas": -378.1,
+   "brutas": 39060.0,
+   "prestamos_dep": -18654.6,
+   "swaps": -18946.2,
+   "repos": -1837.3,
+   "snapshot": "20250828190749"
+  },
+  "2023-04": {
+   "netas": -487.9,
+   "brutas": 35001.3,
+   "prestamos_dep": -14791.6,
+   "swaps": -18853.8,
+   "repos": -1843.7,
+   "snapshot": "20250828191451"
+  }
+ }
+}

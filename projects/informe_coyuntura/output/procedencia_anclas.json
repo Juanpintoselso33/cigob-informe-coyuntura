@@ -3,9 +3,9 @@
     "ITCM": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "conceptual": 0.5183333333333333,
+        "conceptual": 0.5002,
         "convencion": 0.10700000000000001,
-        "historia_larga": 0.3565333333333333,
+        "historia_larga": 0.37466666666666665,
         "externa": 0.01813333333333333
       },
       "detalle": [
@@ -64,12 +64,6 @@
           "motivo": "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"
         },
         {
-          "indicador": "reservas_bcra",
-          "categoria": "conceptual",
-          "peso": 0.0181,
-          "motivo": "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120); desde ADR-0428 sobre la medición estricta, donde el cero es «el BCRA sin dólares propios», sin recalibrar (no hay historia previa: el BCRA borró las planillas anteriores a jun-2024)"
-        },
-        {
           "indicador": "resultado_primario",
           "categoria": "historia_larga",
           "peso": 0.096,
@@ -112,6 +106,12 @@
           "motivo": "media y uno y dos desvíos (45.373 / 11.375 millones de dólares) de las reservas brutas a fin de mes de dic-2017 a nov-2023, anterior al mandato; puntajes de tramo del crédito privado (ADR-0428, método de ADR-0404)"
         },
         {
+          "indicador": "reservas_bcra",
+          "categoria": "historia_larga",
+          "peso": 0.0181,
+          "motivo": "media y uno y dos desvíos de las reservas netas estrictas (SDDS) de dic-2017 a nov-2023, 60 cierres de mes recuperados del Internet Archive (ADR-0428)"
+        },
+        {
           "indicador": "terminos_intercambio",
           "categoria": "convencion",
           "peso": 0.055,
@@ -125,9 +125,9 @@
         }
       ],
       "share": {
-        "conceptual": 0.518,
+        "conceptual": 0.5,
         "convencion": 0.107,
-        "historia_larga": 0.357,
+        "historia_larga": 0.375,
         "externa": 0.018
       },
       "share_circular": 0.107

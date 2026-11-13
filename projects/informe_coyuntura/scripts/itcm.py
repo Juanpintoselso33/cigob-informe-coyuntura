@@ -121,6 +121,14 @@ MEDIA_RESERVAS_BRUTAS = 45373.1
 DESVIO_RESERVAS_BRUTAS = 11374.9
 _BRUTAS_M2S, _BRUTAS_M1S, _BRUTAS_0, _BRUTAS_1S, _BRUTAS_2S = (
     round(MEDIA_RESERVAS_BRUTAS + k * DESVIO_RESERVAS_BRUTAS) for k in (-2, -1, 0, 1, 2))
+# ADR-0428: reservas NETAS estrictas de la historia previa (planillas SDDS de
+# dic-2017 a nov-2023 recuperadas del Internet Archive, 60 de 72 meses;
+# data/macro/reservas_netas_historia_previa.json): media 9834.9 y desvío muestral
+# 9197.0 millones de dólares. Congelados.
+MEDIA_RESERVAS_NETAS = 9834.9
+DESVIO_RESERVAS_NETAS = 9197.0
+_NETAS_M2S, _NETAS_M1S, _NETAS_0, _NETAS_1S, _NETAS_2S = (
+    round(MEDIA_RESERVAS_NETAS + k * DESVIO_RESERVAS_NETAS) for k in (-2, -1, 0, 1, 2))
 
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 # Puntajes de los bordes del semáforo, para las escalas con cortes de color
@@ -213,22 +221,15 @@ BANDAS_ITCM = {
         (-8.5, 8.5, 50), (-17.0, -8.5, 30), (-INF, -17.0, 10),
     ],
     "reservas_bcra": [                  # millones USD — RESERVAS NETAS estrictas (ADR-0428)
-        # Bandas en torno al CERO de reservas netas (ADR-0120): el cero —el BCRA
-        # ni acumula ni quema reservas propias— es el umbral con significado, y
-        # los cortes son colchones de USD en miles de millones redondos (>20 mil =
-        # holgado, negativo = posición vendida). No se ancla a la historia porque
-        # la serie propia arranca en jun-2024 (límite de la fuente de netas, no
-        # hay dato pre-mandato comparable): el criterio es el nivel de cobertura,
-        # no la distribución observada. Sería más robusto en MESES DE
-        # IMPORTACIONES —revisión pendiente, ADR-0084 rechazó una primera versión.
-        # ADR-0428: el valor pasa a la medición estricta (sin depósitos del
-        # Tesoro ni el tramo de II.1). Las bandas NO se recalibran: el método de
-        # ADR-0404 pide historia previa y el BCRA borró las planillas anteriores
-        # a jun-2024; calibrar sobre el mandato sería circular (ADR-0105). Y el
-        # cero de la escala significa «el BCRA no tiene dólares propios» recién
-        # con la medición estricta: con el Tesoro sumado, no.
-        (20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
-        (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10),
+        # ADR-0428, método de ADR-0404, igual que las brutas: cortes en la
+        # media y en uno y dos desvíos de la historia previa (dic-2017 a
+        # nov-2023), con los puntajes de tramo del crédito privado. Hasta el
+        # 13-nov-2026 eran bandas conceptuales en torno al cero (ADR-0120) porque
+        # el BCRA borró las planillas anteriores a jun-2024; las copias del
+        # Internet Archive dieron la historia (faltan may-nov 2023 y cinco meses
+        # sueltos, ver el JSON). Dólares corrientes, como las brutas.
+        (_NETAS_2S, INF, 100), (_NETAS_1S, _NETAS_2S, 85), (_NETAS_0, _NETAS_1S, 65),
+        (_NETAS_M1S, _NETAS_0, 45), (_NETAS_M2S, _NETAS_M1S, 25), (-INF, _NETAS_M2S, 10),
     ],
     "reservas_brutas": [                # millones USD — reservas internacionales brutas, fin de mes
         # ADR-0428, método de ADR-0404: cortes en la media y en uno y dos
