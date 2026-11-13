@@ -176,7 +176,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-11-01,ratio_dnu,2.571,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
+2026-11-01,ratio_dnu,2.5,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
 2026-10-01,ratio_dnu,2.643,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
 2026-09-01,ratio_dnu,2.5,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
 2026-08-01,ratio_dnu,3.364,"decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales",InfoLeg
