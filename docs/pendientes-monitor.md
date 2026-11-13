@@ -67,17 +67,23 @@ tocar nada.
   (nunca se fijó; hoy informe.cigob.org muestra octubre). Para Luis: «los cambios de diseño y
   texto ya están en informe.cigob.org; lo que espera a la publicación del mes son sólo los
   datos. El asistente te explicó mal y lo corregimos».
+  **13-nov:** la fecha fija de publicación sigue sin decidir (Juan: «para ver, aún
+  pendiente»). Cuando se fije, va un `schedule` en `mensual.yml`.
 - **(5) El verde global depende de gestión. Decide el equipo.** Verificado: la portada
   muestra «Tensión general» 3,6 (verde ≤ 4), promedio simple 25 % c/u de la fase temprana
   (`config.py`, `FASE_TEMPRANA_ANIOS = 4`: rige hasta dic-2027, después 29/29/24/18). Sin
   gestión daría 4,3, amarillo. Opciones: publicarlo así, mostrarlo junto a los dos cinturones
   en amarillo, o no publicar un número global.
+  **Resuelto el 13-nov (Juan):** con la escala de cuatro tramos iguales (ADR-0427, #104) el
+  global pasa a amarillo; no se toca el peso de gestión.
 - **(6) Gestión mide la agenda propia y tiene techos. Decide el equipo.** Verificado: 6 de 14
   en 100 (gasto de funcionamiento, FAL, RIGI, concesiones, asistencia directa, libertad de
   opción en salud) + antipiquetes 99; los seis pesan ~33 % del ITCG. Tres son hitos sí/no que no
   pueden bajar (FAL, asistencia, salud), concesiones es plan completo (100 % km), gasto (−28 %
   real) y RIGI (76 % de la promesa) pasaron el corte. Dos frentes: revisar techos e hitos, y el
   texto que explica que menos tensión = la agenda se ejecuta, no que el país esté mejor.
+  **13-nov: para ver con Luis** (Juan). Llevarle las dos preguntas: qué hacer con los hitos
+  cumplidos (siguen en 100, salen o se reemplazan) y el texto de la lectura de gestión.
 - **(7) Reservas en verde por fórmula propia. Decide el equipo.** Verificado: 10.725 = SDDS
   estricto 7.465 + Tesoro 1.125 + tramo II.1 3m–1a 2.136 (sep-2026), 725 sobre el corte de
   10.000; SDDS solo = 7.465, amarillo. Fórmula decidida en ADR-0005 y explicitada en ADR-0286;
@@ -85,9 +91,10 @@ tocar nada.
   card muestra sólo 10.725. Decidir: mostrar también la medición estricta en la card, o cambiar
   la fórmula que fija el color.
   **Reunión con Luis del 13-nov — dos indicadores nuevos en macro:**
+  **Decidido (Juan, 13-nov): se suman los dos indicadores**, además de la card actual de
+  reservas; eso responde el punto 7.
   - Reservas brutas menos depósitos en dólares menos préstamos en dólares (los encajes de
-    los depósitos en dólares están dentro de las brutas). Definir si reemplaza a la fórmula
-    actual o va al lado, y de qué serie del BCRA sale.
+    los depósitos en dólares están dentro de las brutas). Ver de qué serie del BCRA sale.
   - Cumplimiento de la meta de acumulación de reservas acordada con el FMI (compras de
     reservas contra la meta del programa). Ver de dónde salen la meta y el dato (revisiones
     del FMI, BCRA) y cada cuánto se actualizan.

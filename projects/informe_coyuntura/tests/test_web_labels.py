@@ -132,7 +132,9 @@ def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
     from comun import coma
     hoy = coma(card["valor"])
     assert f"**Hoy: {hoy} % del salario registrado promedio** ({card['fecha_dato'][:7]})" in bloque
-    assert "**Color vigente: VERDE**" in bloque
+    # El color sale del snapshot, no escrito a mano: con ADR-0427 el corte del
+    # verde de cada rubro bajó (referencia + 1,25 puntos) y el color cambió.
+    assert f"**Color vigente: {card['semaforo']['color'].upper()}**" in bloque
     # Desde el 7-nov-2026 el «por qué» lo arma publicar._por_que_tarifas: dice
     # qué rubro fija el color y contra qué corte, no la base temporal.
     assert "el rubro que fija el color" in bloque

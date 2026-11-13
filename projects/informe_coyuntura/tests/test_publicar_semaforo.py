@@ -163,11 +163,16 @@ class TestCoherencia:
             if not sem.get("umbrales") or ind.get("valor") is None:
                 continue
             v = float(ind["valor"])
+            # Bordes inclusivos de los dos lados: un valor justo en un corte
+            # pertenece a los dos tramos y el motor lo pinta con el mejor color
+            # (ADR-0181). Con ADR-0427 pasó de verdad: siniestralidad −5,0 cae
+            # en el corte verde/amarillo de una escala decreciente, y con
+            # `v < hasta` la prueba lo mandaba a amarillo.
             tramos = [t for t in sem["umbrales"]
                       if (t["desde"] is None or v >= t["desde"])
-                      and (t["hasta"] is None or v < t["hasta"])]
+                      and (t["hasta"] is None or v <= t["hasta"])]
             assert tramos, f"{cinturon}/{ikey}: {v} no cae en ningún tramo"
-            assert tramos[0]["color"] == sem["color"], f"{cinturon}/{ikey}"
+            assert sem["color"] in {t["color"] for t in tramos}, f"{cinturon}/{ikey}"
 
 
 class TestTensionEnDominio:
