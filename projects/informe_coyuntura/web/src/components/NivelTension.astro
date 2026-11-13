@@ -61,8 +61,9 @@ interface Props {
   tip?: string;
   /** Color que ya calculó el pipeline (`semaforo.color`). Manda sobre el que
       sale de la tensión: la tensión publicada viene redondeada a un decimal,
-      y una dimensión con 59,9 daba tensión 4,0 y se pintaba verde siendo
-      amarilla (auditoría externa, oct-2026). */
+      y una dimensión con 74,9 da tensión 2,5 y se pintaría verde siendo
+      amarilla (auditoría externa, oct-2026, con el caso equivalente de la
+      escala de entonces: 59,9 → 4,0). */
   color?: string | null;
 }
 const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false, tip, color: colorDado } = Astro.props as Props;

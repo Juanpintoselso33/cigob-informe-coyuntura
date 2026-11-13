@@ -49,6 +49,10 @@ ACEPTADAS: dict = {
     ("fichas.ts", "tasa_homicidios", "incidenciaTexto"):
         "el 4,32 es la tasa de 2023 que explica por qué ADR-0327 corrigió el ancla "
         "(«anclaba contra el propio 2023»): es un hecho fechado, no el dato vigente",
+    ("fichas.ts", "idc", "transformaciones"):
+        "0,45 / −0,3 / −0,85 son los cortes de color en la unidad del indicador "
+        "(ADR-0427), no el dato: que la serie haya pasado por −0,3 es casualidad; "
+        "test_escala_semaforo_en_todo_el_sitio.py los ata a los cortes vigentes",
 }
 
 

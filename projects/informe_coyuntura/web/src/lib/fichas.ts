@@ -215,15 +215,15 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el índice macroeconómico mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice macroeconómico: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice macroeconómico: verde con 75 o más, amarillo de 50 a menos de 75, naranja de 25 a menos de 50 y rojo por debajo de 25. Lo que tienen en común los cuatro cinturones son los cortes de tensión (2,5, 5 y 7,5 sobre 10: cuatro tramos iguales); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (112,5, 100 y 87,5). La web lo muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador del cinturón publica su propia ficha, su fórmula y su tensión equivalente — cómo se leería el cinturón si solo existiera ese indicador —, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
-      { rango: "0 – 20", lectura: "Severamente apretado" },
-      { rango: "21 – 40", lectura: "Apretado" },
-      { rango: "41 – 60", lectura: "Moderadamente apretado" },
-      { rango: "61 – 80", lectura: "Moderadamente aflojado" },
-      { rango: "81 – 100", lectura: "Aflojado" },
+      { rango: "0 – 25", lectura: "Severamente apretado" },
+      { rango: "25,1 – 50", lectura: "Apretado" },
+      { rango: "50,1 – 75", lectura: "Moderadamente apretado" },
+      { rango: "75,1 – 87,5", lectura: "Moderadamente aflojado" },
+      { rango: "87,6 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
       "Los umbrales y pesos no se estiman: son el juicio del marco CIGOB y, donde el marco no llega, elaboración propia declarada en cada ficha. El Monte Carlo mide cuánto dependen las conclusiones de esa elección, pero no la sustituye.",
@@ -269,6 +269,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-27", cambio: "Las dimensiones se reagrupan: «Viabilidad fiscal-comercial» pasa a «Cuentas fiscales» (resultado primario y recaudación, 19,2 %) y el saldo comercial, las reservas netas y el cruce del tipo de cambio real con los términos del intercambio forman el «Sector externo» (21,2 %); «Capacidad y costo del financiamiento» baja a 10,6 %. Cada indicador conserva su peso en el índice, así que el índice macroeconómico no se mueve (53,9 con los datos de septiembre de 2026).", adr: "0387" },
       { fecha: "2026-10-27", cambio: "El tipo de cambio real y los términos del intercambio vuelven a ser dos tarjetas, cada una con su puntaje, y el cruce de los dos en la matriz pasa a hacerse en la dimensión de competitividad externa. El número de la dimensión y el del índice no cambian (49,8 y 53,9 con los datos de septiembre de 2026). Como el tipo de cambio real vuelve a puntuar con sus umbrales de historia larga, la parte del índice que descansa en anclas calibradas contra el propio período baja de 38% a 33%.", adr: "0375" },
       { fecha: "2026-10-20", cambio: "La dimensión competitividad externa (11%) deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz: el tipo de cambio real dice si el peso está caro o barato, y los términos del intercambio, si ese nivel se sostiene. No cambia ningún peso. Como los cortes de los términos del intercambio se calibran contra la ventana desde fines de 2023, la parte del índice que descansa en anclas calibradas contra el propio período sube de 27% a 38%.", adr: "0360" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, el color del índice corta en 75, 50 y 25 (antes 60, 40 y 20), y las palabras de la tabla de lectura se alinean con esos cortes: 25, 50, 75 y 87,5 (antes 20, 40, 60 y 80). Esta ficha seguía mostrando los cortes viejos.", adr: "0427" },
     ],
   },
 
@@ -426,7 +427,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Tres niveles mensuales: la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).",
       "Cada nivel se compara contra toda su propia historia (2018 en adelante) y se expresa en desvíos estándar: 0 es el mes histórico típico.",
-      "Combinación 30% precio + 40% volumen + 30% asignación; por encima de 0 la capacidad es mayor a la habitual y por debajo, menor. Con las anclas de abajo, en el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo.",
+      "Combinación 30% precio + 40% volumen + 30% asignación; por encima de 0 la capacidad es mayor a la habitual y por debajo, menor. Con las anclas de abajo, en el semáforo de la tarjeta, desde 0,45 es verde, de −0,3 a 0,45 amarillo, de −0,85 a −0,3 naranja y por debajo de −0,85 rojo. El mes típico (0) queda en amarillo.",
     ],
     anclas: {
       bandas: [
@@ -454,6 +455,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.", adr: "0311" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, los cortes de color en la unidad del indicador pasan a 0,45, −0,3 y −0,85 (antes 0, −0,6 y −0,9): el mes típico deja de ser verde y pasa a amarillo. No cambian las anclas del puntaje.", adr: "0427" },
     ],
   },
 
@@ -1046,7 +1048,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».",
-      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Cada esquina cae en un color distinto del Monitor; la de 50 queda justo en el borde entre amarillo y naranja, del lado del amarillo.",
       "La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.",
     ],
     anclas: {
@@ -1077,6 +1079,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-10-20", cambio: "La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como tarjeta propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.", adr: "0360" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, la esquina de 50 de la matriz ya no cae en el medio del amarillo sino en su borde con el naranja. No cambian las esquinas ni el puntaje.", adr: "0427" },
     ],
   },
 
@@ -1094,7 +1097,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.",
-      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "El sector externo, donde este indicador y el otro comparten un único peso en el índice macroeconómico, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Cada esquina cae en un color distinto del Monitor; la de 50 queda justo en el borde entre amarillo y naranja, del lado del amarillo.",
       "Para la serie histórica del cruce, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.",
     ],
     anclas: {
@@ -1120,6 +1123,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-27", cambio: "Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con el tipo de cambio real y su peso en el índice (11 % entre los dos) no cambian.", adr: "0387" },
       { fecha: "2026-10-27", cambio: "Pasa a ser tarjeta y a puntuar por su cuenta, en la misma escala de 10 a 100 que el tipo de cambio real. Desde el 20 de octubre de 2026 entraba como componente de un compuesto con el tipo de cambio real; el cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz, y el número de la dimensión no cambia. Con el segundo trimestre de 2026 (145,14) puntúa 85,0.", adr: "0375" },
       { fecha: "2026-10-20", cambio: "Entra al índice como componente del cruce con el tipo de cambio real en la dimensión de competitividad externa.", adr: "0360" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, la esquina de 50 de la matriz ya no cae en el medio del amarillo sino en su borde con el naranja. No cambian las esquinas ni el puntaje.", adr: "0427" },
     ],
   },
 
@@ -4318,15 +4322,15 @@ export const FICHAS: Record<string, Ficha> = {
       "La solidez del índice se sostiene en los otros dos controles que se publican en cada edición: cuánta información distinta aporta cada componente (redundancia) y cuánto se mueve el resultado si cambian los pesos (sensibilidad). Por el mismo motivo el índice de gestión no figura en la matriz de validación cruzada.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice de gestión: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice de gestión: verde con 75 o más, amarillo de 50 a menos de 75, naranja de 25 a menos de 50 y rojo por debajo de 25. Lo que tienen en común los cuatro cinturones son los cortes de tensión (2,5, 5 y 7,5 sobre 10: cuatro tramos iguales); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (112,5, 100 y 87,5). La web lo muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador publica su ficha, su fórmula, su tensión equivalente y los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
-      { rango: "0 – 20", lectura: "Severamente apretado" },
-      { rango: "21 – 40", lectura: "Apretado" },
-      { rango: "41 – 60", lectura: "Moderadamente apretado" },
-      { rango: "61 – 80", lectura: "Moderadamente aflojado" },
-      { rango: "81 – 100", lectura: "Aflojado" },
+      { rango: "0 – 25", lectura: "Severamente apretado" },
+      { rango: "25,1 – 50", lectura: "Apretado" },
+      { rango: "50,1 – 75", lectura: "Moderadamente apretado" },
+      { rango: "75,1 – 87,5", lectura: "Moderadamente aflojado" },
+      { rango: "87,6 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
       "Mide ejecución de la agenda declarada, no la calidad ni el resultado de las reformas: un índice alto significa «se está haciendo lo prometido», no «lo prometido funciona».",
@@ -4354,6 +4358,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-26", cambio: "La libre elección de cobertura de salud pasa a medirse por hitos de implementación y no por el porcentaje de derivación directa: el puntaje sube de 55,2 a 100.", adr: "0371" },
       { fecha: "2026-10-27", cambio: "En la reforma laboral, la siniestralidad registrada en el sistema de riesgos del trabajo reemplaza a los juicios de ese sistema, con el mismo cuarto del peso: la dimensión sigue en 50 % Fondo de Asistencia Laboral, 25 % siniestralidad y 25 % juicios de la Justicia del Trabajo.", adr: "0385" },
       { fecha: "2026-09-22", cambio: "Sale la validación externa. El índice mide lo que el gobierno hace, así que no tiene contraste externo por definición; la sección deja de comparar contra el factor común del capital privado y el índice sale de la matriz de validación cruzada.", adr: "0336" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, el color del índice corta en 75, 50 y 25 (antes 60, 40 y 20), y las palabras de la tabla de lectura se alinean con esos cortes: 25, 50, 75 y 87,5 (antes 20, 40, 60 y 80). Esta ficha seguía mostrando los cortes viejos.", adr: "0427" },
     ],
   },
 
@@ -4413,7 +4418,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada compara además cada índice del informe contra todos los contrastes a la vez, para ver si correlaciona más con el propio que con los ajenos. No se cumple en todos los casos y la matriz lo declara.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice de impacto social: verde con 105 o más, amarillo de 95 a 105, naranja de 85 a 95 y rojo por debajo de 85. Un índice en 100 (sin cambios contra el arranque) queda en amarillo. Son los mismos cortes que en los otros tres cinturones, llevados a la escala base 100, y la web los muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice de impacto social: verde con 112,5 o más, amarillo de 100 a menos de 112,5, naranja de 87,5 a menos de 100 y rojo por debajo de 87,5. Un índice en 100 —sin cambios contra el arranque— queda justo en el borde: con 100 es amarillo y apenas por debajo ya es naranja. Por eso un índice puede leerse «sin cambios apreciables» en la tabla de abajo y estar en naranja: esas palabras van alrededor de 100 y los colores cortan en 100. Son los mismos cortes que en los otros tres cinturones, llevados a la escala base 100, y la web los muestra con el color y su palabra, sin número de tensión.",
       "Cada componente publica su ficha con la transformación exacta, su nivel actual y su peso.",
     ],
     interpretacion: [
@@ -4444,6 +4449,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "La carga del servicio de deuda de las familias entra como segunda pata de vulnerabilidad financiera, con 30% interno; la mora conserva 70%. El índice queda con diecinueve componentes." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0233" },
       { fecha: "2026-10-07", cambio: "Entra la confianza en el Gobierno de la Universidad Torcuato Di Tella a la dimensión de confianza y percepción, que estaba vacía desde que se suspendió el sentimiento digital en agosto. Recupera su 8,25% y el índice queda con dieciocho componentes rebaseados a 2023. Con los datos de septiembre el índice pasa de 92,5 a cerca de 93,6. La misma serie deja de usarse para validar el índice político.", adr: "0345" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, el color del índice corta en 112,5, 100 y 87,5 (antes 105, 95 y 85): un índice en 100 pasa a estar en el borde entre amarillo y naranja. Las palabras de la tabla de lectura no cambian. Esta ficha seguía mostrando los cortes viejos.", adr: "0427" },
     ],
   },
 
@@ -4493,15 +4499,15 @@ export const FICHAS: Record<string, Ficha> = {
       "Participa además de la matriz de validación cruzada que compara a la vez los tres índices del informe que tienen contraste externo —índice macroeconómico, índice de impacto social e índice político— contra sus tres anclas, publicada en la página del cinturón. El índice de gestión no participa: un índice de ejecución no tiene contraste externo.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice político: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Lo que tienen en común los cuatro cinturones son los cortes de tensión (4, 6 y 8 sobre 10); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (105, 95 y 85). La web muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice político: verde con 75 o más, amarillo de 50 a menos de 75, naranja de 25 a menos de 50 y rojo por debajo de 25. Lo que tienen en común los cuatro cinturones son los cortes de tensión (2,5, 5 y 7,5 sobre 10: cuatro tramos iguales); el índice de impacto social está en base 100 y expresa esos mismos niveles con sus propios cortes (112,5, 100 y 87,5). La web lo muestra con el color y su palabra, sin número de tensión.",
       "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
-      { rango: "0 – 20", lectura: "Severamente apretado" },
-      { rango: "21 – 40", lectura: "Apretado" },
-      { rango: "41 – 60", lectura: "Moderadamente apretado" },
-      { rango: "61 – 80", lectura: "Moderadamente aflojado" },
-      { rango: "81 – 100", lectura: "Aflojado" },
+      { rango: "0 – 25", lectura: "Severamente apretado" },
+      { rango: "25,1 – 50", lectura: "Apretado" },
+      { rango: "50,1 – 75", lectura: "Moderadamente apretado" },
+      { rango: "75,1 – 87,5", lectura: "Moderadamente aflojado" },
+      { rango: "87,6 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
       "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
@@ -4526,6 +4532,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
       { fecha: "2026-10-07", cambio: "Sale la dimensión de imagen y voto, cuyo único indicador era la ventaja electoral del Votómetro: el Votómetro deja el Monitor y pasa a ser un producto aparte. Su 7% se reparte entre las seis dimensiones restantes en proporción a su peso, así que el orden entre ellas no cambia. El índice queda en seis dimensiones y sube de 71,2 a 73,8 con los datos del 7 de octubre. La validación externa deja de usar la confianza en el Gobierno de Di Tella, que pasa a integrar el índice de impacto social, y el índice político se queda sin factor común: se sigue publicando su correlación con la incertidumbre de política.", adr: "0344,0345" },
       { fecha: "2026-10-27", cambio: "La dimensión de cohesión interna suma un indicador nuevo, los votos ajenos al aprobar leyes (cuántos votos de otros bloques hicieron falta, como % de las bancas de la cámara), y se reparte a partes iguales con la cohesión del bloque. El peso de la dimensión no cambia; la cohesión pasa de 16,1% a unos 8% del índice.", adr: "0376" },
+      { fecha: "2026-11-13", cambio: "Con el semáforo de cuatro tramos iguales, el color del índice corta en 75, 50 y 25 (antes 60, 40 y 20), y las palabras de la tabla de lectura se alinean con esos cortes: 25, 50, 75 y 87,5 (antes 20, 40, 60 y 80). Esta ficha seguía mostrando los cortes viejos.", adr: "0427" },
     ],
   },
 };

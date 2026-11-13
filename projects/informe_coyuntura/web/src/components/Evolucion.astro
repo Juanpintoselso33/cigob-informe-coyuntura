@@ -1,5 +1,5 @@
 ---
-import { informe, CINTURONES, indiceDe, num } from "../lib/datos.ts";
+import { informe, CINTURONES, indiceDe, num, tramosSemaforo, indiceDeTension } from "../lib/datos.ts";
 
 // "Cómo va la película" DE VERDAD (revisión estructural 2026-07-11): antes
 // esta sección repetía en grande 10 indicadores que ya están en las cards
@@ -20,22 +20,32 @@ const TITULO_TILE: Record<string, string> = {
   gestion: "Cinturón de la Gestión",
 };
 // Eje vertical en degradado de semáforo (oct-2026): verde arriba, rojo abajo,
-// con cada color centrado en su banda. Los cortes son los de CORTES_SEMAFORO
-// (parametrica.py) en la escala de cada índice; si cambian allá, cambiar acá.
+// con cada color centrado en la parte de su banda que entra en el eje. Los
+// cortes salen del snapshot (`semaforo_cortes`) llevados a la escala de cada
+// índice; hasta el 13-nov-2026 estaban escritos acá (60/40/20 y 105/95/85) y
+// siguieron pintando la escala vieja después de ADR-0427.
 // El de impacto social pasa a rango fijo 80-110 para que la franja de color
 // coincida con la altura real de la línea (con rango automático no coincidía).
+// Con los cortes de ADR-0427 el verde de ese índice empieza en 112,5, fuera del
+// eje: un tramo que no entra no se pinta.
 const RANGO_BASE100: [number, number] = [80, 110];
-function ejeSemaforo(rango: [number, number], cortes: [number, number, number]) {
+function ejeSemaforo(rango: [number, number], base100: boolean) {
   const [lo, hi] = rango;
   const pos = (v: number) => Math.max(0, Math.min(100, ((hi - v) / (hi - lo)) * 100));
-  const [c1, c2, c3] = cortes; // verde≥c1, amarillo c2-c1, naranja c3-c2, rojo<c3
   const p = (n: number) => `${n.toFixed(1)}%`;
-  const verde = pos((hi + c1) / 2), amarillo = pos((c1 + c2) / 2),
-        naranja = pos((c2 + c3) / 2), rojo = pos((c3 + lo) / 2);
+  const paradas: { color: string; en: number }[] = [];
+  for (const t of tramosSemaforo()) {
+    const alto = Math.min(hi, indiceDeTension(t.desde, base100));
+    const bajo = Math.max(lo, indiceDeTension(t.hasta, base100));
+    if (alto > bajo) paradas.push({ color: t.color, en: pos((alto + bajo) / 2) });
+  }
+  if (!paradas.length) return "transparent";
   // Los mismos cuatro colores que la aguja y los puntos (--verde, --amarillo,
   // --naranja, --rojo de dashboard.css): había dos paletas en el sitio.
-  return `linear-gradient(to bottom, var(--verde) 0%, var(--verde) ${p(verde)}, var(--amarillo) ${p(amarillo)}, `
-       + `var(--naranja) ${p(naranja)}, var(--rojo) ${p(rojo)}, var(--rojo) 100%)`;
+  const v = (c: string) => `var(--${c})`;
+  return `linear-gradient(to bottom, ${v(paradas[0].color)} 0%, `
+       + paradas.map(x => `${v(x.color)} ${p(x.en)}`).join(", ")
+       + `, ${v(paradas.at(-1)!.color)} 100%)`;
 }
 
 const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
@@ -79,7 +89,7 @@ const trayectorias = CINTURONES
           <div class="cg-evo-eje-wrap">
             <span class="cg-evo-eje" aria-hidden="true"
                   title="Verde arriba (mejor), rojo abajo (peor)"
-                  style={`background: ${t.idx.base100 ? ejeSemaforo(RANGO_BASE100, [105, 95, 85]) : ejeSemaforo([0, 100], [60, 40, 20])}`}></span>
+                  style={`background: ${t.idx.base100 ? ejeSemaforo(RANGO_BASE100, true) : ejeSemaforo([0, 100], false)}`}></span>
             <div class="cg-chart-mini" data-evo-key={`__indice_${t.meta.slug}`}
                  data-evo-rango={t.idx.base100 ? RANGO_BASE100.join(",") : "0,100"}
                  data-evo-slug={t.meta.slug} data-evo-unidad={t.idx.base100 ? "índice (100 = 4º trimestre de 2023)" : "puntos (0-100)"}

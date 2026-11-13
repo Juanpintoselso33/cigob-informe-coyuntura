@@ -20,7 +20,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from comun import (CADENA, CINTURONES, COLOR, ORDEN_COLOR, RAIZ, SALIDA_DIR,
-                   clave_indice, coma, labels, ruta_md)
+                   clave_indice, coma, indice_base100_de_tension, labels,
+                   puntaje_de_tension, ruta_md, tramos_de_tension, tramos_en_escala)
 
 # Sin argumento —o con `--todos`— se regeneran los cuatro. El pipeline nocturno
 # lo llama así: un solo comando, y la lista de cinturones vive en `comun.py` en
@@ -138,20 +139,17 @@ def cobertura(ikey):
 # no le puede calcular umbrales en la unidad nativa y publica `umbrales: null`.
 # En 17 componentes esa escala nace del rebase 4T-2023. `peso_tarifas` es la
 # excepción deliberada de ADR-0235: nace de límites internacionales de
-# asequibilidad y 100 NO es una base temporal. Los cortes 4/6/8 de tensión se
-# invierten a índice, y como el corte es techo inclusivo (`tension <= tope` en
+# asequibilidad y 100 NO es una base temporal. Los cortes de tensión del
+# snapshot (`semaforo_cortes`; 2,5/5/7,5 desde ADR-0427) se invierten a índice,
+# y como el corte es techo inclusivo (`tension <= tope` en
 # parametrica.color_de_tension), el borde queda del lado del color mejor:
-# índice 105 es verde, 95 amarillo, 85 naranja.
+# índice 112,5 es verde, 100 amarillo, 87,5 naranja.
 #
-# El texto de cada tramo va literal y no por la función `rango` genérica: ésta
-# rinde el tramo abierto de abajo como "≤ 85", que contradice al de arriba
-# ("85 – 95") justo en el borde que la tabla tiene que dejar sin ambigüedad.
-UMBRALES_ITVC = [
-    {"color": "verde", "texto": "105 o más"},
-    {"color": "amarillo", "texto": "de 95 a 105"},
-    {"color": "naranja", "texto": "de 85 a 95"},
-    {"color": "rojo", "texto": "menos de 85"},
-]
+# El texto de cada tramo no va por la función `rango` genérica: ésta rinde el
+# tramo abierto de abajo como "≤ 87,5", que contradice al de arriba
+# ("87,5 – 100") justo en el borde que la tabla tiene que dejar sin ambigüedad.
+UMBRALES_ITVC = [{"color": color, "texto": texto} for texto, color in
+                 tramos_en_escala(informe["semaforo_cortes"], indice_base100_de_tension)]
 # La tensión se acota a [0, 10], así que fuera de esta franja el semáforo deja
 # de moverse. 140 es además el techo de winsorización del índice: un componente
 # ahí está doblemente saturado.
@@ -217,8 +215,7 @@ if CORTES:
         # El ITVC usa una escala continua donde 100 = tensión 5, no un puntaje
         # 0-100. En 17 componentes surge del rebase 4T-2023; tarifas conserva
         # la misma escala, pero la construye con anclas de asequibilidad.
-        escala = [("105 o más", "verde"), ("de 95 a 105", "amarillo"),
-                  ("de 85 a 95", "naranja"), ("menos de 85", "rojo")]
+        escala = tramos_en_escala(CORTES, indice_base100_de_tension)
         titulo_col = f"Índice del {SIGLA} y de sus dimensiones (100 = tensión 5)"
         nota = ("El ITVC no es un puntaje de 0 a 100: usa una escala continua donde "
                 "100 equivale a tensión 5. En 17 componentes, 100 es el promedio del "
@@ -226,8 +223,7 @@ if CORTES:
                 "100 surge de referencias internacionales de asequibilidad. La tensión "
                 "sale de 5 − (índice − 100) × 0,2 en ambos casos.")
     else:
-        escala = [("60 o más", "verde"), ("de 40 a 60", "amarillo"),
-                  ("de 20 a 40", "naranja"), ("menos de 20", "rojo")]
+        escala = tramos_en_escala(CORTES, puntaje_de_tension)
         # Sin índice —espíritu de época— la columna del puntaje no describe
         # nada de este cinturón: la escala 0-100 es la de los índices, y acá
         # no hay ninguno. Se deja igual, dicho como referencia general.
@@ -245,7 +241,7 @@ if CORTES:
     w("")
     w(f"| Tensión | {titulo_col} | Color |")
     w("|---|---|---|")
-    filas_t = ["hasta 4", "más de 4 y hasta 6", "más de 6 y hasta 8", "más de 8"]
+    filas_t = tramos_de_tension(CORTES)
     for (rango_valor, color), t in zip(escala, filas_t):
         w(f"| {t} | {rango_valor} | {COLOR[color]} |")
     w("")

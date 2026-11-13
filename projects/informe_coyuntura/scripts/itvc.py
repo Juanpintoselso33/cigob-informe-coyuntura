@@ -945,7 +945,8 @@ def mediana_de_serie(series, skey):
 # FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS comprime la distancia a 100 a la
 # mitad ANTES de que la pendiente fija la lea: reversible en una sola
 # constante, mismo espíritu que `invertido`. Con 0,5 el mismo dato de hoy da
-# índice 86,0 (tensión 7,8, naranja: ya no saturado) y el ratio sólo vuelve a
+# índice 86,0 (tensión 7,8: naranja cuando se escribió, rojo con los cortes de
+# ADR-0427; en cualquier caso ya no saturado) y el ratio sólo vuelve a
 # saturar si LLEGA A DUPLICAR su base (+100%), no con un +25%.
 FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS = 0.5
 

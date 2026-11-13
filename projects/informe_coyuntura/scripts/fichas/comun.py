@@ -57,6 +57,54 @@ def coma(x, dec=2, recortar=True):
     return s.replace("-", "−")  # menos tipográfico, no guión
 
 
+# ── Cortes del semáforo, en las tres escalas que muestran las fichas ─────────
+# Salen de `semaforo_cortes` del snapshot (parametrica.CORTES_SEMAFORO), no se
+# escriben acá: hasta el 13-nov-2026 las fichas tenían 4/6/8, 60/40/20 y
+# 105/95/85 a mano y siguieron diciéndolos después de ADR-0427 (2,5/5/7,5).
+# Las fórmulas son las publicadas: puntaje = 100 − 10 × tensión; índice
+# base 100 = 100 − (tensión − 5) × 5.
+
+def topes_de_tension(cortes: list) -> list:
+    """Los tres cortes finitos de `semaforo_cortes`, de menor a mayor tensión."""
+    return [float(c["hasta"]) for c in cortes if c.get("hasta") is not None]
+
+
+def puntaje_de_tension(t: float) -> float:
+    return 100.0 - 10.0 * float(t)
+
+
+def indice_base100_de_tension(t: float) -> float:
+    return 100.0 - (float(t) - 5.0) * 5.0
+
+
+def tramos_en_escala(cortes: list, a_escala) -> list:
+    """[(texto, color)] de mejor a peor en una escala donde más es mejor:
+    «75 o más», «de 50 a 75», «de 25 a 50», «menos de 25». El borde va del
+    lado del color mejor (`tension <= tope`): 75 es verde, 50 amarillo."""
+    colores = [c["color"] for c in cortes]
+    v = [a_escala(t) for t in topes_de_tension(cortes)]
+    n = lambda x: coma(x, 1)
+    out = [(f"{n(v[0])} o más", colores[0])]
+    out += [(f"de {n(v[i + 1])} a {n(v[i])}", colores[i + 1]) for i in range(len(v) - 1)]
+    out.append((f"menos de {n(v[-1])}", colores[-1]))
+    return out
+
+
+def umbrales_base100(cortes: list) -> tuple:
+    """((112,5, "verde"), (100, "amarillo"), (87,5, "naranja")): desde qué
+    índice base 100 rige cada color; debajo del último, el color siguiente."""
+    return tuple((indice_base100_de_tension(t), c["color"])
+                 for t, c in zip(topes_de_tension(cortes), cortes))
+
+
+def tramos_de_tension(cortes: list) -> list:
+    """«hasta 2,5», «más de 2,5 y hasta 5», …, «más de 7,5»."""
+    t = [coma(x, 1) for x in topes_de_tension(cortes)]
+    return ([f"hasta {t[0]}"]
+            + [f"más de {t[i]} y hasta {t[i + 1]}" for i in range(len(t) - 1)]
+            + [f"más de {t[-1]}"])
+
+
 def labels(datos_ts: str | None = None) -> dict:
     """Los rótulos legibles que usa la web, del mapa LABELS de `datos.ts`."""
     if datos_ts is None:

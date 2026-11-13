@@ -234,7 +234,8 @@ export type ColorSemaforo = "verde" | "amarillo" | "naranja" | "rojo";
 // solo se lee: si el cliente lo recalculara, habría dos definiciones del corte
 // y se desincronizarían sin que falle nada. Hasta agosto de 2026 esta función
 // calculaba 3 colores en el cliente, con una vara distinta para el ITCIS
-// base-100 (verde a tensión 6) que para los índices 0-100 (verde a tensión 4).
+// base-100 (verde a tensión 6) que para los índices 0-100 (verde a tensión 4,
+// los cortes de entonces; hoy son 2,5 / 5 / 7,5, ADR-0427).
 // El contrato son 4 colores, no 5: no hay "sin dato" acá adentro. Si falta el
 // bloque `semaforo` esta función devuelve "amarillo" igual, PERO eso no debe
 // leerse como que corresponde pintar amarillo — el llamador que le importa la
@@ -273,7 +274,8 @@ export function semaforoAriaLabel(
 //
 // Derivarlo NO contradice la regla de "el color lo calcula el pipeline": los
 // CORTES siguen siendo los del snapshot y esta función solo los aplica. Lo que
-// estaría mal es escribir 4/6/8 en el front, y eso es justamente lo que esto
+// estaría mal es escribir los cortes en el front (eran 4/6/8 y con ADR-0427
+// pasaron a 2,5/5/7,5 sin tocar una línea acá), y eso es justamente lo que esto
 // evita. Si `semaforo_cortes` no viene (snapshot viejo), devuelve null y el
 // llamador decide no pintar, en vez de inventar un color.
 export const TENSION_MAX = 10;
@@ -328,8 +330,9 @@ export function tensionDeDimension(puntaje: number, base100: boolean): number {
 export function indiceDeTension(tension: number, base100: boolean): number {
   return base100 ? 100 - (tension - 5) * 5 : 100 - tension * 10;
 }
-/** "verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por
-    debajo de 20" — en la escala del índice del cinturón. */
+/** "verde con 75 o más, amarillo de 50 a menos de 75, naranja de 25 a menos
+    de 50 y rojo por debajo de 25" — en la escala del índice del cinturón,
+    con los cortes del snapshot (en base 100: 112,5 / 100 / 87,5). */
 export function coloresEnIndice(base100: boolean): string {
   const tramos = tramosSemaforo();
   if (!tramos.length) return "";

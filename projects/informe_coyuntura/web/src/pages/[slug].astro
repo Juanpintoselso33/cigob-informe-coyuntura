@@ -9,7 +9,7 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
-  tramosSemaforo, LECTURA_SEMAFORO, colorPorTension, peorDimension,
+  LECTURA_SEMAFORO, colorPorTension, peorDimension,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -76,16 +76,18 @@ const INTRO_CINTURON: Record<string, string> = {
 // dispara "1 tensionado es manejable, 2 o más no", y el lector no tenía cómo
 // saber de qué lado caía este cinturón.
 // Acá hubo un chip que decía "Cuenta para la alerta sistémica: Sí/No" a partir
-// de `estado`, y era FALSO. Sobre la misma tensión 0-10 hay tres particiones
-// distintas y ninguna coincide con las otras:
+// de `estado`, y era FALSO. En agosto de 2026, sobre la misma tensión 0-10,
+// había tres particiones distintas y ninguna coincidía con las otras:
 //
 //   semáforo (color)      verde ≤4 · amarillo ≤6 · naranja ≤8 · rojo >8
 //   estado                estable ≤3 · en_tension ≤6 · tensionado >6
 //   alerta multicinturón  cuenta sólo los de score >= 7
 //
-// Entre 6 y 7 hay una zona muerta: un cinturón es "tensionado" y NO cuenta para
-// la alerta. Con este snapshot le pasa a impacto social, en 6,9. El chip
-// afirmaba que sí contaba.
+// Entre 6 y 7 había una zona muerta: un cinturón era "tensionado" y NO contaba
+// para la alerta (le pasaba a impacto social, en 6,9). El chip afirmaba que sí
+// contaba. Hoy las tres van atadas (ADR-0195, ADR-0333) y, desde ADR-0427,
+// cortan en 2,5 / 5 / 7,5: estable hasta 2,5, tensionado (y cuenta para la
+// alerta) por encima de 5.
 //
 // No se puede arreglar desde el front sin escribir el umbral 7 a mano, que es
 // justo lo que este rediseño no hace, así que la afirmación se retira: la
@@ -128,12 +130,12 @@ const pesosDims = dimsDelIndice.map((d, i, a) =>
 const COMO_SE_CALCULA: Record<string, string> = {
   macro: `Cada indicador se convierte en un puntaje de 0 a 100 según referencias definidas en su ficha. Los puntajes se combinan dentro de cada dimensión y luego se obtiene un promedio ponderado para el índice macroeconómico. Cuanto más alto el índice, menor la tensión. Las ${cantDims} dimensiones y sus pesos son: ${pesosDims}.`,
   politica: `Cada indicador se transforma en un puntaje de 0 a 100 según referencias previamente definidas. Los resultados se agrupan en ${cantDims} dimensiones: ${pesosDims}. El promedio ponderado da el índice político. Los puntajes más altos indican menor tensión; los colores resumen cuatro rangos comunes del Monitor.`,
-  vida_cotidiana: `Cada indicador se lleva a una escala común en la que 100 es la referencia. La mayoría se compara con fines de 2023; la pobreza, la mora de las familias y la carga del servicio de la deuda, con niveles fijos de referencia (en 2023 la pobreza era de crisis y casi no había crédito); los servicios públicos, con umbrales internacionales por rubro. Cada ficha detalla su referencia. Se combinan los indicadores en ${cantDims} dimensiones y luego se ponderan: ${pesosDims}. Esta escala no va de 0 a 100: el verde comienza en 105; el amarillo va de 95 a menos de 105; el naranja, de 85 a menos de 95; y el rojo, por debajo de 85.`,
+  vida_cotidiana: `Cada indicador se lleva a una escala común en la que 100 es la referencia. La mayoría se compara con fines de 2023; la pobreza, la mora de las familias y la carga del servicio de la deuda, con niveles fijos de referencia (en 2023 la pobreza era de crisis y casi no había crédito); los servicios públicos, con umbrales internacionales por rubro. Cada ficha detalla su referencia. Se combinan los indicadores en ${cantDims} dimensiones y luego se ponderan: ${pesosDims}. Esta escala no va de 0 a 100: ${coloresEnIndice(true)}. Un índice de 100, igual que la referencia, queda justo en el borde: con 100 es amarillo y apenas por debajo ya es naranja.`,
   gestion: `Cada indicador se puntúa de 0 a 100 mediante umbrales o hitos definidos en su ficha. Algunos registran etapas de implementación y otras variaciones cuantitativas vinculadas con los compromisos. Los puntajes se combinan en ${cantDims} dimensiones: ${pesosDims}. Su promedio ponderado produce el índice de gestión. El resultado mide sólo los aspectos incluidos y debe leerse junto con los límites de cada indicador.`,
 };
 // La lectura del color del cinturón, en texto, junto al valor del índice: el
 // título dice «tensión» y el número va al revés (100 = mejor), así que la
-// palabra del tramo es la que evita leer 60/100 como «mucha tensión».
+// palabra del tramo es la que evita leer 75/100 como «mucha tensión».
 const colorCinturon = colorPorTension(c.score);
 const lecturaCinturon = colorCinturon ? LECTURA_SEMAFORO[colorCinturon].toLowerCase() : null;
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
@@ -218,12 +220,11 @@ const domDelta = rob?.dominante && indice
   ? Math.round((rob.dominante.indice_sin - indice.data.valor) * 10) / 10 : null;
 // Color del cinturón en cada punta del rango del 90%: si no coinciden, la
 // lectura SÍ depende de los pesos y hay que decirlo (pasó con impacto social,
-// 91,7–95,4 cruza el corte de 95).
-const colorDeValor = (v: number) => {
-  const t = tensionDeDimension(v, !!indice?.base100);
-  return tramosSemaforo().find(tr => t >= tr.desde && t < tr.hasta)?.color
-    ?? tramosSemaforo().at(-1)?.color;
-};
+// 91,7–95,4 cruzaba el corte de 95 de la escala anterior a ADR-0427).
+// Con `colorPorTension`, el borde va con el color mejor, como en el pipeline:
+// antes se buscaba `desde <= t < hasta` y un índice de 100 justo (tensión 5)
+// salía naranja acá y amarillo en el resto del sitio.
+const colorDeValor = (v: number) => colorPorTension(tensionDeDimension(v, !!indice?.base100));
 const robColores = rob ? [...new Set([colorDeValor(rob.p95), colorDeValor(rob.p05)])] : [];
 const robLecturas = robColores.map(c => (c && LECTURA_SEMAFORO[c as keyof typeof LECTURA_SEMAFORO])?.toLowerCase() ?? c);
 const robEstable = robColores.length === 1;

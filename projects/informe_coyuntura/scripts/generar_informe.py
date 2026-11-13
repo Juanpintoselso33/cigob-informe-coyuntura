@@ -291,6 +291,17 @@ def calcular_score_global(cinturones_data: dict) -> float:
     return round(score_sum / peso_total, 1) if peso_total else 5.0
 
 
+def marcar_alerta_multicinturon(cinturones_data: dict) -> None:
+    """Marca `alerta: multicinturon` en los cinturones que dispararon la
+    alerta, con el mismo criterio que la cuenta (`es_tensionado`). Acá quedaba
+    el `>= EN_TENSION_MAX + 1` que ADR-0195 descartó para `detectar_barbarismo`:
+    con ADR-0427 dejaba sin marca a un cinturón entre 5 y 6 que sí contaba
+    para la alerta (antes, entre 6 y 7)."""
+    for data in cinturones_data.values():
+        if es_tensionado(data["score"]):
+            data["alerta"] = "multicinturon"
+
+
 def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, str | None, bool]:
     """
     Retorna (barbarismo_activo, cinturon_dominante, alerta_multicinturon).
@@ -298,7 +309,8 @@ def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, str | None, 
     barbarismo_activo = cinturón con score más alto que supera umbral de tensión.
     alerta_multicinturon = True si 2+ cinturones están "tensionados", con el
     MISMO criterio que `_estado` — no uno propio: cuando acá decía
-    `score >= EN_TENSION_MAX + 1` había una zona muerta entre 6 y 7 (ADR-0195).
+    `score >= EN_TENSION_MAX + 1` había una zona muerta entre 6 y 7 (ADR-0195;
+    hoy sería entre 5 y 6, con los cortes de ADR-0427).
 
     `cinturon_dominante` es la CLAVE del cinturón que produjo el barbarismo, y
     se publica junto a él porque el nombre del barbarismo no alcanza para
@@ -423,9 +435,7 @@ def construir_informe(caches: dict) -> dict:
         detectar_barbarismo(cinturones_data)
 
     if alerta_multicinturon:
-        for nombre in cinturones_data:
-            if cinturones_data[nombre]["score"] >= UMBRALES["EN_TENSION_MAX"] + 1:
-                cinturones_data[nombre]["alerta"] = "multicinturon"
+        marcar_alerta_multicinturon(cinturones_data)
 
     score_global = calcular_score_global(cinturones_data)
 

@@ -2554,13 +2554,12 @@ def _lectura_tension(tension) -> str:
     return f"{color} ({_LECTURA_COLOR[color]})"
 
 
-# Bordes de color de la escala base-100 del índice de impacto social, los
-# mismos de parametrica.color_de_indice_base100 (verde desde 105; rojo, debajo
-# de 85) y de la leyenda del cinturón.
-_TRAMOS_BASE100 = [{"color": "rojo", "desde": None, "hasta": 85},
-                   {"color": "naranja", "desde": 85, "hasta": 95},
-                   {"color": "amarillo", "desde": 95, "hasta": 105},
-                   {"color": "verde", "desde": 105, "hasta": None}]
+# Bordes de color de la escala base-100 del índice de impacto social: salen
+# de los cortes del semáforo (parametrica.TRAMOS_BASE100), los mismos de
+# color_de_indice_base100 y de la leyenda del cinturón. Hasta el 13-nov-2026
+# estaban escritos a mano (85/95/105) y con ADR-0427 la frase del «por qué»
+# de cada componente citaba bordes que ya no eran los del color publicado.
+_TRAMOS_BASE100 = parametrica.TRAMOS_BASE100
 
 
 def _por_que_indice_base100(color, indice):
@@ -2570,7 +2569,7 @@ def _por_que_indice_base100(color, indice):
     13 de las 19 tarjetas del cinturón. La frase ata el índice del componente
     al corte de color más cercano, con la misma aritmética que el color."""
     # Sin redondear antes de comparar: 104,99 redondeado a 105,0 se leía
-    # «105,0 está en Amarillo» (Codex, 7-nov-2026).
+    # «105,0 está en Amarillo» con el verde en 105 (Codex, 7-nov-2026).
     indice = float(indice)
     frase = _por_que(color, round(indice, 2),
                      "en la escala del cinturón (100 = referencia)", _TRAMOS_BASE100)
@@ -2879,7 +2878,7 @@ def _semaforos(informe):
 
     # Cortes de CORTES_SEMAFORO expuestos en el snapshot (Tanda A, revisión de
     # coherencia de la UI, ago-2026): la leyenda web arma su texto ("tensión
-    # ≤ 4", "tensión ≤ 6"...) leyendo esto, en vez de tener los números
+    # ≤ 2,5", "tensión ≤ 5"...) leyendo esto, en vez de tener los números
     # escritos a mano y desincronizables. `hasta=None` es el equivalente
     # serializable de parametrica.INF (rojo no tiene techo) — JSON no
     # tiene infinito.

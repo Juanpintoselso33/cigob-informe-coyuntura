@@ -21,7 +21,7 @@ from pathlib import Path
 from docx import Document
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comun import COLOR, RAIZ, SALIDA_DIR as AQUI, coma, labels
+from comun import COLOR, RAIZ, SALIDA_DIR as AQUI, coma, labels, umbrales_base100
 
 informe = json.loads((RAIZ / "web/src/data/informe.json").read_text(encoding="utf-8"))
 LABELS = labels()
@@ -33,7 +33,9 @@ DOCS = {
 }
 # Los mismos cortes que publica el informe, para el chequeo de coherencia del
 # ITVC: la ficha declara la escala base-100 y tiene que caer en su propio tramo.
-TRAMOS_ITVC = ((105.0, "verde"), (95.0, "amarillo"), (85.0, "naranja"))
+# Salen de `semaforo_cortes` (hoy 112,5 / 100 / 87,5): escritos a mano quedaron
+# en 105 / 95 / 85 después de ADR-0427.
+TRAMOS_ITVC = umbrales_base100(informe["semaforo_cortes"])
 
 
 def norm(s):

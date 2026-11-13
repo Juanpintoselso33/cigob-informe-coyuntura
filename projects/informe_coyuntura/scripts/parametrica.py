@@ -126,19 +126,19 @@ def tension_de_indice(indice: float) -> float:
 # `config.UMBRALES`**, los mismos que `estado_de_score` usa para decir "estable /
 # en tensión / tensionado", y no se escriben acá.
 #
-# Los cortes NO cambiaron: siguen siendo 4/6/8, los bordes 60/40/20 de
-# BANDAS_INTERPRETACION que eligió ADR-0181. Lo que cambió es que ahora se
-# derivan de `UMBRALES` en vez de estar escritos dos veces. Hasta el 20-sep-2026
+# Hasta ADR-0427 los cortes eran 4/6/8 (puntajes 60/40/20), los bordes de
+# BANDAS_INTERPRETACION que eligió ADR-0181; desde el 20-sep-2026 se derivan de
+# `UMBRALES` en vez de estar escritos dos veces. Hasta el 20-sep-2026
 # el estado cortaba en 3 y el color en 4, así que todo lo que cayera entre 3,0 y
 # 4,0 se publicaba con dos etiquetas opuestas —macro, en 3,69, salía «Sin tensión
 # relevante» en el titular y «en tensión» como estado—. ADR-0333 movió el umbral
 # del estado al borde publicado y ató las dos tablas para que no vuelvan a
-# separarse. El tercer corte (8,0) subdivide "tensionado" y no compite con
-# ningún estado.
+# separarse. El tercer corte (hoy 7,5) subdivide "tensionado" y no compite
+# con ningún estado.
 #
 # El color se calcula SIEMPRE sobre la tensión sin redondear. `aporte_score` en
 # el snapshot está redondeado a un decimal y usarlo acá rompe el borde: puntaje
-# 69,9 da tensión 3,01, que redondeada es 3,0 y saldría verde.
+# 74,9 da tensión 2,51, que redondeada es 2,5 y saldría verde.
 #
 # 12-nov-2026 (ADR-0427): cuatro tramos iguales, 2,5 / 5 / 7,5. El tercer
 # corte pasa de 8,0 a 7,5; los dos primeros siguen derivados de UMBRALES.
@@ -154,6 +154,31 @@ CORTES_SEMAFORO = (("verde", float(UMBRALES["ESTABLE_MAX"])),
 # cambiaron de color aunque el ADR decía que no.
 TENSIONES_DE_CORTE = tuple(tope for _, tope in CORTES_SEMAFORO[:3])
 PUNTAJES_DE_CORTE = tuple(100.0 - 10.0 * t for t in TENSIONES_DE_CORTE)
+
+
+def indice_base100_de_tension(tension: float) -> float:
+    """Inversa de la fórmula de tensión del índice base-100 (ITVC),
+    5 − (índice − 100) × 0,2: en qué índice cae una tensión dada."""
+    return 100.0 - (float(tension) - 5.0) * 5.0
+
+
+# Los mismos tres cortes en la escala base-100 del índice de impacto social
+# (hoy 112,5 / 100 / 87,5). Todo texto o tabla que diga dónde empieza cada
+# color de ese índice sale de acá: hasta el 13-nov-2026 la tabla de colores
+# publicada en cada componente seguía escrita a mano con los bordes viejos
+# (105 / 95 / 85).
+INDICES_BASE100_DE_CORTE = tuple(indice_base100_de_tension(t) for t in TENSIONES_DE_CORTE)
+
+# Los tramos de color del índice base-100 en el formato de `umbrales` del
+# snapshot ({color, desde, hasta}, None en los extremos abiertos), de peor a
+# mejor. El borde va con el color mejor (`tension <= tope`): un índice igual a
+# `desde` ya es de ese tramo.
+TRAMOS_BASE100 = [
+    {"color": CORTES_SEMAFORO[3 - i][0],
+     "desde": None if i == 0 else INDICES_BASE100_DE_CORTE[3 - i],
+     "hasta": None if i == 3 else INDICES_BASE100_DE_CORTE[2 - i]}
+    for i in range(4)
+]
 
 
 def color_de_tension(tension: float) -> str:

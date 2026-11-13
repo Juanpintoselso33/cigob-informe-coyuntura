@@ -310,7 +310,7 @@ const dimsJson = JSON.stringify(dims);
   }
 
   // `color`: el semaforo.color del pipeline, que manda sobre el de la tensión
-  // redondeada (59,9 → tensión 4,0 se pintaba verde; ver NivelTension.astro).
+  // redondeada (74,9 → tensión 2,5 se pintaría verde; ver NivelTension.astro).
   function nivelHTML(tension, color) {
     if (typeof tension !== "number" || !isFinite(tension) || !NIVEL.tramos.length) return "";
     const ANCHO = 280, ALTO = 40, Y = ALTO / 2, G = 12, GA = 18, MAX = NIVEL.max;

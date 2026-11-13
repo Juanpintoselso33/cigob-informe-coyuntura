@@ -34,7 +34,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   idc: {
     que: "Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. Cero es un mes normal; positivo, más margen; negativo, menos. Combina tres cosas: lo que cobran en términos reales los que depositan, cuánto crecen los depósitos privados y cuánto de esos depósitos queda sin prestar.",
-    aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).",
+    aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0,45 es verde, de −0,3 a 0,45 amarillo, de −0,85 a −0,3 naranja y por debajo de −0,85 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).",
     frecuencia: "Mensual", tipo: "Índice (σ)",
   },
   badlar: {
@@ -320,7 +320,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   peso_tarifas: {
     que: "Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).",
-    aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se miden por separado contra referencias internacionales de 10% y 5% del ingreso: desde ahí empieza a contar la tensión, pero no es el borde del verde (el transporte sigue en verde hasta 7% y agua+energía hasta 12%). Entra la mayor tensión de las dos, para que un rubro caro no quede oculto por otro barato.",
+    aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa dentro de la dimensión de precios. Agua+energía y transporte se miden por separado contra referencias internacionales de 10% y 5% del ingreso: desde ahí empieza a contar la tensión, pero no es el borde del verde (el transporte sigue en verde hasta 6,25% y agua+energía hasta 11,25%). Entra la mayor tensión de las dos, para que un rubro caro no quede oculto por otro barato.",
     frecuencia: "Mensual", tipo: "Canasta de servicios / salario · ancla internacional",
   },
   pobreza_nowcast: {
