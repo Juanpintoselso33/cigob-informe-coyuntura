@@ -352,3 +352,26 @@ def test_norma_ya_desafiada_antes_no_es_provisoria(monkeypatch, entorno, registr
     monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
     r = politica.fetch_desafios_legislativos_sin_actas()
     assert r["provisorio_n"] == 0 and r["provisorio_normas"] == []
+
+
+def test_sesion_que_pasa_la_medianoche_ancla_el_corte(monkeypatch, entorno):
+    """La del 21-oct-2026 cerró con actas del 22: el índice la lista el 21 y el
+    corte cae el 22. La sesión de la víspera tiene que valer como ancla."""
+    _hoy(monkeypatch, date(2026, 11, 13))
+    monkeypatch.setattr(politica, "_corte_actas_diputados", lambda r: "2026-10-22")
+    monkeypatch.setattr(politica, "_sesiones_diputados_registros", lambda: [
+        {"id": "144-9", "fecha": "2026-10-21", "en_minoria": False, "titulo": "9° Reunión",
+         "url": "https://www.hcdn.gob.ar/_q/d85f9d2e50a5b201.html"}])
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html",
+                        lambda h: "TEMARIO\n1-D-2026 DE LEY. OTRA COSA.")
+    assert politica.fetch_desafios_legislativos_sin_actas() is not None
+
+
+def test_dos_dias_antes_del_corte_no_ancla(monkeypatch, entorno, capsys):
+    _hoy(monkeypatch, date(2026, 11, 13))
+    monkeypatch.setattr(politica, "_corte_actas_diputados", lambda r: "2026-10-22")
+    monkeypatch.setattr(politica, "_sesiones_diputados_registros", lambda: [
+        {"id": "144-8", "fecha": "2026-10-20", "en_minoria": False, "titulo": "8° Reunión",
+         "url": "https://www.hcdn.gob.ar/_q/a73135c927afbe3a.html"}])
+    assert politica.fetch_desafios_legislativos_sin_actas() is None
+    assert "tramo sin actas no acreditado" in capsys.readouterr().out

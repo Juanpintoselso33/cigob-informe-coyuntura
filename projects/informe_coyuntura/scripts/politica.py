@@ -7683,7 +7683,13 @@ def _desafios_provisorios_diputados(registro: dict, hoy: date | None = None
     if corte == _BLOQUEO_ERA_DESDE:
         ancla = any(r["fecha"] <= corte for r in indice)
     else:
-        ancla = any(r["fecha"] == corte for r in indice)
+        # Una sesión que pasa la medianoche fecha sus últimas actas al día
+        # siguiente: la del 21-oct-2026 cerró con actas del 22 y el índice la
+        # lista el 21, así que el ancla exacta no aparecía nunca y el tramo
+        # sin actas no corría (7 al 13-nov-2026). Vale la sesión del corte o
+        # la de la víspera.
+        vispera = (date.fromisoformat(corte) - timedelta(days=1)).isoformat()
+        ancla = any(r["fecha"] in (corte, vispera) for r in indice)
     if not ancla:
         raise ValueError(f"el índice de sesiones no incluye la sesión del corte ({corte}): "
                          f"no cubre el tramo sin actas")
