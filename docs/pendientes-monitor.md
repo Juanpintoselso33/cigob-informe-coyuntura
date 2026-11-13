@@ -95,6 +95,12 @@ tocar nada.
   reservas; eso responde el punto 7.
   - Reservas brutas menos depósitos en dólares menos préstamos en dólares (los encajes de
     los depósitos en dólares están dentro de las brutas). Ver de qué serie del BCRA sale.
+  **Hecho el 13-nov (ADR-0428):** tres cards en estabilidad monetaria, 1,81 % c/u:
+  reservas brutas (API BCRA), reservas netas estrictas como las consultoras (escala
+  recalibrada con 60 planillas SDDS 2017-2023 recuperadas del Internet Archive) y meta del
+  FMI (+8.000 en 2026, prorrateada; junio con el resultado oficial). **Para Luis:**
+  confirmar si quería la card de reservas brutas aparte (su texto dice «existe indicador»)
+  y el reparto en tercios del peso.
   - Cumplimiento de la meta de acumulación de reservas acordada con el FMI (compras de
     reservas contra la meta del programa). Ver de dónde salen la meta y el dato (revisiones
     del FMI, BCRA) y cada cuánto se actualizan.
