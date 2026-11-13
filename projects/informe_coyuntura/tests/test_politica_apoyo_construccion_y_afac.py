@@ -116,7 +116,7 @@ def test_cada_caso_tiene_las_dos_lecturas_y_ningun_agente_adjudica(cam):
 
 # ── la concordancia ────────────────────────────────────────────────────────
 
-@pytest.mark.parametrize("cam,kp,kd", [("CAMARCO", 0.900, 0.853), ("BANCOS", 0.943, 0.918), ("AFAC", 0.864, 0.829)])
+@pytest.mark.parametrize("cam,kp,kd", [("CAMARCO", 0.900, 0.855), ("BANCOS", 0.943, 0.918), ("AFAC", 0.864, 0.829)])
 def test_el_kappa_se_recalcula_del_registro(cam, kp, kd):
     reg = REGISTROS[cam]
     casos = reg["casos"]

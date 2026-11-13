@@ -128,7 +128,11 @@ tocar nada.
   niveles fijos. Quedar igual que al inicio del mandato es tensión moderada a propósito, y la
   página lo explica».
   **13-nov (Juan): se usa la escala nueva de Luis (ADR-0427) y se adaptan todos los textos
-  desactualizados** (en curso: tablas de color del índice social y fichas tenían 105/95/85 a mano).
+  desactualizados** — hecho en rama worktree-agent-a25493f8cbab1be48 (608674f8), sin publicar.
+  Corrigió 4 tablas/colores que salían mal publicados. Quedan para mostrar a Juan al cierre:
+  matriz TCR×términos (esquina 50 en el borde), insistencias/rechazos con 2 eventos pasan a
+  naranja, capacidad prestable con 0 pasa a amarillo, palabras de lectura del índice social vs
+  colores, eje de la evolución del índice social (80-110) sin verde.
 - **(11) Rojos en un cinturón estable. A solucionar (texto).** Verificado: político 3,2 verde
   (ITCP 68,0) con `ratio_dnu` (9,7 % del peso) y `transferencias_no_automaticas` (8,2 %) en
   rojo, ambos en 10/100; el resto (82 %) promedia ~80, sin los rojos el ITCP rondaría 80. Tres
@@ -148,6 +152,9 @@ tocar nada.
   (`dashboard.css` `.is-critica`). Reponer el aviso en la card del cinturón y en la de la
   dimensión. Para Luis: «la regla existe: una dimensión crítica no cambia el color del
   cinturón, pero se tiene que avisar en la tarjeta. Ese aviso se había perdido y se repone».
+  **Decidido 13-nov (Juan): se repone** en la card del cinturón y en la de la dimensión, y la
+  dimensión es crítica cuando está en rojo según la escala de Luis (ADR-0427: < 87,5 en el
+  índice social, < 25 en los 0-100). Se hace en la tanda final, sin corrida en el medio.
 - **(13) El índice social no se corrobora afuera. Ya decidido.** La validación externa no se
   muestra en la página desde el 10-oct (ADR-0351, Juan); sigue sólo en el snapshot como control
   interno, y de ahí la leyó el conector de Luis. Para Luis: «la validación externa no se publica
@@ -165,6 +172,11 @@ tocar nada.
   cinturón las cards van `compacto` (`IndicadorTile.astro`, rediseño de ago-2026) y no muestran
   la fecha: sólo el modal. Arreglo: el mes del dato en chico junto al valor en la card compacta.
   Mencionar las fechas en la lectura del mes: sugerencia para Luis (el texto es suyo).
+  **Decidido 13-nov (Juan): NO se agrega la fecha a la card compacta**; la fecha está en el
+  modal. Verificado que todos son el último dato publicado por su fuente (SNIC 2025 salió el
+  1-jun-2026; DP anual 2025; IEF 1S-2026; EPH y términos del intercambio 2T-2026). A arreglar
+  en la tanda final: el detector de años nuevos de piquetes apunta a
+  diagnosticopolitico.com.ar/monitoreos-politicos, que da 404.
   **Reunión con Luis del 13-nov:** homicidios, robos y protocolo antipiquetes llegan a
   dic-2025, casi un año atrás. Buscar si hay fuentes más actualizadas para los tres
   (provinciales, mensuales, otro organismo) antes de quedarse con las anuales.
@@ -181,6 +193,10 @@ tocar nada.
   comunicados sin codificar, y las muestras son chicas (comercio 4, construcción 5).
   Además, explicar bien la metodología en la página (qué se cuenta, cómo se codifica un
   comunicado como apoyo o crítica, la ventana de 12 meses y cómo se llega al número).
+  **Decidido 13-nov (Juan):** (1) codificar los 26 pendientes ya (en curso, dos codificadores
+  ciegos + adjudicación); (2) muestras chicas: se aceptan como están; (3) en el detalle va la
+  METODOLOGÍA (cómo se mide), no conteos; decir que los comunicados se revisan a mano, sin
+  mencionar IA.
 - **Reunión con Luis del 13-nov — footer:** el enlace «Marco metodológico» pasa a llamarse
   «Marco conceptual».
 - **Reunión con Luis del 13-nov — pestaña «Equipo»:** agregar una pestaña nueva con el equipo.

@@ -90,11 +90,11 @@
    }
   },
   "concordancia": {
-   "n": 600,
+   "n": 614,
    "kappa_postura": 0.9,
    "acuerdo_postura": 0.99,
-   "kappa_destinatario": 0.853,
-   "acuerdo_destinatario": 0.938,
+   "kappa_destinatario": 0.855,
+   "acuerdo_destinatario": 0.94,
    "desacuerdos": 42,
    "adjudicados": 2,
    "pendientes": 40,
@@ -15741,6 +15741,370 @@
    "destinatario": "externo_o_propio",
    "motivo": "crónica del Consejo Federal sin declaración",
    "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49378",
+   "fecha": "2026-10-28",
+   "titulo": "Se realizó el VII Summit de CAMARCO Joven en Bariloche",
+   "url": "https://www.camarco.org.ar/2026/10/28/se-realizo-el-vii-summit-de-camarco-joven-en-bariloche/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "«Se realizó el VII Summit de CAMARCO Joven»: acto institucional propio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "«Se realizó el VII Summit de CAMARCO Joven»: evento propio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "«Se realizó el VII Summit de CAMARCO Joven»: evento propio",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49396",
+   "fecha": "2026-10-29",
+   "titulo": "Construyamos Puentes de solidaridad | Campaña solidaria",
+   "url": "https://www.camarco.org.ar/2026/10/29/construyamos-puentes-de-solidaridad-campana-solidaria/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "campaña solidaria por inundaciones en Corrientes: asunto interno/solidario"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "campaña solidaria por inundaciones: asunto propio, sin evaluar medida"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "campaña solidaria por inundaciones: asunto propio, sin evaluar medida",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49460",
+   "fecha": "2026-10-30",
+   "titulo": "Congreso Anual AATN 2026",
+   "url": "https://www.camarco.org.ar/2026/10/30/congreso-anual-aatn-2026/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difusión del Congreso Anual de la AATN: evento"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "invitación al Congreso Anual AATN: agenda, sin postura"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "invitación al Congreso Anual AATN: agenda, sin postura",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49464",
+   "fecha": "2026-10-30",
+   "titulo": "Todo el Ciclo CAMARCO 2026, ahora en un solo lugar",
+   "url": "https://www.camarco.org.ar/2026/10/30/todo-el-ciclo-camarco-2026-ahora-en-un-solo-lugar/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "«nuevo sitio web del Ciclo CAMARCO 2026»: asunto propio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "nuevo sitio web del Ciclo CAMARCO: asunto propio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "nuevo sitio web del Ciclo CAMARCO: asunto propio",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49472",
+   "fecha": "2026-10-30",
+   "titulo": "La Pampa Negocios 360",
+   "url": "https://www.camarco.org.ar/2026/10/30/la-pampa-negocios-360/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difusión de «La Pampa Negocios 360»: evento, sin interpelar a gobierno provincial"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "invitación a «La Pampa Negocios 360»: evento, interpela a inversores"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "invitación a «La Pampa Negocios 360»: evento, interpela a inversores",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49480",
+   "fecha": "2026-10-30",
+   "titulo": "I Foro Empresarial MERCOSUR–Unión Europea",
+   "url": "https://www.camarco.org.ar/2026/10/30/i-foro-empresarial-mercosur-union-europea/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "invitación al I Foro Empresarial MERCOSUR-UE: evento internacional"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "invitación al Foro Empresarial MERCOSUR-UE organizado por Uruguay: evento externo"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "invitación al Foro Empresarial MERCOSUR-UE organizado por Uruguay: evento externo",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49516",
+   "fecha": "2026-11-04",
+   "titulo": "El J6 se reunió con la Premio Nobel de la Paz Shirin Ebadi",
+   "url": "https://www.camarco.org.ar/2026/11/04/el-j6-se-reunio-con-la-premio-nobel-de-la-paz-shirin-ebadi/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reunión del J6 con Shirin Ebadi: encuentro institucional"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reunión del J6 con la Nobel Shirin Ebadi: encuentro institucional"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "reunión del J6 con la Nobel Shirin Ebadi: encuentro institucional",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49530",
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO recibió a directivos de Hatch y representantes de instituciones vinculadas a Canadá",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-recibio-a-directivos-de-hatch-y-representantes-de-instituciones-vinculadas-a-canada/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "recepción a directivos de Hatch y Embajada de Canadá: reunión empresarial"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "recibió a directivos de Hatch y Embajada de Canadá: reunión sin postura"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "recibió a directivos de Hatch y Embajada de Canadá: reunión sin postura",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49543",
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO y el Ministerio de Capital Humano firmaron un acuerdo para ampliar la capacitación laboral",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-y-el-ministerio-de-capital-humano-firmaron-un-acuerdo-para-ampliar-la-capacitacion-laboral/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "firma de convenio con Capital Humano y donación de materiales: acto institucional sin valoración de una medida"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "«suscribieron un acuerdo de colaboración» con Capital Humano: acto institucional, sin valoración de medida"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "«suscribieron un acuerdo de colaboración» con Capital Humano: acto institucional, sin valoración de medida",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49556",
+   "fecha": "2026-11-06",
+   "titulo": "CAMARCO Equidad participó de un encuentro de honor de la Embajada de Francia",
+   "url": "https://www.camarco.org.ar/2026/11/06/camarco-equidad-participo-de-un-encuentro-de-honor-de-la-embajada-de-francia/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "encuentro en la Embajada de Francia por los Premios FLOR: acto institucional"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "encuentro de la Embajada de Francia con premiados: evento externo"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "encuentro de la Embajada de Francia con premiados: evento externo",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49564",
+   "fecha": "2026-11-07",
+   "titulo": "G6 – Visita del papa León XIV a la Argentina",
+   "url": "https://www.camarco.org.ar/2026/11/07/g6-visita-del-papa-leon-xiv-a-la-argentina/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "G6 «recibe con gran entusiasmo la próxima visita del papa»: hecho religioso, sin medida"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "G6 «recibe con gran entusiasmo» la visita del Papa: hecho no estatal"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "G6 «recibe con gran entusiasmo» la visita del Papa: hecho no estatal",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": true,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49583",
+   "fecha": "2026-11-11",
+   "titulo": "CAMARCO recibió al Titular de la Agencia de Transformación de Empresas Públicas",
+   "url": "https://www.camarco.org.ar/2026/11/11/camarco-recibio-al-titular-de-la-agencia-de-transformacion-de-empresas-publicas/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "«CAMARCO recibió al Titular de la Agencia de Transformación de Empresas Públicas»: reunión con funcionario"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "«recibió al Titular de la Agencia de Transformación de Empresas Públicas»: reunión con funcionario"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "«recibió al Titular de la Agencia de Transformación de Empresas Públicas»: reunión con funcionario",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49593",
+   "fecha": "2026-11-12",
+   "titulo": "La IA puede sumar u$s17.700 millones a la Argentina hasta 2030, pero necesita acelerar la adopción en empresas",
+   "url": "https://www.camarco.org.ar/2026/11/12/la-ia-puede-sumar-us17-700-millones-a-la-argentina-hasta-2030-pero-necesita-acelerar-la-adopcion-en-empresas/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "estudio de UdeSA sobre IA; llamado genérico a coordinar esfuerzos, sin política vigente señalada"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "estudio de UdeSA sobre IA: describe escenarios, sin señalar decisión de gobierno"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "estudio de UdeSA sobre IA: describe escenarios, sin señalar decisión de gobierno",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49607",
+   "fecha": "2026-11-12",
+   "titulo": "Nuevo estudio analiza la carga tributaria sobre la construcción y venta de viviendas",
+   "url": "https://www.camarco.org.ar/2026/11/12/nuevo-estudio-analiza-la-carga-tributaria-sobre-la-construccion-y-venta-de-viviendas/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "estudio: «el 41,71% del precio final ... impuestos»; describe carga legal, sin pedir cambio ni señalar decisión puntual"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "estudio sobre carga tributaria en viviendas: «medición de carga legal», describe condición sin pedir cambio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "estudio sobre carga tributaria en viviendas: «medición de carga legal», describe condición sin pedir cambio",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
    "afecta_el_puntaje": false
   }
  ],
