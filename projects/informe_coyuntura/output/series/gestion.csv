@@ -192,6 +192,7 @@ fecha,indicador,valor,unidad,fuente
 2025-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2025-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2025-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
+2026-10-01,protestas_caba,29,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-09-01,protestas_caba,21,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-08-01,protestas_caba,26,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-07-01,protestas_caba,7,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)

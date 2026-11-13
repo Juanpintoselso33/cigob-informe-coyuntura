@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 14 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,15 +35,15 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 68,0** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 1 en amarillo · 1 en naranja · 2 en rojo |
-Componentes que puntúan en este corte: 16 de 16 publicados.
+| **ITCP: 81,0** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 1 en amarillo · 1 en naranja |
+Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cuatro señales. | 61,0 | VERDE | 38,7 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde dos señales. | 57,0 | AMARILLO | 20,4 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cuatro señales. | 77,9 | VERDE | 38,7 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde dos señales. | 88,4 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 85,2 | VERDE | 16,1 % |
 | Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | VERDE | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
@@ -61,15 +61,13 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales | ROJO | 9,7 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 11,6 % |
-| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
-| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
-| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | VERDE | 7,7 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 15,5 % |
+| Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 6,5 % |
+| Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 6,5 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | VERDE | 10,3 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real frente a 2023 | ROJO | 8,2 % |
-| Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
-| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 64,9 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
+| Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 10,2 % |
+| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 64,9 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 10,2 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
 | Diputados a favor de las leyes del Ejecutivo | Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. | 141,5 diputados a favor | VERDE | 8,1 % |
 | Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo… | 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | VERDE | 8,1 % |
@@ -82,123 +80,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % frente a 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
 
-*Datos al 2026-11-10.*
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
-# Decretos de necesidad y urgencia por ley
-
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales** (2026-11) | **ROJO** | Peso efectivo 9,7 % del ITCP | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | ratio_dnu | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
-| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes trae el listado completo y lee el resumen de cada una para saber si aprueba un tratado internacional; cuando el listado lo muestra recortado, abre la ficha de la ley. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia», más el de todos los decretos del período, mes a mes, para sumar los que el catálogo rotula «Decreto DNU» aunque no digan la frase; abre el texto original de cada candidato para leer con qué tipo se firmó. La tarjeta publica el inventario de los decretos contados y el de las leyes de tratados que se descontaron, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
-
-## Definición — qué mide y por qué importa
-
-Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Del lado de las leyes no cuentan las que aprueban tratados o convenios con otros países u organismos internacionales: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que pueda reemplazar a esa ley y contarla mediría cuántos tratados se firmaron, no cuánto se legisla por decreto. Las leyes del denominador son las publicadas, no las sancionadas. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
-
-Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. La gran mayoría de los decretos de necesidad y urgencia nunca llega a votarse en el recinto y sigue vigente, pero el Congreso puede derogarlos con el rechazo de las dos cámaras, como hizo con el de los fondos reservados de inteligencia en 2024 y el de la marina mercante en 2025. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
-
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cuatro señales: qué porción de la agenda del Ejecutivo se aprueba, qué porcentaje de los cargos de juez está cubierto —cada pliego necesita el acuerdo del Senado—, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras y cuántos decretos le derogó con el rechazo de las dos. Desde noviembre de 2026 suma la cobertura de cargos de juez, que hasta entonces formaba la dimensión del Poder Judicial, y deja de contar la producción legislativa del Congreso y la relación entre decretos de necesidad y urgencia y leyes, que sale del índice para revisar su formulación.
-
-## Método de cómputo
-
-- Ratio = decretos de necesidad y urgencia publicados / leyes publicadas (no sancionadas) en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
-- Del denominador salen las leyes que aprueban o ratifican un tratado, convenio, acuerdo, protocolo o enmienda con otro país o con un organismo internacional. La Constitución reserva esa aprobación al Congreso (artículos 75, inciso 22, y 99, inciso 11): el Poder Ejecutivo no puede hacerlo por decreto, así que contar esas leyes mediría cuántos tratados llegaron al Congreso y no cuánto se legisla por decreto en lugar de por ley. Los convenios de la Nación con las provincias o con la Ciudad de Buenos Aires no son tratados internacionales y siguen contando, igual que las leyes que aprueban operaciones con una contraparte extranjera que no son un instrumento internacional a ratificar: el acuerdo de conciliación con una empresa, el programa con el Fondo Monetario Internacional (una operación de crédito público) o el convenio con Repsol por la expropiación de YPF. La clasificación sale del resumen que publica InfoLeg; si con el resumen completo no se puede saber con quién es el acuerdo, el indicador se corta en vez de suponer.
-- Un decreto cuenta como de necesidad y urgencia por el TIPO JURÍDICO con el que se firmó, que encabeza su texto original publicado en el Boletín (el identificador empieza con «DNU-», frente a «DECTO-» de un decreto común), no por la frase. La búsqueda por «necesidad y urgencia» es sólo un filtro previo que arma la lista de candidatos: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por uno de necesidad y urgencia, los reglamentarios, los vetos que la citan al fundarse y los decretos comunes que modifican una norma dictada en su momento así. Y hay decretos de necesidad y urgencia que no la dicen, así que a los candidatos se suman los que la grilla de InfoLeg rotula «Decreto DNU». Ese rótulo no decide: es un dato de catálogo y se equivoca en las dos direcciones. Si el texto original se leyó y no trae identificador, decide el rótulo; si no se pudo leer, el indicador se corta. Los decretos con número anterior a 1994 no cuentan: son decretos secretos de antes de la reforma constitucional que creó esta figura, publicados décadas después.
-- Cuentan todos los decretos de necesidad y urgencia, también los de rutina: los que autorizan la salida o el ingreso de tropas para ejercicios militares y los que tratan los viajes del Presidente. Hasta 2023 esas autorizaciones las daba una ley; que desde entonces salgan por decreto es justamente el reemplazo de la ley que el indicador quiere ver. Los decretos delegados no se suman: se dictan con una autorización previa del Congreso, que fija la materia y el plazo, así que no reemplazan a una ley sino que la ejecutan.
-- El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto. La única excepción: si se recorrieron todas las páginas que el buscador declara y faltan una o dos filas que no muestra en ninguna, se cuentan las que muestra y queda un aviso en el registro de la corrida.
-- La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023, con las mismas reglas y la misma función de conteo que la tarjeta: baja una sola vez las leyes y los decretos de todo el tramo y cuenta cada ventana sobre esa lista. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales) | Color |
-|---|---|
-| ≤ 1,19 | VERDE |
-| 1,19 – 1,77 | AMARILLO |
-| 1,77 – 2,06 | NARANJA |
-| ≥ 2,06 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- 37 decretos de necesidad y urgencia y 14 leyes publicados en el Boletín Oficial entre el 08/11/2025 y el 07/11/2026, sin contar 17 leyes que aprueban tratados internacionales: 2,64 decretos por ley
-
-## Color vigente y por qué
-
-Dato vigente: 2,64 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales (2026-11).
-
-2,643 decretos de necesidad y urgencia publicados por ley publicada, sin contar las leyes que aprueban tratados internacionales está en Rojo, a 0,58 del límite con Naranja (2,062).
-
-**Color vigente: ROJO**
-
-Ponderación vigente en el ITCP: 9,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
-- La dependencia es una vulnerabilidad real pero latente: la gran mayoría de los decretos de necesidad y urgencia de la gestión nunca se votó en el recinto y sigue vigente. De los que se votaron, el Congreso derogó dos con el rechazo de las dos cámaras —los fondos reservados de inteligencia (septiembre de 2024) y la marina mercante (agosto de 2025)—; el Senado rechazó solo el decreto 70/2023, que siguió vigente, y Diputados aprobó el del acuerdo con el Fondo Monetario Internacional. Los otros cuatro derogados el 21 de agosto de 2025 eran decretos delegados, que no entran en este cociente.
-- El conteo depende de dos caminos para encontrar candidatos —la frase y el rótulo del catálogo— y del texto original de cada decreto. Un decreto de necesidad y urgencia que no dijera la frase y que InfoLeg rotulara como decreto común quedaría afuera: para verlo habría que abrir el original de todos los decretos. Si el texto original de una norma no se puede leer, el indicador no se actualiza y se mantiene el último valor calculado con el método vigente, señalado como desactualizado; el rótulo decide sólo cuando el original se leyó y no trae su identificador.
-- Qué ley aprueba un tratado sale de una regla de texto sobre el resumen de InfoLeg, no de una lista oficial. Los casos dudosos —acuerdos con una contraparte extranjera que no son tratados, protocolos cuyo resumen no nombra a la otra parte— se decidieron uno por uno y quedan fijados; uno nuevo que la regla no pueda resolver detiene el indicador hasta decidirlo.
-- El denominador es chico: con pocas leyes en la ventana, cada ley de más o de menos mueve mucho el cociente, y cuando el Congreso aprueba pocas leyes que no sean tratados el valor sube aunque el número de decretos no cambie.
-- Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
-- El buscador no ofrece descarga masiva: para encontrar los decretos rotulados como de necesidad y urgencia hay que listar todos los decretos mes a mes, y para la serie eso son varios cientos de consultas por corrida, no un volcado único como el de otros portales de datos abiertos.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado, siempre que se haya calculado con el método vigente; un valor anterior al cambio de método no se arrastra: el indicador queda sin dato hasta el primer cálculo nuevo. Sin ningún valor utilizable, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
-
-- **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
-
-## Historial — cambios metodológicos documentados
-
-**2026-11-04** — Pasa de 23% a 25% de poder legislativo, que suma la cobertura de cargos de juez y deja la producción legislativa: junto con la eficacia legislativa es lo que dice si se gobierna por ley o por decreto. En el índice político sube de 5,2% a 9,7%.
-
-**2026-10-29** — Las leyes que aprueban tratados, convenios o protocolos con otros países u organismos internacionales dejan de contar en el denominador: un tratado sólo lo puede aprobar el Congreso, así que no hay decreto que reemplace a esa ley. Se suman los decretos de necesidad y urgencia que no dicen esa frase y que la búsqueda de texto no encontraba (26 entre 2011 y 2019, ninguno desde septiembre de 2019). Los cortes del puntaje se escalan a la referencia 2011-2023 medida con la misma regla (313 decretos sobre 872 leyes, 0,36): pasan de 0,3 · 0,7 · 1,2 · 2 a 0,33 · 0,77 · 1,32 · 2,21. Con la ventana del 29 de octubre de 2026 el cociente pasa de 1,16 (37 decretos sobre 32 leyes) a 2,64 (37 sobre 14: de 31 leyes publicadas, 17 aprueban tratados) y el puntaje del componente, de 57 a 10.
-
-**2026-10-28** — Un decreto cuenta como de necesidad y urgencia por el tipo con el que se firmó, que figura en el encabezado de su texto original, y no por el rótulo del catálogo de InfoLeg, que trataba como comunes a tres decretos de necesidad y urgencia (presupuesto, septiembre de 2026; ejercicios militares y agua potable, julio de 2025). La ventana actual suma uno (de 36 a 37 sobre 32 leyes); en la serie, suman dos los cierres de julio de 2025 a junio de 2026 y uno los de septiembre y octubre de 2026.
-
-**2026-10-28** — El rótulo aclara que cuenta decretos y leyes publicados en el Boletín Oficial y la ficha explica la diferencia con «Producción legislativa del Congreso», que cuenta leyes sancionadas. No cambia el cálculo.
-
-**2026-10-26** — El rótulo pasa a «Decretos de necesidad y urgencia por ley», sin siglas. No cambia el cálculo.
-
-**2026-09-08** — Se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.
-
-**2026-05** — Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad.
-
-**2026-06-30** — Serie anual desde 2020 para dar contexto histórico al ratio del año en curso.
-
-**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
-
-**2026-07-19** — Se explicita en la ficha qué pregunta responde el indicador y cuál es la lectura contraria, a pedido de una revisión externa del cinturón. El cálculo y las anclas no cambian. Se evaluó además incorporar un indicador separado de éxito de ejecución por decreto y se descartó con datos: como el 95% de los decretos nunca se vota, esa medida quedaría permanentemente cerca del 100% y no distinguiría nada.
-
-**2026-07-15** — El cociente pasó de acumulado del año calendario (un punto por año, reseteaba en enero) a ventana móvil de 365 días (un punto por mes, comparable mes a mes). Las anclas del puntaje NO cambiaron: siguen ancladas a la práctica histórica 2011-2024, no al rango observado bajo esta gestión.
-
-**2026-08-25** — Los DNU se cuentan por el tipo jurídico que declara InfoLeg (`Decreto DNU`) y no por la coincidencia textual de «necesidad y urgencia», que aparece también en decretos que no son DNU —prórrogas de intervenciones, reglamentarios, un veto—. En la ventana auditada eran 37 y se contaban 48: el ratio pasa de 1,92 a 1,48. Los dos lados usan publicación en el Boletín Oficial. La serie mensual se rehízo con el mismo filtro.
-
-**2026-08-25** — La ficha, la fórmula y la descripción pública se sincronizan con el cálculo que efectivamente corre. Decían «DNU dictados / leyes sancionadas» y describían la búsqueda textual descartada; ahora dicen lo único que el indicador hace: DNU publicados sobre leyes publicadas en el Boletín Oficial, ventana móvil de 365 días, con los DNU identificados por el tipo jurídico de la grilla. Ningún valor cambia — cambia lo que el texto afirma que se midió.
+*Datos al 2026-11-13.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -224,7 +106,7 @@ Qué dicen en público, por escrito y con firma institucional, las cámaras de l
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-08 → 2026-09 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) y Asociación de Fábricas Argentinas de Componentes (AFAC) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -337,7 +219,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-09 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de Comercio y Servicios (CAC) | **OPERACIÓN ESTADÍSTICA** | Comunicados de prensa fechados de la sección «Comunicados de prensa» de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -431,7 +313,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2026-01 → 2026-09 (9 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de las secciones de prensa de sus sitios |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -524,7 +406,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-09 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -613,9 +495,9 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | conflictividad_nacional | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % frente a 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de Armed Conflict Location & Event Data (ACLED) se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de Armed Conflict Location & Event Data (ACLED) se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -714,7 +596,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | jornadas individuales no trabajadas (12m) |
 | **SERIE DISPONIBLE** | 2006-12 → 2026-07 (236 puntos) | **REZAGO DE PUBLICACIÓN** | La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo, Empleo y Seguridad Social | **OPERACIÓN ESTADÍSTICA** | Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro |
-| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -793,107 +675,13 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Transferencias no automáticas a provincias
-
-Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con índice de precios al consumidor publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: −82,1 % real frente a 2023** (2026-09) | **ROJO** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | transferencias_no_automaticas | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % real frente a 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC) llega unos 45 días después, que es el que fija el último mes. |
-| **PRODUCTOR DEL DATO** | Ministerio de Economía (Presupuesto Abierto); deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2023, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-10 |
-
-## Definición — qué mide y por qué importa
-
-Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con índice de precios al consumidor publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
-
-Mide cuánto recurso discrecional pone la Nación en juego con las provincias frente al nivel de 2023, en términos reales. Compara contra una base fija y no contra el año anterior: así una recuperación parcial después de una caída no se lee como un aumento. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.
-
-**Dimensión que integra — Alianzas territoriales.** El sostén federal del gobierno, visto desde dos señales: el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Desde noviembre de 2026 deja de contar las transferencias no automáticas a las provincias —lo que la Nación les gira por decisión y no por ley—, que salen del índice para revisar su formulación. Conviene una precisión sobre qué mide y qué no: ninguna de las dos observa directamente la conducta de los gobernadores. La primera describe cómo votan los senadores de cada provincia; la segunda, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.
-
-## Método de cómputo
-
-- Universo: lo que la Nación devenga como transferencia a gobiernos provinciales y municipales por decisión —los Aportes del Tesoro Nacional (ATN), las transferencias corrientes por programa (educación, salud, asistencia financiera, energía, entre otros) y las de capital (obra pública, infraestructura, agua)—. La coparticipación y el resto del RON no pasan por el presupuesto como gasto, porque se detraen de la recaudación antes de girarse: por construcción no están en esta consulta.
-- Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, Servicio de Atención Médica Integral para la Comunidad). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).
-- Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre la suma de la ventana y la de los doce meses de 2023, las dos a precios comparables, menos uno. El detalle de la tarjeta expresa los dos totales a precios del último mes de la ventana.
-- Ventana y base: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra el total de 2023, una base fija anterior al mandato (la misma lectura que la conflictividad social). Sólo hay punto si la ventana y la base tienen devengado e IPC en todos sus meses; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023, que es la base misma y vale cero.
-- Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (% real frente a 2023) | Color |
-|---|---|
-| ≥ −10,8 | VERDE |
-| −54 – −10,8 | AMARILLO |
-| −66 – −54 | NARANJA |
-| ≤ −66 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- 12 meses a septiembre 2026: $1,25 billones devengados (Aportes del Tesoro Nacional $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de septiembre 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (octubre 2025–septiembre 2026 frente a 2023); cada mes deflactado por su índice de precios al consumidor
-
-## Color vigente y por qué
-
-Dato vigente: −82,1 % real frente a 2023 (2026-09).
-
-−82,1 % real frente a 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0).
-
-**Color vigente: ROJO**
-
-Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.
-- Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual): la ventana de doce meses absorbe esa estacionalidad, pero un diciembre fuerte o flojo mueve el nivel durante todo el año siguiente.
-- La base es fija (todo 2023) y envejece con el tiempo, el mismo criterio declarado que usa la conflictividad social. 2023 no fue un año atípico: su nivel real quedó cerca del de 2018 y del de 2022. La historia con la que se fijan los cortes arranca en noviembre de 2017 porque el IPC nacional del INDEC empieza en diciembre de 2016: el devengado existe desde antes, pero no se puede deflactar con el mismo índice.
-- No distingue a qué provincia fue cada giro ni su color político: mide cuánto, no a quién. Tampoco separa lo que una partida paga por convenio vigente de lo que se decide caso por caso dentro del mismo programa.
-- La lista de partidas excluidas (coparticipación de la Ciudad de Buenos Aires por fallo, Fondo Nacional de Incentivo Docente, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.
-- Deja afuera los adelantos financieros del Tesoro, que son un instrumento de negociación importante pero no tienen serie mensual.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
-
-- **Política de revisiones:** Presupuesto Abierto puede ajustar el devengado de meses anteriores (registros tardíos, correcciones de imputación). Se recalcula completo desde la fuente en cada actualización, de modo que las revisiones se absorben solas.
-
-## Historial — cambios metodológicos documentados
-
-**2026-11-12** — Sale del índice político para revisar su formulación, por decisión de la dirección del Monitor. Se sigue calculando y su serie y su escala se conservan. Su 40% de alianzas territoriales pasa a repartirse entre el alineamiento de senadores y la adhesión provincial a las reformas. Con el dato de septiembre de 2026 puntuaba 10, el piso de la escala, así que su salida sube el índice político.
-
-**2026-10-28** — Pasa de la variación contra los 12 meses previos al nivel real de los últimos 12 meses contra el total real de 2023, como la conflictividad social: la variación interanual leía la base y no el nivel, y después del hundimiento de 2024 una recuperación parcial daba +30%. Los cortes pasan de −50 · −20 · +5 · +30%, puestos mirando el rango de la gestión, a ±36 y ±72%, uno y dos desvíos de la historia de 2017-2023. Con el dato de septiembre de 2026 (−82,1% contra 2023) el componente pasa de 75,8 a 10.
-
-**2026-10-27** — Entra al índice político en lugar de la medida de transferencias automáticas, con el mismo peso (40% de alianzas territoriales). La reunión del 26 de octubre decidió medir lo que la Nación gira por decisión —ATN y transferencias corrientes y de capital por programa— y no lo que corresponde por coparticipación. La ventana a septiembre de 2026 da +6,0% real (1,25 billones de pesos contra 0,91 de los 12 meses previos, a valores corrientes).
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
 # Eficacia legislativa de proyectos maduros
 
 Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. Cada proyecto tuvo al menos un año para tramitarse.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de proyectos** (2026-11) | **VERDE** | Peso efectivo 11,6 % del ITCP | Cinturón Política |
+| **Hoy: 27,3 % de proyectos** (2026-11) | **VERDE** | Peso efectivo 15,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -903,7 +691,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | La demora de carga no está garantizada. La fecha de consulta no certifica que el catálogo incluya todos los proyectos o sanciones recientes. |
 | **PRODUCTOR DEL DATO** | Honorable Cámara de Diputados de la Nación (HCDN) | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -948,7 +736,7 @@ Dato vigente: 27,3 % de proyectos (2026-11).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 11,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 15,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1000,7 +788,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 75 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-11) | **VERDE** | Peso efectivo 6,1 % del ITCP | Cinturón Política |
+| **Hoy: 75 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-11) | **VERDE** | Peso efectivo 10,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1010,7 +798,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
 | **SERIE DISPONIBLE** | 2024-07 → 2026-10 (28 puntos) | **REZAGO DE PUBLICACIÓN** | El catálogo nacional puede omitir adhesiones ya publicadas. Se relee la tabla y se verifican leyes complementarias identificadas por la auditoría; el descubrimiento de nuevas omisiones requiere revisión periódica. |
 | **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) · Boletines Oficiales de Santa Fe y de la Ciudad de Buenos Aires | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, artículo 93, y la Ciudad de Buenos Aires 6.949, artículo 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1053,7 +841,7 @@ Dato vigente: 75 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-11).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 10,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1101,7 +889,7 @@ Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. En cada 
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | diputados a favor |
 | **SERIE DISPONIBLE** | 2025-02 → 2026-11 (22 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia las votaciones del último mes que las tuvo: en un mes sin votaciones, como el receso de enero y febrero, la tarjeta conserva el valor de la última y dice de qué mes es. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de Diputados (título, resultado, voto de cada diputado y su bloque), cruzadas con el catálogo de proyectos parlamentarios y los dictámenes de comisión de la Cámara de Diputados para saber quién mandó cada proyecto |
-| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1203,7 +991,7 @@ Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en l
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1304,7 +1092,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
+| **Hoy: 0 vetos insistidos por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1314,7 +1102,7 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | vetos insistidos por las dos cámaras, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — vetos presidenciales insistidos por las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1356,7 +1144,7 @@ Dato vigente: 0 vetos insistidos por las dos cámaras, últimos 12 meses (2026-1
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1392,7 +1180,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
+| **Hoy: 0 decretos derogados por las dos cámaras, últimos 12 meses** (2026-11) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1402,7 +1190,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos derogados por las dos cámaras, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — decretos de necesidad y urgencia y delegados rechazados por las dos cámaras |
-| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1444,7 +1232,7 @@ Dato vigente: 0 decretos derogados por las dos cámaras, últimos 12 meses (2026
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1480,7 +1268,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **VERDE** | Peso efectivo 7,7 % del ITCP | Cinturón Política |
+| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **VERDE** | Peso efectivo 10,3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1490,7 +1278,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-11 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Actualización irregular. La serie sólo avanza hasta la fecha revisada de los registros complementarios; ejecutar el colector no extiende esa fecha. Un nuevo padrón requiere volver a conciliar los ajustes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados, designaciones y renuncias, conciliados con normas y bajas documentadas |
-| **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1535,7 +1323,7 @@ Dato vigente: 73,61 % estimado de cargos con juez designado (2026-11).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 7,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 10,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1579,7 +1367,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 64,9 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-10) | **VERDE** | Peso efectivo 6,1 % del ITCP | Cinturón Política |
+| **Hoy: 64,9 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-10) | **VERDE** | Peso efectivo 10,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1589,7 +1377,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % votos de senadores no-LLA alineados con LLA, por provincia |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-11 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-10 |
+| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1633,7 +1421,7 @@ Dato vigente: 64,9 % votos de senadores no-LLA alineados con LLA, por provincia 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 10,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

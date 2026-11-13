@@ -1,13 +1,13 @@
 {
   "cinturon": "vida_cotidiana",
-  "generated_at": "2026-11-10T03:20:30.911291",
-  "score": 2.7,
+  "generated_at": "2026-11-12T23:34:00.036727",
+  "score": 2.8,
   "indicadores": {
     "ipc_total": {
-      "valor": 1.93,
+      "valor": 2.17,
       "unidad": "% mensual",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
-      "fecha_dato": "2026-09-01",
+      "fecha_dato": "2026-10-01",
       "desactualizado": false
     },
     "desocupacion": {

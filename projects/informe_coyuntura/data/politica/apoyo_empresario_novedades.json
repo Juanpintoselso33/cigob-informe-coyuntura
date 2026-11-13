@@ -1,14 +1,14 @@
 {
  "_meta": {
-  "comunicados_vistos": 47,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-11-10",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-10"
+  "inventario_verificado": "2026-11-12",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-11-12"
  },
  "pendientes": {
   "AEA|2026-10-27-la-libertad-de-prensa-y-el-respeto-insti": {
@@ -20,6 +20,17 @@
    "postura": null,
    "titulo": "La libertad de prensa y el respeto institucional Pilares fundamentales de la República",
    "url": "https://www.aeanet.net/prensa.html"
+  },
+  "UIA|la-uia-cerro-la-conferencia-industrial-con-propues": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-11-03",
+   "id": "la-uia-cerro-la-conferencia-industrial-con-propues",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Unión Industrial Argentina llevó adelante el evento del año a sala llena y con medidas del ministro Caputo que tomaron propuestas concretas de la entidad.    3 de noviembre de 2026.  Con el lema “Talento Argentino, la fuerza que transforma”, la UIA convocó al ministro de Economía de la Nación, Luis Caputo, y al jefe de Gabinete de Ministros de la Nación, Diego Santilli, entre otras personalidades del ámbito público y privado. “Nuestro gran desafío es construir una Argentina que, sobre la base de la estabilidad económica, pueda preservar, desarrollar y multiplicar sus capacidades productivas”, destacó el presidente de la Unión Industrial Argentina (UIA), Martín Rappallini.  Durante la apertura, el ministro Caputo anunció una serie de medidas enfocadas en el sector productivo, que incluían varias propuestas de la UIA: suspensión de embargos de ARCA para pymes hasta mayo de 2027, la búsqueda de acuerdos con las provincias para la eliminación del impuesto a los sellos, créditos del Banco Nación a tasa fija del 20% con un plazo de 3 a 5 años para el sector automotriz., y la utilización del 100% del saldo a favor por exportación para cancelar deudas aduaneras.   Martín Rappallini cerró la jornada con un discurso en el que enfatizó la importancia de contar con una industria protagonista porque, “además de producir bienes, produce conocimiento y tecnología, desarrolla trabajadores calificados, proveedores, ingeniería y experiencia productiva. Esto se construye durante décadas”. El presidente de la UIA remarcó que la industria es un sector transable, que compite directamente con la producción de otros países, y afirmó que la riqueza de un país no depende solamente del capital que posee o de sus recursos naturales, sino de las capacidades productivas, tecnológicas y organizacionales que fue capaz de construir.  Rappallini también subrayó que la UIA impulsa un Pacto Fiscal Federal para la Competitividad y un Régimen Industrial para la Competitividad Internacional. “Partimos de un objetivo fundamental: acercar gradualmente las condiciones de producción de la Argentina a las de nuestros competidores regionales. En definitiva, nivelar la cancha para que nuestras empresas puedan competir en igualdad de condiciones”, dijo el líder de la industria.  Lo acompañó en el cierre Diego Santilli. El jefe de Gabinete puso el foco en el rumbo del país: “A partir de tener estabilidad macro ustedes pueden proyectar, decidir y buscar la competitividad”.  El presidente de la Conferencia Industrial de este año, Silvio Zurzolo, había dicho en la apertura que cuando la industria late fuerte, la Argentina entera respira mejor. Su discurso estuvo orientado al lema de la jornada, y en ese sentido afirmó que al hablar de talento se habla de trabajadores y empresarios que acumularon experiencia, aprendieron de los errores y construyeron capacidades que hoy son parte de la riqueza del país.  Por su parte, el jefe de Gobierno de la Ciudad de Buenos Aires destacó que “la riqueza y la fuerza más poderosa que tiene nuestro país es el talento. Está en la cabeza y en las manos de nuestra gente”. En tanto, el presidente de la 32ª Conferencia Industrial, Silvio Zurzolo, se refirió al ciclo virtuoso de la industria como multiplicador de activos: “Que el conocimiento se convierta en productividad, que la tecnología abra oportunidades y que el talento se transforme en desarrollo”.  En “La nueva geografía del desarrollo. Energía, minería y cadenas de valor”, gobernadores de distintas regiones del país analizaron de qué manera la energía y la minería tienen el potencial para generar mayores cadenas de valor e integración industrial. Participaron los gobernadores de San Juan, Marcelo Orrego; Neuquén, Rolando Figueroa; Córdoba, Martín Llaryora; Santa Fe, Maximiliano Pullaro; y Catamarca, Raúl Jalil. La moderación estuvo a cargo del presidente de la Cámara Argentina de Empresas Mineras (CAEM), Roberto Cacciola.  A su turno, el neurocientífico y autor del libro “El poder de las palabras”, Mariano Sigman, dio pistas para abordar el fenómeno de la inteligencia artificial desde una nueva perspectiva: “La inteligencia artificial tiene que estar en el medio; al principio y al final tiene que estar lo humano”. En el contexto del panel “La inteligencia de ser humanos en tiempos de IA”, Sigman también reflexionó sobre cómo diferenciar amenazas y oportunidades en el siglo XXI, y advirtió sobre el riesgo de que el ser humano se transforme en un simple espectador de la tecnología.   El panel “Reglas claras, futuro posible: la macro y micro que necesita la industria” planteó una mirada integral sobre los desafíos económicos del país. Al respecto, el fundador y director de Invecq Consulting SA, Esteban Domecq, destacó que la economía argentina enfrenta un trilema como reto principal, atravesado por el programa, la inflación y la actividad.  Durante el panel “Activar el talento: una agenda para transformar el potencial en un activo de la competitividad”, los sectores textil, audiovisual y citrícola presentaron una agenda de propuestas y desafíos compartidos. La fundadora de Textiles Tala SA, Gabriela Tala; el productor de cine y miembro de la CAIC, Nicolás Avruj; y el titular de la Asociación Citrícola del Noroeste Argentino (ACNOA), Roberto Sánchez Loria, coincidieron en la importancia de generar condiciones para poner en valor sus respectivas actividades.  El presidente del departamento de Política Tributaria de la UIA, Carlos Abeledo, presentó las principales coordenadas del Pacto Fiscal Industrial Federal y su impacto positivo en la competitividad. Sobre las dificultades del sector, Abeledo mencionó: “Cuando competimos con el exterior, lo hacemos contra países que tienen menores cargas fiscales o niveles de informalidad más bajos”. Dicho marco tributario se postula como el punto de partida para construir condiciones que permitan a las compañías —especialmente a las pymes— competir en igualdad de condiciones en todo el territorio argentino, lo que mejoraría la actividad, las exportaciones y el empleo.  En el último panel temático de la Conferencia, la gerente general de Google Cloud Argentina, Natalia Scaliter, analizó de qué manera los nuevos modelos de organización corporativa abren oportunidades y desafíos para la industria nacional. Al respecto, señaló: “La IA nos va a permitir escalar y amplificar nuestra capacidad cognitiva. Va a tener diez veces el impacto de la Revolución Industrial”.  Durante la jornada, la UIA entregó el premio “Industria Inspira 2026\" a tres proyectos que desarrollaron soluciones para combatir incendios forestales, mejorar el reciclaje y generar energía a partir de residuos de la industria pesquera.",
+   "titulo": "La UIA cerró la Conferencia Industrial con propuestas para impulsar al sector productivo y anuncios del gobierno",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-cerro-la-conferencia-industrial-con-propues"
   },
   "UIA|la-uia-firmo-un-acuerdo-con-la-secretaria-de-indus": {
    "camara": "UIA",
@@ -424,6 +435,10 @@
    "fecha": "2026-05-23",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "La UIA celebra la reducción de retenciones a productos industriales"
+  },
+  "UIA|la-uia-cerro-la-conferencia-industrial-con-propues": {
+   "fecha": "2026-11-03",
+   "titulo": "La UIA cerró la Conferencia Industrial con propuestas para impulsar al sector productivo y anuncios del gobierno"
   },
   "UIA|la-uia-continuo-con-su-agenda-federal-en-san-juan": {
    "fecha": "2026-05-07",

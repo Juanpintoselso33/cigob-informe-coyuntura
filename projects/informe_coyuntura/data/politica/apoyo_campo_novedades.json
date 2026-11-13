@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "comunicados_vistos": 24,
+  "comunicados_vistos": 100,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del campo pendientes de codificar (ADR-0384). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_campo en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CONINAGRO": "https://www.coninagro.org.ar/wp-json/wp/v2/posts",
@@ -8,8 +8,8 @@
    "SRA": "https://www.sra.ar/comunicacion/"
   },
   "inventario_verificado": "2026-11-04",
-  "nuevos_en_la_corrida": 1,
-  "ultima_corrida": "2026-11-10"
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-11-12"
  },
  "pendientes": {
   "CONINAGRO|72351": {

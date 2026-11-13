@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 909,
+  "comunicados_vistos": 916,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-10",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-10"
+  "inventario_verificado": "2026-11-12",
+  "nuevos_en_la_corrida": 3,
+  "ultima_corrida": "2026-11-12"
  },
  "pendientes": {
   "CAMARCO|49378": {
@@ -130,6 +130,39 @@
    "texto": "El Grupo de los Seis recibe con gran entusiasmo la próxima visita del papa León XIV a nuestro país.\n Su presencia tendrá un enorme significado espiritual y humano para todos los argentinos y será una oportunidad para renovar la esperanza, fortalecer los valores que nos unen y promover una cultura del encuentro, el diálogo y la solidaridad.\n En un momento de grandes desafíos, su mensaje de paz, fraternidad y unidad contribuirá a construir una Argentina con mayor entendimiento, respeto y compromiso con el bien común.",
    "titulo": "G6 – Visita del papa León XIV a la Argentina",
    "url": "https://www.camarco.org.ar/2026/11/07/g6-visita-del-papa-leon-xiv-a-la-argentina/"
+  },
+  "CAMARCO|49583": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-11",
+   "id": "49583",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Cámara Argentina de la Construcción recibió en su Sede Central la visita del Dr. Diego Chaher, Titular de la Agencia de Transformación de Empresas Públicas y fue recibido por el Presidente de CAMARCO, Ing. Gustavo Weiss junto con otras autoridades.\n La vista se da en el marco de un encuentro institucional que permitió generar un espacio de diálogo e intercambio sobre temas de interés para el sector.",
+   "titulo": "CAMARCO recibió al Titular de la Agencia de Transformación de Empresas Públicas",
+   "url": "https://www.camarco.org.ar/2026/11/11/camarco-recibio-al-titular-de-la-agencia-de-transformacion-de-empresas-publicas/"
+  },
+  "CAMARCO|49593": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-12",
+   "id": "49593",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Un estudio de la Universidad de San Andrés estima que el país puede mejorar su productividad si coordina esfuerzos públicos y privados en forma urgente. Argentina corre riesgo de perder terreno ante los líderes del ranking regional. \n La inteligencia artificial (IA) podría aportar u$s17.700 millones a la economía argentina hacia 2030 , equivalentes al 2,1% del Producto Bruto Interno (PBI) proyectado para ese año.\n Sin embargo, para alcanzar ese potencial, el país necesita acelerar con urgencia la incorporación de la tecnología en las empresas, fortalecer su ecosistema productivo y coordinar las políticas públicas y las inversiones privadas .\n De lo contrario, corre el riesgo de perder posiciones frente a otros países de la región que avanzan en su desarrollo y aplicación.\n La advertencia forma parte del estudio Una estrategia de competitividad en Inteligencia Artificial para la Argentina , elaborado por la Cátedra de Competitividad Jorge H. Forteza de la Universidad de San Andrés (UdeSA) , bajo la dirección de los profesores Raúl Katz, Luciana Pagani y Natalia Méndez Huergo .\n La investigación, que ocupa 256 páginas en PDF, utiliza modelos econométricos y relevamientos de campo para estimar el impacto económico de la IA y proponer medidas para acelerar su adopción.\n Según el informe, la tecnología ya genera unos u$s4.316 millones en la economía argentina , equivalentes al 0,6% del PBI. Si el país mantiene el ritmo actual de incorporación , sin reformas de fondo, ese aporte alcanzaría los u$s12.708 millones en 2030, alrededor del 1,5% del producto proyectado.\n La diferencia entre ambos escenarios ronda los u$s5.000 millones adicionales en productividad que podrían capturarse mediante una estrategia orientada a acelerar la transformación tecnológica de las empresas.\n El desafío, por lo tanto, no pasa solamente por ampliar el uso de herramientas de inteligencia artificial, sino por integrarlas a los procesos productivos y convertirlas en una fuente sostenida de mejoras de eficiencia, desarrollo de nuevos productos y competitividad.\n “Contar con diagnósticos rigurosos es el punto de partida indispensable para construir una agenda de inteligencia artificial con impacto real en la Argentina. Hoy la ventana de oportunidad exige que las empresas trasciendan los esfuerzos individuales : la verdadera ventaja competitiva radica en la capacidad del sector privado para acelerar su transformación, generar sinergias, construir escala y desarrollar soluciones transversales que aceleren la productividad de toda la economía ”, señaló Luciana Pagani , coautora del estudio y profesora de la Universidad de San Andrés.\n Qué lugar ocupa Argentina en el ranking regional de IA\n La posición argentina en el escenario regional constituye uno de los puntos de partida del diagnóstico. De acuerdo con el Índice Latinoamericano de Inteligencia Artificial (ILIA), elaborado por la Comisión Económica para América Latina y el Caribe (CEPAL) y el Centro Nacional de Inteligencia Artificial de Chile (CENIA), Argentina ocupa el sexto lugar entre 19 economías , con 55,6 puntos.\n El ranking es encabezado por Chile , con 71,4 puntos, seguido por Brasil , con 68,4; Uruguay , con 67; Colombia , con 56,8; y Costa Rica , con 56 puntos. La distancia frente a los primeros puestos refleja diferencias en las capacidades para desarrollar, adoptar y aprovechar la inteligencia artificial.\n ver nota completa aquí",
+   "titulo": "La IA puede sumar u$s17.700 millones a la Argentina hasta 2030, pero necesita acelerar la adopción en empresas",
+   "url": "https://www.camarco.org.ar/2026/11/12/la-ia-puede-sumar-us17-700-millones-a-la-argentina-hasta-2030-pero-necesita-acelerar-la-adopcion-en-empresas/"
+  },
+  "CAMARCO|49607": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-12",
+   "id": "49607",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Un estudio elaborado por Nadin Argañaraz y Andrés Mir concluye que el 41,71% del precio final de una vivienda nueva está explicado por impuestos y aportes previsionales presentes en todas las etapas de su construcción y comercialización. \n Cuando una familia compra una vivienda nueva, suele asociar su precio al valor del terreno, los materiales, la mano de obra o los honorarios profesionales. Sin embargo, una parte importante de ese valor corresponde a impuestos y cargas previsionales que se acumulan a lo largo de todo el proceso productivo.\n Según el Estudio Integral de la Carga Tributaria sobre el Sector de la Construcción y Venta de Viviendas en la Argentina , elaborado por Nadin Argañaraz y Andrés Mir, el 41,71% del precio final de una vivienda nueva corresponde al cumplimiento de obligaciones tributarias y previsionales de todos los actores que intervienen en la cadena de producción y comercialización.\n La investigación toma como referencia una vivienda unifamiliar de 130 metros cuadrados construida y comercializada bajo condiciones de plena formalidad, es decir, considerando el cumplimiento de todas las obligaciones legales vigentes.\n En términos simples, esto significa que de cada $100 que paga una persona por una vivienda nueva, aproximadamente $42 corresponden a impuestos y cargas previsionales incorporados a lo largo del proceso. El componente invisible del precio de una vivienda \n Una de las principales conclusiones del estudio es que gran parte de esos costos no aparece identificada para quien compra la vivienda.\n A diferencia de otros productos o servicios, donde los impuestos suelen estar discriminados, en una vivienda muchos de esos conceptos ya están incorporados en el precio de los materiales, en los servicios profesionales, en la mano de obra, en la compra del terreno, en la construcción y en la comercialización del inmueble.\n Por eso, la investigación reconstruye toda la cadena de valor para medir cuánto representan esos costos acumulados dentro del precio final que paga el comprador.\n La construcción concentra la mayor carga y las obligaciones previsionales tienen el mayor peso \n Cuando el análisis se enfoca exclusivamente en la etapa de construcción, sin considerar el terreno ni la comercialización, la incidencia de impuestos y cargas previsionales asciende al 48,92% del precio de la obra . Es decir, casi uno de cada dos pesos del precio de construcción está asociado a obligaciones tributarias y previsionales.\n El trabajo también destaca que el componente de mayor incidencia no corresponde a impuestos tradicionales, sino a los regímenes de seguridad social. Según la investigación, los aportes y contribuciones vinculados a jubilaciones, obra social, cobertura por riesgos del trabajo y otros regímenes similares representan por sí solos el 20% del precio final de la vivienda y cerca de la mitad de toda la carga relevada.\n El caso de Ingresos Brutos y el efecto acumulativo de los impuestos \n Entre los hallazgos más relevantes, el estudio identifica el impacto que generan algunos tributos al aplicarse en distintas etapas de la cadena productiva. El caso más significativo es el del Impuesto sobre los Ingresos Brutos. Aunque la alícuota promedio que grava a la construcción es del 2,34% , su impacto real dentro del precio final es significativamente mayor y alcanza el 5,42% .\n Según los autores, esto ocurre porque el impuesto se aplica en distintas etapas del proceso: cuando se producen los materiales, cuando se distribuyen, cuando se comercializan y cuando finalmente se incorporan a la obra. En cada paso va quedando incorporado al costo y se traslada al siguiente eslabón de la cadena.\n Como resultado, el peso efectivo de Ingresos Brutos dentro del precio de una vivienda termina siendo 130% superior al que sugeriría observar únicamente la alícuota legal.\n Sobre el estudio \n Los autores aclaran que se trata de una medición de carga legal , realizada bajo el supuesto de cumplimiento pleno de las obligaciones tributarias y previsionales vigentes y de su traslado a lo largo de la cadena productiva. Asimismo, el estudio toma como referencia una vivienda tipo de 130 m² y no pretende representar un promedio nacional de todas las tipologías constructivas.\n El estudio completo se encuentra disponible para su consulta en la Biblioteca CAMARCO.\n https://biblioteca.camarco.org.ar/libro/carga-tributaria-en-el-sector-de-la-construccion/",
+   "titulo": "Nuevo estudio analiza la carga tributaria sobre la construcción y venta de viviendas",
+   "url": "https://www.camarco.org.ar/2026/11/12/nuevo-estudio-analiza-la-carga-tributaria-sobre-la-construccion-y-venta-de-viviendas/"
   }
  },
  "revisadas": {
@@ -2894,6 +2927,38 @@
   "CAMARCO|49564": {
    "fecha": "2026-11-07",
    "titulo": "G6 – Visita del papa León XIV a la Argentina"
+  },
+  "CAMARCO|49570": {
+   "fecha": "2026-11-11",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "RESPONSABLE DE CONTROL DE GESTIÓN"
+  },
+  "CAMARCO|49576": {
+   "fecha": "2026-11-11",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "JEFE DE OBRA"
+  },
+  "CAMARCO|49583": {
+   "fecha": "2026-11-11",
+   "titulo": "CAMARCO recibió al Titular de la Agencia de Transformación de Empresas Públicas"
+  },
+  "CAMARCO|49593": {
+   "fecha": "2026-11-12",
+   "titulo": "La IA puede sumar u$s17.700 millones a la Argentina hasta 2030, pero necesita acelerar la adopción en empresas"
+  },
+  "CAMARCO|49606": {
+   "fecha": "2026-11-12",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Lo que todavía no se construyó también se puede analizar"
+  },
+  "CAMARCO|49607": {
+   "fecha": "2026-11-12",
+   "titulo": "Nuevo estudio analiza la carga tributaria sobre la construcción y venta de viviendas"
+  },
+  "CAMARCO|49621": {
+   "fecha": "2026-11-12",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "TIIC participó en Veinte56"
   }
  }
 }

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "fuente": "UTDT — LICIP, Índice de Victimización (informes mensuales PDF)",
-    "actualizado": "2026-09-14",
+    "actualizado": "2026-11-13",
     "nota": "Encuesta mensual, 40 centros urbanos, ventana 12 meses. PDFs con URL por hash: se descubren desde el listado y se procesan una sola vez (ADR-0032)."
   },
   "procesados": [
@@ -154,7 +154,10 @@
     "https://www.utdt.edu/download.php?fname=_146756200456911600.pdf",
     "https://www.utdt.edu/download.php?fname=_146499317997784100.pdf",
     "https://www.utdt.edu/download.php?fname=_146193746561475900.pdf",
-    "https://www.utdt.edu/download.php?fname=_146006263321143500.pdf"
+    "https://www.utdt.edu/download.php?fname=_146006263321143500.pdf",
+    "https://www.utdt.edu/download.php?fname=_179450030835298400.pdf",
+    "https://www.utdt.edu/download.php?fname=_179450030187364700.pdf",
+    "https://www.utdt.edu/download.php?fname=_179450029352846000.pdf"
   ],
   "mensual": {
     "2020-01": 28.8,
@@ -306,7 +309,10 @@
     "2016-05": 26.2,
     "2016-04": 26.6,
     "2016-03": 28.4,
-    "2016-02": 31.9
+    "2016-02": 31.9,
+    "2026-10": 21.8,
+    "2026-09": 28.2,
+    "2026-08": 24.3
   },
   "fallidos": {}
 }

@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 1,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
   },
-  "inventario_verificado": "2026-11-10",
+  "inventario_verificado": "2026-11-12",
   "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-10"
+  "ultima_corrida": "2026-11-12"
  },
  "pendientes": {
   "CAC|visita-de-leon-xiv-la-cac-llama-a-hacer-esfuerzos-en-pos-de-la-concordia-y-el-dialogo": {
@@ -499,6 +499,11 @@
   },
   "CAC|peaje-ilegal-en-ramallo-rechazo-de-la-cac-a-las-barreras-al-comercio-y-la-aduana-interior": {
    "origen": "codificacion ADR-0380"
+  },
+  "CAC|por-octavo-mes-consecutivo-crecieron-las-exportaciones-argentinas-a-brasil": {
+   "fecha": "2026-11-05",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "por octavo mes consecutivo crecieron las exportaciones argentinas a brasil"
   },
   "CAC|posicion-de-la-cac-sobre-el-proyecto-de-ley-reformas-al-procedimiento-tributario-y-regimen-penal-tributario": {
    "origen": "codificacion ADR-0380"
