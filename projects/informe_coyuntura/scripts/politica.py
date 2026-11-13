@@ -2170,16 +2170,32 @@ HCDN_SESIONES_INDICE = "https://www.hcdn.gob.ar/sesiones/"
 
 def _sesiones_desde_indice(html: str) -> list[dict]:
     """Reuniones legislativas por identidad y fecha del índice oficial (ADR-0308)."""
+    # Desde nov-2026 el índice enlaza cada reunión con una dirección opaca
+    # (`/_q/<hash>.html`) en vez de `sesion.html?id=…&periodo=…&reunion=…`. La
+    # identidad pasa a ser «período-reunión»: el período sale del encabezado del
+    # panel («PERIODO 144 (…)») y la reunión del rótulo («8° Reunión - …»). El
+    # registro de convocantes guarda esa misma clave (y el id viejo, de archivo).
     registros: dict[str, dict] = {}
     for enlace in BeautifulSoup(html, "html.parser").find_all("a", href=True):
         url = urljoin(HCDN_SESIONES_INDICE, enlace["href"])
         parsed = urlparse(url)
-        if parsed.netloc != "www.hcdn.gob.ar" or not parsed.path.endswith("/sesion.html"):
-            continue
-        q = parse_qs(parsed.query)
-        if not all(k in q for k in ("id", "periodo", "reunion")):
+        if parsed.netloc != "www.hcdn.gob.ar":
             continue
         titulo = enlace.get_text(" ", strip=True)
+        if parsed.path.endswith("/sesion.html"):
+            q = parse_qs(parsed.query)
+            if not all(k in q for k in ("id", "periodo", "reunion")):
+                continue
+            iid, reunion = q["id"][0], q["reunion"][0]
+        elif re.fullmatch(r"/_q/[0-9a-f]+\.html", parsed.path):
+            panel = enlace.find_parent(class_="js-accordion__panel")
+            cab = panel.find(class_="js-accordion__header") if panel else None
+            mp = re.search(r"PERIODO\s+(\d+)", cab.get_text(" ", strip=True)) if cab else None
+            mr = re.match(r"(\d+)\s*°\s*Reuni", titulo)
+            iid = f"{mp[1]}-{mr[1]}" if mp and mr else ""
+            reunion = mr[1] if mr else ""
+        else:
+            continue
         tipo = unicodedata.normalize("NFKD", titulo).encode("ascii", "ignore").decode().lower()
         if any(t in tipo for t in ("asamblea", "informativa", "preparatoria", "presupuesto", "homenaje", "no efectuada")):
             continue
@@ -2192,9 +2208,8 @@ def _sesiones_desde_indice(html: str) -> list[dict]:
         fecha = datetime.strptime(m[1], "%d/%m/%Y").date()
         if not date(2023, 1, 1) <= fecha <= date.today():
             continue
-        iid = q["id"][0]
-        if not iid.isdigit() or not q["reunion"][0].isdigit():
-            raise ValueError("reunión legislativa sin identidad válida")
+        if not re.fullmatch(r"\d+(-\d+)?", iid) or not reunion.isdigit():
+            raise ValueError(f"reunión legislativa sin identidad válida: {titulo!r}")
         registro = {"id": iid, "fecha": fecha.isoformat(), "en_minoria": minoria,
                     "titulo": titulo, "url": url}
         if iid in registros and registros[iid] != registro:
@@ -2208,7 +2223,9 @@ def _sesiones_desde_indice(html: str) -> list[dict]:
 def _sesiones_diputados_registros() -> list[dict]:
     r = requests.get(HCDN_SESIONES_INDICE, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    return _sesiones_desde_indice(r.text)
+    # Desde nov-2026 el portal responde sin charset y requests cae en Latin-1:
+    # «Sesión» llega como «SesiÃ³n» y ninguna reunión se reconoce. Es UTF-8.
+    return _sesiones_desde_indice(r.content.decode("utf-8"))
 
 
 def _convocantes_minoria() -> dict[str, dict]:

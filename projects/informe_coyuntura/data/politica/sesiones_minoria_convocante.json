@@ -1,9 +1,10 @@
 {
   "revisado_en": "2026-10-15",
-  "criterio": "Quién pidió cada sesión de Diputados que quedó en minoría (ADR-0358). oposicion = la pidieron bloques no oficialistas: no cuenta en veto_quorum. oficialismo = la pidió LLA o un aliado con apoyo de LLA (Ficha Limpia, PRO): cuenta. Cada entrada lleva la fuente que lo dice.",
+  "criterio": "Quién pidió cada sesión de Diputados que quedó en minoría (ADR-0358). oposicion = la pidieron bloques no oficialistas: no cuenta en veto_quorum. oficialismo = la pidió LLA o un aliado con apoyo de LLA (Ficha Limpia, PRO): cuenta. Cada entrada lleva la fuente que lo dice. Desde el 12-nov-2026 el id es «período-reunión» del índice de Diputados (el portal dejó de exponer el id numérico); id_anterior es el viejo.",
   "sesiones": [
     {
-      "id": "3517",
+      "id": "142-1",
+      "id_anterior": "3517",
       "fecha": "2024-03-13",
       "convocante": "oposicion",
       "tema": "Nueva fórmula de movilidad jubilatoria",
@@ -12,7 +13,8 @@
       "cita": "Hacemos Coalición Federal, que había pedido la sesión"
     },
     {
-      "id": "3518",
+      "id": "142-2",
+      "id_anterior": "3518",
       "fecha": "2024-04-24",
       "convocante": "oposicion",
       "tema": "Financiamiento universitario, reposición del FONID, movilidad jubilatoria",
@@ -21,7 +23,8 @@
       "cita": "por qué cayó la sesión especial pedida por Unión por la Patria (124 presentes, 5 menos que 129)"
     },
     {
-      "id": "3525",
+      "id": "142-7",
+      "id_anterior": "3525",
       "fecha": "2024-08-07",
       "convocante": "oficialismo",
       "tema": "Repudio a Venezuela y a la visita de libertarios a represores en Ezeiza, ley de Armas, Registro de Datos Genéticos",
@@ -30,7 +33,8 @@
       "cita": "Estamos ante una situación fracasada convocada exclusivamente por el bloque oficialista (G. Martínez)"
     },
     {
-      "id": "3542",
+      "id": "142-14",
+      "id_anterior": "3542",
       "fecha": "2024-11-12",
       "convocante": "oposicion",
       "tema": "Reforma de la ley de DNU y rechazo/derogación del DNU 846/24 (canje de deuda)",
@@ -39,7 +43,8 @@
       "cita": "la reunión convocada por Encuentro Federal, Unión por la Patria (UP) y Democracia para Siempre (nota previa; el fracaso: https://www.minutouno.com/politica/diputados-fracaso-la-sesion-la-oposicion-modificar-la-ley-dnu-n6080972)"
     },
     {
-      "id": "3543",
+      "id": "142-15",
+      "id_anterior": "3543",
       "fecha": "2024-11-20",
       "convocante": "oficialismo",
       "tema": "Ficha Limpia (+ voto en el exterior, reincidencia en Código Penal)",
@@ -48,7 +53,8 @@
       "cita": "sesión impulsada por el PRO junto a los bloques de La Libertad Avanza y la UCR (128 presentes de 129; https://eleconomista.com.ar/politica/no-hubo-quorum-cayo-sesion-tratar-proyecto-ficha-limpia-diputados-n79627)"
     },
     {
-      "id": "3544",
+      "id": "142-16",
+      "id_anterior": "3544",
       "fecha": "2024-11-26",
       "convocante": "oposicion",
       "tema": "democracia sindical (pedida por la UCR) o DNU 846/2024 de canje de deuda (pedida por Unión por la Patria)",
@@ -57,7 +63,8 @@
       "cita": ""
     },
     {
-      "id": "3545",
+      "id": "142-17",
+      "id_anterior": "3545",
       "fecha": "2024-11-26",
       "convocante": "oposicion",
       "tema": "democracia sindical (pedida por la UCR) o DNU 846/2024 de canje de deuda (pedida por Unión por la Patria)",
@@ -66,7 +73,8 @@
       "cita": ""
     },
     {
-      "id": "3547",
+      "id": "142-19",
+      "id_anterior": "3547",
       "fecha": "2024-11-28",
       "convocante": "oficialismo",
       "tema": "Ficha Limpia (segundo intento) y voto de argentinos en el exterior",
@@ -75,7 +83,8 @@
       "cita": "sesión convocada tras un pedido del titular del bloque PRO, Cristian Ritondo; 116 presentes"
     },
     {
-      "id": "3555",
+      "id": "143-3",
+      "id_anterior": "3555",
       "fecha": "2025-03-19",
       "convocante": "oposicion",
       "tema": "Prórroga de la moratoria previsional, aumento de haberes, medicamentos PAMI",
@@ -84,7 +93,8 @@
       "cita": "sesión pedida por el kirchnerismo para tratar la prórroga de la moratoria previsional"
     },
     {
-      "id": "3560",
+      "id": "143-8",
+      "id_anterior": "3560",
       "fecha": "2025-05-21",
       "convocante": "oposicion",
       "tema": "Jubilaciones (bono y moratoria), caso $LIBRA, emergencia inundaciones bonaerenses, AGN",
@@ -93,7 +103,8 @@
       "cita": "La oposición pidió la sesión especial; tuvo dificultades para reunir las firmas"
     },
     {
-      "id": "3582",
+      "id": "144-4",
+      "id_anterior": "3582",
       "fecha": "2026-06-23",
       "convocante": "oposicion",
       "tema": "Interpelación y moción de censura contra el jefe de Gabinete Manuel Adorni",
@@ -102,7 +113,8 @@
       "cita": "sesión impulsada por la oposición; no logró quórum tras convocatoria a comisión de Menem"
     },
     {
-      "id": "3586",
+      "id": "144-8",
+      "id_anterior": "3586",
       "fecha": "2026-10-15",
       "convocante": "oposicion",
       "tema": "Rechazo al DNU 70/23, endeudamiento familiar, emergencia en discapacidad",
