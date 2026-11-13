@@ -35,18 +35,18 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 49,9** | **AMARILLO** | Moderadamente apretado | 17 indicadores: 5 en verde · 7 en amarillo · 4 en naranja · 1 en rojo |
+| **ITCM: 51,9** | **AMARILLO** | Moderadamente apretado | 17 indicadores: 3 en verde · 7 en amarillo · 5 en naranja · 2 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 42,2 | AMARILLO | 31,4 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 48,7 | NARANJA | 31,4 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 37,8 | NARANJA | 23,0 % |
-| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 61,5 | VERDE | 19,2 % |
+| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 61,5 | AMARILLO | 19,2 % |
 | Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 57,8 | AMARILLO | 15,8 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 66,2 | VERDE | 10,6 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 66,2 | AMARILLO | 10,6 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -62,24 +62,24 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
 | Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 2,17 % mensual | NARANJA | 15,6 % |
-| Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de dólares | VERDE | 5,4 % |
+| Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de dólares | AMARILLO | 5,4 % |
 | Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,8 % anual esperado | AMARILLO | 5,2 % |
 | Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 67,51 puntos de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
 | Actividad económica (frente a un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,74 % interanual | NARANJA | 9,7 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 33,33 % de sectores en crecimiento interanual | ROJO | 3,2 % |
-| Producción industrial (frente a un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −3,3 % interanual (promedio de 3 meses) | NARANJA | 3,2 % |
+| Producción industrial (frente a un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −3,3 % interanual (promedio de 3 meses) | ROJO | 3,2 % |
 | Inversión física | Índice Anticipador de Inversión. | −0,33 % interanual ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
 | Actividad tributaria (impuesto al valor agregado + impuesto al cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | 0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) | AMARILLO | 3,8 % |
 | Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4º trimestre de 2023) | AMARILLO | 5,8 % |
-| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acumulado de 12 meses) | VERDE | 9,6 % |
+| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acumulado de 12 meses) | AMARILLO | 9,6 % |
 | **DIMENSIÓN: Sector externo** | | | | |
 | Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) | VERDE | 4,8 % |
-| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base diciembre de 2015 = 100) | AMARILLO | 5,5 % |
+| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base diciembre de 2015 = 100) | NARANJA | 5,5 % |
 | Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
-| Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,35 σ frente a su historia | AMARILLO | 3,4 % |
+| Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,35 σ frente a su historia | NARANJA | 3,4 % |
 | Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,8 % interanual real (crédito en pesos) | AMARILLO | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 4,87 % real anual (tasa efectiva anual frente a la inflación esperada) | VERDE | 4,0 % |
 
@@ -170,6 +170,8 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-11-12** — El semáforo pasa a cuatro tramos iguales y los puntajes de los cortes se mueven con él (75, 50 y 25 en vez de 60, 40 y 20). Los cortes de color no cambian: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 %.
+
 **2026-10-26** — La escala se ajusta a los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 % y rojo arriba (antes el verde llegaba hasta cerca de 2,8 %). Con 1,93 % el puntaje pasa de 76,4 a 41,4 y el indicador, de verde a amarillo.
 
 **2026-10-26** — El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.
@@ -192,7 +194,7 @@ Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, se
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 10.725 Millones de dólares** (2026-09) | **VERDE** | Peso efectivo 5,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 10.725 Millones de dólares** (2026-09) | **AMARILLO** | Peso efectivo 5,4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -226,10 +228,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Millones de dólares) | Color |
 |---|---|
-| ≥ 10.000 | VERDE |
-| 5.000 – 10.000 | AMARILLO |
-| 1.250 – 5.000 | NARANJA |
-| ≤ 1.250 | ROJO |
+| ≥ 14.167 | VERDE |
+| 7.500 – 14.167 | AMARILLO |
+| 1.875 – 7.500 | NARANJA |
+| ≤ 1.875 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -241,9 +243,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 10.725 Millones de dólares (2026-09).
 
-10.725 Millones de dólares está en Verde, a 725,0 del límite con Amarillo (10.000).
+10.725 Millones de dólares está en Amarillo, a 3.225 del límite con Naranja (7.500).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -293,7 +295,7 @@ Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,35 σ frente a su historia** (2026-10) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,35 σ frente a su historia** (2026-10) | **NARANJA** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -327,10 +329,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (σ frente a su historia) | Color |
 |---|---|
-| ≥ 0 | VERDE |
-| −0,6 – 0 | AMARILLO |
-| −0,9 – −0,6 | NARANJA |
-| ≤ −0,9 | ROJO |
+| ≥ 0,45 | VERDE |
+| −0,3 – 0,45 | AMARILLO |
+| −0,85 – −0,3 | NARANJA |
+| ≤ −0,85 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -342,9 +344,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,35 σ frente a su historia (2026-10).
 
-−0,35 σ frente a su historia está en Amarillo, a 0,25 del límite con Naranja (−0,6).
+−0,35 σ frente a su historia está en Naranja, a 0,05 del límite con Amarillo (−0,3).
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -422,10 +424,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% interanual) | Color |
 |---|---|
-| ≥ 1,5 | VERDE |
-| −1 – 1,5 | AMARILLO |
-| −3,5 – −1 | NARANJA |
-| ≤ −3,5 | ROJO |
+| ≥ 3,38 | VERDE |
+| 0,25 – 3,38 | AMARILLO |
+| −2,88 – 0,25 | NARANJA |
+| ≤ −2,88 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -437,7 +439,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,74 % interanual (2026-08).
 
-−1,74 % interanual está en Naranja, a 0,74 del límite con Amarillo (−1,0).
+−1,74 % interanual está en Naranja, a 1,14 del límite con Rojo (−2,88).
 
 **Color vigente: NARANJA**
 
@@ -520,10 +522,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de sectores en crecimiento interanual) | Color |
 |---|---|
-| ≥ 60 | VERDE |
-| 44 – 60 | AMARILLO |
-| 34 – 44 | NARANJA |
-| ≤ 34 | ROJO |
+| ≥ 75 | VERDE |
+| 52 – 75 | AMARILLO |
+| 36 – 52 | NARANJA |
+| ≤ 36 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -535,7 +537,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 33,33 % de sectores en crecimiento interanual (2026-08).
 
-33,33 % de sectores en crecimiento interanual está en Rojo, a 0,67 del límite con Naranja (34,0).
+33,33 % de sectores en crecimiento interanual está en Rojo, a 2,67 del límite con Naranja (36,0).
 
 **Color vigente: ROJO**
 
@@ -576,7 +578,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −3,3 % interanual (promedio de 3 meses)** (2026-09) | **NARANJA** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −3,3 % interanual (promedio de 3 meses)** (2026-09) | **ROJO** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -609,10 +611,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% interanual (promedio de 3 meses)) | Color |
 |---|---|
-| ≥ 1,5 | VERDE |
-| −1 – 1,5 | AMARILLO |
-| −3,5 – −1 | NARANJA |
-| ≤ −3,5 | ROJO |
+| ≥ 3,38 | VERDE |
+| 0,25 – 3,38 | AMARILLO |
+| −2,88 – 0,25 | NARANJA |
+| ≤ −2,88 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -624,9 +626,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −3,3 % interanual (promedio de 3 meses) (2026-09).
 
-−3,3 % interanual (promedio de 3 meses) está en Naranja, a 0,2 del límite con Rojo (−3,5).
+−3,3 % interanual (promedio de 3 meses) está en Rojo, a 0,42 del límite con Naranja (−2,88).
 
-**Color vigente: NARANJA**
+**Color vigente: ROJO**
 
 Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -706,10 +708,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque)) | Color |
 |---|---|
-| ≥ 2,67 | VERDE |
-| −8,03 – 2,67 | AMARILLO |
-| −17,83 – −8,03 | NARANJA |
-| ≤ −17,83 | ROJO |
+| ≥ 10,7 | VERDE |
+| −2,67 – 10,7 | AMARILLO |
+| −16,05 – −2,67 | NARANJA |
+| ≤ −16,05 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -721,7 +723,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) (2026-09).
 
-0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) está en Amarillo, a 1,81 del límite con Verde (2,67).
+0,86 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) está en Amarillo, a 3,53 del límite con Naranja (−2,67).
 
 **Color vigente: AMARILLO**
 
@@ -799,10 +801,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% del comercio (exportaciones + importaciones, acumulado de 12 meses)) | Color |
 |---|---|
-| ≥ 10,6 | VERDE |
-| −6,38 – 10,6 | AMARILLO |
-| −14,88 – −6,38 | NARANJA |
-| ≤ −14,88 | ROJO |
+| ≥ 14,85 | VERDE |
+| 0 – 14,85 | AMARILLO |
+| −13,81 – 0 | NARANJA |
+| ≤ −13,81 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -814,7 +816,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) (2026-09).
 
-15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) está en Verde, a 4,51 del límite con Amarillo (10,6).
+15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) está en Verde, a 0,26 del límite con Amarillo (14,85).
 
 **Color vigente: VERDE**
 
@@ -913,10 +915,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (índice (100 = 4º trimestre de 2023)) | Color |
 |---|---|
-| ≥ 95 | VERDE |
-| 87 – 95 | AMARILLO |
-| 82 – 87 | NARANJA |
-| ≤ 82 | ROJO |
+| ≥ 101 | VERDE |
+| 91 – 101 | AMARILLO |
+| 83 – 91 | NARANJA |
+| ≤ 83 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -928,7 +930,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 94,4 índice (100 = 4º trimestre de 2023) (2026-09).
 
-94,4 índice (100 = 4º trimestre de 2023) está en Amarillo, a 0,6 del límite con Verde (95,0).
+94,4 índice (100 = 4º trimestre de 2023) está en Amarillo, a 3,4 del límite con Naranja (91,0).
 
 **Color vigente: AMARILLO**
 
@@ -999,7 +1001,7 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 85,87 Índice (base diciembre de 2015 = 100)** (2026-09) | **AMARILLO** | Peso efectivo 5,5 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 85,87 Índice (base diciembre de 2015 = 100)** (2026-09) | **NARANJA** | Peso efectivo 5,5 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1033,10 +1035,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Índice (base diciembre de 2015 = 100)) | Color |
 |---|---|
-| ≥ 90 | VERDE |
-| 82 – 90 | AMARILLO |
-| 77 – 82 | NARANJA |
-| ≤ 77 | ROJO |
+| ≥ 99,38 | VERDE |
+| 86 – 99,38 | AMARILLO |
+| 78 – 86 | NARANJA |
+| ≤ 78 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1048,9 +1050,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 85,87 Índice (base diciembre de 2015 = 100) (2026-09).
 
-85,87 Índice (base diciembre de 2015 = 100) está en Amarillo, a 3,87 del límite con Naranja (82,0).
+85,87 Índice (base diciembre de 2015 = 100) está en Naranja, a 0,13 del límite con Amarillo (86,0).
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1135,10 +1137,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (índice (base 2004 = 100)) | Color |
 |---|---|
-| ≥ 141,12 | VERDE |
-| 138,87 – 141,12 | AMARILLO |
-| 133,43 – 138,87 | NARANJA |
-| ≤ 133,43 | ROJO |
+| ≥ 143,27 | VERDE |
+| 139,89 – 143,27 | AMARILLO |
+| 135,3 – 139,89 | NARANJA |
+| ≤ 135,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1150,7 +1152,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 145,14 índice (base 2004 = 100) (2026-04).
 
-145,14 índice (base 2004 = 100) está en Verde, a 4,02 del límite con Amarillo (141,12).
+145,14 índice (base 2004 = 100) está en Verde, a 1,87 del límite con Amarillo (143,27).
 
 **Color vigente: VERDE**
 
@@ -1262,6 +1264,8 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 **2026-10-28** — Las reservas netas se suman a su dimensión, la estabilidad monetaria: si falta este dato, su peso se reparte también con ellas. Su peso en el índice macroeconómico no cambia.
 
+**2026-11-12** — Sigue a la inflación del mes con el semáforo de cuatro tramos iguales: los puntajes de los cortes pasan a 75, 50 y 25, y los cortes de color no cambian (verde hasta 1 % mensual, 12,7 % anual).
+
 **2026-10-26** — Sigue la escala nueva de la inflación del mes, sobre el equivalente mensual de la expectativa: verde hasta 1 % mensual (12,7 % anual), amarillo hasta 2 % (26,8 %), naranja hasta 3 % (42,6 %). Con 21,1 % anual (1,61 % por mes) el puntaje pasa de 82,8 a 47,8 y el indicador, de verde a amarillo.
 
 **2026-10-26** — El rótulo pasa a «Inflación esperada a 12 meses» y cada corte de la escala (en % por mes) lleva entre paréntesis su equivalente anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %). No cambia el cálculo.
@@ -1331,10 +1335,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (puntos de tensión (0-100)) | Color |
 |---|---|
-| ≤ 40 | VERDE |
-| 40 – 60 | AMARILLO |
-| 60 – 80 | NARANJA |
-| ≥ 80 | ROJO |
+| ≤ 25 | VERDE |
+| 25 – 50 | AMARILLO |
+| 50 – 75 | NARANJA |
+| ≥ 75 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1346,7 +1350,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 67,51 puntos de tensión (0-100) (2026-09).
 
-67,51 puntos de tensión (0-100) está en Naranja, a 7,51 del límite con Amarillo (60,0).
+67,51 puntos de tensión (0-100) está en Naranja, a 7,49 del límite con Rojo (75,0).
 
 **Color vigente: NARANJA**
 
@@ -1429,10 +1433,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% interanual ponderado) | Color |
 |---|---|
-| ≥ 0,17 | VERDE |
-| −22,51 – 0,17 | AMARILLO |
-| −33,85 – −22,51 | NARANJA |
-| ≤ −33,85 | ROJO |
+| ≥ 21,43 | VERDE |
+| −11,17 – 21,43 | AMARILLO |
+| −31,96 – −11,17 | NARANJA |
+| ≤ −31,96 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1444,7 +1448,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,33 % interanual ponderado (2026-09).
 
-−0,33 % interanual ponderado está en Amarillo, a 0,5 del límite con Verde (0,17).
+−0,33 % interanual ponderado está en Amarillo, a 10,84 del límite con Naranja (−11,17).
 
 **Color vigente: AMARILLO**
 
@@ -1536,10 +1540,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% interanual real (crédito en pesos)) | Color |
 |---|---|
-| ≥ 3,62 | VERDE |
-| −10,86 – 3,62 | AMARILLO |
-| −24,1 – −10,86 | NARANJA |
-| ≤ −24,1 | ROJO |
+| ≥ 14,47 | VERDE |
+| −3,62 – 14,47 | AMARILLO |
+| −21,7 – −3,62 | NARANJA |
+| ≤ −21,7 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1551,7 +1555,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,8 % interanual real (crédito en pesos) (2026-10).
 
-−1,8 % interanual real (crédito en pesos) está en Amarillo, a 5,42 del límite con Verde (3,62).
+−1,8 % interanual real (crédito en pesos) está en Amarillo, a 1,82 del límite con Naranja (−3,62).
 
 **Color vigente: AMARILLO**
 
@@ -1633,12 +1637,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% real anual (tasa efectiva anual frente a la inflación esperada)) | Color |
 |---|---|
-| −1,89 – 12,5 | VERDE |
-| −3,57 – −1,89 | AMARILLO |
-| 12,5 – 16,67 | AMARILLO |
-| ≤ −3,57 | NARANJA |
-| 16,67 – 19,33 | NARANJA |
-| ≥ 19,33 | ROJO |
+| −0,06 – 9 | VERDE |
+| −2,86 – −0,06 | AMARILLO |
+| 9 – 14,83 | AMARILLO |
+| −4,64 – −2,86 | NARANJA |
+| 14,83 – 18,67 | NARANJA |
+| ≤ −4,64 | ROJO |
+| ≥ 18,67 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1650,7 +1655,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4,87 % real anual (tasa efectiva anual frente a la inflación esperada) (2026-10).
 
-4,87 % real anual (tasa efectiva anual frente a la inflación esperada) está en Verde, a 6,76 del límite con Amarillo (−1,89).
+4,87 % real anual (tasa efectiva anual frente a la inflación esperada) está en Verde, a 4,13 del límite con Amarillo (9,0).
 
 **Color vigente: VERDE**
 
@@ -1699,7 +1704,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,02 % de la recaudación (acumulado de 12 meses)** (2026-08) | **VERDE** | Peso efectivo 9,6 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 6,02 % de la recaudación (acumulado de 12 meses)** (2026-08) | **AMARILLO** | Peso efectivo 9,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1734,10 +1739,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de la recaudación (acumulado de 12 meses)) | Color |
 |---|---|
-| ≥ 3,97 | VERDE |
-| −5,95 – 3,97 | AMARILLO |
-| −17,85 – −5,95 | NARANJA |
-| ≤ −17,85 | ROJO |
+| ≥ 9,92 | VERDE |
+| 0 – 9,92 | AMARILLO |
+| −14,88 – 0 | NARANJA |
+| ≤ −14,88 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1749,9 +1754,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 6,02 % de la recaudación (acumulado de 12 meses) (2026-08).
 
-6,02 % de la recaudación (acumulado de 12 meses) está en Verde, a 2,05 del límite con Amarillo (3,97).
+6,02 % de la recaudación (acumulado de 12 meses) está en Amarillo, a 3,9 del límite con Verde (9,92).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 9,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 

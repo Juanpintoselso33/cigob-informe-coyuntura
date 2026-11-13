@@ -856,27 +856,27 @@ fecha,indicador,valor,unidad,fuente
 2026-02-01,itvc_tarifas,124.4,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-01-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2025-12-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
-2026-09-01,itvc_pobreza,92.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-08-01,itvc_pobreza,93.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-07-01,itvc_pobreza,93.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-06-01,itvc_pobreza,93.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-05-01,itvc_pobreza,95.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-04-01,itvc_pobreza,95.8,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-03-01,itvc_pobreza,96.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-02-01,itvc_pobreza,94.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-01-01,itvc_pobreza,94.8,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-12-01,itvc_pobreza,94.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-11-01,itvc_pobreza,94.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-10-01,itvc_pobreza,94.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-09-01,itvc_pobreza,94.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-08-01,itvc_pobreza,93.9,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-07-01,itvc_pobreza,93.9,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-06-01,itvc_pobreza,93.4,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-05-01,itvc_pobreza,90.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-04-01,itvc_pobreza,89.6,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-03-01,itvc_pobreza,88.9,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-02-01,itvc_pobreza,90.1,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2025-01-01,itvc_pobreza,89.2,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-09-01,itvc_pobreza,96.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-08-01,itvc_pobreza,98.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-07-01,itvc_pobreza,98.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-06-01,itvc_pobreza,98.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-05-01,itvc_pobreza,100.5,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-04-01,itvc_pobreza,101.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-03-01,itvc_pobreza,101.2,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-02-01,itvc_pobreza,99.2,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2026-01-01,itvc_pobreza,99.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-12-01,itvc_pobreza,99.2,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-11-01,itvc_pobreza,98.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-10-01,itvc_pobreza,99.1,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-09-01,itvc_pobreza,99.1,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-08-01,itvc_pobreza,98.6,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-07-01,itvc_pobreza,98.6,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-06-01,itvc_pobreza,98.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-05-01,itvc_pobreza,94.1,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-04-01,itvc_pobreza,93.2,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-03-01,itvc_pobreza,92.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-02-01,itvc_pobreza,93.8,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
+2025-01-01,itvc_pobreza,92.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2026-09-01,itvc_lider,93.1,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-08-01,itvc_lider,93.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-07-01,itvc_lider,93.1,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)

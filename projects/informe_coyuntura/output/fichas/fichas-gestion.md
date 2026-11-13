@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 82,7** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 2 en amarillo |
+| **ITCG: 82,7** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 2 en amarillo · 1 en naranja |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,2 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,2 | AMARILLO | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 93,3 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande. | 89,2 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,95 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,96 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -70,9 +70,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización… | 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) | VERDE | 7,5 % |
 | Siniestralidad laboral (Superintendencia de Riesgos del Trabajo) | Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo. | −5 % variación del índice de incidencia (mismo período, contra el año anterior) | VERDE | 3,8 % |
-| Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) | AMARILLO | 3,8 % |
+| Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) | NARANJA | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
-| Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 53,1 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
+| Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 53,1 % de avance (etapas 0-4, cartera Ley Bases) | AMARILLO | 6,0 % |
 | Grandes inversiones aprobadas | Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes… | 76,2 % de la promesa de US$ 100.000 M aprobado | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,95 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 7,96 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -131,22 +131,22 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de brecha entre el contado con liquidación y el mayorista) | Color |
 |---|---|
-| ≤ 14 | VERDE |
-| 14 – 20 | AMARILLO |
-| 20 – 23,33 | NARANJA |
-| ≥ 23,33 | ROJO |
+| ≤ 10 | VERDE |
+| 10 – 17 | AMARILLO |
+| 17 – 22,5 | NARANJA |
+| ≥ 22,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Contado con liquidación venta 1668.40 (2026-11-12T17:57:00-03:00) / mayorista venta 1545.50 (2026-11-12T12:57:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- Contado con liquidación venta 1671.20 (2026-11-13T11:57:00-03:00) / mayorista venta 1548.00 (2026-11-13T08:37:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 7,95 % de brecha entre el contado con liquidación y el mayorista (2026-11).
+Dato vigente: 7,96 % de brecha entre el contado con liquidación y el mayorista (2026-11).
 
-7,95 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 6,05 del límite con Amarillo (14,0).
+7,96 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 2,04 del límite con Amarillo (10,0).
 
 **Color vigente: VERDE**
 
@@ -230,10 +230,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% del intercambio (alícuota efectiva)) | Color |
 |---|---|
-| ≤ 6 | VERDE |
-| 6 – 9 | AMARILLO |
-| 9 – 10,33 | NARANJA |
-| ≥ 10,33 | ROJO |
+| ≤ 3,75 | VERDE |
+| 3,75 – 7,5 | AMARILLO |
+| 7,5 – 10 | NARANJA |
+| ≥ 10 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -245,7 +245,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 7,16 % del intercambio (alícuota efectiva) (2026-09).
 
-7,16 % del intercambio (alícuota efectiva) está en Amarillo, a 1,16 del límite con Verde (6,0).
+7,16 % del intercambio (alícuota efectiva) está en Amarillo, a 0,34 del límite con Naranja (7,5).
 
 **Color vigente: AMARILLO**
 
@@ -326,10 +326,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (artículos de normas modificados o eliminados, acumulados desde dic-2023) | Color |
 |---|---|
-| ≥ 11.000 | VERDE |
-| 6.000 – 11.000 | AMARILLO |
-| 3.400 – 6.000 | NARANJA |
-| ≤ 3.400 | ROJO |
+| ≥ 17.900 | VERDE |
+| 8.500 – 17.900 | AMARILLO |
+| 3.850 – 8.500 | NARANJA |
+| ≤ 3.850 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -341,7 +341,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 (2026-10).
 
-18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 7.001 del límite con Amarillo (11.000).
+18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 101,0 del límite con Amarillo (17.900).
 
 **Color vigente: VERDE**
 
@@ -439,10 +439,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional)) | Color |
 |---|---|
-| ≤ −11,14 | VERDE |
-| −11,14 – −4,3 | AMARILLO |
-| −4,3 – −1,43 | NARANJA |
-| ≥ −1,43 | ROJO |
+| ≤ −17,12 | VERDE |
+| −17,12 – −7,72 | AMARILLO |
+| −7,72 – −2,15 | NARANJA |
+| ≥ −2,15 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -454,7 +454,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −22,44 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) (2026-09).
 
-−22,44 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) está en Verde, a 11,3 del límite con Amarillo (−11,14).
+−22,44 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) está en Verde, a 5,32 del límite con Amarillo (−17,12).
 
 **Color vigente: VERDE**
 
@@ -538,10 +538,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de variación real: promedio de los últimos 12 meses frente al promedio de 2023) | Color |
 |---|---|
-| ≤ −8,5 | VERDE |
-| −8,5 – −2,5 | AMARILLO |
-| −2,5 – −0,8 | NARANJA |
-| ≥ −0,8 | ROJO |
+| ≤ −15 | VERDE |
+| −15 – −5,5 | AMARILLO |
+| −5,5 – −1,2 | NARANJA |
+| ≥ −1,2 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -553,7 +553,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −28 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 (2026-08).
 
-−28,0 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 está en Verde, a 19,5 del límite con Amarillo (−8,5).
+−28,0 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 está en Verde, a 13,0 del límite con Amarillo (−15,0).
 
 **Color vigente: VERDE**
 
@@ -636,10 +636,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Índice 0–100 (FAL: cinco hitos de construcción y adopción)) | Color |
 |---|---|
-| ≥ 55,2 | VERDE |
-| 34,2 – 55,2 | AMARILLO |
-| 16,9 – 34,2 | NARANJA |
-| ≤ 16,9 | ROJO |
+| ≥ 71 | VERDE |
+| 44,8 – 71 | AMARILLO |
+| 20,3 – 44,8 | NARANJA |
+| ≤ 20,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -651,7 +651,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) (2026-11).
 
-90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,2).
+90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 19,0 del límite con Amarillo (71,0).
 
 **Color vigente: VERDE**
 
@@ -749,10 +749,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% variación del índice de incidencia (mismo período, contra el año anterior)) | Color |
 |---|---|
-| ≤ 2,5 | VERDE |
-| 2,5 – 12,5 | AMARILLO |
-| 12,5 – 17,5 | NARANJA |
-| ≥ 17,5 | ROJO |
+| ≤ −5 | VERDE |
+| −5 – 7,5 | AMARILLO |
+| 7,5 – 16,25 | NARANJA |
+| ≥ 16,25 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -764,7 +764,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −5 % variación del índice de incidencia (mismo período, contra el año anterior) (2026-06).
 
-−5,0 % variación del índice de incidencia (mismo período, contra el año anterior) está en Verde, a 7,5 del límite con Amarillo (2,5).
+−5,0 % variación del índice de incidencia (mismo período, contra el año anterior) está en Verde, a 0,0 del límite con Amarillo (−5,0).
 
 **Color vigente: VERDE**
 
@@ -804,7 +804,7 @@ Cuánto varían los juicios laborales que se inician en la Justicia Nacional del
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos)** (2026-06) | **AMARILLO** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
+| **Hoy: 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos)** (2026-06) | **NARANJA** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -838,10 +838,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% variación juicios entrados (12 meses frente a los 12 meses previos)) | Color |
 |---|---|
-| ≤ 2,5 | VERDE |
-| 2,5 – 12,5 | AMARILLO |
-| 12,5 – 17,5 | NARANJA |
-| ≥ 17,5 | ROJO |
+| ≤ −5 | VERDE |
+| −5 – 7,5 | AMARILLO |
+| 7,5 – 16,2 | NARANJA |
+| ≥ 16,2 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -853,9 +853,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) (2026-06).
 
-12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) está en Amarillo, a 0,1 del límite con Naranja (12,5).
+12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) está en Naranja, a 3,85 del límite con Rojo (16,2).
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -898,7 +898,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 53,1 % de avance (etapas 0-4, cartera Ley Bases)** (2026-11) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 53,1 % de avance (etapas 0-4, cartera Ley Bases)** (2026-11) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -931,10 +931,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de avance (etapas 0-4, cartera Ley Bases)) | Color |
 |---|---|
-| ≥ 41 | VERDE |
-| 25 – 41 | AMARILLO |
-| 18,3 – 25 | NARANJA |
-| ≤ 18,3 | ROJO |
+| ≥ 55 | VERDE |
+| 33 – 55 | AMARILLO |
+| 20 – 33 | NARANJA |
+| ≤ 20 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -946,9 +946,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 53,1 % de avance (etapas 0-4, cartera Ley Bases) (2026-11).
 
-53,1 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 12,1 del límite con Amarillo (41,0).
+53,1 % de avance (etapas 0-4, cartera Ley Bases) está en Amarillo, a 1,9 del límite con Verde (55,0).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1028,10 +1028,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de la promesa de US$ 100.000 M aprobado) | Color |
 |---|---|
-| ≥ 41 | VERDE |
-| 25 – 41 | AMARILLO |
-| 18,3 – 25 | NARANJA |
-| ≤ 18,3 | ROJO |
+| ≥ 55 | VERDE |
+| 33 – 55 | AMARILLO |
+| 20 – 33 | NARANJA |
+| ≤ 20 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1043,7 +1043,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 76,2 % de la promesa de US$ 100.000 M aprobado (2026-11).
 
-76,2 % de la promesa de US$ 100.000 M aprobado está en Verde, a 35,2 del límite con Amarillo (41,0).
+76,2 % de la promesa de US$ 100.000 M aprobado está en Verde, a 21,2 del límite con Amarillo (55,0).
 
 **Color vigente: VERDE**
 
@@ -1125,10 +1125,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de km adjudicados / km del plan (Red Federal de Concesiones)) | Color |
 |---|---|
-| ≥ 41 | VERDE |
-| 25 – 41 | AMARILLO |
-| 18,3 – 25 | NARANJA |
-| ≤ 18,3 | ROJO |
+| ≥ 55 | VERDE |
+| 33 – 55 | AMARILLO |
+| 20 – 33 | NARANJA |
+| ≤ 20 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1140,7 +1140,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-11).
 
-100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0).
+100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 45,0 del límite con Amarillo (55,0).
 
 **Color vigente: VERDE**
 
@@ -1230,10 +1230,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)) | Color |
 |---|---|
-| ≥ 67 | VERDE |
-| 45 – 67 | AMARILLO |
-| 35 – 45 | NARANJA |
-| ≤ 35 | ROJO |
+| ≥ 81,2 | VERDE |
+| 56 – 81,2 | AMARILLO |
+| 37,5 – 56 | NARANJA |
+| ≤ 37,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1245,7 +1245,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) (2026-11).
 
-100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) está en Verde, a 33,0 del límite con Amarillo (67,0).
+100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) está en Verde, a 18,75 del límite con Amarillo (81,2).
 
 **Color vigente: VERDE**
 
@@ -1326,10 +1326,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023) | Color |
 |---|---|
-| ≥ 32,5 | VERDE |
-| 12,5 – 32,5 | AMARILLO |
-| 4,2 – 12,5 | NARANJA |
-| ≤ 4,2 | ROJO |
+| ≥ 50 | VERDE |
+| 22,5 – 50 | AMARILLO |
+| 6,2 – 22,5 | NARANJA |
+| ≤ 6,2 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1341,7 +1341,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 (2025-12).
 
-74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 está en Verde, a 41,7 del límite con Amarillo (32,5).
+74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 está en Verde, a 24,2 del límite con Amarillo (50,0).
 
 **Color vigente: VERDE**
 
@@ -1436,10 +1436,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Avance de la libre elección de cobertura de salud (hitos 0–100)) | Color |
 |---|---|
-| ≥ 61 | VERDE |
-| 45 – 61 | AMARILLO |
-| 38,3 – 45 | NARANJA |
-| ≤ 38,3 | ROJO |
+| ≥ 75 | VERDE |
+| 53 – 75 | AMARILLO |
+| 40 – 53 | NARANJA |
+| ≤ 40 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1451,7 +1451,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 Avance de la libre elección de cobertura de salud (hitos 0–100) (2026-09).
 
-100,0 Avance de la libre elección de cobertura de salud (hitos 0–100) está en Verde, a 39,0 del límite con Amarillo (61,0).
+100,0 Avance de la libre elección de cobertura de salud (hitos 0–100) está en Verde, a 25,0 del límite con Amarillo (75,0).
 
 **Color vigente: VERDE**
 

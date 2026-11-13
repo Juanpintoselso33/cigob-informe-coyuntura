@@ -36,7 +36,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **15.6%** |
 | Procedencia del ancla | `conceptual` — bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual |
 
-**Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 60 · 1.5–2.5 → 40 · 2.5–3.5 → 20 · > 3.5 → 10
+**Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 75.0 · 1.5–2.5 → 50.0 · 2.5–3.5 → 25.0 · > 3.5 → 10
 
 **Lo gobiernan**: [ADR-0077](../adr/0077-ipc-nucleo-serie-acompanante.md) El IPC general se lee junto al núcleo · [ADR-0122](../adr/0122-riesgo-sistemico-del-deflactor-ipc.md) El riesgo sistémico del deflactor IPC, declarado en la metodología · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis
 
@@ -50,7 +50,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **5.2%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120) |
 
-**Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 60 · 1.5–2.5 → 40 · 2.5–3.5 → 20 · > 3.5 → 10
+**Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 75.0 · 1.5–2.5 → 50.0 · 2.5–3.5 → 25.0 · > 3.5 → 10
 
 **Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 

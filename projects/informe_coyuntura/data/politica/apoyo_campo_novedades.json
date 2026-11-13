@@ -906,6 +906,11 @@
    "fecha": "2026-11-04",
    "titulo": "“En CONINAGRO hay preocupación por leyes que todavía no han salido”"
   },
+  "CONINAGRO|72378": {
+   "fecha": "2026-11-13",
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico",
+   "titulo": "Semáforo de Economías Regionales: nueva producción en amarillo"
+  },
   "CRA|28552": {
    "origen": "codificacion ADR-0384"
   },

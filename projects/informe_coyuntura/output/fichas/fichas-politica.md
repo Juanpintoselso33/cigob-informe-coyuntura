@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 80,6** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 1 en amarillo · 1 en naranja |
+| **ITCP: 81,5** | **VERDE** | Moderadamente aflojado | 14 indicadores: 10 en verde · 3 en amarillo · 1 en naranja |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
@@ -44,8 +44,8 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cuatro señales. | 77,9 | VERDE | 38,7 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde dos señales. | 88,4 | VERDE | 20,4 % |
-| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 85,2 | VERDE | 16,1 % |
-| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | VERDE | 14,0 % |
+| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 90,5 | VERDE | 16,1 % |
+| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | AMARILLO | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 88,3 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -61,10 +61,10 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 15,5 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | AMARILLO | 15,5 % |
 | Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 6,5 % |
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 6,5 % |
-| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | VERDE | 10,3 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | AMARILLO | 10,3 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 10,2 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 64,9 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 10,2 % |
@@ -133,10 +133,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
 |---|---|
-| ≥ −0,08 | VERDE |
-| −0,4 – −0,08 | AMARILLO |
-| −0,53 – −0,4 | NARANJA |
-| ≤ −0,53 | ROJO |
+| ≥ 0,2 | VERDE |
+| −0,24 – 0,2 | AMARILLO |
+| −0,5 – −0,24 | NARANJA |
+| ≤ −0,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -148,7 +148,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,45 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,45 saldo de postura (−1 a +1, 12m móviles) está en Naranja, a 0,05 del límite con Amarillo (−0,4).
+−0,45 saldo de postura (−1 a +1, 12m móviles) está en Naranja, a 0,05 del límite con Rojo (−0,5).
 
 **Color vigente: NARANJA**
 
@@ -245,10 +245,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
 |---|---|
-| ≥ −0,08 | VERDE |
-| −0,4 – −0,08 | AMARILLO |
-| −0,53 – −0,4 | NARANJA |
-| ≤ −0,53 | ROJO |
+| ≥ 0,2 | VERDE |
+| −0,24 – 0,2 | AMARILLO |
+| −0,5 – −0,24 | NARANJA |
+| ≤ −0,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -260,7 +260,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-1,0 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 1,08 del límite con Amarillo (−0,08).
+1,0 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,8 del límite con Amarillo (0,2).
 
 **Color vigente: VERDE**
 
@@ -339,10 +339,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
 |---|---|
-| ≥ −0,08 | VERDE |
-| −0,4 – −0,08 | AMARILLO |
-| −0,53 – −0,4 | NARANJA |
-| ≤ −0,53 | ROJO |
+| ≥ 0,2 | VERDE |
+| −0,24 – 0,2 | AMARILLO |
+| −0,5 – −0,24 | NARANJA |
+| ≤ −0,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -354,7 +354,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,152 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,07 del límite con Verde (−0,08).
+−0,152 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,09 del límite con Naranja (−0,24).
 
 **Color vigente: AMARILLO**
 
@@ -433,10 +433,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
 |---|---|
-| ≥ −0,08 | VERDE |
-| −0,4 – −0,08 | AMARILLO |
-| −0,53 – −0,4 | NARANJA |
-| ≤ −0,53 | ROJO |
+| ≥ 0,2 | VERDE |
+| −0,24 – 0,2 | AMARILLO |
+| −0,5 – −0,24 | NARANJA |
+| ≤ −0,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -448,7 +448,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0,2 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-0,2 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,28 del límite con Amarillo (−0,08).
+0,2 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,0 del límite con Amarillo (0,2).
 
 **Color vigente: VERDE**
 
@@ -521,10 +521,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% frente a 2023) | Color |
 |---|---|
-| ≤ 4,5 | VERDE |
-| 4,5 – 22,5 | AMARILLO |
-| 22,5 – 27,5 | NARANJA |
-| ≥ 27,5 | ROJO |
+| ≤ −11,2 | VERDE |
+| −11,2 – 13,5 | AMARILLO |
+| 13,5 – 26,2 | NARANJA |
+| ≥ 26,2 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -536,7 +536,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −24,6 % frente a 2023 (2026-10).
 
-−24,6 % frente a 2023 está en Verde, a 29,1 del límite con Amarillo (4,5).
+−24,6 % frente a 2023 está en Verde, a 13,35 del límite con Amarillo (−11,2).
 
 **Color vigente: VERDE**
 
@@ -621,10 +621,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (jornadas individuales no trabajadas (12m)) | Color |
 |---|---|
-| ≤ 7.070.000 | VERDE |
-| 7.070.000 – 8.350.000 | AMARILLO |
-| 8.350.000 – 8.850.000 | NARANJA |
-| ≥ 8.850.000 | ROJO |
+| ≤ 5.850.000 | VERDE |
+| 5.850.000 – 7.710.000 | AMARILLO |
+| 7.710.000 – 8.725.000 | NARANJA |
+| ≥ 8.725.000 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -636,7 +636,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4.820.775 jornadas individuales no trabajadas (12m) (2026-07).
 
-4.820.775 jornadas individuales no trabajadas (12m) está en Verde, a 2.249.225 del límite con Amarillo (7.070.000).
+4.820.775 jornadas individuales no trabajadas (12m) está en Verde, a 1.029.225 del límite con Amarillo (5.850.000).
 
 **Color vigente: VERDE**
 
@@ -681,7 +681,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de proyectos** (2026-11) | **VERDE** | Peso efectivo 15,5 % del ITCP | Cinturón Política |
+| **Hoy: 27,3 % de proyectos** (2026-11) | **AMARILLO** | Peso efectivo 15,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -717,10 +717,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de proyectos) | Color |
 |---|---|
-| ≥ 20 | VERDE |
-| 10 – 20 | AMARILLO |
-| 6,7 – 10 | NARANJA |
-| ≤ 6,7 | ROJO |
+| ≥ 31,2 | VERDE |
+| 15 – 31,2 | AMARILLO |
+| 7,5 – 15 | NARANJA |
+| ≤ 7,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -732,9 +732,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 27,3 % de proyectos (2026-11).
 
-27,3 % de proyectos está en Verde, a 7,3 del límite con Amarillo (20,0).
+27,3 % de proyectos está en Amarillo, a 3,95 del límite con Verde (31,2).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCP: 15,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -822,10 +822,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de jurisdicciones (sobre 24) adheridas al RIGI) | Color |
 |---|---|
-| ≥ 46 | VERDE |
-| 30 – 46 | AMARILLO |
-| 23,3 – 30 | NARANJA |
-| ≤ 23,3 | ROJO |
+| ≥ 60 | VERDE |
+| 38 – 60 | AMARILLO |
+| 25 – 38 | NARANJA |
+| ≤ 25 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -837,7 +837,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 75 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-11).
 
-75,0 % de jurisdicciones (sobre 24) adheridas al RIGI está en Verde, a 29,0 del límite con Amarillo (46,0).
+75,0 % de jurisdicciones (sobre 24) adheridas al RIGI está en Verde, a 15,0 del límite con Amarillo (60,0).
 
 **Color vigente: VERDE**
 
@@ -1016,10 +1016,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días)) | Color |
 |---|---|
-| ≥ 96,3 | VERDE |
-| 93,4 – 96,3 | AMARILLO |
-| 91 – 93,4 | NARANJA |
-| ≤ 91 | ROJO |
+| ≥ 97,8 | VERDE |
+| 94,8 – 97,8 | AMARILLO |
+| 91,6 – 94,8 | NARANJA |
+| ≤ 91,6 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1031,7 +1031,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) (2026-10).
 
-99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) está en Verde, a 3,52 del límite con Amarillo (96,3).
+99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) está en Verde, a 1,97 del límite con Amarillo (97,8).
 
 **Color vigente: VERDE**
 
@@ -1125,10 +1125,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (vetos insistidos por las dos cámaras, últimos 12 meses) | Color |
 |---|---|
-| ≤ 1 | VERDE |
-| 1 – 2,6 | AMARILLO |
-| 2,6 – 3,6 | NARANJA |
-| ≥ 3,6 | ROJO |
+| ≤ 0,62 | VERDE |
+| 0,62 – 1,8 | AMARILLO |
+| 1,8 – 3,4 | NARANJA |
+| ≥ 3,4 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1140,7 +1140,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0 vetos insistidos por las dos cámaras, últimos 12 meses (2026-11).
 
-0,0 vetos insistidos por las dos cámaras, últimos 12 meses está en Verde, a 1,0 del límite con Amarillo (1,0).
+0,0 vetos insistidos por las dos cámaras, últimos 12 meses está en Verde, a 0,62 del límite con Amarillo (0,62).
 
 **Color vigente: VERDE**
 
@@ -1213,10 +1213,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (decretos derogados por las dos cámaras, últimos 12 meses) | Color |
 |---|---|
-| ≤ 1 | VERDE |
-| 1 – 2,6 | AMARILLO |
-| 2,6 – 3,6 | NARANJA |
-| ≥ 3,6 | ROJO |
+| ≤ 0,62 | VERDE |
+| 0,62 – 1,8 | AMARILLO |
+| 1,8 – 3,4 | NARANJA |
+| ≥ 3,4 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1228,7 +1228,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0 decretos derogados por las dos cámaras, últimos 12 meses (2026-11).
 
-0,0 decretos derogados por las dos cámaras, últimos 12 meses está en Verde, a 1,0 del límite con Amarillo (1,0).
+0,0 decretos derogados por las dos cámaras, últimos 12 meses está en Verde, a 0,62 del límite con Amarillo (0,62).
 
 **Color vigente: VERDE**
 
@@ -1268,7 +1268,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **VERDE** | Peso efectivo 10,3 % del ITCP | Cinturón Política |
+| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **AMARILLO** | Peso efectivo 10,3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1304,10 +1304,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% estimado de cargos con juez designado) | Color |
 |---|---|
-| ≥ 73 | VERDE |
-| 65 – 73 | AMARILLO |
-| 61,67 – 65 | NARANJA |
-| ≤ 61,67 | ROJO |
+| ≥ 80 | VERDE |
+| 69 – 80 | AMARILLO |
+| 62,5 – 69 | NARANJA |
+| ≤ 62,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1319,9 +1319,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 73,61 % estimado de cargos con juez designado (2026-11).
 
-73,61 % estimado de cargos con juez designado está en Verde, a 0,61 del límite con Amarillo (73,0).
+73,61 % estimado de cargos con juez designado está en Amarillo, a 4,61 del límite con Naranja (69,0).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCP: 10,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1402,10 +1402,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% votos de senadores no-LLA alineados con LLA, por provincia) | Color |
 |---|---|
-| ≥ 47,7 | VERDE |
-| 38,6 – 47,7 | AMARILLO |
-| 29,5 – 38,6 | NARANJA |
-| ≤ 29,5 | ROJO |
+| ≥ 57,7 | VERDE |
+| 43,2 – 57,7 | AMARILLO |
+| 31,8 – 43,2 | NARANJA |
+| ≤ 31,8 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1417,7 +1417,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 64,9 % votos de senadores no-LLA alineados con LLA, por provincia (2026-10).
 
-64,9 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 17,17 del límite con Amarillo (47,7).
+64,9 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 7,19 del límite con Amarillo (57,7).
 
 **Color vigente: VERDE**
 

@@ -35,18 +35,18 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 102,1** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 9 en verde · 2 en amarillo · 5 en naranja · 3 en rojo |
+| **ITCIS: 102,6** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 5 en verde · 5 en amarillo · 5 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Presión de precios | Tres gastos sensibles. | 106,8 | VERDE | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 106,8 | AMARILLO | 25,0 % |
 | Empleo | Cuánta gente trabaja y en qué condiciones. | 100,0 | AMARILLO | 24,2 % |
-| Ingresos | Si el ingreso alcanza. | 102,0 | AMARILLO | 20,2 % |
-| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 82,2 | ROJO | 10,0 % |
-| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,3 % |
+| Ingresos | Si el ingreso alcanza. | 103,6 | AMARILLO | 20,2 % |
+| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 84,0 | ROJO | 10,0 % |
+| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | AMARILLO | 8,3 % |
 | Consumo | Lo que efectivamente se compra. | 94,7 | NARANJA | 7,9 % |
 | Seguridad | Combina tres medidas. | 136,8 | VERDE | 4,5 % |
 
@@ -63,24 +63,24 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Presión de precios** | | | | |
-| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,97 % mensual | VERDE | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | VERDE | 11,3 % |
+| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,97 % mensual | AMARILLO | 8,8 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | AMARILLO | 11,3 % |
 | Alquiler real, contratos vigentes (INDEC) | Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. | 200,75 índice (fines de 2023 = 100) | ROJO | 2,5 % |
 | Alquiler real, avisos (Universidad de San Andrés – Mercado Libre) | Cuánto se pide a quien busca alquilar. | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral (asalariados sin ningún aporte) | Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en… | 31,9 % | NARANJA | 9,7 % |
 | Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
 | **DIMENSIÓN: Ingresos** | | | | |
-| Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas básicas totales | VERDE | 13,0 % |
+| Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas básicas totales | AMARILLO | 13,0 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 32,6 % de personas | NARANJA | 7,1 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,61 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | NARANJA | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
-| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | VERDE | 8,3 % |
+| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | AMARILLO | 8,3 % |
 | **DIMENSIÓN: Consumo** | | | | |
-| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg por habitante por año | NARANJA | 0,4 % |
-| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg por habitante por año | AMARILLO | 0,4 % |
+| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg por habitante por año | ROJO | 0,4 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg por habitante por año | NARANJA | 0,4 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 32,14 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
 | Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,61 motos por cada auto patentado (móvil de 12 meses) | ROJO | 0,7 % |
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
@@ -105,7 +105,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,69 canastas básicas totales** (2026-08) | **VERDE** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,69 canastas básicas totales** (2026-08) | **AMARILLO** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -155,9 +155,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 3,69 canastas básicas totales (2026-08).
 
-107,3 en la escala del cinturón (100 = referencia) está en Verde, a 2,3 del límite con Amarillo (105).
+107,3 en la escala del cinturón (100 = referencia) está en Amarillo, a 2,3 del límite con Amarillo (105).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 13 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -198,7 +198,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de imp
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,97 % mensual** (2026-10) | **VERDE** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,97 % mensual** (2026-10) | **AMARILLO** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -248,9 +248,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,97 % mensual (2026-10).
 
-107,8 en la escala del cinturón (100 = referencia) está en Verde, a 2,8 del límite con Amarillo (105).
+107,8 en la escala del cinturón (100 = referencia) está en Amarillo, a 2,8 del límite con Amarillo (105).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -287,7 +287,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 13 % del salario registrado promedio** (2026-10) | **VERDE** | Peso efectivo 11,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 13 % del salario registrado promedio** (2026-10) | **AMARILLO** | Peso efectivo 11,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -338,9 +338,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 13 % del salario registrado promedio (2026-10).
 
-El transporte, el rubro que fija el color: 6,37 % del salario está en Verde, a 0,63 del límite con Amarillo (7,0).
+El transporte, el rubro que fija el color: 6,37 % del salario está en Amarillo, a 0,12 del límite con Verde (6,25).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 11,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -570,7 +570,7 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 45,81 kg por habitante por año** (2026-09) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 45,81 kg por habitante por año** (2026-09) | **ROJO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -623,7 +623,7 @@ Dato vigente: 45,81 kg por habitante por año (2026-09).
 
 Consumo aparente de carne vacuna: 45,8 kg por habitante y año (−9,8% interanual), el 40,3% del total de las tres carnes, 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,8 kg, el 59,7% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
-**Color vigente: NARANJA**
+**Color vigente: ROJO**
 
 Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -672,7 +672,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 113,6 kg por habitante por año** (2026-09) | **AMARILLO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 113,6 kg por habitante por año** (2026-09) | **NARANJA** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -725,7 +725,7 @@ Dato vigente: 113,6 kg por habitante por año (2026-09).
 
 Consumo aparente de las tres carnes: 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. La carne vacuna aporta 45,8 kg, el 40,3%, y se sigue además como indicador propio; aviar y porcina suman 67,8 kg, el 59,7% (aviar −0,2% y porcina 10,8% interanual). Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1816,7 +1816,7 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,96 índice 0-5** (2026-10) | **VERDE** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,96 índice 0-5** (2026-10) | **AMARILLO** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1866,9 +1866,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,96 índice 0-5 (2026-10).
 
-106,7 en la escala del cinturón (100 = referencia) está en Verde, a 1,7 del límite con Amarillo (105).
+106,7 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,7 del límite con Amarillo (105).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 

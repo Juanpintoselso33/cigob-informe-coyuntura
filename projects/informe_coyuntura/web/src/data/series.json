@@ -20376,11 +20376,11 @@
     },
     {
       "fecha": "2025-01-01",
-      "valor": 1.72
+      "valor": 1.71
     },
     {
       "fecha": "2026-01-01",
-      "valor": 1.81
+      "valor": 1.8
     }
   ],
   "jornadas_individuales_no_trabajadas_12m": [
@@ -27546,87 +27546,87 @@
   "itvc_pobreza": [
     {
       "fecha": "2025-01-01",
-      "valor": 89.2
+      "valor": 92.7
     },
     {
       "fecha": "2025-02-01",
-      "valor": 90.1
+      "valor": 93.8
     },
     {
       "fecha": "2025-03-01",
-      "valor": 88.9
+      "valor": 92.3
     },
     {
       "fecha": "2025-04-01",
-      "valor": 89.6
+      "valor": 93.2
     },
     {
       "fecha": "2025-05-01",
-      "valor": 90.3
+      "valor": 94.1
     },
     {
       "fecha": "2025-06-01",
-      "valor": 93.4
+      "valor": 98.0
     },
     {
       "fecha": "2025-07-01",
-      "valor": 93.9
+      "valor": 98.6
     },
     {
       "fecha": "2025-08-01",
-      "valor": 93.9
+      "valor": 98.6
     },
     {
       "fecha": "2025-09-01",
-      "valor": 94.3
+      "valor": 99.1
     },
     {
       "fecha": "2025-10-01",
-      "valor": 94.3
+      "valor": 99.1
     },
     {
       "fecha": "2025-11-01",
-      "valor": 94.0
+      "valor": 98.7
     },
     {
       "fecha": "2025-12-01",
-      "valor": 94.4
+      "valor": 99.2
     },
     {
       "fecha": "2026-01-01",
-      "valor": 94.8
+      "valor": 99.7
     },
     {
       "fecha": "2026-02-01",
-      "valor": 94.4
+      "valor": 99.2
     },
     {
       "fecha": "2026-03-01",
-      "valor": 96.0
+      "valor": 101.2
     },
     {
       "fecha": "2026-04-01",
-      "valor": 95.8
+      "valor": 101.0
     },
     {
       "fecha": "2026-05-01",
-      "valor": 95.4
+      "valor": 100.5
     },
     {
       "fecha": "2026-06-01",
-      "valor": 93.4
+      "valor": 98.0
     },
     {
       "fecha": "2026-07-01",
-      "valor": 93.7
+      "valor": 98.3
     },
     {
       "fecha": "2026-08-01",
-      "valor": 93.7
+      "valor": 98.3
     },
     {
       "fecha": "2026-09-01",
-      "valor": 92.4
+      "valor": 96.7
     }
   ],
   "itvc_lider": [
