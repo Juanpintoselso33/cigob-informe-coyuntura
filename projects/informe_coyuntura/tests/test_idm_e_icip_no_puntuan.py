@@ -168,6 +168,10 @@ BANDAS_ANTES["saldo_comercial_12m"] = [(15000.0, INF, 85), (10000.0, 15000.0, 75
                                        (5000.0, 10000.0, 60), (-5000.0, 5000.0, 50),
                                        (-15000.0, -5000.0, 30), (-INF, -15000.0, 10)]
 ANCLAS_ANTES = {k: v for k, v in itcm.ANCLAS_ITCM.items() if k != "resultado_primario"}
+# Las reservas netas también, como puntuaban en agosto: ADR-0428 recalibró su
+# escala con la historia previa, y eso es otra decisión.
+BANDAS_ANTES["reservas_bcra"] = [(20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
+                                 (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10)]
 # Y el `tcrm` como puntuaba en agosto, solo en su dimensión: ADR-0360 lo
 # reemplazó por el compuesto con los términos del intercambio.
 import terminos_intercambio  # noqa: E402

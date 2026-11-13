@@ -35,7 +35,7 @@ P_VERDE, P_AMARILLO, P_NARANJA = parametrica.PUNTAJES_DE_CORTE
 #     convertiría de nuevo — que es justo el acoplamiento que ADR-0082 eliminó.
 #   * recaudacion  = NIVEL de base imponible real desestacionalizada, 100 = 4T-2023
 #     (ADR-0152, antes era variación i.a. real). 94,4 → 58,5 (banda 60).
-#   * reservas_bcra= NETAS (Machado). 1.881M → 25,0 (banda 30).
+#   * reservas_bcra= NETAS (Machado). 1.881M → 37,7 (ADR-0428: escala de la historia previa; antes 25,0).
 #   * idc          = IdC en z-scores (σ vs. historia, ADR-0028). −0,31 → 49,7 (banda 60).
 #   * presión dolarización = presión 0-100 sensible al régimen. 45,24 → 64,8.
 #   * tcr_terminos_intercambio = puntaje 0-100 de la matriz tipo de cambio
@@ -94,7 +94,8 @@ def test_itcm_reproduce_ejemplo():
     # ADR-0409: con las reservas (25,0) adentro, estabilidad 39,0 → 36,5 y sector
     # externo 51,4 → 60,5, sin mover el índice.
     # ADR-0427: 36,5 → 41,9 (la escala de inflación sube sus puntajes de corte).
-    assert dims["estabilidad_monetaria"]["puntaje"] == 41.9
+    # ADR-0428: las netas recalibradas (1.881 → 37,7, antes 25,0): 41,9 → 42,7.
+    assert dims["estabilidad_monetaria"]["puntaje"] == 42.7
     # ADR-0387: las tres dimensiones de antes (fiscal-comercial 78,5, financiamiento
     # 54,7, competitividad 49,8) se reagrupan sin mover el índice.
     assert dims["cuentas_fiscales"]["puntaje"] == 76.9
@@ -108,7 +109,7 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == pytest.approx(0.032 / 0.1056)
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 62.3   # 60,2 → 60,6 (competitividad 45,7 → 49,8, ADR-0375) → 62,3 (ADR-0427)
+    assert r["valor"] == 62.6   # 60,2 → 60,6 (competitividad 45,7 → 49,8, ADR-0375) → 62,3 (ADR-0427) → 62,6 (ADR-0428, netas 37,7)
     # ADR-0427: el corte de «moderadamente aflojado» sube de 60 a 75; 62,3 queda
     # en «moderadamente apretado» (50-75), tensión 3,8 (amarillo).
     assert r["banda"] == "moderadamente_apretado"
@@ -116,7 +117,7 @@ def test_itcm_reproduce_ejemplo():
     assert desequilibrio["puntaje_aplicado"] == 64.8
     assert desequilibrio["peso"] == pytest.approx(0.052 / 0.3144)
     assert desequilibrio["peso_efectivo"] == 0.052
-    assert itcm.tension_de_itcm(r["valor"]) == 3.8   # 3,9 → 3,8 (ADR-0427: ITCM 62,3)
+    assert itcm.tension_de_itcm(r["valor"]) == 3.7   # 3,9 → 3,8 (ADR-0427: ITCM 62,3) → 3,7 (ADR-0428: 62,6)
     assert r["ajustes_aplicados"] == []
 
 
@@ -260,11 +261,13 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(1.5, b["rem_ipc_12m"]) == P_VERDE        # 60 → 75
     assert itcm.puntaje_banda(2.51, b["rem_ipc_12m"]) == P_NARANJA     # 20 → 25
     # Reservas NETAS
-    assert itcm.puntaje_banda(20000, b["reservas_bcra"]) == 85   # high inclusivo
-    assert itcm.puntaje_banda(20001, b["reservas_bcra"]) == 100
-    assert itcm.puntaje_banda(3000, b["reservas_bcra"]) == 30
-    assert itcm.puntaje_banda(0, b["reservas_bcra"]) == 10       # 0 → negativas/crisis
-    assert itcm.puntaje_banda(0.01, b["reservas_bcra"]) == 30
+    # ADR-0428: cortes en la media y uno y dos desvíos de la historia previa.
+    c2, c1, c0 = itcm._NETAS_2S, itcm._NETAS_1S, itcm._NETAS_0
+    assert itcm.puntaje_banda(c2, b["reservas_bcra"]) == 85      # high inclusivo
+    assert itcm.puntaje_banda(c2 + 1, b["reservas_bcra"]) == 100
+    assert itcm.puntaje_banda(c0, b["reservas_bcra"]) == 45
+    assert itcm.puntaje_banda(c0 + 1, b["reservas_bcra"]) == 65
+    assert itcm.puntaje_banda(itcm._NETAS_M2S, b["reservas_bcra"]) == 10
     # IdC en z-scores (σ, ADR-0028)
     assert itcm.puntaje_banda(0.5, b["idc"]) == 60               # neutro (high inclusivo)
     assert itcm.puntaje_banda(0.51, b["idc"]) == 85             # expansión
@@ -317,7 +320,7 @@ def test_ajuste_manual_aplicado():
     # ADR-0409 las reservas están en estabilidad); el índice baja en 1,2 respecto
     # del ejemplo: 60,6 → 59,4 y, con ADR-0427 (el ejemplo sube a 62,3), 61,1
     assert r["dimensiones"]["sector_externo"]["puntaje"] == 52.9
-    assert r["valor"] == 61.1
+    assert r["valor"] == 61.4   # ADR-0428: 61,1 → 61,4 (netas recalibradas)
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -343,10 +346,10 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (35,5×0,156 + 64,8×0,052 + 25,0×0,0544) / 0,2624 = 39,1 (ADR-0409: las
     # reservas también renormalizan dentro de la dimensión; ADR-0427: 34,9 → 39,1)
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 39.1
-    # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409) → 61,4 (ADR-0427): 62,3 menos
-    # (41,9 − 39,1) × 0,3144 de peso de la dimensión ≈ 0,9
-    assert abs(r["valor"] - 61.4) <= 0.05
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 40.0   # ADR-0428: reservas 37,7
+    # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409) → 61,4 (ADR-0427) → 61,7
+    # (ADR-0428): 62,6 menos (42,7 − 40,0) × 0,3144 de peso de la dimensión ≈ 0,9
+    assert abs(r["valor"] - 61.7) <= 0.05
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
@@ -354,7 +357,7 @@ def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
     # (35,5×0,156 + 56,0×0,052 + 25,0×0,0544) / 0,2624 = 37,4 (ADR-0409; ADR-0427: 30,9 → 37,4)
-    assert estabilidad["puntaje"] == 37.4
+    assert estabilidad["puntaje"] == 38.3   # ADR-0428: reservas 37,7
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 
@@ -417,7 +420,7 @@ def test_ajuste_automatico_saldo_por_contraccion():
     # sector externo = saldo 67,1 (ajuste) con el cruce 49,8 → 55,1 (ADR-0409);
     # el índice baja 0,8 respecto del ejemplo: 59,8 antes, 61,5 con ADR-0427 (62,3)
     assert r["dimensiones"]["sector_externo"]["puntaje"] == 55.1
-    assert r["valor"] == 61.5
+    assert r["valor"] == 61.7   # ADR-0428: 61,5 → 61,7
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 
 

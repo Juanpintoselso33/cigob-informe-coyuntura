@@ -70,10 +70,11 @@ def test_el_itcm_no_se_mueve_con_los_datos_completos():
     del test de ITCM; 59,4 → 61,1 y 59,8 → 61,5 con los dos ajustes del saldo
     comercial. La diferencia entre los tres (−1,2 y −0,8) es la de antes."""
     from test_itcm import EJEMPLO
-    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 62.3
+    # ADR-0428 (netas recalibradas): 62,3 → 62,6, 61,1 → 61,4 y 61,5 → 61,7.
+    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 62.6
     aj = lambda p: {"saldo_comercial_12m": {"puntaje": p, "justificacion": "x"}}
-    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 61.1
-    assert itcm.calcular_itcm(EJEMPLO, aj(67.1))["valor"] == 61.5
+    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 61.4
+    assert itcm.calcular_itcm(EJEMPLO, aj(67.1))["valor"] == 61.7
 
 
 def test_grupo_incompleto_no_se_calcula_ni_se_promedia():
