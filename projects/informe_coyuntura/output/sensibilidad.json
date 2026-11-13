@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-13T00:08:56.547062+00:00",
+    "snapshot": "2026-11-13T02:03:10.977522+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -154,44 +154,44 @@
     }
   },
   "itcp": {
-    "valor_publicado": 81.0,
-    "valor_recomputado": 81.0,
+    "valor_publicado": 80.6,
+    "valor_recomputado": 80.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 81.0,
-        "p05": 80.1,
-        "p95": 81.9,
-        "desvio": 0.58
+        "media": 80.7,
+        "p05": 79.7,
+        "p95": 81.6,
+        "desvio": 0.57
       },
       "combinado": {
-        "media": 80.7,
-        "p05": 79.3,
-        "p95": 82.1,
-        "desvio": 0.87
+        "media": 80.4,
+        "p05": 79.0,
+        "p95": 81.8,
+        "desvio": 0.86
       },
       "insumos": {
-        "media": 80.7,
-        "p05": 79.5,
-        "p95": 81.7,
+        "media": 80.3,
+        "p05": 79.2,
+        "p95": 81.4,
         "desvio": 0.66
       }
     },
     "leave_one_out": {
-      "cobertura_judicial": 83.3,
-      "votos_sobre_bancas": 83.2,
-      "cohesion_bloque": 78.8,
-      "eficacia_legislativa": 82.9,
-      "insistencias_vetos": 79.3,
-      "rechazos_decretos": 79.3,
-      "apoyo_comercio": 79.4,
-      "apoyo_empresario": 82.5,
-      "adhesion_reformas_provincial": 80.1,
-      "alineamiento_senadores_prov": 81.8,
-      "apoyo_campo": 81.5,
+      "cobertura_judicial": 83.0,
+      "votos_sobre_bancas": 82.8,
+      "cohesion_bloque": 78.5,
+      "eficacia_legislativa": 82.6,
+      "insistencias_vetos": 78.9,
+      "rechazos_decretos": 78.9,
+      "apoyo_comercio": 79.0,
+      "apoyo_empresario": 82.2,
+      "alineamiento_senadores_prov": 81.5,
+      "adhesion_reformas_provincial": 79.8,
+      "apoyo_campo": 81.1,
+      "apoyo_construccion": 80.2,
       "conflictividad_nacional": 80.5,
-      "apoyo_construccion": 80.5,
-      "jornadas_individuales_no_trabajadas_12m": 81.3
+      "jornadas_individuales_no_trabajadas_12m": 80.7
     },
     "tension": {
       "base": 1.9,
