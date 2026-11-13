@@ -139,9 +139,12 @@ def tension_de_indice(indice: float) -> float:
 # El color se calcula SIEMPRE sobre la tensión sin redondear. `aporte_score` en
 # el snapshot está redondeado a un decimal y usarlo acá rompe el borde: puntaje
 # 69,9 da tensión 3,01, que redondeada es 3,0 y saldría verde.
+#
+# 12-nov-2026 (ADR-0427): cuatro tramos iguales, 2,5 / 5 / 7,5. El tercer
+# corte pasa de 8,0 a 7,5; los dos primeros siguen derivados de UMBRALES.
 CORTES_SEMAFORO = (("verde", float(UMBRALES["ESTABLE_MAX"])),
                    ("amarillo", float(UMBRALES["EN_TENSION_MAX"])),
-                   ("naranja", 8.0), ("rojo", INF))
+                   ("naranja", 7.5), ("rojo", INF))
 
 
 def color_de_tension(tension: float) -> str:
