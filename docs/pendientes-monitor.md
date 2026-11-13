@@ -198,7 +198,7 @@ tocar nada.
   METODOLOGÍA (cómo se mide), no conteos; decir que los comunicados se revisan a mano, sin
   mencionar IA.
 - **Reunión con Luis del 13-nov — footer:** el enlace «Marco metodológico» pasa a llamarse
-  «Marco conceptual».
+  «Marco conceptual». **Hecho el 13-nov** (Footer.astro; la sección de destino ya se titulaba «El marco conceptual»).
 - **Reunión con Luis del 13-nov — pestaña «Equipo»:** agregar una pestaña nueva con el equipo.
   Falta que pasen quiénes van, con qué cargo o rol y si llevan foto o bio. Es un cambio de
   navegación: lleva ADR y evento de GA.
@@ -208,6 +208,8 @@ tocar nada.
   equipo.** **A solucionar:** el sitio no tiene etiquetas Open Graph/Twitter (sin imagen,
   descripción ni título para la vista previa de un link en WhatsApp, LinkedIn o X); armarlas
   con el nombre que se elija.
+  **Decidido 13-nov (Juan): «Monitor del Plan de Gobierno · CiGob»** en la pestaña y en la vista
+  previa al compartir (Open Graph/Twitter). Se hace en la tanda final.
 
 **Revisión de Luis (3-nov, Word «261103 Pendientes revisada por Luis», por WhatsApp):**
 «amarillos cambiar, verdes la próxima». Los números entre paréntesis son los de esta lista.
