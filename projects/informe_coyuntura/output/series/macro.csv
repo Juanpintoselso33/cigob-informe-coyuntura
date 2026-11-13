@@ -175,12 +175,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2024-01-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2023-12-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
-2026-11-12,tc_mayorista,1544.432,ARS/USD,BCRA
-2026-11-11,tc_mayorista,1547.9128,ARS/USD,BCRA
-2026-11-05,tc_mayorista,1545.3974,ARS/USD,BCRA
-2026-11-04,tc_mayorista,1548.4941,ARS/USD,BCRA
-2026-11-03,tc_mayorista,1549.7194,ARS/USD,BCRA
-2026-11-02,tc_mayorista,1544.6507,ARS/USD,BCRA
 2026-10-30,tc_mayorista,1537.3487,ARS/USD,BCRA
 2026-10-29,tc_mayorista,1539.593,ARS/USD,BCRA
 2026-10-28,tc_mayorista,1538.4739,ARS/USD,BCRA
@@ -1169,7 +1163,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,resultado_primario,-2.78,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2024-01-01,resultado_primario,-6.09,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2023-12-01,resultado_primario,-12.02,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
-2026-11-01,reservas_brutas,49586.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
 2026-10-01,reservas_brutas,48565.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
 2026-09-01,reservas_brutas,46092.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
 2026-08-01,reservas_brutas,48259.0,millones de dólares,"BCRA — reservas internacionales (API, variable 1), fin de mes"
@@ -1325,10 +1318,6 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,100.3,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.1,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,100.2,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-11-05,prestamos_privados,151409956.0,M ARS,BCRA
-2026-11-04,prestamos_privados,151362264.0,M ARS,BCRA
-2026-11-03,prestamos_privados,151904582.0,M ARS,BCRA
-2026-11-02,prestamos_privados,151523889.0,M ARS,BCRA
 2026-10-30,prestamos_privados,151675578.0,M ARS,BCRA
 2026-10-29,prestamos_privados,151421540.0,M ARS,BCRA
 2026-10-28,prestamos_privados,151176134.0,M ARS,BCRA
@@ -2505,10 +2494,6 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-11-05,base_monetaria,49662576.0,M ARS,BCRA
-2026-11-04,base_monetaria,46845363.0,M ARS,BCRA
-2026-11-03,base_monetaria,46998823.0,M ARS,BCRA
-2026-11-02,base_monetaria,47241558.0,M ARS,BCRA
 2026-10-30,base_monetaria,47321620.0,M ARS,BCRA
 2026-10-29,base_monetaria,46205273.0,M ARS,BCRA
 2026-10-28,base_monetaria,45680819.0,M ARS,BCRA
@@ -3215,11 +3200,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-05,base_monetaria,8913664.0,M ARS,BCRA
 2023-12-04,base_monetaria,8457920.0,M ARS,BCRA
 2023-12-01,base_monetaria,8510332.0,M ARS,BCRA
-2026-11-11,badlar,22.375,% anual,BCRA
-2026-11-05,badlar,22.5,% anual,BCRA
-2026-11-04,badlar,21.5,% anual,BCRA
-2026-11-03,badlar,22.75,% anual,BCRA
-2026-11-02,badlar,22.3125,% anual,BCRA
 2026-10-30,badlar,22.75,% anual,BCRA
 2026-10-29,badlar,23.125,% anual,BCRA
 2026-10-28,badlar,22.1875,% anual,BCRA
