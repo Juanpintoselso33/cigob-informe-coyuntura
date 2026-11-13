@@ -117,6 +117,8 @@ tocar nada.
   del 2 %. Para Luis: «no miden lo mismo: macro mide la inflación del mes; impacto social, si la
   comida se encareció más o menos que el resto desde fines de 2023. La tarjeta no lo mostraba y
   se corrige».
+  **13-nov (Juan): dejarlo para proponer** (llevarle a Luis la propuesta: la card muestra el
+  precio relativo de la comida, que es lo que pinta, con la inflación del mes al lado).
 - **(10) Base del índice social y amarillo con 101,5. Para ver; a Juan le parece razonable como
   está.** Verificado: 5 − (101,5 − 100) × 0,2 = 4,7, amarillo. La base oct-dic 2023 la pidió
   Luis el 3-nov para todo el cinturón; pobreza, mora y carga de deuda van con niveles fijos
@@ -125,6 +127,8 @@ tocar nada.
   la que pediste el 3-nov para todo el cinturón; pobreza, mora y carga de deuda ya van con
   niveles fijos. Quedar igual que al inicio del mandato es tensión moderada a propósito, y la
   página lo explica».
+  **13-nov (Juan): se usa la escala nueva de Luis (ADR-0427) y se adaptan todos los textos
+  desactualizados** (en curso: tablas de color del índice social y fichas tenían 105/95/85 a mano).
 - **(11) Rojos en un cinturón estable. A solucionar (texto).** Verificado: político 3,2 verde
   (ITCP 68,0) con `ratio_dnu` (9,7 % del peso) y `transferencias_no_automaticas` (8,2 %) en
   rojo, ambos en 10/100; el resto (82 %) promedia ~80, sin los rojos el ITCP rondaría 80. Tres
