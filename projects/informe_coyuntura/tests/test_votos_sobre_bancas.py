@@ -431,7 +431,11 @@ def test_anclas_de_la_escala_de_luis():
     anclas = itcp.ANCLAS_ITCP["votos_sobre_bancas"]
     f = parametrica.puntaje_desde_anclas
     assert f(172, anclas) == 100.0 and f(200, anclas) == 100.0
-    assert f(109, anclas) == 20.0 and f(119, anclas) == 40.0
+    # ADR-0427: los cortes de color 109/119/129,1 puntúan en los bordes del
+    # semáforo (75/50/25), no 60/40/20.
+    assert f(109, anclas) == parametrica.PUNTAJES_DE_CORTE[2]   # 25
+    assert f(119, anclas) == parametrica.PUNTAJES_DE_CORTE[1]   # 50
+    assert f(129.1, anclas) == parametrica.PUNTAJES_DE_CORTE[0]  # 75
     assert f(99, anclas) == 10.0 and f(50, anclas) == 10.0
     # más alto = mejor: monótona
     valores = [f(x, anclas) for x in range(90, 180)]

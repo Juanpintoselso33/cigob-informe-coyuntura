@@ -17,6 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import itcm
+import parametrica
+
+# ADR-0427: puntajes de los bordes del semáforo (75/50/25; eran 60/40/20).
+P_VERDE, P_AMARILLO, P_NARANJA = parametrica.PUNTAJES_DE_CORTE
 
 # Fixture mayo 2026 con la metodología REVISADA. Los valores de rem_ipc_12m,
 # reservas_bcra, recaudacion e idc son los que el colector alimenta.
@@ -50,9 +54,14 @@ import itcm
 # propia (hasta el 16-oct-2026). ADR-0367 (escala de inflación sobre los cortes de
 # color 1/2/3 % mensual): estab 67,1 → 39,0 e ITCM 67,1 → 59,8. ADR-0368 (sale la tributaria, EMAE 0,42):
 # actividad 73,9 → 75,8 e ITCM → 60,2.
+# ADR-0427 (cortes del semáforo 75/50/25 en vez de 60/40/20): el IPC y el REM
+# puntúan más alto sobre las mismas anclas (ipc 2,58 % → 35,5; REM 1,76 % → 56,0),
+# estab 36,5 → 41,9 e ITCM 60,6 → 62,3. Recalculado a mano con los pesos de la
+# dimensión: (35,5×0,156 + 56,0×0,052 + 64,8×0,052 + 25,0×0,0544) / 0,3144 = 41,9;
+# ITCM = Σ peso_dimensión × puntaje = 62,3.
 EJEMPLO = {
-    "ipc_total": 2.58,             # interpolado 28,4 (entre 2 % → 40 y 3 % → 20, ADR-0367)
-    "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 44,8 (ADR-0367)
+    "ipc_total": 2.58,             # interpolado 35,5 (entre 2 % → 50 y 3 % → 25, ADR-0367/0427)
+    "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 56,0 (ADR-0367/0427)
     "desequilibrio_monetario": 35.2,  # tensión 0-100 de la matriz A×B: 64,8
     # ADR-0152: dejó de ser variación i.a. y pasó a NIVEL de base imponible real
     # desestacionalizada (100 = 4T-2023). 94,4 es la mediana de la serie observada.
@@ -79,7 +88,8 @@ def test_itcm_reproduce_ejemplo():
     dims = r["dimensiones"]
     # ADR-0409: con las reservas (25,0) adentro, estabilidad 39,0 → 36,5 y sector
     # externo 51,4 → 60,5, sin mover el índice.
-    assert dims["estabilidad_monetaria"]["puntaje"] == 36.5
+    # ADR-0427: 36,5 → 41,9 (la escala de inflación sube sus puntajes de corte).
+    assert dims["estabilidad_monetaria"]["puntaje"] == 41.9
     # ADR-0387: las tres dimensiones de antes (fiscal-comercial 78,5, financiamiento
     # 54,7, competitividad 49,8) se reagrupan sin mover el índice.
     assert dims["cuentas_fiscales"]["puntaje"] == 76.9
@@ -93,13 +103,15 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == pytest.approx(0.032 / 0.1056)
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 60.6   # 60,2 → 60,6: competitividad 45,7 → 49,8 en el ejemplo (ADR-0375)
-    assert r["banda"] == "moderadamente_aflojado"   # 60,2: apenas sobre el corte de 60
+    assert r["valor"] == 62.3   # 60,2 → 60,6 (competitividad 45,7 → 49,8, ADR-0375) → 62,3 (ADR-0427)
+    # ADR-0427: el corte de «moderadamente aflojado» sube de 60 a 75; 62,3 queda
+    # en «moderadamente apretado» (50-75), tensión 3,8 (amarillo).
+    assert r["banda"] == "moderadamente_apretado"
     desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
     assert desequilibrio["puntaje_aplicado"] == 64.8
     assert desequilibrio["peso"] == pytest.approx(0.052 / 0.3144)
     assert desequilibrio["peso_efectivo"] == 0.052
-    assert itcm.tension_de_itcm(r["valor"]) == 3.9
+    assert itcm.tension_de_itcm(r["valor"]) == 3.8   # 3,9 → 3,8 (ADR-0427: ITCM 62,3)
     assert r["ajustes_aplicados"] == []
 
 
@@ -107,14 +119,13 @@ def test_puntaje_interpolado():
     """ADR-0021: lineal entre anclas (punto medio de bandas finitas, borde de
     las abiertas), plano en los extremos; en cada ancla reproduce el puntaje
     de su banda."""
-    import parametrica
-    b = itcm.BANDAS_ITCM["ipc_total"]   # ADR-0367: ≤0,5→100 · 0,5-1,5→60 · 1,5-2,5→40 · 2,5-3,5→20 · >3,5→10
+    b = itcm.BANDAS_ITCM["ipc_total"]   # ADR-0367/0427: ≤0,5→100 · 0,5-1,5→75 · 1,5-2,5→50 · 2,5-3,5→25 · >3,5→10
     assert parametrica.puntaje_interpolado(0.3, b) == 100.0   # antes de la 1ª ancla
     assert parametrica.puntaje_interpolado(0.5, b) == 100.0   # ancla (borde abierto)
-    assert parametrica.puntaje_interpolado(1.0, b) == 60.0    # ancla = corte verde/amarillo
-    assert parametrica.puntaje_interpolado(1.5, b) == 50.0    # mitad entre 60 y 40
-    assert parametrica.puntaje_interpolado(2.0, b) == 40.0    # ancla = corte amarillo/naranja
-    assert parametrica.puntaje_interpolado(3.0, b) == 20.0    # ancla = corte naranja/rojo
+    assert parametrica.puntaje_interpolado(1.0, b) == P_VERDE      # ancla = corte verde/amarillo
+    assert parametrica.puntaje_interpolado(1.5, b) == (P_VERDE + P_AMARILLO) / 2   # mitad entre 75 y 50
+    assert parametrica.puntaje_interpolado(2.0, b) == P_AMARILLO   # ancla = corte amarillo/naranja
+    assert parametrica.puntaje_interpolado(3.0, b) == P_NARANJA    # ancla = corte naranja/rojo
     assert parametrica.puntaje_interpolado(3.5, b) == 10.0    # última ancla
     assert parametrica.puntaje_interpolado(9.0, b) == 10.0    # plano más allá
 
@@ -222,9 +233,9 @@ def test_bordes_de_banda():
     """Convención: low exclusivo, high inclusivo."""
     b = itcm.BANDAS_ITCM
     assert itcm.puntaje_banda(0.5, b["ipc_total"]) == 100
-    assert itcm.puntaje_banda(1.5, b["ipc_total"]) == 60
-    assert itcm.puntaje_banda(2.5, b["ipc_total"]) == 40
-    assert itcm.puntaje_banda(3.5, b["ipc_total"]) == 20
+    assert itcm.puntaje_banda(1.5, b["ipc_total"]) == P_VERDE      # 60 → 75 (ADR-0427)
+    assert itcm.puntaje_banda(2.5, b["ipc_total"]) == P_AMARILLO   # 40 → 50
+    assert itcm.puntaje_banda(3.5, b["ipc_total"]) == P_NARANJA    # 20 → 25
     assert itcm.puntaje_banda(3.51, b["ipc_total"]) == 10
     assert itcm.puntaje_banda(5.0, b["emae_ia"]) == 80     # >5 estricto para 100
     assert itcm.puntaje_banda(-5.0, b["emae_ia"]) == 5
@@ -235,9 +246,9 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(100.01, b["recaudacion"]) == 85
     assert itcm.puntaje_banda(10.0, b["recaudacion"]) == 10
     # REM: la banda opera sobre el EQUIVALENTE MENSUAL (misma escala que el IPC)
-    assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == 40
-    assert itcm.puntaje_banda(1.5, b["rem_ipc_12m"]) == 60
-    assert itcm.puntaje_banda(2.51, b["rem_ipc_12m"]) == 20
+    assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == P_AMARILLO   # ADR-0427: 40 → 50
+    assert itcm.puntaje_banda(1.5, b["rem_ipc_12m"]) == P_VERDE        # 60 → 75
+    assert itcm.puntaje_banda(2.51, b["rem_ipc_12m"]) == P_NARANJA     # 20 → 25
     # Reservas NETAS
     assert itcm.puntaje_banda(20000, b["reservas_bcra"]) == 85   # high inclusivo
     assert itcm.puntaje_banda(20001, b["reservas_bcra"]) == 100
@@ -280,7 +291,7 @@ def test_rem_mensual_equivalente_y_idc():
     # raíz 12 de la expectativa anual → equivalente mensual
     assert abs(itcm.rem_mensual_equivalente(23.3) - 1.7607) < 1e-3
     assert itcm.puntaje_banda(itcm.rem_mensual_equivalente(23.3),
-                              itcm.BANDAS_ITCM["rem_ipc_12m"]) == 40
+                              itcm.BANDAS_ITCM["rem_ipc_12m"]) == P_AMARILLO   # 40 → 50 (ADR-0427)
     # IdC = 0,30·z_precio + 0,40·z_volumen + 0,30·z_asignación (ADR-0028)
     idc = itcm.indice_capacidad_prestable(0.33, -0.13, -1.18)
     assert abs(idc - (-0.307)) < 1e-3
@@ -293,9 +304,10 @@ def test_ajuste_manual_aplicado():
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # sector externo = saldo 60 (override) con el cruce 49,8 → 52,9 (desde
-    # ADR-0409 las reservas están en estabilidad); el índice sigue en 59,4
+    # ADR-0409 las reservas están en estabilidad); el índice baja en 1,2 respecto
+    # del ejemplo: 60,6 → 59,4 y, con ADR-0427 (el ejemplo sube a 62,3), 61,1
     assert r["dimensiones"]["sector_externo"]["puntaje"] == 52.9
-    assert r["valor"] == 59.4
+    assert r["valor"] == 61.1
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -319,18 +331,20 @@ def test_renormalizacion_indicador_faltante():
     """Sin REM, la dimensión renormaliza IPC y desequilibrio monetario."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    # (28,4×0,156 + 64,8×0,052 + 25,0×0,0544) / 0,2624 = 34,9 (ADR-0409: las
-    # reservas también renormalizan dentro de la dimensión)
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 34.9
-    assert abs(r["valor"] - 60.1) <= 0.05   # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409): reparto ante faltantes
+    # (35,5×0,156 + 64,8×0,052 + 25,0×0,0544) / 0,2624 = 39,1 (ADR-0409: las
+    # reservas también renormalizan dentro de la dimensión; ADR-0427: 34,9 → 39,1)
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 39.1
+    # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409) → 61,4 (ADR-0427): 62,3 menos
+    # (41,9 − 39,1) × 0,3144 de peso de la dimensión ≈ 0,9
+    assert abs(r["valor"] - 61.4) <= 0.05
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     valores = dict(EJEMPLO, desequilibrio_monetario=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
-    # (28,4×0,156 + 44,8×0,052 + 25,0×0,0544) / 0,2624 = 30,9 (ADR-0409)
-    assert estabilidad["puntaje"] == 30.9
+    # (35,5×0,156 + 56,0×0,052 + 25,0×0,0544) / 0,2624 = 37,4 (ADR-0409; ADR-0427: 30,9 → 37,4)
+    assert estabilidad["puntaje"] == 37.4
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 
@@ -391,9 +405,9 @@ def test_ajuste_automatico_saldo_por_contraccion():
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
     # sector externo = saldo 67,1 (ajuste) con el cruce 49,8 → 55,1 (ADR-0409);
-    # el índice sigue en 59,8
+    # el índice baja 0,8 respecto del ejemplo: 59,8 antes, 61,5 con ADR-0427 (62,3)
     assert r["dimensiones"]["sector_externo"]["puntaje"] == 55.1
-    assert r["valor"] == 59.8
+    assert r["valor"] == 61.5
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 
 
@@ -453,5 +467,8 @@ def test_interpretacion_bandas():
     assert itcm.banda_interpretacion(15) == "severamente_apretado"
     assert itcm.banda_interpretacion(20) == "severamente_apretado"
     assert itcm.banda_interpretacion(40) == "apretado"
-    assert itcm.banda_interpretacion(61.45) == "moderadamente_aflojado"
+    # ADR-0427: bordes 25 / 50 / 75 / 87,5 (antes 20 / 40 / 60 / 80)
+    assert itcm.banda_interpretacion(30) == "apretado"
+    assert itcm.banda_interpretacion(61.45) == "moderadamente_apretado"   # era «aflojado»
+    assert itcm.banda_interpretacion(80) == "moderadamente_aflojado"
     assert itcm.banda_interpretacion(95) == "aflojado"

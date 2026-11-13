@@ -60,9 +60,9 @@ def test_las_tres_definiciones_son_la_misma_funcion():
 
 @pytest.mark.parametrize("scores, esperada", [
     ({"a": 6.9, "b": 6.5}, True),    # dos en la ex zona muerta: antes daba False
-    ({"a": 6.9, "b": 3.0}, False),
+    ({"a": 6.9, "b": 3.0}, False),   # b es amarillo/en tensión con 2,5-5 (ADR-0427)
     ({"a": 7.5, "b": 8.1}, True),
-    ({"a": 6.0, "b": 6.0}, False),   # el corte NO es tensionado
+    ({"a": UMBRALES["EN_TENSION_MAX"], "b": UMBRALES["EN_TENSION_MAX"]}, False),   # el corte NO es tensionado (ADR-0427: 5, antes 6)
 ])
 def test_la_alerta_cuenta_con_el_mismo_criterio(scores, esperada):
     datos = {k: {"score": v} for k, v in scores.items()}

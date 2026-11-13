@@ -116,6 +116,10 @@ DESVIO_CREDITO_PRIVADO = 14.471
 DESVIO_SALDO_COMERCIAL = 8.48
 
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
+# Puntajes de los bordes del semáforo, para las escalas con cortes de color
+# decididos en su unidad (inflación, ADR-0367). Ver parametrica.PUNTAJES_DE_CORTE.
+_P_VERDE, _P_AMARILLO, _P_NARANJA = parametrica.PUNTAJES_DE_CORTE
+
 BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
         # Bandas NORMATIVAS, no calibradas contra la historia (ADR-0120). Los
@@ -131,9 +135,10 @@ BANDAS_ITCM = {
         # 2,5→65 · 4→40) el verde llegaba hasta ~2,8 % mensual (≈39 % anual) y
         # 1,93 % salía «sin tensión relevante». A pedido de Luis (y fiel a la
         # propia norma: 1 % = éxito), las anclas caen ahora sobre los cortes de
-        # color: verde hasta 1 % mensual (puntaje 60), amarillo hasta 2 % (40),
-        # naranja hasta 3 % (20), rojo arriba; 0,5 % o menos es 100.
-        (-INF, 0.5, 100), (0.5, 1.5, 60), (1.5, 2.5, 40), (2.5, 3.5, 20), (3.5, INF, 10),
+        # color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 %,
+        # rojo arriba; 0,5 % o menos es 100. Los puntajes de esos cortes salen
+        # del semáforo (75/50/25 desde ADR-0427; eran 60/40/20).
+        (-INF, 0.5, 100), (0.5, 1.5, _P_VERDE), (1.5, 2.5, _P_AMARILLO), (2.5, 3.5, _P_NARANJA), (3.5, INF, 10),
     ],
     "rem_ipc_12m": [                    # EQUIVALENTE MENSUAL del REM (% mensual), raíz 12.
         # Valor DERIVADO en macro.py. Misma escala mensual que el IPC: pone la
@@ -144,7 +149,7 @@ BANDAS_ITCM = {
         # No tiene historia propia previa a dic-2023 —es la serie derivada— pero
         # hereda su criterio del IPC, no del período medido. ADR-0367: sigue a
         # la escala nueva del IPC (verde hasta 1 % mensual ≈ 12,7 % anual).
-        (-INF, 0.5, 100), (0.5, 1.5, 60), (1.5, 2.5, 40), (2.5, 3.5, 20), (3.5, INF, 10),
+        (-INF, 0.5, 100), (0.5, 1.5, _P_VERDE), (1.5, 2.5, _P_AMARILLO), (2.5, 3.5, _P_NARANJA), (3.5, INF, 10),
     ],
     "desequilibrio_monetario": [        # tensión 0-100 de la matriz A × B (ADR-0192)
         # El valor crudo YA VIENE en unidades de tensión: desequilibrio_monetario.py

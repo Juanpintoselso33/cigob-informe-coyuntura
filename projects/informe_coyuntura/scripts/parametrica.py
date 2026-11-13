@@ -146,6 +146,15 @@ CORTES_SEMAFORO = (("verde", float(UMBRALES["ESTABLE_MAX"])),
                    ("amarillo", float(UMBRALES["EN_TENSION_MAX"])),
                    ("naranja", 7.5), ("rojo", INF))
 
+# Los tres cortes del semáforo en tensión y en puntaje 0-100 (hoy 2,5/5/7,5 y
+# 75/50/25). Los indicadores con cortes de color decididos en su propia unidad
+# (inflación 1/2/3 %, pobreza, mora, carga de la deuda, votos 129/119/109)
+# anclan sus cortes ACÁ y no en números escritos a mano: con ADR-0427 los
+# números a mano quedaron apuntando a los bordes viejos (60/40/20) y esas cards
+# cambiaron de color aunque el ADR decía que no.
+TENSIONES_DE_CORTE = tuple(tope for _, tope in CORTES_SEMAFORO[:3])
+PUNTAJES_DE_CORTE = tuple(100.0 - 10.0 * t for t in TENSIONES_DE_CORTE)
+
 
 def color_de_tension(tension: float) -> str:
     """Color del semáforo para una tensión 0-10 (sin redondear)."""

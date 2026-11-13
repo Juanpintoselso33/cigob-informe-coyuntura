@@ -3,7 +3,7 @@ madr: 4
 id: '0427'
 estado: 'aceptado'
 fecha: 2026-11-12
-cinturon: 'todos'
+cinturon: 'transversal'
 archivos: ['config.py', 'scripts/parametrica.py', 'scripts/itcm.py', 'scripts/itcg.py', 'scripts/itcp.py']
 relacionado: ['0181', '0195', '0333']
 ambito: 'Semáforo, estado de cada cinturón y alertas: cortes de tensión 2,5 / 5 / 7,5'
@@ -57,3 +57,11 @@ archivados se leen con el método vigente (ADR-0359) y también cambian.
   tramos; queda a revisar.
 - Las alertas se vuelven más sensibles: un cinturón entre 5 y 6 pasa a contar
   como tensionado.
+- **Corrección del 13-nov-2026.** Los indicadores con cortes de color propios
+  tenían los puntajes de esos cortes escritos a mano (60/40/20, índices
+  105/95/85) y con la escala nueva cambiaban de color, contra lo que dice esta
+  decisión: pobreza de 20 % salía amarillo y los 129/119/109 de votos sobre
+  bancas se corrían un tramo. Ahora los toman de los cortes del semáforo
+  (`parametrica.TENSIONES_DE_CORTE` / `PUNTAJES_DE_CORTE`): inflación del mes y
+  esperada (1/2/3 %), pobreza, mora, carga de la deuda, votos sobre bancas y
+  los cortes de color de las tarifas.

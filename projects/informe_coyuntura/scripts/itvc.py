@@ -581,18 +581,20 @@ def tension_de_itvc(itvc: float) -> float:
 
 # Desde dónde cuenta la tensión de cada rubro de la canasta IIEP (% del
 # salario, referencias internacionales de ADR-0235). NO son el borde del verde:
-# cada punto arriba suma 2 de tensión, y el verde llega hasta tensión 4.
+# cada punto arriba suma 2 de tensión, y el verde llega hasta el primer corte
+# del semáforo (tensión 2,5 desde ADR-0427).
 REFERENCIA_TARIFAS = {"agua_energia": 10.0, "transporte": 5.0}
 
 
 def cortes_color_tarifas(rubro: str) -> tuple:
     """(verde hasta, amarillo hasta, naranja hasta) en % del salario para un
     rubro, con la misma cuenta que indice_asequibilidad_tarifas: tensión
-    2·(x − referencia), color por tensión 4 · 6 · 8. Revisión de Luis
+    2·(x − referencia), color por los cortes del semáforo
+    (`parametrica.TENSIONES_DE_CORTE`). Revisión de Luis
     (7-nov-2026): la card nombraba la referencia como «límite» y el transporte
     en 6,4% parecía pasado de un límite de 5% estando en verde."""
     ref = REFERENCIA_TARIFAS[rubro]
-    return tuple(ref + t / 2.0 for t in (4.0, 6.0, 8.0))
+    return tuple(ref + t / 2.0 for t in parametrica.TENSIONES_DE_CORTE)
 
 
 def indice_asequibilidad_tarifas(carga_salario: float,
@@ -638,21 +640,23 @@ CORTES_FIJOS_ITVC = {
 
 def indice_por_cortes(valor: float, cortes: tuple) -> float:
     """Valor → índice de la escala común del ITCIS con los cortes de color en
-    su lugar: el verde termina en tensión 4 (índice 105), el amarillo en 6
-    (95) y el naranja en 8 (85). Lineal entre cortes; por debajo del primero
-    sigue la pendiente del primer tramo hasta tensión 0 (125) y por encima del
-    último, la del último hasta tensión 10 (75). El borde va con el color
-    mejor: un valor igual al corte del verde es verde."""
+    su lugar: cada corte cae en la tensión del borde del semáforo
+    (`parametrica.TENSIONES_DE_CORTE`; con ADR-0427, 2,5 / 5 / 7,5 → índices
+    112,5 / 100 / 87,5). Lineal entre cortes; por debajo del primero sigue la
+    pendiente del segundo tramo hasta tensión 0 (125) y por encima del último,
+    la del último hasta tensión 10 (75). El borde va con el color mejor: un
+    valor igual al corte del verde es verde."""
     c1, c2, c3 = (float(c) for c in cortes)
+    t1, t2, t3 = parametrica.TENSIONES_DE_CORTE
     v = float(valor)
     if v <= c1:
-        t = 4.0 - 4.0 * (c1 - v) / (2.0 * (c2 - c1))
+        t = t1 - (t2 - t1) * (c1 - v) / (c2 - c1)
     elif v <= c2:
-        t = 4.0 + 2.0 * (v - c1) / (c2 - c1)
+        t = t1 + (t2 - t1) * (v - c1) / (c2 - c1)
     elif v <= c3:
-        t = 6.0 + 2.0 * (v - c2) / (c3 - c2)
+        t = t2 + (t3 - t2) * (v - c2) / (c3 - c2)
     else:
-        t = 8.0 + 2.0 * (v - c3) / (c3 - c2)
+        t = t3 + (t3 - t2) * (v - c3) / (c3 - c2)
     t = min(10.0, max(0.0, t))
     # Se trunca hacia el color peor, no se redondea: con redondeo, una mora de
     # 5,01 % daba 104,97 → 105,0 y quedaba verde (Codex, 4-nov-2026). El 1e-9

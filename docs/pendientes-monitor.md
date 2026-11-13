@@ -32,11 +32,23 @@ tocar nada.
   sectoriales son otra cosa (comunicados sin codificar) y juicios laborales es rezago de la
   fuente. Para Luis: «no son datos viejos; desde el 5-nov los sitios de Diputados no responden
   a la corrida y eso frena al resto del cinturón; los apoyos esperan la codificación».
+  **Estado al 13-nov:** la caída es general (check-host desde 8 países; la Cámara anuncia que
+  rehace la plataforma), no un bloqueo. El colector ya no se cuelga (corte tras 2 fallas,
+  05cf5f96) y quórum lee el índice nuevo (f92f4bf8). Insistencias y rechazos de decretos salen
+  por el camino provisorio de las versiones taquigráficas (arreglado en e78ca7b8; primera
+  corrida, la del 13-nov). Ningún espejo externo sirve (nahuelhds murió en 2019, datacp sólo
+  leyes clave hasta 26-ago, datos.gob.ar y Wayback sin copias).
+  **Decidido por Juan el 13-nov (reunión con Luis): eficacia legislativa, votos sobre bancas y
+  comisiones se dejan así**, con su último dato y la fecha, hasta que vuelva la Cámara. No se
+  suspenden.
 - **(2) Advertencias que nombran indicadores retirados. A solucionar.** El campo `flags`
   (`generar_informe.py`, ~l. 389) lista comisiones_caidas, derrotas_legislativas y
   bloqueo_sostenido porque el colector los sigue calculando; no filtra retirados como sí filtra
   suspendidos. No se ve en el sitio (sólo snapshot, `output/informe.md` y BigQuery). Para Luis:
   «es una lista interna, no se publica; se corrige para que no nombre los retirados».
+  **Hecho el 12-nov (7b468e8e, #102):** el aviso ya no incluye retirados ni de contexto.
+  Verificado el 13-nov en el snapshot vigente: sólo nombra los 4 apoyos, eficacia, votos sobre
+  bancas, insistencias y rechazos.
 - **(3) Control de calidad en rojo. A solucionar.** Lo que corta la corrida (11-nov falló
   por eso) es G2b sobre `pobreza_nowcast`: 15 días sin un fetch exitoso > tope 14. El
   colector `utdt_nowcast_pobreza` no puede parsear el último informe de Di Tella
@@ -72,6 +84,13 @@ tocar nada.
   la ficha ya la justifica y la contrasta (BCRA ~11.700, Criteria −1.940, FMI ~−7.000), pero la
   card muestra sólo 10.725. Decidir: mostrar también la medición estricta en la card, o cambiar
   la fórmula que fija el color.
+  **Reunión con Luis del 13-nov — dos indicadores nuevos en macro:**
+  - Reservas brutas menos depósitos en dólares menos préstamos en dólares (los encajes de
+    los depósitos en dólares están dentro de las brutas). Definir si reemplaza a la fórmula
+    actual o va al lado, y de qué serie del BCRA sale.
+  - Cumplimiento de la meta de acumulación de reservas acordada con el FMI (compras de
+    reservas contra la meta del programa). Ver de dónde salen la meta y el dato (revisiones
+    del FMI, BCRA) y cada cuánto se actualizan.
 - **(8) Dos alquileres con colores opuestos. Ya decidido, no se reabre.** Se discutió en la
   reunión del 26-oct y quedan los dos (ADR-0386): INDEC mide contratos vigentes, UdeSA–ML los
   avisos nuevos; las cards lo dicen desde el 7-nov. Para Luis: «ya decidido en la reunión del
@@ -100,6 +119,10 @@ tocar nada.
   eficacia 70,5). Arreglo: una línea en la card del cinturón que nombre los rojos y cuánto
   restan. Para Luis: «es un promedio ponderado: los dos rojos pesan 18 % y bajan el índice de
   ~80 a 68, pero no alcanzan para sacarlo del verde; la tarjeta lo va a decir».
+  **Decidido en la reunión con Luis del 13-nov:** `ratio_dnu` sale por ahora (lo sacaron
+  Luis y Marcos) y `transferencias_no_automaticas` también sale por ahora. Con eso la línea
+  sobre los rojos de la card del cinturón queda sin objeto mientras sigan afuera. Pendiente:
+  sacarlos del índice político (ADR + ficha + pesos del resto).
 - **(12) Dimensión crítica sin alerta. A solucionar.** Verificado: `vulnerabilidad` 82,2 < 85
   (`critica: true`), mora 14,61 % rojo, carga 24,1 % naranja. Sin alerta a propósito (la única
   alerta automática es la multicinturón), pero ADR-0020 manda señalarla: borde y barra en rojo
@@ -125,6 +148,9 @@ tocar nada.
   cinturón las cards van `compacto` (`IndicadorTile.astro`, rediseño de ago-2026) y no muestran
   la fecha: sólo el modal. Arreglo: el mes del dato en chico junto al valor en la card compacta.
   Mencionar las fechas en la lectura del mes: sugerencia para Luis (el texto es suyo).
+  **Reunión con Luis del 13-nov:** homicidios, robos y protocolo antipiquetes llegan a
+  dic-2025, casi un año atrás. Buscar si hay fuentes más actualizadas para los tres
+  (provinciales, mensuales, otro organismo) antes de quedarse con las anuales.
 - **(15) Apoyos sectoriales por codificación de prensa. A solucionar (muestra).** El método ya
   está publicado en cada descripción; la codificación es manual doble ciega (no la hace una
   máquina). Falta mostrar el tamaño de muestra: el snapshot trae `comunicados_ventana`,
@@ -133,6 +159,16 @@ tocar nada.
   Arreglo: mostrar N, apoyos y críticas en la card o el modal. Comercio +1,0 ya se le explicó a
   Luis el 7-nov (punto 18): los 4 respaldan al Ejecutivo; sus críticas fueron a Congreso,
   provincias y Justicia.
+  **Reunión con Luis del 13-nov:** revisar también los apoyos de las cámaras empresarias
+  (industria, comercio, campo, construcción). Hoy están desactualizados porque hay 26
+  comunicados sin codificar, y las muestras son chicas (comercio 4, construcción 5).
+  Además, explicar bien la metodología en la página (qué se cuenta, cómo se codifica un
+  comunicado como apoyo o crítica, la ventana de 12 meses y cómo se llega al número).
+- **Reunión con Luis del 13-nov — footer:** el enlace «Marco metodológico» pasa a llamarse
+  «Marco conceptual».
+- **Reunión con Luis del 13-nov — pestaña «Equipo»:** agregar una pestaña nueva con el equipo.
+  Falta que pasen quiénes van, con qué cargo o rol y si llevan foto o bio. Es un cambio de
+  navegación: lleva ADR y evento de GA.
 - **(16) Nombre en la pestaña y al compartir.** El título de la portada dice «Monitor del
   gobierno del presidente Milei.» (#98); la pestaña, el pie y cada página de cinturón dicen
   «Monitor del Plan de Gobierno · CiGob» (`Layout.astro` `<title>`). **Nombre: decide el

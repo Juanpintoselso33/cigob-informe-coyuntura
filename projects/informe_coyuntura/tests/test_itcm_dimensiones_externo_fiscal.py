@@ -62,13 +62,15 @@ def test_el_cruce_sigue_siendo_un_grupo_del_sector_externo():
 
 
 def test_el_itcm_no_se_mueve_con_los_datos_completos():
-    """Mismos números que antes de la reagrupación (60,6 con el ejemplo del
-    test de ITCM; 59,4 y 59,8 con los dos ajustes del saldo comercial)."""
+    """Mismos números que antes de la reagrupación, corridos por ADR-0427
+    (escala de inflación sobre los cortes 75/50/25): 60,6 → 62,3 con el ejemplo
+    del test de ITCM; 59,4 → 61,1 y 59,8 → 61,5 con los dos ajustes del saldo
+    comercial. La diferencia entre los tres (−1,2 y −0,8) es la de antes."""
     from test_itcm import EJEMPLO
-    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 60.6
+    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 62.3
     aj = lambda p: {"saldo_comercial_12m": {"puntaje": p, "justificacion": "x"}}
-    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 59.4
-    assert itcm.calcular_itcm(EJEMPLO, aj(67.1))["valor"] == 59.8
+    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 61.1
+    assert itcm.calcular_itcm(EJEMPLO, aj(67.1))["valor"] == 61.5
 
 
 def test_grupo_incompleto_no_se_calcula_ni_se_promedia():

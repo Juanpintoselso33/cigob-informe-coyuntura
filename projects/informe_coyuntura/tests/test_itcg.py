@@ -108,7 +108,9 @@ def test_itcg_reproduce_ejemplo():
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
     assert r["valor"] == 74.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379) → 75,4 (0385) → 74,4 (0406)
-    assert r["banda"] == "moderadamente_aflojado"
+    # ADR-0427: el corte de «moderadamente aflojado» sube de 60 a 75, y 74,4
+    # (tensión 2,6, justo sobre el 2,5) queda en «moderadamente apretado».
+    assert r["banda"] == "moderadamente_apretado"
     assert itcg.tension_de_itcg(r["valor"]) == 2.6   # 74,4 (ADR-0406)
     assert r["ajustes_aplicados"] == []
 

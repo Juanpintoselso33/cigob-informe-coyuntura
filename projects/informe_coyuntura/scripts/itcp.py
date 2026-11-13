@@ -664,11 +664,14 @@ ANCLAS_ITCP = {
     "cohesion_bloque": ((89.8, 10), (93.4, 40), (97.0, 65), (99.9, 100)),
     # ADR-0402: 25 y 50 conceptuales, 77 = mediana de los gobiernos anteriores.
     "alineamiento_senadores_prov": ((25.0, 10), (50.0, 65), (77.0, 100)),
-    # ADR-0423: los cortes de color de Luis caen justo en los puntajes 60/40/20
-    # (verde ≥ 60 · amarillo ≥ 40 · naranja ≥ 20). 129,1 y no 129 porque «más
+    # ADR-0423: los cortes de color de Luis caen justo en los bordes del
+    # semáforo (`parametrica.PUNTAJES_DE_CORTE`: 75/50/25 desde ADR-0427; antes
+    # 60/40/20). 129,1 y no 129 porque «más
     # de 129» deja la mayoría justa en amarillo y el valor es un promedio con un
     # decimal. 172 = dos tercios de la cámara; 99, diez menos que el rojo.
-    "votos_sobre_bancas": ((99.0, 10), (109.0, 20), (119.0, 40), (129.1, 60), (172.0, 100)),
+    "votos_sobre_bancas": ((99.0, 10), (109.0, parametrica.PUNTAJES_DE_CORTE[2]),
+                           (119.0, parametrica.PUNTAJES_DE_CORTE[1]),
+                           (129.1, parametrica.PUNTAJES_DE_CORTE[0]), (172.0, 100)),
 }
 
 DIMENSIONES_ITCP = {

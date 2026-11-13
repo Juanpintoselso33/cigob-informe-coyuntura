@@ -88,13 +88,18 @@ def _reparto_de_colores(serie, ancla):
 def test_reparto_de_colores_homicidios_con_mediana():
     mediana = itvc.mediana_de_serie({"s": SERIE_HOM}, "s")
     conteo = _reparto_de_colores(SERIE_HOM, mediana)
-    assert conteo == {"rojo": 6, "naranja": 3, "amarillo": 5, "verde": 12}, conteo
+    # ADR-0427: cortes 112,5 / 100 / 87,5 (antes 105 / 95 / 85): naranja 3 → 7,
+    # amarillo 5 → 6, verde 12 → 7. Contado aparte con esos cortes sobre el índice
+    # de cada año (26 años, suma 26).
+    assert conteo == {"rojo": 6, "naranja": 7, "amarillo": 6, "verde": 7}, conteo
 
 
 def test_reparto_de_colores_robos_con_mediana():
     mediana = itvc.mediana_de_serie({"s": SERIE_ROB}, "s")
     conteo = _reparto_de_colores(SERIE_ROB, mediana)
-    assert conteo == {"rojo": 1, "naranja": 7, "amarillo": 10, "verde": 8}, conteo
+    # ADR-0427: naranja 7 → 12, amarillo 10 → 9, verde 8 → 4 (suma 26, contado
+    # aparte con los cortes 112,5 / 100 / 87,5).
+    assert conteo == {"rojo": 1, "naranja": 12, "amarillo": 9, "verde": 4}, conteo
 
 
 def test_control_negativo_anclar_contra_2023_da_otro_reparto():
@@ -104,7 +109,7 @@ def test_control_negativo_anclar_contra_2023_da_otro_reparto():
     esos tests no estarían probando el ancla."""
     base_2023 = next(p["valor"] for p in SERIE_HOM if p["fecha"] == "2023-12-01")
     conteo_2023 = _reparto_de_colores(SERIE_HOM, base_2023)
-    assert conteo_2023 != {"rojo": 6, "naranja": 3, "amarillo": 5, "verde": 12}
+    assert conteo_2023 != {"rojo": 6, "naranja": 7, "amarillo": 6, "verde": 7}
     # Y reproduce el defecto que motivó la corrección: mayoría en rojo.
     assert conteo_2023["rojo"] >= 15, (
         f"se esperaba que anclar contra 2023 siguiera saturando en rojo la "

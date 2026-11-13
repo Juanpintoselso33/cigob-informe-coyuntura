@@ -43,4 +43,11 @@ def test_itvc_pobreza_usa_los_cortes_fijos_y_no_la_base(monkeypatch):
     monkeypatch.setattr(ds, "fetch_pobreza_nowcast_serie",
                         lambda: [["2025-01-01", 20.0], ["2025-02-01", 30.0], ["2025-03-01", 40.0]])
     out = ds.fetch_itvc_pobreza()
-    assert out == [["2025-01-01", 105.0], ["2025-02-01", 95.0], ["2025-03-01", 85.0]]
+    # Los cortes propios (20 / 30 / 40 %) caen en los bordes del semáforo:
+    # índice = 125 − 5 × tensión de corte (ADR-0427: 112,5 / 100 / 87,5; antes
+    # 105 / 95 / 85). 20 % sigue siendo el borde del verde.
+    import parametrica
+    i1, i2, i3 = (125.0 - 5.0 * t for t in parametrica.TENSIONES_DE_CORTE)
+    assert (i1, i2, i3) == (112.5, 100.0, 87.5)
+    assert out == [["2025-01-01", i1], ["2025-02-01", i2], ["2025-03-01", i3]]
+    assert [parametrica.color_de_indice_base100(v) for _, v in out] == ["verde", "amarillo", "naranja"]

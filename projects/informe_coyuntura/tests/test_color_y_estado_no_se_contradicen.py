@@ -51,13 +51,19 @@ def test_ningun_valor_de_tension_recibe_dos_lecturas_opuestas():
 
 
 def test_el_caso_que_lo_destapo_ya_no_se_contradice():
-    """Macro con ITCM 63,1 → tensión 3,69: era verde y «en tensión» a la vez."""
+    """Macro con ITCM 63,1 → tensión 3,69: era verde y «en tensión» a la vez.
+
+    ADR-0427: con los cortes 2,5 / 5 / 7,5 el 3,69 ya no es verde sino amarillo
+    (tramo 2,5-5), así que sigue cayendo en la franja que antes chocaba (entre el
+    estado viejo de 3 y el color de 4) y prueba lo mismo: las dos tablas lo leen
+    igual, ahora «amarillo» y «en tensión».
+    """
     t = (100 - 63.1) / 10
-    assert 3.0 < t <= 4.0, "la franja del choque cambió; revisar el ADR"
-    # Ahora las dos tablas lo leen igual: el ITCM 63,1 es "moderadamente
-    # aflojado" para el método, así que verde y estable.
-    assert parametrica.color_de_tension(t) == "verde"
-    assert estado_de_score(t) == "estable"
+    assert UMBRALES["ESTABLE_MAX"] < t <= UMBRALES["EN_TENSION_MAX"], (
+        "la franja del choque cambió; revisar el ADR")
+    assert parametrica.color_de_tension(t) == "amarillo"
+    assert estado_de_score(t) == "en_tension"
+    assert ESTADO_ESPERADO[parametrica.color_de_tension(t)] == estado_de_score(t)
 
 
 def test_el_borde_de_cada_tramo_cae_del_mismo_lado_en_las_dos_tablas():

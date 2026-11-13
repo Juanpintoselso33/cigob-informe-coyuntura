@@ -135,9 +135,9 @@ export const FICHAS: Record<string, Ficha> = {
     anclas: {
       bandas: [
         { banda: "≤ 0,5", puntaje: 100 },
-        { banda: "0,5 – 1,5", puntaje: 60 },
-        { banda: "1,5 – 2,5", puntaje: 40 },
-        { banda: "2,5 – 3,5", puntaje: 20 },
+        { banda: "0,5 – 1,5", puntaje: 75 },
+        { banda: "1,5 – 2,5", puntaje: 50 },
+        { banda: "2,5 – 3,5", puntaje: 25 },
         { banda: "> 3,5", puntaje: 10 },
       ],
       puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
@@ -153,6 +153,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
     cambios: [
+      { fecha: "2026-11-12", cambio: "El semáforo pasa a cuatro tramos iguales y los puntajes de los cortes se mueven con él (75, 50 y 25 en vez de 60, 40 y 20). Los cortes de color no cambian: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 %.", adr: "0427" },
       { fecha: "2026-10-26", cambio: "La escala se ajusta a los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 % y rojo arriba (antes el verde llegaba hasta cerca de 2,8 %). Con 1,93 % el puntaje pasa de 76,4 a 41,4 y el indicador, de verde a amarillo.", adr: "0367" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.", adr: "0366" },
       {
@@ -1054,9 +1055,9 @@ export const FICHAS: Record<string, Ficha> = {
     anclas: {
       bandas: [
         { banda: "≤ 0,5", puntaje: 100 },
-        { banda: "0,5 – 1,5", puntaje: 60 },
-        { banda: "1,5 – 2,5", puntaje: 40 },
-        { banda: "2,5 – 3,5", puntaje: 20 },
+        { banda: "0,5 – 1,5", puntaje: 75 },
+        { banda: "1,5 – 2,5", puntaje: 50 },
+        { banda: "2,5 – 3,5", puntaje: 25 },
         { banda: "> 3,5", puntaje: 10 },
       ],
       puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
@@ -1072,6 +1073,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
       { fecha: "2026-10-28", cambio: "Las reservas netas se suman a su dimensión, la estabilidad monetaria: si falta este dato, su peso se reparte también con ellas. Su peso en el índice macroeconómico no cambia.", adr: "0409" },
+      { fecha: "2026-11-12", cambio: "Sigue a la inflación del mes con el semáforo de cuatro tramos iguales: los puntajes de los cortes pasan a 75, 50 y 25, y los cortes de color no cambian (verde hasta 1 % mensual, 12,7 % anual).", adr: "0427" },
       { fecha: "2026-10-26", cambio: "Sigue la escala nueva de la inflación del mes, sobre el equivalente mensual de la expectativa: verde hasta 1 % mensual (12,7 % anual), amarillo hasta 2 % (26,8 %), naranja hasta 3 % (42,6 %). Con 21,1 % anual (1,61 % por mes) el puntaje pasa de 82,8 a 47,8 y el indicador, de verde a amarillo.", adr: "0367" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación esperada a 12 meses» y cada corte de la escala (en % por mes) lleva entre paréntesis su equivalente anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.", adr: "0289" },

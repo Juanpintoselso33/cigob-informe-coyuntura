@@ -26,6 +26,10 @@ ESCALA_ITCP = parametrica.Escala(
     getattr(itcp, "ANCLAS_ITCP", None),
     getattr(itcp, "TRANSFORMACIONES_ITCP", None),
 )
+# ADR-0427: los cortes salen del semáforo y no escritos a mano (tensión 2,5 / 5 /
+# 7,5; puntaje 75 / 50 / 25; antes 4 / 6 / 8 y 60 / 40 / 20).
+T1, T2, T3 = parametrica.TENSIONES_DE_CORTE
+P1, P2, P3 = parametrica.PUNTAJES_DE_CORTE
 ESCALAS = {"ITCG": ESCALA_ITCG, "ITCM": ESCALA_ITCM, "ITCP": ESCALA_ITCP}
 
 
@@ -43,64 +47,75 @@ class TestColorDeTension:
 
     def test_los_bordes_son_inclusivos_hacia_el_mejor_color(self):
         # low exclusivo / high inclusivo, la convención del motor
-        assert parametrica.color_de_tension(4.0) == "verde"
-        assert parametrica.color_de_tension(4.01) == "amarillo"
-        assert parametrica.color_de_tension(6.0) == "amarillo"
-        assert parametrica.color_de_tension(6.01) == "naranja"
-        assert parametrica.color_de_tension(8.0) == "naranja"
-        assert parametrica.color_de_tension(8.01) == "rojo"
+        assert parametrica.color_de_tension(T1) == "verde"
+        assert parametrica.color_de_tension(T1 + 0.01) == "amarillo"
+        assert parametrica.color_de_tension(T2) == "amarillo"
+        assert parametrica.color_de_tension(T2 + 0.01) == "naranja"
+        assert parametrica.color_de_tension(T3) == "naranja"
+        assert parametrica.color_de_tension(T3 + 0.01) == "rojo"
+        # y los valores de la escala vigente (ADR-0427), por si alguien cambia
+        # a la vez las constantes y el test
+        assert (T1, T2, T3) == (2.5, 5.0, 7.5)
 
     def test_puntaje_0_100_usa_los_bordes_de_las_bandas_de_interpretacion(self):
-        assert parametrica.color_de_puntaje(60.0) == "verde"
-        assert parametrica.color_de_puntaje(40.0) == "amarillo"
-        assert parametrica.color_de_puntaje(20.0) == "naranja"
-        assert parametrica.color_de_puntaje(19.9) == "rojo"
+        assert parametrica.color_de_puntaje(P1) == "verde"
+        assert parametrica.color_de_puntaje(P2) == "amarillo"
+        assert parametrica.color_de_puntaje(P3) == "naranja"
+        assert parametrica.color_de_puntaje(P3 - 0.1) == "rojo"
+        assert (P1, P2, P3) == (75.0, 50.0, 25.0)   # ADR-0427
 
     def test_no_usa_la_tension_redondeada(self):
-        # 59,9 da tensión 4,01; redondeada a un decimal es 4,0 y daría verde.
-        # Es el error que rompe el borde, y este test es el que lo ataja.
-        assert parametrica.color_de_puntaje(59.9) == "amarillo"
+        # 74,9 da tensión 2,51; redondeada a un decimal es 2,5 y daría verde.
+        # Es el error que rompe el borde, y este test es el que lo ataja
+        # (ADR-0427: antes 59,9 → 4,01 → 4,0).
+        assert parametrica.color_de_puntaje(P1 - 0.1) == "amarillo"
 
     def test_base100_despeja_su_propia_formula_de_tension(self):
-        # tensión = 5 − (índice − 100) × 0,2  →  t≤4 ⟺ i≥105, t≤6 ⟺ i≥95, t≤8 ⟺ i≥85
-        assert parametrica.color_de_indice_base100(105.0) == "verde"
-        assert parametrica.color_de_indice_base100(104.9) == "amarillo"
-        assert parametrica.color_de_indice_base100(95.0) == "amarillo"
-        assert parametrica.color_de_indice_base100(94.9) == "naranja"
-        assert parametrica.color_de_indice_base100(85.0) == "naranja"
-        assert parametrica.color_de_indice_base100(84.9) == "rojo"
+        # tensión = 5 − (índice − 100) × 0,2  →  i = 100 − 5·(t − 5) = 125 − 5·t
+        # ADR-0427: t≤2,5 ⟺ i≥112,5 · t≤5 ⟺ i≥100 · t≤7,5 ⟺ i≥87,5 (antes 105/95/85)
+        i1, i2, i3 = (125.0 - 5.0 * t for t in parametrica.TENSIONES_DE_CORTE)
+        assert (i1, i2, i3) == (112.5, 100.0, 87.5)
+        assert parametrica.color_de_indice_base100(i1) == "verde"
+        assert parametrica.color_de_indice_base100(i1 - 0.1) == "amarillo"
+        assert parametrica.color_de_indice_base100(i2) == "amarillo"
+        assert parametrica.color_de_indice_base100(i2 - 0.1) == "naranja"
+        assert parametrica.color_de_indice_base100(i3) == "naranja"
+        assert parametrica.color_de_indice_base100(i3 - 0.1) == "rojo"
 
 
 class TestUmbralesEnUnidad:
     def test_indicador_creciente_apertura_comercial(self):
-        # apertura: menor alícuota = mejor. Verde es un "≤".
+        # apertura: menor alícuota = mejor. Verde es un "≤". La lineal del doc
+        # (0 % → 100, 15 % → 0) puntúa 75 en 15 × (1 − 0,75) = 3,75 %
+        # (ADR-0427; con el corte de 60 era 6,0 %).
         verde = _tramos("apertura_comercial", ESCALA_ITCG, "verde")
         assert len(verde) == 1
         assert verde[0]["desde"] is None
-        assert verde[0]["hasta"] == pytest.approx(6.0, abs=0.01)
+        assert verde[0]["hasta"] == pytest.approx(3.75, abs=0.01)
 
     def test_indicador_decreciente_desregulacion(self):
-        # desregulación: más artículos = mejor. Verde es un "≥".
+        # desregulación: más artículos = mejor. Verde es un "≥". Anclas
+        # 11.000 → 60 y 22.500 → 85: el puntaje 75 cae en
+        # 11.000 + (75−60)/(85−60) × 11.500 = 17.900 (ADR-0427; antes 11.000).
         verde = _tramos("desregulacion_normativa", ESCALA_ITCG, "verde")
         assert len(verde) == 1
-        assert verde[0]["desde"] == pytest.approx(11000.0, abs=1.0)
+        assert verde[0]["desde"] == pytest.approx(17900.0, abs=1.0)
         assert verde[0]["hasta"] is None
 
     def test_reversibilidad_en_las_57_tablas(self):
         # El test que detecta un error de interpolación inversa sin pinear
         # ningún valor: puntuar el umbral tiene que devolver ALGUNO de los
-        # cortes reales (60/40/20) — no necesariamente el "propio" del color
+        # cortes reales (75/50/25, ADR-0427) — no necesariamente el "propio" del color
         # que lo reporta. Un tramo interior (amarillo, naranja) linda con DOS
         # colores distintos y por lo tanto toca DOS cortes distintos, uno en
         # "desde" y otro en "hasta" (p.ej. amarillo en cepo_mulc: desde=14
-        # puntúa 60 —el corte de verde, su vecino mejor— y hasta=20 puntúa 40
-        # —el suyo propio—). Atarle a cada tramo un único corte por su color y
+        # puntúa el corte de verde, su vecino mejor, y hasta puntúa el suyo propio). Atarle a cada tramo un único corte por su color y
         # exigírselo a sus DOS bordes falla en las 57/57 tablas por
         # construcción (no por un bug de interpolación): color_de_tension es
         # inclusivo hacia el color mejor (pineado por TestColorDeTension), así
         # que el borde "de entrada" de un tramo interior siempre puntúa el
         # corte del vecino mejor, nunca el propio.
-        cortes = (60.0, 40.0, 20.0)
+        cortes = parametrica.PUNTAJES_DE_CORTE
         revisados = 0
         for sigla, escala in ESCALAS.items():
             for indicador in escala.bandas:
@@ -120,16 +135,20 @@ class TestUmbralesEnUnidad:
     def test_no_monotono_costo_financiamiento_tesoro(self):
         # Anclas (−5,20) (−2,5,55) (3,100) (9,75) (16,45) (20,15): óptimo en el
         # medio. Verde es un INTERVALO CERRADO y los partidos en dos son
-        # amarillo y naranja. Por izquierda nunca hay rojo: el puntaje satura
-        # en 20 y se queda en naranja.
+        # amarillo, naranja y, desde ADR-0427, también rojo. Con el corte de
+        # 20 el puntaje de la ancla izquierda (20) quedaba justo en naranja y
+        # por izquierda nunca había rojo; con el naranja en 25, ese 20 ya es
+        # rojo (tramo ≤ −4,64), así que hay un rojo a cada lado. Verde = puntaje
+        # ≥ 75: izquierda −2,5 + (75−55)/(100−55) × 5,5 = −0,06; derecha, la
+        # ancla (9, 75) exacta.
         tramos = parametrica.umbrales_en_unidad("costo_financiamiento_tesoro", ESCALA_ITCM)
         verde = [t for t in tramos if t["color"] == "verde"]
         assert len(verde) == 1
-        assert verde[0]["desde"] == pytest.approx(-1.89, abs=0.02)
-        assert verde[0]["hasta"] == pytest.approx(12.52, abs=0.02)
+        assert verde[0]["desde"] == pytest.approx(-0.0556, abs=0.02)
+        assert verde[0]["hasta"] == pytest.approx(9.0, abs=0.02)
         assert len([t for t in tramos if t["color"] == "amarillo"]) == 2
         assert len([t for t in tramos if t["color"] == "naranja"]) == 2
-        assert len([t for t in tramos if t["color"] == "rojo"]) == 1
+        assert len([t for t in tramos if t["color"] == "rojo"]) == 2
 
     def test_transformacion_devuelve_unidad_cruda(self):
         # rem_ipc_12m se publica como expectativa ANUAL y se puntúa por su
