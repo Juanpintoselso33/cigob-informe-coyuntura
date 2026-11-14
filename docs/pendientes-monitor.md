@@ -69,6 +69,8 @@ tocar nada.
   datos. El asistente te explicó mal y lo corregimos».
   **13-nov:** la fecha fija de publicación sigue sin decidir (Juan: «para ver, aún
   pendiente»). Cuando se fije, va un `schedule` en `mensual.yml`.
+  **14-nov (reunión con Luis):** el dominio cambia a «monitor» (en vez de informe.cigob.org);
+  la publicación del mes, quizás el primer día hábil de cada mes.
 - **(5) El verde global depende de gestión. Decide el equipo.** Verificado: la portada
   muestra «Tensión general» 3,6 (verde ≤ 4), promedio simple 25 % c/u de la fase temprana
   (`config.py`, `FASE_TEMPRANA_ANIOS = 4`: rige hasta dic-2027, después 29/29/24/18). Sin
@@ -84,6 +86,8 @@ tocar nada.
   texto que explica que menos tensión = la agenda se ejecuta, no que el país esté mejor.
   **13-nov: para ver con Luis** (Juan). Llevarle las dos preguntas: qué hacer con los hitos
   cumplidos (siguen en 100, salen o se reemplazan) y el texto de la lectura de gestión.
+  **14-nov (reunión con Luis):** los hitos y techos quedan como están; va la propuesta de
+  texto (menos tensión = la agenda se ejecuta, no que el país esté mejor).
 - **(7) Reservas en verde por fórmula propia. Decide el equipo.** Verificado: 10.725 = SDDS
   estricto 7.465 + Tesoro 1.125 + tramo II.1 3m–1a 2.136 (sep-2026), 725 sobre el corte de
   10.000; SDDS solo = 7.465, amarillo. Fórmula decidida en ADR-0005 y explicitada en ADR-0286;
@@ -101,6 +105,9 @@ tocar nada.
   FMI (+8.000 en 2026, prorrateada; junio con el resultado oficial). **Para Luis:**
   confirmar si quería la card de reservas brutas aparte (su texto dice «existe indicador»)
   y el reparto en tercios del peso.
+  **14-nov (reunión con Luis):** pesos dentro del bloque de reservas: brutas 30 %, netas
+  30 %, compromiso de compras con el FMI 40 %. La idea es que los tres computen como uno
+  solo al final; revisar bien cómo entra al índice (sin doble conteo ni rarezas).
   - Cumplimiento de la meta de acumulación de reservas acordada con el FMI (compras de
     reservas contra la meta del programa). Ver de dónde salen la meta y el dato (revisiones
     del FMI, BCRA) y cada cuánto se actualizan.
@@ -119,6 +126,8 @@ tocar nada.
   se corrige».
   **13-nov (Juan): dejarlo para proponer** (llevarle a Luis la propuesta: la card muestra el
   precio relativo de la comida, que es lo que pinta, con la inflación del mes al lado).
+  **14-nov (reunión con Luis):** la card muestra el porcentaje por encima del IPC (cuánto
+  más subió la comida que el IPC general).
 - **(10) Base del índice social y amarillo con 101,5. Para ver; a Juan le parece razonable como
   está.** Verificado: 5 − (101,5 − 100) × 0,2 = 4,7, amarillo. La base oct-dic 2023 la pidió
   Luis el 3-nov para todo el cinturón; pobreza, mora y carga de deuda van con niveles fijos
@@ -133,6 +142,8 @@ tocar nada.
   matriz TCR×términos (esquina 50 en el borde), insistencias/rechazos con 2 eventos pasan a
   naranja, capacidad prestable con 0 pasa a amarillo, palabras de lectura del índice social vs
   colores, eje de la evolución del índice social (80-110) sin verde.
+  **14-nov (reunión con Luis):** revisar por qué cambia cada color con la escala nueva y
+  que el cambio tenga sentido; ejemplo, decretos.
 - **(11) Rojos en un cinturón estable. A solucionar (texto).** Verificado: político 3,2 verde
   (ITCP 68,0) con `ratio_dnu` (9,7 % del peso) y `transferencias_no_automaticas` (8,2 %) en
   rojo, ambos en 10/100; el resto (82 %) promedia ~80, sin los rojos el ITCP rondaría 80. Tres
@@ -202,6 +213,7 @@ tocar nada.
 - **Reunión con Luis del 13-nov — pestaña «Equipo»:** agregar una pestaña nueva con el equipo.
   Falta que pasen quiénes van, con qué cargo o rol y si llevan foto o bio. Es un cambio de
   navegación: lleva ADR y evento de GA.
+  **14-nov (reunión con Luis):** el texto lo pasa Luis; van los que trabajan en el Monitor.
 - **(16) Nombre en la pestaña y al compartir.** El título de la portada dice «Monitor del
   gobierno del presidente Milei.» (#98); la pestaña, el pie y cada página de cinturón dicen
   «Monitor del Plan de Gobierno · CiGob» (`Layout.astro` `<title>`). **Nombre: decide el
