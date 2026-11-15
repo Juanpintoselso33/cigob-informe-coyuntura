@@ -61,7 +61,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 35% |
 | Peso efectivo en el índice | **7.1%** |
-| Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
+| Procedencia del ancla | `externa` — cortes fijos (ADR-0425): verde hasta 20% (Uruguay, Paraguay y Chile 16-17%), amarillo hasta 30% (mínimos argentinos 25,7% en 2017 y 28,2% en 2S-2025), naranja hasta 40% (2019-2023), rojo arriba |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -119,7 +119,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 5% |
 | Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | `conceptual` — faena de vacunos, porcinos y aves per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0339) |
+| Procedencia del ancla | `conceptual` — consumo aparente de las tres carnes por habitante (SAGYP) rebaseado a 4T-2023; ancla en fecha fija (ADR-0339, ADR-0392) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -133,7 +133,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 5% |
 | Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | `conceptual` — faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
+| Procedencia del ancla | `conceptual` — consumo aparente de carne vacuna por habitante (SAGYP) rebaseado a 4T-2023; ancla en fecha fija (ADR-0322, ADR-0392) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -191,7 +191,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 10% |
 | Peso efectivo en el índice | **2.5%** |
-| Procedencia del ancla | `conceptual` — 100 = el alquiler publicado sube igual que los precios en el año: 100 menos la variación real interanual, en puntos; ancla neutra, no calibrada al rango observado (ADR-0386) |
+| Procedencia del ancla | `conceptual` — alquiler pedido en los avisos, reconstruido como nivel y deflactado por el IPC, rebaseado a 4T-2023 como el alquiler del IPC: 100 = igual que a fines de 2023, ancla neutra, no calibrada al rango observado (ADR-0386, ADR-0411) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -207,7 +207,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 70% |
 | Peso efectivo en el índice | **7.0%** |
-| Procedencia del ancla | `conceptual` — nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija |
+| Procedencia del ancla | `externa` — cortes fijos (ADR-0425): verde hasta 5% (consumo en Chile, México, Colombia, Perú y Uruguay 2,5-5,5%), amarillo hasta 8% (récord de Brasil 8,1%), naranja hasta 12%, rojo arriba |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -221,7 +221,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **3.0%** |
-| Procedencia del ancla | `conceptual` — carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231) |
+| Procedencia del ancla | `externa` — cortes fijos (ADR-0425): verde hasta 15%, amarillo hasta 20% (mínimo reciente de Brasil), naranja hasta 30% (umbral de sobreendeudamiento y récord brasileño 29,7%), rojo arriba |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -283,7 +283,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 60% |
 | Peso efectivo en el índice | **2.7%** |
-| Procedencia del ancla | `conceptual` — IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado |
+| Procedencia del ancla | `conceptual` — IVI rebaseado a 4T-2023 (ADR-0393; antes ene-2024, ADR-0032); ancla en fecha fija, no rango observado |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 

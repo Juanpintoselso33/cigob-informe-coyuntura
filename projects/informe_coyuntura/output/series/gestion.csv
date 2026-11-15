@@ -335,6 +335,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
+2026-09-01,masa_salarial,-29.69,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-08-01,masa_salarial,-32.65,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-07-01,masa_salarial,-32.44,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -485,6 +486,7 @@ fecha,indicador,valor,unidad,fuente
 2025-02-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2025-01-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2024-12-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-09-01,indice_salarios_publico,8457.14,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-08-01,indice_salarios_publico,8307.48,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-06-01,indice_salarios_publico,7889.42,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
@@ -532,7 +534,7 @@ fecha,indicador,valor,unidad,fuente
 2022-12-01,indice_salarios_publico,955.04,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2022-11-01,indice_salarios_publico,874.76,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
-2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
+2026-09-01,gasto_funcionamiento,-27.76,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-08-01,gasto_funcionamiento,-28.0,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-07-01,gasto_funcionamiento,-27.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-06-01,gasto_funcionamiento,-27.1,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
@@ -672,7 +674,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-11-01,cepo_mulc,7.71,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
+2026-11-01,cepo_mulc,7.76,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-10-01,cepo_mulc,6.82,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-09-01,cepo_mulc,5.62,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-08-01,cepo_mulc,5.73,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)

@@ -62,7 +62,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **7.0%** |
-| Procedencia del ancla | `convencion` — el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125) |
+| Procedencia del ancla | `convencion` — el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes en artículos (2.500 / 7.000 / 15.000 / 30.000) los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125) |
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
@@ -166,7 +166,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **6.0%** |
-| Procedencia del ancla | `convencion` — referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento |
+| Procedencia del ancla | `convencion` — anclas declaradas por convención —la escala de medidor de avance de concesiones y privatizaciones: 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100—, sin calibrar contra el rango observado; reemplaza a la que referenciaba el 22,1% de jun-2026 (ADR-0406). Desde ADR-0419 se aplica a lo aprobado sobre la promesa de US$ 100.000 M |
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
@@ -210,7 +210,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **4.0%** |
-| Procedencia del ancla | `convencion` — calibrada con la caída observada en CABA en 2024-2025 |
+| Procedencia del ancla | `convencion` — anclas declaradas por convención —cuartos redondos de la reducción contra 2023: 0 → 10 · 12,5 → 40 · 37,5 → 65 · 62,5 → 85 · 75 → 100—; fijadas mirando la caída observada en la Ciudad de Buenos Aires en 2024-2025, el universo que mide el indicador (ADR-0405 lo había pasado al total nacional; ADR-0408 lo devuelve a la Ciudad) |
 
 **Bandas**: > 75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤ 0 → 10
 

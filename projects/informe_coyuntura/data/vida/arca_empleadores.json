@@ -62,13 +62,13 @@
       "cuit_total": 6190311
     },
     "2026-11": {
-      "fecha_archivo": "2026-11-07",
-      "empleadores": 511351,
-      "juridicas": 290904,
-      "humanas": 220447,
-      "monotributistas": 44458,
-      "blanco": 48150,
-      "cuit_total": 6206844
+      "fecha_archivo": "2026-11-14",
+      "empleadores": 512294,
+      "juridicas": 291377,
+      "humanas": 220917,
+      "monotributistas": 44634,
+      "blanco": 48032,
+      "cuit_total": 6218262
     }
   }
 }

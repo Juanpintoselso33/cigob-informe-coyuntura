@@ -102,7 +102,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **10.2%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
-| Procedencia del ancla | `convencion` — recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038) |
+| Procedencia del ancla | `historia_larga` — anclas mixtas: 25 → 10 y 50 → 65 son conceptuales (un cuarto y la mitad de los votos ajenos coinciden con el oficialismo); 77 → 100 es la mediana de los tres gobiernos anteriores medidos igual (Fernández de Kirchner 2012-2015, Macri 2015-2019, Fernández 2019-2023: 134 meses). Antes, 40/50/60/70 calibradas con la serie propia del mandato (ADR-0038, ADR-0402) |
 
 **Bandas**: > 77 → 100 · 50–77 → 65 · 25–50 → 10 · ≤ 25 → 10
 
@@ -136,7 +136,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1.5 meses |
-| Procedencia del ancla | `convencion` — calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048) |
+| Procedencia del ancla | `historia_larga` — media y desvíos de la cohesión del bloque PRO de Macri, dic-2015 a dic-2018, medida igual (65/35, 90 días, sólo votaciones divididas): 89,8 → 10 · 93,4 → 40 · 97,0 → 65 · 99,9 → 100. Antes, calibrada contra la serie propia del mandato (ADR-0042/0048, ADR-0401) |
 
 **Bandas**: > 99.9 → 100 · 97–99.9 → 65 · 93.4–97 → 40 · 89.8–93.4 → 10 · ≤ 89.8 → 10
 
@@ -152,7 +152,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 0.5 meses |
-| Procedencia del ancla | `convencion` — anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376) |
+| Procedencia del ancla | `conceptual` — cortes de Luis en diputados a favor: 129 es la mayoría absoluta de 257 (verde por encima), 119 y 109 escalones de diez votos; puntas en 172 (dos tercios) y 99 (ADR-0423) |
 
 **Bandas**: > 172 → 100 · 129.1–172 → 60 · 119–129.1 → 40 · 109–119 → 20 · ≤ 109 → 10
 

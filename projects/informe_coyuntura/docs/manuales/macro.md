@@ -90,9 +90,9 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 6% |
 | Peso efectivo en el índice | **1.8%** |
-| Procedencia del ancla | `conceptual` — bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120); desde ADR-0428 sobre la medición estricta, donde el cero es «el BCRA sin dólares propios», sin recalibrar (no hay historia previa: el BCRA borró las planillas anteriores a jun-2024) |
+| Procedencia del ancla | `historia_larga` — media y uno y dos desvíos de las reservas netas estrictas (SDDS) de dic-2017 a nov-2023, 60 cierres de mes recuperados del Internet Archive (ADR-0428) |
 
-**Bandas**: > 20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤ 0 → 10
+**Bandas**: > 28229 → 100 · 19032–28229 → 85 · 9835–19032 → 65 · 638–9835 → 45 · -8559–638 → 25 · ≤ -8559 → 10
 
 **Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria» · [ADR-0428](../adr/0428-las-reservas-se-miden-con-tres-indicadores.md) Las reservas se miden con tres indicadores
 
