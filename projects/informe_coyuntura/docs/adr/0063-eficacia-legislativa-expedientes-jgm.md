@@ -8,6 +8,7 @@ cinturon: 'politica'
 indicadores: [eficacia_legislativa]
 complementa: ['0061']
 continua: ['0062']
+relacionado: ['0432']
 ambito: 'Cinturón política · ITCP · `eficacia_legislativa`'
 ---
 

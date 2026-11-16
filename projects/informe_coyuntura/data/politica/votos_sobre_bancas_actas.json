@@ -1980,7 +1980,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
-   "origen_pe": null,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 448 - LEY DE INVIOLABILIDAD DE LA PROPIEDAD PRIVADA. MODIF. DE LA LEY 21.499 Y LEY 24.374. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -2013,7 +2013,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
-   "origen_pe": null,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 447 - CÓDIGO PENAL. MODIF. SOBRE VANDALISMO RURAL. DICT. DE MAY. VOT. EN GRAL."
   },

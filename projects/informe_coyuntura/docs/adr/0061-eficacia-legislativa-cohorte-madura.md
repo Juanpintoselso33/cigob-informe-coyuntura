@@ -7,7 +7,7 @@ fecha: 2026-07-15
 cinturon: 'politica'
 indicadores: [eficacia_legislativa, poder_legislativo]
 supersede: ['0050']
-relacionado: ['0045', '0059', '0070']
+relacionado: ['0045', '0059', '0070', '0432']
 complementado_por: ['0062', '0063']
 ambito: 'Cinturón política · ITCP · `eficacia_legislativa` · dimensión `poder_legislativo`'
 ---

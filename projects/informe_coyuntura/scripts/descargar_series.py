@@ -1143,9 +1143,17 @@ def fetch_eficacia_serie() -> list:
     proyecto finalmente se sancionó más tarde. Las fechas salen de
     politica._leyes_sancionadas_fechadas (misma regla que la card: con
     correcciones documentadas aplicadas y todas canónicas, si no falla y el
-    CSV conserva la serie anterior). [[YYYY-MM-01, %]]."""
-    raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
-              + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
+    CSV conserva la serie anterior). [[YYYY-MM-01, %]].
+
+    Si el CKAN no responde (caído desde el 4-nov-2026), la serie sale del
+    buscador de proyectos de Diputados (ADR-0432)."""
+    try:
+        raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
+                  + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
+    except requests.RequestException as e:
+        print(f"  [WARN] eficacia_legislativa serie: CKAN de Diputados sin respuesta ({e}); "
+              "se usa el buscador de proyectos")
+        return _eficacia_serie_buscador()
     pe = [(r["PROYECTO_ID"], politica._fecha_publicacion_proyecto(r)) for r in raw_pe
           if r.get("PROYECTO_ID")
           and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
@@ -1154,6 +1162,34 @@ def fetch_eficacia_serie() -> list:
     san = politica._leyes_sancionadas_fechadas()
     out = []
     for ym, cohorte_hasta, fin in _hcdn_ventanas_12m():
+        cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()
+        pe_ids = {pid for pid, f in pe if cohorte_desde <= f <= cohorte_hasta}
+        san_ids = {pid for pid, f in san if f <= fin}
+        if pe_ids:
+            out.append([f"{ym}-01", round(len(pe_ids & san_ids) / len(pe_ids) * 100.0, 1)])
+    return out
+
+
+# Desde este mes la serie del buscador coincide punto por punto con la del
+# CKAN (verificado el 16-nov-2026, enero a noviembre de 2026). Antes
+# le faltan uno a tres mensajes por cohorte, así que los meses anteriores se
+# conservan como los publicó el CKAN (ADR-0432).
+EFICACIA_BUSCADOR_DESDE = "2026-01"
+
+
+def _eficacia_serie_buscador() -> list:
+    """La serie de eficacia con el buscador de Diputados: los meses desde
+    EFICACIA_BUSCADOR_DESDE se recalculan con la misma regla; los anteriores
+    quedan como estaban en el CSV."""
+    previas = {r[0]: float(r[2]) for r in _filas_previas("politica", {"eficacia_legislativa"})
+               if r[0][:7] < EFICACIA_BUSCADOR_DESDE}
+    ventanas = [v for v in _hcdn_ventanas_12m() if v[0] >= EFICACIA_BUSCADOR_DESDE]
+    desde = (date.fromisoformat(ventanas[0][1]) - timedelta(days=365 + 365)).isoformat()
+    filas = politica._eficacia_filas_buscador(desde)
+    pe = [(f["PROYECTO_ID"], politica._fecha_publicacion_proyecto(f)) for f in filas]
+    san = [(f["PROYECTO_ID"], f["SANCION_DEFINITIVA"]) for f in filas if f["SANCION_DEFINITIVA"]]
+    out = [[fecha, valor] for fecha, valor in sorted(previas.items())]
+    for ym, cohorte_hasta, fin in ventanas:
         cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()
         pe_ids = {pid for pid, f in pe if cohorte_desde <= f <= cohorte_hasta}
         san_ids = {pid for pid, f in san if f <= fin}

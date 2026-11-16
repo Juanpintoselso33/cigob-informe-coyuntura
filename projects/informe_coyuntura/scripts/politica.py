@@ -2090,6 +2090,19 @@ def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     return {pid for pid, fecha in _leyes_sancionadas_fechadas() if fecha <= hasta}
 
 
+def _eficacia_filas_buscador(desde: str) -> list[dict]:
+    """Proyectos de ley del Ejecutivo desde `desde`, con su sanción, sacados del
+    buscador de proyectos de Diputados (ADR-0432). Misma regla que el CKAN:
+    un proyecto con número de ley y sin fecha de sanción hace fallar el
+    cálculo, para conservar el último valor verificable."""
+    import hcdn_buscador
+    filas = hcdn_buscador.proyectos_pe(desde)
+    sin_fecha = [f["PROYECTO_ID"] for f in filas if f["LEY"] and not f["SANCION_DEFINITIVA"]]
+    if sin_fecha:
+        raise ValueError(f"buscador de Diputados: ley sin fecha de sanción en {sin_fecha}")
+    return filas
+
+
 def fetch_eficacia_legislativa() -> dict | None:
     """
     % de proyectos ejecutivos MADUROS que se sancionaron alguna vez (ADR-0061,
@@ -2140,24 +2153,41 @@ def fetch_eficacia_legislativa() -> dict | None:
         cohorte_hasta = (hoy - timedelta(days=365)).isoformat()[:10]
         cohorte_desde = (hoy - timedelta(days=730)).isoformat()[:10]
 
-        # q= del CKAN es búsqueda full-text por token: una consulta por sigla
-        # (los sets de abajo deduplican solos)
-        raw_pe = (_hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-")
-                  + _hcdn_paginate(HCDN_PROYECTOS_RID, q="-JGM-"))
-        pe_cohorte: set[str] = {
-            r["PROYECTO_ID"]
-            for r in raw_pe
-            if cohorte_desde <= _fecha_publicacion_proyecto(r) <= cohorte_hasta
-            and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
-            and (
-                _RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
-                or _RE_PE_EXP.search(r.get("EXP_SENADO", "") or "")
-            )
-        }
+        fuente = "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas"
+        try:
+            # q= del CKAN es búsqueda full-text por token: una consulta por sigla
+            # (los sets de abajo deduplican solos)
+            raw_pe = (_hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-")
+                      + _hcdn_paginate(HCDN_PROYECTOS_RID, q="-JGM-"))
+            pe_cohorte: set[str] = {
+                r["PROYECTO_ID"]
+                for r in raw_pe
+                if cohorte_desde <= _fecha_publicacion_proyecto(r) <= cohorte_hasta
+                and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
+                and (
+                    _RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
+                    or _RE_PE_EXP.search(r.get("EXP_SENADO", "") or "")
+                )
+            }
+            sancionados = _leyes_sancionadas_ids(hasta=hoy.isoformat())
+        except requests.RequestException as e_ckan:
+            # datos.hcdn.gob.ar caído desde el 4-nov-2026: el buscador de
+            # proyectos trae los mismos expedientes (ADR-0432). Sólo una falla
+            # de RED pasa al buscador: un dato inválido del CKAN (una fecha de
+            # sanción ilegible) sigue fallando y conserva el último valor.
+            print(f"  [WARN] eficacia_legislativa: CKAN de Diputados sin respuesta "
+                  f"({e_ckan}); se usa el buscador de proyectos")
+            # El filtro del buscador es por fecha de ingreso, no de publicación,
+            # y un mensaje puede publicarse meses después: un año de margen.
+            filas = _eficacia_filas_buscador(
+                (date.fromisoformat(cohorte_desde) - timedelta(days=365)).isoformat())
+            pe_cohorte = {f["PROYECTO_ID"] for f in filas
+                          if cohorte_desde <= _fecha_publicacion_proyecto(f) <= cohorte_hasta}
+            sancionados = {f["PROYECTO_ID"] for f in filas
+                           if f["SANCION_DEFINITIVA"] and f["SANCION_DEFINITIVA"] <= hoy.isoformat()}
+            fuente = "hcdn.gob.ar — buscador de proyectos (proyectos del Ejecutivo y su sanción)"
         if not pe_cohorte:
             raise ValueError("Sin proyectos de ley PE en la cohorte madura (hoy-730d a hoy-365d)")
-
-        sancionados = _leyes_sancionadas_ids(hasta=hoy.isoformat())
 
         aprobados = pe_cohorte & sancionados
         total     = len(pe_cohorte)
@@ -2172,7 +2202,7 @@ def fetch_eficacia_legislativa() -> dict | None:
             "cohorte_hasta":     cohorte_hasta,
             "dias_madurado_min": 365,
             "unidad":            "% de proyectos",
-            "fuente":            "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
+            "fuente":            fuente,
             "fecha_dato":        str(hoy),
             "desactualizado":    False,
         }
@@ -8789,8 +8819,8 @@ def _vsb_origen_pe_senado(entrada: dict, indice: dict | None) -> bool | None:
         return True
     if not exps:
         return False   # sin expediente no hay con qué cruzar
-    if indice is None:
-        return None
+    if indice is None or indice.get("claves") is None:
+        return None    # el buscador de Diputados no trae la numeración del Senado
     return any(k in indice["claves"] for k in claves if k and k[0] == "CD")
 
 
@@ -8809,6 +8839,22 @@ def _vsb_origen_pe_diputados(entrada: dict, indice: dict | None) -> bool | None:
         return None    # el dictamen puede no estar cargado todavía: se reintenta
     ultima = max(f for f, _ in candidatos)
     return any(e in indice["ids"] for f, e in candidatos if f == ultima)
+
+
+def _vsb_indice_origen_buscador(entradas: list[dict]) -> dict:
+    """Índice de origen desde el buscador de proyectos de Diputados, sólo para
+    las Órdenes del Día de estas actas (ADR-0432). Sin la numeración del Senado:
+    las votaciones del Senado que la necesitan quedan pendientes."""
+    import hcdn_buscador
+    ods, anios = set(), []
+    for e in entradas:
+        m = _RE_VSB_ORDEN_DEL_DIA.search(e.get("titulo", ""))
+        if m:
+            ods.add(int(m.group(1)))
+            anios.append(int(e["fecha"][:4]))
+    if not ods:
+        return {"ids": set(), "dictamenes": {}, "claves": None}
+    return hcdn_buscador.indice_origen_por_od(ods, min(anios) - 1)
 
 
 def _vsb_resolver_origen(cache: dict) -> bool:
@@ -8842,6 +8888,18 @@ def _vsb_resolver_origen(cache: dict) -> bool:
     if any(f(e, None) is None for e, f in pendientes):
         try:
             indice = _vsb_indice_origen_pe()
+        except requests.RequestException as ex:
+            # datos.hcdn.gob.ar caído desde el 4-nov-2026: las Órdenes del Día
+            # de Diputados se resuelven con el buscador de proyectos (ADR-0432).
+            print(f"  [WARN] votos_sobre_bancas: CKAN de Diputados sin respuesta ({ex}); "
+                  "se usa el buscador de proyectos")
+            try:
+                indice = _vsb_indice_origen_buscador(
+                    [e for e, f in pendientes if f is _vsb_origen_pe_diputados])
+            except Exception as ex2:
+                print(f"  [WARN] votos_sobre_bancas: no se pudo leer el catálogo de origen ({ex2})")
+                _VSB_FALLAS.append(f"no se pudo leer el catálogo de origen ({ex2})")
+                completo = False
         except Exception as ex:
             print(f"  [WARN] votos_sobre_bancas: no se pudo leer el catálogo de origen ({ex})")
             _VSB_FALLAS.append(f"no se pudo leer el catálogo de origen ({ex})")
