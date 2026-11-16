@@ -2,7 +2,11 @@
 import Analytics from "@vercel/analytics/astro";
 import MuroAcceso from "../components/MuroAcceso.astro";
 
-const { title = "Realidad Política Argentina · Observatorio CIGOB" } = Astro.props;
+const NOMBRE = "Monitor del Plan de Gobierno · CiGob";
+const {
+  title = NOMBRE,
+  description = "Cuánta tensión enfrenta el plan de gobierno en la economía, la vida cotidiana, la política y la gestión, medida mes a mes por la Fundación CiGob.",
+} = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai/informe"
 
 // GA4 se inyecta solo si PUBLIC_GA_ID está cargada (Vercel → Settings → Environment
@@ -31,6 +35,24 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="icon" type="image/png" sizes="192x192" href={`${base}/favicon.png`} />
     <link rel="apple-touch-icon" href={`${base}/favicon.png`} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Vista previa al compartir un link (WhatsApp, LinkedIn, X): punto 16 del
+         documento de Luis del 11-nov-2026. La imagen se arma con el logo y el
+         nombre; la URL tiene que ser absoluta. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={NOMBRE} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:image" content={new URL(`${base}/og-monitor.png`, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Monitor del Plan de Gobierno, de la Fundación CiGob" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(`${base}/og-monitor.png`, Astro.site).href} />
     {esDiario && <meta name="robots" content="noindex, nofollow" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
