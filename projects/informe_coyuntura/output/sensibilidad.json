@@ -4,59 +4,59 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-15T03:44:49.158815+00:00",
+    "snapshot": "2026-11-16T00:00:09.412771-03:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 52.1,
-    "valor_recomputado": 52.1,
+    "valor_publicado": 52.2,
+    "valor_recomputado": 52.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 52.1,
-        "p05": 51.1,
-        "p95": 53.1,
+        "media": 52.2,
+        "p05": 51.3,
+        "p95": 53.2,
         "desvio": 0.59
       },
       "combinado": {
-        "media": 52.1,
-        "p05": 50.4,
-        "p95": 53.6,
+        "media": 52.2,
+        "p05": 50.6,
+        "p95": 53.8,
         "desvio": 0.98
       },
       "insumos": {
-        "media": 52.1,
-        "p05": 50.8,
-        "p95": 53.4,
+        "media": 52.2,
+        "p05": 51.0,
+        "p95": 53.5,
         "desvio": 0.77
       }
     },
     "leave_one_out": {
-      "tcrm": 55.0,
-      "terminos_intercambio": 55.0,
-      "iai": 49.9,
-      "costo_financiamiento_tesoro": 50.4,
-      "ipc_total": 53.4,
-      "saldo_comercial_12m": 50.8,
-      "desequilibrio_monetario": 53.2,
-      "resultado_primario": 51.0,
-      "meta_reservas_fmi": 51.1,
-      "idc": 53.0,
-      "actividad_tributaria": 52.8,
-      "emae_difusion": 52.8,
-      "credito_privado": 52.7,
-      "emae_ia": 52.7,
-      "ipi_manufacturero": 52.7,
-      "rem_ipc_12m": 51.6,
-      "reservas_brutas": 51.9,
-      "reservas_bcra": 52.1,
-      "recaudacion": 52.1
+      "tcrm": 55.2,
+      "terminos_intercambio": 55.2,
+      "iai": 50.1,
+      "costo_financiamiento_tesoro": 50.6,
+      "ipc_total": 53.7,
+      "saldo_comercial_12m": 51.0,
+      "desequilibrio_monetario": 53.4,
+      "resultado_primario": 51.2,
+      "meta_reservas_fmi": 51.3,
+      "idc": 53.1,
+      "emae_difusion": 53.0,
+      "actividad_tributaria": 52.9,
+      "credito_privado": 52.9,
+      "emae_ia": 52.9,
+      "reservas_bcra": 52.8,
+      "ipi_manufacturero": 52.8,
+      "rem_ipc_12m": 51.7,
+      "reservas_brutas": 52.5,
+      "recaudacion": 52.2
     },
     "tension": {
       "base": 4.8,
       "rango_combinado": [
         4.6,
-        5.0
+        4.9
       ]
     }
   },
@@ -156,44 +156,44 @@
     }
   },
   "itcp": {
-    "valor_publicado": 81.5,
-    "valor_recomputado": 81.5,
+    "valor_publicado": 81.9,
+    "valor_recomputado": 81.9,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 81.5,
-        "p05": 80.6,
-        "p95": 82.5,
-        "desvio": 0.57
+        "media": 81.9,
+        "p05": 81.0,
+        "p95": 82.7,
+        "desvio": 0.52
       },
       "combinado": {
-        "media": 81.2,
-        "p05": 79.8,
-        "p95": 82.6,
-        "desvio": 0.85
+        "media": 81.6,
+        "p05": 80.3,
+        "p95": 82.9,
+        "desvio": 0.81
       },
       "insumos": {
-        "media": 81.2,
-        "p05": 80.1,
-        "p95": 82.2,
-        "desvio": 0.65
+        "media": 81.6,
+        "p05": 80.6,
+        "p95": 82.7,
+        "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "cobertura_judicial": 83.8,
-      "eficacia_legislativa": 83.4,
-      "insistencias_vetos": 79.8,
-      "rechazos_decretos": 79.8,
-      "apoyo_comercio": 79.9,
-      "apoyo_empresario": 83.0,
-      "cohesion_bloque": 80.2,
-      "votos_sobre_bancas": 82.8,
-      "adhesion_reformas_provincial": 80.7,
-      "alineamiento_senadores_prov": 82.3,
-      "apoyo_campo": 82.0,
-      "apoyo_construccion": 81.1,
-      "conflictividad_nacional": 81.4,
-      "jornadas_individuales_no_trabajadas_12m": 81.6
+      "eficacia_legislativa": 84.5,
+      "insistencias_vetos": 80.5,
+      "rechazos_decretos": 80.5,
+      "cohesion_bloque": 80.5,
+      "cobertura_judicial": 83.2,
+      "votos_sobre_bancas": 83.2,
+      "apoyo_comercio": 80.6,
+      "apoyo_empresario": 83.1,
+      "adhesion_reformas_provincial": 81.0,
+      "apoyo_construccion": 81.0,
+      "alineamiento_senadores_prov": 82.7,
+      "apoyo_campo": 82.7,
+      "conflictividad_nacional": 81.7,
+      "jornadas_individuales_no_trabajadas_12m": 82.0
     },
     "tension": {
       "base": 1.8,

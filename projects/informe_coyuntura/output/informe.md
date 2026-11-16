@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-15 03:44:49"
+generado: "2026-11-16 00:00:09"
 score_global: 3.2
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -46,15 +46,15 @@ schema_version: "1.2.0"
 | base_monetaria | 9.45 | % mensual nominal | 2026-11-11 | fresco |
 | tc_mayorista | 2.14 | % mensual | 2026-11-13 | fresco |
 
-### 🟢 Politica — score 1.9/10 (estable)
+### 🟢 Politica — score 1.8/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
-| apoyo_construccion | 0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
+| apoyo_empresario | -0.303 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
+| apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
+| apoyo_campo | -0.163 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
+| apoyo_construccion | 0.5 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
 | conflictividad_nacional | -24.6 | % frente a 2023 | 2026-10-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | ⚠ cache |
@@ -80,7 +80,7 @@ schema_version: "1.2.0"
 | brecha_obra_publica | -2.7 | puntos porcentuales de brecha (obra pública − privada, 12 meses) | 2026-10-01 | octubre de 2026 (ADR-0372) | Compara las expectativas de las constructoras que trabajan para el Estado con las de las que trabajan para privados: es la lectura de un solo sector y de expectativas, no de la relación del empresariado con el Gobierno. La dimensión se rearma con la postura pública de las cámaras. |
 | iaf_transferencias | -0.7 | % interanual real | 2026-10-31 | octubre de 2026 (ADR-0378) | Medía la variación real de las transferencias automáticas (coparticipación y fondos de ley del RON): lo que a las provincias les corresponde, no lo que la Nación decide girarles. Lo reemplaza la medida de transferencias no automáticas, con el mismo peso en la dimensión. |
 | transferencias_no_automaticas | -82.3 | % real frente a 2023 | 2026-10-31 | noviembre de 2026 (ADR-0426) | Se retira del índice por decisión de la dirección del Monitor, para revisar su formulación. Mientras tanto la dimensión se lee con el alineamiento de los senadores y la adhesión de las provincias a las reformas. |
-| veto_quorum | 0.0 | % de sesiones | 2026-11-09 | octubre de 2026 (ADR-0377) | Las sesiones que caen por falta de quórum miden si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo; se reemplaza por las insistencias sobre vetos y los rechazos de decretos. |
+| veto_quorum | 0.0 | % de sesiones | 2026-11-15 | octubre de 2026 (ADR-0377) | Las sesiones que caen por falta de quórum miden si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo; se reemplaza por las insistencias sobre vetos y los rechazos de decretos. |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-11-04 | octubre de 2026 (ADR-0377) | Contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera: mezclaba el intento con la derrota. Se reemplaza por lo consumado en las dos cámaras: vetos insistidos y decretos derogados. |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-10-01 | noviembre de 2026 (ADR-0422) | Cuenta cuántas leyes sanciona el Congreso en 12 meses: es la actividad de las cámaras, no algo que diga si el Gobierno consigue lo que necesita. Además cuenta leyes sancionadas mientras decretos por ley cuenta leyes publicadas, así que los dos números no se cruzan. |
 | judicializacion | 1.8 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
@@ -116,7 +116,7 @@ schema_version: "1.2.0"
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-11-07 | fresco |
 | rigi_inversiones | 79.4 | % de la promesa de US$ 100.000 M aprobado | 2026-11-15 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-11-15 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-15 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
@@ -133,7 +133,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,apoyo_comercio,apoyo_campo,apoyo_construccion,eficacia_legislativa,votos_sobre_bancas,insistencias_vetos,rechazos_decretos`
+- `desactualizado:politica:eficacia_legislativa,votos_sobre_bancas,insistencias_vetos,rechazos_decretos`
 
 ---
-*Generado por CIGOB — 2026-11-15 03:44:49 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-16 00:00:09 — schema 1.2.0*
