@@ -442,6 +442,11 @@ const robChartData = rob?.hist && indice ? {
                 ocultarTitulo
                 tip={`${num(dim.puntaje)}${indice.base100 ? " (100 = referencia)" : "/100"} · ${LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO] ?? ""}`}
               />
+              {/* ADR-0020: una dimensión en rojo no cambia el color del cinturón,
+                  pero se avisa (punto 12 del documento de Luis del 11-nov). */}
+              {dim.critica && (
+                <p class="cg-dim-critica"><span class="cg-dim-critica-chip">Dimensión crítica</span> El promedio del índice no la compensa.</p>
+              )}
             </div>
           ))}
         </div>

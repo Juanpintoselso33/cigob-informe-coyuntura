@@ -1548,6 +1548,9 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-tile--gestion,
 .cg-tile--espiritu { border-top-color: var(--bd); }
 .cg-itcm-dim { border-top-color: var(--bd); }
+/* La regla de arriba pisaba el borde rojo de la dimensión crítica (ADR-0020):
+   misma especificidad y declarada después. */
+.cg-itcm-dim.cg-itcm-dim--critica { border-top: 3px solid var(--rojo); }
 
 /* Sin el borde de color, el punto del semáforo pasa a ser lo primero que se ve
    en el tile, que es exactamente lo que el rediseño busca. */

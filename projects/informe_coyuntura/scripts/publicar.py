@@ -792,8 +792,13 @@ def recomputar_vida_y_global(informe):
 # Umbral de dimensión CRÍTICA (ADR-0020): la agregación lineal compensa entre
 # dimensiones; por debajo del umbral la dimensión se marca explícitamente como
 # "no compensada" — señal visible en la web, sin tocar la fórmula.
-UMBRAL_CRITICO_BANDAS = 30.0    # índices 0-100 por bandas: la peor banda
-UMBRAL_CRITICO_BASE100 = 85.0   # base-100: "deterioro sustancial" (escala del doc)
+# Desde el 13-nov-2026 (Juan, punto 12 del documento de Luis del 11-nov) una
+# dimensión es crítica cuando está en ROJO con la escala de ADR-0427: tensión
+# por encima del tercer corte (7,5), o sea puntaje < 25 en los índices 0-100 e
+# índice < 87,5 en el base-100. Antes: 30 y 85, de la escala vieja.
+_T_ROJO = parametrica.TENSIONES_DE_CORTE[2]
+UMBRAL_CRITICO_BANDAS = parametrica.PUNTAJES_DE_CORTE[2]          # 25
+UMBRAL_CRITICO_BASE100 = 100.0 - (_T_ROJO - 5.0) / 0.2            # 87,5
 
 
 def _marcar_dimensiones_criticas(bloque, umbral):
