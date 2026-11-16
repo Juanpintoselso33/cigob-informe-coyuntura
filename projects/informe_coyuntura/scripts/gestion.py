@@ -3677,7 +3677,19 @@ def fetch_libertad_opcion_salud() -> dict | None:
 # ── D5: protocolo antipiquetes — Diagnóstico Político (ADR-0025) ──────────────
 
 DP_PIQUETES_PATH = PROJECT_DIR / "data" / "gestion" / "dp_piquetes.json"
-DP_MONITOREOS_URL = "https://diagnosticopolitico.com.ar/monitoreos-politicos"
+# El sitio se rehízo en 2026 y la sección «Monitoreos» (/monitoreos-politicos)
+# da 404: desde 2023 la consultora sólo publica cierres anuales, en enero, como
+# entrada de su sitio. El detector mira el mapa del sitio y la sección de
+# publicaciones; que no aparezca un año nuevo es lo normal, no una falla.
+DP_PAGINAS_DETECTOR = ("https://diagnosticopolitico.com.ar/sitemap.xml",
+                       "https://diagnosticopolitico.com.ar/insights")
+
+
+def anios_de_piquetes_dp(texto: str) -> set[int]:
+    """Años de piquetes que anuncia una página de Diagnóstico Político: en el
+    texto («3.893 piquetes en 2025», «piquetes 2025») o en la URL de la entrada
+    («/2026/01/11/3-893-piquetes-2025-...»)."""
+    return {int(a) for a in re.findall(r"piquetes[\s-]+(?:en[\s-]+)?(20\d{2})", texto, re.I)}
 
 
 def fetch_protocolo_antipiquetes() -> dict | None:
@@ -3704,11 +3716,11 @@ def fetch_protocolo_antipiquetes() -> dict | None:
         # posteriores al último ancla del store.
         advertencia = ""
         try:
-            r = requests.get(DP_MONITOREOS_URL, headers=HTTP_HEADERS, timeout=30)
-            r.raise_for_status()
-            anios = {int(a) for a in re.findall(r"piquetes en (20\d{2})", r.text, re.I)}
-            if not anios:
-                raise ValueError("portal sin períodos de piquetes verificables")
+            anios: set[int] = set()
+            for url in DP_PAGINAS_DETECTOR:
+                r = requests.get(url, headers=HTTP_HEADERS, timeout=30)
+                r.raise_for_status()
+                anios |= anios_de_piquetes_dp(r.text)
             nuevos = sorted(a for a in anios if a > ult)
             if nuevos:
                 advertencia = f"El portal anuncia años posteriores ({nuevos}); el anclaje publicado sigue en {ult}."
