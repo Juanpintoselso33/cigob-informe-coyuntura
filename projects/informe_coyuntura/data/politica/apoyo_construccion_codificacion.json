@@ -90,10 +90,10 @@
    }
   },
   "concordancia": {
-   "n": 616,
+   "n": 618,
    "kappa_postura": 0.9,
    "acuerdo_postura": 0.99,
-   "kappa_destinatario": 0.855,
+   "kappa_destinatario": 0.856,
    "acuerdo_destinatario": 0.94,
    "desacuerdos": 42,
    "adjudicados": 2,
@@ -16152,6 +16152,58 @@
    "postura": "neutro",
    "destinatario": "externo_o_propio",
    "motivo": "elogio a un logro privado ante CICA/FIIC, no a una medida: «fue seleccionada como una de las diez startups laureadas»",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49649",
+   "fecha": "2026-11-16",
+   "titulo": "Industrialización y nuevas tecnologías para la construcción",
+   "url": "https://www.camarco.org.ar/2026/11/16/industrializacion-y-nuevas-tecnologias-para-la-construccion/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difusión de un sistema constructivo de terceros: «Para más información, acceder al documento informativo AQUÍ»; sin posición"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difunde una solución técnica de privados, sin interpelar al Gobierno"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "difunde una solución técnica de privados, sin interpelar al Gobierno",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49653",
+   "fecha": "2026-11-16",
+   "titulo": "Materiales y diseño para la construcción",
+   "url": "https://www.camarco.org.ar/2026/11/16/materiales-y-diseno-para-la-construccion/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difusión de una empresa y sus productos: «Más información en: www.gygrevestimientos.com.ar»; sin posición"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "difusión comercial de una empresa del sector, sin evaluar medidas"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "difusión comercial de una empresa del sector, sin evaluar medidas",
    "concordancia": "acuerdo",
    "firmantes": [
     "CAMARCO"

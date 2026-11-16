@@ -70,19 +70,19 @@
    "naturaleza_de_los_codificadores": "Los dos lectores son agentes de IA de dos modelos distintos de la misma familia: el kappa prueba que el manual es unívoco, no que dos personas coincidirían. Los 13 desacuerdos que decidían el puntaje los resolvió una persona."
   },
   "concordancia": {
-   "kappa_postura": 0.849,
-   "acuerdo_postura": 0.925,
-   "kappa_destinatario": 0.903,
-   "acuerdo_destinatario": 0.943,
+   "kappa_postura": 0.85,
+   "acuerdo_postura": 0.926,
+   "kappa_destinatario": 0.904,
+   "acuerdo_destinatario": 0.944,
    "umbral_minimo": 0.7,
    "estado": "ALCANZADA",
    "desacuerdos": 82,
    "desacuerdos_que_afectan_el_puntaje": 13,
    "por_camara": {
     "CONINAGRO": {
-     "n": 172,
-     "kappa_postura": 0.851,
-     "kappa_destinatario": 0.929,
+     "n": 176,
+     "kappa_postura": 0.852,
+     "kappa_destinatario": 0.931,
      "desacuerdos": 15,
      "desacuerdos_que_afectan": 3
     },
@@ -15488,6 +15488,26 @@
    "postura": "neutro",
    "destinatario": "externo_o_propio",
    "motivo": "«participó de la celebración religiosa»: visita del Papa y asuntos propios de la SRA",
+   "concordancia": "acuerdo"
+  },
+  {
+   "camara": "CONINAGRO",
+   "id": "72388",
+   "fecha": "2026-11-16",
+   "titulo": "Encuentro con el IICA sobre innovación, biocombustibles y competitividad agropecuaria",
+   "url": "https://www.coninagro.org.ar/encuentro-con-el-iica-sobre-innovacion-biocombustibles-y-competitividad-agropecuaria/",
+   "texto": "Con la presencia del consejero Gustavo Gaich en representación de CONINAGRO , el Instituto Interamericano de Cooperación para la Agricultura (IICA) llevó adelante una mesa redonda junto a entidades de productores —entre ellas Aapresid y AACREA — y referentes del sector agropecuario. El encuentro tuvo como objetivo principal identificar desafíos y oportunidades comunes vinculados a la innovación, la productividad, la competitividad y el acceso a los mercados internacionales.\n Durante la apertura, Gabriel Delgado (representante argentino del IICA en Brasil) y Fernando Schwanke (representante brasileño del IICA en Argentina) presentaron una iniciativa estratégica destinada a fortalecer la cooperación entre productores de Argentina, Brasil, Canadá y Estados Unidos . A partir de ese marco regional, el debate se estructuró sobre dos ejes centrales: el crecimiento del mercado de biocombustibles y su impacto en la demanda de maíz para la agricultura argentina —a cargo del especialista Agustín Torroba—, y las implicancias de los plazos de aprobación regulatoria de desarrollos biotecnológicos en los mercados exportadores, expuesto por el Dr. Sandro Steinbach, de la Universidad Estatal de Dakota del Norte.\n Esta agenda de articulación internacional continuará la próxima semana con encuentros similares en Brasil, para luego extenderse hacia Canadá y Estados Unidos, consolidando un espacio de diálogo técnico e institucional clave para el desarrollo del sector agroindustrial.",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "encuentro con un organismo internacional, sin posición sobre medidas del Gobierno",
    "concordancia": "acuerdo"
   }
  ],

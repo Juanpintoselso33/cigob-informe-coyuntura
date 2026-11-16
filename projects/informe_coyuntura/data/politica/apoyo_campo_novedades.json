@@ -11,19 +11,6 @@
   "nuevos_en_la_corrida": 0,
   "ultima_corrida": "2026-11-16"
  },
- "pendientes": {
-  "CONINAGRO|72388": {
-   "camara": "CONINAGRO",
-   "destinatario": null,
-   "fecha": "2026-11-16",
-   "id": "72388",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "Con la presencia del consejero Gustavo Gaich en representación de CONINAGRO , el Instituto Interamericano de Cooperación para la Agricultura (IICA) llevó adelante una mesa redonda junto a entidades de productores —entre ellas Aapresid y AACREA — y referentes del sector agropecuario. El encuentro tuvo como objetivo principal identificar desafíos y oportunidades comunes vinculados a la innovación, la productividad, la competitividad y el acceso a los mercados internacionales.\n Durante la apertura, Gabriel Delgado (representante argentino del IICA en Brasil) y Fernando Schwanke (representante brasileño del IICA en Argentina) presentaron una iniciativa estratégica destinada a fortalecer la cooperación entre productores de Argentina, Brasil, Canadá y Estados Unidos . A partir de ese marco regional, el debate se estructuró sobre dos ejes centrales: el crecimiento del mercado de biocombustibles y su impacto en la demanda de maíz para la agricultura argentina —a cargo del especialista Agustín Torroba—, y las implicancias de los plazos de aprobación regulatoria de desarrollos biotecnológicos en los mercados exportadores, expuesto por el Dr. Sandro Steinbach, de la Universidad Estatal de Dakota del Norte.\n Esta agenda de articulación internacional continuará la próxima semana con encuentros similares en Brasil, para luego extenderse hacia Canadá y Estados Unidos, consolidando un espacio de diálogo técnico e institucional clave para el desarrollo del sector agroindustrial.",
-   "titulo": "Encuentro con el IICA sobre innovación, biocombustibles y competitividad agropecuaria",
-   "url": "https://www.coninagro.org.ar/encuentro-con-el-iica-sobre-innovacion-biocombustibles-y-competitividad-agropecuaria/"
-  }
- },
  "revisadas": {
   "CONINAGRO|68761": {
    "origen": "codificacion ADR-0384"
