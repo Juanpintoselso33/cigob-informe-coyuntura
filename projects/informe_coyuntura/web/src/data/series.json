@@ -23877,6 +23877,10 @@
     {
       "fecha": "2026-10-01",
       "valor": 0.5
+    },
+    {
+      "fecha": "2026-11-01",
+      "valor": 0.5
     }
   ],
   "apoyo_comercio": [
@@ -24049,6 +24053,10 @@
     {
       "fecha": "2026-10-01",
       "valor": -0.148
+    },
+    {
+      "fecha": "2026-11-01",
+      "valor": -0.163
     }
   ],
   "alineamiento_senadores_prov": [

@@ -45,7 +45,7 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cuatro señales. | 76,1 | VERDE | 38,7 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde dos señales. | 88,4 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 80,6 | VERDE | 16,1 % |
-| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 73,6 | AMARILLO | 14,0 % |
+| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 73,3 | AMARILLO | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 88,3 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -74,7 +74,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Sector empresarial** | | | | |
 | Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,3 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
 | Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
-| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
+| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,16 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
 | Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,5 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,6 % frente a 2023 | VERDE | 6,5 % |
@@ -303,7 +303,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,16 saldo de postura (−1 a +1, 12m móviles)** (2026-11) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -311,9 +311,9 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_campo | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2026-01 → 2026-10 (10 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2026-01 → 2026-11 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de las secciones de prensa de sus sitios |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-16 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -348,13 +348,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses las cámaras del campo se pronunciaron 52 veces sobre medidas del Gobierno nacional: 13 de apoyo y 39 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,744 (5 de apoyo, 34 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,148 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- En los últimos doce meses las cámaras del campo se pronunciaron 51 veces sobre medidas del Gobierno nacional: 12 de apoyo y 39 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,789 (4 de apoyo, 34 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,163 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-10).
+Dato vigente: −0,16 saldo de postura (−1 a +1, 12m móviles) (2026-11).
 
-−0,148 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,09 del límite con Naranja (−0,24).
+−0,163 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,08 del límite con Naranja (−0,24).
 
 **Color vigente: AMARILLO**
 
@@ -396,7 +396,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-11) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -404,9 +404,9 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_construccion | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-02 → 2026-10 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-02 → 2026-11 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-16 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -442,11 +442,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.
+- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-10).
+Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-11).
 
 0,5 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,3 del límite con Amarillo (0,2).
 

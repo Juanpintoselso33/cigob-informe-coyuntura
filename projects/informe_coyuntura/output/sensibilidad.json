@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-16T14:04:26.745821-03:00",
+    "snapshot": "2026-11-16T15:03:02.549776-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -162,37 +162,37 @@
     "experimentos": {
       "pesos": {
         "media": 80.3,
-        "p05": 79.5,
+        "p05": 79.4,
         "p95": 81.2,
         "desvio": 0.52
       },
       "combinado": {
-        "media": 80.1,
-        "p05": 78.6,
+        "media": 80.0,
+        "p05": 78.5,
         "p95": 81.6,
         "desvio": 0.9
       },
       "insumos": {
-        "media": 80.1,
+        "media": 80.0,
         "p05": 78.8,
         "p95": 81.2,
         "desvio": 0.74
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 77.4,
+      "cohesion_bloque": 77.3,
       "votos_sobre_bancas": 83.2,
-      "eficacia_legislativa": 83.0,
+      "eficacia_legislativa": 82.9,
       "cobertura_judicial": 81.7,
-      "insistencias_vetos": 79.0,
-      "rechazos_decretos": 79.0,
-      "apoyo_empresario": 81.6,
-      "apoyo_comercio": 79.1,
+      "insistencias_vetos": 78.9,
+      "rechazos_decretos": 78.9,
+      "apoyo_comercio": 79.0,
+      "apoyo_empresario": 81.5,
+      "adhesion_reformas_provincial": 79.4,
       "apoyo_construccion": 79.4,
-      "adhesion_reformas_provincial": 79.5,
       "alineamiento_senadores_prov": 81.1,
       "apoyo_campo": 81.1,
-      "conflictividad_nacional": 80.2,
+      "conflictividad_nacional": 80.1,
       "jornadas_individuales_no_trabajadas_12m": 80.4
     },
     "tension": {

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-16 14:04:26"
+generado: "2026-11-16 15:03:02"
 score_global: 3.3
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -53,8 +53,8 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | apoyo_empresario | -0.303 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
-| apoyo_campo | -0.148 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | ⚠ cache |
-| apoyo_construccion | 0.5 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | ⚠ cache |
+| apoyo_campo | -0.163 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
+| apoyo_construccion | 0.5 | saldo de postura (−1 a +1, 12m móviles) | 2026-11-01 | fresco |
 | conflictividad_nacional | -24.6 | % frente a 2023 | 2026-10-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 41.2 | Índice (0–100) | 2026-11-12 | fresco |
@@ -131,9 +131,5 @@ schema_version: "1.2.0"
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-16 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 | litigiosidad_laboral | 1.1 | % variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos) | 2026-08-01 | octubre de 2026 (ADR-0385) | Contaba los juicios que llegan al sistema de riesgos del trabajo, no los accidentes y enfermedades que el sistema registra, que es lo que pidió medir la dirección de CiGob. Lo reemplaza la siniestralidad registrada, con el mismo peso en la dimensión. El dato se sigue calculando. |
 
-## Advertencias
-
-- `desactualizado:politica:apoyo_campo,apoyo_construccion`
-
 ---
-*Generado por CIGOB — 2026-11-16 14:04:26 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-16 15:03:02 — schema 1.2.0*

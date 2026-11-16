@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 1,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
@@ -55,6 +55,11 @@
   },
   "CAC|crecio-en-febrero-el-comercio-con-brasil": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|crecio-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires": {
+   "fecha": "2026-11-11",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "crecio la cantidad de locales en alquiler y venta en la ciudad de buenos aires"
   },
   "CAC|credito-hipotecario-la-cac-expresa-su-acompanamiento-a-los-anuncios-gubernamentales": {
    "origen": "codificacion ADR-0380"

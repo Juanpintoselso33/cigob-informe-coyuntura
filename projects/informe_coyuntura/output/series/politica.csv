@@ -1081,6 +1081,7 @@ fecha,indicador,valor,unidad,fuente
 2024-10-01,apoyo_empresario,-0.083,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB
 2024-09-01,apoyo_empresario,-0.083,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB
 2024-08-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Unión Industrial Argentina (UIA) y la Asociación de Fábricas Argentinas de Componentes (AFAC) — codificación CIGOB
+2026-11-01,apoyo_construccion,0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
 2026-10-01,apoyo_construccion,0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
 2026-09-01,apoyo_construccion,0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
 2026-08-01,apoyo_construccion,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de la Construcción (CAMARCO) — codificación CIGOB
@@ -1145,6 +1146,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
 2024-03-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
 2024-02-01,apoyo_comercio,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la Cámara Argentina de Comercio y Servicios (CAC) — codificación CIGOB
+2026-11-01,apoyo_campo,-0.163,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-10-01,apoyo_campo,-0.148,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-09-01,apoyo_campo,-0.152,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-08-01,apoyo_campo,-0.18,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
