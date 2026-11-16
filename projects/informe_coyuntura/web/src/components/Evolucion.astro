@@ -24,11 +24,12 @@ const TITULO_TILE: Record<string, string> = {
 // cortes salen del snapshot (`semaforo_cortes`) llevados a la escala de cada
 // índice; hasta el 13-nov-2026 estaban escritos acá (60/40/20 y 105/95/85) y
 // siguieron pintando la escala vieja después de ADR-0427.
-// El de impacto social pasa a rango fijo 80-110 para que la franja de color
-// coincida con la altura real de la línea (con rango automático no coincidía).
-// Con los cortes de ADR-0427 el verde de ese índice empieza en 112,5, fuera del
-// eje: un tramo que no entra no se pinta.
-const RANGO_BASE100: [number, number] = [80, 110];
+// El de impacto social va en rango fijo para que la franja de color coincida
+// con la altura real de la línea (con rango automático no coincidía). Era
+// 80-110; con los cortes de ADR-0427 el verde empieza en 112,5 y quedaba fuera
+// del eje. Desde el 15-nov-2026 (revisión de Juan, punto E) va de 80 a 120: se
+// ven los cuatro colores y la escala queda pareja alrededor de 100 (87,5 y 112,5).
+const RANGO_BASE100: [number, number] = [80, 120];
 function ejeSemaforo(rango: [number, number], base100: boolean) {
   const [lo, hi] = rango;
   const pos = (v: number) => Math.max(0, Math.min(100, ((hi - v) / (hi - lo)) * 100));
