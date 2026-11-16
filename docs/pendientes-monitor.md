@@ -71,6 +71,10 @@ tocar nada.
   pendiente»). Cuando se fije, va un `schedule` en `mensual.yml`.
   **14-nov (reunión con Luis):** el dominio cambia a «monitor» (en vez de informe.cigob.org);
   la publicación del mes, quizás el primer día hábil de cada mes.
+  **15-nov:** monitor.cigob.org agregado en Vercel; código y redirección listos en la rama
+  `dominio-monitor` (no publicar antes). Falta el registro A `monitor` → 76.76.21.21 en el DNS
+  de Wix: el rol de Juan en el sitio no tiene «Dominios»; Juan pidió que lo carguen el 16-nov.
+  Revisar también el repo `cigob-landing` (conector, mails del muro).
 - **(5) El verde global depende de gestión. Decide el equipo.** Verificado: la portada
   muestra «Tensión general» 3,6 (verde ≤ 4), promedio simple 25 % c/u de la fase temprana
   (`config.py`, `FASE_TEMPRANA_ANIOS = 4`: rige hasta dic-2027, después 29/29/24/18). Sin
@@ -88,6 +92,7 @@ tocar nada.
   cumplidos (siguen en 100, salen o se reemplazan) y el texto de la lectura de gestión.
   **14-nov (reunión con Luis):** los hitos y techos quedan como están; va la propuesta de
   texto (menos tensión = la agenda se ejecuta, no que el país esté mejor).
+  **Hecho el 15-nov:** frase agregada en «Qué expresa» de la página de gestión.
 - **(7) Reservas en verde por fórmula propia. Decide el equipo.** Verificado: 10.725 = SDDS
   estricto 7.465 + Tesoro 1.125 + tramo II.1 3m–1a 2.136 (sep-2026), 725 sobre el corte de
   10.000; SDDS solo = 7.465, amarillo. Fórmula decidida en ADR-0005 y explicitada en ADR-0286;
@@ -108,6 +113,8 @@ tocar nada.
   **14-nov (reunión con Luis):** pesos dentro del bloque de reservas: brutas 30 %, netas
   30 %, compromiso de compras con el FMI 40 %. La idea es que los tres computen como uno
   solo al final; revisar bien cómo entra al índice (sin doble conteo ni rarezas).
+  **Hecho el 15-nov:** 30/30/40 y las tres como un bloque (si falta una, su peso queda entre
+  las otras), ADR-0428.
   - Cumplimiento de la meta de acumulación de reservas acordada con el FMI (compras de
     reservas contra la meta del programa). Ver de dónde salen la meta y el dato (revisiones
     del FMI, BCRA) y cada cuánto se actualizan.
@@ -128,6 +135,8 @@ tocar nada.
   precio relativo de la comida, que es lo que pinta, con la inflación del mes al lado).
   **14-nov (reunión con Luis):** la card muestra el porcentaje por encima del IPC (cuánto
   más subió la comida que el IPC general).
+  **Hecho el 15-nov (ADR-0430):** la card muestra −7,2 % frente al IPC general desde fines de
+  2023; la inflación del mes va en el detalle.
 - **(10) Base del índice social y amarillo con 101,5. Para ver; a Juan le parece razonable como
   está.** Verificado: 5 − (101,5 − 100) × 0,2 = 4,7, amarillo. La base oct-dic 2023 la pidió
   Luis el 3-nov para todo el cinturón; pobreza, mora y carga de deuda van con niveles fijos
@@ -144,6 +153,11 @@ tocar nada.
   colores, eje de la evolución del índice social (80-110) sin verde.
   **14-nov (reunión con Luis):** revisar por qué cambia cada color con la escala nueva y
   que el cambio tenga sentido; ejemplo, decretos.
+  **Revisado el 15-nov:** 23 de 67 cambian, casi todos por el verde más angosto. Arreglados:
+  vetos/decretos derogados con 2 casos vuelven a amarillo; la lectura en palabras del índice
+  social sale del color; eje de su evolución 80-120. Se dejan: capacidad prestable (mes típico
+  = amarillo, mismo criterio que el índice social), matriz TCR (las cuatro esquinas conservan
+  su color).
 - **(11) Rojos en un cinturón estable. A solucionar (texto).** Verificado: político 3,2 verde
   (ITCP 68,0) con `ratio_dnu` (9,7 % del peso) y `transferencias_no_automaticas` (8,2 %) en
   rojo, ambos en 10/100; el resto (82 %) promedia ~80, sin los rojos el ITCP rondaría 80. Tres
@@ -155,6 +169,8 @@ tocar nada.
   Luis y Marcos) y `transferencias_no_automaticas` también sale por ahora. Con eso la línea
   sobre los rojos de la card del cinturón queda sin objeto mientras sigan afuera. Pendiente:
   sacarlos del índice político (ADR + ficha + pesos del resto).
+  **15-nov:** ya estaban suspendidos desde el 12-nov (ADR-0426, pedido por claude.ai). Juan
+  decidió que el 25 % del decreto pase entero a eficacia (55/20/12,5/12,5), ADR-0429.
 - **(12) Dimensión crítica sin alerta. A solucionar.** Verificado: `vulnerabilidad` 82,2 < 85
   (`critica: true`), mora 14,61 % rojo, carga 24,1 % naranja. Sin alerta a propósito (la única
   alerta automática es la multicinturón), pero ADR-0020 manda señalarla: borde y barra en rojo
@@ -166,6 +182,7 @@ tocar nada.
   **Decidido 13-nov (Juan): se repone** en la card del cinturón y en la de la dimensión, y la
   dimensión es crítica cuando está en rojo según la escala de Luis (ADR-0427: < 87,5 en el
   índice social, < 25 en los 0-100). Se hace en la tanda final, sin corrida en el medio.
+  **Hecho el 15-nov.**
 - **(13) El índice social no se corrobora afuera. Ya decidido.** La validación externa no se
   muestra en la página desde el 10-oct (ADR-0351, Juan); sigue sólo en el snapshot como control
   interno, y de ahí la leyó el conector de Luis. Para Luis: «la validación externa no se publica
@@ -191,6 +208,9 @@ tocar nada.
   **Reunión con Luis del 13-nov:** homicidios, robos y protocolo antipiquetes llegan a
   dic-2025, casi un año atrás. Buscar si hay fuentes más actualizadas para los tres
   (provinciales, mensuales, otro organismo) antes de quedarse con las anuales.
+  **Investigado el 15-nov:** no hay fuente oficial mensual de 2026 para ninguno (Santa Fe
+  publica homicidios mensuales, sólo provincia). Detector de piquetes arreglado: Diagnóstico
+  Político rehízo el sitio; ahora mira sitemap e /insights.
 - **(15) Apoyos sectoriales por codificación de prensa. A solucionar (muestra).** El método ya
   está publicado en cada descripción; la codificación es manual doble ciega (no la hace una
   máquina). Falta mostrar el tamaño de muestra: el snapshot trae `comunicados_ventana`,
@@ -208,6 +228,8 @@ tocar nada.
   ciegos + adjudicación); (2) muestras chicas: se aceptan como están; (3) en el detalle va la
   METODOLOGÍA (cómo se mide), no conteos; decir que los comunicados se revisan a mano, sin
   mencionar IA.
+  **Hecho el 15-nov:** 26 + 2 codificados; metodología en el detalle de las cuatro cards; sin
+  menciones a IA en descripciones ni fichas.
 - **Reunión con Luis del 13-nov — footer:** el enlace «Marco metodológico» pasa a llamarse
   «Marco conceptual». **Hecho el 13-nov** (Footer.astro; la sección de destino ya se titulaba «El marco conceptual»).
 - **Reunión con Luis del 13-nov — pestaña «Equipo»:** agregar una pestaña nueva con el equipo.
@@ -220,6 +242,8 @@ tocar nada.
   equipo.** **A solucionar:** el sitio no tiene etiquetas Open Graph/Twitter (sin imagen,
   descripción ni título para la vista previa de un link en WhatsApp, LinkedIn o X); armarlas
   con el nombre que se elija.
+  **Hecho el 15-nov:** etiquetas Open Graph/Twitter e imagen con «Monitor del Plan de Gobierno ·
+  CiGob».
   **Decidido 13-nov (Juan): «Monitor del Plan de Gobierno · CiGob»** en la pestaña y en la vista
   previa al compartir (Open Graph/Twitter). Se hace en la tanda final.
 
