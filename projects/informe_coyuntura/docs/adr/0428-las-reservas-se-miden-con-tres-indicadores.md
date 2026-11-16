@@ -2,14 +2,14 @@
 madr: 4
 id: '0428'
 estado: 'aceptado'
-nota_estado: 'El reparto de pesos (un tercio de 0,0544 cada uno) es provisorio, a confirmar con la dirección.'
+nota_estado: 'Reparto de pesos confirmado por Luis el 14-nov-2026: brutas 30 %, netas 30 %, meta del FMI 40 %, como un solo bloque.'
 fecha: 2026-11-13
 cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [reservas_bcra, reservas_brutas, meta_reservas_fmi]
-archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/meta_reservas_fmi.py', 'data/macro/metas_reservas_fmi.json', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'config.py', 'web/src/lib/fichas.ts', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/charts.ts', 'tests/test_reservas_tres_indicadores.py']
+archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/parametrica.py', 'scripts/meta_reservas_fmi.py', 'data/macro/metas_reservas_fmi.json', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'config.py', 'web/src/lib/fichas.ts', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/charts.ts', 'tests/test_reservas_tres_indicadores.py']
 modifica: ['0005', '0286', '0287', '0409']
-relacionado: ['0084', '0105', '0120', '0193', '0404', '0421', '0427']
+relacionado: ['0084', '0105', '0120', '0193', '0375', '0404', '0421', '0427']
 ambito: 'ITCM · dimensión Estabilidad monetaria-inflacionaria · reservas brutas, reservas netas y meta de reservas del FMI'
 origen: 'Reunión de la dirección (Luis Babino) del 13-nov-2026: el cinturón macro tiene que medir las reservas con tres indicadores — brutas, netas como las publican las consultoras y cumplimiento de la meta del FMI.'
 ---
@@ -176,12 +176,25 @@ La serie arranca en ene-2026, el primer mes con meta cargada.
 
 ### 4. Pesos
 
-Las tres se reparten en partes iguales el 0,0544 que pesaban las netas:
-0,0544 / 3 ≈ 0,01813 (1,81 % del índice) cada una, dentro de «Estabilidad
+Las tres se reparten el 0,0544 que pesaban las netas, dentro de «Estabilidad
 monetaria-inflacionaria», que sigue pesando 0,3144. IPC (0,156), expectativas (0,052)
 y desequilibrio monetario (0,052) no cambian. El ancla de [[0193]] —el desequilibrio
-pesa como las reservas— se lee ahora contra las tres juntas. **Reparto provisorio, a
-confirmar con la dirección.**
+pesa como las reservas— se lee ahora contra las tres juntas.
+
+El 13-nov el reparto fue provisorio, en tercios (0,01813 cada una). **Confirmado por
+Luis el 14-nov-2026: brutas 30 % (0,01632), netas 30 % (0,01632) y compromiso de
+compras con el FMI 40 % (0,02176).** La meta pesa más porque es el compromiso del
+programa, y las dos mediciones de stock se reparten el resto.
+
+Las tres **computan como un solo indicador de reservas** (Luis, 14-nov): forman un
+`bloque` de la dimensión (`DIMENSIONES_ITCM["estabilidad_monetaria"]["bloques"]`,
+implementado en `parametrica.calcular_indice`). Si falta una, su peso se reparte entre
+las otras dos en proporción a sus pesos y el bloque sigue pesando 0,0544; sin el
+bloque, el peso faltante se habría ido sobre todo al IPC, que ya es la mitad de la
+dimensión. A diferencia de un `grupo` ([[0375]], la matriz de tipo de cambio), un bloque
+incompleto sí se calcula: es un promedio, no un cruce. Lo prueban
+`test_si_falta_una_reserva_su_peso_queda_en_el_bloque` y
+`test_con_las_tres_el_bloque_no_toca_los_pesos`.
 
 ### 5. Frescura (`config.MAX_DIAS`)
 

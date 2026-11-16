@@ -8,7 +8,8 @@
 3. `meta_reservas_fmi`: avance de la acumulación de netas estrictas contra la
    meta del programa con el FMI, prorrateada al mes.
 
-Las tres se reparten en partes iguales el 5,44 % que pesaban las netas.
+Las tres se reparten el 5,44 % que pesaban las netas: brutas 30 %, netas 30 % y
+meta del FMI 40 % (Luis, 14-nov-2026), y computan como un solo bloque.
 """
 import json
 import sys
@@ -256,12 +257,44 @@ def test_el_colector_mide_la_meta_con_las_netas_estrictas_del_mes_y_de_la_base(m
 def test_las_tres_reservas_se_reparten_el_peso_de_las_netas():
     dim = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
     assert dim["peso"] == pytest.approx(0.3144)            # la dimensión no se mueve
+    reparto = {"reservas_brutas": 0.30, "reservas_bcra": 0.30, "meta_reservas_fmi": 0.40}
     for k in RESERVAS:
-        assert dim["peso"] * dim["indicadores"][k] == pytest.approx(0.0544 / 3)
+        assert dim["peso"] * dim["indicadores"][k] == pytest.approx(0.0544 * reparto[k])
     assert sum(dim["indicadores"].values()) == pytest.approx(1.0)
     for k in ("ipc_total", "rem_ipc_12m", "desequilibrio_monetario"):   # el resto, igual
         assert dim["peso"] * dim["indicadores"][k] == pytest.approx(
             {"ipc_total": 0.156, "rem_ipc_12m": 0.052, "desequilibrio_monetario": 0.052}[k])
+
+
+def _itcm_solo_estabilidad(valores):
+    r = itcm.calcular_itcm(valores)
+    return r["dimensiones"]["estabilidad_monetaria"]
+
+
+def test_si_falta_una_reserva_su_peso_queda_en_el_bloque():
+    """Las tres computan como una (Luis, 14-nov): sin la meta del FMI, su 40 %
+    se reparte entre brutas y netas y el IPC, el REM y el desequilibrio no
+    ganan peso."""
+    base = {"ipc_total": 1.5, "rem_ipc_12m": 20.0, "desequilibrio_monetario": 0.0,
+            "reservas_brutas": 45000.0, "reservas_bcra": 7465.0, "meta_reservas_fmi": 169.6}
+    completo = _itcm_solo_estabilidad(base)
+    sin_meta = _itcm_solo_estabilidad({k: v for k, v in base.items() if k != "meta_reservas_fmi"})
+    ind_c, ind_s = completo["indicadores"], sin_meta["indicadores"]
+    for k in ("ipc_total", "rem_ipc_12m", "desequilibrio_monetario"):
+        assert ind_s[k]["peso"] == pytest.approx(ind_c[k]["peso"])
+    bloque_c = sum(ind_c[k]["peso"] for k in RESERVAS)
+    bloque_s = sum(ind_s[k]["peso"] for k in ("reservas_brutas", "reservas_bcra"))
+    assert bloque_s == pytest.approx(bloque_c)
+    assert ind_s["reservas_brutas"]["peso"] == pytest.approx(ind_s["reservas_bcra"]["peso"])
+
+
+def test_con_las_tres_el_bloque_no_toca_los_pesos():
+    base = {"ipc_total": 1.5, "rem_ipc_12m": 20.0, "desequilibrio_monetario": 0.0,
+            "reservas_brutas": 45000.0, "reservas_bcra": 7465.0, "meta_reservas_fmi": 169.6}
+    ind = _itcm_solo_estabilidad(base)["indicadores"]
+    dim = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
+    for k, i in ind.items():
+        assert i["peso"] == pytest.approx(dim["indicadores"][k])
 
 
 # ── Prueba oficial intermedia (junio de 2026): gana sobre la estimación ──────

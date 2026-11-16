@@ -95,7 +95,7 @@ def test_itcm_reproduce_ejemplo():
     # externo 51,4 → 60,5, sin mover el índice.
     # ADR-0427: 36,5 → 41,9 (la escala de inflación sube sus puntajes de corte).
     # ADR-0428: las netas recalibradas (1.881 → 37,7, antes 25,0): 41,9 → 42,7.
-    assert dims["estabilidad_monetaria"]["puntaje"] == 42.7
+    assert dims["estabilidad_monetaria"]["puntaje"] == 42.6   # 14-nov: reservas 30/30/40 → 42,6
     # ADR-0387: las tres dimensiones de antes (fiscal-comercial 78,5, financiamiento
     # 54,7, competitividad 49,8) se reagrupan sin mover el índice.
     assert dims["cuentas_fiscales"]["puntaje"] == 76.9
@@ -109,7 +109,7 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == pytest.approx(0.032 / 0.1056)
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 62.6   # 60,2 → 60,6 (competitividad 45,7 → 49,8, ADR-0375) → 62,3 (ADR-0427) → 62,6 (ADR-0428, netas 37,7)
+    assert r["valor"] == 62.5   # 60,2 → 60,6 (competitividad 45,7 → 49,8, ADR-0375) → 62,3 (ADR-0427) → 62,6 (ADR-0428, netas 37,7) → 62,5 (reservas 30/30/40, 14-nov)
     # ADR-0427: el corte de «moderadamente aflojado» sube de 60 a 75; 62,3 queda
     # en «moderadamente apretado» (50-75), tensión 3,8 (amarillo).
     assert r["banda"] == "moderadamente_apretado"
@@ -117,7 +117,7 @@ def test_itcm_reproduce_ejemplo():
     assert desequilibrio["puntaje_aplicado"] == 64.8
     assert desequilibrio["peso"] == pytest.approx(0.052 / 0.3144)
     assert desequilibrio["peso_efectivo"] == 0.052
-    assert itcm.tension_de_itcm(r["valor"]) == 3.7   # 3,9 → 3,8 (ADR-0427: ITCM 62,3) → 3,7 (ADR-0428: 62,6)
+    assert itcm.tension_de_itcm(r["valor"]) == 3.8   # 3,9 → 3,8 (ADR-0427: ITCM 62,3) → 3,7 (ADR-0428: 62,6) → 3,8 (30/30/40: 62,5)
     assert r["ajustes_aplicados"] == []
 
 
@@ -192,10 +192,10 @@ def test_estabilidad_monetaria_usa_pesos_60_20_20():
     d = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
     assert d["peso"] == 0.3144
     efectivo = {k: round(d["peso"] * w, 4) for k, w in d["indicadores"].items()}
-    # ADR-0428: las reservas son tres y se reparten el 0,0544 en partes iguales.
+    # ADR-0428: las reservas son tres y se reparten el 0,0544: 30/30/40 (Luis, 14-nov).
     assert efectivo == {"ipc_total": 0.156, "rem_ipc_12m": 0.052,
-                        "desequilibrio_monetario": 0.052, "reservas_bcra": 0.0181,
-                        "reservas_brutas": 0.0181, "meta_reservas_fmi": 0.0181}
+                        "desequilibrio_monetario": 0.052, "reservas_bcra": 0.0163,
+                        "reservas_brutas": 0.0163, "meta_reservas_fmi": 0.0218}
     i = d["indicadores"]
     assert i["ipc_total"] == pytest.approx(3 * i["rem_ipc_12m"])
     assert i["rem_ipc_12m"] == pytest.approx(i["desequilibrio_monetario"])
@@ -320,7 +320,7 @@ def test_ajuste_manual_aplicado():
     # ADR-0409 las reservas están en estabilidad); el índice baja en 1,2 respecto
     # del ejemplo: 60,6 → 59,4 y, con ADR-0427 (el ejemplo sube a 62,3), 61,1
     assert r["dimensiones"]["sector_externo"]["puntaje"] == 52.9
-    assert r["valor"] == 61.4   # ADR-0428: 61,1 → 61,4 (netas recalibradas)
+    assert r["valor"] == 61.3   # ADR-0428: 61,1 → 61,4 (netas recalibradas); 30/30/40: 61,3
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -346,7 +346,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (35,5×0,156 + 64,8×0,052 + 25,0×0,0544) / 0,2624 = 39,1 (ADR-0409: las
     # reservas también renormalizan dentro de la dimensión; ADR-0427: 34,9 → 39,1)
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 40.0   # ADR-0428: reservas 37,7
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 39.9   # ADR-0428: reservas 37,7; 30/30/40: 39,9
     # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409) → 61,4 (ADR-0427) → 61,7
     # (ADR-0428): 62,6 menos (42,7 − 40,0) × 0,3144 de peso de la dimensión ≈ 0,9
     assert abs(r["valor"] - 61.7) <= 0.05
@@ -357,7 +357,7 @@ def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
     # (35,5×0,156 + 56,0×0,052 + 25,0×0,0544) / 0,2624 = 37,4 (ADR-0409; ADR-0427: 30,9 → 37,4)
-    assert estabilidad["puntaje"] == 38.3   # ADR-0428: reservas 37,7
+    assert estabilidad["puntaje"] == 38.2   # ADR-0428: reservas 37,7; 30/30/40: 38,2
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 

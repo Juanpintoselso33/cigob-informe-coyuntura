@@ -559,6 +559,18 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
                                "valor": round(float(valor), 4)}
         if not presentes:
             continue
+        # Un BLOQUE (ADR-0428, 14-nov-2026) es un conjunto de indicadores que
+        # computan como uno solo: si falta alguno, su peso queda dentro del
+        # bloque —repartido entre los presentes en proporción a sus pesos— en
+        # vez de irse al resto de la dimensión. A diferencia de un grupo, un
+        # bloque incompleto SÍ se calcula: es un promedio, no un cruce.
+        for bloque in dim.get("bloques", ()):
+            en_bloque = [k for k in bloque if k in presentes]
+            if en_bloque and len(en_bloque) < len(bloque):
+                total = sum(dim["indicadores"][k] for k in bloque)
+                vistos = sum(presentes[k]["peso"] for k in en_bloque)
+                for k in en_bloque:
+                    presentes[k]["peso"] = presentes[k]["peso"] * total / vistos
         puntaje_dim, usados = puntaje_dimension(
             {k: i["puntaje_aplicado"] for k, i in presentes.items()},
             {k: i["peso"] for k, i in presentes.items()},

@@ -22,7 +22,7 @@ EFECTIVOS = {
     "resultado_primario": 0.096, "recaudacion": 0.0576, "actividad_tributaria": 0.0384,   # ADR-0421
     "saldo_comercial_12m": 0.048,
     # ADR-0428: las reservas son tres y se reparten el 0,0544 en partes iguales.
-    "reservas_bcra": 0.0544 / 3, "reservas_brutas": 0.0544 / 3, "meta_reservas_fmi": 0.0544 / 3,
+    "reservas_bcra": 0.0544 * 0.30, "reservas_brutas": 0.0544 * 0.30, "meta_reservas_fmi": 0.0544 * 0.40,
     "idc": 0.0336, "costo_financiamiento_tesoro": 0.04,
     "credito_privado": 0.032,
     "emae_ia": 0.0966, "emae_difusion": 0.0322, "ipi_manufacturero": 0.0322, "iai": 0.069,
@@ -71,9 +71,9 @@ def test_el_itcm_no_se_mueve_con_los_datos_completos():
     comercial. La diferencia entre los tres (−1,2 y −0,8) es la de antes."""
     from test_itcm import EJEMPLO
     # ADR-0428 (netas recalibradas): 62,3 → 62,6, 61,1 → 61,4 y 61,5 → 61,7.
-    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 62.6
+    assert itcm.calcular_itcm(EJEMPLO)["valor"] == 62.5   # reservas 30/30/40 (14-nov): 62,6 → 62,5
     aj = lambda p: {"saldo_comercial_12m": {"puntaje": p, "justificacion": "x"}}
-    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 61.4
+    assert itcm.calcular_itcm(EJEMPLO, aj(60))["valor"] == 61.3   # 30/30/40
     assert itcm.calcular_itcm(EJEMPLO, aj(67.1))["valor"] == 61.7
 
 

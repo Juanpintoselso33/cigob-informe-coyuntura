@@ -474,14 +474,19 @@ DIMENSIONES_ITCM = {
             "rem_ipc_12m": 0.052 / 0.3144,
             "desequilibrio_monetario": 0.052 / 0.3144,
             # ADR-0428 (13-nov-2026, pedido de la dirección): las reservas se
-            # miden con tres indicadores que se reparten en partes iguales el
-            # 0,0544 de las netas, así que ni la dimensión ni el resto del índice
-            # se mueven. Reparto PROVISORIO, a confirmar con la dirección.
+            # miden con tres indicadores que se reparten el 0,0544 de las
+            # netas, así que ni la dimensión ni el resto del índice se mueven.
+            # Reparto confirmado por Luis el 14-nov-2026: brutas 30 %, netas
+            # 30 %, compromiso de compras con el FMI 40 %.
             # El ancla de ADR-0193 pasa a leerse contra las tres juntas.
-            "reservas_brutas": 0.0544 / 3 / 0.3144,
-            "reservas_bcra": 0.0544 / 3 / 0.3144,
-            "meta_reservas_fmi": 0.0544 / 3 / 0.3144,
+            "reservas_brutas": 0.0544 * 0.30 / 0.3144,
+            "reservas_bcra": 0.0544 * 0.30 / 0.3144,
+            "meta_reservas_fmi": 0.0544 * 0.40 / 0.3144,
         },
+        # Las tres computan como un solo indicador de reservas (Luis,
+        # 14-nov-2026): si falta una, su peso queda entre las otras dos y no se
+        # reparte al IPC, al REM ni al desequilibrio.
+        "bloques": [("reservas_brutas", "reservas_bcra", "meta_reservas_fmi")],
     },
     "cuentas_fiscales": {
         "nombre": "Cuentas fiscales",
