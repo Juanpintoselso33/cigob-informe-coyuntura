@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-16T00:00:09.412771-03:00",
+    "snapshot": "2026-11-16T15:57:58.575895+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -66,37 +66,37 @@
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 82.6,
-        "p05": 81.2,
-        "p95": 83.9,
-        "desvio": 0.82
+        "media": 82.5,
+        "p05": 81.1,
+        "p95": 83.8,
+        "desvio": 0.83
       },
       "combinado": {
-        "media": 82.4,
-        "p05": 80.6,
-        "p95": 84.1,
+        "media": 82.3,
+        "p05": 80.5,
+        "p95": 84.0,
         "desvio": 1.07
       },
       "insumos": {
-        "media": 82.4,
-        "p05": 81.3,
-        "p95": 83.4,
-        "desvio": 0.64
+        "media": 82.3,
+        "p05": 81.2,
+        "p95": 83.3,
+        "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 86.3,
+      "apertura_comercial": 86.2,
       "fal_modernizacion_laboral": 79.3,
       "cepo_mulc": 79.4,
       "juicios_trabajo_capital": 84.4,
-      "reduccion_estado": 84.2,
+      "reduccion_estado": 84.1,
       "privatizaciones": 84.1,
       "gasto_funcionamiento": 81.3,
       "rigi_inversiones": 81.4,
       "desregulacion_normativa": 81.9,
       "concesiones_infraestructura": 82.1,
       "siniestralidad_laboral": 82.7,
-      "asistencia_directa": 82.5,
+      "asistencia_directa": 82.4,
       "protocolo_antipiquetes": 82.5,
       "libertad_opcion_salud": 82.5
     },

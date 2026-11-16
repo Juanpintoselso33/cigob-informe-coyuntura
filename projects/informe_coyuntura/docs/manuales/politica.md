@@ -40,7 +40,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤ 5 → 10
 
-**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo · [ADR-0429](../adr/0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) El peso de decretos por ley pasa entero a eficacia legislativa
+**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo · [ADR-0429](../adr/0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) El peso de decretos por ley pasa entero a eficacia legislativa · [ADR-0431](../adr/0431-diputados-sin-portal-de-datos-ventana-de-45-dias.md) Sin el portal de datos de Diputados, eficacia y votos sobre bancas toleran 45 días · [ADR-0432](../adr/0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md) Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos
 
 #### Cobertura de cargos judiciales
 
@@ -140,7 +140,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 99.9 → 100 · 97–99.9 → 65 · 93.4–97 → 40 · 89.8–93.4 → 10 · ≤ 89.8 → 10
 
-**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) La cohesión mide las votaciones divididas, contra la historia
+**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0401](../adr/0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) La cohesión mide las votaciones divididas, contra la historia · [ADR-0434](../adr/0434-actas-de-diputados-desde-argentinadatos-si-la-camara-no-las-da.md) Si la Cámara no da un acta de Diputados, se lee de ArgentinaDatos
 
 #### Diputados a favor de las leyes del Ejecutivo
 
@@ -156,7 +156,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 172 → 100 · 129.1–172 → 60 · 119–129.1 → 40 · 109–119 → 20 · ≤ 109 → 10
 
-**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) Votos ajenos pasa a diputados a favor, por mes
+**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna · [ADR-0400](../adr/0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) El bloque del senador es el del día de la votación · [ADR-0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) Votos ajenos pasa a diputados a favor, por mes · [ADR-0431](../adr/0431-diputados-sin-portal-de-datos-ventana-de-45-dias.md) Sin el portal de datos de Diputados, eficacia y votos sobre bancas toleran 45 días · [ADR-0432](../adr/0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md) Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos · [ADR-0434](../adr/0434-actas-de-diputados-desde-argentinadatos-si-la-camara-no-las-da.md) Si la Cámara no da un acta de Diputados, se lee de ArgentinaDatos
 
 ### Dimensión `conflicto_social` (11%)
 
@@ -285,7 +285,7 @@ histórica.
 
 ## Decisiones abiertas
 
-11 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+12 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
@@ -319,10 +319,12 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0168. Verificar antes de tratarlo como abierto.
 - **[ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md)** — AEA sale del perímetro y el rótulo dice lo que mide
   <br>otra decisión (ver arriba) y queda pendiente.
+- **[ADR-0432](../adr/0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md)** — Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos
+  <br>- Lo que el buscador no sabe queda pendiente, no se adivina.
 
 ## Todos los ADR vigentes de este cinturón
 
-114 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+120 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -438,3 +440,9 @@ histórica.
 - [0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) — Votos ajenos pasa a diputados a favor, por mes
 - [0426](../adr/0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) — Decretos por ley y transferencias no automáticas salen del índice
 - [0429](../adr/0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) — El peso de decretos por ley pasa entero a eficacia legislativa
+- [0431](../adr/0431-diputados-sin-portal-de-datos-ventana-de-45-dias.md) — Sin el portal de datos de Diputados, eficacia y votos sobre bancas toleran 45 días
+- [0432](../adr/0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md) — Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos
+- [0433](../adr/0433-movilizacion-cepa-pasa-a-promedio-mensual-de-casos.md) — Movilización (CEPA) pasa a medir el promedio mensual de casos
+- [0434](../adr/0434-actas-de-diputados-desde-argentinadatos-si-la-camara-no-las-da.md) — Si la Cámara no da un acta de Diputados, se lee de ArgentinaDatos
+- [0435](../adr/0435-produccion-legislativa-desde-la-base-abierta-de-infoleg.md) — Si el catálogo de Diputados no responde, la producción legislativa sale de la base abierta de InfoLeg
+- [0436](../adr/0436-comisiones-caidas-desde-el-buscador-con-cache-incremental.md) — Comisiones caídas sale del buscador de Diputados, con una caché incremental

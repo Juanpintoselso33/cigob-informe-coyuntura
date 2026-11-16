@@ -754,6 +754,10 @@ Ponderación vigente en el ITCP: 21,3 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-11-16** — Mientras el portal de datos abiertos de Diputados no responda, los proyectos del Poder Ejecutivo y su sanción se leen del buscador de proyectos de la Cámara. Ese buscador no separa los mensajes que traen un proyecto de ley de los avisos (comunicaciones de decretos, informes, pedidos de acuerdo), así que los avisos se reconocen por el título. Con esa regla la tarjeta da lo mismo que antes (3 de 11 proyectos, 27,3%) y la serie coincide mes por mes desde enero de 2026; los meses anteriores se conservan como estaban.
+
+**2026-11-16** — El portal de datos abiertos de Diputados no responde desde el 4 de noviembre de 2026, así que la tarjeta conserva el valor de ese día, marcado como desactualizado. Diputados no sesiona desde el 21 de octubre, así que el valor sigue describiendo la situación. Se tolera hasta 45 días sin actualizar (hasta el 19 de diciembre); pasado ese plazo, la publicación vuelve a frenarse. No cambia el cálculo.
+
 **2026-11-15** — Pasa de 30% a 55% de poder legislativo: sale por ahora la tarjeta de decretos de necesidad y urgencia por ley (decisión de la dirección del 13 de noviembre) y su peso pasa entero a la eficacia, que queda como la medida de si se gobierna por ley o por decreto. La cobertura de cargos de juez y los vetos insistidos y decretos derogados conservan su peso. En el índice político pasa de 11,6% a 21,3%.
 
 **2026-11-04** — Sigue siendo el componente que más pesa en poder legislativo (30%), que suma la cobertura de cargos de juez y deja la producción legislativa. Como la dimensión pasa de 22,58% a 38,71% del índice, en el índice político sube de 6,8% a 11,6%.
@@ -959,6 +963,12 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-11-16** — Desde noviembre de 2026 el sitio de votaciones de la Cámara de Diputados bloquea las consultas. Cuando no entrega un acta, el acta se lee de ArgentinaDatos, un proyecto abierto que replica las mismas actas: son las mismas votaciones, con los mismos totales y encabezados que el documento de la Cámara. Las votaciones ya leídas siguen como estaban; en las nuevas, el conteo por bloque puede diferir en un diputado porque el bloque sale del padrón de ArgentinaDatos. No cambia el cálculo.
+
+**2026-11-16** — Mientras el portal de datos abiertos de Diputados no responda, para saber si una votación es de un proyecto del Poder Ejecutivo se consulta el buscador de proyectos de la Cámara. Con eso se confirmó que la ley de inviolabilidad de la propiedad privada, votada el 21 de octubre de 2026 con 124 votos a favor, es del Ejecutivo, y la tarjeta pasa de 141,5 a 124. Las votaciones del Senado que necesitan la numeración de esa cámara esperan a que el portal vuelva.
+
+**2026-11-16** — El portal de datos abiertos de Diputados, que identifica qué proyectos mandó el Poder Ejecutivo, no responde desde el 4 de noviembre de 2026, así que la tarjeta conserva el valor de ese día, marcado como desactualizado. Diputados no vota desde el 21 de octubre. Se tolera hasta 45 días sin actualizar (hasta el 19 de diciembre); pasado ese plazo, la publicación vuelve a frenarse. No cambia el cálculo.
+
 **2026-11-04** — Revisión de Luis del 3 de noviembre: pasa a medir cuántos diputados votaron a favor las leyes del Ejecutivo, promedio de las votaciones del mes, en lugar de los votos ajenos como porcentaje de la cámara promediados en 12 meses. Sale el Senado, donde aprobar una ley ya daba el tramo más alto por construcción. Un mes sin votaciones conserva el puntaje de la última. Cortes: más de 129 verde, de 119 a 129 amarillo, de 109 a menos de 119 naranja y menos de 109 rojo. El universo de votaciones no cambia.
 
 **2026-10-28** — Corrección de datos en el Senado: las bancas del bloque LLA de cada acta se cuentan con el bloque que cada senador tenía ese día, desde un registro de pases con fuente. El portal asignaba a cada senador su bloque actual en todas las actas, así que Luis Juez y Carmen Álvarez Rivero figuraban en LLA antes de su pase y Francisco Paoltroni mientras estuvo expulsado: las bancas propias quedaban infladas y el excedente, bajo.
@@ -1057,6 +1067,8 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-16** — Desde noviembre de 2026 el sitio de votaciones de la Cámara de Diputados bloquea las consultas. Cuando no entrega un acta, el acta se lee de ArgentinaDatos, un proyecto abierto que replica las mismas actas: son las mismas votaciones, con los mismos totales y encabezados que el documento de la Cámara. Las votaciones ya leídas siguen como estaban; en las nuevas, el conteo por bloque puede diferir en un diputado porque el bloque sale del padrón de ArgentinaDatos. No cambia el cálculo.
 
 **2026-11-01** — La cohesión del Senado de la tarjeta lee las actas de todos los años que cruza la ventana de 90 días (antes, sólo las del año en curso, así que en enero y febrero la ventana quedaba corta) y se agrega con la misma función que la serie histórica.
 

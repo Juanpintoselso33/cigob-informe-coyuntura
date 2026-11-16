@@ -42,7 +42,7 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 68,6 | AMARILLO | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 68,5 | AMARILLO | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 93,3 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande. | 89,2 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,32 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,42 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -73,7 +73,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12 meses frente a los 12 meses previos) | NARANJA | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 53,1 % de avance (etapas 0-4, cartera Ley Bases) | AMARILLO | 6,0 % |
-| Grandes inversiones aprobadas | Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes… | 79,4 % de la promesa de US$ 100.000 M aprobado | VERDE | 6,0 % |
+| Grandes inversiones aprobadas | Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en el Régimen de Incentivo a Grandes… | 79,6 % de la promesa de US$ 100.000 M aprobado | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 8,32 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 8,42 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -140,13 +140,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Contado con liquidación venta 1671.90 (2026-11-15T17:57:00-03:00) / mayorista venta 1543.50 (2026-11-13T12:31:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- Contado con liquidación venta 1678.30 (2026-11-16T11:59:00-03:00) / mayorista venta 1548.00 (2026-11-16T07:51:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 8,32 % de brecha entre el contado con liquidación y el mayorista (2026-11).
+Dato vigente: 8,42 % de brecha entre el contado con liquidación y el mayorista (2026-11).
 
-8,32 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 1,68 del límite con Amarillo (10,0).
+8,42 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 1,58 del límite con Amarillo (10,0).
 
 **Color vigente: VERDE**
 
@@ -645,7 +645,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-11-15; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026
+- Evaluación al 2026-11-16; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026
 
 ## Color vigente y por qué
 
@@ -940,7 +940,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener · consulta de novedades incompleta
+- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener
 
 ## Color vigente y por qué
 
@@ -994,7 +994,7 @@ Cuánto de la promesa de US$ 100.000 millones de inversión ya está aprobada en
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 79,4 % de la promesa de US$ 100.000 M aprobado** (2026-11) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 79,6 % de la promesa de US$ 100.000 M aprobado** (2026-11) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1037,13 +1037,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 29 proyectos aprobados por US$ 79.418M → 79,4% de la promesa de US$ 100.000M
+- 30 proyectos aprobados por US$ 79.649M → 79,6% de la promesa de US$ 100.000M
 
 ## Color vigente y por qué
 
-Dato vigente: 79,4 % de la promesa de US$ 100.000 M aprobado (2026-11).
+Dato vigente: 79,6 % de la promesa de US$ 100.000 M aprobado (2026-11).
 
-79,4 % de la promesa de US$ 100.000 M aprobado está en Verde, a 24,4 del límite con Amarillo (55,0).
+79,6 % de la promesa de US$ 100.000 M aprobado está en Verde, a 24,6 del límite con Amarillo (55,0).
 
 **Color vigente: VERDE**
 
@@ -1335,7 +1335,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada)
+- 240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.
 
 ## Color vigente y por qué
 
