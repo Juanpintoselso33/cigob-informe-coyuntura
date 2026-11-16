@@ -32,15 +32,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **15.5%** |
+| Peso dentro de la dimensión | 55% |
+| Peso efectivo en el índice | **21.3%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
 
 **Bandas**: > 50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤ 5 → 10
 
-**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo
+**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo · [ADR-0429](../adr/0429-decretos-por-ley-y-transferencias-no-automaticas-salen-por-ahora.md) Decretos por ley y transferencias no automáticas salen del índice por ahora
 
 #### Cobertura de cargos judiciales
 
@@ -48,8 +48,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 27% |
-| Peso efectivo en el índice | **10.3%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **7.7%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 | Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
@@ -64,8 +64,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 17% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **4.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
@@ -80,8 +80,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 17% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **4.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |

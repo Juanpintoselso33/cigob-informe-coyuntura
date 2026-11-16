@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-11-15
 cinturon: 'politica'
 indice: 'ITCP'
-indicadores: [ratio_dnu, transferencias_no_automaticas]
+indicadores: [ratio_dnu, transferencias_no_automaticas, eficacia_legislativa]
 archivos: ['scripts/itcp.py', 'web/src/lib/fichas.ts']
 relacionado: ['0245', '0378', '0422']
 ambito: 'ITCP · `ratio_dnu` (poder legislativo) y `transferencias_no_automaticas` (alianzas territoriales)'
@@ -31,17 +31,27 @@ alianzas territoriales desde [[0378]], 8,2 % del índice). Los dos estaban en ro
 
 ## Opciones consideradas
 
-- **Suspenderlos con el mecanismo de [[0245]] (elegida).**
-- Borrarlos de la tabla de pesos: obliga a rehacer los pesos al reponerlos.
+- **Suspenderlos con el mecanismo de [[0245]]; en legislativo, el peso del decreto pasa
+  entero a eficacia (elegida, Juan, 15-nov).**
+- Suspenderlos y que los demás absorban en proporción: vetos insistidos y decretos
+  derogados, que casi siempre están en 100, subían de 12,5 % a 16,7 % y la cobertura a
+  26,7 %, contra lo decidido en [[0422]].
+- Borrarlos sin tocar el reparto: lo mismo que la proporcional.
 
 ## Decisión
 
 `ratio_dnu` y `transferencias_no_automaticas` pasan a `INDICADORES_SUSPENDIDOS` desde
-noviembre de 2026. Se siguen calculando, no puntúan ni se muestran como card, y su peso
-de diseño queda en la tabla. Los demás indicadores de cada dimensión absorben su peso en
-proporción: poder legislativo queda eficacia 40 %, cobertura de cargos de juez 26,7 %,
-vetos insistidos 16,7 % y decretos derogados 16,7 %; alianzas territoriales, alineamiento
-de senadores 50 % y adhesión provincial a las reformas 50 %.
+noviembre de 2026. Se siguen calculando, no puntúan ni se muestran como card.
+
+- **Poder legislativo:** el 25 % de `ratio_dnu` pasa entero a eficacia legislativa, que
+  queda como la medida de si se gobierna por ley o por decreto: eficacia 55 %, cobertura
+  de cargos de juez 20 %, vetos insistidos 12,5 % y decretos derogados 12,5 %. Es lo más
+  alineado con [[0422]]: la cobertura quedó en 20 % a propósito y vetos y derogados
+  abajo porque casi siempre están en 100. `ratio_dnu` sale de la tabla de pesos; si
+  vuelve, el reparto previo era 30/25/20/12,5/12,5.
+- **Alianzas territoriales:** `transferencias_no_automaticas` conserva su peso de diseño
+  en la tabla y los otros dos absorben su 40 % en proporción: alineamiento de senadores
+  50 % y adhesión provincial a las reformas 50 %.
 
 ### Consecuencias
 

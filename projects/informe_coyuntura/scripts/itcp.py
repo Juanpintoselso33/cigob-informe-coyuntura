@@ -737,7 +737,13 @@ DIMENSIONES_ITCP = {
         # como del Senado; vetos insistidos y decretos derogados abajo porque
         # casi nunca ocurren y pasan casi todos los meses en 100. Antes:
         # 0,23/0,30/0,15/0,15/0,17 (producción legislativa).
-        "indicadores": {"eficacia_legislativa": 0.30, "ratio_dnu": 0.25,
+        # 2026-11-15 (ADR-0429): `ratio_dnu` sale por ahora (dirección,
+        # 13-nov) y su 0,25 pasa ENTERO a eficacia legislativa, que queda como
+        # la medida de si se gobierna por ley o por decreto. No se reparte en
+        # proporción: la cobertura quedó en 0,20 a propósito (ADR-0422) y vetos
+        # y derogados abajo porque casi siempre están en 100. Si vuelve, el
+        # reparto previo era 0,30/0,25/0,20/0,125/0,125.
+        "indicadores": {"eficacia_legislativa": 0.55,
                         "cobertura_judicial": 0.20,
                         "insistencias_vetos": 0.125, "rechazos_decretos": 0.125},
     },
@@ -889,7 +895,8 @@ INDICADORES_SUSPENDIDOS = {
         "adr": "0429",
         "por_que": "La dirección lo sacó del índice por ahora en la reunión "
                    "del 13 de noviembre de 2026, hasta revisar cómo se mide el "
-                   "uso de decretos de necesidad y urgencia.",
+                   "uso de decretos de necesidad y urgencia. Su peso pasó "
+                   "entero a eficacia legislativa.",
         "condicion_reingreso": "Que la dirección vuelva a incluirlo, con la "
                                "medición revisada.",
     },
@@ -1067,7 +1074,7 @@ FAMILIAS_ITCP = {
 
     # Capacidad propia: resultado de la acción del gobierno.
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
-    "ratio_dnu": "capacidad",                  # cuánto depende del decreto
+    # "ratio_dnu": "capacidad" — suspendido por ADR-0429; reponer si vuelve.
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
     "votos_sobre_bancas": "capacidad",         # cuántos diputados acompañan sus leyes (ADR-0423)
     # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
@@ -1130,7 +1137,7 @@ REZAGO_MESES_ITCP = {
     # rezago efectivo del último punto es el de esos registros (ADR-0126).
     "cobertura_judicial": 1.0,
     # Ventanas móviles de 12 meses / 365 días.
-    "ratio_dnu": 6.0,
+    # "ratio_dnu": 6.0 — suspendido por ADR-0429; reponer si vuelve.
     # Conteos de 12 meses móviles sobre eventos fechados (ADR-0377): la regla de
     # la ventana (N/2 = 6); los eventos se leen al día, así que no hay rezago de
     # publicación que sumar.
