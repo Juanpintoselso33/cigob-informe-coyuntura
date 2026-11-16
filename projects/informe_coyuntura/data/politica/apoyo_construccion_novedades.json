@@ -9,30 +9,7 @@
   "nuevos_en_la_corrida": 2,
   "ultima_corrida": "2026-11-15"
  },
- "pendientes": {
-  "CAMARCO|49630": {
-   "camara": "CAMARCO",
-   "destinatario": null,
-   "fecha": "2026-11-13",
-   "id": "49630",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "Se realizará el 1° Congreso Internacional de Prevención de Consumos Problemáticos “Construyendo puentes hacia una prevención universal, selectiva e indicada”, del Consejo Argentino de Prevención Intersectorial en Consumos Problemáticos (CAPI).\n Será una jornada de reflexión e intercambio con referentes de Argentina y la región. El evento es gratuito y abierto al público general. Se desarrollará el jueves 3 de diciembre de 8.30 a 16.30 h en el C3 – Centro Cultural de la Ciencia, Godoy Cruz 2270, CABA\n Además, se entregarán certificados de asistencia y, también, se transmitirá en vivo por YouTube.\n CAMARCO forma parte de este Mesa Intersectorial e invita a participar de este evento.\n Inscripción AQUÍ .\n Más información @capi.comunidad",
-   "titulo": "Save The Date 1° Congreso de consumos problemáticos del CAPI",
-   "url": "https://www.camarco.org.ar/2026/11/13/save-the-date-1-congreso-de-consumos-problematicos-del-capi/"
-  },
-  "CAMARCO|49637": {
-   "camara": "CAMARCO",
-   "destinatario": null,
-   "fecha": "2026-11-13",
-   "id": "49637",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "La startup del ecosistema TIIC fue seleccionada entre las diez laureadas del CICA Global ConTech & PropTech Map 2026 y presentó su propuesta durante la Conferencia Anual de CICA. TIIC – CAMARCO acompañó y apoyó el proceso desde el primer momento. \n AbrigA® , integrante del ecosistema TIIC, fue seleccionada como una de las diez startups laureadas del CICA Global ConTech & PropTech Map 2026 , junto a proyectos innovadores de distintos países.\n En el marco de este reconocimiento, el pasado 4 de noviembre presentó su innovación en París , durante la Conferencia Anual de CICA – World Construction Association, realizada bajo el lema “Building What Matters”.\n La presentación contó con la presencia de Sebastián Orrego, Director Ejecutivo de la Cámara Argentina de la Construcción, y del Ing. Fernando Lago, Representante de CAMARCO ante FIIC y CICA , quienes acompañaron a la startup en esta instancia internacional.\n La propuesta de AbrigA® combina innovación, diseño y sustentabilidad para desarrollar nuevos materiales para la construcción a partir de recursos naturales, renovables y locales. Su participación permitió compartir ante referentes internacionales una solución desarrollada en Argentina para contribuir a la transformación de la industria.\n El acompañamiento de un ecosistema \n Desde TIIC – CAMARCO acompañamos y apoyamos este proceso desde el primer momento , promoviendo oportunidades para que los emprendimientos acerquen sus desarrollos al sector y amplíen su proyección. El reconocimiento a AbrigA® pone en valor el trabajo de su equipo y el potencial de la innovación argentina. También refuerza la importancia de vincular a startups, empresas e instituciones para que nuevas soluciones encuentren espacios de intercambio, validación y crecimiento. Celebramos este logro de AbrigA® y seguimos trabajando para conectar el talento emprendedor con los desafíos de una construcción más eficiente y sostenible.",
-   "titulo": "AbrigA®, startup del ecosistema TIIC, se presentó en París seleccionada por CICA",
-   "url": "https://www.camarco.org.ar/2026/11/13/abriga-presento-su-innovacion-en-paris-entre-las-diez-startups-reconocidas-por-cica/"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "CAMARCO|32906": {
    "origen": "codificacion ADR-0391"

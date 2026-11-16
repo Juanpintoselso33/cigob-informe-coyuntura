@@ -90,7 +90,7 @@
    }
   },
   "concordancia": {
-   "n": 614,
+   "n": 616,
    "kappa_postura": 0.9,
    "acuerdo_postura": 0.99,
    "kappa_destinatario": 0.855,
@@ -16100,6 +16100,58 @@
    "postura": "neutro",
    "destinatario": "externo_o_propio",
    "motivo": "estudio sobre carga tributaria en viviendas: «medición de carga legal», describe condición sin pedir cambio",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49630",
+   "fecha": "2026-11-13",
+   "titulo": "Save The Date 1° Congreso de consumos problemáticos del CAPI",
+   "url": "https://www.camarco.org.ar/2026/11/13/save-the-date-1-congreso-de-consumos-problematicos-del-capi/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "save the date de un congreso del CAPI: «CAMARCO forma parte de este Mesa Intersectorial e invita a participar»; acto institucional, no evalúa medida"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "informa un evento y su inscripción: «invita a participar»; no interpela a ningún poder"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "informa un evento y su inscripción: «invita a participar»; no interpela a ningún poder",
+   "concordancia": "acuerdo",
+   "firmantes": [
+    "CAMARCO"
+   ],
+   "g6": false,
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "CAMARCO",
+   "id": "49637",
+   "fecha": "2026-11-13",
+   "titulo": "AbrigA®, startup del ecosistema TIIC, se presentó en París seleccionada por CICA",
+   "url": "https://www.camarco.org.ar/2026/11/13/abriga-presento-su-innovacion-en-paris-entre-las-diez-startups-reconocidas-por-cica/",
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "celebra el reconocimiento a una startup del TIIC: «Celebramos este logro de AbrigA®»; asunto propio, sin decisión de gobierno"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "elogio a un logro privado ante CICA/FIIC, no a una medida: «fue seleccionada como una de las diez startups laureadas»"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "elogio a un logro privado ante CICA/FIIC, no a una medida: «fue seleccionada como una de las diez startups laureadas»",
    "concordancia": "acuerdo",
    "firmantes": [
     "CAMARCO"
