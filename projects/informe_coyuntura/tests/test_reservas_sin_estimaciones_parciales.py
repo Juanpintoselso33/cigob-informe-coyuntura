@@ -25,6 +25,7 @@ def test_historia_no_depende_del_tesoro_desde_la_medicion_estricta(monkeypatch):
     misma para todos los meses; el Tesoro ya no entra, así que su ausencia no
     saltea meses y el tramo de II.1 no se suma."""
     descargar_series._sdds_por_mes.cache_clear()
+    monkeypatch.setattr(descargar_series, "_netas_de_la_card", lambda: None)
     monkeypatch.setattr(descargar_series.requests, 'get', lambda *a, **kw:
                         SimpleNamespace(status_code=200,content=b'x'*50001))
     monkeypatch.setattr(macro, '_parse_sdds_content', lambda _: {

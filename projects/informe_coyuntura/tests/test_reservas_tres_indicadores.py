@@ -228,6 +228,7 @@ def test_la_card_de_netas_no_depende_del_tesoro(monkeypatch):
 
 def test_la_serie_de_netas_es_la_estricta(monkeypatch):
     descargar_series._sdds_por_mes.cache_clear()
+    monkeypatch.setattr(descargar_series, "_netas_de_la_card", lambda: None)
     monkeypatch.setattr(descargar_series.requests, "get", lambda *a, **kw:
                         SimpleNamespace(status_code=200, content=b"x" * 50001))
     monkeypatch.setattr(macro, "_parse_sdds_content", lambda _c: {
@@ -316,3 +317,21 @@ def test_una_prueba_oficial_sin_fuente_no_se_carga(tmp_path):
     p.write_text(json.dumps(d), encoding="utf-8")
     with pytest.raises(ValueError):
         mrf.cargar_metas(p)
+
+
+# ── La serie no termina antes que la card (G3, 14-nov-2026) ─────────────────
+def test_si_la_serie_no_baja_la_ultima_planilla_usa_la_de_la_card(monkeypatch):
+    descargar_series._sdds_por_mes.cache_clear()
+    monkeypatch.setattr(descargar_series, "_sdds_por_mes",
+                        lambda meses: {"2026-08": {"netas": 7745.0}})
+    monkeypatch.setattr(descargar_series, "_netas_de_la_card", lambda: ("2026-09", 7465.0))
+    serie = descargar_series.fetch_reservas_netas_serie(meses=3)
+    assert serie[0] == ["2026-09-01", 7465.0]
+    assert ["2026-08-01", 7745.0] in serie
+
+
+def test_la_card_no_pisa_un_mes_que_la_serie_ya_trae(monkeypatch):
+    monkeypatch.setattr(descargar_series, "_sdds_por_mes",
+                        lambda meses: {"2026-09": {"netas": 7465.0}})
+    monkeypatch.setattr(descargar_series, "_netas_de_la_card", lambda: ("2026-09", 1.0))
+    assert descargar_series.fetch_reservas_netas_serie(meses=3) == [["2026-09-01", 7465.0]]

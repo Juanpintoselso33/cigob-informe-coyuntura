@@ -346,19 +346,51 @@ def _sdds_por_mes(meses: int) -> dict:
     y, m = datetime.today().year, datetime.today().month
     for _ in range(meses):
         nombre = f"temp{m:02d}{y % 100:02d}"
-        try:
-            r = requests.get(macro.SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
-                             timeout=60, verify=False)
-            if r.status_code == 200 and len(r.content) > 50000:
-                s = macro._parse_sdds_content(r.content)
-                if s and s["fecha"]:
-                    _, mm, yy = s["fecha"].split("/")
-                    out[f"20{yy}-{mm}"] = s
-        except Exception:
-            pass
+        # Dos intentos: el 14-nov-2026 la planilla de septiembre no bajó en la
+        # serie y sí en la card, y el control card = serie (G3) frenó la corrida.
+        for _intento in range(2):
+            try:
+                r = requests.get(macro.SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
+                                 timeout=60, verify=False)
+                if r.status_code == 200 and len(r.content) > 50000:
+                    s = macro._parse_sdds_content(r.content)
+                    if s and s["fecha"]:
+                        _, mm, yy = s["fecha"].split("/")
+                        out[f"20{yy}-{mm}"] = s
+                break
+            except Exception:
+                continue
         m -= 1
         if m == 0: m = 12; y -= 1
     return out
+
+
+MACRO_CACHE = Path(__file__).resolve().parents[1] / "output" / "cache" / "macro.json"
+
+
+def _netas_de_la_card() -> tuple[str, float] | None:
+    """(YYYY-MM, netas estrictas) de la card de reservas netas de esta corrida
+    (`output/cache/macro.json`, que `macro.py` escribe antes). Si la serie no
+    pudo bajar esa planilla, el mes se completa con el mismo número de la card
+    en vez de que la serie termine un mes antes y el gate G3 frene la corrida
+    (14-nov-2026). Es la misma planilla y el mismo parser."""
+    try:
+        card = json.loads(MACRO_CACHE.read_text(encoding="utf-8"))["indicadores"]["reservas_bcra"]
+        if card.get("desactualizado") or card.get("metodo") != "sdds_estricto":
+            return None
+        return card["fecha_dato"][:7], float(card["netas_sdds_estricto"])
+    except Exception:
+        return None
+
+
+def _netas_por_mes(meses: int) -> dict:
+    """{YYYY-MM: netas estrictas}: las planillas de la serie, más el mes de la
+    card si la serie no lo trajo."""
+    netas = {ym: float(s["netas"]) for ym, s in _sdds_por_mes(meses).items()}
+    card = _netas_de_la_card()
+    if card and card[0] not in netas and (not netas or card[0] > max(netas)):
+        netas[card[0]] = card[1]
+    return netas
 
 
 def fetch_reservas_netas_serie(meses: int | None = None) -> list:
@@ -366,8 +398,8 @@ def fetch_reservas_netas_serie(meses: int | None = None) -> list:
     planilla SDDS), la misma medición que la card desde ADR-0428 y la misma
     fórmula para todos los meses. Hasta ADR-0428 sumaba los depósitos del
     Tesoro y el tramo de II.1 de más de tres meses a un año (fórmula CIGOB)."""
-    sdds = _sdds_por_mes(meses or _meses_desde_asuncion())
-    return [[f"{ym}-01", round(s["netas"], 0)] for ym, s in sorted(sdds.items(), reverse=True)]
+    netas = _netas_por_mes(meses or _meses_desde_asuncion())
+    return [[f"{ym}-01", round(v, 0)] for ym, v in sorted(netas.items(), reverse=True)]
 
 
 def fetch_reservas_brutas_serie(meses: int | None = None) -> list:
@@ -384,8 +416,7 @@ def fetch_meta_reservas_fmi_serie(meses: int | None = None) -> list:
     (ADR-0428). Arranca en el primer mes con meta cargada (ene-2026): antes no
     hay meta en la tabla, no un dato faltante."""
     import meta_reservas_fmi as mrf
-    sdds = _sdds_por_mes(meses or _meses_desde_asuncion())
-    netas = {ym: s["netas"] for ym, s in sdds.items()}
+    netas = _netas_por_mes(meses or _meses_desde_asuncion())
     return [[f"{ym}-01", r["valor"]] for ym, r in mrf.serie(mrf.cargar_metas(), netas)]
 
 
