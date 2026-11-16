@@ -14,6 +14,8 @@ sys.path.insert(0, str(RAIZ / "scripts"))
 import hcdn_buscador as hb  # noqa: E402
 import politica  # noqa: E402
 
+_GET_REAL = hb._get   # el real, antes de que conftest lo corte
+
 
 def _item(clave, exp, titulo, fecha, ley=None, camara="Diputados", autor="PODER EJECUTIVO",
           numero=100):
@@ -232,3 +234,20 @@ def test_comisiones_caidas_cuenta_la_ventana():
                  "c": {"pid": "HCDN3", "dictamenes": [[7, 2024, "2024-05-02"]], "sanciones": ["2026-06-01"]}}
     assert hb.comisiones_caidas(proyectos, "2025-11-16", "2026-11-16") == (2, 1)
     assert hb.comisiones_caidas(proyectos, "2020-01-01", "2020-12-31") is None
+
+
+def test_una_falla_de_red_no_se_reintenta(monkeypatch):
+    """Corrida del 16-nov: los reintentos con espera ante un timeout agotaron el
+    presupuesto del colector de política."""
+    import requests
+    llamadas = []
+
+    def timeout(*a, **k):
+        llamadas.append(1)
+        raise requests.Timeout("www.hcdn.gob.ar")
+    monkeypatch.setattr(hb.requests, "get", timeout)
+    monkeypatch.setattr(hb.time, "sleep", lambda s: None)
+    monkeypatch.setattr(hb, "_get", _GET_REAL)
+    with pytest.raises(requests.Timeout):
+        hb._get(hb.BUSCADOR, {})
+    assert len(llamadas) == 1

@@ -31,7 +31,7 @@ BUSCADOR = "https://www.hcdn.gob.ar/proyectos/buscador/api/v1/proyectos"
 _HEADERS = {"Accept": "application/json",
             "User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
 _PAUSA = 0.4          # segundos entre pedidos: el buscador corta con 429
-_TIMEOUT = 30
+_TIMEOUT = 20
 _MAX_PAGINAS = 200    # tope de seguridad: 4.000 proyectos por consulta
 
 # Los avisos del Ejecutivo empiezan así; los proyectos de ley, no. «SE REMITE
@@ -43,19 +43,19 @@ _RE_MEDIA = re.compile(r"MEDIA\s+SANCION", re.I)
 
 
 def _get(url: str, params: dict | None = None) -> dict:
-    """GET con pausa y hasta cuatro intentos. Un 429 espera lo que diga
-    Retry-After (o 15 s); un 5xx o un corte de red, cada vez más. Un 4xx que no
-    sea 429 sube enseguida: es un pedido mal armado, no la red."""
+    """GET con pausa y hasta cuatro intentos para un 429 (espera lo que diga
+    Retry-After, o 15 s) o un 5xx. Un corte de red o un 4xx que no sea 429 sube
+    enseguida."""
     ultimo: Exception = requests.ConnectionError("buscador de Diputados sin respuesta")
     espera = _PAUSA
     for _ in range(4):
         time.sleep(espera)
         espera = max(espera * 5, 2.0)
-        try:
-            r = requests.get(url, params=params, headers=_HEADERS, timeout=_TIMEOUT)
-        except requests.RequestException as e:
-            ultimo = e
-            continue
+        # Una falla de RED no se reintenta: desde GitHub www.hcdn.gob.ar no
+        # contesta (nov-2026) y reintentar con esperas se comía el presupuesto
+        # de 10 minutos del colector de política entero (corrida del 16-nov).
+        # Sólo un 429 o un 5xx, que son el servidor diciendo «después», esperan.
+        r = requests.get(url, params=params, headers=_HEADERS, timeout=_TIMEOUT)
         if r.status_code == 429:
             ultimo = requests.HTTPError("429 del buscador de Diputados")
             try:
