@@ -3094,6 +3094,13 @@ def _carry_forward(enriquecido, previo):
     for key, ind in enriquecido.items():
         if ind.get("valor") is None and key in previo and previo[key].get("valor") is not None:
             prev = previo[key]
+            # Un valor en otra unidad no se arrastra: la card de alimentos pasó
+            # de % mensual a % frente al IPC (ADR-0430) y un 1,97 viejo bajo la
+            # unidad nueva sería un dato falso.
+            if ind.get("unidad") and prev.get("unidad") and ind["unidad"] != prev["unidad"]:
+                print(f"[carry-forward] vida.{key}: no se arrastra {prev.get('valor')}: "
+                      f"la unidad cambió ({prev['unidad']!r} → {ind['unidad']!r})")
+                continue
             ind["valor"] = prev.get("valor")
             ind["fecha_dato"] = prev.get("fecha_dato")
             if prev.get("fuente"):

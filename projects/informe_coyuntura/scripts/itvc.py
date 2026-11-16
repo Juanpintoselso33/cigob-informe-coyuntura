@@ -477,8 +477,9 @@ DIMENSIONES_ITVC = {
 # cuatro franjas (con 108, «mejora moderada» pintada de amarillo). Ahora hay una
 # frase por color y la etiqueta sale del mismo `color_de_indice_base100` que
 # pinta el cinturón: no pueden separarse. Esta tabla queda sólo para la ficha
-# (los bordes 87,5 / 100 / 112,5); el borde va con el color: 100 es amarillo,
-# 87,5 naranja y 112,5 verde.
+# (los bordes 87,5 / 100 / 112,5). OJO: no usarla con
+# parametrica.banda_interpretacion, que toma el borde por arriba (100 caería en
+# «peor»); el borde va con el color: 100 es amarillo, 87,5 naranja, 112,5 verde.
 _I_ROJO, _I_AMARILLO, _I_VERDE = (parametrica.indice_base100_de_tension(t)
                                   for t in reversed(parametrica.TENSIONES_DE_CORTE))
 BANDAS_INTERPRETACION = [

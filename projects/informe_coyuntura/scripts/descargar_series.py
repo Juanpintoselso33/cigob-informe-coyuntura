@@ -344,11 +344,13 @@ def _sdds_por_mes(meses: int) -> dict:
     jun-2024; los meses sin planilla parseable se saltean."""
     out = {}
     y, m = datetime.today().year, datetime.today().month
-    for _ in range(meses):
+    for i in range(meses):
         nombre = f"temp{m:02d}{y % 100:02d}"
-        # Dos intentos: el 14-nov-2026 la planilla de septiembre no bajó en la
-        # serie y sí en la card, y el control card = serie (G3) frenó la corrida.
-        for _intento in range(2):
+        # Dos intentos para las tres planillas más recientes: el 14-nov-2026 la
+        # de septiembre no bajó en la serie y sí en la card, y el control
+        # card = serie (G3) frenó la corrida. Las viejas no se reintentan para no
+        # duplicar la espera si el BCRA no responde.
+        for _intento in range(2 if i < 3 else 1):
             try:
                 r = requests.get(macro.SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
                                  timeout=60, verify=False)

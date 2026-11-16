@@ -121,8 +121,14 @@ def alimentos_sobre_ipc_niveles() -> dict:
     """La serie de `alimentos_sobre_ipc` con los niveles del IPC nacional. La
     usan la card (`fetch_indec`) y la serie (`descargar_series`), para que G3
     cierre."""
+    from datetime import date
+    hoy = date.today()
+    # Desde la base (oct-2023) hasta hoy, con margen: un límite fijo dejaría
+    # afuera la base con el tiempo.
+    meses = (hoy.year - 2023) * 12 + hoy.month - 10 + 3
+
     def niveles(sid):
-        return {f[:7]: v for f, v in _get_serie(sid, limit=72)}
+        return {f[:7]: v for f, v in _get_serie(sid, limit=meses)}
     return alimentos_sobre_ipc(niveles(INDEC_SERIES["ipc_alimentos"]),
                                niveles(INDEC_SERIES["ipc_total"]))
 

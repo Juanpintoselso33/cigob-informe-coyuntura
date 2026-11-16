@@ -282,11 +282,13 @@ def test_si_falta_una_reserva_su_peso_queda_en_el_bloque():
     sin_meta = _itcm_solo_estabilidad({k: v for k, v in base.items() if k != "meta_reservas_fmi"})
     ind_c, ind_s = completo["indicadores"], sin_meta["indicadores"]
     for k in ("ipc_total", "rem_ipc_12m", "desequilibrio_monetario"):
-        assert ind_s[k]["peso"] == pytest.approx(ind_c[k]["peso"])
-    bloque_c = sum(ind_c[k]["peso"] for k in RESERVAS)
-    bloque_s = sum(ind_s[k]["peso"] for k in ("reservas_brutas", "reservas_bcra"))
-    assert bloque_s == pytest.approx(bloque_c)
-    assert ind_s["reservas_brutas"]["peso"] == pytest.approx(ind_s["reservas_bcra"]["peso"])
+        assert ind_s[k]["peso_efectivo"] == pytest.approx(ind_c[k]["peso_efectivo"], abs=1e-4)
+    bloque_c = sum(ind_c[k]["peso_efectivo"] for k in RESERVAS)
+    bloque_s = sum(ind_s[k]["peso_efectivo"] for k in ("reservas_brutas", "reservas_bcra"))
+    assert bloque_s == pytest.approx(bloque_c, abs=2e-4)
+    assert ind_s["reservas_brutas"]["peso_efectivo"] == pytest.approx(ind_s["reservas_bcra"]["peso_efectivo"])
+    # `peso` sigue siendo el de diseño: la cobertura mide contra él.
+    assert ind_s["reservas_brutas"]["peso"] == pytest.approx(ind_c["reservas_brutas"]["peso"])
 
 
 def test_con_las_tres_el_bloque_no_toca_los_pesos():
@@ -335,3 +337,14 @@ def test_la_card_no_pisa_un_mes_que_la_serie_ya_trae(monkeypatch):
                         lambda meses: {"2026-09": {"netas": 7465.0}})
     monkeypatch.setattr(descargar_series, "_netas_de_la_card", lambda: ("2026-09", 1.0))
     assert descargar_series.fetch_reservas_netas_serie(meses=3) == [["2026-09-01", 7465.0]]
+
+
+def test_sensibilidad_aplica_el_bloque_al_sacar_una_reserva():
+    """El «índice sin X» de sensibilidad.py usa la misma regla que el motor."""
+    import sensibilidad
+    base = {"ipc_total": 1.5, "rem_ipc_12m": 20.0, "desequilibrio_monetario": 0.0,
+            "reservas_brutas": 45000.0, "reservas_bcra": 7465.0, "meta_reservas_fmi": 169.6}
+    sin_meta = itcm.calcular_itcm({k: v for k, v in base.items() if k != "meta_reservas_fmi"})
+    dims = sensibilidad._estructura(itcm.calcular_itcm(base))
+    del dims["estabilidad_monetaria"]["ind"]["meta_reservas_fmi"]
+    assert round(sensibilidad._agregar(dims), 1) == sin_meta["valor"]

@@ -62,3 +62,11 @@ def test_la_card_sale_del_porcentaje_sobre_el_ipc():
     assert card["valor"] == -7.2
     assert card["unidad"].startswith("% frente al IPC")
     assert "2,0 %" in card["detalle_txt"]
+
+
+def test_no_se_arrastra_un_valor_de_otra_unidad():
+    nuevo = {"ipc_alimentos": {"valor": None, "unidad": "% frente al IPC general desde fines de 2023"}}
+    previo = {"ipc_alimentos": {"valor": 1.97, "unidad": "% mensual", "fecha_dato": "2026-10-01"}}
+    assert publicar._carry_forward(nuevo, previo)["ipc_alimentos"]["valor"] is None
+    previo["ipc_alimentos"]["unidad"] = nuevo["ipc_alimentos"]["unidad"]
+    assert publicar._carry_forward(nuevo, previo)["ipc_alimentos"]["valor"] == 1.97

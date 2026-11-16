@@ -101,6 +101,23 @@ _GRUPOS = {
 }
 
 
+# Bloques de indicadores que computan como uno (ADR-0428): misma regla que
+# parametrica.calcular_indice, con la tabla de diseño de cada dimensión.
+_BLOQUES = {
+    dk: (d["bloques"], d["indicadores"])
+    for dims in (itcm.DIMENSIONES_ITCM, itcg.DIMENSIONES_ITCG, itcp.DIMENSIONES_ITCP)
+    for dk, d in dims.items() if d.get("bloques")
+}
+
+
+def _pesos(dk: str, ind: dict) -> dict:
+    pesos = {ik: i["peso"] for ik, i in ind.items()}
+    if dk in _BLOQUES:
+        bloques, diseno = _BLOQUES[dk]
+        pesos = parametrica.pesos_con_bloques(pesos, diseno, bloques)
+    return pesos
+
+
 def _estructura(bloque: dict) -> dict:
     """{dkey: {peso, ind: {ikey: {peso, puntaje, banda, valor}}}} desde el
     bloque publicado (valor = insumo crudo, para el experimento de insumos)."""
@@ -123,20 +140,20 @@ def _agregar(dims: dict) -> float:
         if not d["ind"]:
             continue
         grupos = _GRUPOS.get(dk)
+        pesos = _pesos(dk, d["ind"])
         if grupos:
             dscore, _ = parametrica.puntaje_dimension(
-                {ik: i["puntaje"] for ik, i in d["ind"].items()},
-                {ik: i["peso"] for ik, i in d["ind"].items()}, grupos)
+                {ik: i["puntaje"] for ik, i in d["ind"].items()}, pesos, grupos)
             if dscore is None:
                 continue
             total += round(dscore, 1) * d["peso"]
             wsum += d["peso"]
             continue
-        pw = sum(i["peso"] for i in d["ind"].values())
+        pw = sum(pesos.values())
         # El motor agrega dimensiones redondeadas a un decimal. Omitir
         # este paso puede dar una base distinta del índice publicado.
-        dscore = round(sum(i["puntaje"] * (i["peso"] / pw)
-                           for i in d["ind"].values()), 1)
+        dscore = round(sum(i["puntaje"] * (pesos[ik] / pw)
+                           for ik, i in d["ind"].items()), 1)
         total += dscore * d["peso"]
         wsum += d["peso"]
     return total / wsum if wsum else 0.0

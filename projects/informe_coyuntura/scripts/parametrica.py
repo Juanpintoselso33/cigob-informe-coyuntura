@@ -478,6 +478,23 @@ def indicadores_vigentes(dimensiones: dict, suspendidos: dict | set | None) -> d
     return out
 
 
+def pesos_con_bloques(pesos: dict, pesos_diseno: dict, bloques=()) -> dict:
+    """Pesos de los presentes con los BLOQUES aplicados (ADR-0428, 14-nov-2026):
+    si falta un miembro de un bloque, su peso de diseño se reparte entre los
+    miembros presentes en proporción a sus pesos, en vez de irse al resto de la
+    dimensión. `pesos` son los de los presentes (pueden venir perturbados, como
+    en sensibilidad.py); `pesos_diseno`, la tabla completa de la dimensión."""
+    out = dict(pesos)
+    for bloque in bloques:
+        en_bloque = [k for k in bloque if k in out]
+        if en_bloque and len(en_bloque) < len(bloque):
+            total = sum(pesos_diseno[k] for k in bloque)
+            vistos = sum(pesos_diseno[k] for k in en_bloque)
+            for k in en_bloque:
+                out[k] = out[k] * total / vistos
+    return out
+
+
 def puntaje_dimension(puntajes: dict, pesos: dict, grupos=()) -> tuple:
     """Puntaje de una dimensión y los indicadores que realmente entraron.
 
@@ -561,26 +578,21 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
             continue
         # Un BLOQUE (ADR-0428, 14-nov-2026) es un conjunto de indicadores que
         # computan como uno solo: si falta alguno, su peso queda dentro del
-        # bloque —repartido entre los presentes en proporción a sus pesos— en
-        # vez de irse al resto de la dimensión. A diferencia de un grupo, un
-        # bloque incompleto SÍ se calcula: es un promedio, no un cruce.
-        for bloque in dim.get("bloques", ()):
-            en_bloque = [k for k in bloque if k in presentes]
-            if en_bloque and len(en_bloque) < len(bloque):
-                total = sum(dim["indicadores"][k] for k in bloque)
-                vistos = sum(presentes[k]["peso"] for k in en_bloque)
-                for k in en_bloque:
-                    presentes[k]["peso"] = presentes[k]["peso"] * total / vistos
+        # bloque en vez de irse al resto de la dimensión. A diferencia de un
+        # grupo, un bloque incompleto SÍ se calcula: es un promedio, no un cruce.
+        # `peso` sigue siendo el de diseño (la cobertura de validacion_externa
+        # mide contra él); el bloque sólo cambia el peso con que se calcula.
+        pesos_calc = pesos_con_bloques({k: i["peso"] for k, i in presentes.items()},
+                                       dim["indicadores"], dim.get("bloques", ()))
         puntaje_dim, usados = puntaje_dimension(
             {k: i["puntaje_aplicado"] for k, i in presentes.items()},
-            {k: i["peso"] for k, i in presentes.items()},
-            dim.get("grupos", ()))
+            pesos_calc, dim.get("grupos", ()))
         if puntaje_dim is None:
             continue
         presentes = {k: i for k, i in presentes.items() if k in usados}
-        suma_pesos = sum(i["peso"] for i in presentes.values())
-        for info in presentes.values():
-            info["peso_renorm"] = info["peso"] / suma_pesos
+        suma_pesos = sum(pesos_calc[k] for k in presentes)
+        for k, info in presentes.items():
+            info["peso_renorm"] = pesos_calc[k] / suma_pesos
         resultado_dims[dkey] = {
             "nombre": dim["nombre"],
             "peso": dim["peso"],

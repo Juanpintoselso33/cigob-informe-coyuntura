@@ -3721,6 +3721,13 @@ def fetch_protocolo_antipiquetes() -> dict | None:
                 r = requests.get(url, headers=HTTP_HEADERS, timeout=30)
                 r.raise_for_status()
                 anios |= anios_de_piquetes_dp(r.text)
+            if not anios:
+                # El sitio nuevo arma las notas con JavaScript: hoy el detector
+                # no ve ningún año, ni siquiera el último guardado (revisión del
+                # 15-nov-2026). No va a la card (no es un dato malo), pero queda
+                # en el log: el cierre anual se revisa a mano en enero.
+                print("  [AVISO] protocolo_antipiquetes: el detector no ve ningún año en el sitio "
+                      "de Diagnóstico Político; revisar a mano si publicó el cierre anual")
             nuevos = sorted(a for a in anios if a > ult)
             if nuevos:
                 advertencia = f"El portal anuncia años posteriores ({nuevos}); el anclaje publicado sigue en {ult}."
