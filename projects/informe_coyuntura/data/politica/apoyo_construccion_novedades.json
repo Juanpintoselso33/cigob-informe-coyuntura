@@ -1,15 +1,38 @@
 {
  "_meta": {
-  "comunicados_vistos": 918,
+  "comunicados_vistos": 920,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
   "inventario_verificado": "2026-11-16",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 2,
   "ultima_corrida": "2026-11-16"
  },
- "pendientes": {},
+ "pendientes": {
+  "CAMARCO|49649": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-16",
+   "id": "49649",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La transformación de los procesos constructivos mediante sistemas industrializados constituye una de las tendencias que gana espacio en la industria de la construcción. En ese marco, distintos profesionales y empresas desarrollan soluciones orientadas a mejorar la productividad, optimizar recursos y reducir tiempos de ejecución.\n Entre estas iniciativas se encuentra el sistema modular industrializado liviano , desarrollado por el arquitecto Osvaldo Rodríguez Sajeva y el ingeniero Gustavo Darín, basado en componentes modulares industrializados para aplicaciones en edificios y ampliaciones urbanas.\n Para más información, acceder al documento informativo AQUÍ .",
+   "titulo": "Industrialización y nuevas tecnologías para la construcción",
+   "url": "https://www.camarco.org.ar/2026/11/16/industrializacion-y-nuevas-tecnologias-para-la-construccion/"
+  },
+  "CAMARCO|49653": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-16",
+   "id": "49653",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La innovación en materiales y terminaciones amplía las posibilidades de diseño y aplicación en proyectos de construcción de distinta escala. En este contexto, empresas argentinas desarrollan productos orientados a mejorar la calidad y versatilidad de los espacios interiores.\n Entre ellas se encuentra G&G Revestimientos, empresa dedicada a la producción de revestimientos, placas y molduras de yeso natural para aplicaciones arquitectónicas y decorativas. Su propuesta incluye distintas alternativas para terminaciones de interiores, combinando diseño y funcionalidad.\n Más información en:\n www.gygrevestimientos.com.ar \n www.gygrevestimientos.com \n Instagram: @gygrevestimientosar",
+   "titulo": "Materiales y diseño para la construcción",
+   "url": "https://www.camarco.org.ar/2026/11/16/materiales-y-diseno-para-la-construccion/"
+  }
+ },
  "revisadas": {
   "CAMARCO|32906": {
    "origen": "codificacion ADR-0391"
@@ -2812,6 +2835,14 @@
   "CAMARCO|49637": {
    "fecha": "2026-11-13",
    "titulo": "AbrigA®, startup del ecosistema TIIC, se presentó en París seleccionada por CICA"
+  },
+  "CAMARCO|49649": {
+   "fecha": "2026-11-16",
+   "titulo": "Industrialización y nuevas tecnologías para la construcción"
+  },
+  "CAMARCO|49653": {
+   "fecha": "2026-11-16",
+   "titulo": "Materiales y diseño para la construcción"
   }
  }
 }

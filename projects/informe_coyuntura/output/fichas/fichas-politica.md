@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 81,9** | **VERDE** | Moderadamente aflojado | 14 indicadores: 10 en verde · 3 en amarillo · 1 en naranja |
+| **ITCP: 80,3** | **VERDE** | Moderadamente aflojado | 14 indicadores: 9 en verde · 4 en amarillo · 1 en naranja |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
@@ -44,8 +44,8 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cuatro señales. | 76,1 | VERDE | 38,7 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde dos señales. | 88,4 | VERDE | 20,4 % |
-| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 90,5 | VERDE | 16,1 % |
-| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 73,3 | AMARILLO | 14,0 % |
+| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 80,6 | VERDE | 16,1 % |
+| Sector empresarial | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 73,6 | AMARILLO | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 88,3 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -64,17 +64,17 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | AMARILLO | 21,3 % |
 | Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 4,8 % |
-| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,61 % estimado de cargos con juez designado | AMARILLO | 7,7 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,72 % estimado de cargos con juez designado | AMARILLO | 7,7 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 10,2 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 64,9 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 10,2 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
-| Diputados a favor de las leyes del Ejecutivo | Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. | 141,5 diputados a favor | VERDE | 8,1 % |
+| Diputados a favor de las leyes del Ejecutivo | Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. | 124 diputados a favor | AMARILLO | 8,1 % |
 | Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo… | 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | VERDE | 8,1 % |
 | **DIMENSIÓN: Sector empresarial** | | | | |
 | Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,3 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
 | Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
-| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,16 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
+| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
 | Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,5 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,6 % frente a 2023 | VERDE | 6,5 % |
@@ -303,7 +303,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,16 saldo de postura (−1 a +1, 12m móviles)** (2026-11) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -311,9 +311,9 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_campo | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2026-01 → 2026-11 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2026-01 → 2026-10 (10 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de las secciones de prensa de sus sitios |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-16 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -348,13 +348,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses las cámaras del campo se pronunciaron 51 veces sobre medidas del Gobierno nacional: 12 de apoyo y 39 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,789 (4 de apoyo, 34 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,163 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses las cámaras del campo se pronunciaron 52 veces sobre medidas del Gobierno nacional: 13 de apoyo y 39 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,744 (5 de apoyo, 34 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,148 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: −0,16 saldo de postura (−1 a +1, 12m móviles) (2026-11).
+Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
-−0,163 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,08 del límite con Naranja (−0,24).
+−0,148 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,09 del límite con Naranja (−0,24).
 
 **Color vigente: AMARILLO**
 
@@ -396,7 +396,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-11) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -404,9 +404,9 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_construccion | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector empresarial | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-02 → 2026-11 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-02 → 2026-10 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-16 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -442,11 +442,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-11).
+Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
 0,5 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,3 del límite con Amarillo (0,2).
 
@@ -885,7 +885,7 @@ Cuántos diputados votaron a favor de las leyes que mandó el Gobierno. En cada 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 141,5 diputados a favor** (2026-11) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
+| **Hoy: 124 diputados a favor** (2026-11) | **AMARILLO** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -933,15 +933,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio de diputados a favor en 2 votaciones de ley de agosto de 2026. Mayoría absoluta: 129 de 257. Desde entonces no hubo votaciones de ley del Poder Ejecutivo en Diputados: se conserva el valor de la última. Hay 3 votaciones de ley de los últimos 12 meses en Diputados (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
+- Promedio de diputados a favor en 1 votación de ley de octubre de 2026. Mayoría absoluta: 129 de 257. Desde entonces no hubo votaciones de ley del Poder Ejecutivo en Diputados: se conserva el valor de la última. Hay 1 votaciones de ley de los últimos 12 meses en Diputados (la más reciente del 27/08/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
 
 ## Color vigente y por qué
 
-Dato vigente: 141,5 diputados a favor (2026-11).
+Dato vigente: 124 diputados a favor (2026-11).
 
-141,5 diputados a favor está en Verde, a 12,4 del límite con Amarillo (129,1).
+124,0 diputados a favor está en Amarillo, a 5,0 del límite con Naranja (119,0).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1037,7 +1037,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 99,8% = Diputados 100,0% (peso 65%, 26 actas) · última acta 2026-10-22 · dato conservado en caché · Senado 99,4% (peso 35%, 47 actas) · última acta 2026-10-29
+- 99,8% = Diputados 100,0% (peso 65%, 26 actas) · última acta 2026-10-22 · Senado 99,4% (peso 35%, 47 actas) · última acta 2026-10-29
 
 ## Color vigente y por qué
 
@@ -1286,7 +1286,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 73,61 % estimado de cargos con juez designado** (2026-11) | **AMARILLO** | Peso efectivo 7,7 % del ITCP | Cinturón Política |
+| **Hoy: 73,72 % estimado de cargos con juez designado** (2026-11) | **AMARILLO** | Peso efectivo 7,7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1331,13 +1331,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Cobertura estimada: 703 de 955 cargos al 2026-11-03. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +104 altas netas, −8 renuncias y −2 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas). Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).
+- Cobertura estimada: 704 de 955 cargos al 2026-11-16. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +105 altas netas, −8 renuncias y −2 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos. Revisión del 2026-09-29: las planillas de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en la planilla: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular. Revisión del 2026-10-08: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 29 de septiembre y el 8 de octubre no publicó destituciones: las juras del 29-sep (Catania y Galván Greenway, decretos 1092 y 1093/2026) y del 5-oct (Fernández Escarguel y Rastellino, decretos 913 y 922/2026, que ya figuran en el CSV) corresponden a designaciones ya registradas, y la audiencia de debate ante el Jurado de Enjuiciamiento contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) empezó el 6-oct sin resolución, así que todavía no es una baja. En la Primera Sección del Boletín Oficial del 29 de septiembre al 8 de octubre no hay decretos del rubro Justicia con nombramientos ni renuncias de jueces; los dos decretos de renuncia de esas fechas son del Ministerio Público y quedan fuera del universo del padrón (1148/2026, defensora pública oficial federal de Corrientes, desde el 1-nov; 1154/2026, fiscal general adjunto ante la Cámara Criminal y Correccional Federal, desde el 1-sep). Ningún juez del padrón figura entre los fallecimientos de la semana. Revisión del 2026-10-20: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 9 al 20 de octubre (ediciones del 9, 13, 14, 15, 16, 19 y 20; el 12 fue feriado) no hay decretos de nombramiento ni renuncia de jueces ni del Ministerio Público, y las tres leyes del período (27.826, 27.827 y 27.828) no crean cargos judiciales. El Consejo de la Magistratura no publicó destituciones: el Jurado de Enjuiciamiento escuchó los alegatos contra Gastón Salmain (Juzgado Federal N° 1 de Rosario) el 14-oct y pasó a deliberar sin fallo, así que todavía no es una baja; las juras del 15 y 16-oct (Battilana en el Juzgado Criminal y Correccional N° 30, Di Giorgio en el Tribunal Oral Criminal y Correccional N° 10 y Polizza en el N° 14) corresponden a los decretos 929, 935 y 637/2026, que ya figuran en el CSV. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas). Revisión del 2026-11-03: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha de designaciones 2026-09-07 y de renuncias 2026-08-28, ya registradas). En la Primera Sección del Boletín Oficial del 21 de octubre al 3 de noviembre (ediciones del 21, 22, 23, 26, 27, 28, 29 y 30 de octubre y del 2 y 3 de noviembre) no hay decretos de nombramiento, renuncia ni traslado de jueces, ni leyes que creen cargos judiciales; el único decreto del rubro es la renuncia 1275/2026 (BO 27-oct) de una fiscal ante el Juzgado Federal de Bell Ville, del Ministerio Público y fuera del universo. El Jurado de Enjuiciamiento destituyó el 29-oct a Gastón Salmain, titular del Juzgado Federal N° 1 de Rosario: se registra como baja desde esa fecha. El Consejo de la Magistratura no publicó otras destituciones ni juras en la ventana. Ningún juez en actividad figura entre los fallecimientos del período (búsqueda en prensa; no reemplaza un censo de acordadas).
 
 ## Color vigente y por qué
 
-Dato vigente: 73,61 % estimado de cargos con juez designado (2026-11).
+Dato vigente: 73,72 % estimado de cargos con juez designado (2026-11).
 
-73,61 % estimado de cargos con juez designado está en Amarillo, a 4,61 del límite con Naranja (69,0).
+73,72 % estimado de cargos con juez designado está en Amarillo, a 4,72 del límite con Naranja (69,0).
 
 **Color vigente: AMARILLO**
 

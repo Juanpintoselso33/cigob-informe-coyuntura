@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-16T15:57:46.049912+00:00",
+    "generated_at": "2026-11-16T14:03:39.950790-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1637,15 +1637,15 @@
   "redundancia_itcp": {
     "diferencias": {
       "n_pares": 78,
-      "r_abs_medio": 0.207,
+      "r_abs_medio": 0.209,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 78,
-    "r_abs_medio": 0.418,
+    "r_abs_medio": 0.412,
     "share_altos": 0.128,
-    "share_bajos": 0.346,
+    "share_bajos": 0.359,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.054,
@@ -1659,7 +1659,7 @@
         "insistencias_vetos": -0.489,
         "jornadas_individuales_no_trabajadas_12m": 0.303,
         "rechazos_decretos": -0.478,
-        "votos_sobre_bancas": -0.389
+        "votos_sobre_bancas": -0.479
       },
       "alineamiento_senadores_prov": {
         "adhesion_reformas_provincial": -0.054,
@@ -1673,7 +1673,7 @@
         "insistencias_vetos": 0.247,
         "jornadas_individuales_no_trabajadas_12m": -0.243,
         "rechazos_decretos": 0.503,
-        "votos_sobre_bancas": -0.024
+        "votos_sobre_bancas": -0.102
       },
       "apoyo_campo": {
         "adhesion_reformas_provincial": 0.945,
@@ -1687,7 +1687,7 @@
         "insistencias_vetos": 0.349,
         "jornadas_individuales_no_trabajadas_12m": -0.49,
         "rechazos_decretos": 0.522,
-        "votos_sobre_bancas": 0.204
+        "votos_sobre_bancas": -0.145
       },
       "apoyo_construccion": {
         "adhesion_reformas_provincial": -0.228,
@@ -1701,7 +1701,7 @@
         "insistencias_vetos": 0.721,
         "jornadas_individuales_no_trabajadas_12m": -0.405,
         "rechazos_decretos": 0.401,
-        "votos_sobre_bancas": 0.463
+        "votos_sobre_bancas": 0.086
       },
       "apoyo_empresario": {
         "adhesion_reformas_provincial": -0.339,
@@ -1715,7 +1715,7 @@
         "insistencias_vetos": 0.905,
         "jornadas_individuales_no_trabajadas_12m": -0.547,
         "rechazos_decretos": 0.519,
-        "votos_sobre_bancas": 0.655
+        "votos_sobre_bancas": 0.437
       },
       "cobertura_judicial": {
         "adhesion_reformas_provincial": -0.374,
@@ -1729,7 +1729,7 @@
         "insistencias_vetos": 0.718,
         "jornadas_individuales_no_trabajadas_12m": -0.558,
         "rechazos_decretos": 0.841,
-        "votos_sobre_bancas": 0.079
+        "votos_sobre_bancas": -0.247
       },
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.576,
@@ -1743,7 +1743,7 @@
         "insistencias_vetos": -0.368,
         "jornadas_individuales_no_trabajadas_12m": 0.25,
         "rechazos_decretos": -0.047,
-        "votos_sobre_bancas": -0.457
+        "votos_sobre_bancas": -0.396
       },
       "conflictividad_nacional": {
         "adhesion_reformas_provincial": -0.251,
@@ -1757,7 +1757,7 @@
         "insistencias_vetos": -0.25,
         "jornadas_individuales_no_trabajadas_12m": 0.185,
         "rechazos_decretos": -0.496,
-        "votos_sobre_bancas": 0.05
+        "votos_sobre_bancas": 0.219
       },
       "eficacia_legislativa": {
         "adhesion_reformas_provincial": -0.593,
@@ -1771,7 +1771,7 @@
         "insistencias_vetos": 0.278,
         "jornadas_individuales_no_trabajadas_12m": 0.483,
         "rechazos_decretos": -0.166,
-        "votos_sobre_bancas": -0.237
+        "votos_sobre_bancas": -0.4
       },
       "insistencias_vetos": {
         "adhesion_reformas_provincial": -0.489,
@@ -1785,7 +1785,7 @@
         "eficacia_legislativa": 0.278,
         "jornadas_individuales_no_trabajadas_12m": -0.609,
         "rechazos_decretos": 0.68,
-        "votos_sobre_bancas": 0.501
+        "votos_sobre_bancas": 0.115
       },
       "jornadas_individuales_no_trabajadas_12m": {
         "adhesion_reformas_provincial": 0.303,
@@ -1813,21 +1813,21 @@
         "eficacia_legislativa": -0.166,
         "insistencias_vetos": 0.68,
         "jornadas_individuales_no_trabajadas_12m": -0.466,
-        "votos_sobre_bancas": 0.196
+        "votos_sobre_bancas": -0.18
       },
       "votos_sobre_bancas": {
-        "adhesion_reformas_provincial": -0.389,
-        "alineamiento_senadores_prov": -0.024,
-        "apoyo_campo": 0.204,
-        "apoyo_construccion": 0.463,
-        "apoyo_empresario": 0.655,
-        "cobertura_judicial": 0.079,
-        "cohesion_bloque": -0.457,
-        "conflictividad_nacional": 0.05,
-        "eficacia_legislativa": -0.237,
-        "insistencias_vetos": 0.501,
+        "adhesion_reformas_provincial": -0.479,
+        "alineamiento_senadores_prov": -0.102,
+        "apoyo_campo": -0.145,
+        "apoyo_construccion": 0.086,
+        "apoyo_empresario": 0.437,
+        "cobertura_judicial": -0.247,
+        "cohesion_bloque": -0.396,
+        "conflictividad_nacional": 0.219,
+        "eficacia_legislativa": -0.4,
+        "insistencias_vetos": 0.115,
         "jornadas_individuales_no_trabajadas_12m": -0.205,
-        "rechazos_decretos": 0.196
+        "rechazos_decretos": -0.18
       }
     },
     "pares_altos": [
@@ -2736,7 +2736,7 @@
     "2026-07": 66.6,
     "2026-08": 71.3,
     "2026-09": 76.1,
-    "2026-10": 81.0
+    "2026-10": 79.4
   },
   "series_dimensiones": {
     "itvc": {
@@ -3511,7 +3511,7 @@
           "2026-07": 87.2,
           "2026-08": 89.9,
           "2026-09": 91.1,
-          "2026-10": 90.5
+          "2026-10": 80.6
         }
       },
       "conflicto_social": {
@@ -3862,11 +3862,11 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.282,
+      "r": -0.298,
       "n": 21
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.079,
+      "r": -0.089,
       "n": 20
     },
     "ITCP adelantado 1 mes vs EPU": {
@@ -3874,11 +3874,11 @@
       "n": 20
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.361,
+      "r": -0.374,
       "n": 21
     },
     "niveles, sin la dimensión de sector privado": {
-      "r": 0.732,
+      "r": 0.73,
       "n": 11
     }
   },
@@ -5347,8 +5347,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": true,
-          "r_niveles": -0.282,
-          "r_diferencias": -0.079,
+          "r_niveles": -0.298,
+          "r_diferencias": -0.089,
           "n": 21
         },
         {
@@ -5374,8 +5374,8 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": 0.386,
-          "r_diferencias": 0.627,
+          "r_niveles": 0.399,
+          "r_diferencias": 0.633,
           "n": 21
         },
         {
@@ -5427,16 +5427,16 @@
       "n_propias": 1,
       "n_ajenas": 11,
       "niveles": {
-        "convergente": 0.282,
-        "discriminante": 0.267,
-        "brecha": 0.015
+        "convergente": 0.298,
+        "discriminante": 0.269,
+        "brecha": 0.029
       },
       "diferencias": {
-        "convergente": 0.079,
-        "discriminante": 0.207,
-        "brecha": -0.128
+        "convergente": 0.089,
+        "discriminante": 0.208,
+        "brecha": -0.119
       },
-      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,282 y con las 11 ajenas es 0,267. En los cambios mes a mes la separación no se sostiene: 0,079 con lo propio contra 0,207 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,298 y con las 11 ajenas es 0,269. En los cambios mes a mes la separación no se sostiene: 0,089 con lo propio contra 0,208 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }
