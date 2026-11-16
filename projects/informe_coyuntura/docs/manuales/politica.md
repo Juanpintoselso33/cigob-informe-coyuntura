@@ -40,7 +40,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤ 5 → 10
 
-**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo · [ADR-0429](../adr/0429-decretos-por-ley-y-transferencias-no-automaticas-salen-por-ahora.md) Decretos por ley y transferencias no automáticas salen del índice por ahora
+**Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP · [ADR-0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) El Poder judicial se disuelve en poder legislativo · [ADR-0429](../adr/0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) El peso de decretos por ley pasa entero a eficacia legislativa
 
 #### Cobertura de cargos judiciales
 
@@ -437,4 +437,4 @@ histórica.
 - [0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) — El Poder judicial se disuelve en poder legislativo
 - [0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) — Votos ajenos pasa a diputados a favor, por mes
 - [0426](../adr/0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) — Decretos por ley y transferencias no automáticas salen del índice
-- [0429](../adr/0429-decretos-por-ley-y-transferencias-no-automaticas-salen-por-ahora.md) — Decretos por ley y transferencias no automáticas salen del índice por ahora
+- [0429](../adr/0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) — El peso de decretos por ley pasa entero a eficacia legislativa

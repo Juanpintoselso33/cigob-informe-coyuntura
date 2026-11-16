@@ -256,7 +256,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0422](0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) | El Poder judicial se disuelve en poder legislativo | `cobertura_judicial`, `produccion_legislativa`, `ratio_dnu` | vigente |
 | [0423](0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) | Votos ajenos pasa a diputados a favor, por mes | `votos_sobre_bancas` | vigente |
 | [0426](0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) | Decretos por ley y transferencias no automáticas salen del índice | `ratio_dnu`, `transferencias_no_automaticas` | vigente |
-| [0429](0429-decretos-por-ley-y-transferencias-no-automaticas-salen-por-ahora.md) | Decretos por ley y transferencias no automáticas salen del índice por ahora | `ratio_dnu`, `transferencias_no_automaticas`, `eficacia_legislativa` | vigente |
+| [0429](0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) | El peso de decretos por ley pasa entero a eficacia legislativa | `ratio_dnu`, `eficacia_legislativa` | vigente |
 
 ### Gestión (ITCG)
 

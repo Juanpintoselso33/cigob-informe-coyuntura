@@ -426,6 +426,11 @@ def test_el_indice_renormaliza_sin_el_valor_viejo(monkeypatch):
     # ADR-0426 lo suspendió (nov-2026): el mecanismo se prueba con el indicador repuesto
     monkeypatch.setattr(politica.itcp, "INDICADORES_SUSPENDIDOS",
                         {k: v for k, v in politica.itcp.INDICADORES_SUSPENDIDOS.items() if k != "ratio_dnu"})
+    # ADR-0429 lo sacó además de la tabla de pesos: se repone el reparto previo.
+    leg = politica.itcp.DIMENSIONES_ITCP["poder_legislativo"]
+    monkeypatch.setitem(leg, "indicadores", {"eficacia_legislativa": 0.30, "ratio_dnu": 0.25,
+                                             "cobertura_judicial": 0.20, "insistencias_vetos": 0.125,
+                                             "rechazos_decretos": 0.125})
     base = {"eficacia_legislativa": {"valor": 27.3}, "insistencias_vetos": {"valor": 0}}
     con_viejo = politica.calcular_itcp_cinturon({**base, "ratio_dnu": {"valor": 1.156}})
     sin = politica.calcular_itcp_cinturon(base)

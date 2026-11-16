@@ -65,3 +65,9 @@ archivados se leen con el método vigente (ADR-0359) y también cambian.
   (`parametrica.TENSIONES_DE_CORTE` / `PUNTAJES_DE_CORTE`): inflación del mes y
   esperada (1/2/3 %), pobreza, mora, carga de la deuda, votos sobre bancas y
   los cortes de color de las tarifas.
+- **Corrección del 15-nov-2026 (revisión de Juan, punto E).** Vetos insistidos y
+  decretos derogados tienen una regla escrita ([[0377]]: cero verde, uno o dos
+  amarillo, tres naranja, cuatro o más rojo). Sus bandas interpolaban dos casos en
+  47,5, que con la escala nueva es naranja. Pasan a anclas explícitas (0 → 100,
+  1 → 60, 2 → 50, 3 → 35, 4 → 10): el 2 queda en el borde del amarillo y los demás
+  no se mueven. Lo prueba `tests/test_vetos_y_decretos_regla_de_colores.py`.

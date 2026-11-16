@@ -672,6 +672,15 @@ ANCLAS_ITCP = {
     "votos_sobre_bancas": ((99.0, 10), (109.0, parametrica.PUNTAJES_DE_CORTE[2]),
                            (119.0, parametrica.PUNTAJES_DE_CORTE[1]),
                            (129.1, parametrica.PUNTAJES_DE_CORTE[0]), (172.0, 100)),
+    # ADR-0377 + revisión del 15-nov-2026 (Juan, punto E): la regla escrita es
+    # cero = verde, uno o dos = amarillo, tres = naranja, cuatro o más = rojo.
+    # Con la escala de ADR-0427 las bandas interpolaban 2 en 47,5 (naranja):
+    # el 2 se fija en el borde del amarillo (50, inclusivo) y los demás quedan
+    # donde estaban (1 → 60, 3 → 35, 4 → 10).
+    "insistencias_vetos": ((0.0, 100), (1.0, 60), (2.0, parametrica.PUNTAJES_DE_CORTE[1]),
+                           (3.0, 35), (4.0, 10)),
+    "rechazos_decretos": ((0.0, 100), (1.0, 60), (2.0, parametrica.PUNTAJES_DE_CORTE[1]),
+                          (3.0, 35), (4.0, 10)),
 }
 
 DIMENSIONES_ITCP = {
@@ -737,8 +746,8 @@ DIMENSIONES_ITCP = {
         # como del Senado; vetos insistidos y decretos derogados abajo porque
         # casi nunca ocurren y pasan casi todos los meses en 100. Antes:
         # 0,23/0,30/0,15/0,15/0,17 (producción legislativa).
-        # 2026-11-15 (ADR-0429): `ratio_dnu` sale por ahora (dirección,
-        # 13-nov) y su 0,25 pasa ENTERO a eficacia legislativa, que queda como
+        # 2026-11-15 (ADR-0429): `ratio_dnu` está suspendido desde el 12-nov
+        # (ADR-0426) y su 0,25 pasa ENTERO a eficacia legislativa, que queda como
         # la medida de si se gobierna por ley o por decreto. No se reparte en
         # proporción: la cobertura quedó en 0,20 a propósito (ADR-0422) y vetos
         # y derogados abajo porque casi siempre están en 100. Si vuelve, el
@@ -886,31 +895,6 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
-    # ADR-0429 (reunión del 13-nov-2026): salen por ahora, decidido por la
-    # dirección (Luis y Marcos). Los demás de cada dimensión absorben su peso.
-    "ratio_dnu": {
-        "dimension": "poder_legislativo",
-        "desde": "2026-11",
-        "desde_txt": "noviembre de 2026",
-        "adr": "0429",
-        "por_que": "La dirección lo sacó del índice por ahora en la reunión "
-                   "del 13 de noviembre de 2026, hasta revisar cómo se mide el "
-                   "uso de decretos de necesidad y urgencia. Su peso pasó "
-                   "entero a eficacia legislativa.",
-        "condicion_reingreso": "Que la dirección vuelva a incluirlo, con la "
-                               "medición revisada.",
-    },
-    "transferencias_no_automaticas": {
-        "dimension": "alianzas_territoriales",
-        "desde": "2026-11",
-        "desde_txt": "noviembre de 2026",
-        "adr": "0429",
-        "por_que": "La dirección lo sacó del índice por ahora en la reunión "
-                   "del 13 de noviembre de 2026, hasta revisar cómo se miden "
-                   "las transferencias discrecionales a las provincias.",
-        "condicion_reingreso": "Que la dirección vuelva a incluirlo, con la "
-                               "medición revisada.",
-    },
     "iaf_transferencias": {
         "dimension": "alianzas_territoriales",
         "desde": "2026-10",
@@ -1074,7 +1058,7 @@ FAMILIAS_ITCP = {
 
     # Capacidad propia: resultado de la acción del gobierno.
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
-    # "ratio_dnu": "capacidad" — suspendido por ADR-0429; reponer si vuelve.
+    # "ratio_dnu": "capacidad" — suspendido (ADR-0426) y fuera de la tabla (ADR-0429); reponer si vuelve.
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
     "votos_sobre_bancas": "capacidad",         # cuántos diputados acompañan sus leyes (ADR-0423)
     # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
@@ -1137,7 +1121,7 @@ REZAGO_MESES_ITCP = {
     # rezago efectivo del último punto es el de esos registros (ADR-0126).
     "cobertura_judicial": 1.0,
     # Ventanas móviles de 12 meses / 365 días.
-    # "ratio_dnu": 6.0 — suspendido por ADR-0429; reponer si vuelve.
+    # "ratio_dnu": 6.0 — suspendido (ADR-0426) y fuera de la tabla (ADR-0429); reponer si vuelve.
     # Conteos de 12 meses móviles sobre eventos fechados (ADR-0377): la regla de
     # la ventana (N/2 = 6); los eventos se leen al día, así que no hay rezago de
     # publicación que sumar.

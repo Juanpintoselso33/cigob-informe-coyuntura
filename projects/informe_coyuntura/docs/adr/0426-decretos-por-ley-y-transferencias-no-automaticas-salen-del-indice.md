@@ -7,6 +7,7 @@ cinturon: 'politica'
 indicadores: [ratio_dnu, transferencias_no_automaticas]
 archivos: ['scripts/itcp.py']
 relacionado: ['0245', '0378', '0422']
+modificado_por: ['0429']
 ambito: 'Cinturón política · índice político · `ratio_dnu` y `transferencias_no_automaticas` pasan a suspendidos'
 origen: 'Pedido de la dirección del Monitor, 12-nov-2026'
 ---
