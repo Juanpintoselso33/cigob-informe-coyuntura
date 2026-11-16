@@ -71,3 +71,10 @@ archivados se leen con el método vigente (ADR-0359) y también cambian.
   47,5, que con la escala nueva es naranja. Pasan a anclas explícitas (0 → 100,
   1 → 60, 2 → 50, 3 → 35, 4 → 10): el 2 queda en el borde del amarillo y los demás
   no se mueven. Lo prueba `tests/test_vetos_y_decretos_regla_de_colores.py`.
+- **Corrección del 15-nov-2026: la lectura en palabras del índice social sale del
+  color.** Era la escala de cinco tramos del documento original (85/95/105/110) y
+  contradecía al color en cuatro franjas (con 108, «mejora moderada» en amarillo).
+  Ahora hay una frase por color: rojo «Deterioro sustancial frente al inicio del
+  mandato», naranja «Peor que al inicio del mandato», amarillo «Igual o algo mejor que
+  al inicio del mandato» y verde «Mejora sustancial frente al inicio del mandato»
+  (`itvc.banda_interpretacion` usa `color_de_indice_base100`).

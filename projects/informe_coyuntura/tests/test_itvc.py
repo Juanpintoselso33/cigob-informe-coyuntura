@@ -118,7 +118,9 @@ def test_itvc_reproduce_ejemplo():
     # dentro de cada mitad de la dimensión partida.
     # ADR-0383: 86,1 → 87,4 (empleo 94,1 → 99,0 al suspenderse los proxies).
     assert r["valor"] == 87.4
-    assert r["banda"] == "deterioro_moderado"   # 87,4 sigue sobre el corte de 85
+    # 87,4: rojo con ADR-0427 (corte 87,5), y desde el 15-nov-2026 la lectura
+    # sale del color: «deterioro sustancial» (antes «moderado», corte de 85).
+    assert r["banda"] == "deterioro_sustancial"
     assert r["ajustes_aplicados"] == []
 
 
@@ -253,14 +255,18 @@ def test_tension_lineal_por_escala_del_doc():
 
 
 def test_escala_interpretacion():
-    """Bordes de la escala del doc (low exclusivo, high inclusivo)."""
-    assert itvc.banda_interpretacion(85.0) == "deterioro_sustancial"
-    assert itvc.banda_interpretacion(85.1) == "deterioro_moderado"
-    assert itvc.banda_interpretacion(95.1) == "sin_cambios"
-    assert itvc.banda_interpretacion(105.0) == "sin_cambios"
-    assert itvc.banda_interpretacion(105.1) == "mejora_moderada"
-    assert itvc.banda_interpretacion(110.0) == "mejora_moderada"
-    assert itvc.banda_interpretacion(110.1) == "mejora_sustancial"
+    """Desde el 15-nov-2026 la lectura en palabras sale del color (ADR-0427):
+    una frase por color, con los mismos bordes que pintan el cinturón."""
+    import parametrica
+    casos = {80.0: "deterioro_sustancial", 87.4: "deterioro_sustancial",
+             87.5: "peor_que_al_inicio", 99.9: "peor_que_al_inicio",
+             100.0: "igual_o_algo_mejor", 112.4: "igual_o_algo_mejor",
+             112.5: "mejora_sustancial", 130.0: "mejora_sustancial"}
+    color_de = {"deterioro_sustancial": "rojo", "peor_que_al_inicio": "naranja",
+                "igual_o_algo_mejor": "amarillo", "mejora_sustancial": "verde"}
+    for v, esperado in casos.items():
+        assert itvc.banda_interpretacion(v) == esperado, v
+        assert parametrica.color_de_indice_base100(v) == color_de[esperado], v
 
 
 def test_renormalizacion_ante_faltantes():

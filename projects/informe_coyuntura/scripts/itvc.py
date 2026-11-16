@@ -471,21 +471,30 @@ DIMENSIONES_ITVC = {
     },
 }
 
-# Escala de interpretación del doc (sección III). (low, high, etiqueta).
+# Lectura en palabras = el color del cinturón (revisión de Juan del 15-nov-2026,
+# punto E). Era la escala de cinco tramos del documento original (85/95/105/110)
+# y, con los cuatro tramos de ADR-0427, la frase y el color se contradecían en
+# cuatro franjas (con 108, «mejora moderada» pintada de amarillo). Ahora hay una
+# frase por color y la etiqueta sale del mismo `color_de_indice_base100` que
+# pinta el cinturón: no pueden separarse. Esta tabla queda sólo para la ficha
+# (los bordes 87,5 / 100 / 112,5); el borde va con el color: 100 es amarillo,
+# 87,5 naranja y 112,5 verde.
+_I_ROJO, _I_AMARILLO, _I_VERDE = (parametrica.indice_base100_de_tension(t)
+                                  for t in reversed(parametrica.TENSIONES_DE_CORTE))
 BANDAS_INTERPRETACION = [
-    (-INF, 85.0, "deterioro_sustancial"),
-    (85.0, 95.0, "deterioro_moderado"),
-    (95.0, 105.0, "sin_cambios"),
-    (105.0, 110.0, "mejora_moderada"),
-    (110.0, INF, "mejora_sustancial"),
+    (-INF, _I_ROJO, "deterioro_sustancial"),
+    (_I_ROJO, _I_AMARILLO, "peor_que_al_inicio"),
+    (_I_AMARILLO, _I_VERDE, "igual_o_algo_mejor"),
+    (_I_VERDE, INF, "mejora_sustancial"),
 ]
+_LECTURA_DE_COLOR = {"rojo": "deterioro_sustancial", "naranja": "peor_que_al_inicio",
+                     "amarillo": "igual_o_algo_mejor", "verde": "mejora_sustancial"}
 
 INTERPRETACION_LEGIBLE = {
-    "deterioro_sustancial": "Deterioro sustancial frente a las referencias",
-    "deterioro_moderado":   "Deterioro moderado frente a las referencias",
-    "sin_cambios":          "Sin cambios significativos frente a las referencias",
-    "mejora_moderada":      "Mejora moderada frente a las referencias",
-    "mejora_sustancial":    "Mejora sustancial frente a las referencias",
+    "deterioro_sustancial": "Deterioro sustancial frente al inicio del mandato",
+    "peor_que_al_inicio":   "Peor que al inicio del mandato",
+    "igual_o_algo_mejor":   "Igual o algo mejor que al inicio del mandato",
+    "mejora_sustancial":    "Mejora sustancial frente al inicio del mandato",
 }
 
 # VACÍA, y tiene que quedar vacía (ADR-0153).
@@ -570,7 +579,7 @@ INDICADORES_SUSPENDIDOS = {
 
 
 def banda_interpretacion(itvc: float) -> str:
-    return parametrica.banda_interpretacion(itvc, BANDAS_INTERPRETACION)
+    return _LECTURA_DE_COLOR[parametrica.color_de_indice_base100(itvc)]
 
 
 def tension_de_itvc(itvc: float) -> float:

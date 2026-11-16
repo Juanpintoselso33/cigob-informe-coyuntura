@@ -4426,15 +4426,14 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada compara además cada índice del informe contra todos los contrastes a la vez, para ver si correlaciona más con el propio que con los ajenos. No se cumple en todos los casos y la matriz lo declara.",
     ],
     comunicacion: [
-      "El color del cinturón sale del índice de impacto social: verde con 112,5 o más, amarillo de 100 a menos de 112,5, naranja de 87,5 a menos de 100 y rojo por debajo de 87,5. Un índice en 100 —sin cambios contra el arranque— queda justo en el borde: con 100 es amarillo y apenas por debajo ya es naranja. Por eso un índice puede leerse «sin cambios apreciables» en la tabla de abajo y estar en naranja: esas palabras van alrededor de 100 y los colores cortan en 100. Son los mismos cortes que en los otros tres cinturones, llevados a la escala base 100, y la web los muestra con el color y su palabra, sin número de tensión.",
+      "El color del cinturón sale del índice de impacto social: verde con 112,5 o más, amarillo de 100 a menos de 112,5, naranja de 87,5 a menos de 100 y rojo por debajo de 87,5. Un índice en 100 —sin cambios contra el arranque— queda justo en el borde: con 100 es amarillo y apenas por debajo ya es naranja. La lectura en palabras de la tabla de abajo sale del mismo color, así que nunca dicen cosas distintas. Son los mismos cortes que en los otros tres cinturones, llevados a la escala base 100, y la web los muestra con el color y su palabra, sin número de tensión.",
       "Cada componente publica su ficha con la transformación exacta, su nivel actual y su peso.",
     ],
     interpretacion: [
-      { rango: "> 110", lectura: "Mejora sustancial frente al 4º trimestre de 2023" },
-      { rango: "105 – 110", lectura: "Mejora moderada" },
-      { rango: "95 – 105", lectura: "Sin cambios apreciables" },
-      { rango: "85 – 95", lectura: "Deterioro moderado" },
-      { rango: "< 85", lectura: "Deterioro sustancial" },
+      { rango: "112,5 o más", lectura: "Mejora sustancial frente al inicio del mandato" },
+      { rango: "100 – 112,5", lectura: "Igual o algo mejor que al inicio del mandato" },
+      { rango: "87,5 – 100", lectura: "Peor que al inicio del mandato" },
+      { rango: "< 87,5", lectura: "Deterioro sustancial frente al inicio del mandato" },
     ],
     limitaciones: [
       "Mide evolución contra un punto de partida, no niveles absolutos: un país que arranca mal y mejora poco puntúa mejor que uno que arranca bien y empeora poco.",
