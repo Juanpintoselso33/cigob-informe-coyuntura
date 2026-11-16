@@ -22,22 +22,16 @@ const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
 // oct-2026 la línea del inicio muestra sólo la fecha (pedido editorial): salen
 // la píldora de cinturones tensionados y el conteo de indicadores con rezago.
 
-// El pie de la barra NOMBRA al cinturón dominante, no sólo al barbarismo
-// (ADR-0237). "Riesgo dominante: Político" mandaba al lector a la card
-// Política —3,3 y verde— cuando el que lo produce es Impacto social en 6,1:
-// `politica` y `vida_cotidiana` comparten barbarismo. El veredicto era
-// correcto y parecía contradecir a su propia tabla.
-const dominante = cinturonDominante(informe);
-// Sin número (ADR-0337): el cinturón dominante se nombra con la palabra de su
-// tramo, igual que la barra que tiene arriba.
-const colorDominante = dominante ? colorPorTension(dominante.score) : null;
-const lecturaDominante = colorDominante ? LECTURA_SEMAFORO[colorDominante] : null;
-// Desde oct-2026 (pedido editorial) el pie nombra sólo al cinturón dominante,
-// sin el barbarismo delante. Si no hay cinturón dominante, vuelve a nombrar
-// el barbarismo para no dejar el pie vacío.
-const pieRiesgo = dominante
-  ? `Riesgo dominante: ${dominante.nombre}${lecturaDominante ? ` (${lecturaDominante.toLowerCase()})` : ""}`
-  : `Riesgo dominante: ${cap(informe.barbarismo_activo)}`;
+// Desde nov-2026 (pedido editorial) la barra lleva DEBAJO «Tensión general
+// <tramo>», con la tipografía del título, y ya no hay pie de riesgo dominante.
+// La palabra sale del tramo del semáforo, así que cambia sola con el dato.
+const colorGlobal = colorPorTension(informe.score_global);
+const lecturaGlobal = colorGlobal ? LECTURA_SEMAFORO[colorGlobal] : null;
+const tituloGlobal = !lecturaGlobal
+  ? "Tensión general"
+  : lecturaGlobal.startsWith("Tensión ")
+    ? `Tensión general ${lecturaGlobal.slice("Tensión ".length)}`
+    : `Tensión general: ${lecturaGlobal.toLowerCase()}`;
 
 ---
 <header class="cg-hero" id="top">
@@ -60,9 +54,9 @@ const pieRiesgo = dominante
     <div class="cg-hero-nivel">
       <NivelTension
         tension={informe.score_global}
-        titulo="Tensión general"
+        titulo={tituloGlobal}
         tamano="grande"
-        pie={pieRiesgo}
+        tituloAbajo
         ocultarLectura
       />
     </div>
