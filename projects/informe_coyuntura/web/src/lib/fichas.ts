@@ -3219,7 +3219,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Diagnóstico Político (consultora privada; relevamiento diario de cortes sobre más de cien medios desde 2009; sus informes mensuales detallados son por suscripción)",
       operacion: "Reducción porcentual de los cortes por manifestación en la Ciudad de Buenos Aires contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240.",
       url: "https://diagnosticopolitico.com.ar/insights",
-      acceso: "Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública.",
+      acceso: "Semiautomático: la consultora publica el cierre de cada año en enero, por prensa. Cada noche un detector busca en Google Noticias las notas que la citan junto con piquetes y avisa cuando aparece un cierre posterior al último cargado; una persona carga entonces en el registro curado el anclaje anual con su fuente pública.",
     },
     transformaciones: [
       "Reducción = (1 − cortes en la Ciudad del último año cerrado / cortes en la Ciudad en 2023) × 100.",

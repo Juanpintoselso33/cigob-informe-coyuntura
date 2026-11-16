@@ -1,9 +1,8 @@
-"""El detector de años nuevos de piquetes de Diagnóstico Político (ADR-0025).
+"""El detector de cierres anuales de piquetes de Diagnóstico Político (ADR-0025).
 
-El sitio se rehízo en 2026 y /monitoreos-politicos da 404: el detector fallaba
-siempre y la card publicaba «No se pudo verificar si el portal publicó anclajes
-más recientes». Ahora mira el mapa del sitio y /insights, y que no haya un año
-nuevo es lo normal (el cierre anual sale en enero)."""
+El sitio de la consultora se rehízo en 2026 (/monitoreos-politicos da 404 y el
+contenido nuevo no tiene piquetes) y el cierre anual sale en enero por prensa.
+Desde el 16-nov-2026 el detector busca en Google Noticias."""
 import sys
 from pathlib import Path
 from types import SimpleNamespace
@@ -12,30 +11,54 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import gestion  # noqa: E402
 
+RSS = """<rss><channel>
+<item><title>Los piquetes se redujeron 52,7% desde que asumió Milei - La Nación</title>
+<pubDate>Tue, 13 Jan 2026 10:00:00 GMT</pubDate></item>
+<item><title>Ciudad de piquetes: crecieron un 32% en 2017 - Clarin.com</title>
+<pubDate>Thu, 04 Jan 2018 10:00:00 GMT</pubDate></item>
+</channel></rss>"""
 
-def test_lee_el_anio_del_texto_y_de_la_url_de_la_entrada():
+
+def test_lee_el_anio_del_titulo_y_de_la_url():
     f = gestion.anios_de_piquetes_dp
     assert f("3.893 piquetes en 2025, la cifra más baja desde 2011") == {2025}
     assert f("/2026/01/11/3-893-piquetes-2025-la-cifra-mas-baja-desde-2011/") == {2025}
     assert f("sin novedades") == set()
 
 
-def _con_paginas(monkeypatch, textos):
-    def get(url, **kw):
-        return SimpleNamespace(text=textos[url], raise_for_status=lambda: None)
-    monkeypatch.setattr(gestion.requests, "get", get)
+def test_el_cierre_de_2025_lo_habria_detectado():
+    """Con el anclaje en 2024, la nota de La Nación de enero de 2026 avisa."""
+    nuevos = gestion.cierres_nuevos_dp(RSS, 2024)
+    assert nuevos and nuevos[0][0] == "2026-01-13"
 
 
-def test_sin_anio_nuevo_no_hay_advertencia(monkeypatch):
-    _con_paginas(monkeypatch, {u: "<html>insights</html>" for u in gestion.DP_PAGINAS_DETECTOR})
+def test_con_el_anclaje_al_dia_no_avisa():
+    assert gestion.cierres_nuevos_dp(RSS, 2025) == []
+
+
+def test_un_titulo_con_anio_posterior_avisa_aunque_sea_viejo():
+    rss = "<item><title>Hubo 2.000 piquetes en 2026</title><pubDate>Mon, 30 Nov 2026 10:00:00 GMT</pubDate></item>"
+    assert gestion.cierres_nuevos_dp(rss, 2025)
+
+
+def _rss(monkeypatch, texto):
+    monkeypatch.setattr(gestion.requests, "get",
+                        lambda *a, **k: SimpleNamespace(text=texto, raise_for_status=lambda: None))
+
+
+def test_sin_cierre_nuevo_la_card_no_dice_nada(monkeypatch):
+    _rss(monkeypatch, RSS)
     r = gestion.fetch_protocolo_antipiquetes()
     assert r["advertencia_fuente"] == ""
-    assert "No se pudo verificar" not in r["detalle_txt"]
 
 
-def test_un_anio_nuevo_se_avisa(monkeypatch):
-    textos = {u: "" for u in gestion.DP_PAGINAS_DETECTOR}
-    textos[gestion.DP_PAGINAS_DETECTOR[0]] = "<loc>https://x/2027/01/10/2-000-piquetes-2026-algo</loc>"
-    _con_paginas(monkeypatch, textos)
+def test_con_cierre_nuevo_la_card_avisa(monkeypatch):
+    _rss(monkeypatch, RSS.replace("13 Jan 2026", "12 Jan 2027"))
     r = gestion.fetch_protocolo_antipiquetes()
-    assert "2026" in r["advertencia_fuente"]
+    assert "relevamiento nuevo" in r["advertencia_fuente"] and "2027-01-12" in r["advertencia_fuente"]
+
+
+def test_sin_notas_no_certifica(monkeypatch):
+    _rss(monkeypatch, "<rss></rss>")
+    r = gestion.fetch_protocolo_antipiquetes()
+    assert "No se pudo verificar" in r["advertencia_fuente"]

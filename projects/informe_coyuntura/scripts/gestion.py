@@ -3677,19 +3677,46 @@ def fetch_libertad_opcion_salud() -> dict | None:
 # ── D5: protocolo antipiquetes — Diagnóstico Político (ADR-0025) ──────────────
 
 DP_PIQUETES_PATH = PROJECT_DIR / "data" / "gestion" / "dp_piquetes.json"
-# El sitio se rehízo en 2026 y la sección «Monitoreos» (/monitoreos-politicos)
-# da 404: desde 2023 la consultora sólo publica cierres anuales, en enero, como
-# entrada de su sitio. El detector mira el mapa del sitio y la sección de
-# publicaciones; que no aparezca un año nuevo es lo normal, no una falla.
-DP_PAGINAS_DETECTOR = ("https://diagnosticopolitico.com.ar/sitemap.xml",
-                       "https://diagnosticopolitico.com.ar/insights")
+# Detector de cierres nuevos (revisión del 15/16-nov-2026). El sitio de la
+# consultora se rehízo en 2026: la sección «Monitoreos» da 404 y el contenido
+# nuevo (un CMS, Sanity) no tiene nada de piquetes. Desde 2023 el cierre anual
+# sale en enero por prensa (el de 2025: La Nación, 13-ene-2026, «Los piquetes se
+# redujeron 52,7%…»). El detector busca en Google Noticias las notas que citan a
+# Diagnóstico Político y piquetes: una nota publicada desde el 1 de enero del año
+# siguiente al próximo cierre, o que nombra un año posterior al último anclaje,
+# avisa para cargarlo en el store.
+DP_NOTICIAS_RSS = ("https://news.google.com/rss/search?q=%22Diagn%C3%B3stico+Pol%C3%ADtico%22"
+                   "+piquetes&hl=es-419&gl=AR&ceid=AR:es-419")
 
 
 def anios_de_piquetes_dp(texto: str) -> set[int]:
-    """Años de piquetes que anuncia una página de Diagnóstico Político: en el
-    texto («3.893 piquetes en 2025», «piquetes 2025») o en la URL de la entrada
-    («/2026/01/11/3-893-piquetes-2025-...»)."""
+    """Años de piquetes que anuncia un texto: «3.893 piquetes en 2025»,
+    «piquetes 2025» o una URL «/3-893-piquetes-2025-...»."""
     return {int(a) for a in re.findall(r"piquetes[\s-]+(?:en[\s-]+)?(20\d{2})", texto, re.I)}
+
+
+def cierres_nuevos_dp(rss: str, ultimo_anclaje: int) -> list[tuple[str, str]]:
+    """[(fecha ISO, título)] de las notas del RSS que anuncian un cierre
+    posterior a `ultimo_anclaje`: publicadas desde el 1 de enero de
+    ultimo_anclaje + 2 (el cierre de ultimo_anclaje + 1 sale en enero de ese
+    año) o con un año de piquetes posterior en el título."""
+    import html as _html
+    from email.utils import parsedate_to_datetime
+    desde = datetime(ultimo_anclaje + 2, 1, 1).date()
+    out = []
+    for item in re.findall(r"<item>(.*?)</item>", rss, re.S):
+        t = re.search(r"<title>(.*?)</title>", item, re.S)
+        f = re.search(r"<pubDate>(.*?)</pubDate>", item, re.S)
+        if not t or not f:
+            continue
+        titulo = _html.unescape(t.group(1)).strip()
+        try:
+            fecha = parsedate_to_datetime(f.group(1).strip()).date()
+        except (TypeError, ValueError):
+            continue
+        if fecha >= desde or any(a > ultimo_anclaje for a in anios_de_piquetes_dp(titulo)):
+            out.append((fecha.isoformat(), titulo))
+    return sorted(out)          # la primera nota del año suele ser el cierre
 
 
 def fetch_protocolo_antipiquetes() -> dict | None:
@@ -3701,9 +3728,9 @@ def fetch_protocolo_antipiquetes() -> dict | None:
     Ciudad por decisión previa de Juan. La base 2023 de la Ciudad (931) es
     estimada desde una participación redondeada, y así se declara. Los totales
     nacionales quedan en el store como contexto y no puntúan. Anclajes curados
-    con fuente en data/gestion/dp_piquetes.json. Además scrapea la página
-    pública de monitoreos como DETECTOR: si aparece un año nuevo, avisa para
-    actualizar el store.
+    con fuente en data/gestion/dp_piquetes.json. Además busca en Google
+    Noticias las notas que citan a la consultora como DETECTOR: si aparece un
+    cierre nuevo, avisa para actualizar el store.
     """
     try:
         dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig"))
@@ -3712,27 +3739,21 @@ def fetch_protocolo_antipiquetes() -> dict | None:
         ult = max(caba)
         irpc = round((1.0 - caba[ult] / base) * 100.0, 1)
 
-        # Detector de informes nuevos (no fatal): años nacionales publicados
-        # posteriores al último ancla del store.
+        # Detector de cierres nuevos (no fatal): notas de prensa que citan a
+        # Diagnóstico Político con un cierre posterior al último anclaje.
         advertencia = ""
         try:
-            anios: set[int] = set()
-            for url in DP_PAGINAS_DETECTOR:
-                r = requests.get(url, headers=HTTP_HEADERS, timeout=30)
-                r.raise_for_status()
-                anios |= anios_de_piquetes_dp(r.text)
-            if not anios:
-                # El sitio nuevo arma las notas con JavaScript: hoy el detector
-                # no ve ningún año, ni siquiera el último guardado (revisión del
-                # 15-nov-2026). No va a la card (no es un dato malo), pero queda
-                # en el log: el cierre anual se revisa a mano en enero.
-                print("  [AVISO] protocolo_antipiquetes: el detector no ve ningún año en el sitio "
-                      "de Diagnóstico Político; revisar a mano si publicó el cierre anual")
-            nuevos = sorted(a for a in anios if a > ult)
+            r = requests.get(DP_NOTICIAS_RSS, headers=HTTP_HEADERS, timeout=30)
+            r.raise_for_status()
+            if "<item>" not in r.text:
+                raise ValueError("la búsqueda de noticias no devolvió notas")
+            nuevos = cierres_nuevos_dp(r.text, ult)
             if nuevos:
-                advertencia = f"El portal anuncia años posteriores ({nuevos}); el anclaje publicado sigue en {ult}."
-                print(f"  [AVISO] Diagnóstico Político publicó datos de {nuevos}: "
-                      f"actualizar data/gestion/dp_piquetes.json")
+                fecha, titulo = nuevos[0]
+                advertencia = (f"La prensa publicó un relevamiento nuevo de Diagnóstico Político "
+                               f"(«{titulo}», {fecha}); el anclaje publicado sigue en {ult}.")
+                print(f"  [AVISO] Diagnóstico Político: posible cierre posterior a {ult} "
+                      f"(«{titulo}», {fecha}): actualizar data/gestion/dp_piquetes.json")
         except Exception:
             advertencia = "No se pudo verificar si el portal publicó anclajes más recientes."
 
