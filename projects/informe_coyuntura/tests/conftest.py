@@ -151,3 +151,22 @@ def _sin_api_del_indec(monkeypatch):
     monkeypatch.setattr(indec_api, "_cache", {})
     monkeypatch.setattr(indec_api, "_origen", {})
     monkeypatch.setattr(indec_api, "_caida", False)
+
+
+@pytest.fixture(autouse=True)
+def _sin_argentinadatos(monkeypatch):
+    """El respaldo de actas de Diputados (ADR-0434) no sale a la red en las
+    pruebas: una prueba que simula la Cámara caída tiene que ver la caída, no
+    las actas reales de ArgentinaDatos. `tests/test_argentinadatos_diputados.py`
+    vuelve a poner las funciones reales sobre datos de prueba."""
+    try:
+        import argentinadatos_diputados as ad
+        import requests
+    except Exception:
+        return
+
+    def _sin_red(*a, **k):
+        raise requests.ConnectionError("ArgentinaDatos deshabilitado en las pruebas")
+    monkeypatch.setattr(ad, "_get", _sin_red)
+    monkeypatch.setattr(ad, "_ACTAS", {})
+    monkeypatch.setattr(ad, "_PADRON", None)

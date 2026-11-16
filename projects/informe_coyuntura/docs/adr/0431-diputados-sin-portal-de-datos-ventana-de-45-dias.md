@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [eficacia_legislativa, votos_sobre_bancas]
 archivos: ['config.py', 'tests/test_gate_cache_esperable.py', 'web/src/lib/fichas.ts']
-relacionado: ['0062', '0191', '0210', '0432']
+relacionado: ['0062', '0191', '0210', '0432', '0434']
 ambito: 'Tolerancia de días sin fetch (G2b) de las dos cards que leen el portal de datos abiertos de Diputados'
 origen: 'Corrida nocturna del 16-nov-2026: 8 de 14 indicadores políticos desactualizados; Juan: «hay que ver esos 8», y «a y b» (ventana y migración).'
 ---

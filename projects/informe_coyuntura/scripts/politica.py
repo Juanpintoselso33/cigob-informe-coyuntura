@@ -5631,6 +5631,9 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
     columnas por casualidad -- se filtra exigiendo que la última columna sea
     un voto válido (_DIPUTADOS_VOTOS_VALIDOS), no por posición de página."""
     from statistics import median
+    import argentinadatos_diputados as ad
+    if isinstance(contenido, ad.ActaAD):
+        return ad.filas(contenido.acta)
 
     filas = []
     paginas = []          # (renglones, inicios) de cada página
@@ -5690,6 +5693,10 @@ def _diputados_acta_fecha(contenido: bytes) -> datetime | None:
     """Extrae la fecha ('Fecha: DD/MM/YYYY') del encabezado de metadata del
     PDF de una acta -- esa línea extrae limpia (sin duplicado de carácter),
     a diferencia del título decorativo."""
+    import argentinadatos_diputados as ad
+    if isinstance(contenido, ad.ActaAD):
+        f = ad.fecha_local(contenido.acta)
+        return datetime(f.year, f.month, f.day)
     with pdfplumber.open(io.BytesIO(contenido)) as pdf:
         texto = pdf.pages[0].extract_text() or ""
     m = re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", texto)
@@ -5746,11 +5753,31 @@ def _diputados_acta_pdf(session: requests.Session, id_acta: int):
     path = _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta)
     r = _paced_get(session, HCDN_VOTACIONES_BASE, path, aceptar_404=True)
     if r is None:
+        alternativa = _acta_diputados_argentinadatos(id_acta)
+        if alternativa is not None:
+            return alternativa
         _avisar_fallo_acta_diputados(id_acta)
         return _ACTA_FALLO
     if r.status_code == 404:
         return _ACTA_NO_EXISTE
     return r.content
+
+
+def _acta_diputados_argentinadatos(id_acta: int):
+    """El acta desde ArgentinaDatos cuando el sitio de la Cámara no la da
+    (ADR-0434): `ActaAD` si existe, `_ACTA_NO_EXISTE` si ArgentinaDatos tiene
+    la numeración y ese id no está (hueco o todavía no hubo esa votación), None
+    si ArgentinaDatos tampoco responde."""
+    import argentinadatos_diputados as ad
+    try:
+        acta = ad.buscar_acta(id_acta)
+        maximo = ad.maximo_id()
+    except (requests.RequestException, ValueError) as e:
+        print(f"  [WARN] acta {id_acta} de Diputados: ArgentinaDatos tampoco responde ({e})")
+        return None
+    if acta is not None:
+        return ad.ActaAD(acta)
+    return _ACTA_NO_EXISTE if maximo else None
 
 
 # Caché PERMANENTE por acta (id -> {fecha, rice}): a diferencia de los
@@ -7189,6 +7216,15 @@ def _parsear_encabezado_acta_diputados(contenido: bytes) -> dict | None:
     línea "Acta Nº …" (títulos largos ocupan más de una línea y se unen);
     mayoría y resultado vienen con carácter duplicado y se normalizan token a
     token. None si falta algún campo (acta ilegible para clasificar)."""
+    import argentinadatos_diputados as ad
+    if isinstance(contenido, ad.ActaAD):
+        a = contenido.acta
+        return {"fecha": ad.fecha_local(a).strftime("%Y-%m-%d"),
+                "motivo": (a.get("titulo") or "").strip(),
+                "mayoria": " ".join(x for x in (a.get("tipoMayoria"), a.get("baseMayoria")) if x),
+                "resultado": (a.get("resultado") or "").upper(),
+                "votos_txt": (f"{a['votosAfirmativos']} afirmativos - {a['votosNegativos']} negativos - "
+                              f"{a['abstenciones']} abst.")}
     with pdfplumber.open(io.BytesIO(contenido)) as pdf:
         texto = pdf.pages[0].extract_text() or ""
     m_fecha = re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", texto)
@@ -8564,6 +8600,15 @@ def _cabecera_acta_diputados_pdf(contenido: bytes) -> dict | None:
     """Cabecera de un acta de Diputados (primera página del PDF): fecha, título
     de la votación, resultado, 'Miembros del Cuerpo' y total de afirmativos del
     encabezado. None si no se reconoce el formato."""
+    import argentinadatos_diputados as ad
+    if isinstance(contenido, ad.ActaAD):
+        a = contenido.acta
+        miembros = a.get("miembros") or ((a.get("presentes") or 0) + (a.get("ausentes") or 0)) or None
+        return {"fecha": ad.fecha_local(a).strftime("%Y-%m-%d"),
+                "titulo": (a.get("titulo") or "").strip(),
+                "resultado": (a.get("resultado") or "").upper(),
+                "bancas_camara": miembros,
+                "afirmativos_encabezado": a.get("votosAfirmativos")}
     with pdfplumber.open(io.BytesIO(contenido)) as pdf:
         texto = pdf.pages[0].extract_text() or ""
     lineas = [l.strip() for l in texto.split("\n") if l.strip()]
