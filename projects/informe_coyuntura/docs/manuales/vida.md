@@ -141,7 +141,7 @@ donde colar una calibración (ADR-0123).
 
 ### Dimensión `precios` (25%)
 
-#### Inflación de alimentos
+#### Alimentos frente al IPC general
 
 `ipc_alimentos`
 
@@ -153,7 +153,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0033](../adr/0033-itvc-doble-conteo-y-winsorizacion.md) ITVC: doble conteo salario/comida eliminado y winsorización asimétrica
+**Lo gobiernan**: [ADR-0033](../adr/0033-itvc-doble-conteo-y-winsorizacion.md) ITVC: doble conteo salario/comida eliminado y winsorización asimétrica · [ADR-0430](../adr/0430-la-card-de-alimentos-muestra-cuanto-subio-sobre-el-ipc.md) La card de alimentos muestra cuánto subió la comida por encima del IPC
 
 #### Canasta de servicios públicos / salario
 
@@ -358,7 +358,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-66 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+67 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -426,3 +426,4 @@ histórica.
 - [0413](../adr/0413-informalidad-mide-asalariados-sin-aportes-propios.md) — La informalidad cuenta sólo al asalariado sin aportes propios
 - [0424](../adr/0424-el-grafico-de-pobreza-arranca-en-la-base.md) — El gráfico de pobreza arranca en la base
 - [0425](../adr/0425-pobreza-mora-y-carga-de-deuda-con-cortes-fijos.md) — Pobreza, mora y carga de la deuda con cortes fijos
+- [0430](../adr/0430-la-card-de-alimentos-muestra-cuanto-subio-sobre-el-ipc.md) — La card de alimentos muestra cuánto subió la comida por encima del IPC

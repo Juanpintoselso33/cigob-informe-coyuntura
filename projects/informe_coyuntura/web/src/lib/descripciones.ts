@@ -294,9 +294,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   // ADR-0033: en el ITCIS puntúa el encarecimiento RELATIVO (alimentos vs IPC
   // general) — la versión salario/alimentos duplicaba la brecha (r = 0,985)
   ipc_alimentos: {
-    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4º trimestre de 2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
+    que: "Cuánto más subieron los precios de alimentos y bebidas que el índice de precios al consumidor (IPC) general desde fines de 2023, en %. Cero quiere decir que subieron lo mismo; un número positivo, que la comida está más cara en relación con el resto de los precios que al arranque del mandato; uno negativo, que subió menos (alivio relativo). Al lado se muestra la inflación de alimentos del mes.",
     aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.",
-    frecuencia: "Mensual", tipo: "Variación (tarjeta) · nivel frente al índice general de precios (índice)",
+    frecuencia: "Mensual", tipo: "% frente al índice general de precios desde fines de 2023",
   },
   endeudamiento_familiar: {
     que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda real (descontada la inflación). Ya no puntúa en el índice de impacto social: salió del índice porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",

@@ -455,7 +455,7 @@ export const LABELS: Record<string, string> = {
   derrotas_legislativas: "Derrotas legislativas del Ejecutivo",
   bloqueo_sostenido: "Bloqueo legislativo sostenido",
   // impacto social (claves de publicar.py)
-  brecha_salario_cbt: "Salario real frente a la canasta básica", ipc_alimentos: "Inflación de alimentos",
+  brecha_salario_cbt: "Salario real frente a la canasta básica", ipc_alimentos: "Alimentos frente al IPC general",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
   carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   icg_utdt: "Confianza en el Gobierno",
@@ -548,7 +548,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   derrotas_legislativas: "derrotas en 12 meses",
   bloqueo_sostenido: "% en pie",
   // impacto social
-  brecha_salario_cbt: "canastas", ipc_alimentos: "% mensual", endeudamiento_familiar: "billones de pesos",
+  brecha_salario_cbt: "canastas", ipc_alimentos: "% frente al IPC", endeudamiento_familiar: "billones de pesos",
   mora_familias: "%",
   carga_servicio_deuda_hogares: "%",
   icg_utdt: "0-5",
@@ -631,7 +631,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acumulado de 12 meses)",
   bloqueo_sostenido: "% de normas desafiadas en el recinto que siguen en pie (últimos 12 meses)",
   // impacto social
-  brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
+  brecha_salario_cbt: "Canastas", ipc_alimentos: "% frente al IPC general desde fines de 2023",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
   carga_servicio_deuda_hogares: "% de la masa salarial registrada comprometida en servicios de deuda",
   icg_utdt: "Índice de 0 a 5 (más es más confianza)",

@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'ITVC'
 indicadores: [ipc_alimentos, brecha_salario_cbt]
 archivos: ['scripts/indec_api.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'tests/test_indec_api.py']
-relacionado: ['0417', '0291', '0275', '0413']
+relacionado: ['0275', '0291', '0413', '0417', '0430']
 ambito: 'Todo lo del INDEC que llegaba atrasado por la copia de datos.gob.ar y que su API tiene igual: IPC (nivel, núcleo, regulados, alimentos, vivienda) y canastas básicas'
 origen: 'Juan, 2-nov-2026, después de ADR-0417: «pasá todo retrasado, todo lo que haya».'
 ---

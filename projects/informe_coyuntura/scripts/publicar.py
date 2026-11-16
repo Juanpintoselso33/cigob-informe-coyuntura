@@ -156,8 +156,17 @@ def build_vida(raw):
          "canastas básicas totales", "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables) + Instituto Nacional de Estadística y Censos (INDEC: canasta básica total)", bs.get("fecha"),
          detalle_txt=bs.get("nota"))
     al = indec.get("ipc_alimentos", {})
-    _add(out, "ipc_alimentos", _red(al.get("variacion_mensual_pct"), 2),
-         "% mensual", "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor de alimentos y bebidas (Catálogo API-INDEC)", al.get("fecha"))
+    # Luis, 14-nov-2026 (punto 9 de su documento del 11-nov): la card muestra
+    # cuánto más subió la comida que el IPC general desde fines de 2023, que es
+    # lo que pinta (`itvc_alimentos`, ADR-0033), y no la inflación del mes, que
+    # va al lado. Antes mostraba el 2 % mensual y el color salía de otra cuenta.
+    var_mes = al.get("variacion_mensual_pct")
+    _add(out, "ipc_alimentos", al.get("sobre_ipc_pct"),
+         "% frente al IPC general desde fines de 2023",
+         "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor de alimentos y bebidas y nivel general (Catálogo API-INDEC)",
+         al.get("fecha_sobre_ipc") or al.get("fecha"),
+         detalle_txt=(f"Inflación de alimentos del mes: {_red(var_mes, 1):.1f} %".replace(".", ",")
+                      if isinstance(var_mes, (int, float)) else None))
     cc = bcra.get("credito_consumo_total", {})
     # El crédito de consumo viene en millones de pesos; pasar a billones para
     # que el número no sea gigante (43.560.544 millones = 43,56 billones).

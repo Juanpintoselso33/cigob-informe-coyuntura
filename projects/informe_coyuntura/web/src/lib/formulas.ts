@@ -193,7 +193,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   ipc_alimentos: {
     latex: String.raw`100\cdot\frac{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{4º trimestre 2023}}}`,
-    leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La tarjeta muestra la variación mensual del rubro.)",
+    leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. La tarjeta muestra la misma cuenta al revés y en %: cuánto más subió la comida que el IPC general desde fines de 2023.",
   },
   peso_tarifas: {
     latex: String.raw`T=\max\left\{\operatorname{clip}_{0}^{10}\!\left[2(E-10)\right],\operatorname{clip}_{0}^{10}\!\left[2(P-5)\right]\right\},\quad I=125-5T`,

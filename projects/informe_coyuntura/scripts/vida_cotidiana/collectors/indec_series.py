@@ -98,6 +98,35 @@ def _get_ripte_hist() -> dict:
     return hist
 
 
+_BASE_4T23 = ("2023-10", "2023-11", "2023-12")
+
+
+def alimentos_sobre_ipc(alimentos: dict, general: dict) -> dict:
+    """{YYYY-MM: %} — cuánto más subieron los alimentos que el IPC general desde
+    el 4T-2023 (pedido de Luis, 14-nov-2026). 0 = subieron lo mismo; +5 = la
+    comida está 5 % más cara en relación con el resto de los precios; negativo =
+    subió menos. Es la misma cuenta que puntúa (`itvc_alimentos`, ADR-0033),
+    expresada al revés y como porcentaje: la card muestra lo que pinta."""
+    faltan = [m for m in _BASE_4T23 if m not in alimentos or m not in general]
+    if faltan:
+        raise ValueError(f"base 4T-2023 incompleta (faltan {faltan})")
+    a_base = sum(alimentos[m] for m in _BASE_4T23) / 3.0
+    g_base = sum(general[m] for m in _BASE_4T23) / 3.0
+    return {ym: round((alimentos[ym] / a_base) / (general[ym] / g_base) * 100.0 - 100.0, 1)
+            for ym in sorted(set(alimentos) & set(general))
+            if ym >= "2023-10" and alimentos[ym] and general[ym]}
+
+
+def alimentos_sobre_ipc_niveles() -> dict:
+    """La serie de `alimentos_sobre_ipc` con los niveles del IPC nacional. La
+    usan la card (`fetch_indec`) y la serie (`descargar_series`), para que G3
+    cierre."""
+    def niveles(sid):
+        return {f[:7]: v for f, v in _get_serie(sid, limit=72)}
+    return alimentos_sobre_ipc(niveles(INDEC_SERIES["ipc_alimentos"]),
+                               niveles(INDEC_SERIES["ipc_total"]))
+
+
 def fetch_indec() -> dict:
     results = {}
 
@@ -110,6 +139,14 @@ def fetch_indec() -> dict:
                 results[key] = tarjeta()
             else:
                 results[key] = _var_mensual(INDEC_SERIES[key])
+            if key == "ipc_alimentos":
+                try:
+                    serie = alimentos_sobre_ipc_niveles()
+                    ult = max(serie)
+                    results[key]["sobre_ipc_pct"] = serie[ult]
+                    results[key]["fecha_sobre_ipc"] = f"{ult}-01"
+                except Exception as e:
+                    logger.error("ipc_alimentos sobre IPC FAIL: %s", e)
             logger.info("%s OK: %s", key, results[key]["fecha"])
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)

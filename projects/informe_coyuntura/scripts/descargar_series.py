@@ -1912,7 +1912,7 @@ VIDA_INDEC = [
 # Derivadas: la variación m/m % de cada serie INDEC de índices (misma métrica que
 # muestra la card del indicador), reconstruida para todo el histórico disponible.
 VIDA_DERIVADAS = [
-    ("ipc_alimentos",    "% m/m",           "INDEC (Catálogo API-INDEC)", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
+    ("ipc_alimentos",    "% frente al IPC general desde fines de 2023", "INDEC — IPC alimentos y nivel general (elab. CIGOB)", lambda: fetch_alimentos_sobre_ipc_serie()),
 ]
 
 
@@ -2228,6 +2228,17 @@ def fetch_itvc_alimentos() -> list:
         indice = (a_base / alim[ym]) * (gen[ym] / g_base) * 100.0
         out.append([f"{ym}-01", round(indice, 1)])
     return out
+
+
+@_con_config_de_vida
+def fetch_alimentos_sobre_ipc_serie() -> list:
+    """Cuánto más subieron los alimentos que el IPC general desde el 4T-2023
+    (Luis, 14-nov-2026): la misma cuenta que la card, de la misma función del
+    colector, para que G3 cierre. [[YYYY-MM-01, %]]."""
+    _entrar_a_vida_cotidiana()
+    sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
+    from indec_series import alimentos_sobre_ipc_niveles
+    return [[f"{ym}-01", v] for ym, v in alimentos_sobre_ipc_niveles().items()]
 
 
 @_con_config_de_vida

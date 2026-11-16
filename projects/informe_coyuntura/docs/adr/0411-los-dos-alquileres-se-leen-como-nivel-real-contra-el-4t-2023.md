@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [alquiler_real, alquiler_udesa_real]
 archivos: ['scripts/vida_cotidiana/collectors/ipc_alquiler.py', 'scripts/vida_cotidiana/collectors/alquiler_udesa.py', 'scripts/vida_cotidiana/cargar_alquiler_udesa.py', 'data/vida/alquiler_udesa.json', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/itvc.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/datos.ts', 'tests/test_alquiler_udesa.py', 'tests/test_alquiler_original.py']
-relacionado: ['0111', '0291', '0386']
+relacionado: ['0111', '0291', '0386', '0430']
 ambito: 'Cinturón de impacto social · ITCIS · dimensión Presión de precios'
 origen: 'Decisión de Juan del 29-oct-2026: las dos tarjetas de alquiler muestran el alquiler real contra el 4T-2023, no una variación; la de UdeSA se reconstruye como nivel; abril de 2024 se carga con la cifra única del informe.'
 ---
