@@ -362,8 +362,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Una norma queda desafiada desde su primera votación en el recinto: la insistencia de una ley vetada (gane o pierda) o el control de un decreto bajo la ley 26.122. Sigue en pie mientras la insistencia no se complete en ambas cámaras o el decreto no sea rechazado por las dos. Fuentes: actas de votación nominales de Diputados y del Senado, y base InfoLeg para vetos e insistencias. Más es mejor para el Ejecutivo: es la contracara del conteo de derrotas, la capacidad de sostener la norma propia con un tercio de una cámara.",
   },
   movilizacion_cepa: {
-    latex: String.raw`\frac{\text{conflictos laborales acumulados del a\~no}}{200\;(\text{m\'aximo de referencia})}\times 100`,
-    leyenda: "La cifra del informe de conflictividad del Centro de Economía Política Argentina (CEPA), normalizada a un índice 0–100. El máximo de referencia (200 conflictos acumulados) es una calibración propia del informe, declarada en la ficha.",
+    latex: String.raw`\frac{\text{casos de conflictividad laboral por mes (promedio del \'ultimo tramo)}}{80\;(\text{m\'aximo de referencia})}\times 100`,
+    leyenda: "El promedio de casos de conflictividad laboral por mes del tramo más reciente que cita el informe del Centro de Economía Política Argentina (CEPA), normalizado a un índice 0–100 sobre un máximo de referencia de 80 casos por mes, una calibración propia. Hasta octubre de 2026 medía los conflictos acumulados del año, que el Centro dejó de publicar.",
   },
   conflictividad_nacional: {
     latex: String.raw`\left(\frac{\text{eventos de protesta y disturbios en el pa\'is}_{\text{\'ultimos 12 meses}}}{\text{eventos}_{\text{2023}}}-1\right)\times 100`,

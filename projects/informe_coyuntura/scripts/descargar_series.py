@@ -1752,7 +1752,11 @@ def fetch_rotacion_gabinete_serie() -> list:
 
 
 def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
-    """Backfill histórico de movilizacion_cepa: escanea hasta `max_paginas`
+    """ADR-0433: cada punto es el promedio mensual de casos (0-100 sobre
+    CEPA_MAX_CASOS_MES) del último tramo que cita un informe; lo de abajo
+    sobre la rama m_tot es la historia del método anterior.
+
+    Backfill histórico de movilizacion_cepa: escanea hasta `max_paginas`
     páginas de centrocepa.com.ar/documentos/informes (10 informes por
     página) buscando TODOS los links con "conflictividad"/"conflictos-laborales"
     en la URL -- no solo el más reciente, a diferencia de
@@ -1813,9 +1817,12 @@ def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
         except requests.RequestException as e:
             print(f"[WARN] movilizacion_cepa_serie: {informe_url}: {e}")
             continue
-        cifra_info = politica._extraer_cifra_cepa(r2.text)
-        if cifra_info is None or cifra_info["rama"] != "m_tot":
-            continue   # sin match, o tasa mensual (m_mes) -- no comparable con el conteo acumulado, ver docstring de _extraer_cifra_cepa
+        # ADR-0433: desde el informe 893 (12-nov-2026) el indicador es el
+        # promedio mensual de casos del último tramo citado; los informes que
+        # sólo traen el acumulado del año no son comparables y quedan afuera.
+        cifra_info = politica._promedio_mensual_cepa(r2.text)
+        if cifra_info is None:
+            continue
         fecha = politica._fecha_informe_cepa(r2.text)
         out.append([fecha, cifra_info["valor"]])
 

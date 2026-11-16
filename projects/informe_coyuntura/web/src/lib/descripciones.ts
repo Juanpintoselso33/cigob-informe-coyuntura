@@ -221,7 +221,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   movilizacion_cepa: {
     que: "El nivel de conflictividad social y laboral: paros, protestas y cortes, según los informes del Centro de Economía Política Argentina.",
-    aporta: "Aproxima la tensión en la calle. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: su fuente publica informes recién desde fines de 2025 (sin serie histórica posible) y su cifra acumula conflictos desde el inicio de cada año, lo que impide comparar meses entre sí — la medición continúa como contraste interno del indicador nacional de conflictividad.",
+    aporta: "Aproxima la tensión en la calle. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: su fuente publica informes recién desde fines de 2025, sin serie histórica posible. Desde noviembre de 2026 mide el promedio de casos por mes del último tramo que informa el Centro, que sí se puede comparar entre informes; la medición continúa como contraste interno del indicador nacional de conflictividad.",
     frecuencia: "Por informe", tipo: "Índice (0–100)",
   },
   iaf_transferencias: {

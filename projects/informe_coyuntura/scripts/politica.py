@@ -1449,6 +1449,39 @@ def _extraer_cifra_cepa(html: str) -> dict | None:
     return None
 
 
+_MESES_CEPA = {m: i for i, m in enumerate(
+    ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+     "septiembre", "octubre", "noviembre", "diciembre"), start=1)}
+_RE_CEPA_PROMEDIO = re.compile(
+    r"Entre\s+(\w+)\s+de\s+(\d{4})\s+y\s+(\w+)\s+de\s+(\d{4})\W[^.]{0,80}?"
+    r"(\d+(?:[.,]\d+)?)\s+casos?\s+(?:por\s+mes|mensuales?)", re.IGNORECASE)
+
+
+def _promedio_mensual_cepa(html: str) -> dict | None:
+    """Promedio mensual de casos de conflictividad laboral del tramo MÁS
+    RECIENTE que cita el informe («Entre noviembre de 2025 y octubre de 2026,
+    el promedio subió a 33 casos mensuales»), normalizado 0-100 sobre
+    CEPA_MAX_CASOS_MES (ADR-0433). Desde el informe 893 (12-nov-2026) CEPA dejó
+    de publicar el acumulado del año que medía el indicador. None si el
+    informe no trae ningún tramo con promedio."""
+    from bs4 import BeautifulSoup
+    texto = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+    tramos = []
+    for m in _RE_CEPA_PROMEDIO.finditer(texto):
+        md, ad, mh, ah, cifra = m.groups()
+        if md.lower() not in _MESES_CEPA or mh.lower() not in _MESES_CEPA:
+            continue
+        tramos.append(((int(ah), _MESES_CEPA[mh.lower()]), (int(ad), _MESES_CEPA[md.lower()]),
+                       float(cifra.replace(",", "."))))
+    if not tramos:
+        return None
+    (ah, mh), (ad, md), cifra = max(tramos)
+    return {"valor": round(min(100.0, cifra / CEPA_MAX_CASOS_MES * 100.0), 1),
+            "cifra_cruda": cifra, "rama": "m_mes",
+            "periodo_desde": f"{ad}-{md:02d}", "periodo_hasta": f"{ah}-{mh:02d}",
+            "metrica": f"{cifra:g} casos por mes ({ad}-{md:02d} a {ah}-{mh:02d})"}
+
+
 def fetch_cepa_movilizacion() -> dict | None:
     """
     Conflictividad social CEPA — índice 0–100 normalizado.
@@ -1495,22 +1528,11 @@ def fetch_cepa_movilizacion() -> dict | None:
         r2 = requests.get(informe_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r2.raise_for_status()
 
-        cifra_info = _extraer_cifra_cepa(r2.text)
+        # ADR-0433: el indicador mide el promedio mensual de casos del último
+        # tramo que cita CEPA; el acumulado del año (rama m_tot) ya no se publica.
+        cifra_info = _promedio_mensual_cepa(r2.text)
         if cifra_info is None:
-            raise ValueError(f"No se encontró patrón de conflictividad en {informe_url}")
-        if cifra_info["rama"] != "m_tot":
-            # Hallazgo de revisión final (2026-07-08): el informe más reciente
-            # puede matchear la rama m_mes (tasa mensual, escala 0-80) en vez de
-            # m_tot (conteo acumulado "desde inicios del año", escala 0-200) --
-            # ver fetch_cepa_movilizacion_serie() para el caso real (informe
-            # 748). Si eso pasara acá, BANDAS_ITCP["movilizacion_cepa"] (0-200)
-            # puntuaría mal una tasa mensual. Se trata igual que "sin patrón":
-            # degrada a cache en vez de publicar un valor en la escala
-            # equivocada.
-            raise ValueError(
-                f"informe más reciente ({informe_url}) es rama={cifra_info['rama']!r}, "
-                "no comparable con la escala m_tot ya publicada"
-            )
+            raise ValueError(f"informe más reciente ({informe_url}) sin promedio mensual de casos")
 
         return {
             **cifra_info,

@@ -259,6 +259,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0429](0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) | El peso de decretos por ley pasa entero a eficacia legislativa | `ratio_dnu`, `eficacia_legislativa` | vigente |
 | [0431](0431-diputados-sin-portal-de-datos-ventana-de-45-dias.md) | Sin el portal de datos de Diputados, eficacia y votos sobre bancas toleran 45 días | `eficacia_legislativa`, `votos_sobre_bancas` | vigente |
 | [0432](0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md) | Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos | `eficacia_legislativa`, `votos_sobre_bancas` | vigente |
+| [0433](0433-movilizacion-cepa-pasa-a-promedio-mensual-de-casos.md) | Movilización (CEPA) pasa a medir el promedio mensual de casos | `movilizacion_cepa` | vigente |
 
 ### Gestión (ITCG)
 
