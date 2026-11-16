@@ -49,7 +49,7 @@ Tiene dos diferencias con el CKAN:
 `scripts/hcdn_buscador.py` lee el buscador con pausa entre pedidos (corta con 429).
 
 - **Proyecto de ley del Ejecutivo:** sigla PE o JGM, ingresado por Diputados, con fecha de
-  publicación, y cuyo título **no** empieza con «Comunica…», «Remite…» o «Solicita…» (los
+  publicación, y cuyo título **no** empieza con «Comunica…», «(Se) remite…» o «Solicita…» (los
   avisos de DNU y decretos delegados, los informes y los pedidos de acuerdo). Se valida con
   la auditoría de cohorte del 8-sep-2026: salen los mismos 14 proyectos y ninguno de más. La
   fecha de publicación pasa por las mismas rectificaciones del Trámite Parlamentario

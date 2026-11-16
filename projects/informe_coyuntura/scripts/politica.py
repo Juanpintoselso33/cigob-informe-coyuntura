@@ -2173,8 +2173,9 @@ def fetch_eficacia_legislativa() -> dict | None:
         except requests.RequestException as e_ckan:
             # datos.hcdn.gob.ar caído desde el 4-nov-2026: el buscador de
             # proyectos trae los mismos expedientes (ADR-0432). Sólo una falla
-            # de RED pasa al buscador: un dato inválido del CKAN (una fecha de
-            # sanción ilegible) sigue fallando y conserva el último valor.
+            # de requests (red, HTTP, o una página que no es JSON) pasa al
+            # buscador: un dato inválido del CKAN (una fecha de sanción
+            # ilegible) sigue fallando y conserva el último valor.
             print(f"  [WARN] eficacia_legislativa: CKAN de Diputados sin respuesta "
                   f"({e_ckan}); se usa el buscador de proyectos")
             # El filtro del buscador es por fecha de ingreso, no de publicación,

@@ -1150,6 +1150,9 @@ def fetch_eficacia_serie() -> list:
     try:
         raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
                   + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
+        # Dentro del try, igual que en la card: si el CKAN cae entre los dos
+        # recursos, card y serie toman el mismo camino y G3 sigue cerrando.
+        san = politica._leyes_sancionadas_fechadas()
     except requests.RequestException as e:
         print(f"  [WARN] eficacia_legislativa serie: CKAN de Diputados sin respuesta ({e}); "
               "se usa el buscador de proyectos")
@@ -1159,7 +1162,6 @@ def fetch_eficacia_serie() -> list:
           and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
           and (politica._RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
                or politica._RE_PE_EXP.search(r.get("EXP_SENADO", "") or ""))]
-    san = politica._leyes_sancionadas_fechadas()
     out = []
     for ym, cohorte_hasta, fin in _hcdn_ventanas_12m():
         cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()

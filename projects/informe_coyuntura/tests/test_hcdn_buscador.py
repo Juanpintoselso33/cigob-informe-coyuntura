@@ -144,3 +144,58 @@ def test_la_serie_del_buscador_conserva_los_meses_anteriores(monkeypatch, tmp_pa
     serie = dict(map(tuple, ds._eficacia_serie_buscador()))
     assert serie["2025-11-01"] == 28.0 and serie["2025-12-01"] == 25.0   # del CKAN
     assert serie["2026-01-01"] == 50.0                                    # recalculado
+
+
+def test_se_remite_tambien_es_aviso():
+    assert not hb.es_proyecto_de_ley({"titulo": "SE REMITE LA CUENTA DE INVERSION DEL EJERCICIO 2025"})
+
+
+def test_un_proyecto_en_dos_od_queda_anotado_en_las_dos(monkeypatch):
+    """Revisión del 16-nov: con `vistos` por clave, la segunda OD perdía el
+    dictamen del proyecto del Ejecutivo y su votación se guardaba como False."""
+    por_od = {100: [_item("pap-1", "0001-PE-2026", "LEY X", "2026-03-01")],
+              448: [_item("pap-1", "0001-PE-2026", "LEY X", "2026-03-01"),
+                    _item("pap-2", "0002-D-2026", "LEY Y", "2026-03-01", autor="PRO")]}
+    monkeypatch.setattr(hb, "buscar", lambda **f: por_od[f["od_nro"]] if f["od_anio"] == 2026 else [])
+    dets = {"pap-1": [{"camara": "Diputados", "od_nro": 100, "od_anio": 2026, "fecha": "2026-09-01"},
+                      {"camara": "Diputados", "od_nro": 448, "od_anio": 2026, "fecha": "2026-10-16"}],
+            "pap-2": [{"camara": "Diputados", "od_nro": 448, "od_anio": 2026, "fecha": "2026-10-16"}]}
+    monkeypatch.setattr(hb, "detalle", lambda c: {"dictamenes": dets[c]})
+    idx = hb.indice_origen_por_od({100, 448}, 2025)
+    assert ("2026-10-16", "HCDN1") in idx["dictamenes"][448]
+    acta = {"titulo": "O.D. 448 - LEY", "fecha": "2026-10-21"}
+    assert politica._vsb_origen_pe_diputados(acta, idx) is True
+
+
+def test_el_paginado_corta_por_el_total_y_no_por_el_tamano(monkeypatch):
+    paginas = {1: {"total": 25, "items": [{"clave": f"pap-{i}"} for i in range(15)]},
+               2: {"total": 25, "items": [{"clave": f"pap-{i}"} for i in range(15, 25)]},
+               3: {"total": 25, "items": []}}
+    monkeypatch.setattr(hb, "_get", lambda url, p: paginas[p["pagina"]])
+    assert len(hb.buscar(sigla="PE")) == 25
+
+
+def test_un_ckan_con_dato_invalido_no_pasa_al_buscador(monkeypatch):
+    def invalido(*a, **k):
+        raise ValueError("CKAN sin result")
+    monkeypatch.setattr(politica, "_hcdn_paginate", invalido)
+    monkeypatch.setattr(politica, "_eficacia_filas_buscador",
+                        lambda d: pytest.fail("un error de datos no debe ir al buscador"))
+    assert politica.fetch_eficacia_legislativa() is None
+
+
+def test_con_el_buscador_caido_la_votacion_queda_pendiente_no_en_false(monkeypatch):
+    import requests
+    cache = {"diputados": {"6019": {"fecha": "2026-10-21", "resultado": "AFIRMATIVO",
+                                    "titulo": "O.D. 448 - LEY DE INVIOLABILIDAD. VOT. EN GRAL.",
+                                    "origen_pe": None}},
+             "senado": {}, "diputados_ausentes": []}
+    monkeypatch.setattr(politica, "_vsb_titulo_diputados_es_ley_general", lambda t: True)
+    monkeypatch.setattr(politica, "_vsb_guardar_cache", lambda c: None)
+
+    def caido(*a, **k):
+        raise requests.ConnectionError("caído")
+    monkeypatch.setattr(politica, "_hcdn_paginate", caido)
+    monkeypatch.setattr(hb, "buscar", caido)
+    assert politica._vsb_resolver_origen(cache) is False
+    assert cache["diputados"]["6019"]["origen_pe"] is None

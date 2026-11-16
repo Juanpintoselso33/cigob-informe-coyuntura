@@ -32,21 +32,25 @@ _HEADERS = {"Accept": "application/json",
             "User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
 _PAUSA = 0.4          # segundos entre pedidos: el buscador corta con 429
 _TIMEOUT = 30
-_POR_PAGINA = 20      # fijo del buscador
+_MAX_PAGINAS = 200    # tope de seguridad: 4.000 proyectos por consulta
 
-# Los avisos del Ejecutivo empiezan así; los proyectos de ley, no.
-_RE_AVISO = re.compile(r"^\s*(COMUNIC|REMIT|SOLICIT)", re.I)
+# Los avisos del Ejecutivo empiezan así; los proyectos de ley, no. «SE REMITE
+# LA CUENTA DE INVERSION» es el mismo aviso que «REMITE LA CUENTA…».
+_RE_AVISO = re.compile(r"^\s*(SE\s+)?(COMUNIC|REMIT|SOLICIT)", re.I)
 # La sanción definitiva: «CONSIDERACION Y SANCION», con o sin aclaración.
 _RE_SANCION = re.compile(r"\bSANCION\b", re.I)
 _RE_MEDIA = re.compile(r"MEDIA\s+SANCION", re.I)
 
 
 def _get(url: str, params: dict | None = None) -> dict:
-    """GET con pausa y hasta tres intentos; un 429 espera más. Un 4xx que no
+    """GET con pausa y hasta cuatro intentos. Un 429 espera lo que diga
+    Retry-After (o 15 s); un 5xx o un corte de red, cada vez más. Un 4xx que no
     sea 429 sube enseguida: es un pedido mal armado, no la red."""
-    ultimo = None
-    for intento in range(3):
-        time.sleep(_PAUSA * (1 + 4 * intento))
+    ultimo: Exception = requests.ConnectionError("buscador de Diputados sin respuesta")
+    espera = _PAUSA
+    for _ in range(4):
+        time.sleep(espera)
+        espera = max(espera * 5, 2.0)
         try:
             r = requests.get(url, params=params, headers=_HEADERS, timeout=_TIMEOUT)
         except requests.RequestException as e:
@@ -54,6 +58,13 @@ def _get(url: str, params: dict | None = None) -> dict:
             continue
         if r.status_code == 429:
             ultimo = requests.HTTPError("429 del buscador de Diputados")
+            try:
+                espera = min(float(r.headers.get("Retry-After") or 15), 60)
+            except ValueError:
+                espera = 15
+            continue
+        if r.status_code >= 500:
+            ultimo = requests.HTTPError(f"{r.status_code} del buscador de Diputados")
             continue
         r.raise_for_status()
         return r.json()
@@ -63,14 +74,21 @@ def _get(url: str, params: dict | None = None) -> dict:
 def buscar(**filtros) -> list[dict]:
     """Todos los proyectos que devuelve el buscador con estos filtros."""
     out, pagina = [], 1
-    while True:
+    while pagina <= _MAX_PAGINAS:
         d = _get(BUSCADOR, {"pagina": pagina, **filtros})
         if "items" not in d:
             raise ValueError(f"buscador de Diputados: {d.get('message') or d}")
         out += d["items"]
-        if len(d["items"]) < _POR_PAGINA:
+        # El corte sale del `total` que declara la respuesta, no de un tamaño
+        # de página supuesto: una página corta no puede truncar en silencio.
+        total = d.get("total")
+        if not d["items"] or (isinstance(total, int) and not d.get("total_es_minimo")
+                              and len(out) >= total):
+            return out
+        if not isinstance(total, int) and len(d["items"]) < (d.get("por_pagina") or 20):
             return out
         pagina += 1
+    raise ValueError(f"buscador de Diputados: más de {_MAX_PAGINAS} páginas para {filtros}")
 
 
 def detalle(clave: str) -> dict:
@@ -143,19 +161,19 @@ def indice_origen_por_od(ods: set[int], desde_anio: int) -> dict:
         items = [it for anio in range(desde_anio, hasta_anio + 1)
                  for it in buscar(od_nro=od, od_anio=anio)]
         for it in items:
-            if it.get("clave") in vistos:
-                continue
-            vistos.add(it.get("clave"))
             pid = proyecto_id(it.get("clave"))
-            if not pid:
+            if not pid or pid in vistos:
                 continue
-            det = detalle(it["clave"])
-            propios = [(d["fecha"], pid) for d in det.get("dictamenes") or []
-                       if d.get("camara") == "Diputados" and d.get("od_nro") == od
-                       and d.get("fecha") and (d.get("od_anio") or 0) >= desde_anio]
-            if not propios:
-                continue
-            dictamenes.setdefault(od, []).extend(propios)
+            vistos.add(pid)
+            # Un proyecto se mira UNA vez, pero con todas las OD pedidas en las
+            # que tiene dictamen: si sólo se anotara la primera, otra OD quedaría
+            # sin él y su votación se daría por no ejecutiva para siempre.
+            for d in detalle(it["clave"]).get("dictamenes") or []:
+                n = d.get("od_nro")
+                if (d.get("camara") == "Diputados" and n in ods and d.get("fecha")
+                        and (d.get("od_anio") or 0) >= desde_anio
+                        and (d["fecha"], pid) not in dictamenes.get(n, [])):
+                    dictamenes.setdefault(n, []).append((d["fecha"], pid))
             if it.get("autor_bloque") == "PODER EJECUTIVO" and es_proyecto_de_ley(it):
                 ids.add(pid)
     return {"ids": ids, "dictamenes": dictamenes, "claves": None}
