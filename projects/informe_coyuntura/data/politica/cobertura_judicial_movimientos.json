@@ -1,6 +1,6 @@
 {
   "fecha_padron": "2026-06-05",
-  "revisado_hasta": "2026-11-03",
+  "revisado_hasta": "2026-11-16",
   "estado": "reconstruccion_estimada_con_limites",
   "criterio": "Ajustes documentados del flujo de titulares sobre el universo habilitado del padrón. No equivalen a cargos en ejercicio: el momento de jura puede diferir del nombramiento.",
   "limites": [
@@ -922,6 +922,18 @@
       "cargo_previo": [
         "Juzgado Nacional de Primera Instancia del Trabajo N° 4"
       ]
+    },
+    {
+      "norma": "1343/2026",
+      "tipo": "designacion",
+      "fecha": "2026-11-06",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en un cargo vacante del padrón (Sala D tiene dos vacantes con subrogante; el designado no figura como titular en el padrón).",
+      "persona": "RUBIERO, Agustín Raúl",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala D",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/350161/20261111",
+      "clasificacion": "designacion",
+      "cargo_previo": []
     }
   ]
 }
