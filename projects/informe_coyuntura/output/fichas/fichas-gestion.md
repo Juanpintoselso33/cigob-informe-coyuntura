@@ -1302,7 +1302,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-10 (22 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
 | **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora privada; relevamiento diario de cortes sobre más de cien medios desde 2009; sus informes mensuales detallados son por suscripción) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en la Ciudad de Buenos Aires contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
-| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-11-16 |
+| **MODO DE ACCESO** | Semiautomático: la consultora publica el cierre de cada año en enero, por prensa. Cada noche un detector busca en Google Noticias las notas que la citan junto con piquetes y avisa cuando aparece un cierre posterior al último cargado; una persona carga entonces en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-11-16 |
 
 ## Definición — qué mide y por qué importa
 
