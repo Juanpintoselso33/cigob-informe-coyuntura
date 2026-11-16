@@ -177,3 +177,53 @@ def indice_origen_por_od(ods: set[int], desde_anio: int) -> dict:
             if it.get("autor_bloque") == "PODER EJECUTIVO" and es_proyecto_de_ley(it):
                 ids.add(pid)
     return {"ids": ids, "dictamenes": dictamenes, "claves": None}
+
+
+# ── Dictámenes de Diputados para comisiones_caidas (ADR-0436) ─────────────────
+# Caché incremental: el dictamen de un proyecto (número y fecha de su Orden del
+# Día) no cambia una vez publicado, así que su detalle se baja una sola vez.
+# Lo único que cambia es si se sancionó: sólo los proyectos de LEY sin sanción
+# se vuelven a mirar, una vez por día.
+
+def dictamenes_diputados(anios: list[int], ruta, hoy: str, progreso=None) -> dict:
+    """{clave: {pid, tipo, dictamenes: [[od_nro, od_anio, fecha]], sanciones:
+    [fecha], visto}} de los proyectos con dictamen de Diputados en Órdenes del
+    Día de `anios`, completando y guardando la caché de `ruta` (Path)."""
+    import json
+    try:
+        cache = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+    proyectos = cache.setdefault("proyectos", {})
+    items = {it["clave"]: it for anio in anios
+             for it in buscar(con_dictamen_diputados=1, od_anio=anio) if proyecto_id(it.get("clave"))}
+    pedir = [c for c, it in items.items()
+             if c not in proyectos
+             or (it.get("tipo") == "LEY" and not proyectos[c]["sanciones"]
+                 and proyectos[c].get("visto") != hoy)]
+    for i, clave in enumerate(progreso(pedir) if progreso else pedir):
+        det = detalle(clave)
+        proyectos[clave] = {
+            "pid": proyecto_id(clave), "tipo": items[clave].get("tipo"),
+            "dictamenes": sorted([d["od_nro"], d.get("od_anio"), d["fecha"]]
+                                 for d in det.get("dictamenes") or []
+                                 if d.get("camara") == "Diputados" and d.get("od_nro") and d.get("fecha")),
+            "sanciones": sorted({m["fecha"] for m in det.get("movimientos") or []
+                                 if m.get("fecha") and _RE_SANCION.search(m.get("texto") or "")}),
+            "visto": hoy,
+        }
+        if i % 25 == 24:      # un corte no pierde lo ya bajado
+            ruta.write_text(json.dumps(cache, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
+    cache["actualizado"] = hoy
+    ruta.write_text(json.dumps(cache, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
+    return {c: proyectos[c] for c in items}
+
+
+def comisiones_caidas(proyectos: dict, desde: str, hasta: str) -> tuple[int, int] | None:
+    """(con dictamen en la ventana, sancionados en la ventana), con la regla de
+    `politica.fetch_comisiones_caidas`: Orden del Día de Diputados fechada en la
+    ventana y algún movimiento de sanción también en la ventana."""
+    od = {p["pid"] for p in proyectos.values()
+          if any(desde <= d[2] <= hasta for d in p["dictamenes"])}
+    san = {p["pid"] for p in proyectos.values() if any(desde <= f <= hasta for f in p["sanciones"])}
+    return (len(od), len(od & san)) if od else None

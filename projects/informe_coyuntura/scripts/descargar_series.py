@@ -1225,16 +1225,29 @@ def fetch_veto_quorum_serie() -> list:
 def fetch_comisiones_serie() -> list:
     """Serie mensual del % de proyectos con dictamen (Orden del Día) SIN
     sanción, ventana móvil de 12 meses — misma fórmula que el indicador.
-    [[YYYY-MM-01, %]]."""
+    [[YYYY-MM-01, %]].
+
+    Si el CKAN no responde, sale del buscador de proyectos de Diputados
+    (ADR-0436)."""
     dictamenes = []
+    caido = False
     for y in range(2023, date.today().year + 1):
         try:
             dictamenes += politica._hcdn_paginate(politica.HCDN_DICTAMENES_RID, q=str(y))
+        except requests.RequestException as e:
+            caido = True
+            print(f"  [WARN] comisiones serie dictámenes {y}: {e}")
         except Exception as e:
             print(f"  [WARN] comisiones serie dictámenes {y}: {e}")
+    try:
+        if caido:
+            raise requests.ConnectionError("CKAN de Diputados sin respuesta")
+        raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
+    except requests.RequestException as e:
+        print(f"  [WARN] comisiones serie: {e}; se usa el buscador de proyectos")
+        return _comisiones_serie_buscador()
     od = [(str(r["EXPEDIENTE"]).strip(), str(r.get("FECHA", ""))[:10]) for r in dictamenes
           if r.get("EXPEDIENTE") and "orden" in str(r.get("TIPO", "")).lower()]
-    raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
     san = [(str(r.get("PROYECTO_ID", "")).strip(), str(r.get("FECHA", ""))[:10])
            for r in raw_san if r.get("PROYECTO_ID")]
     out = []
@@ -1244,6 +1257,27 @@ def fetch_comisiones_serie() -> list:
         if od_ids:
             pct = round((len(od_ids) - len(od_ids & san_ids)) / len(od_ids) * 100.0, 1)
             out.append([f"{ym}-01", pct])
+    return out
+
+
+# La caché del buscador cubre las Órdenes del Día del año anterior y el actual:
+# desde este mes la ventana de 12 meses cae entera adentro (ADR-0436).
+COMISIONES_BUSCADOR_DESDE = "2026-01"
+
+
+def _comisiones_serie_buscador() -> list:
+    import hcdn_buscador
+    previas = {r[0]: float(r[2]) for r in _filas_previas("politica", {"comisiones_caidas"})
+               if r[0][:7] < COMISIONES_BUSCADOR_DESDE}
+    proyectos = politica._dictamenes_buscador()
+    out = [[f, v] for f, v in sorted(previas.items())]
+    for ym, cutoff, fin in _hcdn_ventanas_12m():
+        if ym < COMISIONES_BUSCADOR_DESDE:
+            continue
+        conteo = hcdn_buscador.comisiones_caidas(proyectos, cutoff, fin)
+        if conteo:
+            total, aprobados = conteo
+            out.append([f"{ym}-01", round((total - aprobados) / total * 100.0, 1)])
     return out
 
 

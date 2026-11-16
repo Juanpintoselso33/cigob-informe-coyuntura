@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [eficacia_legislativa, votos_sobre_bancas]
 archivos: ['scripts/hcdn_buscador.py', 'scripts/politica.py', 'scripts/descargar_series.py', 'tests/test_hcdn_buscador.py', 'web/src/lib/fichas.ts']
-relacionado: ['0061', '0062', '0063', '0431', '0434']
+relacionado: ['0061', '0062', '0063', '0431', '0434', '0436']
 ambito: 'Fuente de respaldo de `eficacia_legislativa` y `votos_sobre_bancas` mientras el CKAN de Diputados esté caído'
 origen: 'Juan, 16-nov-2026: «a y b» (ventana de 45 días y migración al buscador nuevo).'
 ---

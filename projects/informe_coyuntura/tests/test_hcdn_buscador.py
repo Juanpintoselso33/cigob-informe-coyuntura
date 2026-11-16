@@ -199,3 +199,36 @@ def test_con_el_buscador_caido_la_votacion_queda_pendiente_no_en_false(monkeypat
     monkeypatch.setattr(hb, "buscar", caido)
     assert politica._vsb_resolver_origen(cache) is False
     assert cache["diputados"]["6019"]["origen_pe"] is None
+
+
+# ── comisiones_caidas con caché incremental (ADR-0436) ────────────────────────
+
+def _items_od():
+    return [dict(_item("pap-10", "0010-D-2026", "LEY A", "2026-01-01"), tipo="LEY"),
+            dict(_item("pap-11", "0011-D-2026", "DECLARAR DE INTERES", "2026-01-01"), tipo="DECLARACION")]
+
+
+def test_la_cache_es_incremental(monkeypatch, tmp_path):
+    pedidos = []
+    monkeypatch.setattr(hb, "buscar", lambda **f: _items_od() if f["od_anio"] == 2026 else [])
+    monkeypatch.setattr(hb, "detalle", lambda c: pedidos.append(c) or {
+        "dictamenes": [{"camara": "Diputados", "od_nro": 5, "od_anio": 2026, "fecha": "2026-05-01"},
+                       {"camara": "Senado", "od_nro": 9, "od_anio": 2026, "fecha": "2026-06-01"}],
+        "movimientos": []})
+    ruta = tmp_path / "cache.json"
+    p = hb.dictamenes_diputados([2026], ruta, "2026-11-16")
+    assert sorted(pedidos) == ["pap-10", "pap-11"]
+    assert p["pap-10"]["dictamenes"] == [[5, 2026, "2026-05-01"]]       # sólo el de Diputados
+    pedidos.clear()
+    hb.dictamenes_diputados([2026], ruta, "2026-11-16")                  # mismo día: nada
+    assert pedidos == []
+    hb.dictamenes_diputados([2026], ruta, "2026-11-17")                  # otro día: sólo la ley sin sanción
+    assert pedidos == ["pap-10"]
+
+
+def test_comisiones_caidas_cuenta_la_ventana():
+    proyectos = {"a": {"pid": "HCDN1", "dictamenes": [[5, 2026, "2026-05-01"]], "sanciones": ["2026-06-10"]},
+                 "b": {"pid": "HCDN2", "dictamenes": [[6, 2026, "2026-05-02"]], "sanciones": []},
+                 "c": {"pid": "HCDN3", "dictamenes": [[7, 2024, "2024-05-02"]], "sanciones": ["2026-06-01"]}}
+    assert hb.comisiones_caidas(proyectos, "2025-11-16", "2026-11-16") == (2, 1)
+    assert hb.comisiones_caidas(proyectos, "2020-01-01", "2020-12-31") is None

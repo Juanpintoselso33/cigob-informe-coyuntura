@@ -2445,6 +2445,37 @@ def fetch_veto_quorum() -> dict | None:
 
 # ── HCDN CKAN — comisiones caídas ─────────────────────────────────────────────
 
+HCDN_DICTAMENES_CACHE = PROJECT_DIR / "data" / "politica" / "hcdn_dictamenes_cache.json"
+
+
+def _dictamenes_buscador() -> dict:
+    """Proyectos con dictamen de Diputados del año actual y el anterior, de la
+    caché incremental del buscador (ADR-0436)."""
+    import hcdn_buscador
+    hoy = date.today()
+    return hcdn_buscador.dictamenes_diputados([hoy.year - 1, hoy.year], HCDN_DICTAMENES_CACHE,
+                                              hoy.isoformat())
+
+
+def _comisiones_caidas_buscador(cutoff: str) -> dict:
+    import hcdn_buscador
+    conteo = hcdn_buscador.comisiones_caidas(_dictamenes_buscador(), cutoff, date.today().isoformat())
+    if conteo is None:
+        raise ValueError("buscador de Diputados: sin dictámenes en la ventana de 12 meses")
+    total_n, aprobados_n = conteo
+    return {
+        "valor":        round((total_n - aprobados_n) / total_n * 100.0, 1),
+        "dictamen_n":   total_n,
+        "aprobados_n":  aprobados_n,
+        "caidas_n":     total_n - aprobados_n,
+        "ventana_dias": 365,
+        "unidad":       "% de proyectos",
+        "fuente":       "hcdn.gob.ar — buscador de proyectos (dictámenes y sanciones)",
+        "fecha_dato":   str(date.today()),
+        "desactualizado": False,
+    }
+
+
 def fetch_comisiones_caidas() -> dict | None:
     """
     % proyectos con dictamen 'Orden del Día' en los últimos 12 meses que no fueron sancionados.
@@ -2465,8 +2496,13 @@ def fetch_comisiones_caidas() -> dict | None:
         cutoff = (date.today() - timedelta(days=365)).isoformat()[:10]
 
         # Dictámenes: dos pasadas para cubrir la ventana de 12 meses
-        raw_cur  = _hcdn_paginate(HCDN_DICTAMENES_RID, q=str(year))
-        raw_prev = _hcdn_paginate(HCDN_DICTAMENES_RID, q=str(year - 1))
+        try:
+            raw_cur  = _hcdn_paginate(HCDN_DICTAMENES_RID, q=str(year))
+            raw_prev = _hcdn_paginate(HCDN_DICTAMENES_RID, q=str(year - 1))
+        except requests.RequestException as e_ckan:
+            print(f"  [WARN] comisiones_caidas: CKAN de Diputados sin respuesta ({e_ckan}); "
+                  "se usa el buscador de proyectos")
+            return _comisiones_caidas_buscador(cutoff)
         all_dict = raw_cur + raw_prev
 
         # Python-side: FECHA >= cutoff AND TIPO contiene "orden" (Orden del Día)
