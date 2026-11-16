@@ -880,6 +880,30 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
+    # ADR-0429 (reunión del 13-nov-2026): salen por ahora, decidido por la
+    # dirección (Luis y Marcos). Los demás de cada dimensión absorben su peso.
+    "ratio_dnu": {
+        "dimension": "poder_legislativo",
+        "desde": "2026-11",
+        "desde_txt": "noviembre de 2026",
+        "adr": "0429",
+        "por_que": "La dirección lo sacó del índice por ahora en la reunión "
+                   "del 13 de noviembre de 2026, hasta revisar cómo se mide el "
+                   "uso de decretos de necesidad y urgencia.",
+        "condicion_reingreso": "Que la dirección vuelva a incluirlo, con la "
+                               "medición revisada.",
+    },
+    "transferencias_no_automaticas": {
+        "dimension": "alianzas_territoriales",
+        "desde": "2026-11",
+        "desde_txt": "noviembre de 2026",
+        "adr": "0429",
+        "por_que": "La dirección lo sacó del índice por ahora en la reunión "
+                   "del 13 de noviembre de 2026, hasta revisar cómo se miden "
+                   "las transferencias discrecionales a las provincias.",
+        "condicion_reingreso": "Que la dirección vuelva a incluirlo, con la "
+                               "medición revisada.",
+    },
     "iaf_transferencias": {
         "dimension": "alianzas_territoriales",
         "desde": "2026-10",

@@ -74,8 +74,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 6% |
-| Peso efectivo en el índice | **1.8%** |
+| Peso dentro de la dimensión | 5% |
+| Peso efectivo en el índice | **1.6%** |
 | Procedencia del ancla | `historia_larga` — media y uno y dos desvíos (45.373 / 11.375 millones de dólares) de las reservas brutas a fin de mes de dic-2017 a nov-2023, anterior al mandato; puntajes de tramo del crédito privado (ADR-0428, método de ADR-0404) |
 
 **Bandas**: > 68123 → 100 · 56748–68123 → 85 · 45373–56748 → 65 · 33998–45373 → 45 · 22623–33998 → 25 · ≤ 22623 → 10
@@ -88,8 +88,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 6% |
-| Peso efectivo en el índice | **1.8%** |
+| Peso dentro de la dimensión | 5% |
+| Peso efectivo en el índice | **1.6%** |
 | Procedencia del ancla | `historia_larga` — media y uno y dos desvíos de las reservas netas estrictas (SDDS) de dic-2017 a nov-2023, 60 cierres de mes recuperados del Internet Archive (ADR-0428) |
 
 **Bandas**: > 28229 → 100 · 19032–28229 → 85 · 9835–19032 → 65 · 638–9835 → 45 · -8559–638 → 25 · ≤ -8559 → 10
@@ -102,8 +102,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 6% |
-| Peso efectivo en el índice | **1.8%** |
+| Peso dentro de la dimensión | 7% |
+| Peso efectivo en el índice | **2.2%** |
 | Procedencia del ancla | `externa` — meta de acumulación de reservas netas del programa con el FMI (segunda revisión, mayo de 2026: +8.000 millones en 2026), prorrateada al mes; cumplirla (100 %) es el borde del verde y 75 % / 50 % los del amarillo y el naranja (ADR-0428) |
 
 **Bandas**: > 150 → 100 · 100–150 → 75.0 · 75–100 → 50.0 · 50–75 → 25.0 · ≤ 50 → 10

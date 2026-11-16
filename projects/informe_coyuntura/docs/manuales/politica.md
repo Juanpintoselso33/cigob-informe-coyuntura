@@ -322,7 +322,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-113 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+114 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -437,3 +437,4 @@ histórica.
 - [0422](../adr/0422-el-poder-judicial-se-disuelve-en-poder-legislativo.md) — El Poder judicial se disuelve en poder legislativo
 - [0423](../adr/0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) — Votos ajenos pasa a diputados a favor, por mes
 - [0426](../adr/0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) — Decretos por ley y transferencias no automáticas salen del índice
+- [0429](../adr/0429-decretos-por-ley-y-transferencias-no-automaticas-salen-por-ahora.md) — Decretos por ley y transferencias no automáticas salen del índice por ahora
