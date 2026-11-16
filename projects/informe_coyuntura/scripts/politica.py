@@ -4954,15 +4954,29 @@ def produccion_legislativa_serie() -> dict[str, int]:
     nace el expediente: el cociente de origen se mueve por el denominador
     (ADR-0137) y por eso lo que puntúa es este número (ADR-0168).
     """
-    return _produccion_legislativa_mensual(
-        _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID)), _leyes_vetadas_totalmente())
+    return _produccion_legislativa_mensual(_leyes_produccion()[0], _leyes_vetadas_totalmente())
+
+
+def _leyes_produccion() -> tuple[list[tuple[str, date]], str]:
+    """(leyes con su sanción, fuente). Del catálogo de Diputados y, si no
+    responde por red, de la base abierta de InfoLeg (ADR-0435), que da la misma
+    serie mes por mes (verificado el 16-nov-2026, dic-2023 a oct-2026)."""
+    try:
+        return (_leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID)),
+                "Cámaras de Diputados y Senadores — catálogos, boletines parlamentarios y Boletín Oficial")
+    except requests.RequestException as e:
+        print(f"  [WARN] produccion_legislativa: CKAN de Diputados sin respuesta ({e}); "
+              "se usa la base abierta de InfoLeg")
+        import infoleg_abierto
+        return (infoleg_abierto.leyes_sancionadas(),
+                "InfoLeg — base abierta de normativa nacional (datos.jus.gob.ar)")
 
 
 def fetch_produccion_legislativa() -> dict | None:
     """Cuántas leyes que el Gobierno acepta —sanciona sin vetarlas en su
     totalidad— sanciona el Congreso en 12 meses (ADR-0168/0398)."""
     try:
-        leyes = _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID))
+        leyes, fuente = _leyes_produccion()
         vetadas = _leyes_vetadas_totalmente()
         serie = _produccion_legislativa_mensual(leyes, vetadas)
         ym = max(serie)
@@ -4974,7 +4988,7 @@ def fetch_produccion_legislativa() -> dict | None:
             "valor": valor,
             "vetadas_excluidas_12m": vetadas_ventana,
             "unidad": "leyes sancionadas (12m)",
-            "fuente": "Cámaras de Diputados y Senadores — catálogos, boletines parlamentarios y Boletín Oficial",
+            "fuente": fuente,
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "ultima_sancion_registrada": ultima,

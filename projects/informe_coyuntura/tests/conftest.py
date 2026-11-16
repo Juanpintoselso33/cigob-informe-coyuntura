@@ -170,3 +170,33 @@ def _sin_argentinadatos(monkeypatch):
     monkeypatch.setattr(ad, "_get", _sin_red)
     monkeypatch.setattr(ad, "_ACTAS", {})
     monkeypatch.setattr(ad, "_PADRON", None)
+
+
+@pytest.fixture(autouse=True)
+def _sin_infoleg_abierto(monkeypatch):
+    """Ídem para la base abierta de InfoLeg (ADR-0435): una prueba que simula
+    el catálogo de Diputados caído no baja 50 MB de datos.jus.gob.ar.
+    `tests/test_infoleg_abierto.py` repone la función real."""
+    try:
+        import infoleg_abierto as ia
+        import requests
+    except Exception:
+        return
+
+    def _sin_red(*a, **k):
+        raise requests.ConnectionError("InfoLeg abierto deshabilitado en las pruebas")
+    monkeypatch.setattr(ia, "leyes_sancionadas", _sin_red)
+
+
+@pytest.fixture(autouse=True)
+def _sin_buscador_de_diputados(monkeypatch):
+    """Ídem para el buscador de proyectos de Diputados (ADR-0432)."""
+    try:
+        import hcdn_buscador as hb
+        import requests
+    except Exception:
+        return
+
+    def _sin_red(*a, **k):
+        raise requests.ConnectionError("buscador de Diputados deshabilitado en las pruebas")
+    monkeypatch.setattr(hb, "_get", _sin_red)

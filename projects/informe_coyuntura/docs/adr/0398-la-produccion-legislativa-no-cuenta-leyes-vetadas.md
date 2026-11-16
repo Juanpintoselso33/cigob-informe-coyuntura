@@ -8,7 +8,7 @@ indice: 'ITCP'
 indicadores: [produccion_legislativa]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'tests/test_produccion_calendario.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts']
 modifica: ['0168']
-relacionado: ['0166', '0168', '0306', '0377', '0359']
+relacionado: ['0166', '0168', '0306', '0359', '0377', '0435']
 ambito: 'ITCP · dimensión Poder legislativo · qué leyes cuenta la producción legislativa'
 origen: 'Auditoría del cinturón político del 28-oct-2026; decisión de Juan del mismo día.'
 ---

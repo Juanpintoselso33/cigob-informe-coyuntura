@@ -261,6 +261,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0432](0432-eficacia-y-votos-sobre-bancas-se-leen-del-buscador-de-diputados.md) | Si el portal de datos de Diputados no responde, eficacia y votos sobre bancas se leen del buscador de proyectos | `eficacia_legislativa`, `votos_sobre_bancas` | vigente |
 | [0433](0433-movilizacion-cepa-pasa-a-promedio-mensual-de-casos.md) | Movilización (CEPA) pasa a medir el promedio mensual de casos | `movilizacion_cepa` | vigente |
 | [0434](0434-actas-de-diputados-desde-argentinadatos-si-la-camara-no-las-da.md) | Si la Cámara no da un acta de Diputados, se lee de ArgentinaDatos | `desafios_legislativos`, `bloqueo_sostenido`, `votos_sobre_bancas` | vigente |
+| [0435](0435-produccion-legislativa-desde-la-base-abierta-de-infoleg.md) | Si el catálogo de Diputados no responde, la producción legislativa sale de la base abierta de InfoLeg | `produccion_legislativa` | vigente |
 
 ### Gestión (ITCG)
 
