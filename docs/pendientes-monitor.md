@@ -49,7 +49,7 @@ tocar nada.
   **Hecho el 12-nov (7b468e8e, #102):** el aviso ya no incluye retirados ni de contexto.
   Verificado el 13-nov en el snapshot vigente: sólo nombra los 4 apoyos, eficacia, votos sobre
   bancas, insistencias y rechazos.
-- **(3) Control de calidad en rojo. A solucionar.** Lo que corta la corrida (11-nov falló
+- **(3) Control de calidad en rojo. Cerrado (las corridas vuelven a publicar; 16-nov).** Lo que corta la corrida (11-nov falló
   por eso) es G2b sobre `pobreza_nowcast`: 15 días sin un fetch exitoso > tope 14. El
   colector `utdt_nowcast_pobreza` no puede parsear el último informe de Di Tella
   (`_179312591551796600.pdf`; probable cambio de formato) desde el 27-oct. El «ipc_total» del
@@ -288,7 +288,7 @@ tocar nada.
    calculando oculta (`actividad_tributaria`), así que el dato está. Para hacerlo: ADR nuevo que
    reemplace a 0368, peso dentro de cuentas fiscales, y escala con cortes de la historia previa
    como el resto (ADR-0404; la de 0329 se había calibrado sobre 2017-2026, mandato incluido).
-4. **Alineamiento por provincia: sumar Diputados** (Juan, 3-nov). Hoy
+4. **Alineamiento por provincia: sumar Diputados** — **Cerrado:** Luis, «se deja como está» (3-nov). (Juan, 3-nov). Hoy
    `alineamiento_senadores_prov` mira sólo el Senado: 61,6 % de los votos de senadores que no
    son de La Libertad Avanza alineados con ella, 80 puntos, 6,1 % del peso (alianzas
    territoriales; ADR-0400 y 0402). Sumar los diputados por provincia.
@@ -344,14 +344,10 @@ tocar nada.
 12. **Consumo de carne: en el hover del gráfico, además del índice, el consumo en kg** — **Hecho el 3-nov.** (Juan,
     3-nov). Kilos por habitante del mes de SAGyP (la serie que puntúa, ADR-0392), junto al
     valor del índice.
-13. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual**
+13. **Los dos indicadores de carne miden cosas distintas: revisar si deben puntuar igual** — **Cerrado (Juan, 16-nov: «ya está»).**
     (Juan, 3-nov). Uno es aspiracional (la carne vacuna como bien deseado) y el otro es
     material/nutricional (la proteína que efectivamente se come). Revisar cómo puntúa cada uno
     (peso, escala, dimensión) y si tiene sentido que pesen lo mismo.
-14. **Presión de precios: falta salud, y revisar la ponderación de alimentos contra servicios
-    públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
-    salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
-    frente a la canasta de servicios públicos.
 15. **Mora: cortes fijos basados en análisis comparado, no sólo contra 2023** — **Hecho el 4-nov (ADR-0425):** 5 · 8 · 12 %. (Juan, 3-nov).
     **Juan (4-nov): investigar países similares y comparables** (vale también para la carga
     del servicio de la deuda, 16).
@@ -361,43 +357,44 @@ tocar nada.
 16. **Carga del servicio de la deuda: igual que la mora** — **Hecho el 4-nov (ADR-0425):** 15 · 20 · 30 %. (Juan, 3-nov). Cortes fijos basados
     en análisis comparado, no sólo contra 2023, por el mismo motivo: en 2023 casi no había
     crédito.
-17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
-    **Juan (4-nov): para la próxima, no ahora.**
-    Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
-    se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
-18. **RIGI: revisar los cortes de color** (Juan, 3-nov: «a mí no me cierra»). **Hecho el 3-nov
+18. **RIGI: revisar los cortes de color** — **Cerrado (Juan, 16-nov):** la vara es de Marcos y queda así. (Juan, 3-nov: «a mí no me cierra»). **Hecho el 3-nov
     (ADR-0419)**: Marcos definió la vara, lo aprobado contra la promesa de US$ 100.000 M (76,2 %,
     verde). La escala de ADR-0406 sigue igual; falta que Juan o Marcos confirmen si los cortes
     sirven para la promesa.
 
 ## 2. Esperan a otro
 
-1. **Victimización** (fuente: Universidad Torcuato Di Tella): no publicó desde el informe de
-   julio (subido el 5-ago). Ver sección 3.
-2. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
-   llegar al mínimo de comunicados (ADR-0391); entran si lo llegan.
+1. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
+   llegar al mínimo de 4 comunicados con postura dirigidos al Ejecutivo nacional en 12 meses
+   (ADR-0391). **Revisado el 16-nov:** desde el último codificado (25-feb-2026) publicaron un solo
+   comunicado, conjunto ADEBA-ABA del 4-nov («Los bancos anticipan cómo se podrá operar durante
+   el fin de semana largo»), aviso operativo sin postura. Siguen en 3 (9-ene, 18-feb y 25-feb de
+   2026), que salen de la ventana a principios de 2027.
 
-## 3. Con fecha y cargas mensuales
+## 3. Práctica editorial
 
 - **Antes de publicar cada lectura del mes de gestión** (Luis, revisión de gestión 26-oct, 3.8): mirar qué indicador explica el cambio antes de titular «la gestión mejora/empeora» (con reforma del Estado en 100, casi todo el movimiento viene de la brecha y la alícuota). Es una práctica editorial, no un cambio de código.
 
-- **Antes del 1-dic: verificar que no haya otra suspensión del Fondo de Asistencia Laboral**
-  (Luis, gestión 3.5; el código fecha la vigencia en el decreto 1228).
-- **Fines de noviembre: victimización** (Juan, 29-oct: sin cambios). Si la Universidad
-  Torcuato Di Tella sigue sin publicar, se revisa; el sitio la marca desactualizada solo a los
-  150 días. El colector anda.
-- **Fines de noviembre: lanzamiento del Votómetro** (repo aparte; reunión del 21-oct con Luis y
-  Diego Dequino): método original de Silver Bulletin sin ajustes propios y documentado como
-  fundamento (32, [L]); nombre «Votómetro argentino», las notas automáticas dicen «Botómetro»
-  (33, [L]); sacar el balotaje y el mapa provincial del lanzamiento (34, [L]).
+## 4. Próxima versión (no son pendientes de esta)
+
+Decidido por Juan el 16-nov: lo que sigue va para la próxima versión del Monitor.
+
+14. **Presión de precios: falta salud, y revisar la ponderación de alimentos contra servicios
+    públicos** (Juan, 3-nov). Sumar un indicador de precios de salud (por ejemplo, el capítulo
+    salud del IPC o las cuotas de prepagas) y revisar cuánto pesa la inflación de alimentos
+    frente a la canasta de servicios públicos.
+17. **Inseguridad: revisar la ponderación y la referencia de los cortes** (Juan, 3-nov).
+    **Juan (4-nov): para la próxima, no ahora.**
+    Revisar cuánto pesa, y decidir si los cortes se fijan comparando con países similares o
+    se dejan como están hoy (victimización rebaseada al 4T-2023, ADR-0393).
+- **Victimización** (Universidad Torcuato Di Tella): no publica desde el informe de julio; el sitio
+  la marca desactualizada sola a los 150 días.
 - **Mensual, a mano:** alquiler de UdeSA – Mercado Libre (cargar el PDF de octubre, ADR-0386 y
   0411) · prensa y Presidente (`scripts/prensa_presidente.py --mes AAAA-MM --lotes DIR`, unos
   4 GB de BigQuery, y los dos lectores sobre el lote; el indicador se retoma en oct-2027) ·
   padrón de ARCA (semanal en la fuente; se baja una vez por mes como archivo, sin publicarlo,
   ADR-0412).
 - **Cuando aparezca:** convenios colectivos, todavía sin lista publicada.
-
-## 4. Adjudicaciones de Juan que no deciden puntaje, e ideas para más adelante
 
 Adjudicaciones (no deciden ningún puntaje):
 - 69 desacuerdos del campo (los 13 que decidían el puntaje ya los adjudicó, ADR-0384).
