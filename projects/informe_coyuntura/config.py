@@ -296,6 +296,15 @@ DIAS_SIN_FETCH = {
     # manual desde Argentina, al ritmo mensual del informe. 45 días deja margen
     # sobre ese ciclo sin volver a dejar que se congele en silencio.
     "judicializacion": 45,
+    # datos.hcdn.gob.ar (el portal de datos abiertos de Diputados) está caído
+    # para todos desde el 4-nov-2026: «Application Blocked» desde IPs
+    # argentinas y sin respuesta desde afuera (ADR-0431). Diputados no sesiona
+    # desde el 21-oct, así que el último valor sigue describiendo la situación.
+    # La ventana es TEMPORAL: vence sola a los 45 días del último fetch
+    # (19-dic-2026 para el del 4-nov) y entonces G2b vuelve a cortar. Se saca
+    # cuando la fuente vuelva o la migración al buscador nuevo la reemplace.
+    "eficacia_legislativa": 45,
+    "votos_sobre_bancas": 45,
 }
 
 

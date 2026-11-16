@@ -85,6 +85,15 @@ def test_el_borde_exacto_todavia_esta_adentro():
     assert not cache_es_esperable("judicializacion", tope + 1)
 
 
+def test_diputados_sin_portal_tolera_45_dias():
+    """ADR-0431: datos.hcdn.gob.ar caído desde el 4-nov-2026. La ventana vence
+    sola: el día 46 vuelve a ser carry-forward y G2b corta."""
+    for ind in ("eficacia_legislativa", "votos_sobre_bancas"):
+        assert DIAS_SIN_FETCH[ind] == 45
+        assert cache_es_esperable(ind, 45)
+        assert not cache_es_esperable(ind, 46)
+
+
 def test_sin_ventana_declarada_no_hay_exencion():
     """El corte que evita enmascarar una fuente recién caída."""
     assert not cache_es_esperable("sentimiento_digital", 1)

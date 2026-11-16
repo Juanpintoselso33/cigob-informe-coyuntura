@@ -257,6 +257,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0423](0423-votos-ajenos-pasa-a-diputados-a-favor-por-mes.md) | Votos ajenos pasa a diputados a favor, por mes | `votos_sobre_bancas` | vigente |
 | [0426](0426-decretos-por-ley-y-transferencias-no-automaticas-salen-del-indice.md) | Decretos por ley y transferencias no automáticas salen del índice | `ratio_dnu`, `transferencias_no_automaticas` | vigente |
 | [0429](0429-el-peso-de-decretos-por-ley-pasa-a-eficacia-legislativa.md) | El peso de decretos por ley pasa entero a eficacia legislativa | `ratio_dnu`, `eficacia_legislativa` | vigente |
+| [0431](0431-diputados-sin-portal-de-datos-ventana-de-45-dias.md) | Sin el portal de datos de Diputados, eficacia y votos sobre bancas toleran 45 días | `eficacia_legislativa`, `votos_sobre_bancas` | vigente |
 
 ### Gestión (ITCG)
 
