@@ -77,13 +77,12 @@ const peor = peorDimension(cinturon);
     <div class="cg-genoma-cap cg-genoma-cap--solo">Cinturón cualitativo · sin índice de dimensiones — se lee por su indicador</div>
   )}
   <div class="cg-cint-foot">
-    {/* El score ya lo dice la barra; acá queda solo el riesgo, que no está en
-        ningún otro lado de la card. */}
-    <span>{cap(cinturon.barbarismo_riesgo)}</span>
+    {/* El tipo de riesgo (tecnocrático, político, gerencial) se quitó del pie
+        por pedido editorial del 17-nov-2026: el score ya lo dice la barra. */}
     {/* El enlace decía "ver detalle" en minúscula cuando había ocultos y "Ver
         detalle" cuando no: la card de espíritu de época (sin ocultos) quedaba
         distinta de las otras cuatro. El contador va aparte del rótulo. */}
-    <a href={href} class="cg-cint-ver">Ver {filas.length} indicadores →</a>
+    <a href={href} class="cg-cint-ver" style="margin-left:auto">Ver {filas.length} indicadores →</a>
   </div>
 </article>
 {/* El fondo negro detrás del semáforo (pedido #96, 5-nov-2026) se quitó el
