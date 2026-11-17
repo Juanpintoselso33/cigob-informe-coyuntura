@@ -67,9 +67,8 @@ const peor = peorDimension(cinturon);
       </div>
       {/* ADR-0020: las dimensiones en rojo se nombran en la card del cinturón
           (punto 12 del documento de Luis del 11-nov-2026). */}
-      {dims.some(([, d]) => d.critica) && (
-        <p class="cg-dim-critica"><span class="cg-dim-critica-chip">Dimensión crítica</span> {dims.filter(([, d]) => d.critica).map(([, d]) => d.nombre).join(", ")}: el promedio del índice no la compensa.</p>
-      )}
+      {/* El aviso en rojo de dimensión crítica se quitó de la card por pedido
+          editorial del 17-nov-2026: todas las cards quedan iguales. */}
       <div class="cg-genoma-cap">{dims.length} dimensiones (ancho = peso){peor ? ` · mayor tensión: ${peor.nombre.toLowerCase()} (${num(peor.puntaje)}${peor.base100 ? "" : "/100"})` : ""} · tocá un tramo</div>
     </>
   )}
