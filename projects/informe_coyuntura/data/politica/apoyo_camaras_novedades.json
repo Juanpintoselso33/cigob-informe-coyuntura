@@ -5,9 +5,9 @@
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
   },
-  "inventario_verificado": "2026-11-16",
+  "inventario_verificado": "2026-11-18",
   "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-16"
+  "ultima_corrida": "2026-11-18"
  },
  "pendientes": {},
  "revisadas": {
@@ -130,6 +130,11 @@
   },
   "CAC|el-consumo-volvio-a-crecer-en-febrero": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-contrabando-y-la-venta-ilegal-asfixian-al-comercio-formal-y-frenan-el-desarrollo-de-las-empresas": {
+   "fecha": "2026-11-16",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "el contrabando y la venta ilegal asfixian al comercio formal y frenan el desarrollo de las empresas"
   },
   "CAC|el-intercambio-comercial-con-brasil-continuo-su-desaceleracion-en-febrero-y-volvio-a-tener-signo-negativo": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"

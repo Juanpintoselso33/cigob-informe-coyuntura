@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-11-16T15:03:02.549776-03:00",
+  "generated_at": "2026-11-18T15:47:10.477138+00:00",
   "period": "2026-11",
-  "score_global": 3.3,
+  "score_global": 3.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -25,7 +25,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:45",
+          "obtenido_en": "2026-11-18T14:52:00",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 45.8,
@@ -81,7 +81,7 @@
           "estimacion_cigob": 10725.0,
           "metodo": "sdds_estricto",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:49",
+          "obtenido_en": "2026-11-18T14:52:12",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 49.8,
@@ -123,20 +123,20 @@
           }
         },
         "reservas_brutas": {
-          "valor": 49336.0,
+          "valor": 49600.0,
           "unidad": "Millones de dólares",
           "fuente": "Banco Central de la República Argentina (BCRA) — reservas internacionales (API de estadísticas monetarias)",
-          "fecha_dato": "2026-11-11",
+          "fecha_dato": "2026-11-13",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:49",
+          "obtenido_en": "2026-11-18T14:52:12",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 62.0,
-          "puntaje_banda": 62.0,
+          "puntaje_itcm": 62.4,
+          "puntaje_banda": 62.4,
           "peso_efectivo": 0.0163,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.8,
-          "aporte_formula": "Anclas del índice macroeconómico: >68.123 → 100 · 56.748–68.123 → 85 · 45.373–56.748 → 65 · 33.998–45.373 → 45 · 22.623–33.998 → 25 · ≤22.623 → 10 (puntaje interpolado entre anclas: 62.0; pesa 1,6% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: >68.123 → 100 · 56.748–68.123 → 85 · 45.373–56.748 → 65 · 33.998–45.373 → 45 · 22.623–33.998 → 25 · ≤22.623 → 10 (puntaje interpolado entre anclas: 62.4; pesa 1,6% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
@@ -166,7 +166,7 @@
               }
             ],
             "unidad": "Millones de dólares",
-            "por_que": "49.336 Millones de dólares está en Amarillo, a 6.806,75 del límite con Naranja (42.529)."
+            "por_que": "49.600 Millones de dólares está en Amarillo, a 7.070,75 del límite con Naranja (42.529)."
           }
         },
         "meta_reservas_fmi": {
@@ -187,7 +187,7 @@
           "netas_mes": 7465.0,
           "netas_base": -2712.0,
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:50",
+          "obtenido_en": "2026-11-18T14:52:13",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 100.0,
@@ -236,7 +236,7 @@
           "componentes": {
             "precio": 0.18,
             "volumen": -0.09,
-            "asignacion": -1.22
+            "asignacion": -1.23
           },
           "niveles": {
             "tasa_real_pp": -0.28,
@@ -247,7 +247,7 @@
           "badlar_real_mensual": -0.28,
           "banda_idc": "amarillo",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:50",
+          "obtenido_en": "2026-11-18T14:52:15",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 48.3,
@@ -258,7 +258,7 @@
           "aporte_formula": "Anclas del índice macroeconómico: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 48.3; pesa 3,4% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en naranja (tensión alta).",
-          "aporte_input_txt": "−0,35 σ = precio 0,18 · volumen −0,09 · asignación −1,22 (banda propia de este indicador: amarillo) — niveles: tasa real −0,28 puntos porcentuales · depósitos −0,8% interanual real · holgura 15,1%",
+          "aporte_input_txt": "−0,35 σ = precio 0,18 · volumen −0,09 · asignación −1,23 (banda propia de este indicador: amarillo) — niveles: tasa real −0,28 puntos porcentuales · depósitos −0,8% interanual real · holgura 15,1%",
           "semaforo": {
             "color": "naranja",
             "tension": 5.2,
@@ -294,7 +294,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) (Catálogo API-INDEC)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:51",
+          "obtenido_en": "2026-11-18T14:52:16",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 34.1,
@@ -406,7 +406,7 @@
             }
           ],
           "detalle_txt": "5 de 15 sectores crecen · lidera Explotación de minas y canteras (11,12%) · el que más cae es Pesca (-15,7%)",
-          "obtenido_en": "2026-11-16T13:21:55",
+          "obtenido_en": "2026-11-18T14:52:36",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 18.3,
@@ -453,7 +453,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de producción industrial (IPI) manufacturero, nivel general (planilla original vigente)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:21:56",
+          "obtenido_en": "2026-11-18T14:52:39",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 21.6,
@@ -503,7 +503,7 @@
           "iva_var_ia_real": -2.0,
           "cheque_var_ia_real": -8.7,
           "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI -2,0%, cheque -8,7%, compuesto -4,7%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
-          "obtenido_en": "2026-11-16T13:21:57",
+          "obtenido_en": "2026-11-18T14:52:43",
           "en_indice": true,
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 46.3,
@@ -553,7 +553,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Intercambio Comercial Argentino, cuadro original vigente + historia datos.gob.ar",
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_19_10_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-11-16T13:21:59",
+          "obtenido_en": "2026-11-18T14:52:48",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "expo_12m": 100845.0,
@@ -620,7 +620,7 @@
             "diverge": true,
             "meses_atraso": 0
           },
-          "obtenido_en": "2026-11-16T13:22:01",
+          "obtenido_en": "2026-11-18T14:52:52",
           "en_indice": true,
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 60.2,
@@ -667,7 +667,7 @@
           "fuente": "Banco Central de la República Argentina (BCRA) — Índice de Tipo de Cambio Real Multilateral",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:22:03",
+          "obtenido_en": "2026-11-18T14:52:56",
           "en_indice": true,
           "dimension": "sector_externo",
           "puntaje_itcm": 49.7,
@@ -716,7 +716,7 @@
           "desactualizado": false,
           "trimestre": "2T-2026",
           "posicion": 0.8335,
-          "obtenido_en": "2026-11-16T13:22:09",
+          "obtenido_en": "2026-11-18T14:53:07",
           "en_indice": true,
           "dimension": "sector_externo",
           "puntaje_itcm": 85.0,
@@ -763,7 +763,7 @@
           "fuente": "Banco Central de la República Argentina (BCRA) — Relevamiento de Expectativas de Mercado (REM), expectativas de inflación (API monetarias)",
           "fecha_dato": "2026-10-31",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:22:15",
+          "obtenido_en": "2026-11-18T14:53:14",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 58.6,
@@ -818,7 +818,7 @@
           "posicion_a": 0.1801,
           "posicion_b": 0.5342,
           "celda": "liquidez_y_presion",
-          "obtenido_en": "2026-11-16T13:22:21",
+          "obtenido_en": "2026-11-18T14:53:26",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_banda": 32.5,
@@ -870,7 +870,7 @@
           },
           "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
           "detalle_txt": "-0.3 % interanual = construcción +5.1% · bienes de capital importados -10.4% (mes común: 2026-09)",
-          "obtenido_en": "2026-11-16T13:22:23",
+          "obtenido_en": "2026-11-18T14:53:33",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 59.6,
@@ -923,8 +923,8 @@
           "usd_saldo_mm": 26358,
           "me_en_pesos_ia_real": 14.4,
           "total_ia_real": 1.8,
-          "detalle_txt": "nominal 30,8% interanual deflactado por el índice de precios al consumidor, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-10) · aparte, la cartera en moneda extranjera 14,4% real medida en pesos y 43,0% en dólares; los dos universos juntos, 1,8% real — al 2026-11-05 (provisorio, no puntúa): -1,3% real con deflactor de 2026-10",
-          "obtenido_en": "2026-11-16T13:22:30",
+          "detalle_txt": "nominal 30,8% interanual deflactado por el índice de precios al consumidor, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-10) · aparte, la cartera en moneda extranjera 14,4% real medida en pesos y 43,0% en dólares; los dos universos juntos, 1,8% real — al 2026-11-12 (provisorio, no puntúa): -0,9% real con deflactor de 2026-10",
+          "obtenido_en": "2026-11-18T14:53:43",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 52.7,
@@ -995,7 +995,7 @@
           ],
           "detalle_txt": "2026-10: TIREA de corte 27.7% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +4.9% real",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:22:30",
+          "obtenido_en": "2026-11-18T14:53:46",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 92.2,
@@ -1058,7 +1058,7 @@
           "fecha_dato": "2026-09-01",
           "detalle_txt": "2026-09: superávit primario de 6.2% de la recaudación acumulada de doce meses",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:22:31",
+          "obtenido_en": "2026-11-18T14:53:48",
           "en_indice": true,
           "dimension": "cuentas_fiscales",
           "puntaje_itcm": 65.6,
@@ -1134,9 +1134,9 @@
               },
               "reservas_brutas": {
                 "peso": 0.05190839694656488,
-                "puntaje_banda": 62.0,
-                "puntaje_aplicado": 62.0,
-                "valor": 49336.0,
+                "puntaje_banda": 62.4,
+                "puntaje_aplicado": 62.4,
+                "valor": 49600.0,
                 "peso_efectivo": 0.0163
               },
               "reservas_bcra": {
@@ -2031,25 +2031,25 @@
             5,
             5,
             12,
-            19,
-            24,
-            31,
-            36,
-            47,
+            18,
+            23,
+            32,
+            35,
+            46,
             38,
-            53,
-            84,
-            81,
-            62,
-            55,
-            78,
-            68,
             54,
+            83,
+            80,
+            63,
+            57,
+            77,
+            68,
+            55,
             40,
             45,
-            40,
+            39,
             38,
-            19,
+            21,
             18,
             6,
             15,
@@ -2484,32 +2484,32 @@
           "sub_detalle": "Eso responde qué tan tensa está la macroeconomía hoy, pero no cuánto se movió desde lo que se recibió. Reconstruido con el mismo método, el índice del mes del traspaso funciona como referencia permanente."
         },
         "vintages": {
-          "dias_promedio": 72,
+          "dias_promedio": 74,
           "meses_promedio": 2.4,
           "fecha_mas_vieja": "1 de abril de 2026",
-          "fecha_mas_nueva": "11 de noviembre de 2026",
-          "span_dias": 224,
+          "fecha_mas_nueva": "13 de noviembre de 2026",
+          "span_dias": 226,
           "rezagados": [
             {
               "indicador": "terminos_intercambio",
               "fecha": "1 de abril de 2026",
-              "meses": 7.5
+              "meses": 7.6
             },
             {
               "indicador": "emae_ia",
               "fecha": "1 de agosto de 2026",
-              "meses": 3.5
+              "meses": 3.6
             },
             {
               "indicador": "emae_difusion",
               "fecha": "1 de agosto de 2026",
-              "meses": 3.5
+              "meses": 3.6
             }
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 11 de noviembre de 2026 y el más antiguo del 1 de abril de 2026: un rango de 224 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,4 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
-          "resumen": "El dato más reciente es del 11 de noviembre de 2026 y el más antiguo del 1 de abril de 2026: un rango de 224 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,4 meses.",
+          "conclusion": "El dato más reciente es del 13 de noviembre de 2026 y el más antiguo del 1 de abril de 2026: un rango de 226 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,4 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
+          "resumen": "El dato más reciente es del 13 de noviembre de 2026 y el más antiguo del 1 de abril de 2026: un rango de 226 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,4 meses.",
           "detalle_texto": "Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         },
         "semaforo": {
@@ -4497,8 +4497,8 @@
           "sub_detalle": "El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian. Cada familia muestra qué porción del índice carga, porque ese reparto se mueve cuando entran o salen indicadores y explica parte de lo que cambia entre lecturas."
         },
         "vintages": {
-          "dias_promedio": 15,
-          "meses_promedio": 0.5,
+          "dias_promedio": 17,
+          "meses_promedio": 0.6,
           "fecha_mas_vieja": "1 de julio de 2026",
           "fecha_mas_nueva": "16 de noviembre de 2026",
           "span_dias": 138,
@@ -4506,13 +4506,13 @@
             {
               "indicador": "jornadas_individuales_no_trabajadas_12m",
               "fecha": "1 de julio de 2026",
-              "meses": 4.5
+              "meses": 4.6
             }
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 1 de julio de 2026: un rango de 138 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,5 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
-          "resumen": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 1 de julio de 2026: un rango de 138 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,5 meses.",
+          "conclusion": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 1 de julio de 2026: un rango de 138 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,6 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
+          "resumen": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 1 de julio de 2026: un rango de 138 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,6 meses.",
           "detalle_texto": "Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         },
         "semaforo": {
@@ -4526,34 +4526,34 @@
       "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 39%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, sector empresarial 14%. La tensión del cinturón es (100 − índice) / 10."
     },
     "vida_cotidiana": {
-      "score": 4.5,
+      "score": 4.4,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
-          "valor": 3.69,
+          "valor": 3.83,
           "unidad": "canastas básicas totales",
           "fuente": "Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables) + Instituto Nacional de Estadística y Censos (INDEC: canasta básica total)",
-          "fecha_dato": "2026-08-01",
+          "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "detalle_txt": "RIPTE / CBT del mismo mes (2026-08): canastas cubiertas por el salario imponible promedio — CBT de 2026-10 ya publicada ($546,926): esa brecha queda provisoria hasta que salga el RIPTE",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "detalle_txt": "RIPTE / CBT del mismo mes (2026-09): canastas cubiertas por el salario imponible promedio — CBT de 2026-10 ya publicada ($546,926): esa brecha queda provisoria hasta que salga el RIPTE",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
-          "indice_itvc": 107.3,
-          "fecha_indice_itvc": "2026-08-01",
+          "indice_itvc": 111.3,
+          "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.1304,
-          "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 107,3 (100 = igual que antes del mandato; más = mejora); pesa 13,0% del índice de impacto social.",
+          "aporte_score": 2.7,
+          "aporte_formula": "Índice base-100 frente a 4º trimestre de 2023: 111,3 (100 = igual que antes del mandato; más = mejora); pesa 13,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
             "color": "amarillo",
-            "tension": 3.5,
+            "tension": 2.7,
             "umbrales": null,
             "unidad": null,
-            "por_que": "107,3 en la escala del cinturón (100 = referencia) está en Amarillo, a 5,2 del límite con Verde (112,5)."
+            "por_que": "111,3 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,2 del límite con Verde (112,5)."
           }
         },
         "ipc_alimentos": {
@@ -4563,7 +4563,7 @@
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
           "detalle_txt": "Inflación de alimentos del mes: 2,0 %",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -4592,7 +4592,7 @@
           "cobertura_costos_pct": 57.0,
           "transporte_pct_canasta": 49.0,
           "fuente_url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-octubre-2026/",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -4618,7 +4618,7 @@
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -4644,7 +4644,7 @@
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "fuente_url": "https://drive.google.com/file/d/1_Phhg7TAD16bmVjb9XJiX_Wo4w2TSkiX/view",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "manual",
           "en_indice": true,
           "dimension": "precios",
@@ -4715,7 +4715,7 @@
             "2026-08": 46.19,
             "2026-09": 45.81
           },
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -4786,7 +4786,7 @@
             "2026-08": 113.62,
             "2026-09": 113.6
           },
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -4811,7 +4811,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -4837,7 +4837,7 @@
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "detalle_txt": "Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -4862,7 +4862,7 @@
           "fuente": "Universidad Torcuato Di Tella (UTDT) — Índice de Victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP)",
           "fecha_dato": "2026-10",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste del Sistema Nacional de Información Criminal (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613",
           "metodo_obtencion": "automatico",
           "en_indice": true,
@@ -4890,7 +4890,7 @@
           "fuente": "Sistema Nacional de Información Criminal (SNIC) — Ministerio de Seguridad (tasa oficial, calidad grado A según la Oficina de las Naciones Unidas contra la Droga y el Delito)",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -4918,7 +4918,7 @@
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "detalle_txt": "La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal. Se publica el dato oficial vigente con esta limitación declarada.",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -4943,7 +4943,7 @@
           "fuente": "Universidad Torcuato Di Tella (UTDT) — estimación mensual de pobreza (González-Rozada)",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5001,7 +5001,7 @@
             "motos_var": 40.46917739567908,
             "total_var": 14.995690823085429
           },
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5028,7 +5028,7 @@
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
           "detalle_txt": "Más motos por auto se lee como DETERIORO: la motorización total cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto y no una mejora pareja.",
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5053,7 +5053,7 @@
           "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta de supermercados (ventas a precios constantes)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:40:39.645216",
+          "obtenido_en": "2026-11-18T15:07:15.748538",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "consumo",
@@ -5192,19 +5192,19 @@
       },
       "alerta": null,
       "itvc": {
-        "valor": 102.6,
+        "valor": 103.1,
         "banda": "igual_o_algo_mejor",
         "banda_legible": "Igual o algo mejor que al inicio del mandato",
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos",
             "peso": 0.2016,
-            "puntaje": 103.5,
+            "puntaje": 106.1,
             "indicadores": {
               "brecha_salario_cbt": {
                 "peso": 0.6469,
-                "puntaje_banda": 107.3,
-                "puntaje_aplicado": 107.3,
+                "puntaje_banda": 111.3,
+                "puntaje_aplicado": 111.3,
                 "peso_efectivo": 0.1304
               },
               "pobreza_nowcast": {
@@ -5347,23 +5347,23 @@
               ],
               [
                 "2026-08",
-                104.1
+                106.5
               ],
               [
                 "2026-09",
-                103.6
+                106.1
               ],
               [
                 "2026-10",
-                103.5
+                106.1
               ]
             ],
             "semaforo": {
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 103,5, está en amarillo (tensión moderada) en la escala del informe.",
-              "tension": 4.3
+              "por_que": "El índice de la dimensión, 106,1, está en amarillo (tensión moderada) en la escala del informe.",
+              "tension": 3.8
             }
           },
           "consumo": {
@@ -6419,57 +6419,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 101.9,
-          "p95": 103.3,
+          "p05": 102.4,
+          "p95": 103.8,
           "tension_rango": [
-            4.3,
-            4.6
+            4.2,
+            4.5
           ],
           "dominante": {
-            "indicador": "alquiler_real",
-            "indice_sin": 104.2
+            "indicador": "brecha_salario_cbt",
+            "indice_sin": 101.2
           },
           "n_draws": 1000,
           "hist": [
             1,
+            0,
             1,
-            3,
-            3,
-            12,
-            10,
-            17,
-            20,
-            27,
-            29,
-            35,
-            47,
-            55,
-            59,
-            58,
-            67,
-            69,
-            66,
-            53,
-            63,
-            41,
-            47,
-            37,
-            31,
-            46,
-            26,
-            29,
-            10,
-            14,
-            12,
             5,
-            4,
-            1,
+            6,
+            8,
+            17,
+            18,
+            29,
+            28,
+            33,
+            44,
+            56,
+            52,
+            58,
+            72,
+            71,
+            48,
+            69,
+            72,
+            55,
+            41,
+            35,
+            44,
+            33,
+            25,
+            27,
+            17,
+            18,
+            8,
+            3,
+            3,
             1,
             0,
+            1,
             1
           ],
-          "hist_min": 101.39,
-          "hist_max": 103.91,
+          "hist_min": 101.82,
+          "hist_max": 104.49,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
@@ -6603,15 +6603,15 @@
           ],
           [
             "2026-08",
-            103.0
+            103.5
           ],
           [
             "2026-09",
-            101.2
+            101.7
           ],
           [
             "2026-10",
-            102.6
+            103.1
           ]
         ],
         "dimensiones_serie": {
@@ -6626,8 +6626,8 @@
           "nota": "El índice es el promedio ponderado de estas dimensiones, y su valor agregado puede quedarse quieto porque nada se mueve o porque dos cosas grandes se mueven en direcciones opuestas. Estas series separan los dos casos: cada una es la misma dimensión que se lee arriba, mes a mes, en la misma escala (base 100 = promedio del 4º trimestre de 2023). Se calculan con el motor del índice y no con una cuenta aparte: el promedio ponderado de los componentes de la dimensión, renormalizando por el peso que efectivamente tiene dato ese mes, es el mismo paso que el índice ya da para llegar a su propio número. Vienen de la reconstrucción histórica —las series de cada componente pasadas por el motor, sin ajustes del analista—, así que llegan hasta el último mes con cobertura suficiente y ese mes puede ser anterior al de la card. Un mes en el que ninguna componente de la dimensión tiene dato no deja punto: el hueco se muestra como hueco, no se arrastra ni se interpola."
         },
         "validacion": {
-          "r_niveles": -0.075,
-          "r_diferencias": 0.289,
+          "r_niveles": -0.072,
+          "r_diferencias": 0.293,
           "n": 33,
           "pares": [
             [
@@ -6792,7 +6792,7 @@
             ],
             [
               "2026-08",
-              103.0,
+              103.5,
               1.706
             ]
           ],
@@ -6802,9 +6802,9 @@
           "serie_label": "Índice de impacto social (reconstrucción mensual)",
           "externa_label": "factor común de los volúmenes consumidos por el hogar",
           "trans_label": "series normalizadas al rango del período; el factor es un puntaje estandarizado y cruza el cero",
-          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con −0,075 en niveles y 0,289 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado. No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es 0,439. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
+          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con −0,072 en niveles y 0,293 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado. No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es 0,448. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
           "panel": {
-            "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,21 y con las 5 ajenas es 0,205. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,191 con lo propio contra 0,106 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
+            "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,209 y con las 5 ajenas es 0,201. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,193 con lo propio contra 0,122 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
             "perfil": [
               {
@@ -6812,8 +6812,8 @@
                 "etiqueta": "Ventas en autoservicios mayoristas",
                 "fuente": "INDEC",
                 "propia": true,
-                "r_niveles": 0.136,
-                "r_diferencias": -0.19,
+                "r_niveles": 0.128,
+                "r_diferencias": -0.192,
                 "n": 33
               },
               {
@@ -6821,8 +6821,8 @@
                 "etiqueta": "Ventas en centros de compras",
                 "fuente": "INDEC",
                 "propia": true,
-                "r_niveles": 0.377,
-                "r_diferencias": -0.013,
+                "r_niveles": 0.385,
+                "r_diferencias": -0.006,
                 "n": 33
               },
               {
@@ -6830,8 +6830,8 @@
                 "etiqueta": "Demanda eléctrica residencial",
                 "fuente": "CAMMESA",
                 "propia": true,
-                "r_niveles": -0.102,
-                "r_diferencias": 0.105,
+                "r_niveles": -0.099,
+                "r_diferencias": 0.108,
                 "n": 34
               },
               {
@@ -6839,8 +6839,8 @@
                 "etiqueta": "Incertidumbre de política (EPU)",
                 "fuente": "Banco de España / SECMCA",
                 "propia": false,
-                "r_niveles": -0.329,
-                "r_diferencias": 0.184,
+                "r_niveles": -0.314,
+                "r_diferencias": 0.199,
                 "n": 35
               },
               {
@@ -6848,8 +6848,8 @@
                 "etiqueta": "Financiamiento externo a empresas",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": 0.172,
-                "r_diferencias": 0.011,
+                "r_niveles": 0.177,
+                "r_diferencias": 0.02,
                 "n": 33
               },
               {
@@ -6857,8 +6857,8 @@
                 "etiqueta": "Consumo residencial de gas",
                 "fuente": "Sec. de Energía",
                 "propia": true,
-                "r_niveles": -0.105,
-                "r_diferencias": 0.054,
+                "r_niveles": -0.097,
+                "r_diferencias": 0.064,
                 "n": 33
               },
               {
@@ -6866,8 +6866,8 @@
                 "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
                 "fuente": "UTDT",
                 "propia": true,
-                "r_niveles": 0.439,
-                "r_diferencias": 0.571,
+                "r_niveles": 0.448,
+                "r_diferencias": 0.566,
                 "n": 34
               },
               {
@@ -6875,8 +6875,8 @@
                 "etiqueta": "Índice Líder de actividad",
                 "fuente": "UTDT",
                 "propia": false,
-                "r_niveles": 0.204,
-                "r_diferencias": 0.166,
+                "r_niveles": 0.205,
+                "r_diferencias": 0.167,
                 "n": 34
               },
               {
@@ -6884,8 +6884,8 @@
                 "etiqueta": "Inversión directa de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": 0.037,
-                "r_diferencias": -0.033,
+                "r_niveles": 0.02,
+                "r_diferencias": -0.05,
                 "n": 33
               },
               {
@@ -6893,8 +6893,8 @@
                 "etiqueta": "Inversión de cartera de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": -0.284,
-                "r_diferencias": -0.135,
+                "r_niveles": -0.289,
+                "r_diferencias": -0.172,
                 "n": 33
               },
               {
@@ -6902,8 +6902,8 @@
                 "etiqueta": "Pasajeros en transporte público",
                 "fuente": "INDEC",
                 "propia": true,
-                "r_niveles": 0.204,
-                "r_diferencias": 0.219,
+                "r_niveles": 0.196,
+                "r_diferencias": 0.22,
                 "n": 33
               },
               {
@@ -6911,20 +6911,20 @@
                 "etiqueta": "Ventas de naftas",
                 "fuente": "Sec. de Energía",
                 "propia": true,
-                "r_niveles": 0.107,
-                "r_diferencias": 0.188,
+                "r_niveles": 0.108,
+                "r_diferencias": 0.193,
                 "n": 34
               }
             ],
             "niveles": {
-              "convergente": 0.21,
-              "discriminante": 0.205,
-              "brecha": 0.005
+              "convergente": 0.209,
+              "discriminante": 0.201,
+              "brecha": 0.008
             },
             "diferencias": {
-              "convergente": 0.191,
-              "discriminante": 0.106,
-              "brecha": 0.085
+              "convergente": 0.193,
+              "discriminante": 0.122,
+              "brecha": 0.071
             },
             "n_propias": 7,
             "n_ajenas": 5,
@@ -7113,14 +7113,14 @@
                 ],
                 [
                   "2026-08",
-                  103.0,
+                  103.5,
                   1.706
                 ]
               ],
-              "r_niveles": -0.075,
-              "r_diferencias": 0.289,
-              "mejor_sola_niveles": 0.204,
-              "mejor_sola_diferencias": 0.219,
+              "r_niveles": -0.072,
+              "r_diferencias": 0.293,
+              "mejor_sola_niveles": 0.196,
+              "mejor_sola_diferencias": 0.22,
               "aporte_sobre_tendencia": {
                 "n": 33,
                 "suficiente": true,
@@ -7129,7 +7129,7 @@
                 "r2_con_indice": 0.036,
                 "aporte": 0.0,
                 "signo": "negativo",
-                "coef": -0.0063
+                "coef": -0.0058
               },
               "plano": "diferencias",
               "pares_grafico": [
@@ -7290,33 +7290,33 @@
                 ],
                 [
                   "2026-08",
-                  0.0,
+                  0.5,
                   0.343
                 ]
               ],
               "detalle": [
                 "El contraste no es una estadística sola sino el factor común de las 4: su primer componente principal, el método con el que la Reserva Federal de Chicago arma su índice de actividad. Recoge 37,9% de lo que las 4 tienen en común.",
-                "La mejor de las 4 por separado llega a 0,204 en niveles y 0,219 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente. En niveles queda por debajo porque este índice se movió muy poco en términos netos —sus componentes se compensan— mientras que las estadísticas del contraste tienen tendencia propia.",
+                "La mejor de las 4 por separado llega a 0,196 en niveles y 0,22 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente. En niveles queda por debajo porque este índice se movió muy poco en términos netos —sus componentes se compensan— mientras que las estadísticas del contraste tienen tendencia propia.",
                 "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 3,6% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice a esa tendencia no agrega prácticamente nada (0,0 puntos porcentuales): en este período el índice no explica el contraste más allá de lo que explica el paso del tiempo. Se publica porque es el resultado, no porque confirme."
               ]
             }
           },
-          "resumen": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con −0,075 en niveles y 0,289 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado.",
-          "detalle_texto": "No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es 0,439. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
+          "resumen": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con −0,072 en niveles y 0,293 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado.",
+          "detalle_texto": "No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es 0,448. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
           "sub_resumen": "Paso 9 del manual de indicadores compuestos de la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea (JRC): un índice válido debe co-moverse con variables externas relacionadas que no lo componen.",
           "sub_detalle": "Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, el Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella, que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica."
         },
         "redundancia": {
           "n_indicadores": 19,
           "n_pares": 166,
-          "r_abs_medio": 0.441,
-          "share_altos": 0.211,
-          "share_bajos": 0.361,
+          "r_abs_medio": 0.443,
+          "share_altos": 0.217,
+          "share_bajos": 0.367,
           "umbral": 0.7,
-          "pares_cruzados": 32,
+          "pares_cruzados": 33,
           "diferencias": {
             "n_pares": 166,
-            "r_abs_medio": 0.187,
+            "r_abs_medio": 0.188,
             "share_altos": 0.006
           },
           "top": [
@@ -7328,6 +7328,13 @@
               "por_diseno": null
             },
             {
+              "a": "alquiler_real",
+              "b": "brecha_salario_cbt",
+              "r": -0.956,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
               "a": "carga_servicio_deuda_hogares",
               "b": "motorizacion_total",
               "r": -0.954,
@@ -7335,9 +7342,9 @@
               "por_diseno": null
             },
             {
-              "a": "alquiler_real",
-              "b": "brecha_salario_cbt",
-              "r": -0.94,
+              "a": "brecha_salario_cbt",
+              "b": "ipc_alimentos",
+              "r": 0.921,
               "cruzado": true,
               "por_diseno": null
             },
@@ -7345,13 +7352,6 @@
               "a": "carga_servicio_deuda_hogares",
               "b": "tasa_homicidios",
               "r": -0.915,
-              "cruzado": true,
-              "por_diseno": null
-            },
-            {
-              "a": "brecha_salario_cbt",
-              "b": "ipc_alimentos",
-              "r": 0.913,
               "cruzado": true,
               "por_diseno": null
             },
@@ -7365,9 +7365,9 @@
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 19 componentes que tienen serie histórica, 166 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,441: ni componentes independientes ni una sola señal repetida. Un 21% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,187 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 35 pares que superan el umbral en niveles, 32 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 49,8 a 148,6, un rango de 98,8. El índice, en cambio, se movió 1,5 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio.",
-          "resumen": "La correlación media entre pares es 0,441: ni componentes independientes ni una sola señal repetida. Un 21% de los pares se mueve muy junto (por encima de 0,7) y un 36% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,187 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 35 pares que superan el umbral en niveles, 32 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 49,8 a 148,6, un rango de 98,8. El índice, en cambio, se movió 1,5 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio."
+          "conclusion": "La correlación media entre pares es 0,443: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 37% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 36 pares que superan el umbral en niveles, 33 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 49,8 a 148,6, un rango de 98,8. El índice, en cambio, se movió 1,0 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio.",
+          "resumen": "La correlación media entre pares es 0,443: ni componentes independientes ni una sola señal repetida. Un 22% de los pares se mueve muy junto (por encima de 0,7) y un 37% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 36 pares que superan el umbral en niveles, 33 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 140,0 —un rango de 52,2 puntos— y en el último mes van de 49,8 a 148,6, un rango de 98,8. El índice, en cambio, se movió 1,0 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están dos veces más separadas entre sí que al principio."
         },
         "dispersion": {
           "serie": {
@@ -7820,7 +7820,7 @@
               "n": 19
             },
             "2026-08": {
-              "itvc": 103.0,
+              "itvc": 103.5,
               "rango": 94.5,
               "desvio": 22.9,
               "min": {
@@ -7834,7 +7834,7 @@
               "n": 19
             },
             "2026-09": {
-              "itvc": 101.2,
+              "itvc": 101.7,
               "rango": 96.7,
               "desvio": 22.4,
               "min": {
@@ -7848,7 +7848,7 @@
               "n": 19
             },
             "2026-10": {
-              "itvc": 102.6,
+              "itvc": 103.1,
               "rango": 98.8,
               "desvio": 24.1,
               "min": {
@@ -7879,7 +7879,7 @@
           },
           "ultimo": {
             "mes": "2026-10",
-            "itvc": 102.6,
+            "itvc": 103.1,
             "rango": 98.8,
             "desvio": 24.1,
             "min": {
@@ -7892,11 +7892,11 @@
             },
             "n": 19
           },
-          "movimiento_neto": 1.5
+          "movimiento_neto": 1.0
         },
         "vintages": {
-          "dias_promedio": 117,
-          "meses_promedio": 3.9,
+          "dias_promedio": 115,
+          "meses_promedio": 3.8,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "1 de octubre de 2026",
           "span_dias": 274,
@@ -7904,48 +7904,43 @@
             {
               "indicador": "tasa_homicidios",
               "fecha": "31 de diciembre de 2025",
-              "meses": 10.5
+              "meses": 10.6
             },
             {
               "indicador": "tasa_robos",
               "fecha": "31 de diciembre de 2025",
-              "meses": 10.5
+              "meses": 10.6
             },
             {
               "indicador": "informalidad",
               "fecha": "1 de abril de 2026",
-              "meses": 7.5
+              "meses": 7.6
             },
             {
               "indicador": "ocupacion_eph",
               "fecha": "1 de abril de 2026",
-              "meses": 7.5
+              "meses": 7.6
             },
             {
               "indicador": "carga_servicio_deuda_hogares",
               "fecha": "abril de 2026",
-              "meses": 7.5
-            },
-            {
-              "indicador": "brecha_salario_cbt",
-              "fecha": "1 de agosto de 2026",
-              "meses": 3.5
+              "meses": 7.6
             },
             {
               "indicador": "consumo_supermercados",
               "fecha": "1 de agosto de 2026",
-              "meses": 3.5
+              "meses": 3.6
             },
             {
               "indicador": "mora_familias",
               "fecha": "agosto de 2026",
-              "meses": 3.5
+              "meses": 3.6
             }
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 1 de octubre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 274 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 3,9 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
-          "resumen": "El dato más reciente es del 1 de octubre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 274 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 3,9 meses.",
+          "conclusion": "El dato más reciente es del 1 de octubre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 274 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 3,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
+          "resumen": "El dato más reciente es del 1 de octubre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 274 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 3,8 meses.",
           "detalle_texto": "Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         },
         "semaforo": {
@@ -7956,7 +7951,7 @@
           "tension": null
         }
       },
-      "fuente_enriquecida": "vida_cotidiana_20261116_1341.json",
+      "fuente_enriquecida": "vida_cotidiana_20261118_1511.json",
       "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 7 dimensiones: ingresos 20%, consumo 8%, presión de precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
     },
     "gestion": {
@@ -7965,37 +7960,37 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 8.48,
+          "valor": 9.49,
           "unidad": "% de brecha entre el contado con liquidación y el mayorista",
           "fuente": "dolarapi.com (agregador privado) — contado con liquidación y mayorista (el mayorista replica la referencia oficial del Banco Central)",
-          "fecha_dato": "2026-11-16",
+          "fecha_dato": "2026-11-18",
           "cotizaciones": {
             "ccl": {
-              "venta": 1679.2,
-              "actualizado_en": "2026-11-16T12:59:00-03:00"
+              "venta": 1704.7,
+              "actualizado_en": "2026-11-18T11:58:00-03:00"
             },
             "mayorista": {
-              "venta": 1548.0,
-              "actualizado_en": "2026-11-16T07:51:00-03:00"
+              "venta": 1557.0,
+              "actualizado_en": "2026-11-18T08:39:00-03:00"
             }
           },
-          "detalle_txt": "Contado con liquidación venta 1679.20 (2026-11-16T12:59:00-03:00) / mayorista venta 1548.00 (2026-11-16T07:51:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+          "detalle_txt": "Contado con liquidación venta 1704.70 (2026-11-18T11:58:00-03:00) / mayorista venta 1557.00 (2026-11-18T08:39:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "desactualizado": false,
-          "obtenido_en": "2026-11-16T13:39:20",
+          "obtenido_en": "2026-11-18T15:03:58",
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 81.1,
-          "puntaje_banda": 81.1,
+          "puntaje_itcg": 77.0,
+          "puntaje_banda": 77.0,
           "peso_efectivo": 0.14,
           "metodo_obtencion": "automatico",
-          "aporte_score": 1.9,
-          "aporte_formula": "Anclas del índice de gestión: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 81.1; pesa 14,0% del índice de gestión)",
+          "aporte_score": 2.3,
+          "aporte_formula": "Anclas del índice de gestión: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 77.0; pesa 14,0% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
-          "aporte_input_txt": "Contado con liquidación venta 1679.20 (2026-11-16T12:59:00-03:00) / mayorista venta 1548.00 (2026-11-16T07:51:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+          "aporte_input_txt": "Contado con liquidación venta 1704.70 (2026-11-18T11:58:00-03:00) / mayorista venta 1557.00 (2026-11-18T08:39:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "semaforo": {
             "color": "verde",
-            "tension": 1.9,
+            "tension": 2.3,
             "umbrales": [
               {
                 "color": "verde",
@@ -8019,7 +8014,7 @@
               }
             ],
             "unidad": "% de brecha entre el contado con liquidación y el mayorista",
-            "por_que": "8,48 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 1,52 del límite con Amarillo (10,0)."
+            "por_que": "9,49 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 0,51 del límite con Amarillo (10,0)."
           }
         },
         "apertura_comercial": {
@@ -8030,7 +8025,7 @@
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_19_10_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-11-16T13:39:27",
+          "obtenido_en": "2026-11-18T15:04:04",
           "detalle_txt": "US$ 1.223 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 17.095 M de intercambio (2026-09) · canal aduanero sin fuente pública",
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -8095,7 +8090,7 @@
             "Sector Inmobiliario": 18
           },
           "detalle_txt": "18.001 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+395 en el mes) · los produjeron 842 normas de desregulación, que modificaron o eliminaron 2937 normas anteriores",
-          "obtenido_en": "2026-11-16T13:39:33",
+          "obtenido_en": "2026-11-18T15:04:12",
           "en_indice": true,
           "dimension": "reformas_economicas",
           "puntaje_itcg": 75.2,
@@ -8150,7 +8145,7 @@
           "var_planta_civil": -19.0,
           "fecha_desglose_fuerzas": "2026-02",
           "detalle_txt": "179.396 agentes (2026-09) frente a 231.305 en diciembre de 2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -21,2% aparte; el universo completo varía -22,04%",
-          "obtenido_en": "2026-11-16T13:39:33",
+          "obtenido_en": "2026-11-18T15:04:14",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 88.6,
@@ -8198,7 +8193,7 @@
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
           "detalle_txt": "Promedio mensual de octubre de 2025 a septiembre de 2026 contra el de enero a diciembre de 2023, descontada la inflación",
-          "obtenido_en": "2026-11-16T13:39:38",
+          "obtenido_en": "2026-11-18T15:04:18",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -8243,10 +8238,10 @@
           "valor": 90.0,
           "unidad": "Índice 0–100 (FAL: cinco hitos de construcción y adopción)",
           "fuente": "InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, RG CNV 1167/2026 y RG ARCA 5907/2026 · oferta de los bancos · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
-          "fecha_dato": "2026-11-16",
+          "fecha_dato": "2026-11-18",
           "referencia_temporal": "evaluación con registros de distintas fechas",
-          "evaluado_en": "2026-11-16",
-          "consulta_cnv_en": "2026-11-16",
+          "evaluado_en": "2026-11-18",
+          "consulta_cnv_en": "2026-11-18",
           "revision_normativa_en": "2026-10-26",
           "revision_judicial_en": "2026-10-20",
           "desactualizado": false,
@@ -8315,8 +8310,8 @@
           "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
           "fci_cese_registrados": 0,
           "menciones_bo": 9,
-          "detalle_txt": "Evaluación al 2026-11-16; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
-          "obtenido_en": "2026-11-16T13:39:51",
+          "detalle_txt": "Evaluación al 2026-11-18; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
+          "obtenido_en": "2026-11-18T15:04:40",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 100.0,
@@ -8327,7 +8322,7 @@
           "aporte_formula": "Anclas del índice de gestión: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — en la escala del índice este frente hoy no agrega tensión. Da 100 porque el valor (90,0) llega al punto desde el que la escala da el máximo (90,0 o más); más allá de ese punto la escala ya no distingue.",
-          "aporte_input_txt": "Evaluación al 2026-11-16; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
+          "aporte_input_txt": "Evaluación al 2026-11-18; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -8365,7 +8360,7 @@
           "desactualizado": false,
           "indice_por_mil": 14.92,
           "detalle_txt": "Enero a junio de 2026: 149.066 casos de AT y EP con baja (14,92 por mil cubiertos) contra 159.671 (15,7 por mil) en el mismo período del año anterior",
-          "obtenido_en": "2026-11-16T13:39:52",
+          "obtenido_en": "2026-11-18T15:04:44",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 75.0,
@@ -8414,7 +8409,7 @@
           "desactualizado": false,
           "juicios_12m": 61853,
           "detalle_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 frente a 55.040 en los 12 previos (sólo Capital)",
-          "obtenido_en": "2026-11-16T13:39:53",
+          "obtenido_en": "2026-11-18T15:04:58",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 40.2,
@@ -8549,7 +8544,7 @@
             "relectura_pendiente": []
           },
           "detalle_txt": "8 empresas · etapa promedio 2,12/4 · cerradas: Transener",
-          "obtenido_en": "2026-11-16T13:39:58",
+          "obtenido_en": "2026-11-18T15:05:09",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 73.1,
@@ -8594,14 +8589,14 @@
           "valor": 79.6,
           "unidad": "% de la promesa de US$ 100.000 M aprobado",
           "fuente": "Ministerio de Economía — Plataforma oficial del Régimen de Incentivo para Grandes Inversiones (RIGI)",
-          "fecha_dato": "2026-11-16",
+          "fecha_dato": "2026-11-18",
           "desactualizado": false,
           "proyectos_aprobados": 30,
           "inversion_aprobada_musd": 79649,
-          "proyectos_evaluacion": 20,
-          "inversion_evaluacion_musd": 138867,
+          "proyectos_evaluacion": 21,
+          "inversion_evaluacion_musd": 140204,
           "detalle_txt": "30 proyectos aprobados por US$ 79.649M → 79,6% de la promesa de US$ 100.000M",
-          "obtenido_en": "2026-11-16T13:39:59",
+          "obtenido_en": "2026-11-18T15:05:10",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 100.0,
@@ -8646,7 +8641,7 @@
           "valor": 100.0,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "Boletín Oficial (resoluciones de adjudicación) + página oficial RFC; CONTRAT.AR (UOC 504) como detector",
-          "fecha_dato": "2026-11-16",
+          "fecha_dato": "2026-11-18",
           "desactualizado": false,
           "km_adjudicados": 9091,
           "km_totales": 9091,
@@ -8701,7 +8696,7 @@
             "etapa_ii_b": 100.0
           },
           "detalle_txt": "9.091 de 9.091 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)",
-          "obtenido_en": "2026-11-16T13:40:00",
+          "obtenido_en": "2026-11-18T15:05:16",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 100.0,
@@ -8746,7 +8741,7 @@
           "valor": 100.0,
           "unidad": "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
           "fuente": "Boletín Oficial — Resolución 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
-          "fecha_dato": "2026-11-16",
+          "fecha_dato": "2026-11-18",
           "desactualizado": false,
           "hito": {
             "fecha": "2024-04-10",
@@ -8755,7 +8750,7 @@
             "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/305588/20240410"
           },
           "detalle_txt": "Unidades de gestión y de certificación sin actividad desde el 2024-04-10 (Resolución 84/2024 del Ministerio de Capital Humano, art. 6: «cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación del Potenciar Trabajo») · Contexto: el devengado 2026 de Volver al Trabajo y Acompañamiento Social está 100,0% clasificado como ayudas a personas (Potenciar Trabajo 2023: 98,3%); ese porcentaje no mide la intermediación y no puntúa. · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.",
-          "obtenido_en": "2026-11-16T13:40:24",
+          "obtenido_en": "2026-11-18T15:05:52",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -8808,7 +8803,7 @@
           },
           "advertencia_fuente": "",
           "detalle_txt": "240 cortes en la Ciudad de Buenos Aires en 2025 frente a 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada)",
-          "obtenido_en": "2026-11-16T13:40:25",
+          "obtenido_en": "2026-11-18T15:05:52",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 99.0,
@@ -8914,7 +8909,7 @@
             }
           },
           "detalle_txt": "5 de 5 hitos cumplidos. Contexto: 32.2 % de los usuarios de prepagas con aportes derivados directo — 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
-          "obtenido_en": "2026-11-16T13:40:25",
+          "obtenido_en": "2026-11-18T15:05:57",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -8958,20 +8953,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 82.4,
+        "valor": 81.9,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 68.4,
+            "puntaje": 66.8,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 81.1,
-                "puntaje_aplicado": 81.1,
-                "valor": 8.48,
+                "puntaje_banda": 77.0,
+                "puntaje_aplicado": 77.0,
+                "valor": 9.49,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -9133,8 +9128,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 68,4/100, está en amarillo (tensión moderada) en la escala del informe.",
-              "tension": 3.2
+              "por_que": "El puntaje de la dimensión, 66,8/100, está en amarillo (tensión moderada) en la escala del informe.",
+              "tension": 3.3
             }
           },
           "reforma_estado": {
@@ -9833,57 +9828,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 80.4,
-          "p95": 84.1,
+          "p05": 79.8,
+          "p95": 83.5,
           "tension_rango": [
             1.6,
             2.0
           ],
           "dominante": {
             "indicador": "apertura_comercial",
-            "indice_sin": 86.2
+            "indice_sin": 85.2
           },
           "n_draws": 1000,
           "hist": [
-            3,
+            2,
             1,
-            0,
+            1,
             0,
             4,
-            5,
-            8,
-            17,
-            16,
-            16,
-            26,
-            30,
-            32,
-            46,
-            51,
-            42,
-            68,
-            51,
-            58,
-            76,
-            83,
-            53,
-            62,
-            39,
-            51,
-            36,
-            32,
-            23,
-            20,
-            29,
-            9,
             3,
+            7,
+            16,
+            15,
+            15,
+            29,
+            33,
+            31,
+            44,
+            41,
+            50,
+            61,
+            59,
+            56,
+            76,
+            85,
+            57,
+            55,
+            43,
+            56,
+            38,
+            26,
+            29,
+            19,
+            23,
+            13,
+            2,
             3,
             1,
-            2,
-            4
+            3,
+            3
           ],
-          "hist_min": 78.83,
-          "hist_max": 85.33,
+          "hist_min": 78.15,
+          "hist_max": 84.85,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
@@ -10048,7 +10043,7 @@
         "redundancia": {
           "n_indicadores": 13,
           "n_pares": 75,
-          "r_abs_medio": 0.553,
+          "r_abs_medio": 0.552,
           "share_altos": 0.387,
           "share_bajos": 0.213,
           "umbral": 0.7,
@@ -10104,37 +10099,37 @@
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 13 componentes que tienen serie histórica, 75 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,553: ni componentes independientes ni una sola señal repetida. Un 39% de los pares se mueve muy junto (por encima de 0,7) y un 21% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,13 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 29 pares que superan el umbral en niveles, 26 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
-          "resumen": "La correlación media entre pares es 0,553: ni componentes independientes ni una sola señal repetida. Un 39% de los pares se mueve muy junto (por encima de 0,7) y un 21% es prácticamente independiente.",
+          "conclusion": "La correlación media entre pares es 0,552: ni componentes independientes ni una sola señal repetida. Un 39% de los pares se mueve muy junto (por encima de 0,7) y un 21% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,13 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 29 pares que superan el umbral en niveles, 26 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
+          "resumen": "La correlación media entre pares es 0,552: ni componentes independientes ni una sola señal repetida. Un 39% de los pares se mueve muy junto (por encima de 0,7) y un 21% es prácticamente independiente.",
           "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,13 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 29 pares que superan el umbral en niveles, 26 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
-          "dias_promedio": 60,
+          "dias_promedio": 62,
           "meses_promedio": 2.0,
           "fecha_mas_vieja": "31 de diciembre de 2025",
-          "fecha_mas_nueva": "16 de noviembre de 2026",
-          "span_dias": 320,
+          "fecha_mas_nueva": "18 de noviembre de 2026",
+          "span_dias": 322,
           "rezagados": [
             {
               "indicador": "protocolo_antipiquetes",
               "fecha": "31 de diciembre de 2025",
-              "meses": 10.5
+              "meses": 10.6
             },
             {
               "indicador": "siniestralidad_laboral",
               "fecha": "1 de junio de 2026",
-              "meses": 5.5
+              "meses": 5.6
             },
             {
               "indicador": "juicios_trabajo_capital",
               "fecha": "1 de junio de 2026",
-              "meses": 5.5
+              "meses": 5.6
             }
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 320 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
-          "resumen": "El dato más reciente es del 16 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 320 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses.",
+          "conclusion": "El dato más reciente es del 18 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 322 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento.",
+          "resumen": "El dato más reciente es del 18 de noviembre de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 322 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,0 meses.",
           "detalle_texto": "Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         },
         "semaforo": {
@@ -10202,14 +10197,14 @@
           "rd": 0.17
         },
         "volumen_hogar": {
-          "r": -0.08,
+          "r": -0.07,
           "n": 33,
-          "rd": 0.13
+          "rd": 0.14
         },
         "epu": {
-          "r": -0.21,
+          "r": -0.2,
           "n": 19,
-          "rd": 0.07
+          "rd": 0.1
         }
       },
       {
@@ -10249,9 +10244,9 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,08 con el volumen que consume el hogar, índice político -0,3 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,21 con la incertidumbre de política contra -0,08 con su propio par; el índice político correlaciona +0,54 con la actividad contra -0,3 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,07 con el volumen que consume el hogar, índice político -0,3 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona +0,2 con la actividad contra -0,07 con su propio par; el índice político correlaciona +0,54 con la actividad contra -0,3 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "resumen": "Los tres pares propios dan el signo esperado.",
-    "detalle_texto": "Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,08 con el volumen que consume el hogar, índice político -0,3 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,21 con la incertidumbre de política contra -0,08 con su propio par; el índice político correlaciona +0,54 con la actividad contra -0,3 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "detalle_texto": "Índice macroeconómico +0,71 con la actividad, índice de impacto social -0,07 con el volumen que consume el hogar, índice político -0,3 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona +0,2 con la actividad contra -0,07 con su propio par; el índice político correlaciona +0,54 con la actividad contra -0,3 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "sub_resumen": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez.",
     "sub_detalle": "Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
   }

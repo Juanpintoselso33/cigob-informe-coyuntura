@@ -1,16 +1,28 @@
 {
  "_meta": {
-  "comunicados_vistos": 47,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-11-16",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-16"
+  "inventario_verificado": "2026-11-18",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-11-18"
  },
- "pendientes": {},
+ "pendientes": {
+  "UIA|la-uia-presento-propuestas-para-reducir-la-carga-f": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-11-17",
+   "id": "la-uia-presento-propuestas-para-reducir-la-carga-f",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En su reunión de Junta Directiva, la entidad analizó la situación del sector y destacó la necesidad de avanzar en un Pacto Fiscal Federal para la Competitividad Industrial. La propuesta incluye medidas concretas para reducir impuestos distorsivos e incentivar la inversión y el empleo formal.    17 de noviembre de 2026.  La Junta Directiva de la Unión Industrial Argentina (UIA) se reunió para analizar la situación de la actividad industrial, las perspectivas económicas y las principales iniciativas de la entidad para fortalecer la competitividad del sector productivo.  En este marco, los representantes industriales destacaron la importancia de avanzar en un Pacto Fiscal Federal para la Competitividad Industrial, una propuesta elaborada por la UIA y presentada ante el secretario de Hacienda de la Nación, Carlos Guberman, que plantea un compromiso entre el gobierno nacional, las provincias y los municipios para reducir la carga tributaria sobre la producción, la inversión y el empleo formal.  La iniciativa -que había sido difundida en la Conferencia Industrial el 3 de noviembre pasado- busca establecer un tratamiento tributario diferencial para los sectores industriales que compiten internacionalmente, con el objetivo de generar condiciones más equitativas frente a la producción de otros países.  Entre las principales medidas propuestas por la UIA se destacan:   La propuesta contempla una implementación gradual durante seis años: comenzaría por las pymes de los sectores más expuestos a la competencia internacional, con mayor intensidad de empleo o que hayan registrado un deterioro significativo de su actividad. Posteriormente, los beneficios se extenderían al resto de las empresas industriales.   Durante la reunión, los integrantes de la Junta Directiva también analizaron el escenario económico y la situación de los distintos sectores y regiones industriales. La transición hacia un nuevo esquema económico requiere medidas que permitan sostener la actividad productiva y el empleo mientras se consolidan los nuevos motores de crecimiento.  Los industriales valoraron las medidas de alivio fiscal anunciadas por el ministro de Economía, Luis Caputo, durante la 32.ª Conferencia Industrial, que recogen algunos de los planteos realizados por la UIA.  En el marco de una caída en la actividad industrial, las exportaciones del sector alcanzaron un nivel récord durante septiembre, y se proyecta un saldo comercial anual positivo de USD 30.000 millones. El empleo industrial cayó por vigésimo segundo mes consecutivo. El complejo textil y la industria metalmecánica explican más de la mitad de esa caída desde agosto de 2023.  Los referentes de distintos sectores expresaron su preocupación por la caída en la actividad, y el representante de la Cámara Industrial Argentina de la Indumentaria (CIAI) se manifestó en estado de emergencia.  Los precios de los bienes industriales siguen contribuyendo al proceso de baja de la inflación. Desde diciembre de 2023 hasta septiembre de 2026, el IPC aumentó 438%, mientras que el IPIM Manufacturados subió 156%.   El Departamento de Educación, Tecnología e Innovación Productiva de la UIA, junto a GAN Argentina y la Organización Internacional del Trabajo (OIT), presentó una guía práctica para pymes (Kit para Pymes Formadoras) que implementará para el sector.  Esta iniciativa tiene como objetivo potenciar la competitividad industrial y resolver la dificultad de encontrar talento capacitado para las tareas productivas, acercando recursos concretos para que cualquier pyme pueda convertirse en una \"empresa formadora\". Para lograrlo, el kit centraliza toda la información en una plataforma web que ofrece una herramienta de autodiagnóstico (para definir objetivos y analizar recursos), cuatro estrategias iniciales, 20 fichas con iniciativas desarrolladas paso a paso, nueve anexos legales de referencia y cinco recursos adicionales con materiales previos de la UIA y otras entidades.",
+   "titulo": "La UIA presentó propuestas para reducir la carga fiscal y mejorar la competitividad",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-presento-propuestas-para-reducir-la-carga-f"
+  }
+ },
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
@@ -456,6 +468,10 @@
   "UIA|la-uia-presento-propuestas-para-aliviar-la-coyuntu": {
    "fecha": "2026-09-15",
    "titulo": "La UIA presentó propuestas para aliviar la coyuntura actual de las pymes"
+  },
+  "UIA|la-uia-presento-propuestas-para-reducir-la-carga-f": {
+   "fecha": "2026-11-17",
+   "titulo": "La UIA presentó propuestas para reducir la carga fiscal y mejorar la competitividad"
   },
   "UIA|la-uia-repaso-los-problemas-y-desafios-logisticos": {
    "fecha": "2026-07-14",
