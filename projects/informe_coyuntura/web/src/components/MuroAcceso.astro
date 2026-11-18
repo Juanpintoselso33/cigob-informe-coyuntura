@@ -119,7 +119,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     inertes = [...document.body.children].filter((el) => el !== muro && !el.hasAttribute("inert"));
     inertes.forEach((el) => el.setAttribute("inert", ""));
     input?.focus({ preventScroll: true });
-    track("muro_visto", { modo: form?.dataset.modo });
+    // via=difusion: llegó por WhatsApp sin haber dejado el mail (cookie `d`).
+    const porDifusion = html.hasAttribute("data-muro-difusion");
+    track("muro_visto", { modo: form?.dataset.modo, ...(porDifusion ? { via: "difusion" } : {}) });
   };
   const ocultar = () => {
     html.classList.remove("muro-activo");

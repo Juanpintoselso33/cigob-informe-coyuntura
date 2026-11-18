@@ -124,7 +124,11 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
         // MuroAcceso.astro.
         (function () {
           var html = document.documentElement, via = "";
-          if (/(?:^|;\s*)cigob_lector=/.test(document.cookie)) via = "cookie";
+          // `d` = entró sólo por el link de una difusión, sin dejar el mail
+          // (api/_acceso.ts): no cuenta como reconocido, el muro se lo pide.
+          var c = document.cookie.match(/(?:^|;\s*)cigob_lector=([^;]*)/);
+          if (c && c[1] !== "d") via = "cookie";
+          if (c && c[1] === "d") html.setAttribute("data-muro-difusion", "1");
           try {
             if (localStorage.getItem("cigob-muro-v1")) via = via ? "ambos" : "local";
             // La cruz lo cierra por el resto de la visita (sessionStorage).

@@ -36,7 +36,7 @@ export default async function handler(req: any, res: any) {
   // La cookie se deja también si el bot falla: el muro deja entrar igual
   // (ADR-0342) y no tiene sentido volver a pedir el mail el mes que viene por
   // un error nuestro. Sólo un mail mal escrito (400) no la deja.
-  if (estado !== 400) res.setHeader("Set-Cookie", cookieDeAcceso());
+  if (estado !== 400) res.setHeader("Set-Cookie", cookieDeAcceso("m"));
   res.setHeader("Cache-Control", "no-store");
   res.status(estado).json(cuerpo);
 }

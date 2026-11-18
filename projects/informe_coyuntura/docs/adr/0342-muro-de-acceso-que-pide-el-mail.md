@@ -90,6 +90,14 @@ aparecer todos los meses. Juan eligió cuatro piezas:
    `/api/acceso?t=<token>&next=…`; si el bot reconoce el token, se deja la
    cookie y se redirige a la página limpia. Vale en cualquier dispositivo,
    también en incógnito.
+   **Corregido el 18-nov-2026:** así diseñado, quien entraba por el link de la
+   difusión no veía nunca el pedido de mail, y de las difusiones del Monitor
+   del 17-nov (29 personas) no se juntó ninguno. Ese costo no se le explicó a
+   Juan al proponerlo. Ahora el token deja la cookie con valor `d` («en la
+   lista de WhatsApp, sin mail»), que **no** saltea el muro: se le pide el mail
+   como a cualquiera, con la cruz para cerrarlo. Quien deja el mail queda `m`;
+   el `1` de antes se lee como `m`, salvo que vuelva a entrar por un link de
+   difusión. En GA4, `muro_visto` lleva `via: difusion` para esos casos.
 3. **«¿Ya te registraste? Con tu mail alcanza»** en el popup, y el aviso
    mínimo de la Ley 25.326 (responsable, finalidad, cómo pedir acceso o baja).
 4. **Un solo dominio:** `cigob-informe-coyuntura.vercel.app` redirige a
