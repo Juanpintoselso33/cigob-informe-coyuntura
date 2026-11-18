@@ -9,6 +9,7 @@ import csv
 import io
 import json
 import re
+import os
 import time
 import signal
 import calendar
@@ -133,6 +134,39 @@ PRESUPUESTO_INDICADOR = {
     # candidato y la ficha de cada ley de tratado recortada (ADR-0415).
     "ratio_dnu": 900,
 }
+
+
+# ── Presupuesto TOTAL del script (18-nov-2026) ────────────────────────────────
+# Los presupuestos por indicador suman más que lo que el workflow le da al paso
+# (35 min): sólo los de Diputados y DNU llegan a 80. El 18-nov cohesion_bloque
+# tardó 17 min, el `timeout` del workflow mató el script antes de llegar a vida
+# cotidiana y brecha_salario_cbt quedó con la serie de ayer contra la card de
+# hoy (G3, la noche entera sin publicar). Con un tope propio, un poco por debajo
+# del de afuera, cada indicador recibe a lo sumo lo que queda: lo que no entra
+# conserva sus filas previas y el script llega igual a escribir cada CSV.
+# `PRESUPUESTO_SERIES_S` lo fija el workflow; sin él (corrida a mano) no hay tope.
+_FIN_TOTAL: float | None = None
+_MARGEN_FINAL_S = 60     # para escribir el último CSV antes del corte de afuera
+
+
+def fijar_presupuesto_total(segundos: float | None) -> None:
+    global _FIN_TOTAL
+    _FIN_TOTAL = None if not segundos else time.monotonic() + float(segundos)
+
+
+def orden_cinturones(cinturones: list) -> list:
+    """Política va última: sus scrapers (Diputados, DNU) son los lentos, y si el
+    tiempo no alcanza que se quede corta ella y no los cinturones de atrás."""
+    return sorted(cinturones, key=lambda c: c == "politica")
+
+
+def segundos_para(nombre: str) -> int:
+    """El presupuesto de un indicador: el suyo, recortado a lo que queda del
+    total. 0 o menos = no hay tiempo, no se arranca."""
+    propio = PRESUPUESTO_INDICADOR.get(nombre, PRESUPUESTO_INDICADOR_DEFAULT)
+    if _FIN_TOTAL is None:
+        return propio
+    return int(min(propio, _FIN_TOTAL - time.monotonic() - _MARGEN_FINAL_S))
 
 
 class TiempoAgotado(Exception):
@@ -520,7 +554,10 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
         # indicador se comió el tiempo (16-oct-2026, 25 min sin una línea).
         t0 = time.monotonic()
         try:
-            with presupuesto(PRESUPUESTO_INDICADOR.get(nombre, PRESUPUESTO_INDICADOR_DEFAULT)):
+            segundos = segundos_para(nombre)
+            if _FIN_TOTAL is not None and segundos <= 0:
+                raise TiempoAgotado("sin tiempo: se agotó el presupuesto total del script")
+            with presupuesto(segundos):
                 data = fetch()
             if not data:
                 # Una serie vacía es un fallo (el fetcher la omitió), no un
@@ -3258,7 +3295,7 @@ VIDA_DERIVADAS += [
 
 
 @_con_config_de_vida
-def fetch_brecha_serie() -> list:
+def fetch_brecha_salario_cbt_serie() -> list:
     """Serie de la brecha salario/CBT = RIPTE / Canasta Básica Total, ALINEADA por mes
     (mismo mes en ambas series; el indicador live toma el último de cada una, que a veces
     son meses distintos). Cuántas canastas cubre el salario imponible promedio.
@@ -3278,7 +3315,7 @@ def fetch_brecha_serie() -> list:
 
 
 VIDA_DERIVADAS.append(
-    ("brecha_salario_cbt", "canastas (RIPTE/CBT)", "INDEC (RIPTE + Canasta Básica Total)", fetch_brecha_serie)
+    ("brecha_salario_cbt", "canastas (RIPTE/CBT)", "INDEC (RIPTE + Canasta Básica Total)", fetch_brecha_salario_cbt_serie)
 )
 
 GESTION_INDEC = [
@@ -4267,6 +4304,8 @@ if __name__ == "__main__":
                               f"(revisar INDEC/BCRA/DERIVADAS de cada uno)")
 
     cinturones = [args.cinturon] if args.cinturon else list(CINTURONES_SERIES)
+    cinturones = orden_cinturones(cinturones)
+    fijar_presupuesto_total(float(os.environ.get("PRESUPUESTO_SERIES_S") or 0))
     for c in cinturones:
         indec, bcra, derivadas = CINTURONES_SERIES[c]
         print(f"\n=== {c.upper()} ===")

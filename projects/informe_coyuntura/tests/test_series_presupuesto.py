@@ -141,3 +141,40 @@ def test_presupuesto_cero_o_negativo_no_arma_alarma():
         pass
     with ds.presupuesto(-1):
         pass
+
+
+@pytest.mark.skipif(not POSIX, reason="SIGALRM sólo existe en POSIX")
+def test_sin_presupuesto_total_no_se_arranca_y_conserva_lo_previo(tmp_path, monkeypatch):
+    """18-nov-2026: los indicadores lentos de política se comieron los 35 min del
+    paso y el script murió antes de vida cotidiana. Con el tope propio, lo que
+    no entra conserva sus filas y el CSV se escribe igual."""
+    monkeypatch.setattr(ds, "OUTPUT_DIR", tmp_path)
+    path = _csv_previo(tmp_path, [["2026-07-01", "tarde", "9.0", "u", "f"]])
+    llamado = []
+    ds.fijar_presupuesto_total(1)   # menos que el margen final: ya no hay tiempo
+    try:
+        ds.descargar("prueba", [], [], derivadas=[
+            ("tarde", "u", "f", lambda: llamado.append(1) or [["2026-08-01", 1.0]]),
+        ])
+    finally:
+        ds.fijar_presupuesto_total(None)
+    assert not llamado, "arrancó un indicador sin tiempo"
+    assert ["2026-07-01", "tarde", "9.0", "u", "f"] in _leer(path)
+
+
+def test_el_presupuesto_de_un_indicador_se_recorta_a_lo_que_queda(monkeypatch):
+    monkeypatch.setattr(ds, "PRESUPUESTO_INDICADOR", {"lento": 900})
+    ds.fijar_presupuesto_total(ds._MARGEN_FINAL_S + 120)
+    try:
+        assert 100 <= ds.segundos_para("lento") <= 120
+    finally:
+        ds.fijar_presupuesto_total(None)
+    assert ds.segundos_para("lento") == 900, "sin tope total, el presupuesto propio"
+
+
+def test_politica_va_ultima():
+    """Si el tiempo no alcanza, que se quede corta política (la de las fuentes
+    lentas) y no los cinturones que corren después."""
+    orden = ds.orden_cinturones(list(ds.CINTURONES_SERIES))
+    assert orden[-1] == "politica"
+    assert sorted(orden) == sorted(ds.CINTURONES_SERIES)

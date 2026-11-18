@@ -1,7 +1,7 @@
 """Punto 12 del documento de Luis del 11-nov-2026 (decisión de Juan del 13-nov):
 una dimensión es crítica cuando está en rojo con la escala de ADR-0427, y el
-aviso «Dimensión crítica» se muestra en la card del cinturón y en la de la
-dimensión (ADR-0020)."""
+aviso «Dimensión crítica» se muestra en la card de la dimensión (ADR-0020;
+de la del cinturón lo sacó el pedido #110 de Luis, 17-nov-2026)."""
 import sys
 from pathlib import Path
 
@@ -22,10 +22,11 @@ def test_el_borde_es_naranja_no_critico():
     assert bloque["dimensiones"]["b"]["critica"] is True
 
 
-def test_el_aviso_esta_en_las_dos_cards():
+def test_el_aviso_esta_en_la_card_de_la_dimension():
+    """Desde el 17-nov-2026 (pedido #110 de Luis) el aviso rojo ya no va en la
+    tarjeta del cinturón de la portada: queda sólo en la de la dimensión."""
     web = ROOT / "web"
-    for archivo in ("src/components/CinturonCard.astro", "src/pages/[slug].astro"):
-        texto = (web / archivo).read_text(encoding="utf-8")
-        assert "Dimensión crítica" in texto and "no la compensa" in texto, archivo
+    texto = (web / "src/pages/[slug].astro").read_text(encoding="utf-8")
+    assert "Dimensión crítica" in texto and "no la compensa" in texto
     css = (web / "public/overrides.css").read_text(encoding="utf-8")
     assert ".cg-itcm-dim.cg-itcm-dim--critica" in css
