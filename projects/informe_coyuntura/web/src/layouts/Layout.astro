@@ -146,7 +146,7 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}');
+          gtag('config', '${gaId}', { content_group: '${esDiario ? "Monitor diario" : "Monitor"}' });
         `}></script>
       </Fragment>
     )}
