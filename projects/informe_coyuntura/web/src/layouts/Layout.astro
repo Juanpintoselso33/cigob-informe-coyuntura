@@ -14,7 +14,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai
 // Se valida la forma G-XXXXXXXXXX: una variable mal cargada no debe terminar
 // interpolada dentro del <script>.
 const rawGaId = import.meta.env.PUBLIC_GA_ID?.trim();
-const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
+// El seguimiento diario es interno: no se trackea nunca, aunque alguien le cargue PUBLIC_GA_ID.
+const gaId =
+  import.meta.env.PUBLIC_SITIO?.trim() !== "diario" && rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 
 // Muro de acceso (ADR-0342). PUBLIC_MURO=0 lo apaga: es lo que usa el
 // seguimiento diario interno y el informe en un solo archivo. En la portada
@@ -146,7 +148,7 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}', { content_group: '${esDiario ? "Monitor diario" : "Monitor"}' });
+          gtag('config', '${gaId}', { content_group: 'Monitor' });
         `}></script>
       </Fragment>
     )}
