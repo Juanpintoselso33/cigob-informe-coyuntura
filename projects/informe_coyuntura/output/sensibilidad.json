@@ -4,16 +4,16 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-18T15:47:10.477138+00:00",
+    "snapshot": "2026-11-19T03:55:56.399786+00:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 52.2,
-    "valor_recomputado": 52.2,
+    "valor_publicado": 52.3,
+    "valor_recomputado": 52.3,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 52.2,
+        "media": 52.3,
         "p05": 51.3,
         "p95": 53.2,
         "desvio": 0.59
@@ -46,11 +46,11 @@
       "actividad_tributaria": 52.9,
       "credito_privado": 52.9,
       "emae_ia": 52.9,
+      "ipi_manufacturero": 52.9,
       "reservas_bcra": 52.8,
-      "ipi_manufacturero": 52.8,
-      "rem_ipc_12m": 51.7,
+      "rem_ipc_12m": 51.8,
       "reservas_brutas": 52.5,
-      "recaudacion": 52.2
+      "recaudacion": 52.3
     },
     "tension": {
       "base": 4.8,
@@ -61,50 +61,50 @@
     }
   },
   "itcg": {
-    "valor_publicado": 81.9,
-    "valor_recomputado": 81.9,
+    "valor_publicado": 81.3,
+    "valor_recomputado": 81.3,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 81.9,
-        "p05": 80.5,
-        "p95": 83.2,
-        "desvio": 0.85
+        "media": 81.3,
+        "p05": 79.9,
+        "p95": 82.7,
+        "desvio": 0.87
       },
       "combinado": {
-        "media": 81.7,
-        "p05": 79.9,
-        "p95": 83.5,
-        "desvio": 1.08
+        "media": 81.1,
+        "p05": 79.3,
+        "p95": 82.9,
+        "desvio": 1.1
       },
       "insumos": {
-        "media": 81.7,
-        "p05": 80.6,
-        "p95": 82.7,
+        "media": 81.1,
+        "p05": 80.0,
+        "p95": 82.1,
         "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 85.2,
-      "fal_modernizacion_laboral": 78.7,
+      "fal_modernizacion_laboral": 78.1,
+      "apertura_comercial": 84.2,
+      "juicios_trabajo_capital": 83.2,
       "cepo_mulc": 79.4,
-      "juicios_trabajo_capital": 83.8,
-      "reduccion_estado": 83.5,
-      "privatizaciones": 83.5,
-      "gasto_funcionamiento": 80.7,
-      "rigi_inversiones": 80.8,
-      "desregulacion_normativa": 81.1,
-      "concesiones_infraestructura": 81.5,
-      "siniestralidad_laboral": 82.1,
-      "asistencia_directa": 81.8,
-      "protocolo_antipiquetes": 81.9,
-      "libertad_opcion_salud": 81.9
+      "reduccion_estado": 82.9,
+      "privatizaciones": 82.9,
+      "gasto_funcionamiento": 80.1,
+      "rigi_inversiones": 80.2,
+      "desregulacion_normativa": 80.4,
+      "concesiones_infraestructura": 80.9,
+      "siniestralidad_laboral": 81.5,
+      "asistencia_directa": 81.2,
+      "protocolo_antipiquetes": 81.3,
+      "libertad_opcion_salud": 81.3
     },
     "tension": {
-      "base": 1.8,
+      "base": 1.9,
       "rango_combinado": [
-        1.6,
-        2.0
+        1.7,
+        2.1
       ]
     }
   },
