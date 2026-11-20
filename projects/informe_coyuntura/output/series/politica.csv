@@ -284,7 +284,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,paralisis_denuncias,15,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2023-12-01,paralisis_denuncias,15,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-11-12,movilizacion_cepa,41.2,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.82,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.81,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.71,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.97,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.52,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
@@ -699,7 +699,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
-2026-11-18,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-11-20,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-10-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-09-30,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-08-31,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -735,7 +735,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-11-18,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-11-20,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-10-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-09-30,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-08-31,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -842,7 +842,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
-2026-11-18,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-11-20,cohesion_bloque,99.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-10-31,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-09-30,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,cohesion_bloque,99.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB

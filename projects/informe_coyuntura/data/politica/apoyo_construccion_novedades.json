@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 926,
+  "comunicados_vistos": 929,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-19",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-19"
+  "inventario_verificado": "2026-11-20",
+  "nuevos_en_la_corrida": 3,
+  "ultima_corrida": "2026-11-20"
  },
  "pendientes": {
   "CAMARCO|49669": {
@@ -20,6 +20,39 @@
    "texto": "CAMARCO invita a participar de la “Jornada de Movilidad y Transporte España-Argentina”, evento que se desarrollará el 17 de noviembre, que organiza la Oficina Económica y Comercial de la Embajada de España en Buenos Aires.\n El Ing. Fernando Lago , Director del Área de Pensamiento Estratégico (APE) de CAMARCO, participará del panel “Proyectos de infraestructura pendientes y en curso”.\n Para confirmar su asistencia , hay que registrarse AQUÍ .",
    "titulo": "Jornada de Movilidad y Transporte España-Argentina",
    "url": "https://www.camarco.org.ar/2026/11/16/jornada-de-movilidad-y-transporte-espana-argentina/"
+  },
+  "CAMARCO|49718": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-19",
+   "id": "49718",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El martes 17 de noviembre, la Cámara Argentina de la Construcción celebró el Día de la Construcción con un encuentro que reunió a autoridades, representantes del sector y referentes de distintas instituciones, en una noche de reencuentros y celebración, especialmente significativa en el año en que la entidad conmemora sus 90 años de historia. Participaron autoridades e integrantes de las delegaciones de CAMARCO en todo el país, representantes de los ámbitos nacional, provincial y municipal, así como referentes del sector empresarial, profesional y académico.\n Durante la celebración, la Senadora Nacional por Córdoba y Presidenta de la Comisión de Trabajo y Previsión Social, Carmen Álvarez Rivero, hizo entrega a las autoridades de CAMARCO de una placa con motivo de la Declaración de Interés del 90º aniversario de la institución , sancionada por el Honorable Senado de la Nación por iniciativa de la Senadora Beatriz Ávila, Presidenta de la Comisión de Infraestructura, Vivienda y Transporte.\n Asimismo, distintas instituciones hicieron entrega de placas conmemorativas en reconocimiento a los 90 años de trayectoria de CAMARCO y a su aporte al desarrollo nacional, destacando el papel de la Cámara en la representación y el fortalecimiento de la industria de la construcción.\n El Presidente de CAMARCO, Ing. Gustavo Weiss , compartió unas palabras sobre el recorrido de la institución, los desafíos del sector y la importancia de seguir construyendo consensos y oportunidades para el desarrollo del país:\n Bajo el lema “Construyamos puentes” recorrimos el país. Nos sentamos en la misma mesa empresarios, funcionarios, académicos y trabajadores. Escuchamos y confirmamos algo fundamental, dialogar no significa pensar todos igual, significa encontrar, aún desde nuestras diferencias, objetivos compartidos (…). Así, lo que empezó como un festejo terminó siendo un plan de trabajo. El próximo paso es conectarlo con los grandes motores del país: la energía, la minería, la agroindustria, la economía del conocimiento. Transformar el diálogo en propuestas y las propuestas en acciones. Quiero agradecer a las delegaciones, a los socios y a toda la Cámara que hicieron posible esto. Fundamos esta casa hace 90 años porque dijimos “somos un grupo de empresas que queremos construir y desarrollar un país”. Hace 90 años teníamos la esperanza de contribuir a eso. Hoy puedo decir que hemos aportado nuestro granito de arena para poder hacer grande la infraestructura económica y social de nuestro país. (…) Queridos amigos, 90 años no son un punto de llegada, son un punto de apoyo, son un punto de continuidad en el camino. Dentro de 10 años la Cámara va a cumplir 100. Les pido que empecemos hoy a construir ese centenario, que cada empresa, cada delegación, cada joven que se suma a la Cámara, que son muchos y muy talentosos, sientan que esta fecha les pertenece. \n Por otro lado, el evento también fue escenario de la entrega de premios del concurso de fotografía « Obras que hicieron país » , una iniciativa impulsada por CAMARCO durante este año, con el objetivo de visibilizar el impacto de la infraestructura y el trabajo de la industria de la construcción en el territorio argentino. En esta edición, el segundo premio fue otorgado a ENAS y el primer premio a SACDE. Además, se entregaron menciones especiales a MIJOVI S.R.L., PROBA S.A. y RIVA S.A.\n La celebración del Día de la Construcción fue una oportunidad para poner en valor una historia compartida, reconocer el aporte de quienes forman parte de la industria y renovar el compromiso de CAMARCO con el desarrollo de la Argentina. A 90 años de su creación, la Cámara continúa trabajando para fortalecer los vínculos entre los distintos actores del sector y seguir construyendo puentes hacia el futuro.",
+   "titulo": "Celebración del Día de la Construcción",
+   "url": "https://www.camarco.org.ar/2026/11/19/celebracion-del-dia-de-la-construccion/"
+  },
+  "CAMARCO|49752": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-19",
+   "id": "49752",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Delegación Chaco de la Cámara Argentina de la Construcción llevó adelante la Primera Jornada por el Día de la Construcción, bajo el lema “La construcción como motor de inclusión” , en el auditorio de la Facultad de Arquitectura de la Universidad Nacional del Nordeste (UNNE).\n El encuentro reunió a representantes del sector público y privado, empresarios, profesionales y referentes de la actividad con el objetivo de generar un espacio de intercambio y reflexión sobre los desafíos de la construcción, su capacidad para generar empleo y su aporte al desarrollo económico y social.\n Durante la apertura, el Gobernador de la provincia del Chaco, Leandro Zdero, destacó el rol estratégico de la construcción como impulsora de la actividad económica y convocó a fortalecer el trabajo conjunto entre el Estado y el sector privado para promover nuevas oportunidades de crecimiento e inversión.\n Por su parte, el Presidente de CAMARCO Chaco, Bernardo Jaraz, señaló que la construcción es una de las industrias con mayor capacidad de generación de empleo y resaltó la importancia de impulsar instancias de diálogo que permitan articular esfuerzos, ideas y soluciones para contribuir al desarrollo de la provincia.\n La jornada permitió abordar la actualidad del sector, sus perspectivas de crecimiento y la necesidad de continuar promoviendo espacios de articulación que fortalezcan la inversión, la generación de trabajo y el desarrollo de las comunidades.\n Más información AQUÍ",
+   "titulo": "CAMARCO Chaco celebró la 1° Jornada por el Día de la Construcción",
+   "url": "https://www.camarco.org.ar/2026/11/19/camarco-chaco-celebro-jornada-por-el-dia-de-la-construccion/"
+  },
+  "CAMARCO|49756": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-19",
+   "id": "49756",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Cámara Argentina de la Construcción realizó la edición 14° del Torneo de Golf CAMARCO – Copa Ingeniero César Polledo.\n Este torneo, uno de los encuentros más esperados de la comunidad CAMARCO, reunió a través del deporte a sus socios en un ambiente de camaradería. La competencia se realizó en Pilará Golf Club, ubicado en Pilar, provincia de Buenos Aires. Entre los participantes, se encontraban los embajadores de Panamá, Juan Luis Correa; de Italia, Fabrizio Nicoletti y del Reino Unido, David S. Cairns. También asistieron Beto Acosta, Mariano Tubio, Gonzalo Tiesi y Hugo Porta.\n Estos catorce años de historia reflejan algo mucho más importante que una competencia deportiva: representan una red de relaciones, confianza y encuentros que se ha fortalecido a lo largo del tiempo.\n En el marco de los 90 años de CAMARCO y bajo el espíritu de “Construyamos Puentes”, este torneo volvió a convocar a empresarios, directivos, profesionales y líderes del sector en un ámbito distinto, donde las conversaciones fluyen, los vínculos se fortalecen y nacen nuevas oportunidades.",
+   "titulo": "Torneo de Golf “Copa César Polledo” 2026",
+   "url": "https://www.camarco.org.ar/2026/11/19/torneo-de-golf-copa-cesar-polledo-2026/"
   }
  },
  "revisadas": {
@@ -2861,6 +2894,18 @@
    "fecha": "2026-11-17",
    "origen": "no se codifica (ADR-0391): serie periódica por título",
    "titulo": "Indicador CAMARCO OCTUBRE 2026"
+  },
+  "CAMARCO|49718": {
+   "fecha": "2026-11-19",
+   "titulo": "Celebración del Día de la Construcción"
+  },
+  "CAMARCO|49752": {
+   "fecha": "2026-11-19",
+   "titulo": "CAMARCO Chaco celebró la 1° Jornada por el Día de la Construcción"
+  },
+  "CAMARCO|49756": {
+   "fecha": "2026-11-19",
+   "titulo": "Torneo de Golf “Copa César Polledo” 2026"
   }
  }
 }

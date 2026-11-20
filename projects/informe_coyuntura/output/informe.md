@@ -1,6 +1,6 @@
 ---
 periodo: "2026-11"
-generado: "2026-11-19 03:55:56"
+generado: "2026-11-20 03:56:53"
 score_global: 3.3
 barbarismo_activo: "tecnocrático"
 cinturon_dominante: "macro"
@@ -21,15 +21,15 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 2.17 | % mensual | 2026-10-01 | fresco |
 | reservas_bcra | 7465.0 | Millones de dólares | 2026-09-30 | fresco |
-| reservas_brutas | 49474.0 | Millones de dólares | 2026-11-16 | fresco |
+| reservas_brutas | 49741.0 | Millones de dólares | 2026-11-17 | fresco |
 | meta_reservas_fmi | 169.6 | % de la meta prorrateada | 2026-09-30 | fresco |
 | idc | -0.34 | σ frente a su historia | 2026-10-01 | fresco |
-| badlar | 23.25 | % anual | 2026-11-17 | fresco |
+| badlar | 22.12 | % anual | 2026-11-18 | fresco |
 | emae_ia | -1.74 | % interanual | 2026-08-01 | fresco |
 | emae_difusion | 33.33 | % de sectores en crecimiento interanual | 2026-08-01 | fresco |
 | ipi_manufacturero | -3.3 | % interanual (promedio de 3 meses) | 2026-09-01 | fresco |
 | actividad_tributaria | -4.67 | % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) | 2026-10-01 | fresco |
-| saldo_comercial_12m | 15.11 | % del comercio (exportaciones + importaciones, acumulado de 12 meses) | 2026-09-01 | fresco |
+| saldo_comercial_12m | 15.11 | % del comercio (exportaciones + importaciones, acumulado de 12 meses) | 2026-09-01 | ⚠ cache |
 | recaudacion | 95.1 | índice (100 = 4º trimestre de 2023) | 2026-10-01 | fresco |
 | tcrm | 85.87 | Índice (base diciembre de 2015 = 100) | 2026-09-01 | fresco |
 | terminos_intercambio | 145.14 | índice (base 2004 = 100) | 2026-04-01 | fresco |
@@ -42,9 +42,9 @@ schema_version: "1.2.0"
 | credito_privado | -1.7 | % interanual real (crédito en pesos) | 2026-10-01 | fresco |
 | costo_financiamiento_tesoro | 4.87 | % real anual (tasa efectiva anual frente a la inflación esperada) | 2026-10-01 | fresco |
 | resultado_primario | 6.19 | % de la recaudación (acumulado de 12 meses) | 2026-09-01 | fresco |
-| prestamos_privados | 2.16 | % mensual nominal | 2026-11-13 | fresco |
-| base_monetaria | 5.16 | % mensual nominal | 2026-11-16 | fresco |
-| tc_mayorista | 2.07 | % mensual | 2026-11-18 | fresco |
+| prestamos_privados | 2.0 | % mensual nominal | 2026-11-16 | fresco |
+| base_monetaria | 0.5 | % mensual nominal | 2026-11-17 | fresco |
+| tc_mayorista | 2.3 | % mensual | 2026-11-19 | fresco |
 
 ### 🟢 Politica — score 2.0/10 (estable)
 *Riesgo de barbarismo: político*
@@ -87,7 +87,7 @@ schema_version: "1.2.0"
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | octubre de 2026 (ADR-0374) | Mide cuántos expedientes resuelve la Corte Suprema sobre los que le entran: la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. |
 | paralisis_denuncias | 12 | sesiones de las comisiones de control (12m) | 2026-11-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
 
-### 🟡 Vida Cotidiana — score 4.4/10 (en_tension)
+### 🟡 Vida Cotidiana — score 4.6/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -99,25 +99,25 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha |
 |---|---|---|---|
-| icc_utdt | 41.52 | índice | 2026-10-01 |
+| icc_utdt | 40.99 | índice | 2026-11-01 |
 
 ### 🟢 Gestion — score 1.9/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 10.55 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-18 | fresco |
-| apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
+| cepo_mulc | 11.71 | % de brecha entre el contado con liquidación y el mayorista | 2026-11-19 | fresco |
+| apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | ⚠ cache |
 | desregulacion_normativa | 18001.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-10-01 | fresco |
 | reduccion_estado | -22.44 | % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | 2026-09-01 | fresco |
 | gasto_funcionamiento | -27.76 | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | 2026-09-01 | fresco |
-| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-19 | fresco |
+| fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-11-20 | fresco |
 | siniestralidad_laboral | -5.0 | % variación del índice de incidencia (mismo período, contra el año anterior) | 2026-06-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12 meses frente a los 12 meses previos) | 2026-06-01 | fresco |
 | privatizaciones | 53.1 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-11-07 | fresco |
-| rigi_inversiones | 79.6 | % de la promesa de US$ 100.000 M aprobado | 2026-11-19 | fresco |
+| rigi_inversiones | 79.6 | % de la promesa de US$ 100.000 M aprobado | 2026-11-20 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
-| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-19 | fresco |
+| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-11-20 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires frente a 2023 | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-11-19 | fresco |
@@ -128,8 +128,13 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -29.69 | % de variación real frente a 2023-09 (remuneraciones del sector público nacional) | 2026-09-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-19 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-11-20 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 | litigiosidad_laboral | 1.1 | % variación de juicios del sistema de riesgos del trabajo (12 meses frente a los 12 meses previos) | 2026-08-01 | octubre de 2026 (ADR-0385) | Contaba los juicios que llegan al sistema de riesgos del trabajo, no los accidentes y enfermedades que el sistema registra, que es lo que pidió medir la dirección de CiGob. Lo reemplaza la siniestralidad registrada, con el mismo peso en la dimensión. El dato se sigue calculando. |
 
+## Advertencias
+
+- `desactualizado:macro:saldo_comercial_12m`
+- `desactualizado:gestion:apertura_comercial`
+
 ---
-*Generado por CIGOB — 2026-11-19 03:55:56 — schema 1.2.0*
+*Generado por CIGOB — 2026-11-20 03:56:53 — schema 1.2.0*
