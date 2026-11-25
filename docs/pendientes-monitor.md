@@ -362,6 +362,13 @@ tocar nada.
     verde). La escala de ADR-0406 sigue igual; falta que Juan o Marcos confirmen si los cortes
     sirven para la promesa.
 
+**Reunión del 20-nov.**
+
+- **[J] El muro que pide el mail tiene que dejar pasar a los agentes de IA que buscan en la
+  web** (Juan, 20-nov). Hoy está apagado (PUBLIC_MURO=0); cuando se vuelva a prender, que un
+  asistente de IA que entra a buscar o leer el sitio no se quede frenado en el pedido de mail.
+- **[J] Sección de preguntas frecuentes (FAQ)** (Juan, 20-nov).
+
 ## 2. Esperan a otro
 
 1. **Bancos (ADEBA, ABA, ABAPPRA):** clasificados pero fuera de la postura empresaria por no
