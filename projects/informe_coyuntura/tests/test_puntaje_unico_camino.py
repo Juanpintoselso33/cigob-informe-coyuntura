@@ -102,6 +102,9 @@ def test_el_puntaje_publicado_se_reproduce_desde_el_valor_crudo():
 
 # ── La serie tiene que medir lo MISMO que puntúa el índice (ADR-0086) ───────
 
+CARD_DIARIA_SERIE_MENSUAL = {"cepo_mulc"}
+
+
 def test_ninguna_serie_mide_otra_magnitud_que_la_que_puntua_su_indice():
     """Quinto caso de la familia, encontrado el 18-jul-2026 en el ITCG.
 
@@ -166,8 +169,12 @@ def test_ninguna_serie_mide_otra_magnitud_que_la_que_puntua_su_indice():
                 # de un corte con un escalón grande: el 21 y 22-nov-2026, la brecha
                 # cambiaria daba 10,55 % en la card y 8,39 % en la serie, con el
                 # corte en 10 (85 → 65), y frenó dos corridas.
+                # Sólo para los indicadores cuya card es el dato del día y la serie
+                # el promedio del mes: en el resto, dos números cercanos no prueban
+                # la misma magnitud (revisión de Codex, 25-nov-2026).
                 card = (snap[ckey]["indicadores"].get(ind) or {}).get("valor")
-                if (isinstance(card, (int, float)) and card * ultimo > 0
+                if (ind in CARD_DIARIA_SERIE_MENSUAL
+                        and isinstance(card, (int, float)) and card * ultimo > 0
                         and max(abs(card), abs(ultimo)) / min(abs(card), abs(ultimo)) < 2):
                     continue
                 if abs(p_serie - p_pub) > 20 and ind not in no_comparables:
