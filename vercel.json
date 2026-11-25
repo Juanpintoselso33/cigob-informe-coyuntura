@@ -15,5 +15,39 @@
       "destination": "https://informe.cigob.org/$1",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "signature-agent",
+          "value": ".*chatgpt\\.com.*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Set-Cookie",
+          "value": "cigob_lector=a; Max-Age=86400; Path=/; Secure; SameSite=Lax"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Google-Agent.*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Set-Cookie",
+          "value": "cigob_lector=a; Max-Age=86400; Path=/; Secure; SameSite=Lax"
+        }
+      ]
+    }
   ]
 }

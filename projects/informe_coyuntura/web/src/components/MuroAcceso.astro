@@ -139,6 +139,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   // entró sin muro. «cookie» sola es el caso que se arregló: Safari borró el
   // localStorage y la cookie del servidor lo reconoció igual.
   const via = html.getAttribute("data-muro-via");
+  // Agente de IA reconocido por vercel.json (ADR-0438): se cuenta aparte y no
+  // se renueva nada, porque no es un lector que dejó el mail.
+  if (via === "agente") track("muro_reconocido", { via: "agente" });
   if (via === "cookie" || via === "local" || via === "ambos") {
     let renovada = false;
     try { renovada = Boolean(sessionStorage.getItem("cigob-muro-renovada")); } catch {}

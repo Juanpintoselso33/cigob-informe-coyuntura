@@ -129,10 +129,13 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
           // `d` = entró sólo por el link de una difusión, sin dejar el mail
           // (api/_acceso.ts): no cuenta como reconocido, el muro se lo pide.
           var c = document.cookie.match(/(?:^|;\s*)cigob_lector=([^;]*)/);
-          if (c && c[1] !== "d") via = "cookie";
+          // `a` = agente de IA que se identifica (ChatGPT en la nube, Google-Agent):
+          // la cookie la pone vercel.json con la respuesta (ADR-0438). No ve el muro.
+          if (c && c[1] === "a") via = "agente";
+          else if (c && c[1] !== "d") via = "cookie";
           if (c && c[1] === "d") html.setAttribute("data-muro-difusion", "1");
           try {
-            if (localStorage.getItem("cigob-muro-v1")) via = via ? "ambos" : "local";
+            if (via !== "agente" && localStorage.getItem("cigob-muro-v1")) via = via ? "ambos" : "local";
             // La cruz lo cierra por el resto de la visita (sessionStorage).
             if (!via && sessionStorage.getItem("cigob-muro-cerrado")) via = "cerrado";
           } catch (e) {}

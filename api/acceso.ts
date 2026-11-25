@@ -28,7 +28,7 @@ export default async function handler(req: any, res: any) {
   // renovación nunca convierte a alguien en «dejó el mail».
   const actual = valorActual(req);
   if (!token) {
-    res.setHeader("Set-Cookie", cookieDeAcceso(actual === "d" ? "d" : "m"));
+    if (actual !== "a") res.setHeader("Set-Cookie", cookieDeAcceso(actual === "d" ? "d" : "m"));
     res.status(204).end();
     return;
   }

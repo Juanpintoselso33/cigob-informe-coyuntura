@@ -10,6 +10,8 @@ export const COOKIE = "cigob_lector";
 // mail (con la cruz para cerrarlo): el link de difusión ya no lo saltea, porque
 // así no se juntaba el mail de nadie que llegara por WhatsApp. El `1` de antes
 // no distingue y se lee como `m`.
+// `a` (ADR-0438) la escribe vercel.json para los agentes de IA que se identifican;
+// no la escribe nunca este código.
 export type ValorAcceso = "m" | "d";
 
 export function cookieDeAcceso(valor: ValorAcceso = "m"): string {
