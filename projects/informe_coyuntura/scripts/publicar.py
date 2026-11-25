@@ -415,7 +415,11 @@ def build_vida(raw):
     moto = raw.get("motorizacion") or {}
     mt = moto.get("motorizacion_total", {})
     _add(out, "motorizacion_total", mt.get("valor"),
-         mt.get("unidad") or "vehículos 0km por cada 1.000 habitantes (12 meses)",
+         # Sin dato, sin unidad supuesta: una unidad escrita acá que no coincida
+         # letra por letra con la del colector frena el carry-forward (pasó el
+         # 25-nov-2026 con supermercados, cinco noches sin publicar).
+         mt.get("unidad") or (None if mt.get("valor") is None
+                              else "vehículos 0km por cada 1.000 habitantes (12 meses)"),
          mt.get("fuente") or ("Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (DNRPA) — inscripciones iniciales de automotores y "
                               "motovehículos, per cápita (población del Instituto Nacional de Estadística y Censos)"),
          f"{mt['fecha']}-01" if mt.get("fecha") else None)
@@ -457,7 +461,7 @@ def build_vida(raw):
          # la base la declara la fuente y la lee el colector (ADR-0243); el
          # literal que había acá decía «2004 = 100» y la serie ni siquiera
          # empieza antes de 2017
-         super_.get("unidad") or "índice (desestacionalizado)",
+         super_.get("unidad") or (None if super_.get("valor") is None else "índice (desestacionalizado)"),
          "Instituto Nacional de Estadística y Censos (INDEC) — Encuesta de supermercados (ventas a precios constantes)",
          f"{super_['fecha']}-01" if super_.get("fecha") else None)
     return out
@@ -3096,13 +3100,16 @@ def _carry_forward(enriquecido, previo):
             prev = previo[key]
             # Un valor en otra unidad no se arrastra: la card de alimentos pasó
             # de % mensual a % frente al IPC (ADR-0430) y un 1,97 viejo bajo la
-            # unidad nueva sería un dato falso.
+            # unidad nueva sería un dato falso. Sólo cuenta una unidad declarada:
+            # una card sin dato llega sin unidad y toma la del valor que se arrastra.
             if ind.get("unidad") and prev.get("unidad") and ind["unidad"] != prev["unidad"]:
                 print(f"[carry-forward] vida.{key}: no se arrastra {prev.get('valor')}: "
                       f"la unidad cambió ({prev['unidad']!r} → {ind['unidad']!r})")
                 continue
             ind["valor"] = prev.get("valor")
             ind["fecha_dato"] = prev.get("fecha_dato")
+            if not ind.get("unidad") and prev.get("unidad"):
+                ind["unidad"] = prev["unidad"]
             if prev.get("fuente"):
                 ind["fuente"] = prev["fuente"]
             # El sello viejo se arrastra SIN tocar: es la fecha que deja de

@@ -70,3 +70,18 @@ def test_no_se_arrastra_un_valor_de_otra_unidad():
     assert publicar._carry_forward(nuevo, previo)["ipc_alimentos"]["valor"] is None
     previo["ipc_alimentos"]["unidad"] = nuevo["ipc_alimentos"]["unidad"]
     assert publicar._carry_forward(nuevo, previo)["ipc_alimentos"]["valor"] == 1.97
+
+
+def test_una_fuente_caida_arrastra_su_valor_aunque_la_card_no_sepa_la_unidad():
+    """25-nov-2026: el INDEC no contestó, la card de supermercados llegó con la unidad
+    escrita en publicar.py («índice (desestacionalizado)») y no con la del colector
+    («índice (2017 = 100, desestacionalizado)»); el arrastre la tomó por otra unidad,
+    la card quedó sin valor y el gate frenó la corrida."""
+    previo = {"consumo_supermercados": {"valor": 80.5, "fecha_dato": "2026-08-01",
+                                        "unidad": "índice (2017 = 100, desestacionalizado)"},
+              "motorizacion_total": {"valor": 31.2, "fecha_dato": "2026-10-01",
+                                     "unidad": "vehículos 0km cada 1.000 habitantes"}}
+    out = publicar._carry_forward(publicar.build_vida({}), previo)
+    for clave in previo:
+        assert out[clave]["valor"] == previo[clave]["valor"], clave
+        assert out[clave]["unidad"] == previo[clave]["unidad"], clave

@@ -936,11 +936,16 @@ def test_robustez_publicada_encierra_el_valor():
 
 def test_dimensiones_criticas_marcadas():
     """ADR-0020: toda dimensión publicada trae el flag 'critica' según la
-    regla (puntaje < 30 en índices por bandas · < 85 en base-100), y las dos
-    críticas vigentes conocidas quedan señaladas."""
+    regla, y las dos críticas vigentes conocidas quedan señaladas. Desde el
+    15-nov-2026 crítica = rojo de la escala de cuatro tramos (ADR-0427): < 25 en
+    índices por bandas · < 87,5 en base-100. Los umbrales se leen de publicar.py:
+    escritos acá a mano (30 y 85) frenaron la corrida del 21 al 24-nov-2026
+    cuando vulnerabilidad subió a 85,6."""
+    assert publicar.UMBRAL_CRITICO_BANDAS == 25 and publicar.UMBRAL_CRITICO_BASE100 == 87.5
+    bandas, base100 = publicar.UMBRAL_CRITICO_BANDAS, publicar.UMBRAL_CRITICO_BASE100
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    for ck, clave, umbral in (("macro", "itcm", 30), ("gestion", "itcg", 30),
-                              ("vida_cotidiana", "itvc", 85)):
+    for ck, clave, umbral in (("macro", "itcm", bandas), ("gestion", "itcg", bandas),
+                              ("vida_cotidiana", "itvc", base100)):
         for dk, d in informe["cinturones"][ck][clave]["dimensiones"].items():
             assert "critica" in d, f"{clave}.{dk}: sin flag critica"
             assert d["critica"] == (d["puntaje"] < umbral), \

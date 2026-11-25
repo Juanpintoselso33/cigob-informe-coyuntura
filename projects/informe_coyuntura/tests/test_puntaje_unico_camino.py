@@ -160,6 +160,16 @@ def test_ninguna_serie_mide_otra_magnitud_que_la_que_puntua_su_indice():
                     continue
                 p_serie = escala.puntaje(ultimo, ind)
                 p_pub = info["puntaje_banda"]
+                # Mismo orden de magnitud que la card = misma magnitud medida. La
+                # diferencia de puntaje puede pasar de 20 sin error cuando la card
+                # (dato del día) y la serie (promedio del mes) caen a los dos lados
+                # de un corte con un escalón grande: el 21 y 22-nov-2026, la brecha
+                # cambiaria daba 10,55 % en la card y 8,39 % en la serie, con el
+                # corte en 10 (85 → 65), y frenó dos corridas.
+                card = (snap[ckey]["indicadores"].get(ind) or {}).get("valor")
+                if (isinstance(card, (int, float)) and card * ultimo > 0
+                        and max(abs(card), abs(ultimo)) / min(abs(card), abs(ultimo)) < 2):
+                    continue
                 if abs(p_serie - p_pub) > 20 and ind not in no_comparables:
                     problemas.append(
                         f"{ikey}/{ind}: la serie ({ultimo}) puntúa {p_serie} y el "
