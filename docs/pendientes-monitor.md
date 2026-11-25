@@ -24,6 +24,14 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
   los dos. Juan, textual: «ver que dia es el mejor dia para publicar, tanto por mercado como lo
   mas imporante ver el dia que tenemos mas datos entregados y ponderar liso». Se suma a la fecha
   fija sin decidir del punto (4) de abajo.
+- **Agentes autónomos del Monitor (Juan, 25-nov-2026).** Retoma la idea de los tres agentes de
+  Luis (24-nov):
+  - **Vigía:** tareas programadas que revisen todo el tiempo el Monitor y avisen cuando haya
+    cambios significativos.
+  - **Consejero de redes sociales:** propone posteos a partir del Monitor.
+  Juan, textual: «hacer agentes autonomos cron jobs que revisen permanentenemente cambios
+  significativos en el momitor, otro agente autonomo de consejero de redes sociales que haga
+  propuestas de posteos en base al monitor etc».
 
 **Documento de Luis del 11-nov («Monitor CiGob: temas a resolver antes del lanzamiento»,
 `docs/pedidos/originales/2026-11-11_Luis_…`).** Se repasa punto por punto con Juan antes de
