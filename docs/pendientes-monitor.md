@@ -364,10 +364,10 @@ tocar nada.
 
 **Reunión del 20-nov.**
 
-- **[J] El muro que pide el mail tiene que dejar pasar a los agentes de IA que buscan en la
-  web** (Juan, 20-nov). Hoy está apagado (PUBLIC_MURO=0); cuando se vuelva a prender, que un
-  asistente de IA que entra a buscar o leer el sitio no se quede frenado en el pedido de mail.
-- **[J] Sección de preguntas frecuentes (FAQ)** (Juan, 20-nov).
+- *(Hecho el 25-nov, ADR-0438.)* El muro deja pasar a los agentes de IA que se identifican (ChatGPT
+  en la nube, Google-Agent, Manus, Claude Cowork y todo navegador automatizado). Los que leen sin
+  navegador ya pasaban. Claude in Chrome, Comet y Grok no se distinguen de una persona: pasan con la cruz.
+- **[J] Sección de preguntas frecuentes (FAQ)** (Juan, 20-nov). Espera la lista de preguntas de Juan (25-nov).
 
 ## 2. Esperan a otro
 
