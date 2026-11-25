@@ -19,6 +19,12 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
 
 ## 1. Abierto: decide Juan
 
+- **Día de publicación del mes: ver cuál es el mejor (Juan, 25-nov-2026).** Dos criterios: el
+  mercado y, lo más importante, el día en que ya están entregados más datos del mes. Ponderar
+  los dos. Juan, textual: «ver que dia es el mejor dia para publicar, tanto por mercado como lo
+  mas imporante ver el dia que tenemos mas datos entregados y ponderar liso». Se suma a la fecha
+  fija sin decidir del punto (4) de abajo.
+
 **Documento de Luis del 11-nov («Monitor CiGob: temas a resolver antes del lanzamiento»,
 `docs/pedidos/originales/2026-11-11_Luis_…`).** Se repasa punto por punto con Juan antes de
 tocar nada.
