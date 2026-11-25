@@ -287,6 +287,9 @@
   align-items: center; justify-content: center;
   font-size: 19px; line-height: 1; color: var(--dark);
 }
+/* Nueve pestañas desde «Equipo» (ADR-0437): con 22px el encabezado ya no
+   entraba en un renglón a 1280 y partía título, mes e «Impacto social». */
+@media (min-width: 721px) { .cg-nav-links { gap: 18px; } }
 @media (max-width: 720px) {
   .cg-nav-burger { display: flex; }
   .cg-nav { position: sticky; }

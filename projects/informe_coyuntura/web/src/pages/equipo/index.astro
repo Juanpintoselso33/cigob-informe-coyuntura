@@ -1,0 +1,49 @@
+---
+// Equipo del Monitor (ADR-0437). La lista y los cargos son los que mandó Luis
+// Babino el 16-nov-2026; sin foto ni bio, porque no las mandó.
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const GRUPOS: { rol: string; personas: string[] }[] = [
+  { rol: "Coordinador", personas: ["Luis Babino"] },
+  { rol: "Desarrollador", personas: ["Juan Ignacio Pintos"] },
+  { rol: "Colaboradores", personas: ["Diego Dequino", "Marcos Jasin", "Juan Ignacio Babino", "Pablo Dalesandro"] },
+];
+---
+<Layout title="Equipo · Monitor del Plan de Gobierno · CiGob">
+  <Nav />
+  <main class="cg-main">
+    <section class="cg-section eq">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Quiénes lo hacen</p>
+        <h1 class="cg-h2">Equipo</h1>
+        <p class="cg-h2-sub">El equipo de CiGob que hace el Monitor del Plan de Gobierno.</p>
+      </div>
+
+      {GRUPOS.map(g => (
+        <div class="eq-grupo">
+          <h2 class="eq-rol">{g.rol}</h2>
+          <ul class="eq-lista">
+            {g.personas.map(p => <li>{p}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .eq-grupo { border-top: 2px solid var(--dark); padding-top: 10px; margin-bottom: 28px; }
+  .eq-rol {
+    margin: 0 0 8px; font-family: var(--ff-ui); font-weight: 600; font-size: 13px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--dark);
+  }
+  .eq-lista { list-style: none; margin: 0; padding: 0; }
+  .eq-lista li {
+    padding: 10px 0; border-bottom: 1px solid var(--bd);
+    font-family: var(--ff-titulo); font-weight: 700; font-size: 19px; color: var(--dark);
+  }
+  .eq-lista li:last-child { border-bottom: none; }
+</style>

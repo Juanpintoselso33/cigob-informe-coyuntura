@@ -17,6 +17,8 @@ const links = [
   // con su propio CTA al diccionario: lo que cambia es a dónde manda el Nav.
   { href: `${base}/metodologia/`, label: "Metodología", seg: "metodologia" },
   { href: `${base}/glosario/`, label: "Glosario", seg: "glosario" },
+  // Equipo del Monitor (ADR-0437).
+  { href: `${base}/equipo/`, label: "Equipo", seg: "equipo" },
 ];
 function isActive(seg: string): boolean {
   if (seg === "") return path === base;
