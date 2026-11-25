@@ -23,7 +23,7 @@
         {
           "type": "header",
           "key": "signature-agent",
-          "value": ".*chatgpt\\.com.*"
+          "value": ".*(chatgpt\\.com|manus\\.im).*"
         }
       ],
       "headers": [
@@ -39,7 +39,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*Google-Agent.*"
+          "value": ".*(Google-Agent|Manus-User|HeadlessChrome).*"
         }
       ],
       "headers": [

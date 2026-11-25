@@ -131,7 +131,9 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
           var c = document.cookie.match(/(?:^|;\s*)cigob_lector=([^;]*)/);
           // `a` = agente de IA que se identifica (ChatGPT en la nube, Google-Agent):
           // la cookie la pone vercel.json con la respuesta (ADR-0438). No ve el muro.
-          if (c && c[1] === "a") via = "agente";
+          // Y todo navegador que declara que lo maneja un programa (navigator.webdriver:
+          // Claude Cowork, Playwright y las herramientas de desarrollo).
+          if ((c && c[1] === "a") || navigator.webdriver) via = "agente";
           else if (c && c[1] !== "d") via = "cookie";
           if (c && c[1] === "d") html.setAttribute("data-muro-difusion", "1");
           try {

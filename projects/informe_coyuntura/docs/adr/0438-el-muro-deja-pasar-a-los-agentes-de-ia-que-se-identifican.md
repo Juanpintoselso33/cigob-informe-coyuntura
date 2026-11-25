@@ -22,14 +22,17 @@ asistentes de IA:
   entera.
 - **Los que manejan un navegador**: ven el muro, y con el muro abierto la página queda inerte, así que no la
   pueden leer hasta cerrarlo. Sólo dos se identifican: el navegador en la nube de ChatGPT, que firma cada
-  pedido con Web Bot Auth (`Signature-Agent: "https://chatgpt.com"`), y el de Google, cuyo user agent dice
-  `Google-Agent`. Claude in Chrome, Comet y Dia usan el Chrome del usuario y no se distinguen de una persona
+  pedido con Web Bot Auth (`Signature-Agent: "https://chatgpt.com"`); el de Google, cuyo user agent dice
+  `Google-Agent`; Manus, que firma (`api.manus.im`) y se nombra (`Manus-User`), y Claude Cowork, que se presenta
+  como `HeadlessChrome` y declara `navigator.webdriver`. Claude in Chrome, Comet, Grok, Dia, el uso de computadora
+  de Claude y el navegador de la app de escritorio de ChatGPT usan un Chrome común y no se distinguen de una persona
   (privatrak.com, «We sent 23 AI agents to our website», oct-2026; natzir.com, «The State of AI Traffic
   Measurability», 2026).
 
 ## Opciones consideradas
 
-1. Una regla de `vercel.json` que, ante esos dos agentes, responda con una cookie `cigob_lector=a`.
+1. Una regla de `vercel.json` que, ante esos agentes, responda con una cookie `cigob_lector=a`, y que el script de
+   `<head>` también deje pasar a todo navegador con `navigator.webdriver`.
 2. Middleware de Vercel que verifique la firma.
 3. Nada: que cierren el muro con la cruz.
 
