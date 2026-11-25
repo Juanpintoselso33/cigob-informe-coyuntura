@@ -1,15 +1,27 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 1,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
   },
-  "inventario_verificado": "2026-11-20",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-20"
+  "inventario_verificado": "2026-11-25",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-11-25"
  },
- "pendientes": {},
+ "pendientes": {
+  "CAC|preocupacion-de-la-cac-ante-nuevas-trabas-burocraticas-laborales-en-la-provincia-de-buenos-aires": {
+   "camara": "CAC",
+   "destinatario": null,
+   "fecha": "2026-11-17",
+   "id": "preocupacion-de-la-cac-ante-nuevas-trabas-burocraticas-laborales-en-la-provincia-de-buenos-aires",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Entidad advierte que la Resolución 260/2026 del Ministerio de Trabajo bonaerense contradice la Ley de Modernización Laboral y afecta la competitividad empresarial, desalentando la inversión y la generación de empleo formal.\nLa Cámara Argentina de Comercio y Servicios (CAC) expresa su profunda preocupación ante el dictado de la Resolución Nº 260/2026 del Ministerio de Trabajo de la provincia de Buenos Aires, que establece nuevas exigencias de información y presentación mensual de documentación laboral mediante el denominado Formulario Único de Trabajo y Unificación de Recursos Operativos (F.U.T.U.R.O.). \n La CAC valora la existencia de obligaciones laborales razonables, condición indispensable para garantizar los derechos de los trabajadores y asegurar una competencia justa entre las empresas, lo que no la priva de objetar aquella normativa que resulta a todas luces innecesaria, extemporánea y perjudicial para el crecimiento de la actividad y la generación de empleo formal. \n La medida en cuestión avanza en sentido contrario a los objetivos de simplificación registral y desburocratización impulsados por la Ley de Modernización Laboral Nº 27.802. En particular, el nuevo artículo 52 de la Ley de Contrato de Trabajo establece de manera contundente que “ Esta registración será suficiente a todos los efectos, sin que puedan exigirse requisitos adicionales por parte de ninguna otra autoridad ”, en relación a que la única registración obligatoria debe realizarse ante la Agencia de Recaudación y Control Aduanero (ARCA).\n Pese a la claridad de esta redacción, la resolución provincial impone nuevas obligaciones administrativas que duplican información ya registrada ante ARCA, incrementan los costos operativos y generan nuevas contingencias sancionatorias para los empleadores, afectando especialmente a las pymes y lesionando sensiblemente la seguridad jurídica necesaria para el desarrollo de las relaciones laborales.\n En un contexto en el que, tras largos años de desarreglos macroeconómicos, las empresas hacen sus mayores esfuerzos para recuperar el dinamismo, resulta particularmente preocupante que se incorporen nuevas trabas burocráticas que perjudican la competitividad, desalientan la inversión y obstaculizan la contratación de trabajadores.\n La CAC reconoce las facultades provinciales de fiscalización laboral, pero considera indispensable que se ejerzan en armonía con la legislación nacional, sin superponer exigencias que desvirtúen los avances alcanzados en materia de modernización y simplificación.\n Por todo ello, la Entidad solicita a las autoridades bonaerenses que reconsideren la Resolución Nº 260/2026 y suspendan la obligatoriedad del formulario mencionado, en el convencimiento de que la generación de puestos de trabajo de calidad no requiere de nuevos obstáculos burocráticos sino de reglas claras y previsibles.\n ‍\n ‍\n Seguir leyendo\n Martes 17 de noviembre de 2026",
+   "titulo": "Preocupación de la CAC ante nuevas trabas burocráticas laborales en la provincia de Buenos Aires",
+   "url": "https://www.cac.com.ar/noticias/preocupacion-de-la-cac-ante-nuevas-trabas-burocraticas-laborales-en-la-provincia-de-buenos-aires"
+  }
+ },
  "revisadas": {
   "CAC|acuerdo-con-el-fmi-y-liberalizacion-cambiaria-satisfaccion-de-la-cac": {
    "origen": "codificacion ADR-0380"
@@ -508,6 +520,10 @@
   },
   "CAC|preocupacion-de-la-cac-ante-el-paro-de-practicos-portuarios": {
    "origen": "codificacion ADR-0380"
+  },
+  "CAC|preocupacion-de-la-cac-ante-nuevas-trabas-burocraticas-laborales-en-la-provincia-de-buenos-aires": {
+   "fecha": "2026-11-17",
+   "titulo": "Preocupación de la CAC ante nuevas trabas burocráticas laborales en la provincia de Buenos Aires"
   },
   "CAC|preocupacion-de-la-cac-por-el-retroceso-del-proyecto-de-ley-bases": {
    "origen": "codificacion ADR-0380"

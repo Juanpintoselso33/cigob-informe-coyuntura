@@ -15,11 +15,11 @@
         "estado": "estable"
       },
       "vida_cotidiana": {
-        "score": 4.6,
+        "score": 4.5,
         "estado": "en_tension"
       },
       "gestion": {
-        "score": 1.9,
+        "score": 1.8,
         "estado": "estable"
       }
     }

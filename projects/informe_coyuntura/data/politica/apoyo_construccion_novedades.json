@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 929,
+  "comunicados_vistos": 941,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-20",
-  "nuevos_en_la_corrida": 3,
-  "ultima_corrida": "2026-11-20"
+  "inventario_verificado": "2026-11-25",
+  "nuevos_en_la_corrida": 2,
+  "ultima_corrida": "2026-11-25"
  },
  "pendientes": {
   "CAMARCO|49669": {
@@ -53,6 +53,28 @@
    "texto": "La Cámara Argentina de la Construcción realizó la edición 14° del Torneo de Golf CAMARCO – Copa Ingeniero César Polledo.\n Este torneo, uno de los encuentros más esperados de la comunidad CAMARCO, reunió a través del deporte a sus socios en un ambiente de camaradería. La competencia se realizó en Pilará Golf Club, ubicado en Pilar, provincia de Buenos Aires. Entre los participantes, se encontraban los embajadores de Panamá, Juan Luis Correa; de Italia, Fabrizio Nicoletti y del Reino Unido, David S. Cairns. También asistieron Beto Acosta, Mariano Tubio, Gonzalo Tiesi y Hugo Porta.\n Estos catorce años de historia reflejan algo mucho más importante que una competencia deportiva: representan una red de relaciones, confianza y encuentros que se ha fortalecido a lo largo del tiempo.\n En el marco de los 90 años de CAMARCO y bajo el espíritu de “Construyamos Puentes”, este torneo volvió a convocar a empresarios, directivos, profesionales y líderes del sector en un ámbito distinto, donde las conversaciones fluyen, los vínculos se fortalecen y nacen nuevas oportunidades.",
    "titulo": "Torneo de Golf “Copa César Polledo” 2026",
    "url": "https://www.camarco.org.ar/2026/11/19/torneo-de-golf-copa-cesar-polledo-2026/"
+  },
+  "CAMARCO|49760": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-20",
+   "id": "49760",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En la Sala de Intendencia de la Municipalidad de la Ciudad de Santa Fe se llevó a cabo la firma de un convenio de cooperación entre el Municipio y la Delegación ciudad de Santa Fe de la Cámara Argentina de la Construcción. Este acuerdo se enmarca en la emergencia hídrica declarada mediante el Decreto N° 00070/2026.\n Participaron del encuentro el Intendente de la ciudad, Dr. Juan Pablo Poletti, y en representación de CAMARCO Santa Fe su Presidente, Arq. Renato Franzoni, junto al Tesorero, Esteban Pilatti.\n El acuerdo establece un marco excepcional, subsidiario y gratuito para que las empresas asociadas ofrezcan voluntariamente camiones, maquinarias y equipos ante situaciones de riesgo inminente o de gravedad extrema derivadas de la emergencia hídrica, cuando los recursos municipales resulten insuficientes o no puedan disponerse con la urgencia necesaria, quedando excluidas las tareas ordinarias, programables o de mantenimiento.\n Cada aporte particular se instrumentará mediante actas complementarias, con requerimientos formulados por el referente municipal (a documentar dentro de las 48 horas si la urgencia lo impide), manteniendo cada parte la autonomía de su personal y rigiendo el convenio mientras dure la emergencia hídrica por un plazo máximo de 180 días corridos renovables, con posibilidad de rescisión con un preaviso de 30 días.",
+   "titulo": "CAMARCO Santa Fe | Firma de convenio con la Municipalidad por la emergencia hídrica",
+   "url": "https://www.camarco.org.ar/2026/11/20/camarco-santa-fe-firma-de-convenio-con-la-municipalidad-por-la-emergencia-hidrica/"
+  },
+  "CAMARCO|49801": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-24",
+   "id": "49801",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Confederación Internacional de Asociaciones de Contratistas (CICA), junto con la Federación Interamericana de la Industria de la Construcción (FIIC), invita a participar del webinar internacional “Evaluación del impacto de los proyectos de infraestructura” , un encuentro que abordará metodologías y herramientas para medir los efectos económicos y sociales de las inversiones en infraestructura.\n La actividad se desarrollará en inglés con traducción simultánea al español y contará con la participación de especialistas de reconocida trayectoria en análisis económico, financiamiento e investigación aplicada:\n Fernando Lago , líder del Grupo de Trabajo de Financiamiento a Largo Plazo de Infraestructuras de CICA, y Director del Área de Pensamiento Estratégico de CAMARCO.\n Gabriel Michelena , consultor especializado en modelos económicos de simulación (MESi) e investigador del IIEP-UBA.\n Laura Ojeda , consultora especializada en modelos económicos de simulación (MESi) e investigadora del IIEP-UBA.\n Susana Santos , investigadora de la Universidad de Lisboa (UECE-ISEG).\n Durante el webinar se analizarán los principales enfoques para evaluar el impacto de los proyectos de infraestructura, así como su contribución al desarrollo económico, la productividad y la generación de valor para las comunidades.\n Webinar “Evaluación del impacto de los proyectos de infraestructura” \n Miércoles 2 de diciembre de 2026\n 12:00 h (Argentina)\n Zoom ID: 961 5008 9154\n Código de acceso: CICA",
+   "titulo": "Webinar FIIC/CICA | Evaluación del impacto de los proyectos de infraestructura",
+   "url": "https://www.camarco.org.ar/2026/11/24/webinar-cica-evaluacion-del-impacto-de-los-proyectos-de-infraestructura/"
   }
  },
  "revisadas": {
@@ -2906,6 +2928,64 @@
   "CAMARCO|49756": {
    "fecha": "2026-11-19",
    "titulo": "Torneo de Golf “Copa César Polledo” 2026"
+  },
+  "CAMARCO|49760": {
+   "fecha": "2026-11-20",
+   "titulo": "CAMARCO Santa Fe | Firma de convenio con la Municipalidad por la emergencia hídrica"
+  },
+  "CAMARCO|49775": {
+   "fecha": "2026-11-20",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Responsable de Control de Gestión"
+  },
+  "CAMARCO|49781": {
+   "fecha": "2026-11-20",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Oficina Técnica"
+  },
+  "CAMARCO|49785": {
+   "fecha": "2026-11-20",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Gestión Ambiental"
+  },
+  "CAMARCO|49790": {
+   "fecha": "2026-11-20",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Mecánico Vial"
+  },
+  "CAMARCO|49801": {
+   "fecha": "2026-11-24",
+   "titulo": "Webinar FIIC/CICA | Evaluación del impacto de los proyectos de infraestructura"
+  },
+  "CAMARCO|49810": {
+   "fecha": "2026-09-14",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
+  },
+  "CAMARCO|49813": {
+   "fecha": "2026-09-28",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
+  },
+  "CAMARCO|49816": {
+   "fecha": "2026-10-13",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
+  },
+  "CAMARCO|49820": {
+   "fecha": "2026-10-26",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
+  },
+  "CAMARCO|49823": {
+   "fecha": "2026-11-11",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
+  },
+  "CAMARCO|49832": {
+   "fecha": "2026-11-24",
+   "origen": "no se codifica (ADR-0391): serie periódica por título",
+   "titulo": "Flash CAMARCO"
   }
  }
 }
