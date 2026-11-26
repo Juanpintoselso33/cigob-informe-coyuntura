@@ -46,7 +46,7 @@ TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 # (la landing, el bot). «El pipeline» o «la web» a secas no dicen de qué
 # producto se habla, así que todo aviso lo nombra en la cabecera.
 MONITOR = "Monitor del Plan de Gobierno"
-MONITOR_URL = "https://informe.cigob.org/"          # la misma que aviso_informe.URL_PUBLICA
+MONITOR_URL = "https://monitor.cigob.org/"          # la misma que aviso_informe.URL_PUBLICA
 # Desde el 7-oct-2026 (ADR-0347) informe.cigob.org es el INFORME DEL MES, con
 # los datos congelados: una corrida nocturna no lo cambia. Lo de cada noche se
 # ve en el seguimiento diario interno, y es lo que una corrida caída deja viejo.

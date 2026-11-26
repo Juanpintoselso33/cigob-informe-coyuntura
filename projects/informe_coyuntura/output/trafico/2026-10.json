@@ -1,0 +1,346 @@
+{
+  "mes": "2026-10",
+  "totales": {
+    "activeUsers": 33.0,
+    "newUsers": 26.0,
+    "sessions": 172.0,
+    "screenPageViews": 632.0,
+    "engagementRate": 0.6977,
+    "averageSessionDuration": 734.9225
+  },
+  "por_host": [
+    {
+      "hostName": "informe.cigob.org",
+      "activeUsers": 33.0,
+      "sessions": 172.0
+    }
+  ],
+  "origenes": [
+    {
+      "sessionSource": "(direct)",
+      "sessionMedium": "(none)",
+      "sessionCampaignName": "(direct)",
+      "sessions": 162.0,
+      "activeUsers": 26.0,
+      "engagementRate": 0.716
+    },
+    {
+      "sessionSource": "google",
+      "sessionMedium": "organic",
+      "sessionCampaignName": "(organic)",
+      "sessions": 5.0,
+      "activeUsers": 3.0,
+      "engagementRate": 0.6
+    },
+    {
+      "sessionSource": "(not set)",
+      "sessionMedium": "(not set)",
+      "sessionCampaignName": "(not set)",
+      "sessions": 2.0,
+      "activeUsers": 2.0,
+      "engagementRate": 0.0
+    },
+    {
+      "sessionSource": "facebook.com",
+      "sessionMedium": "referral",
+      "sessionCampaignName": "(referral)",
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagementRate": 0.0
+    },
+    {
+      "sessionSource": "l.instagram.com",
+      "sessionMedium": "referral",
+      "sessionCampaignName": "(referral)",
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagementRate": 1.0
+    },
+    {
+      "sessionSource": "m.facebook.com",
+      "sessionMedium": "referral",
+      "sessionCampaignName": "(referral)",
+      "sessions": 1.0,
+      "activeUsers": 1.0,
+      "engagementRate": 0.0
+    }
+  ],
+  "paginas": [
+    {
+      "pagePath": "/",
+      "screenPageViews": 193.0,
+      "activeUsers": 29.0
+    },
+    {
+      "pagePath": "/metodologia/",
+      "screenPageViews": 110.0,
+      "activeUsers": 15.0
+    },
+    {
+      "pagePath": "/macro/",
+      "screenPageViews": 88.0,
+      "activeUsers": 14.0
+    },
+    {
+      "pagePath": "/politica/",
+      "screenPageViews": 71.0,
+      "activeUsers": 13.0
+    },
+    {
+      "pagePath": "/gestion/",
+      "screenPageViews": 43.0,
+      "activeUsers": 9.0
+    },
+    {
+      "pagePath": "/vida/",
+      "screenPageViews": 37.0,
+      "activeUsers": 10.0
+    },
+    {
+      "pagePath": "/metodologia/fal_modernizacion_laboral/",
+      "screenPageViews": 7.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/archivo/",
+      "screenPageViews": 5.0,
+      "activeUsers": 4.0
+    },
+    {
+      "pagePath": "/metodologia/itcm/",
+      "screenPageViews": 5.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/metodologia/ratio_dnu/",
+      "screenPageViews": 5.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/metodologia/rigi_inversiones/",
+      "screenPageViews": 4.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/metodologia/apoyo_empresario/",
+      "screenPageViews": 3.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/metodologia/asistencia_directa/",
+      "screenPageViews": 3.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/metodologia/concesiones_infraestructura/",
+      "screenPageViews": 3.0,
+      "activeUsers": 3.0
+    },
+    {
+      "pagePath": "/metodologia/desafios_legislativos/",
+      "screenPageViews": 3.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/metodologia/insistencias_vetos/",
+      "screenPageViews": 3.0,
+      "activeUsers": 2.0
+    },
+    {
+      "pagePath": "/metodologia/libertad_opcion_salud/",
+      "screenPageViews": 3.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/metodologia/brecha_obra_publica/",
+      "screenPageViews": 2.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/metodologia/carga_servicio_deuda_hogares/",
+      "screenPageViews": 2.0,
+      "activeUsers": 1.0
+    },
+    {
+      "pagePath": "/metodologia/eficacia_legislativa/",
+      "screenPageViews": 2.0,
+      "activeUsers": 2.0
+    }
+  ],
+  "eventos": {
+    "ver_cinturon": {
+      "veces": 239,
+      "usuarios": 20
+    },
+    "ver_dimension": {
+      "veces": 87,
+      "usuarios": 11
+    },
+    "ver_ficha": {
+      "veces": 83,
+      "usuarios": 9
+    },
+    "fijar_dimension": {
+      "veces": 81,
+      "usuarios": 11
+    },
+    "ver_indicador": {
+      "veces": 71,
+      "usuarios": 7
+    },
+    "muro_visto": {
+      "veces": 70,
+      "usuarios": 24
+    },
+    "muro_cerrado": {
+      "veces": 58,
+      "usuarios": 20
+    },
+    "ver_lectura_cinturones": {
+      "veces": 7,
+      "usuarios": 3
+    },
+    "muro_enviado": {
+      "veces": 5,
+      "usuarios": 5
+    },
+    "ver_archivo": {
+      "veces": 5,
+      "usuarios": 4
+    },
+    "descargar_csv": {
+      "veces": 2,
+      "usuarios": 1
+    }
+  },
+  "busqueda": {
+    "https://monitor.cigob.org/": null,
+    "https://informe.cigob.org/": {
+      "totales": {
+        "clics": 2,
+        "impresiones": 128,
+        "ctr": 0.0156,
+        "posicion": 7.0
+      },
+      "consultas": [
+        {
+          "query": "cigob",
+          "clics": 0,
+          "impresiones": 39,
+          "ctr": 0,
+          "posicion": 1.1
+        },
+        {
+          "query": "fundacion cigob",
+          "clics": 0,
+          "impresiones": 16,
+          "ctr": 0,
+          "posicion": 2.2
+        },
+        {
+          "query": "itcis",
+          "clics": 0,
+          "impresiones": 3,
+          "ctr": 0,
+          "posicion": 1.7
+        },
+        {
+          "query": "siniestralidad",
+          "clics": 0,
+          "impresiones": 5,
+          "ctr": 0,
+          "posicion": 28.2
+        },
+        {
+          "query": "siniestralidad significado",
+          "clics": 0,
+          "impresiones": 6,
+          "ctr": 0,
+          "posicion": 76.8
+        }
+      ],
+      "paginas": [
+        {
+          "page": "https://informe.cigob.org/",
+          "clics": 1,
+          "impresiones": 93,
+          "ctr": 0.0108,
+          "posicion": 1.9
+        },
+        {
+          "page": "https://informe.cigob.org/politica/",
+          "clics": 1,
+          "impresiones": 1,
+          "ctr": 1,
+          "posicion": 2
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/alquiler_udesa_real/",
+          "clics": 0,
+          "impresiones": 2,
+          "ctr": 0,
+          "posicion": 10
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/costo_financiamiento_tesoro/",
+          "clics": 0,
+          "impresiones": 1,
+          "ctr": 0,
+          "posicion": 6
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/gasto_funcionamiento/",
+          "clics": 0,
+          "impresiones": 2,
+          "ctr": 0,
+          "posicion": 7
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/ipc_total/",
+          "clics": 0,
+          "impresiones": 4,
+          "ctr": 0,
+          "posicion": 3.8
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/itvc/",
+          "clics": 0,
+          "impresiones": 30,
+          "ctr": 0,
+          "posicion": 2.6
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/recaudacion/",
+          "clics": 0,
+          "impresiones": 2,
+          "ctr": 0,
+          "posicion": 6.5
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/rechazos_decretos/",
+          "clics": 0,
+          "impresiones": 1,
+          "ctr": 0,
+          "posicion": 5
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/siniestralidad_laboral/",
+          "clics": 0,
+          "impresiones": 13,
+          "ctr": 0,
+          "posicion": 47.6
+        },
+        {
+          "page": "https://informe.cigob.org/metodologia/tasa_homicidios/",
+          "clics": 0,
+          "impresiones": 3,
+          "ctr": 0,
+          "posicion": 7
+        }
+      ]
+    }
+  },
+  "cambios": [
+    "ADR-0342 — Un muro de acceso que pide el mail"
+  ]
+}

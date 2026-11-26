@@ -66,7 +66,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 MONITOR = "Monitor del Plan de Gobierno"
-WEB = "https://informe.cigob.org/"
+WEB = "https://monitor.cigob.org/"
 # El seguimiento diario: lo único donde un pedido se puede verificar el mismo
 # día. informe.cigob.org es la foto del mes (ADR-0347).
 SEGUIMIENTO = "https://cigob-seguimiento-a941210feb.vercel.app/"

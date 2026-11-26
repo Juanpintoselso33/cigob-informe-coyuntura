@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Deploy: Vercel (proyecto con Root Directory = projects/informe_coyuntura/web),
-// dominio custom informe.cigob.org. outDir default (dist/) — Vercel lo detecta solo.
+// dominio custom monitor.cigob.org (informe.cigob.org redirige ahí, ADR-0439).
+// outDir default (dist/) — Vercel lo detecta solo.
 export default defineConfig({
-  site: 'https://informe.cigob.org',
+  site: 'https://monitor.cigob.org',
   base: '/',
   build: {
     format: 'directory',

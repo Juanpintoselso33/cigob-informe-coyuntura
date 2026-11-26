@@ -38,6 +38,8 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="apple-touch-icon" href={`${base}/favicon.png`} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <!-- Una sola dirección para Google: monitor.cigob.org (ADR-0439). -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
     <!-- Vista previa al compartir un link (WhatsApp, LinkedIn, X): punto 16 del
          documento de Luis del 11-nov-2026. La imagen se arma con el logo y el
          nombre; la URL tiene que ser absoluta. -->

@@ -12,7 +12,18 @@
           "value": "cigob-informe-coyuntura.vercel.app"
         }
       ],
-      "destination": "https://informe.cigob.org/$1",
+      "destination": "https://monitor.cigob.org/$1",
+      "permanent": true
+    },
+    {
+      "source": "/((?!google9458216d8c787831\\.html).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "informe.cigob.org"
+        }
+      ],
+      "destination": "https://monitor.cigob.org/$1",
       "permanent": true
     }
   ],

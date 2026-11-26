@@ -1,0 +1,67 @@
+name: Tráfico mensual
+
+# El día 2 de cada mes mide el mes anterior en GA4 y Search Console y deja el
+# informe en output/trafico/AAAA-MM.md, comparado con el mes previo y con los
+# cambios de presentación de ese mes (ADR-0440). Usa la misma cuenta de servicio
+# que el espejo en BigQuery (GCP_SA_KEY, ADR-0180).
+
+on:
+  schedule:
+    - cron: "0 12 2 * *"   # 9:00 ART del día 2
+  workflow_dispatch:
+    inputs:
+      mes:
+        description: "Mes a medir, AAAA-MM (vacío = el mes anterior)"
+        required: false
+
+concurrency:
+  group: trafico-mensual
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  medir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Medir
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          MES: ${{ inputs.mes }}
+        working-directory: projects/informe_coyuntura
+        run: |
+          pip install --quiet google-auth requests
+          # Fuera del árbol de trabajo, para que el git add de abajo no la alcance.
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/gcp-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/gcp-sa.json"
+          rc=0
+          if [ -n "$MES" ]; then
+            python scripts/medir_trafico.py --mes "$MES" || rc=$?
+          else
+            python scripts/medir_trafico.py || rc=$?
+          fi
+          rm -f "$RUNNER_TEMP/gcp-sa.json"
+          exit $rc
+
+      - name: Commitear el informe a main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/informe_coyuntura/output/trafico/
+          git diff --cached --quiet && exit 0
+          git commit -q -m "trafico: informe mensual de GA4 y Search Console"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep 15
+          done
+          exit 1

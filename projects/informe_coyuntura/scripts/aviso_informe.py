@@ -28,7 +28,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 SNAPSHOT = RAIZ / "web" / "src" / "data" / "informe.json"
 ESTADO = RAIZ / "output" / "estado_slack.json"
-URL_PUBLICA = "https://informe.cigob.org/"
+URL_PUBLICA = "https://monitor.cigob.org/"
 # Lo que resume este canal son los datos de CADA NOCHE, que desde el 7-oct-2026
 # (ADR-0347) se ven en el seguimiento diario interno; informe.cigob.org es la
 # foto congelada del mes. Los mensajes enlazan los dos.

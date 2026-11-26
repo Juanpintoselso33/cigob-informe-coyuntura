@@ -32,6 +32,18 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
   Juan, textual: «hacer agentes autonomos cron jobs que revisen permanentenemente cambios
   significativos en el momitor, otro agente autonomo de consejero de redes sociales que haga
   propuestas de posteos en base al monitor etc».
+- **Para proponer: canal de WhatsApp del Monitor y día fijo de publicación (Juan, 26-nov-2026).**
+  Un canal de WhatsApp (los que se siguen, no una lista de difusión) donde se publica el
+  informe de cada mes, además de las listas actuales. Va junto con el día fijo de publicación
+  del primer punto. Salió de la investigación de SEO y tráfico del 26-nov: el pico de 132
+  usuarios de la semana del 16-nov lo trajo la difusión, y después se volvió a 4-5 por día.
+- **Para proponer: kit de prensa del mes (Juan, 26-nov-2026).** Cada vez que se publica el
+  mes, una página con tres o cuatro hallazgos que se pueden contar (qué subió, qué bajó, qué
+  cambió de color), cada uno con un gráfico descargable, el dato en CSV y la frase lista para
+  citar. Va un mail o un WhatsApp corto a cada periodista con el hallazgo de su tema
+  (economía, seguridad, política), no el mismo texto para todos. Así difunde la Di Tella su
+  índice de confianza en el gobierno, y el 70 % de los periodistas pide que lo que le llega
+  sea de su tema (Muck Rack, 2026). Sale de la misma investigación.
 
 **Documento de Luis del 11-nov («Monitor CiGob: temas a resolver antes del lanzamiento»,
 `docs/pedidos/originales/2026-11-11_Luis_…`).** Se repasa punto por punto con Juan antes de

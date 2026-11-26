@@ -257,11 +257,11 @@ jobs:
         run: |
           {
             if [ "${{ steps.archivos.outputs.metodo }}" = si ] && [ "${{ steps.corrida.outputs.despacho }}" = ok ]; then
-              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: el número nuevo se ve en el seguimiento diario (https://cigob-seguimiento-a941210feb.vercel.app/) cuando termine bien. El informe mensual (https://informe.cigob.org/) toma los datos nuevos recién en la próxima publicación del mes."
+              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: el número nuevo se ve en el seguimiento diario (https://cigob-seguimiento-a941210feb.vercel.app/) cuando termine bien. El informe mensual (https://monitor.cigob.org/) toma los datos nuevos recién en la próxima publicación del mes."
             elif [ "${{ steps.archivos.outputs.metodo }}" = si ]; then
               echo "⚠️ Publicado, pero la corrida de datos no se pudo lanzar: el número de la web sigue siendo el de antes hasta la corrida nocturna."
             else
-              echo "✅ Publicado: en un par de minutos se ve en https://informe.cigob.org/ (el mensual se rearma con el código nuevo) y en el seguimiento diario."
+              echo "✅ Publicado: en un par de minutos se ve en https://monitor.cigob.org/ (el mensual se rearma con el código nuevo) y en el seguimiento diario."
             fi
             if [ "$TESTS" = failure ]; then
               echo

@@ -515,6 +515,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0418](0418-ipc-y-canastas-desde-la-api-del-indec.md) | IPC y canastas desde la API del INDEC | `ipc_alimentos`, `brecha_salario_cbt` | vigente |
 | [0427](0427-escala-de-tension-en-cuatro-tramos-iguales.md) | Escala de tensión en cuatro tramos iguales: 2,5 / 5 / 7,5 |  | vigente |
 | [0438](0438-el-muro-deja-pasar-a-los-agentes-de-ia-que-se-identifican.md) | El muro deja pasar a los agentes de IA que se identifican |  | vigente |
+| [0439](0439-monitor-cigob-org-es-la-unica-direccion.md) | monitor.cigob.org es la única dirección del Monitor |  | vigente |
+| [0440](0440-medicion-mensual-del-trafico.md) | Medición mensual del tráfico |  | vigente |
 
 ### Sin cinturón declarado
 

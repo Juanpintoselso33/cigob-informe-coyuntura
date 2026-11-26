@@ -1,7 +1,7 @@
-# Monitor del Plan de Gobierno · CiGob — https://informe.cigob.org
+# Monitor del Plan de Gobierno · CiGob — https://monitor.cigob.org
 # El informe es material público: se permite el rastreo completo.
 
 User-agent: *
 Allow: /
 
-Sitemap: https://informe.cigob.org/sitemap-index.xml
+Sitemap: https://monitor.cigob.org/sitemap-index.xml
