@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-25T16:12:57.930922+00:00",
+    "snapshot": "2026-11-26T03:53:08.981699+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -26,7 +26,7 @@
       },
       "insumos": {
         "media": 52.5,
-        "p05": 51.3,
+        "p05": 51.2,
         "p95": 53.8,
         "desvio": 0.77
       }
@@ -45,8 +45,8 @@
       "emae_difusion": 53.3,
       "actividad_tributaria": 53.2,
       "ipi_manufacturero": 53.2,
+      "rem_ipc_12m": 51.9,
       "credito_privado": 53.1,
-      "rem_ipc_12m": 52.0,
       "reservas_bcra": 53.0,
       "reservas_brutas": 52.7,
       "emae_ia": 52.7,
@@ -61,94 +61,94 @@
     }
   },
   "itcg": {
-    "valor_publicado": 81.9,
-    "valor_recomputado": 81.9,
+    "valor_publicado": 81.4,
+    "valor_recomputado": 81.4,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 82.0,
-        "p05": 80.6,
-        "p95": 83.3,
-        "desvio": 0.84
+        "media": 81.5,
+        "p05": 80.1,
+        "p95": 82.9,
+        "desvio": 0.86
       },
       "combinado": {
-        "media": 81.8,
-        "p05": 80.0,
-        "p95": 83.6,
-        "desvio": 1.08
+        "media": 81.3,
+        "p05": 79.5,
+        "p95": 83.1,
+        "desvio": 1.1
       },
       "insumos": {
-        "media": 81.8,
-        "p05": 80.7,
-        "p95": 82.8,
+        "media": 81.3,
+        "p05": 80.2,
+        "p95": 82.3,
         "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 85.4,
-      "fal_modernizacion_laboral": 78.8,
+      "apertura_comercial": 84.6,
+      "fal_modernizacion_laboral": 78.3,
       "cepo_mulc": 79.4,
-      "juicios_trabajo_capital": 83.9,
-      "reduccion_estado": 83.6,
-      "privatizaciones": 83.6,
-      "gasto_funcionamiento": 80.8,
-      "rigi_inversiones": 80.9,
-      "desregulacion_normativa": 81.2,
-      "concesiones_infraestructura": 81.5,
-      "siniestralidad_laboral": 82.1,
-      "protocolo_antipiquetes": 82.0,
-      "asistencia_directa": 81.9,
-      "libertad_opcion_salud": 81.9
+      "juicios_trabajo_capital": 83.4,
+      "reduccion_estado": 83.1,
+      "privatizaciones": 83.1,
+      "gasto_funcionamiento": 80.3,
+      "rigi_inversiones": 80.4,
+      "desregulacion_normativa": 80.6,
+      "concesiones_infraestructura": 81.0,
+      "siniestralidad_laboral": 81.6,
+      "protocolo_antipiquetes": 81.5,
+      "asistencia_directa": 81.4,
+      "libertad_opcion_salud": 81.4
     },
     "tension": {
-      "base": 1.8,
+      "base": 1.9,
       "rango_combinado": [
-        1.6,
+        1.7,
         2.0
       ]
     }
   },
   "itvc": {
-    "valor_publicado": 102.3,
-    "valor_recomputado": 102.3,
+    "valor_publicado": 102.2,
+    "valor_recomputado": 102.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
         "media": 102.3,
-        "p05": 101.6,
-        "p95": 103.0,
+        "p05": 101.5,
+        "p95": 102.9,
         "desvio": 0.41
       },
       "combinado": {
-        "media": 102.3,
-        "p05": 101.6,
-        "p95": 103.0,
+        "media": 102.2,
+        "p05": 101.5,
+        "p95": 102.9,
         "desvio": 0.42
       }
     },
     "leave_one_out": {
-      "brecha_salario_cbt": 100.4,
-      "ocupacion_eph": 100.8,
+      "brecha_salario_cbt": 100.3,
       "alquiler_real": 103.7,
+      "ocupacion_eph": 100.8,
       "consumo_supermercados": 103.5,
-      "alquiler_udesa_real": 101.2,
       "pobreza_nowcast": 103.3,
-      "informalidad": 103.3,
+      "alquiler_udesa_real": 101.2,
       "mora_familias": 103.2,
+      "informalidad": 103.2,
       "ipc_alimentos": 101.4,
-      "icg_utdt": 101.5,
-      "motorizacion_total": 101.8,
+      "icg_utdt": 101.4,
+      "motorizacion_total": 101.7,
       "peso_tarifas": 102.7,
-      "carga_servicio_deuda_hogares": 101.9,
-      "inseguridad": 102.1,
-      "ratio_motos_autos": 102.4,
+      "carga_servicio_deuda_hogares": 101.8,
+      "inseguridad": 102.0,
       "tasa_robos": 102.4,
-      "tasa_homicidios": 102.2,
-      "consumo_carnes_total": 102.3,
-      "consumo_carne_vacuna": 102.3
+      "ratio_motos_autos": 102.3,
+      "consumo_carne_vacuna": 102.3,
+      "consumo_carnes_total": 102.2,
+      "tasa_homicidios": 102.2
     },
     "tension": {
-      "base": 4.5,
+      "base": 4.6,
       "rango_combinado": [
         4.4,
         4.7
