@@ -1,13 +1,13 @@
 name: Tráfico mensual
 
-# El día 2 de cada mes mide el mes anterior en GA4 y Search Console y deja el
+# El día 5 de cada mes mide el mes anterior en GA4 y Search Console y deja el
 # informe en output/trafico/AAAA-MM.md, comparado con el mes previo y con los
 # cambios de presentación de ese mes (ADR-0440). Usa la misma cuenta de servicio
 # que el espejo en BigQuery (GCP_SA_KEY, ADR-0180).
 
 on:
   schedule:
-    - cron: "0 12 2 * *"   # 9:00 ART del día 2
+    - cron: "0 12 5 * *"   # 9:00 ART del día 5: Search Console tarda 2-3 días en cerrar el mes
   workflow_dispatch:
     inputs:
       mes:

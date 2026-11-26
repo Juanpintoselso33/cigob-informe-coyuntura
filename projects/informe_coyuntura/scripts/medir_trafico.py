@@ -98,10 +98,23 @@ def ga(s, desde: str, hasta: str, dims: list[str], mets: list[str], limite: int 
     return filas
 
 
+def _sin_permiso(r) -> bool:
+    try:
+        error = r.json().get("error", {})
+    except ValueError:
+        return False
+    motivos = {e.get("reason", "") for e in error.get("errors", [])}
+    if motivos & {"quotaExceeded", "rateLimitExceeded", "userRateLimitExceeded"}:
+        return False
+    return "permission" in str(error.get("message", "")).lower() or "forbidden" in motivos
+
+
 def gsc(s, propiedad: str, desde: str, hasta: str, dims: list[str], limite: int = 20) -> list[dict] | None:
     url = f"https://searchconsole.googleapis.com/webmasters/v3/sites/{quote(propiedad, safe='')}/searchAnalytics/query"
     r = s.post(url, json={"startDate": desde, "endDate": hasta, "dimensions": dims, "rowLimit": limite})
-    if r.status_code in (403, 404):  # la cuenta de servicio no tiene esa propiedad (todavía)
+    # Sólo «no tenés esa propiedad» se informa como falta de acceso. Un 403 por cuota
+    # o por frecuencia tiene que hacer fallar la corrida, no dejar un informe sin datos.
+    if r.status_code == 404 or (r.status_code == 403 and _sin_permiso(r)):
         return None
     r.raise_for_status()
     return [

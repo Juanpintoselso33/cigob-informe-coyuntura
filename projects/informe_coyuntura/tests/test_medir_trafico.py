@@ -55,3 +55,19 @@ def test_informe_compara_con_el_mes_anterior_y_cuenta_el_muro():
 def test_informe_sin_mes_anterior():
     md = mt.informe_md(_datos(50, 0), None)
     assert "| Usuarios | 50 |  |" in md
+
+
+class _Resp:
+    def __init__(self, cuerpo):
+        self._c = cuerpo
+
+    def json(self):
+        return self._c
+
+
+def test_un_403_por_cuota_no_pasa_por_falta_de_acceso():
+    cuota = {"error": {"code": 403, "message": "Quota exceeded", "errors": [{"reason": "quotaExceeded"}]}}
+    permiso = {"error": {"code": 403, "message": "User does not have sufficient permission for site",
+                         "errors": [{"reason": "forbidden"}]}}
+    assert mt._sin_permiso(_Resp(cuota)) is False
+    assert mt._sin_permiso(_Resp(permiso)) is True

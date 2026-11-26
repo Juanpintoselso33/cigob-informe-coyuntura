@@ -16,7 +16,7 @@
       "permanent": true
     },
     {
-      "source": "/((?!google9458216d8c787831\\.html).*)",
+      "source": "/((?!google9458216d8c787831\\.html|api/).*)",
       "has": [
         {
           "type": "host",
