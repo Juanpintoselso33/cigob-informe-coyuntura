@@ -4,7 +4,7 @@ id: '0442'
 estado: 'aceptado'
 fecha: 2026-11-27
 cinturon: 'transversal'
-archivos: ['web/src/lib/seo.ts', 'web/src/pages/index.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/[id].astro', 'web/src/pages/metodologia/index.astro', 'web/src/pages/glosario/index.astro', 'web/src/pages/equipo/index.astro', 'web/src/pages/archivo/index.astro', 'web/tools/emitir-artifact.mjs']
+archivos: ['web/src/lib/seo.ts', 'web/src/layouts/Layout.astro', 'web/src/pages/index.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/[id].astro', 'web/src/pages/metodologia/index.astro', 'web/src/pages/glosario/index.astro', 'web/src/pages/equipo/index.astro', 'web/src/pages/archivo/index.astro', 'web/tools/emitir-artifact.mjs']
 relacionado: ['0337', '0439', '0440']
 ambito: 'Presentación · título y descripción de cada página para buscadores y vista previa'
 origen: 'Juan, 27-nov-2026, sobre la propuesta de títulos de la investigación de SEO: «Dale, sí, hace eso, está bueno».'
@@ -45,7 +45,8 @@ fotos de `/archivo/AAAA-MM/` tenían todas el título de la portada.
 - **Descripción:** de 120 a 155 caracteres. En las fichas de indicador abre con el rótulo, el valor y el mes
   del dato; en los cinturones, los índices y la portada, con el mes de la edición y la palabra del tramo. Se
   arma en cada build, así que sigue al dato sin tocar nada.
-- **Fotos del archivo:** el título lleva el mes de la edición.
+- **Fotos del archivo:** el título lleva el mes de la edición, leído del mismo build (`<meta name="cg-edicion">`).
+- **Período:** trimestres, años y acumulados se nombran enteros («segundo trimestre de 2026», «año 2025»), no por su primer o último mes.
 - El build falla si un título pasa de 65 caracteres, si dos páginas comparten título o si queda un término de
   búsqueda sin ficha.
 

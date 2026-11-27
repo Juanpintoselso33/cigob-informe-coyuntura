@@ -6,7 +6,7 @@
 //   - El rótulo de la card no cambia: el término de búsqueda es aparte (BUSQUEDA).
 //   - La tensión va en palabras, nunca con número (ADR-0337).
 // Los topes se controlan en el build: un título largo o repetido lo hace fallar.
-import { informe, CINTURONES, label, presentacion, indiceDe, colorPorTension, LECTURA_SEMAFORO } from "./datos.ts";
+import { informe, CINTURONES, label, presentacion, periodoDato, indiceDe, colorPorTension, LECTURA_SEMAFORO } from "./datos.ts";
 import { DESCRIPCIONES } from "./descripciones.ts";
 import { FICHAS, type FichaIndice } from "./fichas.ts";
 
@@ -65,11 +65,11 @@ export const BUSQUEDA: Record<string, string> = {
   // Gestión
   cepo_mulc: "Brecha cambiaria en Argentina: CCL y mayorista",
   apertura_comercial: "Retenciones y aranceles sobre el comercio exterior",
-  desregulacion_normativa: "Desregulación normativa: artículos derogados",
+  desregulacion_normativa: "Desregulación: artículos modificados o eliminados",
   reduccion_estado: "Empleados públicos nacionales: cuánto bajó la planta",
   gasto_funcionamiento: "Gasto de funcionamiento del Estado nacional",
   masa_salarial: "Masa salarial del sector público nacional",
-  reestructuracion_organismos: "Organismos públicos cerrados o fusionados",
+  reestructuracion_organismos: "Organismos públicos disueltos o cerrados",
   fal_modernizacion_laboral: "Fondo de Asistencia Laboral (Ley 27.802): avance",
   litigiosidad_laboral: "Juicios por riesgos del trabajo en Argentina (SRT)",
   siniestralidad_laboral: "Siniestralidad laboral en Argentina: qué significa",
@@ -78,7 +78,7 @@ export const BUSQUEDA: Record<string, string> = {
   rigi_inversiones: "RIGI: grandes inversiones aprobadas",
   concesiones_infraestructura: "Concesiones viales: rutas nacionales adjudicadas",
   asistencia_directa: "Planes sociales sin intermediarios",
-  protocolo_antipiquetes: "Piquetes en la Ciudad: efecto del protocolo",
+  protocolo_antipiquetes: "Cortes de calle en la Ciudad: cuánto bajaron",
   libertad_opcion_salud: "Libre elección de obra social y prepaga: avance",
   // Impacto social
   empleo_registrado: "Empleo registrado privado en Argentina",
@@ -181,6 +181,24 @@ const COLA_FICHA_CORTA = "Qué mide y de qué fuente sale.";
 const COLA_CON_QUE = "Fuente, método y tensión que suma al plan de gobierno.";
 const COLA_CON_QUE_CORTA = "Fuente y método.";
 
+/** El período que representa el dato, dicho entero: el mismo criterio que el
+ *  chip de la card (periodoDato), más los anuales que cierran el 31 de
+ *  diciembre y los acumulados del año. Un trimestre o un año no se nombran con
+ *  su primer o su último mes. */
+const ACUMULADO_DEL_ANIO = new Set(["siniestralidad_laboral"]);
+const TRIMESTRES = ["primer", "segundo", "tercer", "cuarto"];
+function periodoEnTexto(id: string, ind: any): string {
+  const f = String(ind.fecha_dato ?? "");
+  if (/^\d{4}-12-31/.test(f)) return `año ${f.slice(0, 4)}`;
+  if (ACUMULADO_DEL_ANIO.has(id)) return `acumulado a ${mesDe(f)}`;
+  const p = periodoDato(id, ind);
+  const t = /^(\d)T (\d{4})$/.exec(p);
+  if (t) return `${TRIMESTRES[+t[1] - 1]} trimestre de ${t[2]}`;
+  if (/^\d{4}$/.test(p)) return `año ${p}`;
+  if (id === "brecha_obra_publica") return `expectativas a ${mesDe(f)}`;
+  return mesDe(f);
+}
+
 /** El valor con su unidad, para leerse de corrido en una oración (en la card
  *  la unidad va aparte y puede ser telegráfica: «2,04 0-5», «−0,3 saldo»). */
 function valorEnTexto(texto: string, unidad: string): string {
@@ -228,7 +246,7 @@ function descripcionFicha(id: string): string {
   const nombre = label(id).replace(/\s*\([^)]*\)/g, "").trim();
   const pres = ind ? presentacion(id, ind) : null;
   if (pres && typeof ind.valor === "number" && ind.fecha_dato) {
-    const periodo = id === "brecha_obra_publica" ? `expectativas a ${mesDe(ind.fecha_dato)}` : mesDe(ind.fecha_dato);
+    const periodo = periodoEnTexto(id, ind);
     const valor = valorEnTexto(pres.texto, pres.unidad ?? "");
     const q = primeraOracion(que);
     return ajustar(`${nombre}: ${valor}, ${periodo}.`, [q && `${q} ${COLA_CON_QUE}`, q && `${q} ${COLA_CON_QUE_CORTA}`, q, COLA_FICHA, COLA_FICHA_CORTA]);

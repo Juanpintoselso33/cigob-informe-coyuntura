@@ -469,7 +469,8 @@ const aviso = LITE
 const MESES_TITULO = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 let titulo = 'Monitor del Plan de Gobierno · CiGob';
 try {
-  const periodo = JSON.parse(leer(path.join(WEB, 'src', 'data', 'informe.json'))).period ?? '';
+  // Del mismo build que da el cuerpo, no del snapshot de src/ (que puede ser posterior).
+  const periodo = /<meta name="cg-edicion" content="([^"]*)"/.exec(leer(path.join(WEB, 'dist', 'index.html')))?.[1] ?? '';
   const m = /^(\d{4})-(\d{2})/.exec(periodo);
   if (m) titulo = `Monitor del Plan de Gobierno, ${MESES_TITULO[+m[2] - 1]} de ${m[1]} | CiGob`;
 } catch { /* sin snapshot legible, queda el título genérico */ }

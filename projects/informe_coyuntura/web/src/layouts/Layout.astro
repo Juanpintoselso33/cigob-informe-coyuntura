@@ -1,5 +1,6 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import { informe } from "../lib/datos.ts";
 
 const NOMBRE = "Monitor del Plan de Gobierno · CiGob";
 const {
@@ -31,6 +32,8 @@ const esDiario = import.meta.env.PUBLIC_SITIO?.trim() === "diario";
     <link rel="apple-touch-icon" href={`${base}/favicon.png`} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <!-- Mes de la edición: el emisor del archivo lo lee para titular la foto (ADR-0442). -->
+    <meta name="cg-edicion" content={informe.period} />
     <!-- Una sola dirección para Google: monitor.cigob.org (ADR-0439). -->
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
     <!-- Vista previa al compartir un link (WhatsApp, LinkedIn, X): punto 16 del
