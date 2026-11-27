@@ -1,6 +1,5 @@
 ---
 import Analytics from "@vercel/analytics/astro";
-import MuroAcceso from "../components/MuroAcceso.astro";
 
 const NOMBRE = "Monitor del Plan de Gobierno · CiGob";
 const {
@@ -18,16 +17,10 @@ const rawGaId = import.meta.env.PUBLIC_GA_ID?.trim();
 const gaId =
   import.meta.env.PUBLIC_SITIO?.trim() !== "diario" && rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 
-// Muro de acceso (ADR-0342). PUBLIC_MURO=0 lo apaga: es lo que usa el
-// seguimiento diario interno y el informe en un solo archivo. En la portada
-// salta al salir del hero; en el resto, al entrar.
-const muro = import.meta.env.PUBLIC_MURO?.trim() !== "0";
 // Seguimiento diario interno (punto 8 de la reunión del 6-oct, ADR-0347): el
 // mismo sitio con los datos de cada noche, en una URL larga que no se difunde.
 // Una URL difícil de adivinar no es privada, así que al menos no se indexa.
 const esDiario = import.meta.env.PUBLIC_SITIO?.trim() === "diario";
-const esPortada = Astro.url.pathname.replace(/\/$/, "") === base;
-const modoMuro = esPortada ? "al-bajar" : "inmediato";
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -117,37 +110,6 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
       html .cg-status-pill.is-signed .cg-status-dot { box-shadow: 0 0 0 3px color-mix(in srgb, var(--verde) 18%, transparent); }
       html .cg-status-pill.is-draft  .cg-status-dot { box-shadow: 0 0 0 3px color-mix(in srgb, var(--amarillo) 25%, transparent); }
     </style>
-    {muro && (
-      <script is:inline define:vars={{ modoMuro }}>
-        // Antes de pintar: quien ya pasó el muro no lo ve; en modo inmediato,
-        // el contenido no llega a verse sin tapar. Se reconoce por la cookie
-        // `cigob_lector` (la escribe el servidor, api/_acceso.ts: Safari no la
-        // borra a los 7 días) o, de respaldo, por el localStorage de antes.
-        // `data-muro-via` le dice a MuroAcceso.astro por dónde se reconoció,
-        // para renovar la cookie y medirlo. Las claves son las mismas que usa
-        // MuroAcceso.astro.
-        (function () {
-          var html = document.documentElement, via = "";
-          // `d` = entró sólo por el link de una difusión, sin dejar el mail
-          // (api/_acceso.ts): no cuenta como reconocido, el muro se lo pide.
-          var c = document.cookie.match(/(?:^|;\s*)cigob_lector=([^;]*)/);
-          // `a` = agente de IA que se identifica (ChatGPT en la nube, Google-Agent):
-          // la cookie la pone vercel.json con la respuesta (ADR-0438). No ve el muro.
-          // Y todo navegador que declara que lo maneja un programa (navigator.webdriver:
-          // Claude Cowork, Playwright y las herramientas de desarrollo).
-          if ((c && c[1] === "a") || navigator.webdriver) via = "agente";
-          else if (c && c[1] !== "d") via = "cookie";
-          if (c && c[1] === "d") html.setAttribute("data-muro-difusion", "1");
-          try {
-            if (via !== "agente" && localStorage.getItem("cigob-muro-v1")) via = via ? "ambos" : "local";
-            // La cruz lo cierra por el resto de la visita (sessionStorage).
-            if (!via && sessionStorage.getItem("cigob-muro-cerrado")) via = "cerrado";
-          } catch (e) {}
-          if (via) { html.classList.add("muro-ok"); html.setAttribute("data-muro-via", via); }
-          else if (modoMuro === "inmediato") html.classList.add("muro-activo");
-        })();
-      </script>
-    )}
     {gaId && (
       <Fragment>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
@@ -162,7 +124,6 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
   </head>
   <body>
     <slot />
-    {muro && <MuroAcceso modo={modoMuro} />}
     <Analytics />
   </body>
 </html>

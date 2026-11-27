@@ -152,8 +152,8 @@ const titular = (f: typeof filas[number]) => {
 </Layout>
 
 <script>
-  // GA4 directo, sin importar analytics.ts (ver MuroAcceso.astro: un import
-  // compartido rompe el emisor del informe en un solo archivo).
+  // GA4 directo, sin importar analytics.ts: un import compartido rompe el
+  // emisor del informe en un solo archivo.
   const track = (evento: string, params: Record<string, unknown> = {}) => {
     const limpio = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== ""));
     try { (window as any).gtag?.("event", evento, limpio); } catch {}

@@ -494,7 +494,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0337](0337-la-tension-se-lee-por-color-sin-numero.md) | La tensión se lee por color, sin número |  | vigente |
 | [0338](0338-el-marco-abre-con-el-texto-de-luis.md) | El marco abre con el texto de Luis y explica los colores |  | vigente |
 | [0340](0340-el-monitor-habla-sin-siglas.md) | El Monitor habla sin siglas |  | vigente |
-| [0342](0342-muro-de-acceso-que-pide-el-mail.md) | Un muro de acceso que pide el mail |  | vigente |
+| [0342](0342-muro-de-acceso-que-pide-el-mail.md) | Un muro de acceso que pide el mail |  | superado por [0441](0441-se-saca-el-muro-de-acceso.md) |
 | [0343](0343-la-portada-sin-lectura-cruzada-y-el-marco-como-lectura.md) | La portada sin «Lectura cruzada», y el marco conceptual con formato de lectura |  | vigente |
 | [0346](0346-el-hero-ocupa-la-pantalla.md) | El hero ocupa la pantalla |  | vigente |
 | [0347](0347-el-monitor-se-publica-como-informe-mensual.md) | El Monitor se publica como informe mensual |  | vigente |
@@ -514,9 +514,10 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0417](0417-emae-y-salarios-desde-la-api-del-indec.md) | EMAE y salarios desde la API del INDEC | `emae_ia`, `emae_difusion` | vigente |
 | [0418](0418-ipc-y-canastas-desde-la-api-del-indec.md) | IPC y canastas desde la API del INDEC | `ipc_alimentos`, `brecha_salario_cbt` | vigente |
 | [0427](0427-escala-de-tension-en-cuatro-tramos-iguales.md) | Escala de tensión en cuatro tramos iguales: 2,5 / 5 / 7,5 |  | vigente |
-| [0438](0438-el-muro-deja-pasar-a-los-agentes-de-ia-que-se-identifican.md) | El muro deja pasar a los agentes de IA que se identifican |  | vigente |
+| [0438](0438-el-muro-deja-pasar-a-los-agentes-de-ia-que-se-identifican.md) | El muro deja pasar a los agentes de IA que se identifican |  | superado por [0441](0441-se-saca-el-muro-de-acceso.md) |
 | [0439](0439-monitor-cigob-org-es-la-unica-direccion.md) | monitor.cigob.org es la única dirección del Monitor |  | vigente |
 | [0440](0440-medicion-mensual-del-trafico.md) | Medición mensual del tráfico |  | vigente |
+| [0441](0441-se-saca-el-muro-de-acceso.md) | Se saca el muro de acceso |  | vigente |
 
 ### Sin cinturón declarado
 

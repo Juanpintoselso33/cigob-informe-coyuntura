@@ -1,11 +1,13 @@
 ---
 madr: 4
 id: '0438'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por el ADR-0441 el 2026-11-27: se sacó el muro de acceso'
 fecha: 2026-11-25
 cinturon: 'transversal'
 archivos: ['../../vercel.json', 'web/src/layouts/Layout.astro', 'web/src/components/MuroAcceso.astro', '../../api/_acceso.ts', '../../api/acceso.ts']
 relacionado: ['0342']
+superado_por: ['0441']
 ambito: 'Presentación · el muro de acceso no frena a los agentes de IA que se identifican'
 origen: 'Juan, reunión del 20-nov-2026: «el muro tiene que dejar pasar a los agentes de IA». Investigado y aprobado el 25-nov-2026.'
 ---

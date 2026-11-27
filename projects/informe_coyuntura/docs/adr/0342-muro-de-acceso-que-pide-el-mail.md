@@ -1,11 +1,13 @@
 ---
 madr: 4
 id: '0342'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por el ADR-0441 el 2026-11-27: se sacó el muro de acceso'
 fecha: 2026-10-07
 cinturon: 'transversal'
 archivos: ['web/src/components/MuroAcceso.astro', 'web/src/layouts/Layout.astro', 'web/tools/emitir-artifact.mjs']
 relacionado: ['0347', '0438', '0439']
+superado_por: ['0441']
 ambito: 'Presentación · muro de acceso que pide el mail antes de dejar leer el Monitor'
 origen: 'Reunión del 6-oct-2026 sobre el Monitor del Plan de Gobierno (punto 1 de docs/261006_reunion_pendientes.md). Juan cerró las decisiones el 7-oct-2026.'
 ---
