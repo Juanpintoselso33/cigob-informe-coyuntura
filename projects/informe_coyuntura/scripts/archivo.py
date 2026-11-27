@@ -169,13 +169,61 @@ def _fin_de_mes(mes: str) -> str:
     return f"{mes}-{calendar.monthrange(a, m)[1]:02d}"
 
 
-def _cortar(proyecto: Path, mes: str) -> None:
+PROYECTO_REL = "projects/informe_coyuntura"
+
+
+def congelado_en(mes: str) -> str | None:
+    """El commit del día en que se publicó el mes (ADR-0444): el informe publicado
+    lleva sólo los datos que había ese día. Al publicar todavía no hay etiqueta y
+    el workflow lo pasa en ARCHIVO_CONGELAR_EN; después es la etiqueta
+    mensual-AAAA-MM. Sin ninguna de las dos (meses anteriores al mensual), None."""
+    sha = os.environ.get("ARCHIVO_CONGELAR_EN", "").strip()
+    if sha:
+        return sha
+    try:
+        return mensual._git("rev-list", "-n", "1", f"mensual-{mes}").strip() or None
+    except subprocess.CalledProcessError:
+        return None
+
+
+def _en_git(sha: str, rel: str) -> str | None:
+    """El archivo `rel` (relativo al proyecto) tal como estaba en `sha`, o None."""
+    try:
+        return mensual._git("show", f"{sha}:{PROYECTO_REL}/{rel}")
+    except subprocess.CalledProcessError:
+        return None
+
+
+def _claves_csv(texto: str) -> tuple[set, set]:
+    """(indicadores, {(indicador, mes)}) de un CSV de series. Va por MES y no por
+    fecha: el punto del mes en curso lleva el día de la última observación
+    (2026-10-29) y al cerrarse el mes pasa a fin de mes (2026-10-31)."""
+    import csv
+    import io
+    filas = list(csv.DictReader(io.StringIO(texto)))
+    return {r["indicador"] for r in filas}, {(r["indicador"], r["fecha"][:7]) for r in filas}
+
+
+def _cortar(proyecto: Path, mes: str, congelar_en: str | None = None) -> None:
+    """Deja los datos en lo que hay hasta `mes`. Con `congelar_en`, además, sólo los
+    meses que ya tenían dato ese día, indicador por indicador (ADR-0444): un dato
+    del mes que llegó después de publicarlo no entra. El valor de cada punto es el de hoy, así que el método
+    vigente (ADR-0359) y las revisiones de la fuente sí entran; los indicadores que
+    no existían al publicar quedan con su serie de hoy cortada al mes."""
     import csv
     ultimo: dict[str, tuple[str, float]] = {}
+    afuera = 0
     for ruta in sorted((proyecto / "output" / "series").glob("*.csv")):
         with open(ruta, encoding="utf-8", newline="") as f:
             lector = csv.DictReader(f)
             campos, filas = lector.fieldnames, [r for r in lector if r["fecha"][:7] <= mes]
+        if congelar_en:
+            antes = _en_git(congelar_en, f"output/series/{ruta.name}")
+            if antes is not None:
+                inds, claves = _claves_csv(antes)
+                n = len(filas)
+                filas = [r for r in filas if r["indicador"] not in inds or (r["indicador"], r["fecha"][:7]) in claves]
+                afuera += n - len(filas)
         with open(ruta, "w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, fieldnames=campos)
             w.writeheader()
@@ -193,12 +241,24 @@ def _cortar(proyecto: Path, mes: str) -> None:
     if ruta_s.exists():
         sj = json.loads(ruta_s.read_text(encoding="utf-8"))
         sj = {k: [p for p in v if str(p.get("fecha", ""))[:7] <= mes] for k, v in sj.items()}
+        antes = json.loads(_en_git(congelar_en, "web/src/data/series.json") or "{}") if congelar_en else {}
+        for k, puntos in antes.items():
+            if k in sj:
+                meses = {str(p.get("fecha", ""))[:7] for p in puntos}
+                sj[k] = [p for p in sj[k] if str(p.get("fecha", ""))[:7] in meses]
         ruta_s.write_text(json.dumps(sj, ensure_ascii=False), encoding="utf-8")
     ruta_h = proyecto / "data" / "historico" / "indicadores.json"
     if ruta_h.exists():
         store = json.loads(ruta_h.read_text(encoding="utf-8"))
         store = {k: {m: v for m, v in vals.items() if m <= mes} for k, vals in store.items()}
+        antes = json.loads(_en_git(congelar_en, "data/historico/indicadores.json") or "{}") if congelar_en else {}
+        for k, vals in antes.items():
+            if k in store:
+                store[k] = {m: v for m, v in store[k].items() if m in vals}
         ruta_h.write_text(json.dumps(store, ensure_ascii=False, indent=1), encoding="utf-8")
+    if congelar_en:
+        print(f"    · {mes}: congelado como al publicarlo ({congelar_en[:10]}); "
+              f"{afuera} puntos de serie llegados después quedan afuera")
     (proyecto / "output" / "archivo_corte.json").write_text(
         json.dumps({k: list(v) for k, v in ultimo.items()}), encoding="utf-8")
     for nombre in CACHES:
@@ -385,7 +445,7 @@ def _reconstruido(mes: str, desde: str = "series", completo: bool = False):
                     subprocess.run(["tar", "-x", "-C", str(arbol)], input=tar, check=True)
                 publicar = "scripts/publicar.py"
             else:
-                _cortar(proyecto, mes)
+                _cortar(proyecto, mes, congelado_en(mes))
                 (reloj / "publicar_corte.py").write_text(PUBLICAR_CORTE, encoding="utf-8")
                 # cortar_indicadores sale de ESTE archivo, no del de HEAD.
                 shutil.copy(__file__, reloj / "archivo.py")

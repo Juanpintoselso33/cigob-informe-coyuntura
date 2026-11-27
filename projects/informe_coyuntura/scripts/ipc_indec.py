@@ -18,14 +18,19 @@ import xlrd
 logger = logging.getLogger(__name__)
 
 SERIE_ID = "148.3_INIVELNAL_DICI_M_26"          # IPC nivel general nacional, base dic-2016
+# Series de la API que se completan con la planilla → fila del bloque «Total nacional».
+# Alimentos se sumó el 27-nov-2026: la card de impacto social la leía sólo de la API
+# y septiembre entró tres semanas después de que el INDEC lo publicara (ADR-0443).
+SERIES = {SERIE_ID: "Nivel general",
+          "146.3_IALIMENNAL_DICI_M_45": "Alimentos y bebidas no alcohólicas"}
 URL = "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_divisiones.xls"
 HOJA = "Índices IPC Cobertura Nacional"
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
 
-_memo: list = []
+_memo: dict = {}
 
 
-def parsear(contenido: bytes) -> list:
+def parsear(contenido: bytes, fila: str = "Nivel general") -> list:
     """[[YYYY-MM-01, nivel], ...] ascendente, del bloque «Total nacional».
 
     La hoja trae un bloque por región; el primero es el total nacional. Su fila
@@ -39,7 +44,7 @@ def parsear(contenido: bytes) -> list:
         etiqueta = str(hoja.cell_value(r, 0)).strip()
         if fila_fechas is None and etiqueta == "Total nacional":
             fila_fechas = r
-        elif fila_fechas is not None and etiqueta == "Nivel general":
+        elif fila_fechas is not None and etiqueta == fila:
             fechas, niveles = hoja.row_values(fila_fechas), hoja.row_values(r)
             serie = []
             for f, v in zip(fechas[1:], niveles[1:]):
@@ -49,15 +54,17 @@ def parsear(contenido: bytes) -> list:
             if not serie:
                 break
             return serie
-    raise ValueError("planilla del IPC: no encontré el nivel general nacional")
+    raise ValueError(f"planilla del IPC: no encontré «{fila}» del total nacional")
 
 
-def serie() -> list:
-    if not _memo:
+def serie(series_id: str = SERIE_ID) -> list:
+    if "contenido" not in _memo:
         r = requests.get(URL, headers=HTTP_HEADERS, timeout=60)
         r.raise_for_status()
-        _memo.extend(parsear(r.content))
-    return _memo
+        _memo["contenido"] = r.content
+    if series_id not in _memo:
+        _memo[series_id] = parsear(_memo["contenido"], SERIES[series_id])
+    return _memo[series_id]
 
 
 def completar(filas_api: list, original: list, tolerancia: float = 0.01) -> list:

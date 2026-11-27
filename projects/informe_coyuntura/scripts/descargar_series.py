@@ -236,7 +236,9 @@ def fetch_indec(series_id: str, limit: int = 48) -> list:
                      "limit": limit, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    return [[row[0], row[1]] for row in r.json()["data"] if row[1] is not None]
+    import imig_hacienda   # resultado y gasto: la planilla de Economía llega antes (ADR-0443)
+    filas = imig_hacienda.con_planilla(series_id, r.json()["data"], limit)
+    return [[row[0], row[1]] for row in filas if row[1] is not None]
 
 
 def fetch_ocupacion_eph_serie(limit: int = 60) -> list:

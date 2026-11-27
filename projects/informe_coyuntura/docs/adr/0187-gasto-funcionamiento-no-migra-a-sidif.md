@@ -6,7 +6,7 @@ nota_estado: 'Rechazado por ahora: ver "Condiciones de reapertura" en Más infor
 fecha: 2026-08-09
 cinturon: 'gestion'
 indicadores: [gasto_funcionamiento]
-relacionado: ['0015', '0128']
+relacionado: ['0015', '0128', '0443']
 ambito: 'ITCG · `gasto_funcionamiento` · dimensión `reforma_estado`'
 origen: 'CIGOB pidió evaluar sacar personal de FFAA y seguridad de gasto_funcionamiento (revisión de fichas de Gestión, ago-2026); un sondeo previo en la misma ronda (commit 04442d5) encontró Defensa+Seguridad en 44% del gasto en personal SIDIF contra ~10% de la dotación y lo dejó sin resolver, "sin ADR porque no se decidió ningún método".'
 ---

@@ -194,6 +194,9 @@ def _indec_serie(series_id: str, limit: int = 2) -> list:
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
     r = datos_gob.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
+    import imig_hacienda
+    if series_id in imig_hacienda.SERIES:
+        return imig_hacienda.con_planilla(series_id, r.json()["data"], limit)
     if series_id == INDEC_BK_IMPO_ID:
         import bienes_capital
         return bienes_capital.completar(r.json()["data"], bienes_capital.original()["serie"], limit)
@@ -1383,7 +1386,7 @@ def fetch_resultado_primario() -> dict | None:
         return {
             "valor": round(valor, 2),
             "unidad": "% de la recaudación (acumulado de 12 meses)",
-            "fuente": "Secretaría de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
+            "fuente": "Secretaría de Hacienda — informe mensual de ingresos y gastos (resultado primario; planilla de Economía, historia vía datos.gob.ar) + recaudación (vía datos.gob.ar)",
             "fecha_dato": f"{ym}-01",
             "detalle_txt": (
                 f"{ym}: {signo} primario de {abs(valor):.1f}% de la recaudación "

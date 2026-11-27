@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [gasto_funcionamiento]
 archivos: ['scripts/gestion.py', 'scripts/descargar_series.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/datos.ts', 'tests/test_gasto_funcionamiento.py']
-relacionado: ['0186', '0361']
+relacionado: ['0186', '0361', '0443']
 ambito: 'Cinturón de gestión · ITCG · dimensión reforma del Estado · gasto de funcionamiento'
 origen: 'Decisión de Juan del 29-oct-2026, a partir de la revisión de gestión de Luis (puntos 1.5 y 2.4): comparar el promedio de 12 meses contra todo 2023, de modo que el aguinaldo se cancele.'
 ---

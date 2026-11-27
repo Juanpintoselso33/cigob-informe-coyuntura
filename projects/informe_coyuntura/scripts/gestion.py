@@ -277,7 +277,8 @@ def _indec_serie(series_id: str, limit: int = 16) -> list:
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
     r = datos_gob.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    return r.json()["data"]
+    import imig_hacienda   # resultado y gasto: la planilla de Economía llega antes (ADR-0443)
+    return imig_hacienda.con_planilla(series_id, r.json()["data"], limit)
 
 
 def _indec_nivel_mensual(series_id: str, limit: int = 48) -> dict:
@@ -1296,7 +1297,7 @@ def fetch_gasto_funcionamiento() -> dict | None:
         return {
             "valor":          var_pct,
             "unidad":         "% de variación real: promedio de los últimos 12 meses frente al promedio de 2023",
-            "fuente":         "Secretaría de Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
+            "fuente":         "Secretaría de Hacienda — informe mensual de ingresos y gastos del sector público nacional (planilla de Economía, historia vía datos.gob.ar) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
             "detalle_txt":    (f"Promedio mensual de {_mes_largo(desde)} a {_mes_largo(ym)} contra el "

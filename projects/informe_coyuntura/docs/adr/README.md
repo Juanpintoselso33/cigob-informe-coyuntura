@@ -519,6 +519,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0440](0440-medicion-mensual-del-trafico.md) | Medición mensual del tráfico |  | vigente |
 | [0441](0441-se-saca-el-muro-de-acceso.md) | Se saca el muro de acceso |  | vigente |
 | [0442](0442-titulos-y-descripciones-para-buscadores.md) | Títulos y descripciones para buscadores |  | vigente |
+| [0443](0443-el-fiscal-sale-de-la-planilla-de-economia.md) | El último mes fiscal sale de la planilla de Economía | `resultado_primario`, `gasto_funcionamiento`, `ipc_alimentos` | vigente |
+| [0444](0444-el-mes-publicado-queda-con-los-datos-del-dia-que-salio.md) | El mes publicado queda con los datos del día en que salió |  | vigente |
 
 ### Sin cinturón declarado
 

@@ -166,3 +166,56 @@ def test_el_dnu_del_mes_rehecho_lleva_la_marca_del_metodo_y_puntua():
     salida = archivo.cortar_indicadores(cards, {"ratio_dnu": ("2026-10-01", 2.643)}, "2026-10")
     assert salida["ratio_dnu"]["valor"] == 2.643
     assert politica._valor_itcp("ratio_dnu", salida["ratio_dnu"]) == 2.643
+
+
+def test_el_mes_publicado_queda_congelado_como_el_dia_que_salio(tmp_path, monkeypatch):
+    """ADR-0444: un dato del mes que llegó después de publicarlo no entra; un
+    indicador que no existía al publicar queda con su serie de hoy cortada al mes."""
+    import csv as _csv
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+    proyecto = tmp_path
+    (proyecto / "output" / "series").mkdir(parents=True)
+    with open(proyecto / "output" / "series" / "macro.csv", "w", newline="", encoding="utf-8") as f:
+        w = _csv.writer(f)
+        w.writerow(["fecha", "indicador", "valor", "unidad", "fuente"])
+        w.writerows([["2026-09-01", "ipc_total", "2.1", "%", "x"], ["2026-10-01", "ipc_total", "2.3", "%", "x"],
+                     ["2026-11-01", "ipc_total", "2.5", "%", "x"], ["2026-10-01", "nuevo", "7", "%", "x"],
+                     ["2026-10-31", "cohesion_bloque", "99.8", "%", "x"]])
+    (proyecto / "web" / "src" / "data").mkdir(parents=True)
+    (proyecto / "web" / "src" / "data" / "series.json").write_text(json.dumps(
+        {"ipc_total": [{"fecha": "2026-09-01", "valor": 2.1}, {"fecha": "2026-10-01", "valor": 2.3}]}), encoding="utf-8")
+    (proyecto / "data" / "historico").mkdir(parents=True)
+    (proyecto / "data" / "historico" / "indicadores.json").write_text(json.dumps(
+        {"ipc_total": {"2026-09": 2.1, "2026-10": 2.3}}), encoding="utf-8")
+    al_publicar = {
+        # el punto del mes en curso tenía el día de la última votación; hoy, fin de mes
+        "output/series/macro.csv": "fecha,indicador,valor,unidad,fuente\n2026-09-01,ipc_total,2.0,%,x\n"
+                                   "2026-10-29,cohesion_bloque,100.0,%,x\n",
+        "web/src/data/series.json": json.dumps({"ipc_total": [{"fecha": "2026-09-01", "valor": 2.0}]}),
+        "data/historico/indicadores.json": json.dumps({"ipc_total": {"2026-09": 2.0}}),
+    }
+    monkeypatch.setattr(archivo, "_en_git", lambda sha, rel: al_publicar.get(rel))
+    monkeypatch.setattr(archivo, "_exentas_de_la_foto", lambda mes: (set(), {}))
+    archivo._cortar(proyecto, "2026-10", congelar_en="abc123")
+    with open(proyecto / "output" / "series" / "macro.csv", encoding="utf-8") as f:
+        filas = [(r["fecha"], r["indicador"], r["valor"]) for r in _csv.DictReader(f)]
+    # el IPC de octubre llegó después: afuera; el valor de septiembre es el de hoy (método vigente)
+    assert filas == [("2026-09-01", "ipc_total", "2.1"), ("2026-10-01", "nuevo", "7"),
+                     ("2026-10-31", "cohesion_bloque", "99.8")]
+    assert json.loads((proyecto / "output" / "archivo_corte.json").read_text())["ipc_total"] == ["2026-09-01", 2.1]
+    sj = json.loads((proyecto / "web" / "src" / "data" / "series.json").read_text())
+    assert [p["fecha"] for p in sj["ipc_total"]] == ["2026-09-01"]
+    h = json.loads((proyecto / "data" / "historico" / "indicadores.json").read_text())
+    assert h["ipc_total"] == {"2026-09": 2.1}
+
+
+def test_sin_etiqueta_ni_publicacion_en_curso_no_se_congela(monkeypatch):
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+    monkeypatch.delenv("ARCHIVO_CONGELAR_EN", raising=False)
+    assert archivo.congelado_en("2031-01") is None
+    monkeypatch.setenv("ARCHIVO_CONGELAR_EN", "deadbeef")
+    assert archivo.congelado_en("2031-01") == "deadbeef"

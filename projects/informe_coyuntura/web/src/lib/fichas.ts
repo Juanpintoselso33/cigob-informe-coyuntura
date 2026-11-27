@@ -1334,13 +1334,13 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "resultado_primario",
     cinturon: "macro",
-    rezago: "Unos dos meses: a fines de octubre de 2026 el último dato publicado es el de agosto.",
+    rezago: "Unas dos semanas y media: Economía publica el mes entre el 16 y el 18 del mes siguiente.",
     fuente: {
       organismo: "Secretaría de Hacienda (resultado primario) + recaudación nacional",
       operacion: "Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total",
       serie: "Resultado primario mensual y recaudación total mensual, ambos en millones de pesos",
-      url: "https://www.argentina.gob.ar/economia/sechacienda",
-      acceso: "Automático: API de series de tiempo del Estado nacional.",
+      url: "https://www.argentina.gob.ar/economia/sechacienda/infoestadistica",
+      acceso: "Automático: planilla mensual de Economía para el último mes y API de series de tiempo del Estado nacional para la historia.",
     },
     transformaciones: [
       "Ambas series se acumulan en ventanas de doce meses. El resultado primario mensual es fuertemente estacional —diciembre da déficit todos los años por el aguinaldo y el cierre del ejercicio, enero da superávit alto—, así que puntuar el mes suelto marcaría un colapso fiscal cada diciembre.",
@@ -1369,6 +1369,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Sin una ventana completa de doce meses se conserva el último valor disponible, señalado como desactualizado; la recaudación queda como único indicador de la dimensión de cuentas fiscales.",
     revisiones: "Las cifras fiscales pueden revisarse en publicaciones posteriores; la serie se regenera completa desde diciembre de 2023 en cada actualización.",
     cambios: [
+      { fecha: "2026-11-27", cambio: "El último mes sale de la planilla del informe mensual de ingresos y gastos que Economía publica el día del comunicado fiscal (16 a 18 del mes siguiente); la historia sigue viniendo de la API de datos.gob.ar, que se actualiza semanas después. Con eso octubre de 2026 entra el 27-nov en vez de esperar a la API. En los meses que tienen las dos fuentes los números son idénticos.", adr: "0443" },
       { fecha: "2026-10-28", cambio: "La escala de −5 a +8 %, puesta mirando diciembre de 2023 y el programa estabilizado, se reemplaza por anclas de la historia 2004-2023: el equilibrio vale 50 y a cada lado hay uno y dos desvíos (11,9 puntos). Con agosto de 2026 (6,02 %) el puntaje pasa de 85,1 a 65,2: un superávit de ese tamaño se lee bien, no como óptimo.", adr: "0403" },
       { fecha: "2026-10-27", cambio: "La dimensión «Viabilidad fiscal-comercial» pasa a llamarse «Cuentas fiscales» y se queda con este indicador y la recaudación: el saldo comercial se fue al «Sector externo». Su peso en el índice macroeconómico no cambia (12 %).", adr: "0387" },
       { fecha: "2026-07-18", cambio: "Nace y entra como componente principal de la dimensión fiscal-comercial (50%), que hasta entonces medía la viabilidad fiscal por los ingresos: la recaudación baja al 30% y el saldo comercial al 20%." },
@@ -2701,13 +2702,13 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "gasto_funcionamiento",
     cinturon: "gestion",
-    rezago: "Las series de gasto se publican con unos 2 meses de rezago.",
+    rezago: "Unas dos semanas y media: Economía publica el mes entre el 16 y el 18 del mes siguiente.",
     fuente: {
       organismo: "Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real del promedio de los últimos 12 meses contra el promedio de los 12 meses de 2023",
-      serie: "452.2_SALARIOSIOS_0_T_8_22 + 452.2_OTROS_GASTNTO_0_T_27_55 + índice de precios al consumidor (IPC) 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
+      serie: "452.2_SALARIOSIOS_0_T_8_22 + 452.2_OTROS_GASTNTO_0_T_27_55 + índice de precios al consumidor (IPC) 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar, con el último mes de la planilla del informe mensual de ingresos y gastos",
       url: "https://www.argentina.gob.ar/economia/sechacienda/infoestadistica",
-      acceso: "Automático: API pública de series de tiempo.",
+      acceso: "Automático: planilla mensual de Economía para el último mes y API pública de series de tiempo para la historia.",
     },
     transformaciones: [
       "Total = salarios + otros gastos de funcionamiento, base caja de la serie mensual de gastos de funcionamiento.",
@@ -2734,6 +2735,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Series revisables por el publicador; la serie propia se recalcula entera en cada actualización.",
     cambios: [
+      { fecha: "2026-11-27", cambio: "El último mes sale de la planilla del informe mensual de ingresos y gastos que Economía publica el día del comunicado fiscal (16 a 18 del mes siguiente); la historia sigue viniendo de la API de datos.gob.ar, que se actualiza semanas después. Con eso octubre de 2026 entra el 27-nov en vez de esperar a la API. En los meses que tienen las dos fuentes los números son idénticos.", adr: "0443" },
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-10-27", cambio: "La ficha aclara que el gasto incluye los sueldos y por qué compara contra el mismo mes de 2023 y no contra diciembre, como la dotación. No cambia el cálculo." },
@@ -2746,7 +2748,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "masa_salarial",
     cinturon: "gestion",
-    rezago: "Las series de gasto se publican con unos 2 meses de rezago.",
+    rezago: "Unas dos semanas y media: Economía publica el mes entre el 16 y el 18 del mes siguiente.",
     fuente: {
       organismo: "Secretaría de Hacienda (base caja); deflactor: Instituto Nacional de Estadística y Censos (INDEC)",
       operacion: "Remuneraciones del Sector Público Nacional, variación real contra el mismo mes de 2023",
@@ -3391,6 +3393,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, los pesos del índice se renormalizan.",
     revisiones: "La API sirve la serie revisada; la base del 4º trimestre de 2023 se recalcula dinámicamente de la propia serie.",
     cambios: [
+      { fecha: "2026-11-27", cambio: "Si la API de datos.gob.ar se atrasa, el último mes sale de la planilla original del INDEC, como ya pasaba con el IPC general: septiembre de 2026 había entrado tres semanas después de que el INDEC lo publicara.", adr: "0443" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 (entonces como nivel contra el salario)." },
       { fecha: "2026-07-04", cambio: "Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta." },
       { fecha: "2026-11-15", cambio: "A pedido de la dirección, la tarjeta muestra el porcentaje que subió la comida por encima del IPC general desde fines de 2023 —el mismo cálculo que define el color— en lugar de la inflación de alimentos del mes, que pasa a acompañarla. Antes la tarjeta mostraba un 2 % mensual y el color salía de otra cuenta. El puntaje no cambia.", adr: "0430" },

@@ -149,7 +149,8 @@ def _completar_ipc(r, params: dict):
         if not desc and cuerpo.get("count", len(filas)) > len(filas):
             return r
         import ipc_indec
-        nuevas = ipc_indec.completar(filas, ipc_indec.serie())
+        sid = str(params.get("ids", ""))
+        nuevas = ipc_indec.completar(filas, ipc_indec.serie(sid))
         desde = str(params.get("start_date") or "")[:10]
         nuevas = [f for f in nuevas if f[0] >= desde]
         if not nuevas:
@@ -173,7 +174,7 @@ def _completar_ipc(r, params: dict):
                 m = {**m, "field": campo}
             meta.append(m)
         logger.warning("datos.gob.ar: %s llega a %s; el INDEC ya publicó hasta %s, "
-                       "se completa desde su planilla", ipc_indec.SERIE_ID,
+                       "se completa desde su planilla", sid,
                        max(f[0] for f in filas)[:7], nuevas[-1][0][:7])
         return _DesdeCSV({**cuerpo, "data": todas[:limite], "meta": meta,
                           "count": cuerpo.get("count", len(filas)) + len(nuevas)})
@@ -197,7 +198,8 @@ def get(url: str, params: dict | None = None, **kwargs):
             logger.warning("Catálogo API-INDEC sin respuesta para %s (%s); se lee la "
                            "copia de datos.gob.ar", params["ids"], e)
             indec_api.marcar_copia(str(params["ids"]))
-    if str(params.get("ids", "")) == "148.3_INIVELNAL_DICI_M_26":
+    import ipc_indec
+    if str(params.get("ids", "")) in ipc_indec.SERIES:
         return _completar_ipc(_get(url, params, **kwargs), params)
     return _get(url, params, **kwargs)
 

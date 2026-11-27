@@ -74,9 +74,16 @@ jobs:
             echo "::error::mensual-$MES ya existe: un mes publicado no se pisa (borrar la etiqueta a mano si hay que rehacerlo)"
             exit 1
           fi
-          SHA=$(python projects/informe_coyuntura/scripts/mensual.py elegir "$MES")
+          # Que el mes esté cerrado: tiene que haber al menos una corrida suya.
+          python projects/informe_coyuntura/scripts/mensual.py elegir "$MES" >/dev/null
+          # La etiqueta va en main TAL COMO ESTÁ AL PUBLICAR, no en la última corrida
+          # del mes: el informe publicado lleva los datos que había ese día y queda
+          # congelado así (ADR-0444). archivo.py lee ARCHIVO_CONGELAR_EN mientras
+          # la etiqueta todavía no existe.
+          SHA=$(git rev-parse HEAD)
           echo "MES=$MES" >> "$GITHUB_ENV"
           echo "SHA=$SHA" >> "$GITHUB_ENV"
+          echo "ARCHIVO_CONGELAR_EN=$SHA" >> "$GITHUB_ENV"
 
       - uses: actions/setup-node@v4
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}

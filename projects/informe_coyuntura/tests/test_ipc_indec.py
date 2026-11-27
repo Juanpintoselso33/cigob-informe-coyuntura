@@ -23,7 +23,7 @@ class Resp:
 
 
 def _con(monkeypatch, original=ORIGINAL):
-    monkeypatch.setattr(ipc_indec, "serie", lambda: original)
+    monkeypatch.setattr(ipc_indec, "serie", lambda *a: original)
 
 
 def test_agrega_el_mes_que_la_api_todavia_no_tiene(monkeypatch):
@@ -105,3 +105,33 @@ def test_la_metadata_acompana_a_los_datos(monkeypatch):
                                  {"ids": ipc_indec.SERIE_ID, "sort": "desc"})
     campo = r.json()["meta"][1]["field"]
     assert (campo["time_index_end"], campo["time_index_size"]) == ("2026-09-01", 118)
+
+
+def test_alimentos_tambien_se_completa_desde_la_planilla(monkeypatch):
+    """27-nov-2026: la card de alimentos leía sólo la API y septiembre entró tres
+    semanas tarde (ADR-0443)."""
+    pedidas = []
+    monkeypatch.setattr(ipc_indec, "serie", lambda sid=ipc_indec.SERIE_ID: pedidas.append(sid) or
+                        [["2026-08-01", 13000.0], ["2026-09-01", 13384.1945]])
+    sid = "146.3_IALIMENNAL_DICI_M_45"
+    r = datos_gob._completar_ipc(Resp({"data": [["2026-08-01", 13000.0]]}), {"ids": sid, "sort": "desc"})
+    assert r.json()["data"][0] == ["2026-09-01", 13384.1945]
+    assert pedidas == [sid]
+
+
+def test_la_planilla_trae_la_fila_de_alimentos(monkeypatch):
+    filas = [["Total nacional", 46266.0, 46296.0], ["", "", ""], ["Nivel general", 12514.15, 12785.93],
+             ["Alimentos y bebidas no alcohólicas", 13384.19, 13647.83]]
+
+    class Hoja:
+        nrows = len(filas)
+        def cell_value(self, r, c): return filas[r][c]
+        def row_values(self, r): return filas[r]
+
+    class Libro:
+        datemode = 0
+        def sheet_by_name(self, nombre): return Hoja()
+
+    monkeypatch.setattr(ipc_indec.xlrd, "open_workbook", lambda **k: Libro())
+    assert ipc_indec.parsear(b"", ipc_indec.SERIES["146.3_IALIMENNAL_DICI_M_45"])[-1] == ["2026-10-01", 13647.83]
+    assert ipc_indec.parsear(b"")[-1] == ["2026-10-01", 12785.93]

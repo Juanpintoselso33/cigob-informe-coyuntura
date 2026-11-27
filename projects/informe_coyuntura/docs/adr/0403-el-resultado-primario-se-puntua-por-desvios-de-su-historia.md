@@ -8,7 +8,7 @@ indice: 'ITCM'
 indicadores: [resultado_primario]
 archivos: ['scripts/itcm.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'tests/test_itcm.py', 'tests/test_itcm_anclas_historia.py']
 modifica: ['0072']
-relacionado: ['0021', '0072', '0105', '0359', '0388', '0390', '0404']
+relacionado: ['0021', '0072', '0105', '0359', '0388', '0390', '0404', '0443']
 ambito: 'ITCM · dimensión Cuentas fiscales · escala del resultado primario'
 origen: 'Revisión del 28-oct-2026, a pedido de Juan, de las escalas del cinturón macro calibradas sobre el propio mandato.'
 ---

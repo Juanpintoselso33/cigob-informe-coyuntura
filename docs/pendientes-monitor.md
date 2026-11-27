@@ -24,6 +24,27 @@ método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXm
   los dos. Juan, textual: «ver que dia es el mejor dia para publicar, tanto por mercado como lo
   mas imporante ver el dia que tenemos mas datos entregados y ponderar liso». Se suma a la fecha
   fija sin decidir del punto (4) de abajo.
+  **Investigado el 27-nov (para ver Juan; Luis lo volvió a pedir ese día).** Informe completo:
+  `projects/informe_coyuntura/docs/261127_dia_de_publicacion/README.md`.
+  - **Recomendación:** publicar el mes M el miércoles que cae entre el 21 y el 27 del mes
+    siguiente, a las 9 h (si es feriado, el jueves).
+  - **Por qué esa franja:** del 21 al 25 ya publicaron IPC, resultado fiscal, comercio exterior y
+    pobreza, y en los 16 meses medidos el peso que llega no cambia. Además, no choca con el día del
+    IPC ni con el ICG de la Di Tella.
+  - **Noviembre:** con la regla sería el miércoles 23-dic, en plena semana de fiestas.
+    Alternativas: martes 22-dic, o miércoles 16-dic, que sale sin fiscal ni comercio exterior.
+    Se define con Luis.
+  - **Tres arreglos — hechos el 27-nov (OK de Juan): ADR-0443 (fiscal desde la planilla de Economía e IPC de alimentos con respaldo del INDEC; las otras cuatro demoras ya estaban resueltas) y ADR-0444 (el mes publicado queda con los datos del día en que salió; la etiqueta va en el commit de la publicación). Falta elegir el día y la fecha de noviembre.** Eran:
+    1. Leer el resultado fiscal directo de Economía y no de la API de datos.gob.ar, que se atrasa
+       semanas: el de octubre lo publicó Economía el 16-nov y al 27-nov no había entrado.
+    2. Revisar las demoras puntuales de los colectores:
+       - IPC de septiembre, 7 días tarde;
+       - IPC de alimentos de septiembre, 21;
+       - comercio exterior de julio, 19;
+       - EMAE de agosto, 13;
+       - pobreza de septiembre, 28.
+    3. Congelar los datos del mes el día de la publicación. Hoy `archivo.py` corta por período y el
+       informe publicado se sigue llenando con lo que llega después.
 - **Agentes autónomos del Monitor (Juan, 25-nov-2026).** Retoma la idea de los tres agentes de
   Luis (24-nov):
   - **Vigía:** tareas programadas que revisen todo el tiempo el Monitor y avisen cuando haya
