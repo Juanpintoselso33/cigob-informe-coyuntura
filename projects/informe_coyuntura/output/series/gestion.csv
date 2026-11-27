@@ -1,5 +1,4 @@
 fecha,indicador,valor,unidad,fuente
-2026-11-01,siniestralidad_laboral,-5.0,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
 2026-10-01,siniestralidad_laboral,-5.0,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
 2026-09-01,siniestralidad_laboral,-5.0,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
 2026-08-01,siniestralidad_laboral,-5.0,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
@@ -71,7 +70,6 @@ fecha,indicador,valor,unidad,fuente
 2021-02-01,siniestralidad_laboral,-31.5,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
 2021-01-01,siniestralidad_laboral,-31.5,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
 2020-12-01,siniestralidad_laboral,-31.5,"% variación del índice de incidencia de AT y EP (mismo período, año contra año)",SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP
-2026-11-01,rigi_inversiones,126923,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-10-01,rigi_inversiones,76173,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-09-01,rigi_inversiones,49766,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-08-01,rigi_inversiones,47073,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
@@ -101,7 +99,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2024-01-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2023-12-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
-2026-11-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-10-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-09-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-08-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
@@ -137,7 +134,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2024-01-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2023-12-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
-2026-09-01,reduccion_estado,-22.44,% vs dic-2023,INDEC (dotación APN mensual)
 2026-08-01,reduccion_estado,-21.61,% vs dic-2023,INDEC (dotación APN mensual)
 2026-07-01,reduccion_estado,-20.63,% vs dic-2023,INDEC (dotación APN mensual)
 2026-06-01,reduccion_estado,-20.14,% vs dic-2023,INDEC (dotación APN mensual)
@@ -171,7 +167,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,reduccion_estado,-3.44,% vs dic-2023,INDEC (dotación APN mensual)
 2024-01-01,reduccion_estado,-3.16,% vs dic-2023,INDEC (dotación APN mensual)
 2023-12-01,reduccion_estado,0.0,% vs dic-2023,INDEC (dotación APN mensual)
-2026-10-01,protocolo_antipiquetes,74.2,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-09-01,protocolo_antipiquetes,74.2,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-08-01,protocolo_antipiquetes,74.2,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-07-01,protocolo_antipiquetes,74.2,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
@@ -193,7 +188,6 @@ fecha,indicador,valor,unidad,fuente
 2025-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2025-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2025-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
-2026-10-01,protestas_caba,30,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-09-01,protestas_caba,21,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-08-01,protestas_caba,26,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-07-01,protestas_caba,7,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
@@ -300,7 +294,6 @@ fecha,indicador,valor,unidad,fuente
 2018-02-01,protestas_caba,10,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2018-01-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2017-12-01,protestas_caba,5,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-11-01,privatizaciones,53.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-10-01,privatizaciones,53.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-09-01,privatizaciones,53.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-08-01,privatizaciones,53.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
@@ -336,7 +329,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-09-01,masa_salarial,-29.69,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-08-01,masa_salarial,-32.65,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-07-01,masa_salarial,-32.44,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -369,7 +361,6 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,masa_salarial,-19.13,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-02-01,masa_salarial,-10.68,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-01-01,masa_salarial,-27.15,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
-2026-08-01,litigiosidad_laboral,1.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-07-01,litigiosidad_laboral,0.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-06-01,litigiosidad_laboral,2.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-05-01,litigiosidad_laboral,2.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -463,7 +454,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
 2024-01-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
 2023-12-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
-2026-11-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-10-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-09-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-08-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
@@ -487,8 +477,6 @@ fecha,indicador,valor,unidad,fuente
 2025-02-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2025-01-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2024-12-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
-2026-09-01,indice_salarios_publico,8457.14,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
-2026-08-01,indice_salarios_publico,8307.48,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-06-01,indice_salarios_publico,7889.42,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2026-05-01,indice_salarios_publico,7628.25,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
@@ -535,8 +523,6 @@ fecha,indicador,valor,unidad,fuente
 2022-12-01,indice_salarios_publico,955.04,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2022-11-01,indice_salarios_publico,874.76,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
 2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC (Catálogo API-INDEC)
-2026-10-01,gasto_funcionamiento,-28.19,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
-2026-09-01,gasto_funcionamiento,-27.76,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-08-01,gasto_funcionamiento,-28.0,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-07-01,gasto_funcionamiento,-27.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2026-06-01,gasto_funcionamiento,-27.1,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
@@ -569,7 +555,6 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,gasto_funcionamiento,-5.25,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2024-02-01,gasto_funcionamiento,-3.67,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
 2024-01-01,gasto_funcionamiento,-2.55,% real: promedio de los últimos 12 meses frente al promedio de 2023,Secretaría de Hacienda + índice de precios al consumidor del INDEC
-2026-11-01,fal_modernizacion_laboral,90.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-10-01,fal_modernizacion_laboral,90.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-09-01,fal_modernizacion_laboral,54.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-08-01,fal_modernizacion_laboral,36.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
@@ -605,7 +590,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
-2026-10-01,desregulacion_normativa,18001.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-09-01,desregulacion_normativa,17606.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-08-01,desregulacion_normativa,17115.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-07-01,desregulacion_normativa,16848.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
@@ -640,7 +624,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2024-01-01,desregulacion_normativa,1555.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2023-12-01,desregulacion_normativa,1150.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-11-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2026-10-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2026-09-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2026-08-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
@@ -676,7 +659,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-11-01,cepo_mulc,9.28,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-10-01,cepo_mulc,6.82,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-09-01,cepo_mulc,5.62,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2026-08-01,cepo_mulc,5.73,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
@@ -712,7 +694,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,cepo_mulc,40.59,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2024-01-01,cepo_mulc,45.95,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
 2023-12-01,cepo_mulc,50.12,% de brecha entre el contado con liquidación y el mayorista (promedio mensual),ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)
-2026-11-01,asistencia_directa,100.0,hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja),Boletín Oficial (Res. 84/2024)
 2026-10-01,asistencia_directa,100.0,hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja),Boletín Oficial (Res. 84/2024)
 2026-09-01,asistencia_directa,100.0,hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja),Boletín Oficial (Res. 84/2024)
 2026-08-01,asistencia_directa,100.0,hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja),Boletín Oficial (Res. 84/2024)

@@ -1,5 +1,4 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-01,trabajo_independiente,20.73,"% del empleo registrado SIPA, sin monotributo social","SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)"
 2026-06-01,trabajo_independiente,20.71,"% del empleo registrado SIPA, sin monotributo social","SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)"
 2026-05-01,trabajo_independiente,20.67,"% del empleo registrado SIPA, sin monotributo social","SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)"
 2026-04-01,trabajo_independiente,20.64,"% del empleo registrado SIPA, sin monotributo social","SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)"
@@ -182,7 +181,6 @@ fecha,indicador,valor,unidad,fuente
 2017-01-01,subocupacion_demandante,6.6,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-10-01,subocupacion_demandante,7.2,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-07-01,subocupacion_demandante,7.0,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
-2026-10-01,sentimiento_digital,58.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-09-01,sentimiento_digital,67.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-08-01,sentimiento_digital,64.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-07-01,sentimiento_digital,58.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
@@ -252,7 +250,6 @@ fecha,indicador,valor,unidad,fuente
 2021-03-01,sentimiento_digital,70.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2021-02-01,sentimiento_digital,77.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2021-01-01,sentimiento_digital,70.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-10-01,ratio_motos_autos,1.6087,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2026-09-01,ratio_motos_autos,1.5447,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2026-08-01,ratio_motos_autos,1.478,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2026-07-01,ratio_motos_autos,1.4071,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
@@ -479,8 +476,6 @@ fecha,indicador,valor,unidad,fuente
 2008-02-01,ratio_motos_autos,0.6751,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2008-01-01,ratio_motos_autos,0.6469,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
 2007-12-01,ratio_motos_autos,0.6171,motos por cada auto patentado (móvil 12m),"DNRPA — inscripciones iniciales de automotores y motovehículos, sin Tierra del Fuego"
-2026-10-01,pobreza_nowcast,32.7,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
-2026-09-01,pobreza_nowcast,32.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-08-01,pobreza_nowcast,31.3,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-07-01,pobreza_nowcast,31.3,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-06-01,pobreza_nowcast,31.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
@@ -530,7 +525,6 @@ fecha,indicador,valor,unidad,fuente
 2004-01-01,pobreza_indec,44.3,% de personas,INDEC — EPH continua (vía datos.gob.ar)
 2003-07-01,pobreza_indec,47.8,% de personas,INDEC — EPH continua (vía datos.gob.ar)
 2003-01-01,pobreza_indec,54.0,% de personas,INDEC — EPH continua (vía datos.gob.ar)
-2026-11-01,peso_tarifas,14.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-10-01,peso_tarifas,13.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-09-01,peso_tarifas,14.6,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-08-01,peso_tarifas,14.5,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
@@ -542,7 +536,6 @@ fecha,indicador,valor,unidad,fuente
 2026-02-01,peso_tarifas,11.0,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-01-01,peso_tarifas,11.3,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2025-12-01,peso_tarifas,11.1,% del salario registrado promedio,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
-2026-10-01,patentamiento_motos,81669,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-09-01,patentamiento_motos,81695,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-08-01,patentamiento_motos,75424,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-07-01,patentamiento_motos,72730,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
@@ -590,7 +583,6 @@ fecha,indicador,valor,unidad,fuente
 2023-01-01,patentamiento_motos,42763,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2022-12-01,patentamiento_motos,29517,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2022-11-01,patentamiento_motos,35284,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
-2026-10-01,patentamiento_autos,45922,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-09-01,patentamiento_autos,50095,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-08-01,patentamiento_autos,44846,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-07-01,patentamiento_autos,44917,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
@@ -649,7 +641,6 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,ocupacion_eph,0.2,pp vs. mismo trimestre de 2023,"INDEC — EPH, tasa de empleo, total aglomerados (42.3, trimestral)"
 2024-01-01,ocupacion_eph,-0.7,pp vs. mismo trimestre de 2023,"INDEC — EPH, tasa de empleo, total aglomerados (42.3, trimestral)"
 2023-10-01,ocupacion_eph,0.0,pp vs. mismo trimestre de 2023,"INDEC — EPH, tasa de empleo, total aglomerados (42.3, trimestral)"
-2026-10-01,motorizacion_total,148.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2026-09-01,motorizacion_total,146.7,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2026-08-01,motorizacion_total,144.5,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2026-07-01,motorizacion_total,142.9,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
@@ -695,7 +686,6 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,motorizacion_total,95.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2023-02-01,motorizacion_total,94.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2023-01-01,motorizacion_total,94.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
-2026-08-01,mortalidad_pymes,459147,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-07-01,mortalidad_pymes,459229,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-06-01,mortalidad_pymes,460165,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-05-01,mortalidad_pymes,460777,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
@@ -787,7 +777,6 @@ fecha,indicador,valor,unidad,fuente
 2019-03-01,mortalidad_pymes,499410,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2019-02-01,mortalidad_pymes,501017,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2019-01-01,mortalidad_pymes,500223,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
-2026-09-01,mora_familias,13.86,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-08-01,mora_familias,14.61,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-07-01,mora_familias,14.71,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-06-01,mora_familias,14.41,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
@@ -850,7 +839,6 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,mora_familias,5.22,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2021-08-01,mora_familias,5.7,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2021-07-01,mora_familias,5.79,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
-2026-11-01,itvc_tarifas,99.4,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-10-01,itvc_tarifas,111.3,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-09-01,itvc_tarifas,106.4,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-08-01,itvc_tarifas,112.6,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
@@ -862,8 +850,6 @@ fecha,indicador,valor,unidad,fuente
 2026-02-01,itvc_tarifas,124.4,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-01-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2025-12-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
-2026-10-01,itvc_pobreza,96.6,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-09-01,itvc_pobreza,96.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2026-08-01,itvc_pobreza,98.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2026-07-01,itvc_pobreza,98.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2026-06-01,itvc_pobreza,98.0,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
@@ -884,7 +870,6 @@ fecha,indicador,valor,unidad,fuente
 2025-03-01,itvc_pobreza,92.3,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2025-02-01,itvc_pobreza,93.8,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
 2025-01-01,itvc_pobreza,92.7,"índice de la escala común (cortes fijos, ADR-0425)",UTDT — Nowcast de Pobreza
-2026-10-01,itvc_lider,93.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-09-01,itvc_lider,93.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-08-01,itvc_lider,93.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-07-01,itvc_lider,93.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
@@ -921,7 +906,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_lider,95.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-11-01,itvc_lider,100.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-10-01,itvc_lider,103.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-09-01,itvc_isac,84.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-08-01,itvc_isac,78.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-07-01,itvc_isac,77.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-06-01,itvc_isac,80.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
@@ -957,7 +941,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_isac,92.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2023-11-01,itvc_isac,103.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2023-10-01,itvc_isac,104.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-09-01,itvc_endeudamiento,168.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-08-01,itvc_endeudamiento,167.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-07-01,itvc_endeudamiento,168.9,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-06-01,itvc_endeudamiento,172.8,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
@@ -1009,20 +992,6 @@ fecha,indicador,valor,unidad,fuente
 2025-08-01,itvc_alquiler_udesa,157.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
 2025-07-01,itvc_alquiler_udesa,159.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
 2025-06-01,itvc_alquiler_udesa,161.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-10-01,itvc_alquiler_udesa,157.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-09-01,itvc_alquiler_udesa,155.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-08-01,itvc_alquiler_udesa,155.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-07-01,itvc_alquiler_udesa,157.4,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-06-01,itvc_alquiler_udesa,159.8,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-05-01,itvc_alquiler_udesa,161.7,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-04-01,itvc_alquiler_udesa,161.1,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-03-01,itvc_alquiler_udesa,152.2,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-02-01,itvc_alquiler_udesa,138.6,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2024-01-01,itvc_alquiler_udesa,123.3,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2023-12-01,itvc_alquiler_udesa,115.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2023-11-01,itvc_alquiler_udesa,100.9,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2023-10-01,itvc_alquiler_udesa,83.0,índice (100 = 4T-2023),UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)
-2026-10-01,itvc_alquiler,49.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-09-01,itvc_alquiler,50.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-08-01,itvc_alquiler,50.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-07-01,itvc_alquiler,50.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
@@ -1059,8 +1028,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_alquiler,110.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2023-11-01,itvc_alquiler,96.4,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2023-10-01,itvc_alquiler,91.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
-2026-10-01,itvc_alimentos,107.8,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
-2026-09-01,itvc_alimentos,107.5,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-08-01,itvc_alimentos,107.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-07-01,itvc_alimentos,107.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-06-01,itvc_alimentos,107.5,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
@@ -1096,7 +1063,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_alimentos,97.4,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2023-11-01,itvc_alimentos,100.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2023-10-01,itvc_alimentos,103.2,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
-2026-10-01,ipc_nivel,12785.9321,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
 2026-09-01,ipc_nivel,12514.1508,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
 2026-08-01,ipc_nivel,12276.766,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
 2026-07-01,ipc_nivel,12076.3937,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
@@ -1144,8 +1110,6 @@ fecha,indicador,valor,unidad,fuente
 2023-01-01,ipc_nivel,1202.979,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
 2022-12-01,ipc_nivel,1134.5875,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
 2022-11-01,ipc_nivel,1079.2787,indice base dic-2016=100,INDEC (Catálogo API-INDEC)
-2026-10-01,ipc_alimentos,-7.2,% frente al IPC general desde fines de 2023,INDEC — IPC alimentos y nivel general (elab. CIGOB)
-2026-09-01,ipc_alimentos,-7.0,% frente al IPC general desde fines de 2023,INDEC — IPC alimentos y nivel general (elab. CIGOB)
 2026-08-01,ipc_alimentos,-7.1,% frente al IPC general desde fines de 2023,INDEC — IPC alimentos y nivel general (elab. CIGOB)
 2026-07-01,ipc_alimentos,-7.1,% frente al IPC general desde fines de 2023,INDEC — IPC alimentos y nivel general (elab. CIGOB)
 2026-06-01,ipc_alimentos,-7.0,% frente al IPC general desde fines de 2023,INDEC — IPC alimentos y nivel general (elab. CIGOB)
@@ -1193,9 +1157,6 @@ fecha,indicador,valor,unidad,fuente
 2016-12-01,inseguridad_snic,1593233,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
 2015-12-01,inseguridad_snic,1602830,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
 2014-12-01,inseguridad_snic,1668437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2026-10-01,inseguridad,21.8,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
-2026-09-01,inseguridad,28.2,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
-2026-08-01,inseguridad,24.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2026-07-01,inseguridad,27.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2026-06-01,inseguridad,25.0,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2026-05-01,inseguridad,27.0,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
@@ -1357,7 +1318,6 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,informalidad,30.4,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
 2024-01-01,informalidad,30.0,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
 2023-10-01,informalidad,30.0,%,INDEC EPH (planillas de informalidad y de mercado de trabajo)
-2026-10-01,indice_lider,123.1,índice,UTDT — Índice Líder (CIF)
 2026-09-01,indice_lider,123.4,índice,UTDT — Índice Líder (CIF)
 2026-08-01,indice_lider,123.2,índice,UTDT — Índice Líder (CIF)
 2026-07-01,indice_lider,123.1,índice,UTDT — Índice Líder (CIF)
@@ -1417,7 +1377,6 @@ fecha,indicador,valor,unidad,fuente
 2022-01-01,indice_lider,133.0,índice,UTDT — Índice Líder (CIF)
 2021-12-01,indice_lider,134.0,índice,UTDT — Índice Líder (CIF)
 2021-11-01,indice_lider,133.4,índice,UTDT — Índice Líder (CIF)
-2026-11-01,icg_utdt,2.035,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-10-01,icg_utdt,1.955,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-09-01,icg_utdt,1.937,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-08-01,icg_utdt,2.059,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
@@ -1718,7 +1677,6 @@ fecha,indicador,valor,unidad,fuente
 2002-01-01,icg_utdt,1.357,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-12-01,icg_utdt,0.757,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-11-01,icg_utdt,1.036,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
-2026-11-01,icc_utdt,41.0,índice,"UTDT (ICC, serie XLS)"
 2026-10-01,icc_utdt,41.5,índice,"UTDT (ICC, serie XLS)"
 2026-09-01,icc_utdt,41.2,índice,"UTDT (ICC, serie XLS)"
 2026-08-01,icc_utdt,40.2,índice,"UTDT (ICC, serie XLS)"
@@ -1778,7 +1736,6 @@ fecha,indicador,valor,unidad,fuente
 2021-12-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-11-01,icc_utdt,39.7,índice,"UTDT (ICC, serie XLS)"
 2021-10-01,icc_utdt,40.2,índice,"UTDT (ICC, serie XLS)"
-2026-11-01,endeudamiento_familiar,46.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-10-01,endeudamiento_familiar,48.23,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-09-01,endeudamiento_familiar,48.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-08-01,endeudamiento_familiar,47.86,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1821,7 +1778,6 @@ fecha,indicador,valor,unidad,fuente
 2023-07-01,endeudamiento_familiar,4.76,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2023-06-01,endeudamiento_familiar,4.46,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2023-05-01,endeudamiento_familiar,4.27,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-07-01,empleo_registrado,6082.3,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2026-06-01,empleo_registrado,6089.9,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2026-05-01,empleo_registrado,6100.3,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2026-04-01,empleo_registrado,6128.4,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
@@ -1855,7 +1811,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,empleo_registrado,6379.1,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-11-01,empleo_registrado,6385.8,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-10-01,empleo_registrado,6374.4,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
-2026-09-01,despacho_cemento,152.96,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-08-01,despacho_cemento,141.83,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-07-01,despacho_cemento,140.38,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-06-01,despacho_cemento,145.9,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
@@ -1961,7 +1916,6 @@ fecha,indicador,valor,unidad,fuente
 2015-01-01,desocupacion,0.071,%,INDEC/datos.gob.ar
 2014-10-01,desocupacion,0.069,%,INDEC/datos.gob.ar
 2014-07-01,desocupacion,0.075,%,INDEC/datos.gob.ar
-2026-09-01,consumo_supermercados,79.5528489389123,"índice (2017 = 100, desestacionalizado)","INDEC — Encuesta de supermercados, ventas a precios constantes (serie_supermercados.xlsx, Cuadro 1)"
 2026-08-01,consumo_supermercados,80.267113994747,"índice (2017 = 100, desestacionalizado)","INDEC — Encuesta de supermercados, ventas a precios constantes (serie_supermercados.xlsx, Cuadro 1)"
 2026-07-01,consumo_supermercados,80.9620899420154,"índice (2017 = 100, desestacionalizado)","INDEC — Encuesta de supermercados, ventas a precios constantes (serie_supermercados.xlsx, Cuadro 1)"
 2026-06-01,consumo_supermercados,81.5725627479802,"índice (2017 = 100, desestacionalizado)","INDEC — Encuesta de supermercados, ventas a precios constantes (serie_supermercados.xlsx, Cuadro 1)"
@@ -2387,7 +2341,6 @@ fecha,indicador,valor,unidad,fuente
 2012-06-01,carga_servicio_deuda_hogares,14.681,% de la masa salarial registrada,"BCRA — IEF, carga del servicio de deuda de las familias (CDF/MS)"
 2012-05-01,carga_servicio_deuda_hogares,14.643,% de la masa salarial registrada,"BCRA — IEF, carga del servicio de deuda de las familias (CDF/MS)"
 2012-04-01,carga_servicio_deuda_hogares,14.65,% de la masa salarial registrada,"BCRA — IEF, carga del servicio de deuda de las familias (CDF/MS)"
-2026-09-01,brecha_salario_cbt,3.83,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-08-01,brecha_salario_cbt,3.82,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-07-01,brecha_salario_cbt,3.84,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-06-01,brecha_salario_cbt,3.87,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
@@ -2462,20 +2415,6 @@ fecha,indicador,valor,unidad,fuente
 2025-08-01,alquiler_udesa_real,63.69,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
 2025-07-01,alquiler_udesa_real,62.9,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
 2025-06-01,alquiler_udesa_real,61.79,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-10-01,alquiler_udesa_real,63.39,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-09-01,alquiler_udesa_real,64.15,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-08-01,alquiler_udesa_real,64.23,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-07-01,alquiler_udesa_real,63.52,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-06-01,alquiler_udesa_real,62.58,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-05-01,alquiler_udesa_real,61.84,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-04-01,alquiler_udesa_real,62.08,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-03-01,alquiler_udesa_real,65.7,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-02-01,alquiler_udesa_real,72.17,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2024-01-01,alquiler_udesa_real,81.11,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2023-12-01,alquiler_udesa_real,86.27,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2023-11-01,alquiler_udesa_real,99.09,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2023-10-01,alquiler_udesa_real,120.43,índice (fines de 2023 = 100),UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)
-2026-10-01,alquiler_real,200.75,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
 2026-09-01,alquiler_real,199.87,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
 2026-08-01,alquiler_real,200.11,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)
 2026-07-01,alquiler_real,198.73,índice (fines de 2023 = 100),INDEC — IPC-GBA alquiler de la vivienda y nivel general (planilla original)

@@ -35,20 +35,20 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 102,2** | **AMARILLO** | Igual o algo mejor que al inicio del mandato | 19 indicadores: 5 en verde · 4 en amarillo · 5 en naranja · 5 en rojo |
+| **ITCIS: 102,5** | **AMARILLO** | Igual o algo mejor que al inicio del mandato | 19 indicadores: 5 en verde · 5 en amarillo · 5 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Presión de precios | Tres gastos sensibles. | 101,4 | AMARILLO | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 106,7 | AMARILLO | 25,0 % |
 | Empleo | Cuánta gente trabaja y en qué condiciones. | 100,0 | AMARILLO | 24,2 % |
-| Ingresos | Si el ingreso alcanza. | 106,1 | AMARILLO | 20,2 % |
-| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 85,6 | ROJO | 10,0 % |
-| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 111,1 | AMARILLO | 8,3 % |
-| Consumo | Lo que efectivamente se compra. | 94,0 | NARANJA | 7,9 % |
-| Seguridad | Combina tres medidas. | 136,8 | VERDE | 4,5 % |
+| Ingresos | Si el ingreso alcanza. | 106,5 | AMARILLO | 20,2 % |
+| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 84,0 | ROJO | 10,0 % |
+| Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | AMARILLO | 8,3 % |
+| Consumo | Lo que efectivamente se compra. | 94,5 | NARANJA | 7,9 % |
+| Seguridad | Combina tres medidas. | 122,3 | VERDE | 4,5 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -63,33 +63,33 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Presión de precios** | | | | |
-| Alimentos frente al IPC general | Cuánto más subieron los precios de alimentos y bebidas que el índice de precios al consumidor (IPC) general desde fines… | −7,2 % frente al IPC general desde fines de 2023 | AMARILLO | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 14 % del salario registrado promedio | NARANJA | 11,3 % |
-| Alquiler real, contratos vigentes (INDEC) | Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. | 200,75 índice (fines de 2023 = 100) | ROJO | 2,5 % |
+| Alimentos frente al IPC general | Cuánto más subieron los precios de alimentos y bebidas que el índice de precios al consumidor (IPC) general desde fines… | −7,1 % frente al IPC general desde fines de 2023 | AMARILLO | 8,8 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario registrado promedio | AMARILLO | 11,3 % |
+| Alquiler real, contratos vigentes (INDEC) | Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigentes, que se ajustan con rezago. | 199,87 índice (fines de 2023 = 100) | ROJO | 2,5 % |
 | Alquiler real, avisos (Universidad de San Andrés – Mercado Libre) | Cuánto se pide a quien busca alquilar. | 57,57 índice (fines de 2023 = 100) | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral (asalariados sin ningún aporte) | Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagarse los aportes por su cuenta (empleo en… | 31,9 % | NARANJA | 9,7 % |
 | Ocupación (Encuesta Permanente de Hogares) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 puntos porcentuales frente a 2023 | AMARILLO | 14,5 % |
 | **DIMENSIÓN: Ingresos** | | | | |
-| Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,83 canastas básicas totales | AMARILLO | 13,0 % |
-| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 32,7 % de personas | NARANJA | 7,1 % |
+| Salario real frente a la canasta básica | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,82 canastas básicas totales | AMARILLO | 13,0 % |
+| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | NARANJA | 7,1 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
-| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 13,86 % de la cartera en situación irregular | ROJO | 7,0 % |
+| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,61 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | NARANJA | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
-| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 2,04 índice 0-5 | AMARILLO | 8,3 % |
+| Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,96 índice 0-5 | AMARILLO | 8,3 % |
 | **DIMENSIÓN: Consumo** | | | | |
 | Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según la Secretaría de Agricultura… | 45,81 kg por habitante por año | ROJO | 0,4 % |
 | Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según la Secretaría… | 113,6 kg por habitante por año | NARANJA | 0,4 % |
-| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 32,14 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
-| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,61 motos por cada auto patentado (móvil de 12 meses) | ROJO | 0,7 % |
-| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 79,6 índice (2017 = 100, desestacionalizado) | ROJO | 5,5 % |
+| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
+| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil de 12 meses) | ROJO | 0,7 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,27 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 21,8 % de hogares víctimas (últimos 12 meses) | VERDE | 2,7 % |
+| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | VERDE | 2,7 % |
 | Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 habitantes | VERDE | 1,2 % |
-| Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (sin los agravados) cada 100.000 habitantes | VERDE | 0,7 % |
+| Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,12 robos (sin los agravados) cada 100.000 habitantes | VERDE | 0,7 % |
 
-*Datos al 2026-11-27.*
+*Datos al 2026-10-31.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -105,7 +105,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,83 canastas básicas totales** (2026-09) | **AMARILLO** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,82 canastas básicas totales** (2026-08) | **AMARILLO** | Peso efectivo 13 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -113,9 +113,9 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | canastas básicas totales |
-| **SERIE DISPONIBLE** | 2021-11 → 2026-09 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (remuneración imponible promedio de los trabajadores estables, RIPTE) corre un mes detrás de la canasta: el par común queda unos 2 meses atrás del calendario. |
+| **SERIE DISPONIBLE** | 2021-11 → 2026-08 (58 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (remuneración imponible promedio de los trabajadores estables, RIPTE) corre un mes detrás de la canasta: el par común queda unos 2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (remuneración imponible promedio de los trabajadores estables, RIPTE) + Instituto Nacional de Estadística y Censos (INDEC: Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API del propio INDEC para la canasta (si no responde, la copia de datos.gob.ar); el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API del propio INDEC para la canasta (si no responde, la copia de datos.gob.ar); el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -143,19 +143,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **111,3**.
+Este componente está hoy en **111**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- RIPTE / CBT del mismo mes (2026-09): canastas cubiertas por el salario imponible promedio — CBT de 2026-10 ya publicada ($546,926): esa brecha queda provisoria hasta que salga el RIPTE
+- El informe publica el valor (3,82 canastas básicas totales) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 3,83 canastas básicas totales (2026-09).
+Dato vigente: 3,82 canastas básicas totales (2026-08).
 
-111,3 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,2 del límite con Verde (112,5).
+111,0 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,5 del límite con Verde (112,5).
 
 **Color vigente: AMARILLO**
 
@@ -198,7 +198,7 @@ Cuánto más subieron los precios de alimentos y bebidas que el índice de preci
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −7,2 % frente al IPC general desde fines de 2023** (2026-10) | **AMARILLO** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
+| **Hoy: −7,1 % frente al IPC general desde fines de 2023** (2026-08) | **AMARILLO** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -206,9 +206,9 @@ Cuánto más subieron los precios de alimentos y bebidas que el índice de preci
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ipc_alimentos | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % frente al IPC general desde fines de 2023 |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-10 (37 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor (IPC) se publica a mediados del mes siguiente. |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-08 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor (IPC) se publica a mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
-| **MODO DE ACCESO** | Automático: API del propio INDEC (Catálogo API-INDEC), con token. Si no responde, la copia de la API de series de tiempo de datos.gob.ar, que llega un mes más tarde. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: API del propio INDEC (Catálogo API-INDEC), con token. Si no responde, la copia de la API de series de tiempo de datos.gob.ar, que llega un mes más tarde. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -236,19 +236,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **107,8**.
+Este componente está hoy en **107,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Inflación de alimentos del mes: 2,0 %
+- El informe publica el valor (−7,1 % frente al IPC general desde fines de 2023) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: −7,2 % frente al IPC general desde fines de 2023 (2026-10).
+Dato vigente: −7,1 % frente al IPC general desde fines de 2023 (2026-08).
 
-107,8 en la escala del cinturón (100 = referencia) está en Amarillo, a 4,7 del límite con Verde (112,5).
+107,6 en la escala del cinturón (100 = referencia) está en Amarillo, a 4,9 del límite con Verde (112,5).
 
 **Color vigente: AMARILLO**
 
@@ -291,7 +291,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14 % del salario registrado promedio** (2026-11) | **NARANJA** | Peso efectivo 11,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 13 % del salario registrado promedio** (2026-10) | **AMARILLO** | Peso efectivo 11,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -299,9 +299,9 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario registrado promedio |
-| **SERIE DISPONIBLE** | 2025-12 → 2026-11 (12 puntos) | **REZAGO DE PUBLICACIÓN** | El Instituto Interdisciplinario de Economía Política (IIEP) publica durante el mismo mes una estimación de la canasta y de la remuneración imponible promedio de los trabajadores estables (RIPTE) del período. |
+| **SERIE DISPONIBLE** | 2025-12 → 2026-10 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El Instituto Interdisciplinario de Economía Política (IIEP) publica durante el mismo mes una estimación de la canasta y de la remuneración imponible promedio de los trabajadores estables (RIPTE) del período. |
 | **PRODUCTOR DEL DATO** | Instituto Interdisciplinario de Economía Política (IIEP) de la Universidad de Buenos Aires y el Consejo Nacional de Investigaciones Científicas y Técnicas, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del Área Metropolitana de Buenos Aires (AMBA) sobre salario RIPTE |
-| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -330,21 +330,21 @@ Este componente no usa como vara las tarifas subsidiadas de 2023. Agua y energí
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **99,4**.
+Este componente está hoy en **111,3**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (14 % del salario registrado promedio) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
+- El informe publica el valor (13 % del salario registrado promedio) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 14 % del salario registrado promedio (2026-11).
+Dato vigente: 13 % del salario registrado promedio (2026-10).
 
-El transporte, el rubro que fija el color: 7,56 % del salario está en Naranja, a 0,06 del límite con Amarillo (7,5).
+111,3 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,2 del límite con Verde (112,5).
 
-**Color vigente: NARANJA**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCIS: 11,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -381,7 +381,7 @@ Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigen
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 200,75 índice (fines de 2023 = 100)** (2026-10) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 199,87 índice (fines de 2023 = 100)** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -389,9 +389,9 @@ Cuánto pagan los inquilinos que ya alquilan: el alquiler de los contratos vigen
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | índice (fines de 2023 = 100) |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-10 (37 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes). |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | El índice de precios al consumidor del Gran Buenos Aires (IPC-GBA) se publica a mediados del mes siguiente (alrededor de 1 mes). |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
-| **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -420,19 +420,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **49,8**.
+Este componente está hoy en **50**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (200,75 índice (fines de 2023 = 100)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
+- El informe publica el valor (199,87 índice (fines de 2023 = 100)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 200,75 índice (fines de 2023 = 100) (2026-10).
+Dato vigente: 199,87 índice (fines de 2023 = 100) (2026-09).
 
-49,8 en la escala del cinturón (100 = referencia) está en Rojo, a 37,7 del límite con Naranja (87,5). Está debajo del punto donde la tensión toca 10: el color ya no distingue deterioros adicionales.
+50,0 en la escala del cinturón (100 = referencia) está en Rojo, a 37,5 del límite con Naranja (87,5). Está debajo del punto donde la tensión toca 10: el color ya no distingue deterioros adicionales.
 
 **Color vigente: ROJO**
 
@@ -484,9 +484,9 @@ Cuánto se pide a quien busca alquilar: el precio de los avisos de departamentos
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_udesa_real | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | índice (fines de 2023 = 100) |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-09 (29 puntos) | **REZAGO DE PUBLICACIÓN** | El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses). |
+| **SERIE DISPONIBLE** | 2025-06 → 2026-09 (16 puntos) | **REZAGO DE PUBLICACIÓN** | El informe del Área Metropolitana de Buenos Aires (AMBA) sale entre el último día del mes y los primeros del siguiente; el punto necesita además el índice de precios al consumidor (IPC) del mismo mes, que el Instituto Nacional de Estadística y Censos (INDEC) publica a mediados del mes siguiente (alrededor de 1,5 meses). |
 | **PRODUCTOR DEL DATO** | Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles | **OPERACIÓN ESTADÍSTICA** | Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA |
-| **MODO DE ACCESO** | Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -584,7 +584,7 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg por habitante por año |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
 | **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses, de la tabla «Comercialización carne bovina» de los «Principales indicadores del sector bovino» (mensual). Consumo aparente = producción − exportaciones + importaciones; per cápita con la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC). |
-| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -625,7 +625,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 45,81 kg por habitante por año (2026-09).
 
-Consumo aparente de carne vacuna: 45,8 kg por habitante y año (−9,8% interanual), el 40,3% del total de las tres carnes, 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,8 kg, el 59,7% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
+85,6 en la escala del cinturón (100 = referencia) está en Rojo, a 1,9 del límite con Naranja (87,5).
 
 **Color vigente: ROJO**
 
@@ -686,7 +686,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg por habitante por año |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-09 (36 puntos) | **REZAGO DE PUBLICACIÓN** | Las series mensuales de la Secretaría de Agricultura salen con unas semanas de demora (septiembre se publicó en octubre). El titular y el índice avanzan juntos: son el mismo dato. |
 | **PRODUCTOR DEL DATO** | Secretaría de Agricultura, Ganadería y Pesca (SAGYP) | **OPERACIÓN ESTADÍSTICA** | Suma del consumo aparente por habitante, promedio móvil de 12 meses, de las tres carnes: vacuna («Principales indicadores del sector bovino»), aviar («Indicadores de oferta y demanda» del área avícola) y porcina («Evolución mensual de los indicadores» del área porcina). Las tres usan la población 2022-2040 del Instituto Nacional de Estadística y Censos (INDEC) y su suma reproduce el total del tablero de consumo de carnes. |
-| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: lectura mensual de los tres archivos; lo leído se acumula, así que un mes que la fuente deja de publicar se conserva. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -727,7 +727,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 113,6 kg por habitante por año (2026-09).
 
-Consumo aparente de las tres carnes: 113,6 kg por habitante y año (−2,7% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. La carne vacuna aporta 45,8 kg, el 40,3%, y se sigue además como indicador propio; aviar y porcina suman 67,8 kg, el 59,7% (aviar −0,2% y porcina 10,8% interanual). Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice comparan este mismo consumo con el de fines de 2023, no con el promedio histórico.
+97,1 en la escala del cinturón (100 = referencia) está en Naranja, a 2,9 del límite con Amarillo (100,0).
 
 **Color vigente: NARANJA**
 
@@ -788,7 +788,7 @@ Qué porcentaje de los asalariados trabaja sin descuento jubilatorio y sin pagar
 | **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El informe trimestral sale unos 80 días después del cierre del trimestre; la planilla anual de informalidad, una vez al año, con el cuarto trimestre. |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados informales sin aportes propios, trimestral |
-| **MODO DE ACCESO** | Automático: se descargan las planillas Excel que el INDEC publica junto con los informes. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: se descargan las planillas Excel que el INDEC publica junto con los informes. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -883,7 +883,7 @@ Cuánto más alto o más bajo está el porcentaje de la población que tiene emp
 | **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | puntos porcentuales frente a 2023 |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El Instituto Nacional de Estadística y Censos (INDEC) publica el trimestre unos 80 días después de su cierre (el 2º trimestre de 2026 estaba en la interfaz de programación pública antes del 20 de septiembre de 2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación. |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) — Encuesta Permanente de Hogares (EPH) continua | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -917,7 +917,7 @@ Este componente está hoy en **104**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023
+- El informe publica el valor (0,4 puntos porcentuales frente a 2023) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
@@ -965,7 +965,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 21,8 % de hogares víctimas (últimos 12 meses)** (2026-10) | **VERDE** | Peso efectivo 2,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **VERDE** | Peso efectivo 2,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -973,9 +973,9 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
-| **SERIE DISPONIBLE** | 2014-01 → 2026-10 (153 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
+| **SERIE DISPONIBLE** | 2014-01 → 2026-07 (150 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas (LICIP) (métrica) + Ministerio de Seguridad — Sistema Nacional de Información Criminal (SNIC) (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1003,19 +1003,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **140**.
+Este componente está hoy en **115,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste del Sistema Nacional de Información Criminal (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613
+- El informe publica el valor (27,3 % de hogares víctimas (últimos 12 meses)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 21,8 % de hogares víctimas (últimos 12 meses) (2026-10).
+Dato vigente: 27,3 % de hogares víctimas (últimos 12 meses) (2026-07).
 
-140,0 en la escala del cinturón (100 = referencia) está en Verde, a 27,5 del límite con Amarillo (112,5). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo.
+115,6 en la escala del cinturón (100 = referencia) está en Verde, a 3,1 del límite con Amarillo (112,5).
 
 **Color vigente: VERDE**
 
@@ -1076,7 +1076,7 @@ Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nac
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | homicidios dolosos cada 100.000 habitantes |
 | **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con unos 8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16 de septiembre de 2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
 | **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = "Homicidios dolosos"`). No se reconstruye con población propia. |
-| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1158,7 +1158,7 @@ Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 778,1 robos (sin los agravados) cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 778,12 robos (sin los agravados) cada 100.000 habitantes** (2025-12) | **VERDE** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1168,7 +1168,7 @@ Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | robos (sin los agravados) cada 100.000 habitantes |
 | **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, unos 8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días. |
 | **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Robos que excluyen los agravados por el resultado de lesiones o muertes, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos`, filtrada por `codigo_delito_snic_nombre = "Robos (excluye los agravados por el resultado de lesiones y/o muertes)"`). |
-| **MODO DE ACCESO** | Automático: mismo store persistente que `tasa_homicidios`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: mismo store persistente que `tasa_homicidios`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1202,11 +1202,11 @@ Este componente está hoy en **118,9**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal. Se publica el dato oficial vigente con esta limitación declarada.
+- El informe publica el valor (778,12 robos (sin los agravados) cada 100.000 habitantes) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 778,1 robos (sin los agravados) cada 100.000 habitantes (2025-12).
+Dato vigente: 778,12 robos (sin los agravados) cada 100.000 habitantes (2025-12).
 
 118,9 en la escala del cinturón (100 = referencia) está en Verde, a 6,4 del límite con Amarillo (112,5).
 
@@ -1253,7 +1253,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 32,7 % de personas** (2026-10) | **NARANJA** | Peso efectivo 7,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,3 % de personas** (2026-08) | **NARANJA** | Peso efectivo 7,1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1261,9 +1261,9 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | % de personas |
-| **SERIE DISPONIBLE** | 2025-01 → 2026-10 (22 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del Instituto Nacional de Estadística y Censos (INDEC) llega dos veces al año y con más demora. |
+| **SERIE DISPONIBLE** | 2025-01 → 2026-08 (20 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del Instituto Nacional de Estadística y Censos (INDEC) llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para el contraste |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1294,13 +1294,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (32,7 % de personas) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
+- El informe publica el valor (31,3 % de personas) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 32,7 % de personas (2026-10).
+Dato vigente: 31,3 % de personas (2026-08).
 
-32,7 % de personas está en Naranja, a 2,7 del límite con Amarillo (30,0).
+31,3 % de personas está en Naranja, a 1,3 del límite con Amarillo (30,0).
 
 **Color vigente: NARANJA**
 
@@ -1347,7 +1347,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 32,14 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-10) | **VERDE** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,73 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-09) | **VERDE** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1355,9 +1355,9 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | motorizacion_total | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
-| **SERIE DISPONIBLE** | 2023-01 → 2026-10 (46 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
+| **SERIE DISPONIBLE** | 2023-01 → 2026-09 (45 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e Instituto Nacional de Estadística y Censos (INDEC: población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1388,19 +1388,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **148,6**.
+Este componente está hoy en **146,7**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (32,14 vehículos 0km por cada 1.000 habitantes (12 meses)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
+- El informe publica el valor (31,73 vehículos 0km por cada 1.000 habitantes (12 meses)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 32,14 vehículos 0km por cada 1.000 habitantes (12 meses) (2026-10).
+Dato vigente: 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) (2026-09).
 
-Más patentamientos y mayor participación de motos: en los últimos doce meses se patentaron 1,41 millones de vehículos 0 km (15,0% interanual): 540 mil autos (−11,0%) y 869 mil motos (40,5%). Las motos son el 61,7% de lo que se patenta, contra 51,6% al arranque del mandato. Por cada auto patentado se patentan 1,61 motos, contra 1,06 al arranque del mandato. El registro cuenta vehículos, no hogares: no permite distinguir primeras compras, reposición, flotas ni sustitución entre autos y motos. Estas situaciones pueden coexistir.
+146,7 en la escala del cinturón (100 = referencia) está en Verde, a 34,2 del límite con Amarillo (112,5). Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo.
 
 **Color vigente: VERDE**
 
@@ -1454,7 +1454,7 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,61 motos por cada auto patentado (móvil de 12 meses)** (2026-10) | **ROJO** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,54 motos por cada auto patentado (móvil de 12 meses)** (2026-09) | **ROJO** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1462,9 +1462,9 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_motos_autos | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil de 12 meses) |
-| **SERIE DISPONIBLE** | 2007-12 → 2026-10 (227 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
+| **SERIE DISPONIBLE** | 2007-12 → 2026-09 (226 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`. |
-| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1492,19 +1492,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **83,1**.
+Este componente está hoy en **84,5**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Más motos por auto se lee como DETERIORO: la motorización total cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto y no una mejora pareja.
+- El informe publica el valor (1,54 motos por cada auto patentado (móvil de 12 meses)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,61 motos por cada auto patentado (móvil de 12 meses) (2026-10).
+Dato vigente: 1,54 motos por cada auto patentado (móvil de 12 meses) (2026-09).
 
-83,1 en la escala del cinturón (100 = referencia) está en Rojo, a 4,4 del límite con Naranja (87,5).
+84,5 en la escala del cinturón (100 = referencia) está en Rojo, a 3,0 del límite con Naranja (87,5).
 
 **Color vigente: ROJO**
 
@@ -1547,7 +1547,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 79,6 índice (2017 = 100, desestacionalizado)** (2026-09) | **ROJO** | Peso efectivo 5,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 80,27 índice (2017 = 100, desestacionalizado)** (2026-08) | **NARANJA** | Peso efectivo 5,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1555,9 +1555,9 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-09 (117 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del Instituto Nacional de Estadística y Censos (INDEC) entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-08 (116 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del Instituto Nacional de Estadística y Censos (INDEC) entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
-| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1586,21 +1586,21 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **87,2**.
+Este componente está hoy en **88**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (79,6 índice (2017 = 100, desestacionalizado)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
+- El informe publica el valor (80,27 índice (2017 = 100, desestacionalizado)) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 79,6 índice (2017 = 100, desestacionalizado) (2026-09).
+Dato vigente: 80,27 índice (2017 = 100, desestacionalizado) (2026-08).
 
-87,2 en la escala del cinturón (100 = referencia) está en Rojo, a 0,3 del límite con Naranja (87,5).
+88,0 en la escala del cinturón (100 = referencia) está en Naranja, a 0,5 del límite con Rojo (87,5).
 
-**Color vigente: ROJO**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1641,7 +1641,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 13,86 % de la cartera en situación irregular** (2026-09) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,61 % de la cartera en situación irregular** (2026-08) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1649,9 +1649,9 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | mora_familias | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
-| **SERIE DISPONIBLE** | 2021-07 → 2026-09 (63 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con unos 2 meses de rezago. |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-08 (62 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con unos 2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | Banco Central de la República Argentina (BCRA) | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1684,13 +1684,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) con atrasos de pago, ponderado por el saldo de cada línea.
+- El informe publica el valor (14,61 % de la cartera en situación irregular) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 13,86 % de la cartera en situación irregular (2026-09).
+Dato vigente: 14,61 % de la cartera en situación irregular (2026-08).
 
-13,86 % de la cartera en situación irregular está en Rojo, a 1,86 del límite con Naranja (12,0).
+14,61 % de la cartera en situación irregular está en Rojo, a 2,61 del límite con Naranja (12,0).
 
 **Color vigente: ROJO**
 
@@ -1742,7 +1742,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
 | **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el Banco Central de la República Argentina (BCRA) la publica por lotes con el Informe de Estabilidad Financiera semestral. |
 | **PRODUCTOR DEL DATO** | Banco Central de la República Argentina (BCRA) | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1775,7 +1775,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el Banco Central promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.
+- El informe publica el valor (24,08 % de la masa salarial registrada) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
@@ -1820,7 +1820,7 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,04 índice 0-5** (2026-11) | **AMARILLO** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,96 índice 0-5** (2026-10) | **AMARILLO** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1828,9 +1828,9 @@ Cuánta confianza tiene la población en el Gobierno nacional, según la encuest
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | icg_utdt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice 0-5 |
-| **SERIE DISPONIBLE** | 2001-11 → 2026-11 (301 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la Universidad Torcuato Di Tella (UTDT) lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes). |
+| **SERIE DISPONIBLE** | 2001-11 → 2026-10 (300 puntos) | **REZAGO DE PUBLICACIÓN** | El dato se fecha el 1 de cada mes y la Universidad Torcuato Di Tella (UTDT) lo publica unas tres o cuatro semanas después: normalmente llega con unos 25 a 30 días de rezago (el dato de octubre ya estaba publicado el 28 de ese mes). |
 | **PRODUCTOR DEL DATO** | UTDT | **OPERACIÓN ESTADÍSTICA** | Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual) |
-| **MODO DE ACCESO** | Automático: lectura de la planilla histórica que publica la universidad. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-11 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla histórica que publica la universidad. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-31 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1858,19 +1858,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 87,5 a 100 | NARANJA |
 | menos de 87,5 | ROJO |
 
-Este componente está hoy en **111,1**.
+Este componente está hoy en **106,7**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Encuesta mensual de la Universidad Torcuato Di Tella que promedia cinco atributos del Gobierno nacional —imagen general, eficiencia, honestidad, capacidad para resolver los problemas y preocupación por el interés general— en una escala de 0 a 5. Más confianza implica más apoyo disponible para sostener el rumbo.
+- El informe publica el valor (1,96 índice 0-5) pero no los números que lo componen. Para auditar el dato hay que ir a la fuente citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 2,04 índice 0-5 (2026-11).
+Dato vigente: 1,96 índice 0-5 (2026-10).
 
-111,1 en la escala del cinturón (100 = referencia) está en Amarillo, a 1,4 del límite con Verde (112,5).
+106,7 en la escala del cinturón (100 = referencia) está en Amarillo, a 5,8 del límite con Verde (112,5).
 
 **Color vigente: AMARILLO**
 
