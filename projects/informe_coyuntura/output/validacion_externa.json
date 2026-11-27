@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-26T03:52:53.424747+00:00",
+    "generated_at": "2026-11-27T03:53:24.835994+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -457,8 +457,8 @@
         "meta_reservas_fmi": -0.817,
         "recaudacion": -0.353,
         "rem_ipc_12m": 0.849,
-        "reservas_bcra": -0.276,
-        "reservas_brutas": 0.357,
+        "reservas_bcra": -0.275,
+        "reservas_brutas": 0.358,
         "resultado_primario": 0.786,
         "saldo_comercial_12m": 0.413,
         "tcrm": -0.545,
@@ -667,7 +667,7 @@
       "reservas_bcra": {
         "actividad_tributaria": -0.226,
         "costo_financiamiento_tesoro": 0.05,
-        "credito_privado": -0.276,
+        "credito_privado": -0.275,
         "desequilibrio_monetario": -0.486,
         "emae_difusion": -0.161,
         "emae_ia": -0.31,
@@ -687,7 +687,7 @@
       "reservas_brutas": {
         "actividad_tributaria": 0.228,
         "costo_financiamiento_tesoro": 0.318,
-        "credito_privado": 0.357,
+        "credito_privado": 0.358,
         "desequilibrio_monetario": -0.217,
         "emae_difusion": 0.296,
         "emae_ia": 0.225,
@@ -1196,7 +1196,7 @@
         "desregulacion_normativa": 0.913,
         "fal_modernizacion_laboral": 0.281,
         "gasto_funcionamiento": 0.853,
-        "juicios_trabajo_capital": -0.42,
+        "juicios_trabajo_capital": -0.421,
         "libertad_opcion_salud": 0.902,
         "privatizaciones": 0.796,
         "protocolo_antipiquetes": 0.315,
@@ -1261,7 +1261,7 @@
       },
       "juicios_trabajo_capital": {
         "apertura_comercial": -0.299,
-        "cepo_mulc": -0.42,
+        "cepo_mulc": -0.421,
         "concesiones_infraestructura": -0.797,
         "desregulacion_normativa": -0.89,
         "fal_modernizacion_laboral": -0.733,

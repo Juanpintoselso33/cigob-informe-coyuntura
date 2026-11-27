@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 942,
+  "comunicados_vistos": 944,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-26",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-26"
+  "inventario_verificado": "2026-11-27",
+  "nuevos_en_la_corrida": 2,
+  "ultima_corrida": "2026-11-27"
  },
  "pendientes": {
   "CAMARCO|49669": {
@@ -75,6 +75,28 @@
    "texto": "La Confederación Internacional de Asociaciones de Contratistas (CICA), junto con la Federación Interamericana de la Industria de la Construcción (FIIC), invita a participar del webinar internacional “Evaluación del impacto de los proyectos de infraestructura” , un encuentro que abordará metodologías y herramientas para medir los efectos económicos y sociales de las inversiones en infraestructura.\n La actividad se desarrollará en inglés con traducción simultánea al español y contará con la participación de especialistas de reconocida trayectoria en análisis económico, financiamiento e investigación aplicada:\n Fernando Lago , líder del Grupo de Trabajo de Financiamiento a Largo Plazo de Infraestructuras de CICA, y Director del Área de Pensamiento Estratégico de CAMARCO.\n Gabriel Michelena , consultor especializado en modelos económicos de simulación (MESi) e investigador del IIEP-UBA.\n Laura Ojeda , consultora especializada en modelos económicos de simulación (MESi) e investigadora del IIEP-UBA.\n Susana Santos , investigadora de la Universidad de Lisboa (UECE-ISEG).\n Durante el webinar se analizarán los principales enfoques para evaluar el impacto de los proyectos de infraestructura, así como su contribución al desarrollo económico, la productividad y la generación de valor para las comunidades.\n Webinar “Evaluación del impacto de los proyectos de infraestructura” \n Miércoles 2 de diciembre de 2026\n 12:00 h (Argentina)\n Zoom ID: 961 5008 9154\n Código de acceso: CICA",
    "titulo": "Webinar FIIC/CICA | Evaluación del impacto de los proyectos de infraestructura",
    "url": "https://www.camarco.org.ar/2026/11/24/webinar-cica-evaluacion-del-impacto-de-los-proyectos-de-infraestructura/"
+  },
+  "CAMARCO|49857": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-26",
+   "id": "49857",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco de sus 90 años, CAMARCO publica un libro que cuenta cómo rutas, trenes, puertos, represas, gasoductos, redes de agua y escuelas fueron construyendo el país. La versión digital ya se puede descargar en forma gratuita. \n “Obras que hicieron país. Un recorrido por la infraestructura argentina” cuenta las historias de detrás de la infraestructura: cómo cada camino, cada vía y cada red fue también una forma de unir el territorio, impulsar la producción y mejorar la vida cotidiana.\n El libro recorre diez sectores, desde los caminos de postas y el Ferrocarril Oeste de 1857 hasta las centrales nucleares, Vaca Muerta y la fibra óptica. Infraestructura rural, vialidad, ferrocarriles y subterráneos, puertos y aeropuertos, vivienda, energía eléctrica, gas natural, agua y saneamiento, infraestructura social y telecomunicaciones: cada capítulo repasa sus hitos, sus protagonistas y su impacto en la vida de los argentinos. Trabajos de instalación de cables telefónicos en Argentina, primeras décadas del siglo XX En sus páginas aparecen historias como la del primer subte de Latinoamérica, inaugurado en Buenos Aires en 1913; la Ruta 40, que atraviesa once provincias a lo largo de más de 5.000 kilómetros; el gasoducto Comodoro Rivadavia–Buenos Aires, que en 1949 llevó el gas patagónico a millones de hogares; o Atucha I, la primera central nuclear de América Latina. Todo acompañado por fotografías de archivo, datos y gráficos.\n Pero el libro no mira solo hacia atrás. También invita a pensar la infraestructura como una decisión de largo plazo para el desarrollo. “La inversión en obra pública y privada no debe ser evaluada bajo la estrecha mirada del gasto coyuntural, sino como una decisión de Estado de carácter intergeneracional”, sostiene en el prólogo el Ing. Gustavo Weiss, Presidente de CAMARCO.\n Descargá el libro completo en forma gratuita AQUÍ .",
+   "titulo": "Obras que hicieron país: CAMARCO presenta un recorrido por la historia de la infraestructura argentina",
+   "url": "https://www.camarco.org.ar/2026/11/26/obras-que-hicieron-pais-camarco-presenta-un-recorrido-por-la-historia-de-la-infraestructura-argentina/"
+  },
+  "CAMARCO|49872": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-26",
+   "id": "49872",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Delegación ciudad de Santa Fe de la Cámara Argentina de la Construcción celebró el Día de la Construcción con su tradicional cena anual. El encuentro reunió a representantes del sector privado, autoridades provinciales y municipales, y referentes de instituciones vinculadas a la actividad.\n Participaron de la celebración el Presidente de la Delegación, Renato Franzoni; la Presidenta de la Delegación Rosario, Arq. Gisela Minervino; el Gobernador de la provincia, Maximiliano Pullaro; la Presidenta de la Cámara de Diputadas y Diputados de Santa Fe, Clara García; los ministros provinciales, Lisandro Enrico de Obras Públicas y Pablo Olivares de Economía; el Intendente de la ciudad de Santa Fe, Juan Pablo Poletti; el Presidente del Concejo Municipal de la ciudad, Sergio Basile; y el Secretario General de la seccional Santa Fe de la UOCRA, César Cassina.\n En ese marco, Renato Franzoni propuso la creación de una mesa de trabajo orientada a planificar el crecimiento urbano, las necesidades de infraestructura y la demanda habitacional de la ciudad de Santa Fe con una mirada de largo plazo. La iniciativa, denominada “Santa Fe 2050”, fue acompañada por el Intendente Juan Pablo Poletti, quien manifestó su voluntad de avanzar en una agenda conjunta para el desarrollo futuro de la ciudad.\n Por su parte, el Gobernador Maximiliano Pullaro destacó la decisión de sostener la inversión en obra pública provincial y subrayó su impacto en la generación de empleo y la dinamización de la economía. Además, repasó las dificultades que atravesaba el sector hacia fines de 2023, con obras paralizadas, demoras en los pagos y conflictos vinculados a la redeterminación de precios, y señaló que la regularización de esas situaciones permitió recuperar y poner en marcha proyectos estratégicos de infraestructura.\n A su turno, el Ministro de Obras Públicas, Lisandro Enrico, realizó un balance de las obras actualmente en ejecución y resaltó la articulación entre el Estado y el sector privado. Destacó los programas de capacitación en oficios vinculados a la construcción, que entre 2023 y 2026 registraron 645 participaciones en áreas como construcción en seco, albañilería, electricidad y energía solar.\n La jornada fue una oportunidad para reafirmar el compromiso del sector constructor con la comunidad. En ese sentido, se destacó la disposición de las empresas para colaborar con recursos técnicos y operativos ante eventuales emergencias hídricas o fenómenos climáticos extremos, fortaleciendo el trabajo conjunto entre el ámbito público y privado.",
+   "titulo": "CAMARCO Santa Fe celebró el Día de la Construcción",
+   "url": "https://www.camarco.org.ar/2026/11/26/camarco-santa-fe-celebro-el-dia-de-la-construccion/"
   }
  },
  "revisadas": {
@@ -2991,6 +3013,14 @@
    "fecha": "2026-11-24",
    "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
    "titulo": "Cinco oportunidades para terminar el año mejor preparados"
+  },
+  "CAMARCO|49857": {
+   "fecha": "2026-11-26",
+   "titulo": "Obras que hicieron país: CAMARCO presenta un recorrido por la historia de la infraestructura argentina"
+  },
+  "CAMARCO|49872": {
+   "fecha": "2026-11-26",
+   "titulo": "CAMARCO Santa Fe celebró el Día de la Construcción"
   }
  }
 }

@@ -8,10 +8,22 @@
    "SRA": "https://www.sra.ar/comunicacion/"
   },
   "inventario_verificado": "2026-11-16",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-11-26"
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-11-27"
  },
- "pendientes": {},
+ "pendientes": {
+  "CONINAGRO|72392": {
+   "camara": "CONINAGRO",
+   "destinatario": null,
+   "fecha": "2026-11-26",
+   "id": "72392",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "CONINAGRO llevó adelante su Asamblea y su Preasamblea, instancias clave de balance, definición dirigencial y análisis de coyuntura para el cooperativismo agropecuario. La Asamblea marcó la actualización del esquema de conducción y los lineamientos de trabajo, mientras que la Preasamblea puso el foco en las acciones que realizó la entidad a lo largo del año y en el escenario político-económico de cara a lo que viene. \n Durante la Asamblea , se presentó y aprobó el Balance y la Memoria del ejercicio LXX, se repasaron las actividades realizadas durante todo el año en defensa de las economías regionales y los productores cooperativistas, y se trazaron los ejes de trabajo para el próximo período. Además, se designó un nuevo comité ejecutivo , el cual quedó conformado de la siguiente manera:\n Presidente: Lucas Magnano (ACA)\n Vicepresidente: Enrique Funes (FECOAR)\n Secretario : Miguel Laurencena (FEDECO)\n Tesorero : Orlando Stvass (FEDECOOP Corrientes)\n Síndico Titular : Alberto Candelero (UNCOGA)\n Síndico Suplente : Roberto Buser (FEDECOOP Misiones)\n VOCALES TITULARES \n Marcelo Federici – Juan Hutak – Gustavo Hein – Roberto Vazquez – Georges Breitschmitt – Patricia Luke – Mario Raiteri – Jorge Gandolfo – Daniel Crespi – Gustavo Gaich – Diego Brauer.\n REPRESENTANTES ENTIDADES ADHERENTES \n Sergio Riskin (Primera Cooperativa Frutícola)\n Danny Lorenzatti (Junta Intercooperativa de Productores de Leche)\n Juan Ouwerkerk (La Segunda Seguros)\n Laura Llopi (Avalian Cobertura Médica)\n José Linares (Federación Nacional de Productores de Papa)\n Federico Marzorati (Sancor Seguros)\n Finalizada la Asamblea, el Presidente Lucas Magnano , quien fue reelegido para continuar con la conducción de la entidad se refirió a los ejes de su gestión y al enfoque que tendrá el trabajo de CONINAGRO en esta nueva etapa que comienza « Tenemos que profundizar el trabajo y la visión, tenemos que ser más finos en atender muchas de las economías regionales que la estan pasando mal y eso es un compromiso, no solamente personal sino de todo el consejo de administración «.\n Posteriormente, dialogamos con el Presidente de la Federación de Cooperativas Agrícolas de Misiones, Gustavo Hein , quien analizó la actualidad de las economías regionales periféricas y la situación de las mismas de cara al próximo año de elecciones presidenciales « En Misiones tenemos todas las economías regionales en crisis». \n Por su parte, la Presidente de CONINAGRO Córdoba, Vanesa Padullés hizo hincapié en la competitividad y la rentabilidad que necesita el sector en cuanto a los costos.\n Por último, el Presidente del IPCVA y miembro del Consejo de CONINAGRO, Georges Breitschmitt repasó lo que fue el año de trabajo y además se refirió a la quita de retenciones en el sector agropecuario « Siempre avizoramos que de una vez por todas no tengamos más retenciones y que seamos considerados como las demás actividades «.\n Preasamblea: escenario político nacional de cara a lo que viene y análisis de los mercados internacionales\n Previo a que se realice la Asamblea de la entidad , recibimos en CONINAGRO al politólogo Lucas Romero y al ex embajador argentino en Estados Unidos, China, Brasil y la Unión Europea ; Diego Guelar. Ambos, mantuvieron un encuentro con los Presidentes de las Federaciones, Consejeros y distintos representantes de las Cooperativas para repasar y analizar el contexto que viene.\n Lucas Romero hizo énfasis sobre el escenario político argentino de cara al 2027: el mapa electoral, la gobernabilidad, la relación Gobierno-Congreso y qué puede esperar el sector en un año definitorio . Además, remarcó la preocupación por saber el rumbo que tomará nuestro país el próximo año.\n A su turno, Guelar se refirió al escenario político internacional y a cómo las tensiones geopolíticas, los nuevos acuerdos comerciales y la demanda global de alimentos repercuten directamente en el sector agropecuario argentino.",
+   "titulo": "«Tenemos que atender a muchas de las economías regionales que la están pasando mal»",
+   "url": "https://www.coninagro.org.ar/tenemos-que-atender-a-muchas-de-las-economias-regionales-que-la-estan-pasando-mal/"
+  }
+ },
  "revisadas": {
   "CONINAGRO|68761": {
    "origen": "codificacion ADR-0384"
@@ -825,6 +837,10 @@
   "CONINAGRO|72388": {
    "fecha": "2026-11-16",
    "titulo": "Encuentro con el IICA sobre innovación, biocombustibles y competitividad agropecuaria"
+  },
+  "CONINAGRO|72392": {
+   "fecha": "2026-11-26",
+   "titulo": "«Tenemos que atender a muchas de las economías regionales que la están pasando mal»"
   },
   "CRA|28552": {
    "origen": "codificacion ADR-0384"

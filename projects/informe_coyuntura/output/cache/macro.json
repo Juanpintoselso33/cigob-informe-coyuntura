@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-11-26T03:03:37.629542",
+  "generated_at": "2026-11-27T03:03:09.788683",
   "score": 4.8,
   "itcm": {
     "valor": 52.5,
@@ -10,7 +10,7 @@
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.3144,
-        "puntaje": 50.0,
+        "puntaje": 49.9,
         "indicadores": {
           "ipc_total": {
             "peso": 0.4961832061068702,
@@ -30,14 +30,14 @@
             "peso": 0.1653944020356234,
             "puntaje_banda": 32.5,
             "puntaje_aplicado": 32.5,
-            "valor": 67.51,
+            "valor": 67.5,
             "peso_efectivo": 0.052
           },
           "reservas_brutas": {
             "peso": 0.05190839694656488,
-            "puntaje_banda": 62.0,
-            "puntaje_aplicado": 62.0,
-            "valor": 49367.0,
+            "puntaje_banda": 61.1,
+            "puntaje_aplicado": 61.1,
+            "valor": 48819.0,
             "peso_efectivo": 0.0163
           },
           "reservas_bcra": {
@@ -118,7 +118,7 @@
       "financiamiento": {
         "nombre": "Capacidad y costo del financiamiento",
         "peso": 0.1056,
-        "puntaje": 66.3,
+        "puntaje": 66.4,
         "indicadores": {
           "idc": {
             "peso": 0.3181818181818182,
@@ -136,9 +136,9 @@
           },
           "credito_privado": {
             "peso": 0.30303030303030304,
-            "puntaje_banda": 52.5,
-            "puntaje_aplicado": 52.5,
-            "valor": -1.8,
+            "puntaje_banda": 52.7,
+            "puntaje_aplicado": 52.7,
+            "valor": -1.7,
             "peso_efectivo": 0.032
           }
         },
@@ -190,7 +190,7 @@
       "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de precios al consumidor nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
       "fecha_dato": "2026-10-01",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:45",
+      "obtenido_en": "2026-11-27T03:01:25",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 45.8,
@@ -212,7 +212,7 @@
       "estimacion_cigob": 11478.0,
       "metodo": "sdds_estricto",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:48",
+      "obtenido_en": "2026-11-27T03:01:31",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 47.6,
@@ -220,16 +220,16 @@
       "peso_efectivo": 0.0163
     },
     "reservas_brutas": {
-      "valor": 49367.0,
+      "valor": 48819.0,
       "unidad": "Millones de dólares",
       "fuente": "Banco Central de la República Argentina (BCRA) — reservas internacionales (API de estadísticas monetarias)",
-      "fecha_dato": "2026-11-20",
+      "fecha_dato": "2026-11-24",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:48",
+      "obtenido_en": "2026-11-27T03:01:31",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
-      "puntaje_itcm": 62.0,
-      "puntaje_banda": 62.0,
+      "puntaje_itcm": 61.1,
+      "puntaje_banda": 61.1,
       "peso_efectivo": 0.0163
     },
     "meta_reservas_fmi": {
@@ -250,7 +250,7 @@
       "netas_mes": 6427.0,
       "netas_base": -2712.0,
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:50",
+      "obtenido_en": "2026-11-27T03:01:33",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 93.5,
@@ -276,7 +276,7 @@
       "badlar_real_mensual": -0.28,
       "banda_idc": "amarillo",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:52",
+      "obtenido_en": "2026-11-27T03:01:34",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 48.7,
@@ -284,12 +284,12 @@
       "peso_efectivo": 0.0336
     },
     "badlar": {
-      "valor": 22.19,
+      "valor": 21.94,
       "unidad": "% anual",
       "fuente": "Banco Central de la República Argentina (BCRA) — tasa BADLAR de bancos privados (API monetarias)",
-      "fecha_dato": "2026-11-24",
+      "fecha_dato": "2026-11-25",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:52",
+      "obtenido_en": "2026-11-27T03:01:35",
       "en_indice": false
     },
     "emae_ia": {
@@ -298,7 +298,7 @@
       "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — estimador mensual de actividad económica (EMAE) (Catálogo API-INDEC)",
       "fecha_dato": "2026-09-01",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:01:54",
+      "obtenido_en": "2026-11-27T03:01:36",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 38.4,
@@ -376,7 +376,7 @@
         }
       ],
       "detalle_txt": "5 de 15 sectores crecen · lidera Explotación de minas y canteras (11,11%) · el que más cae es Pesca (-48,63%)",
-      "obtenido_en": "2026-11-26T03:02:19",
+      "obtenido_en": "2026-11-27T03:01:56",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 18.3,
@@ -389,7 +389,7 @@
       "fuente": "Instituto Nacional de Estadística y Censos (INDEC) — índice de producción industrial (IPI) manufacturero, nivel general (planilla original vigente)",
       "fecha_dato": "2026-09-01",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:02:23",
+      "obtenido_en": "2026-11-27T03:02:00",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 21.6,
@@ -405,7 +405,7 @@
       "iva_var_ia_real": -2.0,
       "cheque_var_ia_real": -8.7,
       "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI -2,0%, cheque -8,7%, compuesto -4,7%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
-      "obtenido_en": "2026-11-26T03:02:27",
+      "obtenido_en": "2026-11-27T03:02:02",
       "en_indice": true,
       "dimension": "cuentas_fiscales",
       "puntaje_itcm": 46.3,
@@ -454,7 +454,7 @@
         "diverge": true,
         "meses_atraso": 0
       },
-      "obtenido_en": "2026-11-26T03:02:37",
+      "obtenido_en": "2026-11-27T03:02:12",
       "en_indice": true,
       "dimension": "cuentas_fiscales",
       "puntaje_itcm": 60.2,
@@ -467,7 +467,7 @@
       "fuente": "Banco Central de la República Argentina (BCRA) — Índice de Tipo de Cambio Real Multilateral",
       "fecha_dato": "2026-09-01",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:02:41",
+      "obtenido_en": "2026-11-27T03:02:18",
       "en_indice": true,
       "dimension": "sector_externo",
       "puntaje_itcm": 49.7,
@@ -482,7 +482,7 @@
       "desactualizado": false,
       "trimestre": "2T-2026",
       "posicion": 0.8335,
-      "obtenido_en": "2026-11-26T03:02:51",
+      "obtenido_en": "2026-11-27T03:02:26",
       "en_indice": true,
       "dimension": "sector_externo",
       "puntaje_itcm": 85.0,
@@ -501,7 +501,7 @@
       "posicion_tcr": 0.4411,
       "posicion_ti": 0.8335,
       "celda": "apreciado_ti_altos",
-      "obtenido_en": "2026-11-26T03:02:59",
+      "obtenido_en": "2026-11-27T03:02:33",
       "en_indice": false
     },
     "rem_ipc_12m": {
@@ -510,7 +510,7 @@
       "fuente": "Banco Central de la República Argentina (BCRA) — Relevamiento de Expectativas de Mercado (REM), expectativas de inflación (API monetarias)",
       "fecha_dato": "2026-10-31",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:00",
+      "obtenido_en": "2026-11-27T03:02:33",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 58.6,
@@ -520,29 +520,29 @@
       "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.66% mensual, en la misma escala que el índice de precios al consumidor."
     },
     "idm": {
-      "valor": 1.83,
+      "valor": 1.84,
       "unidad": "puntos porcentuales (brecha interanual real)",
       "fuente": "Banco Central de la República Argentina (BCRA: dinero total privado M3 = circulante var. 17 + depósitos privados var. 100; dinero transaccional privado M2 var. 197) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
       "fecha_dato": "2026-10-01",
       "desactualizado": false,
       "m3_real_ia": -1.51,
-      "m2_real_ia": -3.34,
-      "obtenido_en": "2026-11-26T03:03:01",
+      "m2_real_ia": -3.36,
+      "obtenido_en": "2026-11-27T03:02:35",
       "en_indice": false
     },
     "desequilibrio_monetario": {
-      "valor": 67.51,
+      "valor": 67.5,
       "unidad": "puntos de tensión (0-100)",
       "fuente": "Banco Central de la República Argentina (BCRA: dinero transaccional privado M2, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
       "fecha_dato": "2026-09-01",
       "desactualizado": false,
       "puntaje_itcm": 32.5,
-      "componente_a": 31.64,
+      "componente_a": 31.65,
       "componente_b": 2538.3,
       "posicion_a": 0.1802,
       "posicion_b": 0.5342,
       "celda": "liquidez_y_presion",
-      "obtenido_en": "2026-11-26T03:03:13",
+      "obtenido_en": "2026-11-27T03:02:47",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_banda": 32.5,
@@ -560,7 +560,7 @@
       },
       "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
       "detalle_txt": "-0.3 % interanual = construcción +5.1% · bienes de capital importados -10.4% (mes común: 2026-09) — BK 2026-10 (provisorio, no puntúa): +2.9%",
-      "obtenido_en": "2026-11-26T03:03:20",
+      "obtenido_en": "2026-11-27T03:02:54",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 59.6,
@@ -579,27 +579,27 @@
       },
       "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
       "detalle_txt": "+14.8 % interanual = servicios tecnológicos +27.6% · productividad -2.3% (mes común: 2026-08)",
-      "obtenido_en": "2026-11-26T03:03:30",
+      "obtenido_en": "2026-11-27T03:03:03",
       "en_indice": false
     },
     "credito_privado": {
-      "valor": -1.8,
+      "valor": -1.7,
       "unidad": "% interanual real (crédito en pesos)",
       "fuente": "Banco Central de la República Argentina (BCRA: préstamos al sector privado en pesos, var. 117) + índice de precios al consumidor del Instituto Nacional de Estadística y Censos",
       "fecha_dato": "2026-10-01",
       "desactualizado": false,
       "nominal_ia": 30.8,
       "moneda": "pesos",
-      "usd_ia": 43.0,
-      "usd_saldo_mm": 26357,
-      "me_en_pesos_ia_real": 14.4,
-      "total_ia_real": 1.8,
-      "detalle_txt": "nominal 30,8% interanual deflactado por el índice de precios al consumidor, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-10) · aparte, la cartera en moneda extranjera 14,4% real medida en pesos y 43,0% en dólares; los dos universos juntos, 1,8% real — al 2026-11-19 (provisorio, no puntúa): -1,7% real con deflactor de 2026-10",
-      "obtenido_en": "2026-11-26T03:03:32",
+      "usd_ia": 42.9,
+      "usd_saldo_mm": 26337,
+      "me_en_pesos_ia_real": 14.3,
+      "total_ia_real": 1.7,
+      "detalle_txt": "nominal 30,8% interanual deflactado por el índice de precios al consumidor, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-10) · aparte, la cartera en moneda extranjera 14,3% real medida en pesos y 42,9% en dólares; los dos universos juntos, 1,7% real — al 2026-11-20 (provisorio, no puntúa): -1,8% real con deflactor de 2026-10",
+      "obtenido_en": "2026-11-27T03:03:05",
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 52.5,
-      "puntaje_banda": 52.5,
+      "puntaje_itcm": 52.7,
+      "puntaje_banda": 52.7,
       "peso_efectivo": 0.032
     },
     "costo_financiamiento_tesoro": {
@@ -632,7 +632,7 @@
       ],
       "detalle_txt": "2026-10: TIREA de corte 27.7% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +4.9% real",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:34",
+      "obtenido_en": "2026-11-27T03:03:07",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 92.2,
@@ -646,7 +646,7 @@
       "fecha_dato": "2026-09-01",
       "detalle_txt": "2026-09: superávit primario de 6.2% de la recaudación acumulada de doce meses",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:36",
+      "obtenido_en": "2026-11-27T03:03:09",
       "en_indice": true,
       "dimension": "cuentas_fiscales",
       "puntaje_itcm": 65.6,
@@ -654,30 +654,30 @@
       "peso_efectivo": 0.096
     },
     "prestamos_privados": {
-      "valor": 1.56,
+      "valor": 1.59,
       "unidad": "% mensual nominal",
       "fuente": "Banco Central de la República Argentina (BCRA) — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-11-19",
+      "fecha_dato": "2026-11-20",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:36",
+      "obtenido_en": "2026-11-27T03:03:09",
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 0.71,
+      "valor": 4.27,
       "unidad": "% mensual nominal",
       "fuente": "Banco Central de la República Argentina (BCRA) — base monetaria (API monetarias)",
-      "fecha_dato": "2026-11-20",
+      "fecha_dato": "2026-11-24",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:37",
+      "obtenido_en": "2026-11-27T03:03:09",
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.56,
+      "valor": 3.97,
       "unidad": "% mensual",
       "fuente": "Banco Central de la República Argentina (BCRA) — tipo de cambio mayorista, Comunicación A 3500 (API monetarias)",
-      "fecha_dato": "2026-11-25",
+      "fecha_dato": "2026-11-26",
       "desactualizado": false,
-      "obtenido_en": "2026-11-26T03:03:37",
+      "obtenido_en": "2026-11-27T03:03:09",
       "en_indice": false
     }
   }
