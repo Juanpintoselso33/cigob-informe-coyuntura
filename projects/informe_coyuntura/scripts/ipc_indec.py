@@ -58,12 +58,16 @@ def parsear(contenido: bytes, fila: str = "Nivel general") -> list:
 
 
 def serie(series_id: str = SERIE_ID) -> list:
-    if "contenido" not in _memo:
-        r = requests.get(URL, headers=HTTP_HEADERS, timeout=60)
-        r.raise_for_status()
-        _memo["contenido"] = r.content
     if series_id not in _memo:
-        _memo[series_id] = parsear(_memo["contenido"], SERIES[series_id])
+        contenido = _memo.get("contenido")
+        if contenido is None:
+            r = requests.get(URL, headers=HTTP_HEADERS, timeout=60)
+            r.raise_for_status()
+            contenido = r.content
+        # Se guarda recién si se pudo leer: un HTML de error o un .xls cortado no
+        # tiene que dejar sin respaldo al resto de la corrida (Codex).
+        _memo[series_id] = parsear(contenido, SERIES[series_id])
+        _memo["contenido"] = contenido
     return _memo[series_id]
 
 

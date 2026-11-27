@@ -93,3 +93,12 @@ def test_las_series_que_no_son_del_imig_no_se_tocan():
     api = [["2026-09-01", 1.0]]
     assert m.con_planilla("otra_serie", api, 5) is api
     assert set(m.SERIES) == {RES, SAL, "452.2_OTROS_GASTNTO_0_T_27_55"}
+
+
+def test_un_mes_nulo_de_la_api_no_queda_duplicado():
+    """Codex: octubre nulo en la API y la planilla con octubre → una sola fila."""
+    fuente = {"filas": m.parsear(_xlsx())}
+    api = [["2026-10-01", None], ["2026-09-01", 1427640.0], ["2026-08-01", 1990321.8]]
+    filas = m.completar(api, RES, 3, fuente)
+    assert [f[0] for f in filas] == ["2026-10-01", "2026-09-01", "2026-08-01"]
+    assert filas[0][1] == pytest.approx(1931156.3)

@@ -135,3 +135,21 @@ def test_la_planilla_trae_la_fila_de_alimentos(monkeypatch):
     monkeypatch.setattr(ipc_indec.xlrd, "open_workbook", lambda **k: Libro())
     assert ipc_indec.parsear(b"", ipc_indec.SERIES["146.3_IALIMENNAL_DICI_M_45"])[-1] == ["2026-10-01", 13647.83]
     assert ipc_indec.parsear(b"")[-1] == ["2026-10-01", 12785.93]
+
+
+def test_una_descarga_rota_no_queda_guardada(monkeypatch):
+    """Codex: si la planilla no se puede leer, el próximo pedido vuelve a bajarla."""
+    monkeypatch.setattr(ipc_indec, "_memo", {})
+    bajadas = []
+
+    class R:
+        content = b"<html>error</html>"
+        def raise_for_status(self): pass
+
+    monkeypatch.setattr(ipc_indec.requests, "get", lambda *a, **k: bajadas.append(1) or R())
+    for _ in range(2):
+        try:
+            ipc_indec.serie()
+        except Exception:
+            pass
+    assert len(bajadas) == 2 and "contenido" not in ipc_indec._memo

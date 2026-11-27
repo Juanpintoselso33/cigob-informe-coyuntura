@@ -197,7 +197,7 @@ def test_el_mes_publicado_queda_congelado_como_el_dia_que_salio(tmp_path, monkey
         "data/historico/indicadores.json": json.dumps({"ipc_total": {"2026-09": 2.0}}),
     }
     monkeypatch.setattr(archivo, "_en_git", lambda sha, rel: al_publicar.get(rel))
-    monkeypatch.setattr(archivo, "_exentas_de_la_foto", lambda mes: (set(), {}))
+    monkeypatch.setattr(archivo, "_exentas_de_la_foto", lambda mes, *a: (set(), {}))
     archivo._cortar(proyecto, "2026-10", congelar_en="abc123")
     with open(proyecto / "output" / "series" / "macro.csv", encoding="utf-8") as f:
         filas = [(r["fecha"], r["indicador"], r["valor"]) for r in _csv.DictReader(f)]
@@ -218,4 +218,27 @@ def test_sin_etiqueta_ni_publicacion_en_curso_no_se_congela(monkeypatch):
     monkeypatch.delenv("ARCHIVO_CONGELAR_EN", raising=False)
     assert archivo.congelado_en("2031-01") is None
     monkeypatch.setenv("ARCHIVO_CONGELAR_EN", "deadbeef")
+    monkeypatch.setenv("ARCHIVO_CONGELAR_MES", "2031-01")
     assert archivo.congelado_en("2031-01") == "deadbeef"
+    # publicar un mes viejo no descongela el vigente (Codex)
+    assert archivo.congelado_en("2031-02") is None
+
+
+def test_las_cards_exentas_de_un_mes_congelado_salen_del_dia_publicado(monkeypatch):
+    """Codex: si la última corrida del mes es posterior a la publicación, una card
+    exenta de G3 no puede traer el dato de esa corrida."""
+    import sys
+    import types
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+    from gate_calidad import G3_EXCEPCIONES
+    k = sorted(G3_EXCEPCIONES)[0]
+    snap = lambda v: json.dumps({"cinturones": {"c": {"indicadores": {k: {"valor": v, "fecha_dato": "2026-10-01"}}}}})
+    fotos = {"ultima_del_mes": snap(2.0), "publicacion": snap(1.0)}
+    monkeypatch.setattr(archivo.mensual, "elegir", lambda mes: "ultima_del_mes")
+    monkeypatch.setattr(archivo.mensual, "_git", lambda *a: fotos[a[1].split(":")[0]])
+    # la última corrida del mes NO es ancestro de la publicación (se publicó antes de terminar el mes)
+    monkeypatch.setattr(archivo.subprocess, "run", lambda *a, **kw: types.SimpleNamespace(returncode=1))
+    assert archivo._exentas_de_la_foto("2026-10", "publicacion")[1][k] == ("2026-10-01", 1.0)
+    # sin congelar, la de siempre
+    assert archivo._exentas_de_la_foto("2026-10")[1][k] == ("2026-10-01", 2.0)

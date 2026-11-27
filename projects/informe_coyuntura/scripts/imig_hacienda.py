@@ -136,7 +136,10 @@ def completar(filas_api: list, series_id: str, limit: int, fuente: dict | None =
             raise ValueError(f"IMIG y datos.gob.ar no coinciden en {ym}: {pl[ym]} contra {api[ym]}")
     ultimo = max(api)
     nuevos = {ym: v for ym, v in pl.items() if ym > ultimo}
-    filas = [[f"{ym}-01", v] for ym, v in nuevos.items()] + [list(f) for f in filas_api]
+    # Una fila de la API para ese mes con valor nulo no se conserva al lado de la
+    # de la planilla: duplicaría el mes y le comería un lugar al límite (Codex).
+    filas = [[f"{ym}-01", v] for ym, v in nuevos.items()] + \
+        [list(f) for f in filas_api if str(f[0])[:7] not in nuevos]
     filas.sort(key=lambda f: str(f[0]), reverse=True)
     return filas[:limit]
 

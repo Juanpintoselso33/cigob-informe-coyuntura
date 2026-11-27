@@ -84,6 +84,7 @@ jobs:
           echo "MES=$MES" >> "$GITHUB_ENV"
           echo "SHA=$SHA" >> "$GITHUB_ENV"
           echo "ARCHIVO_CONGELAR_EN=$SHA" >> "$GITHUB_ENV"
+          echo "ARCHIVO_CONGELAR_MES=$MES" >> "$GITHUB_ENV"
 
       - uses: actions/setup-node@v4
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}

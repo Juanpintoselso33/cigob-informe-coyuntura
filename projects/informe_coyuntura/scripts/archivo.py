@@ -177,8 +177,10 @@ def congelado_en(mes: str) -> str | None:
     lleva sólo los datos que había ese día. Al publicar todavía no hay etiqueta y
     el workflow lo pasa en ARCHIVO_CONGELAR_EN; después es la etiqueta
     mensual-AAAA-MM. Sin ninguna de las dos (meses anteriores al mensual), None."""
+    # La variable vale sólo para el mes que se está publicando: si se publica un mes
+    # viejo, el vigente sigue congelado en su etiqueta (Codex).
     sha = os.environ.get("ARCHIVO_CONGELAR_EN", "").strip()
-    if sha:
+    if sha and os.environ.get("ARCHIVO_CONGELAR_MES", "").strip() == mes:
         return sha
     try:
         return mensual._git("rev-list", "-n", "1", f"mensual-{mes}").strip() or None
@@ -235,7 +237,7 @@ def _cortar(proyecto: Path, mes: str, congelar_en: str | None = None) -> None:
                 continue
             if r["indicador"] not in ultimo or r["fecha"] >= ultimo[r["indicador"]][0]:
                 ultimo[r["indicador"]] = (r["fecha"], v)
-    ultimo = con_cards_exentas(ultimo, *_exentas_de_la_foto(mes))
+    ultimo = con_cards_exentas(ultimo, *_exentas_de_la_foto(mes, congelar_en))
     # validacion_externa lee las series del snapshot publicado (el de hoy).
     ruta_s = proyecto / "web" / "src" / "data" / "series.json"
     if ruta_s.exists():
@@ -279,10 +281,16 @@ def _cortar(proyecto: Path, mes: str, congelar_en: str | None = None) -> None:
 # publicó la última corrida nocturna de ese mes (la foto, `mensual.elegir`).
 # Sin foto (meses anteriores a las corridas) la card queda como estaba en el
 # caché, y si su dato es posterior al mes no se muestra.
-def _exentas_de_la_foto(mes: str) -> tuple[set, dict]:
+def _exentas_de_la_foto(mes: str, congelar_en: str | None = None) -> tuple[set, dict]:
     from gate_calidad import G3_EXCEPCIONES
     try:
         sha = mensual.elegir(mes)
+        # Congelado (ADR-0444): si la última corrida del mes es posterior a la
+        # publicación (un mes publicado antes de terminar), la foto es la del día
+        # de la publicación; si no, una card exenta traería un dato llegado después (Codex).
+        if congelar_en and subprocess.run(["git", "merge-base", "--is-ancestor", sha, congelar_en],
+                                          cwd=mensual.RAIZ).returncode != 0:
+            sha = congelar_en
         snap = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
     except (SystemExit, subprocess.CalledProcessError, json.JSONDecodeError):
         print(f"    · {mes}: sin corrida nocturna del mes; las cards exentas de G3 no se cortan")
