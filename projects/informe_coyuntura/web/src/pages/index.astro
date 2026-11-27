@@ -10,8 +10,10 @@ import Evolucion from "../components/Evolucion.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import { informe, CINTURONES } from "../lib/datos.ts";
+import { seoPortada } from "../lib/seo.ts";
+const seo = seoPortada();
 ---
-<Layout title="Monitor del Plan de Gobierno · CiGob">
+<Layout title={seo.title} description={seo.description}>
   <Nav />
   <Hero />
   <main class="cg-main">

@@ -2,6 +2,7 @@
 // Glosario del Monitor (pedido del 5-nov-2026): 54 términos, en el orden
 // alfabético del documento original, agrupados por letra.
 import Layout from "../../layouts/Layout.astro";
+import { PAGINAS } from "../../lib/seo.ts";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -72,7 +73,7 @@ for (const x of TERMINOS) {
   if (g) g.items.push(x); else grupos.push({ l, items: [x] });
 }
 ---
-<Layout title="Glosario · Monitor del Plan de Gobierno · CiGob">
+<Layout {...PAGINAS.glosario}>
   <Nav />
   <main class="cg-main">
     <section class="cg-section gl">

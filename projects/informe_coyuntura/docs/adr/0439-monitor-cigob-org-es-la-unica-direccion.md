@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-11-26
 cinturon: 'transversal'
 archivos: ['../../vercel.json', 'web/astro.config.mjs', 'web/src/layouts/Layout.astro', 'web/public/robots.txt', 'scripts/aviso_slack.py', 'scripts/aviso_informe.py', 'scripts/aviso_cambio_claude.py']
-relacionado: ['0342', '0347', '0440']
+relacionado: ['0342', '0347', '0440', '0442']
 ambito: 'Presentación · monitor.cigob.org es la única dirección del Monitor; informe.cigob.org redirige'
 origen: 'Juan, 26-nov-2026, al revisar el tráfico y el SEO: «1 seguro, es monitor la pagina».'
 ---

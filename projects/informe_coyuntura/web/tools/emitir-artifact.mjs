@@ -464,12 +464,22 @@ const aviso = LITE
   ? 'Archivo único. Los gráficos cargan ApexCharts desde cdnjs, así que necesitan conexión. Sin fórmulas tipografiadas.'
   : 'Archivo único y autocontenido: no hace un solo pedido a la red.';
 
+// Título con el mes de la edición: las fotos de /archivo/AAAA-MM/ no pueden
+// llevar todas el mismo título que la portada (ADR-0442).
+const MESES_TITULO = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+let titulo = 'Monitor del Plan de Gobierno · CiGob';
+try {
+  const periodo = JSON.parse(leer(path.join(WEB, 'src', 'data', 'informe.json'))).period ?? '';
+  const m = /^(\d{4})-(\d{2})/.exec(periodo);
+  if (m) titulo = `Monitor del Plan de Gobierno, ${MESES_TITULO[+m[2] - 1]} de ${m[1]} | CiGob`;
+} catch { /* sin snapshot legible, queda el título genérico */ }
+
 const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Monitor del Plan de Gobierno · CiGob</title>
+<title>${titulo}</title>
 <meta name="generator" content="web/tools/emitir-artifact.mjs — desde web/dist">
 <style>${css}</style>
 </head>

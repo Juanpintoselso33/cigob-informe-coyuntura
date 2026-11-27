@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-11-26
 cinturon: 'transversal'
 archivos: ['scripts/medir_trafico.py', '../../.github/workflows/trafico-mensual.yml', 'tests/test_medir_trafico.py']
-relacionado: ['0180', '0439']
+relacionado: ['0180', '0439', '0442']
 ambito: 'Medición · informe mensual de tráfico con GA4 y Search Console'
 origen: 'Juan, 26-nov-2026, sobre la investigación de SEO y tráfico: «8 dale programa».'
 ---

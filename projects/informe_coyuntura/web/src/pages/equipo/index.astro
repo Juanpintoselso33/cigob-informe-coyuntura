@@ -2,6 +2,7 @@
 // Equipo del Monitor (ADR-0437). La lista y los cargos son los que mandó Luis
 // Babino el 16-nov-2026; sin foto ni bio, porque no las mandó.
 import Layout from "../../layouts/Layout.astro";
+import { PAGINAS } from "../../lib/seo.ts";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -11,7 +12,7 @@ const GRUPOS: { rol: string; personas: string[] }[] = [
   { rol: "Colaboradores", personas: ["Diego Dequino", "Marcos Jasin", "Juan Ignacio Babino", "Pablo Dalesandro"] },
 ];
 ---
-<Layout title="Equipo · Monitor del Plan de Gobierno · CiGob">
+<Layout {...PAGINAS.equipo}>
   <Nav />
   <main class="cg-main">
     <section class="cg-section eq">

@@ -11,6 +11,7 @@ import {
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
   LECTURA_SEMAFORO, colorPorTension, peorDimension,
 } from "../lib/datos.ts";
+import { seoCinturon } from "../lib/seo.ts";
 
 export function getStaticPaths() {
   return CINTURONES.map(c => ({ params: { slug: c.slug }, props: { meta: c } }));
@@ -337,7 +338,7 @@ const robChartData = rob?.hist && indice ? {
   n_draws: rob.n_draws, base100: !!indice.base100,
 } : null;
 ---
-<Layout title={`${meta.nombre} · Monitor del Plan de Gobierno · CiGob`}>
+<Layout {...seoCinturon(meta.key)}>
   <Nav />
   <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${meta.slug}`} id="top">
     <div class="cg-hero-inner cg-detalle-inner">

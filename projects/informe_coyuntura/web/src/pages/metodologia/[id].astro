@@ -12,6 +12,7 @@ import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS,
 import { rangoLegible } from "../../lib/formato.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FORMULAS } from "../../lib/formulas.ts";
+import { seoFicha } from "../../lib/seo.ts";
 import { FICHAS, tramoDeAnclas, type FichaIndicador, type FichaIndice } from "../../lib/fichas.ts";
 
 export function getStaticPaths() {
@@ -197,10 +198,9 @@ const pasosIndice = !esIndicador ? [
   { paso: "Paso 5 · manual internacional", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
 ] : [];
 
-const titulo = esIndicador ? label(f.id) : fx.nombreLargo;
 const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo);
 ---
-<Layout title={`Ficha metodológica: ${titulo} · Monitor del Plan de Gobierno · CiGob`}>
+<Layout {...seoFicha(f.id)}>
   <Nav />
   <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${slug}`} id="top">
     <div class="cg-hero-inner cg-detalle-inner">

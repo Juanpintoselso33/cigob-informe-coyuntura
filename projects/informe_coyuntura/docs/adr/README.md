@@ -518,6 +518,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0439](0439-monitor-cigob-org-es-la-unica-direccion.md) | monitor.cigob.org es la única dirección del Monitor |  | vigente |
 | [0440](0440-medicion-mensual-del-trafico.md) | Medición mensual del tráfico |  | vigente |
 | [0441](0441-se-saca-el-muro-de-acceso.md) | Se saca el muro de acceso |  | vigente |
+| [0442](0442-titulos-y-descripciones-para-buscadores.md) | Títulos y descripciones para buscadores |  | vigente |
 
 ### Sin cinturón declarado
 

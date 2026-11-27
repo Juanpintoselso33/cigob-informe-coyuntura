@@ -9,6 +9,7 @@
 // Cada mes es una reconstrucción con el Monitor de hoy sobre los datos de su
 // última corrida (`public/archivo/AAAA-MM/index.html`, scripts/archivo.py).
 import Layout from "../../layouts/Layout.astro";
+import { PAGINAS } from "../../lib/seo.ts";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 // La misma barra de nivel del Resumen (pedido de Juan, 7-oct-2026): los cuatro
@@ -67,7 +68,7 @@ const titular = (f: typeof filas[number]) => {
   ].filter(Boolean).join("; ") + ".";
 };
 ---
-<Layout title="Archivo · Monitor del Plan de Gobierno · CiGob">
+<Layout {...PAGINAS.archivo}>
   <Nav />
   <main class="cg-main">
     <section class="cg-section ar">

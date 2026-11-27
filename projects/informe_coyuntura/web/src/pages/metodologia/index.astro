@@ -8,6 +8,7 @@
 // cuando el marco entró acá: el diccionario es la mitad de abajo de la página,
 // no la página.
 import Layout from "../../layouts/Layout.astro";
+import { PAGINAS } from "../../lib/seo.ts";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible, num, cap, cinturonesRojos, coloresEnIndice, LECTURA_SEMAFORO } from "../../lib/datos.ts";
@@ -49,7 +50,7 @@ const fase = (informe as any).ponderacion?.fase === "temprana"
   ? "fase temprana del mandato" : "fase de consolidación";
 const tensionados = cinturonesRojos(informe);
 ---
-<Layout title="Metodología · Monitor del Plan de Gobierno · CiGob">
+<Layout {...PAGINAS.metodologia}>
   <Nav />
   <header class="cg-hero cg-detalle-hero" id="top">
     <div class="cg-hero-inner cg-detalle-inner">
