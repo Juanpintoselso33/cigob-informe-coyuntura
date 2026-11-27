@@ -35,7 +35,7 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 52,5** | **AMARILLO** | Moderadamente apretado | 19 indicadores: 4 en verde · 6 en amarillo · 7 en naranja · 2 en rojo |
+| **ITCM: 52,6** | **AMARILLO** | Moderadamente apretado | 19 indicadores: 4 en verde · 6 en amarillo · 7 en naranja · 2 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 19 de 19 publicados.
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde seis señales complementarias. | 49,9 | NARANJA | 31,4 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 39,6 | NARANJA | 23,0 % |
-| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 60,1 | AMARILLO | 19,2 % |
+| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 60,6 | AMARILLO | 19,2 % |
 | Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 57,8 | AMARILLO | 15,8 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 66,4 | AMARILLO | 10,6 % |
 
@@ -75,7 +75,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
 | Actividad tributaria (impuesto al valor agregado + impuesto al cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | −4,67 % interanual real (compuesto del impuesto al valor agregado y el impuesto al cheque) | NARANJA | 3,8 % |
 | Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 95,1 índice (100 = 4º trimestre de 2023) | AMARILLO | 5,8 % |
-| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,19 % de la recaudación (acumulado de 12 meses) | AMARILLO | 9,6 % |
+| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,53 % de la recaudación (acumulado de 12 meses) | AMARILLO | 9,6 % |
 | **DIMENSIÓN: Sector externo** | | | | |
 | Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acumulado de 12 meses) | VERDE | 4,8 % |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base diciembre de 2015 = 100) | NARANJA | 5,5 % |
@@ -1897,7 +1897,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,19 % de la recaudación (acumulado de 12 meses)** (2026-09) | **AMARILLO** | Peso efectivo 9,6 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 6,53 % de la recaudación (acumulado de 12 meses)** (2026-10) | **AMARILLO** | Peso efectivo 9,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1905,9 +1905,9 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | resultado_primario | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Cuentas fiscales | **UNIDAD DE MEDIDA** | % de la recaudación (acumulado de 12 meses) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Unos dos meses: a fines de octubre de 2026 el último dato publicado es el de agosto. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Unas dos semanas y media: Economía publica el mes entre el 16 y el 18 del mes siguiente. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (resultado primario) + recaudación nacional | **OPERACIÓN ESTADÍSTICA** | Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total |
-| **MODO DE ACCESO** | Automático: API de series de tiempo del Estado nacional. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla mensual de Economía para el último mes y API de series de tiempo del Estado nacional para la historia. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1941,13 +1941,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2026-09: superávit primario de 6.2% de la recaudación acumulada de doce meses
+- 2026-10: superávit primario de 6.5% de la recaudación acumulada de doce meses
 
 ## Color vigente y por qué
 
-Dato vigente: 6,19 % de la recaudación (acumulado de 12 meses) (2026-09).
+Dato vigente: 6,53 % de la recaudación (acumulado de 12 meses) (2026-10).
 
-6,19 % de la recaudación (acumulado de 12 meses) está en Amarillo, a 3,73 del límite con Verde (9,92).
+6,53 % de la recaudación (acumulado de 12 meses) está en Amarillo, a 3,39 del límite con Verde (9,92).
 
 **Color vigente: AMARILLO**
 
@@ -1968,6 +1968,8 @@ Ponderación vigente en el ITCM: 9,6 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Las cifras fiscales pueden revisarse en publicaciones posteriores; la serie se regenera completa desde diciembre de 2023 en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-27** — El último mes sale de la planilla del informe mensual de ingresos y gastos que Economía publica el día del comunicado fiscal (16 a 18 del mes siguiente); la historia sigue viniendo de la API de datos.gob.ar, que se actualiza semanas después. Con eso octubre de 2026 entra el 27-nov en vez de esperar a la API. En los meses que tienen las dos fuentes los números son idénticos.
 
 **2026-10-28** — La escala de −5 a +8 %, puesta mirando diciembre de 2023 y el programa estabilizado, se reemplaza por anclas de la historia 2004-2023: el equilibrio vale 50 y a cada lado hay uno y dos desvíos (11,9 puntos). Con agosto de 2026 (6,02 %) el puntaje pasa de 85,1 a 65,2: un superávit de ese tamaño se lee bien, no como óptimo.
 

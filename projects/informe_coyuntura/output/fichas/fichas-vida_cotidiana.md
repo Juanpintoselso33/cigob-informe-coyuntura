@@ -267,6 +267,8 @@ Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-11-27** — Si la API de datos.gob.ar se atrasa, el último mes sale de la planilla original del INDEC, como ya pasaba con el IPC general: septiembre de 2026 había entrado tres semanas después de que el INDEC lo publicara.
+
 **2026-07-03** — Entra al índice de impacto social base-100 (entonces como nivel contra el salario).
 
 **2026-07-04** — Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta.

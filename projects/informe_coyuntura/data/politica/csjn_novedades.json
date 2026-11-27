@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 3,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-11-16"
+  "ultima_corrida": "2026-11-27"
  },
  "pendientes": {
   "825492": {
@@ -76,6 +76,48 @@
    "sentencia_arbitraria": false,
    "titulo": "Bonificación por zona austral y adicional por zona desfavorable: distinta naturaleza jurídica ",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=835042"
+  },
+  "835804": {
+   "caratula": "ESTABLECIMIENTO LAS MARIAS S.A.C.I.F.A. Y OTRO c/ ESTADO NACIONAL s/NULIDAD DE ACTO ADMINISTRATIVO",
+   "expediente": "E. 245. XLVIII. ORI",
+   "fecha": "19/11/2026",
+   "fuero": "E.",
+   "inconstitucional": false,
+   "materia": "TRIBUTARIO/ADUANERO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Programa de promoción no industrial - Cuestionamiento de una multa",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=835804"
+  },
+  "835873": {
+   "caratula": "ARGAÑARAZ OLIVERO, RAFAEL AURELIO c/ MINISTERIO DE EDUCACION CULTURA CIENCIA Y TECNOLOGIA DE LA NACION s/AMPARO LEY 16.986",
+   "expediente": "FSA 000517/2019/CS001",
+   "fecha": "19/11/2026",
+   "fuero": "FSA",
+   "inconstitucional": false,
+   "materia": "ADMINISTRATIVO - CONSTITUCIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Acceso a la información pública: resultados de evaluaciones del sistema educativo",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=835873"
+  },
+  "835986": {
+   "caratula": "BOBBIO, MARIA DEL CARMEN c/ SWISS MEDICAL SA Y OTRO s/AMPARO LEY 16.986",
+   "expediente": "FLP 001221/2024/CS001",
+   "fecha": "19/11/2026",
+   "fuero": "FLP",
+   "inconstitucional": true,
+   "materia": "CONSTITUCIONAL - CONSUMO - SALUD",
+   "motivos": [
+    "declara inconstitucionalidad"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Cuotas de los planes de medicina prepaga y decreto de necesidad y urgencia",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=835986"
   }
  },
  "revisadas": {
@@ -664,6 +706,11 @@
    "marcado": false,
    "termino": "inconstitucionalidad"
   },
+  "835565": {
+   "fecha": "19/11/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
   "835584": {
    "fecha": "05/11/2026",
    "marcado": false,
@@ -673,6 +720,21 @@
    "fecha": "12/11/2026",
    "marcado": false,
    "termino": "amparo"
+  },
+  "835804": {
+   "fecha": "19/11/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "835873": {
+   "fecha": "19/11/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "835986": {
+   "fecha": "19/11/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
   }
  }
 }

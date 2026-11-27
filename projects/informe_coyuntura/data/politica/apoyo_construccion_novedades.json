@@ -1,12 +1,12 @@
 {
  "_meta": {
-  "comunicados_vistos": 944,
+  "comunicados_vistos": 945,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
   "inventario_verificado": "2026-11-27",
-  "nuevos_en_la_corrida": 2,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-11-27"
  },
  "pendientes": {
@@ -97,6 +97,17 @@
    "texto": "La Delegación ciudad de Santa Fe de la Cámara Argentina de la Construcción celebró el Día de la Construcción con su tradicional cena anual. El encuentro reunió a representantes del sector privado, autoridades provinciales y municipales, y referentes de instituciones vinculadas a la actividad.\n Participaron de la celebración el Presidente de la Delegación, Renato Franzoni; la Presidenta de la Delegación Rosario, Arq. Gisela Minervino; el Gobernador de la provincia, Maximiliano Pullaro; la Presidenta de la Cámara de Diputadas y Diputados de Santa Fe, Clara García; los ministros provinciales, Lisandro Enrico de Obras Públicas y Pablo Olivares de Economía; el Intendente de la ciudad de Santa Fe, Juan Pablo Poletti; el Presidente del Concejo Municipal de la ciudad, Sergio Basile; y el Secretario General de la seccional Santa Fe de la UOCRA, César Cassina.\n En ese marco, Renato Franzoni propuso la creación de una mesa de trabajo orientada a planificar el crecimiento urbano, las necesidades de infraestructura y la demanda habitacional de la ciudad de Santa Fe con una mirada de largo plazo. La iniciativa, denominada “Santa Fe 2050”, fue acompañada por el Intendente Juan Pablo Poletti, quien manifestó su voluntad de avanzar en una agenda conjunta para el desarrollo futuro de la ciudad.\n Por su parte, el Gobernador Maximiliano Pullaro destacó la decisión de sostener la inversión en obra pública provincial y subrayó su impacto en la generación de empleo y la dinamización de la economía. Además, repasó las dificultades que atravesaba el sector hacia fines de 2023, con obras paralizadas, demoras en los pagos y conflictos vinculados a la redeterminación de precios, y señaló que la regularización de esas situaciones permitió recuperar y poner en marcha proyectos estratégicos de infraestructura.\n A su turno, el Ministro de Obras Públicas, Lisandro Enrico, realizó un balance de las obras actualmente en ejecución y resaltó la articulación entre el Estado y el sector privado. Destacó los programas de capacitación en oficios vinculados a la construcción, que entre 2023 y 2026 registraron 645 participaciones en áreas como construcción en seco, albañilería, electricidad y energía solar.\n La jornada fue una oportunidad para reafirmar el compromiso del sector constructor con la comunidad. En ese sentido, se destacó la disposición de las empresas para colaborar con recursos técnicos y operativos ante eventuales emergencias hídricas o fenómenos climáticos extremos, fortaleciendo el trabajo conjunto entre el ámbito público y privado.",
    "titulo": "CAMARCO Santa Fe celebró el Día de la Construcción",
    "url": "https://www.camarco.org.ar/2026/11/26/camarco-santa-fe-celebro-el-dia-de-la-construccion/"
+  },
+  "CAMARCO|49884": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-11-27",
+   "id": "49884",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La Federación Interamericana de la Industria de la Construcción (FIIC) invita a las empresas del sector de América Latina a participar de una nueva edición del “Reconocimiento Nicolás y José Ignacio Mariscal a la Responsabilidad Social Empresarial” , una iniciativa que busca promover y fortalecer la gestión de la responsabilidad social empresarial y la sostenibilidad en la industria de la construcción.\n La convocatoria está dirigida a empresas de todos los tamaños que sean miembros activos de las Cámaras y Federaciones afiliadas a la FIIC, así como a sus socios colaboradores. La participación es gratuita y contempla dos categorías: Empresas Grandes y PYMES .\n A través de un proceso de autoevaluación y evaluación de evidencias, las organizaciones podrán identificar fortalezas y oportunidades de mejora en su gestión, acceder a informes individuales y sectoriales, y dar visibilidad a sus buenas prácticas. Asimismo, las empresas que obtengan el reconocimiento recibirán una estatuilla y un diploma, y podrán difundir su distinción a través de los medios de la FIIC y sus aliados.\n Período de postulación: desde el 20 de noviembre de 2026 hasta el 17 de marzo de 2027. Posteriormente, las empresas deberán completar un cuestionario técnico y presentar las evidencias correspondientes entre el 19 de marzo y el 31 de mayo de 2027.\n Ceremonia de premiación: se realizará en septiembre de 2027, en el marco del Consejo Directivo de la FIIC en Panamá.\n Las empresas interesadas pueden consultar las bases completas y acceder al formulario de postulación en el documento adjunto AQUÍ .",
+   "titulo": "FIIC abre la convocatoria al reconocimiento a Responsabilidad Social Empresarial",
+   "url": "https://www.camarco.org.ar/2026/11/27/fiic-abre-la-convocatoria-al-reconocimiento-nicolas-y-jose-ignacio-mariscal-2027/"
   }
  },
  "revisadas": {
@@ -3021,6 +3032,10 @@
   "CAMARCO|49872": {
    "fecha": "2026-11-26",
    "titulo": "CAMARCO Santa Fe celebró el Día de la Construcción"
+  },
+  "CAMARCO|49884": {
+   "fecha": "2026-11-27",
+   "titulo": "FIIC abre la convocatoria al reconocimiento a Responsabilidad Social Empresarial"
   }
  }
 }

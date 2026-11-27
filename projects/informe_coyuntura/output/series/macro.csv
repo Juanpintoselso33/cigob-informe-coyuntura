@@ -1140,6 +1140,7 @@ fecha,indicador,valor,unidad,fuente
 2022-12-01,saldo_comercial,1102.0,M USD,INDEC — cuadro original ICA + historia datos.gob.ar
 2022-11-01,saldo_comercial,1360.0,M USD,INDEC — cuadro original ICA + historia datos.gob.ar
 2022-10-01,saldo_comercial,1883.0,M USD,INDEC — cuadro original ICA + historia datos.gob.ar
+2026-10-01,resultado_primario,6.53,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2026-09-01,resultado_primario,6.19,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2026-08-01,resultado_primario,6.02,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2026-07-01,resultado_primario,5.96,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación

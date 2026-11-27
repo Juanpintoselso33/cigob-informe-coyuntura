@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 81,3** | **VERDE** | Moderadamente aflojado | 14 indicadores: 10 en verde · 3 en amarillo · 1 en naranja |
+| **ITCG: 81,6** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 2 en amarillo · 1 en naranja |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 65,3 | AMARILLO | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 66,0 | AMARILLO | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 93,3 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande. | 89,2 | VERDE | 15,0 % |
@@ -61,12 +61,12 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 10,39 % de brecha entre el contado con liquidación y el mayorista | AMARILLO | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 9,98 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 18.001 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
 | Empleados de la administración nacional | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −22,44 % de variación frente a diciembre de 2023 (dotación de la Administración Pública Nacional) | VERDE | 14,6 % |
-| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −27,76 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | VERDE | 10,4 % |
+| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −28,19 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización… | 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) | VERDE | 7,5 % |
 | Siniestralidad laboral (Superintendencia de Riesgos del Trabajo) | Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo. | −5 % variación del índice de incidencia (mismo período, contra el año anterior) | VERDE | 3,8 % |
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 10,39 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **AMARILLO** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 9,98 % de brecha entre el contado con liquidación y el mayorista** (2026-11) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -140,15 +140,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Contado con liquidación venta 1767.90 (2026-11-26T17:56:00-03:00) / mayorista venta 1601.50 (2026-11-26T13:13:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- Contado con liquidación venta 1759.70 (2026-11-27T13:59:00-03:00) / mayorista venta 1600.00 (2026-11-26T09:18:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 10,39 % de brecha entre el contado con liquidación y el mayorista (2026-11).
+Dato vigente: 9,98 % de brecha entre el contado con liquidación y el mayorista (2026-11).
 
-10,39 % de brecha entre el contado con liquidación y el mayorista está en Amarillo, a 0,39 del límite con Verde (10,0).
+9,98 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 0,02 del límite con Amarillo (10,0).
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -505,7 +505,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −27,76 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023** (2026-09) | **VERDE** | Peso efectivo 10,4 % del ITCG | Cinturón Gestión |
+| **Hoy: −28,19 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023** (2026-10) | **VERDE** | Peso efectivo 10,4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -513,9 +513,9 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | gasto_funcionamiento | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 |
-| **SERIE DISPONIBLE** | 2024-01 → 2026-09 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Las series de gasto se publican con unos 2 meses de rezago. |
+| **SERIE DISPONIBLE** | 2024-01 → 2026-10 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Unas dos semanas y media: Economía publica el mes entre el 16 y el 18 del mes siguiente. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda; deflactor: Instituto Nacional de Estadística y Censos (INDEC) | **OPERACIÓN ESTADÍSTICA** | Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real del promedio de los últimos 12 meses contra el promedio de los 12 meses de 2023 |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-11-27 |
+| **MODO DE ACCESO** | Automático: planilla mensual de Economía para el último mes y API pública de series de tiempo para la historia. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-11-27 |
 
 ## Definición — qué mide y por qué importa
 
@@ -547,13 +547,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio mensual de octubre de 2025 a septiembre de 2026 contra el de enero a diciembre de 2023, descontada la inflación
+- Promedio mensual de noviembre de 2025 a octubre de 2026 contra el de enero a diciembre de 2023, descontada la inflación
 
 ## Color vigente y por qué
 
-Dato vigente: −27,76 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 (2026-09).
+Dato vigente: −28,19 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 (2026-10).
 
-−27,76 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 está en Verde, a 12,76 del límite con Amarillo (−15,0).
+−28,19 % de variación real: promedio de los últimos 12 meses frente al promedio de 2023 está en Verde, a 13,19 del límite con Amarillo (−15,0).
 
 **Color vigente: VERDE**
 
@@ -575,6 +575,8 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** Series revisables por el publicador; la serie propia se recalcula entera en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-11-27** — El último mes sale de la planilla del informe mensual de ingresos y gastos que Economía publica el día del comunicado fiscal (16 a 18 del mes siguiente); la historia sigue viniendo de la API de datos.gob.ar, que se actualiza semanas después. Con eso octubre de 2026 entra el 27-nov en vez de esperar a la API. En los meses que tienen las dos fuentes los números son idénticos.
 
 **2026-07-02** — Indicador nuevo, creado con el índice de gestión.
 
@@ -645,7 +647,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-11-27; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-11-27; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 10 menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026
 
 ## Color vigente y por qué
 

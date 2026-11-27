@@ -2299,6 +2299,10 @@
     {
       "fecha": "2026-09-01",
       "valor": -27.76
+    },
+    {
+      "fecha": "2026-10-01",
+      "valor": -28.19
     }
   ],
   "fal_modernizacion_laboral": [
@@ -2878,7 +2882,7 @@
     },
     {
       "fecha": "2026-11-01",
-      "valor": 9.13
+      "valor": 9.28
     }
   ],
   "asistencia_directa": [
@@ -7887,6 +7891,10 @@
     {
       "fecha": "2026-09-01",
       "valor": 6.19
+    },
+    {
+      "fecha": "2026-10-01",
+      "valor": 6.53
     }
   ],
   "reservas_brutas": [
@@ -23070,7 +23078,7 @@
     },
     {
       "fecha": "2026-11-27",
-      "valor": 99.6
+      "valor": 99.3
     }
   ],
   "cobertura_judicial": [
@@ -24321,7 +24329,7 @@
       "valor": 61.1
     },
     {
-      "fecha": "2026-11-26",
+      "fecha": "2026-11-27",
       "valor": 63.4
     }
   ],

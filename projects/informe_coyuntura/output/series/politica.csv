@@ -842,7 +842,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
-2026-11-27,cohesion_bloque,99.6,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-11-27,cohesion_bloque,99.3,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-10-31,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-09-30,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,cohesion_bloque,99.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -1153,7 +1153,7 @@ fecha,indicador,valor,unidad,fuente
 2026-03-01,apoyo_campo,-0.455,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-02-01,apoyo_campo,-0.475,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
 2026-01-01,apoyo_campo,-0.537,"saldo de postura (−1 a +1, 12m móviles)","Comunicados de Coninagro, la Sociedad Rural Argentina (SRA) y las Confederaciones Rurales Argentinas (CRA) — codificación CIGOB"
-2026-11-26,alineamiento_senadores_prov,63.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-11-27,alineamiento_senadores_prov,63.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-10-31,alineamiento_senadores_prov,61.1,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-09-30,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-08-31,alineamiento_senadores_prov,62.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

@@ -9476,6 +9476,812 @@
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 370/2026",
    "v": 3
+  },
+  "2874": {
+   "afirmativos": 28,
+   "afirmativos_encabezado": 28,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
+   "expedientes": [
+    "CD-26/24-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 1,
+   "lla_neg": 18,
+   "n_filas": 72,
+   "ods": [],
+   "resultado": "NEGATIVO",
+   "titulo": "Moción de tratamiento sobre tablas del expediente CD-26/24.",
+   "v": 3
+  },
+  "2875": {
+   "afirmativos": 70,
+   "afirmativos_encabezado": 70,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "OTRA",
+   "expedientes": [
+    "CD-26/24-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Moción de preferencia para el tratamiento con o sin dictamen del expediente CD-26/24.",
+   "v": 3
+  },
+  "2876": {
+   "afirmativos": 47,
+   "afirmativos_encabezado": 47,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "OTRA",
+   "expedientes": [
+    "S-1472/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 0,
+   "lla_neg": 21,
+   "n_filas": 72,
+   "ods": [],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Moción de preferencia para el tratamiento con o sin dictamen del expediente S-1472/26.",
+   "v": 3
+  },
+  "2877": {
+   "afirmativos": 59,
+   "afirmativos_encabezado": 59,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-19",
+   "lla_afirm": 19,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 407/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Acuerdo para promover al grado inmediato superior al General de Brigada Sebastián Ignacio Ibáñez.",
+   "v": 3
+  },
+  "2878": {
+   "afirmativos": 71,
+   "afirmativos_encabezado": 71,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "CD-18/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 420/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Fortalecimiento, sostenibilidad y eficiencia permanente del sistema de Discapacidad.",
+   "v": 3
+  },
+  "2879": {
+   "afirmativos": 47,
+   "afirmativos_encabezado": 47,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "PE-854/97-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 408/2026"
+   ],
+   "origen_pe": true,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Tratado de Cooperación en materia de Patentes.",
+   "v": 3
+  },
+  "2880": {
+   "afirmativos": 42,
+   "afirmativos_encabezado": 42,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "PE-13/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 424/2026"
+   ],
+   "origen_pe": true,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Inviolabilidad de la Propiedad Privada.",
+   "v": 3
+  },
+  "2881": {
+   "afirmativos": 68,
+   "afirmativos_encabezado": 68,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "CD-17/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 419/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Ley Joaquín de seguridad en el deporte.",
+   "v": 3
+  },
+  "2882": {
+   "afirmativos": 25,
+   "afirmativos_encabezado": 25,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "MOCIÓN VUELTA A COMISIÓN",
+   "expedientes": [],
+   "fecha": "2026-11-19",
+   "lla_afirm": 2,
+   "lla_neg": 18,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 425/2026"
+   ],
+   "resultado": "NEGATIVO",
+   "titulo": "Moción vuelta a comisión del expediente S-1844/26.",
+   "v": 3
+  },
+  "2883": {
+   "afirmativos": 42,
+   "afirmativos_encabezado": 42,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "S-1844/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 19,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 425/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Régimen de Cabotaje, Marina Mercante y Admisión Temporaria.",
+   "v": 3
+  },
+  "2884": {
+   "afirmativos": 62,
+   "afirmativos_encabezado": 62,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-19",
+   "lla_afirm": 20,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 421/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Designación de integrantes del Comité Nacional para la Prevención de la Tortura.",
+   "v": 3
+  },
+  "2885": {
+   "afirmativos": 62,
+   "afirmativos_encabezado": 62,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "S-528/25-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 19,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 418/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Promoción de los Derechos de las niñas, niños y adolescentes.",
+   "v": 3
+  },
+  "2886": {
+   "afirmativos": 56,
+   "afirmativos_encabezado": 56,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "PE-235/26-PL",
+    "PE-294/26-PL",
+    "PE-378/19-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 20,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 411/2026",
+    "O.D. 414/2026",
+    "O.D. 416/2026"
+   ],
+   "origen_pe": true,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Tratados internacionales.",
+   "v": 3
+  },
+  "2888": {
+   "afirmativos": 35,
+   "afirmativos_encabezado": 35,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "PE-234/26-PL",
+    "PE-271/26-PL",
+    "PE-273/26-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 20,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 410/2026",
+    "O.D. 412/2026",
+    "O.D. 415/2026"
+   ],
+   "origen_pe": true,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Tratados internacionales.",
+   "v": 3
+  },
+  "2889": {
+   "afirmativos": 50,
+   "afirmativos_encabezado": 50,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "S-258/26-PL",
+    "S-342/26-PL",
+    "S-472/26-PL",
+    "S-94/25-PL"
+   ],
+   "fecha": "2026-11-19",
+   "lla_afirm": 16,
+   "lla_neg": 3,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 130/2026",
+    "O.D. 131/2026",
+    "O.D. 133/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Transferencias de inmuebles del Estado Nacional.",
+   "v": 3
+  },
+  "2890": {
+   "afirmativos": 29,
+   "afirmativos_encabezado": 29,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 0,
+   "lla_neg": 21,
+   "n_filas": 72,
+   "ods": [],
+   "resultado": "NEGATIVO",
+   "titulo": "Moción de tratamiento sobre tablas del expediente S-70/26.",
+   "v": 3
+  },
+  "2891": {
+   "afirmativos": 67,
+   "afirmativos_encabezado": 67,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 19,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 477/2026",
+    "O.D. 478/2026",
+    "O.D. 479/2026",
+    "O.D. 480/2026",
+    "O.D. 481/2026",
+    "O.D. 482/2026",
+    "O.D. 483/2026",
+    "O.D. 484/2026",
+    "O.D. 485/2026",
+    "O.D. 486/2026",
+    "O.D. 487/2026",
+    "O.D. 488/2026",
+    "O.D. 489/2026",
+    "O.D. 490/2026",
+    "O.D. 491/2026",
+    "O.D. 492/2026",
+    "O.D. 493/2026",
+    "O.D. 494/2026",
+    "O.D. 495/2026",
+    "O.D. 496/2026",
+    "O.D. 497/2026",
+    "O.D. 498/2026",
+    "O.D. 499/2026",
+    "O.D. 500/2026",
+    "O.D. 501/2026",
+    "O.D. 502/2026",
+    "O.D. 503/2026",
+    "O.D. 504/2026",
+    "O.D. 505/2026",
+    "O.D. 506/2026",
+    "O.D. 507/2026",
+    "O.D. 508/2026",
+    "O.D. 509/2026",
+    "O.D. 510/2026",
+    "O.D. 511/2026",
+    "O.D. 512/2026",
+    "O.D. 513/2026",
+    "O.D. 514/2026",
+    "O.D. 515/2026",
+    "O.D. 516/2026",
+    "O.D. 517/2026",
+    "O.D. 518/2026",
+    "O.D. 519/2026",
+    "O.D. 520/2026",
+    "O.D. 521/2026",
+    "O.D. 522/2026",
+    "O.D. 523/2026",
+    "O.D. 524/2026",
+    "O.D. 525/2026",
+    "O.D. 526/2026",
+    "O.D. 527/2026",
+    "O.D. 528/2026",
+    "O.D. 529/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Acuerdo para la designación de jueces, conjueces, fiscales y defensores públicos; y para ascensos de funcionarios del Servicio Exterior de la Nación.",
+   "v": 3
+  },
+  "2892": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL",
+   "expedientes": [],
+   "expedientes_od": [
+    "PE-102/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "origen_pe": true,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral.",
+   "v": 3
+  },
+  "2893": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículos 1º a 6.",
+   "v": 3
+  },
+  "2894": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 7.",
+   "v": 3
+  },
+  "2895": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 7 bis.",
+   "v": 3
+  },
+  "2896": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 7 ter.",
+   "v": 3
+  },
+  "2897": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículos 8 y 9.",
+   "v": 3
+  },
+  "2898": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 10.",
+   "v": 3
+  },
+  "2899": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículos 11 y 12.",
+   "v": 3
+  },
+  "2900": {
+   "afirmativos": 71,
+   "afirmativos_encabezado": 71,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 13.",
+   "v": 3
+  },
+  "2901": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículo 16.",
+   "v": 3
+  },
+  "2902": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículos 17 al 22.",
+   "v": 3
+  },
+  "2903": {
+   "afirmativos": 41,
+   "afirmativos_encabezado": 41,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Artículo nuevo.",
+   "v": 3
+  },
+  "2904": {
+   "afirmativos": 43,
+   "afirmativos_encabezado": 43,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN PARTICULAR",
+   "expedientes": [],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 434/2026"
+   ],
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reforma electoral. Artículos 23 al 25.",
+   "v": 3
+  },
+  "2905": {
+   "afirmativos": 72,
+   "afirmativos_encabezado": 72,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [
+    "CD-26/24-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Prevención de la ludopatía y regulación de los juegos de azar y apuestas en línea.",
+   "v": 3
+  },
+  "2906": {
+   "afirmativos": 71,
+   "afirmativos_encabezado": 71,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [
+    "S-2044/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Combate contra el juego ilegal.",
+   "v": 3
+  },
+  "2907": {
+   "afirmativos": 57,
+   "afirmativos_encabezado": 57,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "S-1445/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 8,
+   "lla_neg": 13,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 429/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Institución del 26 de agosto como Día Nacional del Veterano y de los Caídos Indígenas en la Guerra de Malvinas.",
+   "v": 3
+  },
+  "2908": {
+   "afirmativos": 70,
+   "afirmativos_encabezado": 70,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [
+    "S-1102/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 21,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 432/2026",
+    "O.D. 369/2026",
+    "O.D. 452/2026",
+    "O.D. 457/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "(",
+   "v": 3
+  },
+  "2909": {
+   "afirmativos": 68,
+   "afirmativos_encabezado": 68,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [
+    "S-1472/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 18,
+   "lla_neg": 3,
+   "n_filas": 72,
+   "ods": [],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Prórroga por un año de la vigencia del Estatuto del Periodista.",
+   "v": 3
+  },
+  "2910": {
+   "afirmativos": 67,
+   "afirmativos_encabezado": 67,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [
+    "CD-9/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 20,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Reducción del IVA para productos derivados de la mandioca.",
+   "v": 3
+  },
+  "2911": {
+   "afirmativos": 31,
+   "afirmativos_encabezado": 31,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
+   "expedientes": [
+    "S-611/26-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 0,
+   "lla_neg": 20,
+   "n_filas": 72,
+   "ods": [],
+   "resultado": "NEGATIVO",
+   "titulo": "Moción de tratamiento sobre tablas del expediente S-611/26.",
+   "v": 3
+  },
+  "2912": {
+   "afirmativos": 69,
+   "afirmativos_encabezado": 69,
+   "bancas_camara": 72,
+   "bancas_lla": 21,
+   "etapa": "EN GENERAL Y EN PARTICULAR",
+   "expedientes": [],
+   "expedientes_od": [
+    "S-1723/26-PL",
+    "S-190/25-PL"
+   ],
+   "fecha": "2026-11-26",
+   "lla_afirm": 19,
+   "lla_neg": 0,
+   "n_filas": 72,
+   "ods": [
+    "O.D. 417/2026"
+   ],
+   "origen_pe": null,
+   "resultado": "AFIRMATIVO",
+   "titulo": "Creación del Registro Nacional Único de Alimentantes Morosos.",
+   "v": 3
   }
  }
 }
