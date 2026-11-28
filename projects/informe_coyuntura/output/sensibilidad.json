@@ -4,56 +4,56 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-11-27T15:03:27.532509-03:00",
+    "snapshot": "2026-11-28T03:48:12.293464+00:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 52.6,
-    "valor_recomputado": 52.6,
+    "valor_publicado": 52.2,
+    "valor_recomputado": 52.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 52.6,
-        "p05": 51.6,
-        "p95": 53.5,
-        "desvio": 0.56
+        "media": 52.2,
+        "p05": 51.2,
+        "p95": 53.1,
+        "desvio": 0.57
       },
       "combinado": {
-        "media": 52.5,
-        "p05": 51.0,
-        "p95": 54.1,
-        "desvio": 0.96
+        "media": 52.2,
+        "p05": 50.6,
+        "p95": 53.7,
+        "desvio": 0.97
       },
       "insumos": {
-        "media": 52.6,
-        "p05": 51.3,
-        "p95": 53.8,
+        "media": 52.2,
+        "p05": 50.9,
+        "p95": 53.4,
         "desvio": 0.77
       }
     },
     "leave_one_out": {
-      "tcrm": 55.5,
-      "terminos_intercambio": 55.5,
-      "iai": 50.6,
-      "costo_financiamiento_tesoro": 50.9,
-      "ipc_total": 53.9,
-      "saldo_comercial_12m": 51.3,
-      "resultado_primario": 51.4,
-      "desequilibrio_monetario": 53.7,
-      "meta_reservas_fmi": 51.7,
-      "idc": 53.4,
-      "emae_difusion": 53.4,
-      "actividad_tributaria": 53.2,
-      "credito_privado": 53.2,
-      "ipi_manufacturero": 53.2,
-      "rem_ipc_12m": 52.0,
-      "reservas_bcra": 53.1,
-      "reservas_brutas": 52.8,
-      "emae_ia": 52.8,
-      "recaudacion": 52.6
+      "tcrm": 55.1,
+      "terminos_intercambio": 55.1,
+      "iai": 50.2,
+      "costo_financiamiento_tesoro": 50.5,
+      "desequilibrio_monetario": 53.6,
+      "saldo_comercial_12m": 50.9,
+      "resultado_primario": 51.0,
+      "meta_reservas_fmi": 51.3,
+      "ipc_total": 53.0,
+      "idc": 53.0,
+      "emae_difusion": 53.0,
+      "actividad_tributaria": 52.8,
+      "credito_privado": 52.8,
+      "ipi_manufacturero": 52.8,
+      "rem_ipc_12m": 51.6,
+      "reservas_bcra": 52.7,
+      "reservas_brutas": 52.4,
+      "emae_ia": 52.4,
+      "recaudacion": 52.2
     },
     "tension": {
-      "base": 4.7,
+      "base": 4.8,
       "rango_combinado": [
         4.6,
         4.9
@@ -61,49 +61,49 @@
     }
   },
   "itcg": {
-    "valor_publicado": 81.6,
-    "valor_recomputado": 81.6,
+    "valor_publicado": 82.1,
+    "valor_recomputado": 82.1,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 81.6,
-        "p05": 80.2,
-        "p95": 83.0,
-        "desvio": 0.86
+        "media": 82.1,
+        "p05": 80.7,
+        "p95": 83.5,
+        "desvio": 0.84
       },
       "combinado": {
-        "media": 81.4,
-        "p05": 79.6,
-        "p95": 83.2,
-        "desvio": 1.09
+        "media": 81.9,
+        "p05": 80.1,
+        "p95": 83.7,
+        "desvio": 1.08
       },
       "insumos": {
-        "media": 81.4,
-        "p05": 80.4,
-        "p95": 82.5,
+        "media": 81.9,
+        "p05": 80.8,
+        "p95": 82.9,
         "desvio": 0.63
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 84.8,
-      "fal_modernizacion_laboral": 78.4,
+      "apertura_comercial": 85.6,
+      "fal_modernizacion_laboral": 78.9,
       "cepo_mulc": 79.4,
-      "juicios_trabajo_capital": 83.5,
-      "reduccion_estado": 83.3,
-      "privatizaciones": 83.2,
-      "gasto_funcionamiento": 80.4,
-      "rigi_inversiones": 80.5,
-      "desregulacion_normativa": 80.8,
-      "concesiones_infraestructura": 81.2,
-      "siniestralidad_laboral": 81.8,
-      "asistencia_directa": 81.6,
-      "protocolo_antipiquetes": 81.6,
-      "libertad_opcion_salud": 81.6
+      "juicios_trabajo_capital": 84.0,
+      "reduccion_estado": 83.8,
+      "privatizaciones": 83.7,
+      "gasto_funcionamiento": 80.9,
+      "rigi_inversiones": 81.0,
+      "desregulacion_normativa": 81.4,
+      "concesiones_infraestructura": 81.7,
+      "siniestralidad_laboral": 82.3,
+      "asistencia_directa": 82.0,
+      "protocolo_antipiquetes": 82.1,
+      "libertad_opcion_salud": 82.1
     },
     "tension": {
       "base": 1.8,
       "rango_combinado": [
-        1.7,
+        1.6,
         2.0
       ]
     }

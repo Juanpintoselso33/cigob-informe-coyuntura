@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 945,
+  "comunicados_vistos": 947,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
-  "inventario_verificado": "2026-11-27",
-  "nuevos_en_la_corrida": 1,
-  "ultima_corrida": "2026-11-27"
+  "inventario_verificado": "2026-11-28",
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-11-28"
  },
  "pendientes": {
   "CAMARCO|49669": {
@@ -3036,6 +3036,16 @@
   "CAMARCO|49884": {
    "fecha": "2026-11-27",
    "titulo": "FIIC abre la convocatoria al reconocimiento a Responsabilidad Social Empresarial"
+  },
+  "CAMARCO|49920": {
+   "fecha": "2026-11-27",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Seguridad e Higiene"
+  },
+  "CAMARCO|49925": {
+   "fecha": "2026-11-27",
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)",
+   "titulo": "Capataz"
   }
  }
 }

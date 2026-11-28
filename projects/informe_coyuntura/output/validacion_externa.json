@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-11-27T15:03:22.958181-03:00",
+    "generated_at": "2026-11-28T03:47:56.497633+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -86,7 +86,8 @@
     "2026-06": 60.1,
     "2026-07": 55.1,
     "2026-08": 54.1,
-    "2026-09": 53.7
+    "2026-09": 53.7,
+    "2026-10": 55.4
   },
   "componentes_historia_itcm": [
     "actividad_tributaria",
@@ -183,20 +184,20 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.718,
-      "n": 34
+      "r": 0.71,
+      "n": 35
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.373,
-      "n": 33
+      "r": 0.372,
+      "n": 34
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.539,
-      "n": 34
+      "r": 0.531,
+      "n": 35
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": 0.145,
-      "n": 34
+      "r": 0.137,
+      "n": 35
     },
     "ITCM adelantado 1 mes vs líder": {
       "r": 0.682,
@@ -248,8 +249,8 @@
         "tipo": "pico"
       }
     ],
-    "concordancia": 0.381,
-    "n_meses": 21,
+    "concordancia": 0.364,
+    "n_meses": 22,
     "pares": [
       {
         "mes": "2025-01",
@@ -394,20 +395,20 @@
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 171,
-      "r_abs_medio": 0.195,
+      "r_abs_medio": 0.194,
       "share_altos": 0.012
     },
     "umbral": 0.7,
     "n_indicadores": 19,
     "n_pares": 171,
-    "r_abs_medio": 0.426,
+    "r_abs_medio": 0.428,
     "share_altos": 0.211,
     "share_bajos": 0.368,
     "matriz": {
       "actividad_tributaria": {
         "costo_financiamiento_tesoro": 0.232,
         "credito_privado": 0.781,
-        "desequilibrio_monetario": 0.092,
+        "desequilibrio_monetario": 0.165,
         "emae_difusion": 0.637,
         "emae_ia": 0.744,
         "iai": 0.748,
@@ -427,7 +428,7 @@
       "costo_financiamiento_tesoro": {
         "actividad_tributaria": 0.232,
         "credito_privado": 0.079,
-        "desequilibrio_monetario": 0.33,
+        "desequilibrio_monetario": 0.238,
         "emae_difusion": 0.082,
         "emae_ia": 0.112,
         "iai": 0.105,
@@ -447,7 +448,7 @@
       "credito_privado": {
         "actividad_tributaria": 0.781,
         "costo_financiamiento_tesoro": 0.079,
-        "desequilibrio_monetario": 0.157,
+        "desequilibrio_monetario": 0.246,
         "emae_difusion": 0.678,
         "emae_ia": 0.785,
         "iai": 0.838,
@@ -465,24 +466,24 @@
         "terminos_intercambio": 0.034
       },
       "desequilibrio_monetario": {
-        "actividad_tributaria": 0.092,
-        "costo_financiamiento_tesoro": 0.33,
-        "credito_privado": 0.157,
+        "actividad_tributaria": 0.165,
+        "costo_financiamiento_tesoro": 0.238,
+        "credito_privado": 0.246,
         "emae_difusion": 0.223,
         "emae_ia": 0.332,
         "iai": 0.382,
-        "idc": 0.169,
-        "ipc_total": -0.176,
+        "idc": 0.219,
+        "ipc_total": -0.181,
         "ipi_manufacturero": 0.287,
-        "meta_reservas_fmi": 0.067,
-        "recaudacion": 0.011,
-        "rem_ipc_12m": -0.299,
-        "reservas_bcra": -0.486,
-        "reservas_brutas": -0.217,
-        "resultado_primario": -0.026,
+        "meta_reservas_fmi": -0.104,
+        "recaudacion": -0.023,
+        "rem_ipc_12m": -0.29,
+        "reservas_bcra": -0.543,
+        "reservas_brutas": -0.307,
+        "resultado_primario": -0.004,
         "saldo_comercial_12m": -0.107,
         "tcrm": -0.39,
-        "terminos_intercambio": 0.126
+        "terminos_intercambio": 0.069
       },
       "emae_difusion": {
         "actividad_tributaria": 0.637,
@@ -548,7 +549,7 @@
         "actividad_tributaria": 0.748,
         "costo_financiamiento_tesoro": 0.101,
         "credito_privado": 0.92,
-        "desequilibrio_monetario": 0.169,
+        "desequilibrio_monetario": 0.219,
         "emae_difusion": 0.588,
         "emae_ia": 0.804,
         "iai": 0.82,
@@ -568,7 +569,7 @@
         "actividad_tributaria": 0.579,
         "costo_financiamiento_tesoro": 0.171,
         "credito_privado": 0.604,
-        "desequilibrio_monetario": -0.176,
+        "desequilibrio_monetario": -0.181,
         "emae_difusion": 0.406,
         "emae_ia": 0.459,
         "iai": 0.601,
@@ -608,7 +609,7 @@
         "actividad_tributaria": -0.156,
         "costo_financiamiento_tesoro": 0.439,
         "credito_privado": -0.817,
-        "desequilibrio_monetario": 0.067,
+        "desequilibrio_monetario": -0.104,
         "emae_difusion": -0.434,
         "emae_ia": -0.421,
         "iai": -0.052,
@@ -628,7 +629,7 @@
         "actividad_tributaria": -0.347,
         "costo_financiamiento_tesoro": 0.02,
         "credito_privado": -0.353,
-        "desequilibrio_monetario": 0.011,
+        "desequilibrio_monetario": -0.023,
         "emae_difusion": -0.527,
         "emae_ia": -0.262,
         "iai": -0.477,
@@ -648,7 +649,7 @@
         "actividad_tributaria": 0.697,
         "costo_financiamiento_tesoro": 0.305,
         "credito_privado": 0.849,
-        "desequilibrio_monetario": -0.299,
+        "desequilibrio_monetario": -0.29,
         "emae_difusion": 0.616,
         "emae_ia": 0.662,
         "iai": 0.768,
@@ -668,7 +669,7 @@
         "actividad_tributaria": -0.226,
         "costo_financiamiento_tesoro": 0.05,
         "credito_privado": -0.275,
-        "desequilibrio_monetario": -0.486,
+        "desequilibrio_monetario": -0.543,
         "emae_difusion": -0.161,
         "emae_ia": -0.31,
         "iai": -0.071,
@@ -688,7 +689,7 @@
         "actividad_tributaria": 0.228,
         "costo_financiamiento_tesoro": 0.318,
         "credito_privado": 0.358,
-        "desequilibrio_monetario": -0.217,
+        "desequilibrio_monetario": -0.307,
         "emae_difusion": 0.296,
         "emae_ia": 0.225,
         "iai": 0.346,
@@ -708,7 +709,7 @@
         "actividad_tributaria": 0.588,
         "costo_financiamiento_tesoro": 0.379,
         "credito_privado": 0.778,
-        "desequilibrio_monetario": -0.026,
+        "desequilibrio_monetario": -0.004,
         "emae_difusion": 0.372,
         "emae_ia": 0.647,
         "iai": 0.534,
@@ -768,7 +769,7 @@
         "actividad_tributaria": 0.064,
         "costo_financiamiento_tesoro": 0.048,
         "credito_privado": 0.034,
-        "desequilibrio_monetario": 0.126,
+        "desequilibrio_monetario": 0.069,
         "emae_difusion": 0.05,
         "emae_ia": 0.099,
         "iai": 0.275,
@@ -1192,13 +1193,13 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.53,
-        "concesiones_infraestructura": 0.326,
+        "concesiones_infraestructura": 0.327,
         "desregulacion_normativa": 0.913,
-        "fal_modernizacion_laboral": 0.28,
+        "fal_modernizacion_laboral": 0.282,
         "gasto_funcionamiento": 0.854,
-        "juicios_trabajo_capital": -0.418,
+        "juicios_trabajo_capital": -0.421,
         "libertad_opcion_salud": 0.902,
-        "privatizaciones": 0.795,
+        "privatizaciones": 0.796,
         "protocolo_antipiquetes": 0.315,
         "reduccion_estado": 0.848,
         "siniestralidad_laboral": 0.414
@@ -1206,7 +1207,7 @@
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.162,
-        "cepo_mulc": 0.326,
+        "cepo_mulc": 0.327,
         "desregulacion_normativa": 0.536,
         "fal_modernizacion_laboral": 0.909,
         "gasto_funcionamiento": 0.394,
@@ -1234,7 +1235,7 @@
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.091,
         "asistencia_directa": 0.15,
-        "cepo_mulc": 0.28,
+        "cepo_mulc": 0.282,
         "concesiones_infraestructura": 0.909,
         "desregulacion_normativa": 0.508,
         "gasto_funcionamiento": 0.373,
@@ -1261,7 +1262,7 @@
       },
       "juicios_trabajo_capital": {
         "apertura_comercial": -0.299,
-        "cepo_mulc": -0.418,
+        "cepo_mulc": -0.421,
         "concesiones_infraestructura": -0.797,
         "desregulacion_normativa": -0.89,
         "fal_modernizacion_laboral": -0.733,
@@ -1288,7 +1289,7 @@
       "privatizaciones": {
         "apertura_comercial": 0.496,
         "asistencia_directa": 0.349,
-        "cepo_mulc": 0.795,
+        "cepo_mulc": 0.796,
         "concesiones_infraestructura": 0.635,
         "desregulacion_normativa": 0.944,
         "fal_modernizacion_laboral": 0.589,
@@ -1554,7 +1555,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.795,
+        "r": 0.796,
         "n": 36,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -3085,7 +3086,8 @@
           "2026-06": 57.3,
           "2026-07": 52.4,
           "2026-08": 57.6,
-          "2026-09": 53.4
+          "2026-09": 53.4,
+          "2026-10": 48.6
         }
       },
       "cuentas_fiscales": {
@@ -3125,7 +3127,8 @@
           "2026-06": 54.9,
           "2026-07": 66.4,
           "2026-08": 56.8,
-          "2026-09": 61.7
+          "2026-09": 61.7,
+          "2026-10": 60.6
         }
       },
       "sector_externo": {
@@ -3205,7 +3208,8 @@
           "2026-06": 68.4,
           "2026-07": 67.7,
           "2026-08": 63.6,
-          "2026-09": 64.2
+          "2026-09": 64.2,
+          "2026-10": 66.4
         }
       },
       "actividad": {
